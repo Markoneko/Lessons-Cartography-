@@ -1,0 +1,5 @@
+_sortie/
+.quarto/
+*_files/
+
+/.quarto/

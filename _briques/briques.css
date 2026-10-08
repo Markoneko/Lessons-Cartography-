@@ -1,0 +1,175 @@
+/* ==========================================================================
+   Briques : repère de niveau, carte du cours, exercices.
+   Les couleurs viennent de _charte/geodata.css.
+   ========================================================================== */
+
+/* --- Repère de niveau (socle / appui / veille) --------------------------- */
+
+.reveal .niveau {
+  position: absolute;
+  top: 38px;
+  right: var(--marge);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--bleu);
+}
+.reveal .niveau.en-ligne { position: static; }
+.reveal .niveau .strates { display: block; flex: none; }
+.reveal .niveau-texte { display: flex; flex-direction: column; line-height: 1.1; }
+.reveal .niveau-mot {
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.reveal .niveau-perle {
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--gris);
+  margin-top: 3px;
+}
+/* Variante « pastille » (comparaison) */
+.reveal .pastille {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  font-family: var(--police-titre); font-weight: 700; font-size: 19px;
+  color: var(--blanc);
+}
+.reveal .pastille-socle { background: var(--bleu); }
+.reveal .pastille-appui { background: var(--orange); }
+.reveal .pastille-veille { background: var(--violet); }
+
+/* Planche de comparaison des codes */
+.reveal .codes-niveau { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.reveal .codes-niveau .code {
+  background: var(--fond-doux);
+  border-radius: 10px;
+  padding: 22px 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.reveal .codes-niveau .code h3 { margin: 0; color: var(--bleu); font-size: 24px; }
+.reveal .codes-niveau .code .legende { margin: -8px 0 6px 0; min-height: 46px; }
+
+/* --- Carte du cours ------------------------------------------------------ */
+
+.reveal .carte-du-cours { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+.reveal .carte-colonne ul { list-style: none; margin: 18px 0 0 0; padding: 0; }
+.reveal .carte-colonne li {
+  font-size: 21px;
+  line-height: 1.25;
+  padding: 9px 0;
+  margin: 0;
+  border-top: 1px solid var(--filet);
+}
+
+/* --- Question / réponse -------------------------------------------------- */
+
+.reveal .question,
+.reveal .reponse {
+  border-radius: 10px;
+  padding: 16px 22px 8px 22px;
+  margin: 0 0 16px 0;
+}
+.reveal .question { background: var(--fond-doux); }
+.reveal .reponse { background: var(--blanc); border: 2px solid var(--bleu); }
+.reveal .etiquette {
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+.reveal .reponse .etiquette { color: var(--bleu); }
+.reveal .question p:last-child, .reveal .reponse p:last-child { margin-bottom: 8px; }
+
+/* --- QCM ----------------------------------------------------------------- */
+
+.reveal .qcm { display: flex; flex-direction: column; gap: 10px; }
+.reveal .qcm > p { margin-bottom: 6px; }
+.reveal .choix {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: start;
+  column-gap: 10px;
+  border: 2px solid var(--filet);
+  border-radius: 10px;
+  padding: 11px 16px;
+  cursor: pointer;
+  background: var(--blanc);
+}
+.reveal .choix::before {
+  content: "";
+  grid-row: 1 / span 2;
+  width: 24px; height: 24px; margin-top: 3px;
+  border: 2px solid var(--gris);
+  border-radius: 50%;
+  box-sizing: border-box;
+  font-size: 17px; font-weight: 700; line-height: 21px; text-align: center;
+}
+.reveal .choix:hover, .reveal .choix:focus-visible { border-color: var(--bleu); outline: none; }
+.reveal .choix-retour { display: none; grid-column: 2; font-size: 21px; color: var(--gris); margin-top: 4px; }
+.reveal .choix-retour p { margin: 0; }
+.reveal .choix.choisi .choix-retour { display: block; }
+.reveal .choix.choisi.juste { border-color: var(--bleu); background: var(--fond-doux); }
+.reveal .choix.choisi.juste::before { content: "✓"; background: var(--bleu); border-color: var(--bleu); color: var(--blanc); }
+.reveal .choix.choisi.faux { border-color: var(--vieux-rose); border-style: dashed; }
+.reveal .choix.choisi.faux::before { content: "✗"; border-color: var(--vieux-rose); color: var(--vieux-rose); }
+.reveal .choix.choisi.faux .choix-texte { color: var(--gris); }
+
+/* --- Remise en ordre ----------------------------------------------------- */
+
+.reveal .etapes { display: flex; flex-wrap: wrap; gap: 12px; margin: 6px 0 14px 0; }
+.reveal .etape {
+  display: flex; align-items: center; gap: 10px;
+  border: 2px solid var(--filet);
+  border-radius: 10px;
+  padding: 10px 16px;
+  background: var(--blanc);
+  cursor: pointer;
+}
+.reveal .etape p { margin: 0; }
+.reveal .etape::before {
+  content: "?";
+  flex: none;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--fond-doux); color: var(--gris);
+  font-family: var(--police-titre); font-weight: 700; font-size: 16px; line-height: 28px; text-align: center;
+}
+.reveal .etape:hover, .reveal .etape:focus-visible { border-color: var(--bleu); outline: none; }
+.reveal .etape.placee { border-color: var(--bleu); background: var(--fond-doux); cursor: default; }
+.reveal .etape.placee::before { content: attr(data-rang); background: var(--bleu); color: var(--blanc); }
+.reveal .etape.refus { animation: refus 0.3s; border-color: var(--vieux-rose); }
+@keyframes refus { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+.reveal .ordre-pied { display: flex; align-items: center; gap: 20px; font-size: 20px; color: var(--gris); }
+.reveal .ordre-recommencer {
+  font: inherit; font-size: 17px;
+  color: var(--bleu); background: none;
+  border: 2px solid var(--filet); border-radius: 8px;
+  padding: 6px 14px; cursor: pointer;
+}
+
+/* --- Zones cliquables sur une image -------------------------------------- */
+
+.reveal .zones-cadre { position: relative; display: inline-block; line-height: 0; cursor: crosshair; }
+.reveal .zones-cadre img { display: block; max-height: 430px; margin: 0; }
+.reveal .zone {
+  position: absolute;
+  background: transparent;
+  border: 3px solid transparent;
+  border-radius: 6px;
+  padding: 0; cursor: crosshair;
+}
+.reveal .zone:focus-visible { border-color: var(--jaune); outline: none; }
+.reveal .zone.trouvee[data-juste="oui"] { border-color: var(--jaune); background: rgba(216, 211, 58, 0.28); }
+.reveal .zone.trouvee[data-juste="non"] { border-color: var(--blanc); border-style: dashed; }
+.reveal .zones-retour { margin: 12px 0 0 0; font-size: 22px; min-height: 60px; color: var(--encre); }
+
+/* --- À l'impression : on montre les réponses cachées --------------------- */
+
+@media print {
+  .reveal .ordre-recommencer { display: none; }
+}

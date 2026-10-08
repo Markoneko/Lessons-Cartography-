@@ -1,0 +1,95 @@
+<script>
+/* Briques d'exercice : QCM, remise en ordre, zones cliquables.
+   Aucun réseau, aucune donnée envoyée : tout se passe dans la page. */
+(function () {
+  function activer(el, action) {
+    el.addEventListener("click", function (e) { e.stopPropagation(); action(e); });
+    el.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); action(e); }
+    });
+  }
+
+  // --- Tri à la volée par l'adresse de la page, sans recompiler :
+  //     index.html?niveau=socle          ne garde que les diapos « socle »
+  //     index.html?niveau=socle,appui    garde deux niveaux
+  //     index.html?optionnels=non        retire les diapos marquées .optionnel
+  (function () {
+    var p = new URLSearchParams(window.location.search);
+    var garder = (p.get("niveau") || "").split(",").filter(Boolean);
+    var sansOptionnels = p.get("optionnels") === "non";
+    if (!garder.length && !sansOptionnels) return;
+    var retire = false;
+    document.querySelectorAll(".reveal .slides > section").forEach(function (s) {
+      var niveau = ["socle", "appui", "veille"].filter(function (n) { return s.classList.contains(n); })[0];
+      if ((sansOptionnels && s.classList.contains("optionnel")) ||
+          (garder.length && niveau && garder.indexOf(niveau) < 0)) { s.remove(); retire = true; }
+    });
+    if (retire && window.Reveal) { Reveal.sync(); Reveal.slide(0); }
+  })();
+
+  // --- QCM : on clique un choix, il dit s'il est juste et pourquoi
+  document.querySelectorAll(".qcm .choix").forEach(function (choix) {
+    activer(choix, function () {
+      choix.classList.add("choisi", choix.dataset.juste === "oui" ? "juste" : "faux");
+    });
+  });
+
+  // --- Remise en ordre : on clique les étapes dans le bon ordre
+  document.querySelectorAll(".ordre").forEach(function (bloc) {
+    var boite = bloc.querySelector(".etapes");
+    if (!boite) return;
+    var etat = bloc.querySelector(".ordre-etat");
+    var etapes = Array.prototype.slice.call(boite.querySelectorAll(".etape"));
+    var attendu = 1, erreurs = 0;
+
+    function melanger() {
+      var copie = etapes.slice();
+      do {
+        for (var i = copie.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = copie[i]; copie[i] = copie[j]; copie[j] = t;
+        }
+      } while (copie.length > 2 && copie.every(function (e, k) { return +e.dataset.rang === k + 1; }));
+      copie.forEach(function (e) { e.classList.remove("placee", "refus"); boite.appendChild(e); });
+      attendu = 1; erreurs = 0;
+      etat.textContent = "Cliquez les étapes dans l’ordre.";
+    }
+
+    etapes.forEach(function (etape) {
+      activer(etape, function () {
+        if (etape.classList.contains("placee")) return;
+        if (+etape.dataset.rang === attendu) {
+          etape.classList.add("placee");
+          boite.insertBefore(etape, boite.children[attendu - 1] || null);
+          attendu++;
+          etat.textContent = attendu > etapes.length
+            ? "Chaîne complète" + (erreurs ? " — " + erreurs + " hésitation" + (erreurs > 1 ? "s" : "") + "." : ", sans faute.")
+            : "Étape " + attendu + " sur " + etapes.length + "…";
+        } else {
+          erreurs++;
+          etape.classList.remove("refus");
+          void etape.offsetWidth;
+          etape.classList.add("refus");
+        }
+      });
+    });
+    var bouton = bloc.querySelector(".ordre-recommencer");
+    if (bouton) activer(bouton, melanger);
+    melanger();
+  });
+
+  // --- Zones : on clique sur l'image, la zone répond
+  document.querySelectorAll(".zones").forEach(function (bloc) {
+    var cadre = bloc.querySelector(".zones-cadre");
+    var retour = bloc.querySelector(".zones-retour");
+    if (!cadre || !retour) return;
+    cadre.querySelectorAll(".zone").forEach(function (zone) {
+      activer(zone, function () {
+        zone.classList.add("trouvee");
+        retour.textContent = (zone.dataset.juste === "oui" ? "✓ " : "✗ ") + zone.dataset.retour;
+      });
+    });
+    cadre.addEventListener("click", function () { retour.textContent = "Pas ici. Essayez ailleurs."; });
+  });
+})();
+</script>

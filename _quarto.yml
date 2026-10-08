@@ -1,0 +1,37 @@
+# Réglages communs à tous les cours. On n'y touche presque jamais.
+project:
+  type: default
+  output-dir: _sortie
+  render:
+    - "cours/**/*.qmd"
+    - "bac-a-sable/**/*.qmd"
+
+lang: fr
+html-math-method: mathml
+
+filters:
+  - _briques/gabarit.lua
+
+format:
+  revealjs:
+    theme: default
+    css:
+      - _charte/geodata.css
+      - _briques/briques.css
+    include-after-body: _briques/briques.html
+    logo: _charte/logos/geodata.svg
+    width: 1280
+    height: 720
+    margin: 0
+    center: false
+    slide-number: c
+    menu: false
+    transition: none
+    controls: false
+    hash: true
+    auto-stretch: false
+    embed-resources: true
+    title-slide-attributes:
+      data-state: plein
+  pptx:
+    reference-doc: _charte/gabarit-geodata.pptx
