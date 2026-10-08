@@ -33,5 +33,3 @@ format:
     embed-resources: true
     title-slide-attributes:
       data-state: plein
-  pptx:
-    reference-doc: _charte/gabarit-geodata.pptx

@@ -20,10 +20,12 @@ quarto render cours/mon-cours/index.qmd
 
 Le résultat arrive dans `_sortie/cours/mon-cours/` :
 
-- `index.html` — à projeter. Un seul fichier, qui fonctionne sans réseau. Touche `F` : plein écran. Touche `S` : vue orateur avec les notes.
-- `index.pptx` — version PowerPoint de secours, modifiable mais simplifiée (voir « Limites »).
+`index.html` : un seul fichier, qui fonctionne sans réseau. Il sert à projeter et à faire manipuler les étudiants. Touche `F` : plein écran. Touche `S` : vue orateur avec les notes.
 
-Pour un **PDF** : ouvrir `index.html` dans Chrome ou Edge, ajouter `?print-pdf` à la fin de l'adresse, puis Imprimer → Enregistrer au format PDF (marges : aucune, graphiques d'arrière-plan : cochés).
+Pour le **PDF**, qui sert de support de cours : ouvrir `index.html` dans Chrome ou Edge, ajouter `?print-pdf` à la fin de l'adresse, puis Imprimer → Enregistrer au format PDF (marges : aucune, graphiques d'arrière-plan : cochés).
+
+- `index.html?print-pdf` — le support avec le corrigé des exercices ;
+- `index.html?print-pdf&reponses=non` — le même, sans les réponses.
 
 Pour travailler avec un aperçu qui se met à jour à chaque enregistrement :
 
@@ -58,15 +60,28 @@ Chaque `##` commence une nouvelle diapo.
 ### Les trois niveaux
 
 On pose une étiquette à côté du titre : `{.socle}`, `{.appui}` ou `{.veille}`.
-Le repère (strates + mot) s'affiche en haut à droite, et la diapo « carte du cours » se met à jour toute seule.
+Le pictogramme s'affiche devant le titre, et la diapo « carte du cours » se met à jour toute seule.
 
-| Étiquette | Repère | Sens |
-|-----------|--------|------|
-| `.socle`  | trois strates pleines | à maîtriser |
-| `.appui`  | deux strates | pour consolider |
-| `.veille` | une strate en contour | pour aller plus loin |
+| Étiquette | Pictogramme | Sens |
+|-----------|-------------|------|
+| `.socle`  | trois strates à décrochement, trait gras, bleu — évoque un S | à maîtriser |
+| `.appui`  | deux strates en crête, trait moyen, orange — évoque un A | pour consolider |
+| `.veille` | une strate en creux, trait fin, violet — évoque un V | pour aller plus loin |
+
+Forme, nombre de traits, épaisseur et couleur disent la même chose : le code reste lisible en noir et blanc.
 
 Pour relier une diapo à une perle de la Canopée : `{.socle perle="CODE-01"}`.
+
+### La carte du cours
+
+```markdown
+## Carte du cours
+
+::: {.carte-du-cours}
+:::
+```
+
+Elle liste les diapos par niveau. Chaque ligne est un lien vers sa diapo, et le pictogramme de chaque diapo ramène à la carte.
 
 ### Types de diapo
 
@@ -147,7 +162,7 @@ Sans recompiler, en ajoutant à l'adresse de la page :
 - `index.html?niveau=socle,appui` — deux niveaux ;
 - `index.html?optionnels=non` — retire les diapos `.optionnel`.
 
-Pour que le PDF ou le PowerPoint soient triés eux aussi, ajouter dans l'en-tête du cours (entre les `---`) puis recompiler :
+Pour graver ce tri dans le fichier produit, ajouter dans l'en-tête du cours (entre les `---`) puis recompiler :
 
 ```yaml
 garder-niveaux: socle
@@ -169,7 +184,7 @@ Changer une couleur ou une police : tout est en tête de `_charte/geodata.css`.
 
 ## Limites connues
 
-- Les exercices interactifs n'existent qu'en HTML. En PDF et en PowerPoint, ils deviennent des listes ; les réponses vont dans les notes.
-- La sortie PowerPoint ne gère que deux colonnes et reprend la charte de façon simplifiée. C'est une version de dépannage, pas un équivalent.
+- Les exercices ne sont interactifs qu'en HTML. Le PDF en montre l'énoncé et, par défaut, le corrigé.
+- Les liens de la carte du cours ne fonctionnent pas dans le PDF.
 - Les réponses des étudiants ne sont pas enregistrées.
 - Les formules mathématiques s'affichent sans réseau, mais avec un rendu plus simple que LaTeX.

@@ -279,13 +279,13 @@ Dans un SIG, c'est le code **`EPSG:2154`**.
 :::
 ::::
 
-## Quel code pour les niveaux ? {#codes}
+## Le code des niveaux {#codes}
 
 ::: {.codes-niveau}
 :::
 
 ::: {.legende}
-Diapo de travail, à retirer ensuite. Le code A est celui appliqué dans tout ce support.
+Diapo de travail, à retirer ensuite. Chaque pictogramme ramène à la carte du cours quand on clique dessus.
 :::
 
 ## À vous {.fin}

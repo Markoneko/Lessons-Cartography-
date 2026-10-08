@@ -10,6 +10,7 @@
   --bleu-nuit: #1D2A66;
   --orange: #E38226;
   --orange-clair: #F2AE6D;
+  --orange-texte: #B5600E;       /* orange foncé, pour du petit texte lisible */
   --prune: #541C5B;
   --vieux-rose: #8A5264;
   --violet: #9655A2;
@@ -59,9 +60,8 @@
   font-size: 38px;
   font-weight: 700;
   line-height: 1.15;
-  margin: 0 0 26px 0;
-  padding-right: 250px;          /* place réservée au niveau, en haut à droite */
-  min-height: 44px;
+  margin: 0 0 24px 0;
+  min-height: 48px;
 }
 .reveal h3 {
   font-size: 22px;
@@ -302,15 +302,8 @@
   min-height: 0;
   background: var(--blanc);
   font-size: 28px;
+  width: auto;
 }
-.reveal .slides section.image-pleine .niveau {
-  background: var(--blanc);
-  padding: 10px 14px;
-  top: 28px;
-  right: 40px;
-  z-index: 2;
-}
-
 /* --- Impression en PDF (ouvrir la page avec ?print-pdf, puis Imprimer) ----- */
 
 html.reveal-print .reveal .slides .pdf-page { height: 720px !important; }
@@ -330,12 +323,17 @@ html.reveal-print .reveal .slides .pdf-page::after {
   width: 115px; height: 38px;
   background: url(logos/geodata.svg) no-repeat left center / contain;
 }
-html.reveal-print .reveal .slides .pdf-page:has(section[data-state="plein"])::after,
-html.reveal-print .reveal .slides .pdf-page:has(section[data-state="plein"]) .slide-number-pdf { display: none; }
-html.reveal-print .reveal .slide-number-pdf {
+html.reveal-print .reveal .slides { counter-reset: page-pdf; }
+html.reveal-print .reveal .slides .pdf-page { counter-increment: page-pdf; }
+html.reveal-print .reveal .slides .pdf-page::before {
+  content: counter(page-pdf);
+  position: absolute; z-index: 5;
   right: var(--marge); bottom: 22px;
   padding-top: 6px; min-width: 46px; text-align: right;
   border-top: 3px solid var(--bleu);
   font-family: var(--police-titre); font-weight: 700; font-size: 15px;
-  color: var(--bleu); background: none;
+  color: var(--bleu);
 }
+html.reveal-print .reveal .slides .pdf-page:has(section[data-state="plein"])::after,
+html.reveal-print .reveal .slides .pdf-page:has(section[data-state="plein"])::before { display: none; }
+html.reveal-print .reveal .slide-number-pdf { display: none; }

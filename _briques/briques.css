@@ -3,66 +3,87 @@
    Les couleurs viennent de _charte/geodata.css.
    ========================================================================== */
 
-/* --- Repère de niveau (socle / appui / veille) --------------------------- */
+/* --- Niveaux : socle / appui / veille ------------------------------------ */
 
-.reveal .niveau {
-  position: absolute;
-  top: 38px;
-  right: var(--marge);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--bleu);
-}
-.reveal .niveau.en-ligne { position: static; }
-.reveal .niveau .strates { display: block; flex: none; }
-.reveal .niveau-texte { display: flex; flex-direction: column; line-height: 1.1; }
+.reveal .niveau-socle, .reveal section.socle  { --couleur-niveau: var(--bleu);   --couleur-niveau-texte: var(--bleu); }
+.reveal .niveau-appui, .reveal section.appui  { --couleur-niveau: var(--orange); --couleur-niveau-texte: var(--orange-texte); }
+.reveal .niveau-veille, .reveal section.veille { --couleur-niveau: var(--violet); --couleur-niveau-texte: var(--violet); }
+
+.reveal .strates { display: block; flex: none; color: var(--couleur-niveau); }
 .reveal .niveau-mot {
   font-family: var(--police-titre);
   font-weight: 700;
-  font-size: 19px;
-  letter-spacing: 0.08em;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--couleur-niveau-texte);
 }
 .reveal .niveau-perle {
   font-family: var(--police-mono);
+  font-weight: 400;
   font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--gris);
-  margin-top: 3px;
+  margin-left: 12px;
 }
-/* Variante « pastille » (comparaison) */
-.reveal .pastille {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 50%;
-  font-family: var(--police-titre); font-weight: 700; font-size: 19px;
-  color: var(--blanc);
-}
-.reveal .pastille-socle { background: var(--bleu); }
-.reveal .pastille-appui { background: var(--orange); }
-.reveal .pastille-veille { background: var(--violet); }
 
-/* Planche de comparaison des codes */
-.reveal .codes-niveau { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.reveal .codes-niveau .code {
-  background: var(--fond-doux);
-  border-radius: 10px;
-  padding: 22px 24px;
-  display: flex; flex-direction: column; gap: 16px;
+/* Le titre d'une diapo qui porte un niveau : pictogramme à gauche, mot au-dessus du titre */
+.reveal section:is(.socle, .appui, .veille) > h2 {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 18px;
+  row-gap: 5px;
+  align-items: center;
 }
-.reveal .codes-niveau .code h3 { margin: 0; color: var(--bleu); font-size: 24px; }
-.reveal .codes-niveau .code .legende { margin: -8px 0 6px 0; min-height: 46px; }
+.reveal h2 .niveau-picto { grid-column: 1; grid-row: 1 / span 2; display: block; line-height: 0; }
+.reveal h2 a.niveau-picto:hover, .reveal h2 a.niveau-picto:focus-visible { opacity: 0.6; outline: none; }
+.reveal h2 .niveau-mot { grid-column: 2; grid-row: 1; align-self: end; }
+.reveal h2 .titre-texte { grid-column: 2; grid-row: 2; align-self: start; }
+
+/* Planche de présentation du code (diapo de travail) */
+.reveal .codes-niveau { display: grid; grid-template-columns: 1.25fr 1fr; gap: 32px; align-items: start; }
+.reveal .codes-niveau .code { display: flex; flex-direction: column; gap: 18px; }
+.reveal .codes-niveau .code-variantes { background: var(--fond-doux); border-radius: 10px; padding: 22px 24px; }
+.reveal .codes-niveau h3 { margin: 0; color: var(--bleu); }
+.reveal .code-ligne { display: flex; align-items: center; gap: 24px; }
+.reveal .code-ligne p { margin: 4px 0 0 0; font-size: 21px; }
+.reveal .code-retenu .niveau-mot { font-size: 20px; }
 
 /* --- Carte du cours ------------------------------------------------------ */
 
 .reveal .carte-du-cours { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
-.reveal .carte-colonne ul { list-style: none; margin: 18px 0 0 0; padding: 0; }
-.reveal .carte-colonne li {
-  font-size: 21px;
-  line-height: 1.25;
-  padding: 9px 0;
-  margin: 0;
-  border-top: 1px solid var(--filet);
+.reveal .carte-tete { display: flex; align-items: center; gap: 14px; }
+.reveal .carte-tete .niveau-mot { font-size: 18px; }
+.reveal .carte-compte { font-family: var(--police-mono); font-size: 13px; color: var(--gris); margin-top: 5px; }
+.reveal .carte-colonne ul { list-style: none; margin: 14px 0 0 0; padding: 0; }
+.reveal .carte-colonne li { margin: 0; border-top: 1px solid var(--filet); }
+.reveal .carte-colonne li a {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 8px 4px;
+  font-size: 20px; line-height: 1.25;
+  color: var(--encre); text-decoration: none;
 }
+.reveal .carte-colonne li a:hover, .reveal .carte-colonne li a:focus-visible {
+  background: var(--fond-doux); color: var(--bleu); outline: none;
+}
+.reveal .puce-partie {
+  flex: none;
+  display: inline-block; width: 20px; height: 20px; border-radius: 4px;
+  font-family: var(--police-titre); font-weight: 700; font-size: 12px; line-height: 20px; text-align: center;
+  color: var(--blanc); background: var(--filet);
+  position: relative; top: -2px;
+}
+.reveal .puce-partie.partie-1 { background: var(--vieux-rose); }
+.reveal .puce-partie.partie-2 { background: var(--prune); }
+.reveal .puce-partie.partie-3 { background: var(--bleu); }
+.reveal .puce-partie.partie-4 { background: var(--orange); }
+.reveal .puce-partie.partie-5 { background: var(--orange-clair); }
+.reveal .carte-parties { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: -8px 0 22px 0; font-size: 17px; }
+.reveal .carte-parties a { display: inline-flex; align-items: baseline; gap: 8px; color: var(--gris); text-decoration: none; }
+.reveal .carte-parties a:hover { color: var(--bleu); }
 
 /* --- Question / réponse -------------------------------------------------- */
 
@@ -168,8 +189,10 @@
 .reveal .zone.trouvee[data-juste="non"] { border-color: var(--blanc); border-style: dashed; }
 .reveal .zones-retour { margin: 12px 0 0 0; font-size: 22px; min-height: 60px; color: var(--encre); }
 
-/* --- À l'impression : on montre les réponses cachées --------------------- */
+/* --- En PDF : le support porte le corrigé -------------------------------- */
 
-@media print {
-  .reveal .ordre-recommencer { display: none; }
-}
+html.reveal-print .reveal .ordre-recommencer,
+html.reveal-print .reveal .ordre-etat { display: none; }
+html.reveal-print .reveal .zones-retour { display: none; }
+/* Variante sans réponses : ?print-pdf&reponses=non */
+html.sans-reponses .reveal .reponse { visibility: hidden; }

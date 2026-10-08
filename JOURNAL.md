@@ -2,6 +2,32 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-08 (suite) — Retours de Marc sur le premier test
+
+**Décidé**
+
+- PowerPoint sort du processus. Deux sorties seulement : le HTML pour l'interaction avec les étudiants, le PDF comme support de cours.
+- Le niveau se lit devant le titre, plus en haut à droite.
+- Nouveau code des niveaux, proposé par Marc : trois formes tirées des strates du logo, qui évoquent chacune l'initiale du niveau.
+  Socle : trois strates à décrochement, gras, bleu (S). Appui : deux strates en crête, moyen, orange (A). Veille : une strate en creux, fin, violet (V).
+  Le code combine forme, nombre, épaisseur et couleur.
+
+**Ajouté**
+
+- Carte du cours cliquable : chaque ligne mène à sa diapo, chaque pictogramme ramène à la carte, et une pastille indique la partie.
+- Le PDF porte le corrigé des exercices ; `&reponses=non` donne la version vierge. Il est maintenant paginé.
+- Espaces insécables de la typographie française posées automatiquement.
+
+**À trancher par Marc**
+
+- Deux variantes de pictogramme sont montrées sur la diapo « Le code des niveaux » : un A barré, un V double.
+- « Faire des liens » dans la carte : aujourd'hui ce sont des liens de navigation. Des liens de prérequis entre concepts, comme dans la Canopée, demanderaient de déclarer ces prérequis sur chaque diapo.
+
+**Ensuite**
+
+- Marc installe Quarto pour vérifier la prise en main sans assistance.
+- Organiser la production : un plan de cours comme point de départ, et un stockage propre des images.
+
 ## 2026-10-08 — Premier test du processus
 
 **Décidé**
@@ -25,7 +51,6 @@ Décisions et constats, du plus récent au plus ancien.
 
 - La sortie PowerPoint est modifiable mais dégradée : deux colonnes au plus, exercices aplatis, charte simplifiée. Le gabarit officiel n'est pas utilisable tel quel par le convertisseur (noms et emplacements des zones incompatibles) ; un gabarit dérivé est fabriqué par `_charte/outils/fabriquer-gabarit-pptx.py`.
 - Les images récupérées des anciens PPT sont petites (300 à 800 pixels de large). Lisibles, mais à remplacer par des originaux pour la version définitive.
-- Le PDF ne porte pas de numéro de page.
 
 **À trancher par Marc**
 

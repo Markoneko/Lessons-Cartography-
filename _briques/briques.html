@@ -27,11 +27,18 @@
     if (retire && window.Reveal) { Reveal.sync(); Reveal.slide(0); }
   })();
 
+  // --- En PDF (?print-pdf) le support porte le corrigé ; ajouter &reponses=non pour l'obtenir vierge
+  var p = new URLSearchParams(window.location.search);
+  var EN_PDF = p.has("print-pdf");
+  var CORRIGE = EN_PDF && p.get("reponses") !== "non";
+  if (EN_PDF && !CORRIGE) document.documentElement.classList.add("sans-reponses");
+
   // --- QCM : on clique un choix, il dit s'il est juste et pourquoi
   document.querySelectorAll(".qcm .choix").forEach(function (choix) {
     activer(choix, function () {
       choix.classList.add("choisi", choix.dataset.juste === "oui" ? "juste" : "faux");
     });
+    if (CORRIGE && choix.dataset.juste === "oui") choix.classList.add("choisi", "juste");
   });
 
   // --- Remise en ordre : on clique les étapes dans le bon ordre
@@ -75,7 +82,8 @@
     });
     var bouton = bloc.querySelector(".ordre-recommencer");
     if (bouton) activer(bouton, melanger);
-    melanger();
+    if (CORRIGE) etapes.forEach(function (e) { e.classList.add("placee"); });
+    else melanger();
   });
 
   // --- Zones : on clique sur l'image, la zone répond
@@ -84,6 +92,7 @@
     var retour = bloc.querySelector(".zones-retour");
     if (!cadre || !retour) return;
     cadre.querySelectorAll(".zone").forEach(function (zone) {
+      if (CORRIGE && zone.dataset.juste === "oui") zone.classList.add("trouvee");
       activer(zone, function () {
         zone.classList.add("trouvee");
         retour.textContent = (zone.dataset.juste === "oui" ? "✓ " : "✗ ") + zone.dataset.retour;
