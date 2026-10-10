@@ -166,7 +166,7 @@ Chaque diapo peut devenir une expérience, mais chaque *type* d'expérience est 
 1. **Les mots « centripète » et « centrifuge ».** Ils décrivent la position de l'humain, qui s'éloigne du centre. Mais le regard du satellite, lui, pointe vers le centre : un étudiant peut l'entendre à l'envers. Proposition : nommer les parties par le regard (lever les yeux, regarder l'horizon, regarder d'en haut) et garder les deux termes pour le commentaire oral.
 2. **L'inversion de la descente.** Elle n'est pas un miroir exact : on ne repasse pas par la sphère. Le plan l'écrit géoïde → ellipsoïde → plan. À confirmer.
 3. **La place des SIG.** Le plan s'arrête au seuil de QGIS (6.2). Si la matinée doit aussi introduire les SIG (vecteur, raster, couches), il faut une partie 6 et resserrer les parties 1 à 3.
-4. **Le volume.** 44 diapos de contenu pour une matinée, c'est dense avec des expériences. Les parties 1 à 3 pèsent 23 diapos, les parties 4 et 5 en pèsent 17 et portent 11 des 16 diapos socle : est-ce le bon équilibre ?
+4. **Le volume.** 44 diapos de contenu pour une matinée, c'est dense avec des expériences. Les parties 1 à 3 pèsent 23 diapos, les parties 4 et 5 en pèsent 17 et portent 10 des 16 diapos socle : est-ce le bon équilibre ?
 5. **Les exemples purs.** Proposition : pas de pictogramme, une simple mention « exemple », et ils ne comptent ni dans la carte du cours ni dans une future liste de révision.
 6. **La gravure de couverture.** Titre, date et technique sont à relever sur le cartel de l'exposition pour la diapo des sources.
 7. **Bedolina.** Le fichier est nommé « Belinda » ; le site rupestre du Val Camonica s'appelle Bedolina. À vérifier avant d'écrire la légende.
