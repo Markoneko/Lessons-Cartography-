@@ -2,7 +2,7 @@
 title: "De la Terre à la carte"
 subtitle: "Découverte de la cartographie et des SIG — tranche de test"
 author: "Marc Poupée · Master FIRS"
-date: "2026-10-08"
+date: "2026-10-12"
 date-format: "D MMMM YYYY"
 footer: "FIRS · De la Terre à la carte"
 ---
