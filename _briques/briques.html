@@ -1,5 +1,5 @@
 <script>
-/* Briques d'exercice : QCM, remise en ordre, zones cliquables.
+/* Briques d'exercice et d'expérience.
    Aucun réseau, aucune donnée envoyée : tout se passe dans la page. */
 (function () {
   function activer(el, action) {
@@ -7,6 +7,13 @@
     el.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); action(e); }
     });
+  }
+  function tous(selecteur, racine) {
+    return Array.prototype.slice.call((racine || document).querySelectorAll(selecteur));
+  }
+  function nombre(v, decimales) {
+    if (decimales === undefined) decimales = Math.abs(v) >= 100 ? 0 : (Math.abs(v) >= 10 ? 1 : 2);
+    return v.toLocaleString("fr-FR", { minimumFractionDigits: decimales, maximumFractionDigits: decimales });
   }
 
   // --- Tri à la volée par l'adresse de la page, sans recompiler :
@@ -19,7 +26,7 @@
     var sansOptionnels = p.get("optionnels") === "non";
     if (!garder.length && !sansOptionnels) return;
     var retire = false;
-    document.querySelectorAll(".reveal .slides > section").forEach(function (s) {
+    tous(".reveal .slides > section").forEach(function (s) {
       var niveau = ["socle", "appui", "veille"].filter(function (n) { return s.classList.contains(n); })[0];
       if ((sansOptionnels && s.classList.contains("optionnel")) ||
           (garder.length && niveau && garder.indexOf(niveau) < 0)) { s.remove(); retire = true; }
@@ -34,7 +41,7 @@
   if (EN_PDF && !CORRIGE) document.documentElement.classList.add("sans-reponses");
 
   // --- QCM : on clique un choix, il dit s'il est juste et pourquoi
-  document.querySelectorAll(".qcm .choix").forEach(function (choix) {
+  tous(".qcm .choix").forEach(function (choix) {
     activer(choix, function () {
       choix.classList.add("choisi", choix.dataset.juste === "oui" ? "juste" : "faux");
     });
@@ -42,11 +49,11 @@
   });
 
   // --- Remise en ordre : on clique les étapes dans le bon ordre
-  document.querySelectorAll(".ordre").forEach(function (bloc) {
+  tous(".ordre").forEach(function (bloc) {
     var boite = bloc.querySelector(".etapes");
     if (!boite) return;
     var etat = bloc.querySelector(".ordre-etat");
-    var etapes = Array.prototype.slice.call(boite.querySelectorAll(".etape"));
+    var etapes = tous(".etape", boite);
     var attendu = 1, erreurs = 0;
 
     function melanger() {
@@ -87,11 +94,11 @@
   });
 
   // --- Zones : on clique sur l'image, la zone répond
-  document.querySelectorAll(".zones").forEach(function (bloc) {
+  tous(".zones").forEach(function (bloc) {
     var cadre = bloc.querySelector(".zones-cadre");
     var retour = bloc.querySelector(".zones-retour");
     if (!cadre || !retour) return;
-    cadre.querySelectorAll(".zone").forEach(function (zone) {
+    tous(".zone", cadre).forEach(function (zone) {
       if (CORRIGE && zone.dataset.juste === "oui") zone.classList.add("trouvee");
       activer(zone, function () {
         zone.classList.add("trouvee");
@@ -99,6 +106,244 @@
       });
     });
     cadre.addEventListener("click", function () { retour.textContent = "Pas ici. Essayez ailleurs."; });
+  });
+
+  // --- Pour aller plus loin : un panneau qui s'ouvre par-dessus la diapo
+  tous(".plus").forEach(function (bloc) {
+    var bouton = bloc.querySelector(".plus-bouton");
+    var fermer = bloc.querySelector(".plus-fermer");
+    function basculer(ouvrir) {
+      bloc.classList.toggle("ouvert", ouvrir);
+      bouton.setAttribute("aria-expanded", ouvrir ? "true" : "false");
+      (ouvrir ? fermer : bouton).focus();
+    }
+    activer(bouton, function () { basculer(true); });
+    activer(fermer, function () { basculer(false); });
+    bloc.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && bloc.classList.contains("ouvert")) { e.stopPropagation(); basculer(false); }
+    });
+    // les liens du panneau s'ouvrent dans un nouvel onglet, pour ne pas quitter le cours
+    tous(".plus-panneau a[href^='http']", bloc).forEach(function (a) { a.target = "_blank"; a.rel = "noopener"; });
+  });
+  if (window.Reveal) Reveal.on("slidechanged", function () {
+    tous(".plus.ouvert").forEach(function (b) { b.classList.remove("ouvert"); });
+  });
+
+  // --- Pivoter : on fait tourner l'image, avec les boutons ou à la main
+  tous(".pivoter").forEach(function (bloc) {
+    var cadre = bloc.querySelector(".pivot-cadre");
+    var lecture = bloc.querySelector(".pivot-angle");
+    var cible = +bloc.dataset.cible || 0, tolerance = +bloc.dataset.tolerance || 20;
+    var angle = 0;
+    function appliquer() {
+      var a = ((angle % 360) + 360) % 360;
+      cadre.style.setProperty("--angle", angle + "deg");
+      lecture.textContent = Math.round(a) + "°";
+      var ecart = Math.abs(((a - cible + 540) % 360) - 180);
+      bloc.classList.toggle("reussi", ecart <= tolerance);
+    }
+    tous(".pivot-tourner", bloc).forEach(function (b) {
+      activer(b, function () { angle += +b.dataset.pas; appliquer(); });
+    });
+    var prise = null;
+    function direction(e) {
+      var r = cadre.getBoundingClientRect();
+      return Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * 180 / Math.PI;
+    }
+    cadre.addEventListener("pointerdown", function (e) {
+      prise = { depart: direction(e), angle: angle };
+      cadre.setPointerCapture(e.pointerId); e.stopPropagation();
+    });
+    cadre.addEventListener("pointermove", function (e) {
+      if (!prise) return;
+      angle = prise.angle + direction(e) - prise.depart; appliquer();
+    });
+    ["pointerup", "pointercancel"].forEach(function (n) { cadre.addEventListener(n, function () { prise = null; }); });
+    if (CORRIGE) angle = cible;
+    appliquer();
+  });
+
+  // --- Comparer : un curseur fond les images l'une dans l'autre
+  tous(".comparer").forEach(function (bloc) {
+    var couches = tous(".comparer-couche", bloc);
+    var curseur = bloc.querySelector(".comparer-curseur");
+    var etiquettes = tous(".comparer-etiquette", bloc);
+    if (!curseur || couches.length < 2) return;
+    function appliquer() {
+      var v = +curseur.value, bas = Math.floor(v), reste = v - bas;
+      couches.forEach(function (c, i) {
+        c.style.opacity = i === 0 ? 1 : (i <= bas ? 1 : (i === bas + 1 ? reste : 0));
+      });
+      etiquettes.forEach(function (e, i) { e.classList.toggle("actif", Math.round(v) === i); });
+    }
+    curseur.addEventListener("input", appliquer);
+    ["pointerdown", "keydown", "click"].forEach(function (n) {
+      curseur.addEventListener(n, function (e) { e.stopPropagation(); });
+    });
+    etiquettes.forEach(function (e) {
+      activer(e, function () { curseur.value = e.dataset.rang; appliquer(); });
+    });
+    appliquer();
+  });
+
+  // --- Curseur : une valeur pilote un schéma (variable --x) et des résultats calculés
+  tous(".curseur").forEach(function (bloc) {
+    var entree = bloc.querySelector(".curseur-entree");
+    var sortie = bloc.querySelector(".curseur-valeur");
+    var lignes = tous(".curseur-resultats li", bloc);
+    if (!entree) return;
+    var calculs = {};
+    function evaluer(expression, x) {
+      if (!calculs[expression]) {
+        try { calculs[expression] = new Function("x", "with (Math) { return (" + expression + "); }"); }
+        catch (err) { calculs[expression] = function () { return NaN; }; }
+      }
+      return calculs[expression](x);
+    }
+    function appliquer() {
+      var x = +entree.value;
+      bloc.style.setProperty("--x", x);
+      sortie.textContent = nombre(x, (entree.step.split(".")[1] || "").length) + " " + entree.dataset.unite;
+      lignes.forEach(function (li) {
+        var texte = li.dataset.modele.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+        li.innerHTML = texte.replace(/\{([^}|]+)(?:\|(\d+))?\}/g, function (_, expression, decimales) {
+          var v = evaluer(expression, x);
+          return "<b>" + (isFinite(v) ? nombre(v, decimales === undefined ? undefined : +decimales) : "—") + "</b>";
+        });
+      });
+    }
+    entree.addEventListener("input", appliquer);
+    ["pointerdown", "keydown", "click"].forEach(function (n) {
+      entree.addEventListener(n, function (e) { e.stopPropagation(); });
+    });
+    appliquer();
+  });
+
+  // --- Classer : on choisit une étiquette, puis la case où elle va
+  tous(".classer").forEach(function (bloc) {
+    var reserve = bloc.querySelector(".classer-reserve");
+    var etat = bloc.querySelector(".classer-etat");
+    var etiquettes = tous(".classer-etiquette", bloc);
+    var cases = tous(".classer-case", bloc);
+    var choisie = null, erreurs = 0;
+    function ranger(e) {
+      var c = cases.filter(function (k) { return k.dataset.case === e.dataset.case; })[0];
+      e.classList.remove("choisie"); e.classList.add("rangee"); e.disabled = true;
+      c.querySelector(".classer-contenu").appendChild(e);
+    }
+    function bilan() {
+      var reste = tous(".classer-etiquette", reserve).length;
+      etat.textContent = reste
+        ? (choisie ? "Cliquez maintenant la case où la ranger." : "Choisissez une étiquette, puis sa case.")
+        : "Tout est rangé" + (erreurs ? " — " + erreurs + " hésitation" + (erreurs > 1 ? "s" : "") + "." : ", sans faute.");
+    }
+    if (CORRIGE) { etiquettes.forEach(ranger); return; }
+    for (var i = etiquettes.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      reserve.insertBefore(etiquettes[j], etiquettes[i]);
+      var t = etiquettes[i]; etiquettes[i] = etiquettes[j]; etiquettes[j] = t;
+    }
+    etiquettes.forEach(function (e) {
+      activer(e, function () {
+        if (e.classList.contains("rangee")) return;
+        if (choisie) choisie.classList.remove("choisie");
+        choisie = choisie === e ? null : e;
+        if (choisie) choisie.classList.add("choisie");
+        bilan();
+      });
+    });
+    cases.forEach(function (c) {
+      activer(c, function () {
+        if (!choisie) { bilan(); return; }
+        if (choisie.dataset.case === c.dataset.case) { ranger(choisie); choisie = null; }
+        else {
+          erreurs++;
+          choisie.classList.remove("refus"); void choisie.offsetWidth; choisie.classList.add("refus");
+        }
+        bilan();
+      });
+    });
+    bilan();
+  });
+
+  // --- Cap : un compas à 32 rhumbs fait tourner une route sur la carte
+  var RHUMBS = ["Nord", "Nord quart nord-est", "Nord-nord-est", "Nord-est quart nord", "Nord-est", "Nord-est quart est",
+    "Est-nord-est", "Est quart nord-est", "Est", "Est quart sud-est", "Est-sud-est", "Sud-est quart est", "Sud-est",
+    "Sud-est quart sud", "Sud-sud-est", "Sud quart sud-est", "Sud", "Sud quart sud-ouest", "Sud-sud-ouest",
+    "Sud-ouest quart sud", "Sud-ouest", "Sud-ouest quart ouest", "Ouest-sud-ouest", "Ouest quart sud-ouest", "Ouest",
+    "Ouest quart nord-ouest", "Ouest-nord-ouest", "Nord-ouest quart ouest", "Nord-ouest", "Nord-ouest quart nord",
+    "Nord-nord-ouest", "Nord quart nord-ouest"];
+  tous(".cap").forEach(function (bloc) {
+    var lecture = bloc.querySelector(".cap-lecture");
+    var rhumb = Math.round((+bloc.dataset.depart || 0) / 11.25);
+    function appliquer() {
+      var r = ((rhumb % 32) + 32) % 32, degres = r * 11.25;
+      bloc.style.setProperty("--cap", (rhumb * 11.25) + "deg");
+      var chiffres = ("00" + Math.round(degres)).slice(-3);
+      lecture.innerHTML = "Cap " + chiffres + "°<small>" + RHUMBS[r] + "</small>";
+    }
+    tous(".cap-bouton", bloc).forEach(function (b) {
+      activer(b, function () { rhumb += +b.dataset.pas; appliquer(); });
+    });
+    appliquer();
+  });
+
+  // --- Visées : on relie des stations deux à deux, les triangles se remplissent
+  tous(".visees").forEach(function (bloc) {
+    var svg = bloc.querySelector(".visee-traits");
+    var etat = bloc.querySelector(".visee-etat");
+    var points = tous(".visee-point", bloc);
+    var objectif = +bloc.dataset.objectif || 1;
+    var traits = {}, premier = null;
+    var NS = "http://www.w3.org/2000/svg";
+    points.forEach(function (pt) { if (+pt.dataset.x > 70) pt.classList.add("gauche"); });
+    function cle(a, b) { return Math.min(a, b) + "-" + Math.max(a, b); }
+    function point(rang) { return points.filter(function (q) { return +q.dataset.rang === rang; })[0]; }
+    function dessiner() {
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      var n = points.length, triangles = 0;
+      for (var a = 1; a <= n; a++) for (var b = a + 1; b <= n; b++) for (var c = b + 1; c <= n; c++) {
+        if (traits[cle(a, b)] && traits[cle(b, c)] && traits[cle(a, c)]) {
+          triangles++;
+          var poly = document.createElementNS(NS, "polygon");
+          poly.setAttribute("points", [a, b, c].map(function (r) {
+            return point(r).dataset.x + "," + point(r).dataset.y;
+          }).join(" "));
+          svg.appendChild(poly);
+        }
+      }
+      Object.keys(traits).forEach(function (k) {
+        var e = k.split("-").map(Number), l = document.createElementNS(NS, "line");
+        l.setAttribute("x1", point(e[0]).dataset.x); l.setAttribute("y1", point(e[0]).dataset.y);
+        l.setAttribute("x2", point(e[1]).dataset.x); l.setAttribute("y2", point(e[1]).dataset.y);
+        svg.appendChild(l);
+      });
+      var visees = Object.keys(traits).length;
+      etat.textContent = visees
+        ? visees + " visée" + (visees > 1 ? "s" : "") + ", " + triangles + " triangle" + (triangles > 1 ? "s" : "") + " fermé" + (triangles > 1 ? "s" : "")
+        : "Cliquez une station, puis une autre.";
+      bloc.classList.toggle("reussi", triangles >= objectif);
+    }
+    points.forEach(function (pt) {
+      activer(pt, function () {
+        var rang = +pt.dataset.rang;
+        if (premier === null) { premier = rang; pt.classList.add("choisi"); return; }
+        if (premier !== rang) {
+          var k = cle(premier, rang);
+          if (traits[k]) delete traits[k]; else traits[k] = true;
+        }
+        point(premier).classList.remove("choisi"); premier = null;
+        dessiner();
+      });
+    });
+    var effacer = bloc.querySelector(".visee-effacer");
+    if (effacer) activer(effacer, function () {
+      traits = {}; if (premier !== null) point(premier).classList.remove("choisi"); premier = null; dessiner();
+    });
+    if (CORRIGE) (bloc.dataset.solution || "").split(/\s+/).filter(Boolean).forEach(function (k) {
+      var e = k.split("-").map(Number); traits[cle(e[0], e[1])] = true;
+    });
+    dessiner();
   });
 })();
 </script>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 370" style="overflow:hidden" role="img" aria-label="À Syène les rayons du Soleil sont verticaux ; à Alexandrie ils font un angle avec le bâton">
+  <circle class="s-eau" cx="300" cy="360" r="270"/>
+  <circle class="s-trait" cx="300" cy="360" r="270"/>
+  <!-- rayons du Soleil, parallèles -->
+  <path class="s-accent" d="M300 10 V90"/>
+  <path class="s-plein-accent" d="M300 96 l-7 -14 h14 z"/>
+  <text class="s-orange" x="312" y="30">rayons du Soleil</text>
+  <!-- Syène -->
+  <path class="s-tirets" d="M300 360 V90"/>
+  <circle class="s-plein" cx="300" cy="90" r="7"/>
+  <text class="s-titre" x="314" y="120">Syène</text>
+  <!-- Alexandrie : tourne avec l'angle -->
+  <g style="transform-origin: 300px 360px; transform: rotate(calc(var(--x, 7.2) * -1deg));">
+    <path class="s-tirets" d="M300 360 V90"/>
+    <path class="s-trait" d="M300 90 V44"/>
+    <circle class="s-plein" cx="300" cy="90" r="7"/>
+    <text class="s-titre" x="286" y="120" text-anchor="end">Alexandrie</text>
+    <g style="transform-origin: 300px 44px; transform: rotate(calc(var(--x, 7.2) * 1deg));">
+      <path class="s-accent" d="M300 -60 V44"/>
+    </g>
+  </g>
+  <circle class="s-plein" cx="300" cy="360" r="5"/>
+  <text class="s-petit" x="312" y="352">centre de la Terre</text>
+</svg>

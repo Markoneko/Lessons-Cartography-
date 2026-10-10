@@ -215,6 +215,18 @@
   color: var(--gris);
 }
 
+/* Couverture illustrée : l'image tient la place des strates, à droite */
+.reveal .slides section#title-slide[data-background-image] {
+  background:
+    url(logos/geodata.svg) no-repeat 64px 48px / 250px auto,
+    url(logos/partenaires.svg) no-repeat 64px 652px / 300px auto,
+    url(logos/strates-bleu-bas.png) no-repeat 64px 580px / 300px auto;
+}
+.reveal .slides section#title-slide[data-background-image] h1.title { width: 540px; top: 220px; font-size: 48px; }
+.reveal .slides section#title-slide[data-background-image] p.subtitle { width: 520px; top: 370px; }
+.reveal .slides section#title-slide[data-background-image] .quarto-title-authors { top: 470px; }
+.reveal .slides section#title-slide[data-background-image] p.date { top: 502px; }
+
 /* --- Intercalaires (titres de partie) ------------------------------------ */
 
 .reveal .slides section.intercalaire {
@@ -246,6 +258,19 @@
   font-size: 26px;
   color: var(--blanc);
 }
+/* Un schéma sur un intercalaire : dessiné en blanc, sous le texte */
+.reveal .slides section.intercalaire .schema-bloc {
+  position: absolute; left: 370px; top: 318px; width: 520px;
+}
+.reveal .slides section.intercalaire:has(.schema-bloc) h2 { top: 120px; }
+.reveal .slides section.intercalaire:has(.schema-bloc) > p { top: 232px; }
+.reveal .slides section.intercalaire .schema .s-trait { stroke: var(--blanc); }
+.reveal .slides section.intercalaire .schema .s-accent { stroke: var(--orange-clair); }
+.reveal .slides section.intercalaire .schema .s-plein-accent { fill: var(--orange-clair); }
+.reveal .slides section.intercalaire .schema .s-titre { fill: var(--blanc); }
+.reveal .slides section.intercalaire:has(.schema-bloc)::before {
+  background: var(--couleur-partie, var(--bleu));
+}
 .reveal .slides section.intercalaire .numero-partie {
   position: absolute;
   left: 40px; top: 560px; width: 220px;
@@ -259,7 +284,7 @@
 .reveal .slides section.partie-2 { --couleur-partie: var(--prune); }
 .reveal .slides section.partie-3 { --couleur-partie: var(--bleu); }
 .reveal .slides section.partie-4 { --couleur-partie: var(--orange); }
-.reveal .slides section.partie-5 { --couleur-partie: var(--orange-clair); }
+.reveal .slides section.partie-5 { --couleur-partie: var(--violet); }
 
 /* --- Diapo de fin -------------------------------------------------------- */
 

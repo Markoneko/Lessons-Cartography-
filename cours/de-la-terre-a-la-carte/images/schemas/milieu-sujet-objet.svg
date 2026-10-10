@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Toute carte relie un milieu, un sujet qui regarde et un objet que l'on montre">
+  <path class="s-fin" d="M320 78 L112 300 L528 300 Z"/>
+  <circle class="s-fond" cx="320" cy="226" r="54"/>
+  <text class="s-titre" x="320" y="222" text-anchor="middle">La carte</text>
+  <text class="s-petit" x="320" y="244" text-anchor="middle">un choix</text>
+  <circle class="s-plein" cx="320" cy="78" r="9"/>
+  <text class="s-titre" x="320" y="42" text-anchor="middle">Le milieu</text>
+  <text class="s-petit" x="320" y="62" text-anchor="middle">le monde tel qu'il est</text>
+  <circle class="s-plein-accent" cx="112" cy="300" r="9"/>
+  <text class="s-titre" x="112" y="338" text-anchor="middle">Le sujet</text>
+  <text class="s-petit" x="112" y="358" text-anchor="middle">celui qui regarde</text>
+  <circle class="s-plein" cx="528" cy="300" r="9"/>
+  <text class="s-titre" x="528" y="338" text-anchor="middle">L'objet</text>
+  <text class="s-petit" x="528" y="358" text-anchor="middle">ce que l'on montre</text>
+</svg>

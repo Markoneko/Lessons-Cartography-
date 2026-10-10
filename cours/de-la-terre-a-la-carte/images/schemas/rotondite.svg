@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 330" role="img" aria-label="Trois observations : le navire qui disparaît par la coque, l'ombre ronde de la Terre sur la Lune, les étoiles qui changent de hauteur">
+  <!-- 1. le navire -->
+  <path class="s-eau" d="M20 250 Q180 150 340 250 Z"/>
+  <path class="s-trait" d="M20 250 Q180 150 340 250"/>
+  <path class="s-trait" d="M82 205 l34 -8 l-4 14 z M98 198 v-34 l20 26"/>
+  <path class="s-accent" d="M252 204 v-30 l18 24"/>
+  <path class="s-tirets" d="M60 150 L300 190"/>
+  <circle class="s-plein-accent" cx="54" cy="149" r="6"/>
+  <text class="s-titre" x="180" y="290" text-anchor="middle">Le navire</text>
+  <text class="s-petit" x="180" y="312" text-anchor="middle">la coque disparaît avant le mât</text>
+  <!-- 2. l'éclipse -->
+  <circle class="s-fond" cx="560" cy="150" r="78"/>
+  <path class="s-plein" d="M498 103 A120 120 0 0 0 600 222 A78 78 0 0 1 498 103 Z" opacity="0.85"/>
+  <circle class="s-trait" cx="560" cy="150" r="78"/>
+  <text class="s-titre" x="560" y="290" text-anchor="middle">L'éclipse de Lune</text>
+  <text class="s-petit" x="560" y="312" text-anchor="middle">l'ombre de la Terre est toujours ronde</text>
+  <!-- 3. les étoiles -->
+  <path class="s-eau" d="M780 250 Q940 150 1100 250 Z"/>
+  <path class="s-trait" d="M780 250 Q940 150 1100 250"/>
+  <path class="s-trait" d="M850 213 v-22 M1030 213 v-22"/>
+  <path class="s-accent" d="M850 191 L900 70 M1030 191 L1004 60"/>
+  <path class="s-plein-accent" d="M900 58 l4 9 l10 1 l-8 7 l3 10 l-9 -6 l-9 6 l3 -10 l-8 -7 l10 -1 z"/>
+  <path class="s-plein-accent" d="M1002 46 l4 9 l10 1 l-8 7 l3 10 l-9 -6 l-9 6 l3 -10 l-8 -7 l10 -1 z"/>
+  <text class="s-titre" x="940" y="290" text-anchor="middle">Les étoiles</text>
+  <text class="s-petit" x="940" y="312" text-anchor="middle">leur hauteur change quand on voyage vers le nord</text>
+</svg>

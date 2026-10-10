@@ -2,6 +2,51 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-10 — Premier cours complet : « De la Terre à la carte »
+
+**Décidé par Marc, sur le plan annoté**
+
+- Lever les yeux est le rapport centrifuge, regarder d'en haut le rapport centripète. Les parties sont nommées par le regard.
+- La descente n'est pas le miroir de la montée : géoïde → ellipsoïde → plan.
+- Le cours dure environ 1 h 30, à une minute par diapo ; les SIG sont introduits à part, en un quart d'heure.
+- Les exemples purs n'ont ni pictogramme ni mention.
+- Une nouvelle notion : « Pour aller plus loin », des bonus pour les curieux.
+- Les références seront complétées à la fin.
+
+**Réalisé**
+
+- Le cours : 54 diapos dans `cours/de-la-terre-a-la-carte/`, d'après `plan.md`. Le test du bac à sable est supprimé.
+- Sept briques nouvelles : pour aller plus loin, pivoter, comparer, curseur, classer, cap, visées. Plus les schémas dessinés.
+- Huit schémas vectoriels aux couleurs de la charte.
+- Les images : versions légères renommées dans `images/`, originaux conservés dans `images/originaux/`, table de correspondance.
+- Vérifié par des clics réels : chaque expérience, les liens de la carte, l'absence de débordement sur les 54 diapos. PDF de 54 pages.
+
+**Écarts par rapport au plan**
+
+- 4.5 : un QCM remplace les zones à cliquer. Les deux figures d'origine n'emploient pas la lettre *h* dans le même sens ; la diapo évite donc les lettres.
+- 4.3 : pas d'image trouvée pour la Laponie et le Pérou ; la diapo tient par son QCM.
+- 5.11 : un tableau, sans curseur.
+- 2.5 : l'activité s'appuie sur le plan des triangles Greenwich – Paris, comme demandé.
+
+**À vérifier par Marc**
+
+- Les zones cliquables de Bedolina et de la tablette de Babylone : placées à l'œil, et leur lecture est une interprétation.
+- Le bonus de la diapo Mercator : le document de l'ONU n'a pas pu être ouvert pour vérification ; le texte est celui du plan.
+- La carte de 1595 n'est pas en projection de Mercator : c'est un hémisphère de l'atlas. Un planisphère en Mercator a été ajouté à côté.
+- Les trois cartes de Nancy ne sont pas calées sur la même emprise : le fondu est approximatif.
+- Les coordonnées de la place Stanislas sont calculées pour un point approché.
+- La diapo des sources porte encore « à compléter » sur la plupart des lignes.
+
+**Constats**
+
+- Le fichier HTML pèse 16 Mo, images comprises.
+- Les formules d'un curseur doivent être écrites entre accents graves, sinon les astérisques sont pris pour de l'italique.
+
+**En attente, pour le suivi de projet**
+
+- Outil de révision embarqué : l'étudiant coche ce qu'il sait, le support lui propose ce qui reste, en remontant aux prérequis.
+- Essai d'un modèle local pour la mise en page et les questionnaires, avec un fichier de consignes et un catalogue de modèles.
+
 ## 2026-10-08 (suite) — Retours de Marc sur le premier test
 
 **Décidé**

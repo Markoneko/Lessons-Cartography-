@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" role="img" aria-label="Le géoïde ondule autour de l'ellipsoïde ; l'ondulation n'apparaît qu'en exagérant les hauteurs">
+  <path class="s-tirets" d="M20 130 H580"/>
+  <text class="s-petit" x="580" y="118" text-anchor="end">ellipsoïde</text>
+  <g style="transform-origin: 0px 130px; transform: scaleY(calc(var(--x, 1) / 8000));">
+    <path class="s-accent" vector-effect="non-scaling-stroke" d="M20 130 C60 100 90 40 140 60 S200 190 260 170 S320 60 370 50 S440 150 480 200 S550 150 580 130"/>
+  </g>
+  <text class="s-orange" x="20" y="232">géoïde</text>
+  <path class="s-fin" d="M20 16 V40 M16 16 h8 M16 40 h8"/>
+  <text class="s-petit" x="32" y="33">sur ce dessin, 10 000 km de large</text>
+</svg>

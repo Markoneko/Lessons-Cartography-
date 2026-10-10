@@ -12,9 +12,9 @@ Le cours tient en deux mouvements.
 
 **Premier mouvement — trois regards.** Le rapport au monde bascule deux fois.
 
-1. *Lever les yeux.* L'humain se situe dans le cosmos : il regarde le ciel pour comprendre où il est. Rapport centripète.
+1. *Lever les yeux.* L'humain se situe dans le cosmos : il regarde le ciel pour comprendre où il est. Rapport centrifuge.
 2. *Regarder l'horizon.* Le temps des découvertes et des conquêtes : on parcourt, on mesure, on contrôle. Regard tangentiel.
-3. *Regarder d'en haut.* Avec l'avion puis le satellite, le regard se retourne et se centre sur la Terre. Rapport centrifuge.
+3. *Regarder d'en haut.* Avec l'avion puis le satellite, le regard se retourne et se centre sur la Terre. Rapport centripète.
 
 En une phrase : le regard tourné vers les étoiles s'est abaissé, puis s'est centré sur le monde.
 
@@ -36,7 +36,7 @@ En une phrase : le regard tourné vers les étoiles s'est abaissé, puis s'est c
 
 Colonne « Image » : nom du fichier quand il existe, **à trouver** ou **à dessiner** sinon.
 Colonne « Expérience » : ce que l'étudiant fait. Les briques existantes sont *question*, *QCM*, *ordre*, *zones*. Les autres sont à créer (voir plus bas).
-
+Colonne « Pour aller plus loin » : des éléments de pur bonus intégrés comme du texte dépliable en plus dans la diapo. Pour l'instant en spécifique sur la diapo 1.8
 ---
 
 ## Ouverture — Regarder une carte
@@ -44,7 +44,7 @@ Colonne « Expérience » : ce que l'étudiant fait. Les briques existantes sont
 | N° | Diapo | Idée en une phrase | Niv. | Image | Expérience |
 |----|-------|--------------------|------|-------|------------|
 | 0.1 | Couverture | Deux jeunes filles penchées sur une carte : lire une carte, c'est déjà regarder le monde à plusieurs. | — | `MaryCassat-pointeseches.jpg` | |
-| 0.2 | Que regardent-elles ? | Une carte n'est pas le monde : c'est une représentation que l'on interroge. | Ex | la même, recadrée | *question* : que peut-on savoir d'un lieu sans y être allé ? |
+| 0.2 | Que regardent-elles ? | Une carte n'est pas le monde : c'est une représentation que l'on interroge et une exquisse du réel. | Ex | la même, recadrée | *question* : que peut-on savoir d'un lieu sans y être allé ? |
 | 0.3 | Carte du cours | Les deux mouvements, et la légende S / A / V. | — | générée | liens vers les diapos |
 | 0.4 | Représenter, c'est choisir | Un milieu, un sujet qui regarde, un objet que l'on montre : toute carte tranche. | S | à dessiner (schéma à trois pôles) | |
 | 0.5 | À quoi sert une carte ? | Se repérer, s'orienter, se déplacer, contrôler, penser. | S | | *QCM* à réponses multiples sur une carte donnée |
@@ -62,7 +62,15 @@ Colonne « Expérience » : ce que l'étudiant fait. Les briques existantes sont
 | 1.5 | Mesurer la Terre avec une ombre | Ératosthène : un angle et une distance donnent un tour de Terre. | A | à dessiner (Syène – Alexandrie) | **curseur** : faire varier l'angle, lire la circonférence |
 | 1.6 | Une carte pour penser | Le globe de Cratès invente des terres que personne n'a vues. | V · opt | `CratesGlobe.png` | |
 | 1.7 | Une grille sur le monde | Avec Ptolémée, latitudes et longitudes : la première projection. | S | `Howthinktheworld as spherical.png` | *ordre* : classer quatre cartes antiques par date |
-| 1.8 | Où est le haut de la carte ? | Sur la carte en T dans l'O, l'Orient est en haut : *orienter*, c'est tourner vers l'est. | A | `OrbisTerrarium_TOmap.jpg` | *question* : d'où vient le mot « orienter » ? |
+| 1.8 | Où est le haut de la carte ? | Sur la carte en T dans l'O, l'Orient est en haut : *orienter*, c'est tourner vers l'est. | A | `OrbisTerrarium_TOmap.jpg` | *question* : d'où vient le mot « orienter » ? | Intégrer un Pour aller plus loin une sorte de texte dépliable avec ces commentaires :
+
+"Le T est entouré d'un O représentant l'océan, d'où le nom de carte TO.
+ORBIS TERRARUM
+Cette tripartition du monde correspond à la Trinité et au peuplement de la terre par les trois fils de Noé, Sem (Asie), Cham (Afrique) et Japhet (Europe). Le T est assimilé au tau de la Croix grecque2.
+La carte en TO, reprend le modèle circulaire d’Hécatée de Milet et d'Anaximandre, Jérusalem remplaçant Delphes comme omphalos du Monde.
+Alors que ce type de représentation du monde liée à des croyances religieuses perdurait sur les terres d'Occident jusqu'au xiie siècle, la superficie des terres de l'Eurasie cartographiées par la civilisation chinoise à la même époque était très largement supérieure.
+La représentation TO fut progressivement abandonnée à partir du xiie siècle. En effet, le roi Roger II de Sicile fit travailler à sa cour le géographe arabe Al-Idrissi qui établit en 1154 une mappemonde du monde connu à cette époque qui n'adoptait plus la représentation TO."
+
 | 1.9 | Tournez la carte | Al-Idrisi place le sud en haut : le nord en haut n'est qu'une convention. | S | `Planisphère d'al-Idrisi-1456copy.png` | **pivoter** : réorienter la carte jusqu'à reconnaître la Méditerranée |
 
 ## Partie 2 — Regarder l'horizon : parcourir, mesurer, contrôler
@@ -70,11 +78,13 @@ Colonne « Expérience » : ce que l'étudiant fait. Les briques existantes sont
 | N° | Diapo | Idée en une phrase | Niv. | Image | Expérience |
 |----|-------|--------------------|------|-------|------------|
 | 2.0 | Intercalaire | Deuxième regard : vers l'horizon. | — | | |
-| 2.1 | Une carte sans géométrie | La table de Peutinger garde les étapes et les liaisons, pas les formes. | A | `PeutingerTable.png` | *question* : qu'est-ce qui est juste sur cette carte, qu'est-ce qui est faux ? |
-| 2.2 | Suivre un cap | Les portulans tracent des routes : la carte devient un outil de navigation. | Ex | `Portulans1540.png` | |
+| 2.1 | Une carte sans géométrie | La table de Peutinger garde les étapes et les liaisons, pas les formes. | A | `PeutingerTable.png` | *question* : qu'est-ce qui est juste sur cette carte, qu'est-ce qui est faux ? | Pour aller plus loin, un lien vers le site https://itiner-e.org/ en cliquant sur un lien caché derrière l'image 'itiner-e.png'
+| 2.2 | Suivre un cap | Les portulans tracent des routes : la carte devient un outil de navigation. | Ex | `Portulans1540.png` | Une boussole de type compas de relèvement dessiner, avec deux flèches de chaque coté.  On voit une flèche sur le Portulans, qui représente le cap. Quand l'étudiant clique à gauche le cap bouge vers la gauche, le cap le suit sur le portulans. Idem vers la droite. |
 | 2.3 | Des instruments | Viser, mesurer un angle : l'alidade. | Ex · opt | `Manuscritwithallidade.jpg` | |
-| 2.4 | Mercator, pour garder le cap | Une projection qui conserve les angles, au prix des surfaces. | A | `mercator-1595.jpg` | |
-| 2.5 | Mesurer un pays | La triangulation : couvrir un territoire de triangles à partir d'une base. | S | à dessiner (chaîne de triangles) | *ordre* : les étapes d'une triangulation |
+| 2.4 | Mercator, pour garder le cap | Une projection qui conserve les angles, au prix des surfaces. | A | `mercator-1595.jpg` | | Intégrer un Pour aller plus loin une sorte de texte dépliable avec ces commentaires :
+Une projection abandonnée aussi bien à l'ONU : https://documents.un.org/doc/undoc/ltd/n26/201/85/pdf/n2620185.pdf
+mouvement que la France (Quai d'Orsay) a initié de son coté depuis 2021.
+| 2.5 | Mesurer un pays | La triangulation : couvrir un territoire de triangles à partir d'une base. | S | à dessiner (chaîne de triangles) | *ordre* : les étapes d'une triangulation |Expérience, on peut se baser sur l'image 'Anglo-French_survey_of_1784-1790.jpg' pour construire les triangles
 | 2.6 | La carte de Cassini | Première carte d'un pays entier levée par triangulation. | A | `CassiniMap1780.png` | |
 | 2.7 | La carte, outil de pouvoir | Du plan de bataille à la frontière coloniale : cartographier, c'est contrôler. | V | `AusterlitzMap2-12-1805.jpg`, `CarteIndochine.png`, `Islesdetailcarteindochine.png` | *question* : que dit la légende des îles sur celui qui dessine ? |
 | 2.8 | Sur le terrain | Planchette, théodolite, tour géodésique : le métier de géomètre. | Ex · opt | `Planchette1.jpg`, `Planchette2.png`, `Theodolite.jpg`, `Tour_geodésique.jpg`, `Topoarabie.jpg` | |
@@ -87,7 +97,7 @@ Colonne « Expérience » : ce que l'étudiant fait. Les briques existantes sont
 | 3.0 | Intercalaire | Troisième regard : depuis le ciel. | — | | |
 | 3.1 | Prendre de la hauteur | La photographie aérienne remplace le lever sur le terrain. | A | `Photoaerienne.png`, `CAMIGN.jpg` | |
 | 3.2 | Le satellite | Un capteur, une orbite, une image : le principe de l'acquisition. | A | `SchemaAcquisitionSpot.png` | |
-| 3.3 | Une forêt vue de l'espace | La limite du parc national d'Egmont se lit depuis l'orbite. | Ex | `Spot.jpg` | *zones* : où passe la limite de la forêt ? |
+| 3.3 | Une forêt vue de l'espace | La limite du parc national d'Egmont se lit depuis l'orbite. | Ex | `Spot.jpg` | *zones* : où passe la limite de la forêt ? Qu'est ce que cela dit du monde?|
 | 3.4 | Nancy, aujourd'hui | La forêt et les haies décrites en données, plus seulement dessinées. | Ex | `BDForetV2Nancy.png`, `BDhaie_Nancy.png` | **comparer** : carte et donnée |
 | 3.5 | Les trois regards | Lever les yeux, regarder l'horizon, regarder d'en haut : la bascule. | S | à dessiner (frise des trois regards) | **classer** : ranger six cartes du cours dans leur regard |
 
@@ -164,10 +174,30 @@ Chaque diapo peut devenir une expérience, mais chaque *type* d'expérience est 
 ## Points à trancher
 
 1. **Les mots « centripète » et « centrifuge ».** Ils décrivent la position de l'humain, qui s'éloigne du centre. Mais le regard du satellite, lui, pointe vers le centre : un étudiant peut l'entendre à l'envers. Proposition : nommer les parties par le regard (lever les yeux, regarder l'horizon, regarder d'en haut) et garder les deux termes pour le commentaire oral.
+Réponse, tu as raison, j'ai corrigé dans cette version du plan.
 2. **L'inversion de la descente.** Elle n'est pas un miroir exact : on ne repasse pas par la sphère. Le plan l'écrit géoïde → ellipsoïde → plan. À confirmer.
+Réponse : C'est juste, la bascule n'est pas parfaitement symétrique. Dans les faits, sphere et Géoide sont identique sur un point, celui de la dafinition du centre. Le geoide définit ensuite la question de l'altitude... avec une déformation vis à vis de la forme synthétique qui est l'ellipsoide.
 3. **La place des SIG.** Le plan s'arrête au seuil de QGIS (6.2). Si la matinée doit aussi introduire les SIG (vecteur, raster, couches), il faut une partie 6 et resserrer les parties 1 à 3.
-4. **Le volume.** 44 diapos de contenu pour une matinée, c'est dense avec des expériences. Les parties 1 à 3 pèsent 23 diapos, les parties 4 et 5 en pèsent 17 et portent 10 des 16 diapos socle : est-ce le bon équilibre ?
+Pas de soucis, l'intro se fait en 15 minutes avant, on reste sur un cours d'environ 1h30.
+4. **Le volume.** 44 diapos de contenu pour une matinée, c'est dense avec des expériences. Les parties 1 à 3 pèsent 23 diapos, les parties 4 et 5 en pèsent 17 et portent 10 des 16 diapos socle : est-ce le bon équilibre ? Oui 44 diapos, c'est pads plus d'une heure. On compte 1 minute par diapo... en moyenne
 5. **Les exemples purs.** Proposition : pas de pictogramme, une simple mention « exemple », et ils ne comptent ni dans la carte du cours ni dans une future liste de révision.
+Je propose sans picto, sans meme notion, c'est assez évident.
 6. **La gravure de couverture.** Titre, date et technique sont à relever sur le cartel de l'exposition pour la diapo des sources.
+La gravure possède le cartel suivant : La Lecon : 1890 Pointe sèche / En Novembre 1890 cette pointe sèche fait la une du premier numéro de L'Art dans les Deux Mondes, revue créée par Paul Durand-Ruel pour promouvoir les artistes qu'ils représente de part et d'autre de l'Atlantique. Il est symbolique qu'une oeuvre de Cassat, artiste ayant un pied dans les deux mondes, le nouveau et l'ancien ait été choisi pour cette première couverture, et que les deux fillettes examinent une carte de géographie.
 7. **Bedolina.** Le fichier est nommé « Belinda » ; le site rupestre du Val Camonica s'appelle Bedolina. À vérifier avant d'écrire la légende.
+J'ai vérifié, c'est Bedolina, tu peux renommer le fichier.
 8. **Les sources.** `References.txt` est vide. Pour la diapo 6.3, il faut pour chaque image : auteur, date, lieu de conservation, origine du fichier.
+Références, on verra cela à la fin, une fois que toutes les sources seront posées dans le doc.
+9. **Pour aller plus loin.** il faut imaginer un picto à intégrer dans le plan qui fasse qu'en cliquant dessus cela ouvre une apge de texte, ou une image avec une lien, etc...  des bonus pour les curieux et curieuses.
+10. Activité 2.5 à finaliser en s'appuyant sur une nouvelle image. proposée.
+
+---
+
+## État de réalisation — 10 octobre 2026
+
+Le cours est réalisé dans `index.qmd`, d'après ce plan et ses annotations.
+
+- Les images citées plus haut portent leur ancien nom. Les noms utilisés par le cours sont dans `images/correspondance.csv`.
+- Écarts : 4.5 est un QCM et non des zones ; 5.11 est un tableau ; 4.3 n'a pas d'image.
+- Les sept briques d'expérience existent : pour aller plus loin, pivoter, comparer, curseur, classer, cap, visées.
+- Restent à faire : compléter les sources, vérifier les zones cliquables de 0.6 et 1.1, recaler les trois cartes de Nancy.

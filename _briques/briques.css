@@ -59,7 +59,7 @@
 .reveal .carte-tete .niveau-mot { font-size: 18px; }
 .reveal .carte-compte { font-family: var(--police-mono); font-size: 13px; color: var(--gris); margin-top: 5px; }
 .reveal .carte-colonne ul { list-style: none; margin: 14px 0 0 0; padding: 0; }
-.reveal .carte-colonne li { margin: 0; border-top: 1px solid var(--filet); }
+.reveal .slides .carte-colonne ul li { margin: 0; border-top: 1px solid var(--filet); }
 .reveal .carte-colonne li a {
   display: flex; align-items: baseline; gap: 10px;
   padding: 8px 4px;
@@ -80,7 +80,7 @@
 .reveal .puce-partie.partie-2 { background: var(--prune); }
 .reveal .puce-partie.partie-3 { background: var(--bleu); }
 .reveal .puce-partie.partie-4 { background: var(--orange); }
-.reveal .puce-partie.partie-5 { background: var(--orange-clair); }
+.reveal .puce-partie.partie-5 { background: var(--violet); }
 .reveal .carte-parties { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: -8px 0 22px 0; font-size: 17px; }
 .reveal .carte-parties a { display: inline-flex; align-items: baseline; gap: 8px; color: var(--gris); text-decoration: none; }
 .reveal .carte-parties a:hover { color: var(--bleu); }
@@ -189,10 +189,245 @@
 .reveal .zone.trouvee[data-juste="non"] { border-color: var(--blanc); border-style: dashed; }
 .reveal .zones-retour { margin: 12px 0 0 0; font-size: 22px; min-height: 60px; color: var(--encre); }
 
+/* --- Carte du cours : variantes ------------------------------------------ */
+
+.reveal .carte-du-cours.dense { gap: 28px; }
+.reveal .carte-du-cours.dense .carte-colonne ul { margin-top: 8px; }
+.reveal .carte-du-cours.dense .carte-tete .strates { width: 40px; height: 33px; }
+.reveal .carte-du-cours.dense .carte-colonne li a { padding: 2px 4px; font-size: 15.5px; line-height: 1.15; gap: 8px; }
+.reveal .carte-du-cours.dense .puce-partie { width: 17px; height: 17px; font-size: 11px; line-height: 17px; top: -1px; }
+.reveal .carte-du-cours.un-niveau { display: block; }
+.reveal .carte-du-cours.un-niveau .carte-colonne ul { columns: 2; column-gap: 56px; width: 100%; }
+.reveal .carte-du-cours.un-niveau .carte-colonne li a { width: 100%; box-sizing: border-box; }
+.reveal .carte-du-cours.un-niveau .carte-colonne li { break-inside: avoid; }
+.reveal .carte-du-cours.un-niveau .carte-colonne li a { font-size: 21px; padding: 8px 4px; }
+
+/* --- Schémas dessinés ---------------------------------------------------- */
+
+.reveal .schema { line-height: 0; }
+.reveal .schema svg { display: block; width: 100%; height: auto; max-height: var(--hauteur, 470px); overflow: visible; }
+.reveal .schema-bloc p { line-height: 1.35; }
+.reveal .schema .s-trait   { fill: none; stroke: var(--bleu); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.reveal .schema .s-fin     { fill: none; stroke: var(--gris); stroke-width: 1.2; }
+.reveal .schema .s-tirets  { fill: none; stroke: var(--gris); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.reveal .schema .s-accent  { fill: none; stroke: var(--orange); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.reveal .schema .s-violet  { fill: none; stroke: var(--violet); stroke-width: 2.5; stroke-linecap: round; }
+.reveal .schema .s-plein   { fill: var(--bleu); stroke: none; }
+.reveal .schema .s-plein-accent { fill: var(--orange); stroke: none; }
+.reveal .schema .s-fond    { fill: var(--fond-doux); stroke: var(--filet); stroke-width: 1.5; }
+.reveal .schema .s-eau     { fill: #DCE6F5; stroke: none; }
+.reveal .schema .s-blanc   { fill: var(--blanc); stroke: var(--bleu); stroke-width: 2.5; }
+.reveal .schema text       { font-family: var(--police-texte); font-size: 17px; fill: var(--encre); }
+.reveal .schema .s-titre   { font-family: var(--police-titre); font-weight: 700; font-size: 19px; fill: var(--bleu); }
+.reveal .schema .s-petit   { font-size: 14px; fill: var(--gris); }
+.reveal .schema .s-orange  { fill: var(--orange-texte); font-weight: 700; }
+
+/* --- Pour aller plus loin ------------------------------------------------ */
+
+.reveal .plus-bouton {
+  position: absolute; right: var(--marge); top: 40px; z-index: 3;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--police-titre); font-weight: 700; font-size: 16px;
+  color: var(--prune); background: var(--blanc);
+  border: 2px solid var(--prune); border-radius: 22px;
+  padding: 6px 16px 6px 6px; cursor: pointer;
+}
+.reveal .plus-signe {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--prune); color: var(--blanc);
+  font-family: var(--police-titre); font-weight: 700; font-size: 20px; line-height: 1;
+}
+.reveal .plus-bouton:hover, .reveal .plus-bouton:focus-visible { background: var(--fond-doux); outline: none; }
+.reveal .plus-panneau {
+  display: none;
+  position: absolute; left: 0; top: 0; width: 1280px; height: 720px; z-index: 20;
+  box-sizing: border-box; padding: 44px 110px 44px var(--marge);
+  background: var(--blanc); overflow-y: auto;
+  border-top: 10px solid var(--prune);
+}
+.reveal .plus.ouvert .plus-panneau { display: block; }
+.reveal .plus-titre {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--police-titre); font-weight: 700; font-size: 30px; color: var(--prune);
+  margin-bottom: 22px;
+}
+.reveal .plus-titre .plus-signe { width: 36px; height: 36px; font-size: 26px; }
+.reveal .plus-corps { font-size: 23px; max-width: 980px; }
+.reveal .plus-corps img { max-height: 300px; }
+.reveal .plus-fermer {
+  position: absolute; right: 40px; top: 34px;
+  width: 44px; height: 44px; border-radius: 50%;
+  font-size: 30px; line-height: 1; color: var(--prune);
+  background: var(--blanc); border: 2px solid var(--prune); cursor: pointer;
+}
+
+/* --- Pivoter une image --------------------------------------------------- */
+
+.reveal .pivoter { display: flex; flex-direction: column; align-items: center; }
+.reveal .pivot-cadre {
+  width: 330px; height: 330px; border-radius: 50%; overflow: hidden;
+  cursor: grab; touch-action: none; line-height: 0;
+  box-shadow: 0 0 0 2px var(--filet);
+}
+.reveal .pivot-cadre:active { cursor: grabbing; }
+.reveal .pivot-cadre img {
+  width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover;
+  transform: rotate(var(--angle, 0deg)); user-select: none; -webkit-user-drag: none; pointer-events: none;
+}
+.reveal .pivot-commandes { display: flex; align-items: center; gap: 18px; margin-top: 12px; }
+.reveal .pivot-tourner, .reveal .cap-bouton {
+  width: 44px; height: 44px; border-radius: 50%;
+  font-size: 22px; line-height: 1; color: var(--bleu);
+  background: var(--blanc); border: 2px solid var(--filet); cursor: pointer;
+}
+.reveal .pivot-tourner:hover, .reveal .cap-bouton:hover { border-color: var(--bleu); }
+.reveal .pivot-angle { font-family: var(--police-mono); font-size: 18px; color: var(--gris); min-width: 64px; text-align: center; }
+.reveal .pivot-retour { display: none; font-size: 20px; margin-top: 8px; text-align: center; }
+.reveal .pivot-retour p { margin: 0; }
+.reveal .pivoter.reussi .pivot-retour { display: block; }
+.reveal .pivoter.reussi .pivot-cadre { box-shadow: 0 0 0 4px var(--jaune); }
+
+/* --- Comparer des images superposées ------------------------------------- */
+
+.reveal .comparer-pile { position: relative; line-height: 0; border: 1px solid var(--filet); }
+.reveal .comparer-couche { position: absolute; inset: 0; opacity: 0; }
+.reveal .comparer-couche:first-child { position: relative; opacity: 1; }
+.reveal .comparer-couche img { display: block; width: 100%; height: 100%; max-height: none; object-fit: fill; }
+.reveal .comparer-pile .comparer-couche:first-child img { height: auto; max-height: 390px; width: auto; max-width: 100%; }
+.reveal .comparer-pile { display: inline-block; }
+.reveal .comparer-commande { margin-top: 10px; }
+.reveal .comparer-curseur, .reveal .curseur-entree { width: 100%; accent-color: var(--orange); margin: 0; }
+.reveal .comparer-etiquettes { display: flex; justify-content: space-between; margin-top: 2px; }
+.reveal .comparer-etiquette {
+  font: inherit; font-size: 17px; color: var(--gris);
+  background: none; border: 0; padding: 2px 0; cursor: pointer;
+}
+.reveal .comparer-etiquette.actif { color: var(--bleu); font-weight: 700; }
+
+/* --- Curseur : une valeur, un schéma, des résultats ---------------------- */
+
+.reveal .curseur-commande { margin: 8px 0 6px 0; }
+.reveal .curseur-commande label { display: block; }
+.reveal .curseur-etiquette { display: block; font-size: 20px; color: var(--gris); margin-bottom: 2px; }
+.reveal .curseur-valeur { font-family: var(--police-titre); font-weight: 700; color: var(--orange-texte); }
+.reveal .curseur-resultats { list-style: none; margin: 8px 0 0 0; padding: 0; }
+.reveal .curseur-resultats li { font-size: 23px; margin-bottom: 4px; }
+.reveal .curseur-resultats b { font-family: var(--police-titre); color: var(--bleu); }
+
+/* --- Classer des étiquettes dans des cases ------------------------------- */
+
+.reveal .classer-reserve { display: flex; flex-wrap: wrap; gap: 10px; min-height: 44px; margin: 4px 0 12px 0; }
+.reveal .classer-etiquette {
+  font: inherit; font-size: 19px; color: var(--encre);
+  background: var(--blanc); border: 2px solid var(--filet); border-radius: 8px;
+  padding: 7px 13px; cursor: pointer;
+}
+.reveal .classer-etiquette:hover { border-color: var(--bleu); }
+.reveal .classer-etiquette.choisie { border-color: var(--orange); background: #FDF1E3; }
+.reveal .classer-etiquette.rangee { border-color: var(--bleu); background: var(--blanc); cursor: default; pointer-events: none; color: var(--encre); opacity: 1; }
+.reveal .classer-etiquette.refus { animation: refus 0.3s; border-color: var(--vieux-rose); }
+.reveal .classer-cases { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 16px; }
+.reveal .classer-case {
+  background: var(--fond-doux); border: 2px dashed var(--filet); border-radius: 10px;
+  padding: 10px 14px; min-height: 96px; cursor: pointer;
+}
+.reveal .classer-case:hover, .reveal .classer-case:focus-visible { border-color: var(--bleu); outline: none; }
+.reveal .classer-nom { font-family: var(--police-titre); font-weight: 700; font-size: 20px; color: var(--bleu); margin-bottom: 10px; }
+.reveal .classer-contenu { display: flex; flex-wrap: wrap; gap: 8px; }
+.reveal .classer-etat { font-size: 20px; color: var(--gris); margin: 12px 0 0 0; min-height: 28px; }
+
+/* --- Tenir un cap sur une carte marine ----------------------------------- */
+
+.reveal .cap { display: flex; gap: 36px; align-items: flex-start; }
+.reveal .cap-cadre { position: relative; line-height: 0; flex: 0 1 auto; }
+.reveal .cap-cadre img { display: block; max-height: 470px; }
+.reveal .cap-fleche { position: absolute; width: 0; height: 0; transform: rotate(var(--cap, 0deg)); }
+.reveal .cap-fleche span {
+  position: absolute; left: -3px; bottom: 0; width: 6px; height: 190px;
+  background: var(--orange); border-radius: 3px;
+}
+.reveal .cap-fleche span::before {
+  content: ""; position: absolute; left: -9px; top: -16px;
+  border: 12px solid transparent; border-bottom: 22px solid var(--orange); border-top: 0;
+}
+.reveal .cap-fleche::after {
+  content: ""; position: absolute; left: -9px; top: -9px; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--blanc); border: 4px solid var(--orange); box-sizing: border-box;
+}
+.reveal .cap-cote { flex: 1 1 260px; min-width: 260px; }
+.reveal .cap-compas { display: flex; align-items: center; gap: 10px; }
+.reveal .cap-cercle { fill: var(--blanc); stroke: var(--bleu); stroke-width: 2.5; }
+.reveal .cap-graduation { stroke: var(--bleu); stroke-width: 1.4; }
+.reveal .cap-nord { font-family: var(--police-titre); font-weight: 700; font-size: 13px; fill: var(--bleu); }
+.reveal .cap-aiguille { transform: rotate(var(--cap, 0deg)); }
+.reveal .cap-aiguille path { fill: var(--orange); }
+.reveal .cap-lecture { font-family: var(--police-titre); font-weight: 700; font-size: 26px; color: var(--bleu); margin: 10px 0 14px 0; }
+.reveal .cap-lecture small { display: block; font-family: var(--police-texte); font-weight: 400; font-size: 19px; color: var(--gris); }
+.reveal .cap-texte { font-size: 22px; }
+
+/* --- Tracer des visées entre des stations -------------------------------- */
+
+.reveal .visees { display: flex; gap: 32px; align-items: flex-start; }
+.reveal .visee-cadre { position: relative; line-height: 0; flex: 0 1 auto; }
+.reveal .visee-cadre img { display: block; max-height: 450px; }
+.reveal .visee-traits { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.reveal .visee-traits line { stroke: var(--orange); stroke-width: 3; vector-effect: non-scaling-stroke; stroke-linecap: round; }
+.reveal .visee-traits polygon { fill: var(--orange); fill-opacity: 0.22; stroke: none; }
+.reveal .visee-point {
+  position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px;
+  border-radius: 50%; background: var(--blanc); border: 4px solid var(--bleu);
+  box-sizing: border-box; padding: 0; cursor: pointer;
+}
+.reveal .visee-point span {
+  position: absolute; left: 24px; top: -4px; white-space: nowrap; line-height: 1.2;
+  font-family: var(--police-titre); font-weight: 700; font-size: 15px; color: var(--bleu);
+  background: rgba(255, 255, 255, 0.88); padding: 1px 6px; border-radius: 4px;
+}
+.reveal .visee-point.gauche span { left: auto; right: 24px; }
+.reveal .visee-point.choisi { background: var(--orange); border-color: var(--orange); }
+.reveal .visee-cote { flex: 1 1 250px; min-width: 250px; font-size: 22px; }
+.reveal .visee-etat { font-family: var(--police-titre); font-weight: 700; color: var(--bleu); margin-bottom: 12px; }
+.reveal .visee-retour { display: none; }
+.reveal .visees.reussi .visee-retour { display: block; }
+.reveal .visee-effacer {
+  font: inherit; font-size: 17px; color: var(--bleu); background: none;
+  border: 2px solid var(--filet); border-radius: 8px; padding: 6px 14px; cursor: pointer; margin-top: 8px;
+}
+
+/* --- Petits outils de mise en page --------------------------------------- */
+
+.reveal .petit { font-size: 19px; }
+.reveal .petit table { font-size: 16px; }
+.reveal .petit table td, .reveal .petit table th { padding: 4px 10px; }
+.reveal .mosaique { display: flex; gap: 14px; align-items: flex-end; }
+.reveal .mosaique p { margin: 0; flex: 1 1 0; }
+.reveal .mosaique img { max-height: 250px; }
+
 /* --- En PDF : le support porte le corrigé -------------------------------- */
 
 html.reveal-print .reveal .ordre-recommencer,
 html.reveal-print .reveal .ordre-etat { display: none; }
 html.reveal-print .reveal .zones-retour { display: none; }
+html.reveal-print .reveal .plus-bouton { position: absolute; }
+html.reveal-print .reveal .plus-bouton::after { content: " (version interactive)"; font-weight: 400; }
+html.reveal-print .reveal .plus-panneau { display: none !important; }
+html.reveal-print .reveal .pivot-commandes,
+html.reveal-print .reveal .visee-effacer,
+html.reveal-print .reveal .cap-bouton,
+html.reveal-print .reveal .classer-etat { display: none; }
+html.reveal-print .reveal .choix { padding: 6px 14px; }
+html.reveal-print .reveal .choix-retour { font-size: 17px; margin-top: 1px; }
+html.reveal-print .reveal .qcm { gap: 7px; }
+/* les images superposées se rangent côte à côte */
+html.reveal-print .reveal .comparer-pile { display: flex; gap: 10px; border: 0; }
+html.reveal-print .reveal .comparer-couche { position: relative !important; opacity: 1 !important; flex: 1 1 0; }
+html.reveal-print .reveal .comparer-couche img { width: 100% !important; height: auto !important; max-height: 330px !important; }
+html.reveal-print .reveal .comparer-couche::after {
+  content: attr(data-nom); display: block; line-height: 1.3; font-size: 15px; color: var(--gris); margin-top: 4px;
+}
+html.reveal-print .reveal .comparer-commande { display: none; }
 /* Variante sans réponses : ?print-pdf&reponses=non */
-html.sans-reponses .reveal .reponse { visibility: hidden; }
+html.sans-reponses .reveal .reponse,
+html.sans-reponses .reveal .pivot-retour,
+html.sans-reponses .reveal .visee-retour { visibility: hidden; }

@@ -4,7 +4,8 @@
   Il lit le Markdown et fabrique :
     1. le pictogramme de niveau (socle / appui / veille) devant le titre de chaque diapo ;
     2. la diapo « carte du cours », générée toute seule ;
-    3. les briques d'exercice (question, qcm, ordre, zones) ;
+    3. les briques d'exercice (question, qcm, ordre, zones) et d'expérience
+       (pivoter, comparer, curseur, classer, cap, visées, pour aller plus loin, schéma) ;
     4. le tri des diapos (ne garder qu'un niveau, masquer les optionnelles).
 
   On n'a normalement pas besoin de modifier ce fichier pour écrire un cours.
@@ -42,6 +43,26 @@ local function typo_inlines(inlines)
     end
   end
   return inlines
+end
+
+-- Retire les espaces, insécables compris, et les deux-points en tête d'un texte.
+local function sans_tete(texte)
+  local avant
+  repeat
+    avant = texte
+    texte = texte:gsub("^[%s:]+", "")
+    if texte:sub(1, 2) == INSECABLE then texte = texte:sub(3) end
+  until texte == avant
+  return texte
+end
+local function sans_queue(texte)
+  local avant
+  repeat
+    avant = texte
+    texte = texte:gsub("%s+$", "")
+    if texte:sub(-2) == INSECABLE then texte = texte:sub(1, -3) end
+  until texte == avant
+  return texte
 end
 
 local function niveau_de(classes)
@@ -201,6 +222,7 @@ local function brique_zones(div)
         local brut = pandoc.utils.stringify(texte or item[1].content)
         local x, y, l, h, retour = brut:match("^%s*([%d%.]+)%s*,%s*([%d%.]+)%s*,%s*([%d%.]+)%s*,%s*([%d%.]+)%s*:?%s*(.*)$")
         if x then
+          retour = sans_tete(retour)
           table.insert(boutons, string.format(
             '<button type="button" class="zone" data-juste="%s" data-retour="%s" aria-label="zone %d" '
             .. 'style="left:%s%%;top:%s%%;width:%s%%;height:%s%%"></button>',
@@ -247,6 +269,289 @@ local function brique_codes()
   return pandoc.RawBlock("html", h)
 end
 
+----------------------------------------------------------------------------
+-- Briques d'expérience
+----------------------------------------------------------------------------
+
+local function attribut(div, nom, defaut)
+  local v = div.attributes[nom]
+  div.attributes[nom] = nil
+  if v == nil or v == "" then return defaut end
+  return v
+end
+
+-- Lit un fichier voisin du cours (un schéma SVG, par exemple).
+local function lire_fichier(chemin)
+  local f = io.open(chemin, "r")
+  if not f and PANDOC_STATE and PANDOC_STATE.input_files[1] then
+    f = io.open(pandoc.path.join({ pandoc.path.directory(PANDOC_STATE.input_files[1]), chemin }), "r")
+  end
+  if not f and quarto and quarto.project and quarto.project.directory then
+    f = io.open(pandoc.path.join({ quarto.project.directory, chemin }), "r")
+  end
+  if not f then return nil end
+  local contenu = f:read("a")
+  f:close()
+  return contenu
+end
+
+local function schema_html(chemin, hauteur)
+  local svg = lire_fichier(chemin)
+  if not svg then
+    return '<p class="legende">Schéma introuvable : ' .. echappe(chemin) .. '</p>'
+  end
+  svg = svg:gsub("<%?xml.-%?>", ""):gsub("<!%-%-.-%-%->", "")
+  local style = hauteur and (' style="--hauteur:' .. hauteur .. 'px"') or ''
+  return '<div class="schema"' .. style .. '>' .. svg .. '</div>'
+end
+
+-- ::: {.schema fichier="images/schemas/escalier.svg"}  → dessin vectoriel aux couleurs de la charte
+local function brique_schema(div)
+  local chemin = attribut(div, "fichier", "")
+  local hauteur = attribut(div, "hauteur", nil)
+  if not EN_HTML then return {} end
+  local sortie = pandoc.List({ pandoc.RawBlock("html", schema_html(chemin, hauteur)) })
+  sortie:extend(div.content)
+  div.content = sortie
+  div.classes = pandoc.List({ "schema-bloc" })
+  return div
+end
+
+-- ::: {.plus titre="…"}  → « Pour aller plus loin » : un bonus qui s'ouvre au clic
+local function brique_plus(div)
+  local titre = attribut(div, "titre", "Pour aller plus loin")
+  if not EN_HTML then
+    table.insert(div.content, 1, pandoc.Para(pandoc.Strong(pandoc.Str(titre))))
+    return div
+  end
+  local corps = pandoc.Div(div.content, pandoc.Attr("", { "plus-corps" }))
+  div.content = pandoc.List({
+    pandoc.RawBlock("html", '<button type="button" class="plus-bouton" aria-expanded="false">'
+      .. '<span class="plus-signe" aria-hidden="true">+</span>Pour aller plus loin</button>'
+      .. '<div class="plus-panneau" role="dialog" aria-label="' .. echappe(titre) .. '">'
+      .. '<button type="button" class="plus-fermer" aria-label="Fermer">×</button>'
+      .. '<div class="plus-titre"><span class="plus-signe" aria-hidden="true">+</span>' .. echappe(titre) .. '</div>'),
+    corps,
+    pandoc.RawBlock("html", '</div>'),
+  })
+  return div
+end
+
+-- ::: {.pivoter image="…" alt="…" cible="180" tolerance="20"}  le texte = commentaire affiché à la réussite
+local function brique_pivoter(div)
+  local image = attribut(div, "image", "")
+  local alt = attribut(div, "alt", "")
+  local cible = attribut(div, "cible", "0")
+  local tolerance = attribut(div, "tolerance", "20")
+  local img = pandoc.Image({ pandoc.Str(alt) }, image)
+  if not EN_HTML then
+    table.insert(div.content, 1, pandoc.Para({ img }))
+    return div
+  end
+  div.attributes["data-cible"] = cible
+  div.attributes["data-tolerance"] = tolerance
+  local retour = pandoc.Div(div.content, pandoc.Attr("", { "pivot-retour" }))
+  div.content = pandoc.List({
+    pandoc.Div({ pandoc.Plain({ img }) }, pandoc.Attr("", { "pivot-cadre" })),
+    pandoc.RawBlock("html", '<div class="pivot-commandes">'
+      .. '<button type="button" class="pivot-tourner" data-pas="-15" aria-label="Tourner vers la gauche">↺</button>'
+      .. '<span class="pivot-angle" aria-live="polite">0°</span>'
+      .. '<button type="button" class="pivot-tourner" data-pas="15" aria-label="Tourner vers la droite">↻</button>'
+      .. '</div>'),
+    retour,
+  })
+  return div
+end
+
+-- ::: {.comparer}  liste d'images ; le texte alternatif de chacune sert d'étiquette
+local function brique_comparer(div)
+  local images, avant = pandoc.List(), pandoc.List()
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "BulletList" then
+      for _, item in ipairs(bloc.content) do
+        pandoc.walk_block(pandoc.Div(item), { Image = function(i) images:insert(i) end })
+      end
+    else
+      avant:insert(bloc)
+    end
+  end
+  if not EN_HTML then
+    for _, i in ipairs(images) do avant:insert(pandoc.Para({ i })) end
+    div.content = avant
+    return div
+  end
+  local couches, etiquettes = pandoc.List(), ""
+  for n, i in ipairs(images) do
+    local nom = pandoc.utils.stringify(i.caption)
+    couches:insert(pandoc.Div({ pandoc.Plain({ i }) }, pandoc.Attr("", { "comparer-couche" }, { ["data-nom"] = nom })))
+    etiquettes = etiquettes .. '<button type="button" class="comparer-etiquette" data-rang="' .. (n - 1) .. '">'
+        .. echappe(nom) .. '</button>'
+  end
+  avant:insert(pandoc.Div(couches, pandoc.Attr("", { "comparer-pile" })))
+  avant:insert(pandoc.RawBlock("html", '<div class="comparer-commande"><input type="range" class="comparer-curseur" min="0" max="'
+    .. (#images - 1) .. '" step="0.01" value="0" aria-label="Passer d’une image à l’autre">'
+    .. '<div class="comparer-etiquettes">' .. etiquettes .. '</div></div>'))
+  div.content = avant
+  return div
+end
+
+-- ::: {.curseur min="1" max="20" pas="0.1" valeur="7.2" unite="°" etiquette="Angle" schema="…svg"}
+--   - Tour de la Terre : {5000*360/x} stades        ← les accolades sont recalculées, x = la valeur
+local function brique_curseur(div)
+  local mini, maxi = attribut(div, "min", "0"), attribut(div, "max", "100")
+  local pas, valeur = attribut(div, "pas", "1"), attribut(div, "valeur", "0")
+  local unite, etiquette = attribut(div, "unite", ""), attribut(div, "etiquette", "Valeur")
+  local chemin = attribut(div, "schema", nil)
+  local hauteur = attribut(div, "hauteur", nil)
+  if not EN_HTML then return div end
+  local avant, lignes = pandoc.List(), ""
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "BulletList" then
+      for _, item in ipairs(bloc.content) do
+        lignes = lignes .. '<li data-modele="' .. echappe(pandoc.utils.stringify(item)) .. '"></li>'
+      end
+    else
+      avant:insert(bloc)
+    end
+  end
+  local h = ""
+  if chemin then h = h .. schema_html(chemin, hauteur) end
+  h = h .. '<div class="curseur-commande"><label><span class="curseur-etiquette">' .. echappe(etiquette)
+      .. ' : <output class="curseur-valeur"></output></span>'
+      .. '<input type="range" class="curseur-entree" min="' .. mini .. '" max="' .. maxi .. '" step="' .. pas
+      .. '" value="' .. valeur .. '" data-unite="' .. echappe(unite) .. '"></label></div>'
+  if lignes ~= "" then h = h .. '<ul class="curseur-resultats" aria-live="polite">' .. lignes .. '</ul>' end
+  avant:insert(pandoc.RawBlock("html", h))
+  div.content = avant
+  return div
+end
+
+-- ::: {.classer}  un titre ### par case, puis la liste de ce qui doit y aller
+local function brique_classer(div)
+  local avant, cases, etiquettes, rang = pandoc.List(), "", "", 0
+  local sans_html = pandoc.List()
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "Header" then
+      rang = rang + 1
+      cases = cases .. '<div class="classer-case" data-case="' .. rang .. '" role="button" tabindex="0">'
+          .. '<div class="classer-nom">' .. echappe(typo(pandoc.utils.stringify(bloc.content))) .. '</div>'
+          .. '<div class="classer-contenu"></div></div>'
+      sans_html:insert(pandoc.Para(pandoc.Strong(bloc.content)))
+    elseif bloc.t == "BulletList" and rang > 0 then
+      for _, item in ipairs(bloc.content) do
+        etiquettes = etiquettes .. '<button type="button" class="classer-etiquette" data-case="' .. rang .. '">'
+            .. echappe(typo(pandoc.utils.stringify(item))) .. '</button>'
+      end
+      sans_html:insert(bloc)
+    else
+      avant:insert(bloc)
+      sans_html:insert(bloc)
+    end
+  end
+  if not EN_HTML then
+    div.content = sans_html
+    return div
+  end
+  avant:insert(pandoc.RawBlock("html", '<div class="classer-reserve">' .. etiquettes .. '</div>'
+    .. '<div class="classer-cases">' .. cases .. '</div>'
+    .. '<p class="classer-etat" aria-live="polite"></p>'))
+  div.content = avant
+  return div
+end
+
+-- ::: {.cap image="…" alt="…" x="50" y="50" depart="90"}  un cap à faire tourner sur une carte marine
+local function brique_cap(div)
+  local image, alt = attribut(div, "image", ""), attribut(div, "alt", "")
+  local x, y = attribut(div, "x", "50"), attribut(div, "y", "50")
+  local depart = attribut(div, "depart", "0")
+  local img = pandoc.Image({ pandoc.Str(alt) }, image)
+  if not EN_HTML then
+    table.insert(div.content, 1, pandoc.Para({ img }))
+    return div
+  end
+  div.attributes["data-depart"] = depart
+  local texte = pandoc.Div(div.content, pandoc.Attr("", { "cap-texte" }))
+  local rose = '<svg class="cap-rose" viewBox="-60 -60 120 120" width="150" height="150" aria-hidden="true">'
+      .. '<circle r="52" class="cap-cercle"/>'
+  for i = 0, 31 do
+    local long = (i % 8 == 0) and 12 or ((i % 4 == 0) and 9 or ((i % 2 == 0) and 6 or 3))
+    rose = rose .. string.format('<line class="cap-graduation" x1="0" y1="-52" x2="0" y2="%d" transform="rotate(%s)"/>',
+      -52 + long, i * 11.25)
+  end
+  rose = rose .. '<text class="cap-nord" x="0" y="-30" text-anchor="middle">N</text>'
+      .. '<g class="cap-aiguille"><path d="M0 -44 L7 0 L0 8 L-7 0 Z"/></g></svg>'
+  div.content = pandoc.List({
+    pandoc.Div({
+      pandoc.Plain({ img }),
+      pandoc.RawBlock("html", '<div class="cap-fleche" style="left:' .. x .. '%;top:' .. y .. '%"><span></span></div>'),
+    }, pandoc.Attr("", { "cap-cadre" })),
+    pandoc.Div({
+      pandoc.RawBlock("html", '<div class="cap-compas">'
+        .. '<button type="button" class="cap-bouton" data-pas="-1" aria-label="Venir sur la gauche">◀</button>'
+        .. rose
+        .. '<button type="button" class="cap-bouton" data-pas="1" aria-label="Venir sur la droite">▶</button></div>'
+        .. '<p class="cap-lecture" aria-live="polite"></p>'),
+      texte,
+    }, pandoc.Attr("", { "cap-cote" })),
+  })
+  return div
+end
+
+-- ::: {.visees image="…" alt="…" objectif="2" solution="1-2 1-3 2-3"}
+--   - Nom de la station : gauche,haut      (en % de l'image)
+local function brique_visees(div)
+  local image, alt = attribut(div, "image", ""), attribut(div, "alt", "")
+  local objectif = attribut(div, "objectif", "1")
+  local solution = attribut(div, "solution", "")
+  local img = pandoc.Image({ pandoc.Str(alt) }, image)
+  -- ce qui précède la liste est la consigne ; ce qui la suit est le commentaire de réussite
+  local avant, apres, points = pandoc.List(), pandoc.List(), ""
+  local n, liste_vue = 0, false
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "BulletList" then
+      liste_vue = true
+      for _, item in ipairs(bloc.content) do
+        local brut = pandoc.utils.stringify(item)
+        local nom, x, y = brut:match("^(.-)%s*:%s*([%d%.]+)%s*,%s*([%d%.]+)%s*$")
+        if nom then
+          n = n + 1
+          nom = sans_queue(nom)
+          points = points .. string.format(
+            '<button type="button" class="visee-point" data-rang="%d" data-x="%s" data-y="%s" '
+            .. 'style="left:%s%%;top:%s%%" aria-label="%s"><span>%s</span></button>',
+            n, x, y, x, y, echappe(nom), echappe(nom))
+        end
+      end
+    elseif liste_vue then
+      apres:insert(bloc)
+    else
+      avant:insert(bloc)
+    end
+  end
+  if not EN_HTML then
+    table.insert(avant, 1, pandoc.Para({ img }))
+    avant:extend(apres)
+    div.content = avant
+    return div
+  end
+  div.attributes["data-objectif"] = objectif
+  div.attributes["data-solution"] = solution
+  div.content = pandoc.List({
+    pandoc.Div({
+      pandoc.Plain({ img }),
+      pandoc.RawBlock("html", '<svg class="visee-traits" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>'
+        .. points),
+    }, pandoc.Attr("", { "visee-cadre" })),
+    pandoc.Div({
+      pandoc.Div(avant, pandoc.Attr("", { "visee-consigne" })),
+      pandoc.RawBlock("html", '<p class="visee-etat" aria-live="polite"></p>'),
+      pandoc.Div(apres, pandoc.Attr("", { "visee-retour" })),
+      pandoc.RawBlock("html", '<button type="button" class="visee-effacer">Effacer</button>'),
+    }, pandoc.Attr("", { "visee-cote" })),
+  })
+  return div
+end
+
 local function briques(div)
   if div.classes:includes("question") then return brique_question(div) end
   if div.classes:includes("reponse") then return brique_reponse(div) end
@@ -254,6 +559,14 @@ local function briques(div)
   if div.classes:includes("ordre") then return brique_ordre(div) end
   if div.classes:includes("zones") then return brique_zones(div) end
   if div.classes:includes("codes-niveau") then return brique_codes() end
+  if div.classes:includes("schema") then return brique_schema(div) end
+  if div.classes:includes("plus") then return brique_plus(div) end
+  if div.classes:includes("pivoter") then return brique_pivoter(div) end
+  if div.classes:includes("comparer") then return brique_comparer(div) end
+  if div.classes:includes("curseur") then return brique_curseur(div) end
+  if div.classes:includes("classer") then return brique_classer(div) end
+  if div.classes:includes("cap") then return brique_cap(div) end
+  if div.classes:includes("visees") then return brique_visees(div) end
   return nil
 end
 
@@ -261,7 +574,7 @@ end
 -- Carte du cours : la liste des diapos, rangées par niveau
 ----------------------------------------------------------------------------
 
-local function carte_du_cours(inventaire, parties)
+local function carte_du_cours(inventaire, parties, seulement)
   if not EN_HTML then
     local groupes = pandoc.List()
     for _, n in ipairs(NIVEAUX) do
@@ -271,8 +584,15 @@ local function carte_du_cours(inventaire, parties)
     end
     return pandoc.BulletList(groupes)
   end
+  local liste = NIVEAUX
+  if seulement and seulement ~= "" then
+    liste = {}
+    for mot in seulement:gmatch("%a+") do table.insert(liste, mot) end
+  end
+  local plus_longue = 0
+  for _, n in ipairs(liste) do plus_longue = math.max(plus_longue, #inventaire[n]) end
   local h = ''
-  if #parties > 0 then
+  if #parties > 0 and #liste > 1 then
     h = h .. '<p class="carte-parties">'
     for i, pt in ipairs(parties) do
       h = h .. '<a href="#/' .. pt.id .. '"><span class="puce-partie partie-' .. i .. '">' .. i .. '</span>'
@@ -280,8 +600,9 @@ local function carte_du_cours(inventaire, parties)
     end
     h = h .. '</p>'
   end
-  h = h .. '<div class="carte-du-cours">'
-  for _, n in ipairs(NIVEAUX) do
+  h = h .. '<div class="carte-du-cours' .. (plus_longue > 8 and ' dense' or '')
+      .. (#liste == 1 and ' un-niveau' or '') .. '">'
+  for _, n in ipairs(liste) do
     local nb = #inventaire[n]
     h = h .. '<div class="carte-colonne niveau-' .. n .. '"><div class="carte-tete">' .. glyphe(n, 54)
         .. '<div><div class="niveau-mot">' .. LIBELLE[n] .. '</div><div class="carte-compte">'
@@ -386,7 +707,7 @@ function Pandoc(doc)
       end
       sortie:insert(bloc)
     elseif bloc.t == "Div" and bloc.classes:includes("carte-du-cours") then
-      sortie:insert(carte_du_cours(inventaire, parties))
+      sortie:insert(carte_du_cours(inventaire, parties, bloc.attributes["niveaux"]))
     else
       sortie:insert(bloc)
     end
