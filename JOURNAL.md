@@ -16,7 +16,7 @@ Décisions et constats, du plus récent au plus ancien.
 - Neuf schémas doublés dans `images/schemas/en/`.
 - `plan-en.md` et `figes-en.json` sont tenus à part des fichiers français.
 
-**Choix faits, à confirmer par Marc**
+**Choix faits, confirmés par Marc le 11 octobre**
 
 - Niveaux : Core, Support, Further. Les initiales S, A, V sont perdues ; les pictogrammes ne changent pas.
 - « Les trois regards » : Looking up, Looking at the horizon, Looking from above.
@@ -25,7 +25,7 @@ Décisions et constats, du plus récent au plus ancien.
 
 **Limites**
 
-- L'image de la table de Peutinger ne fait que 720 pixels de large : agrandie trois fois, elle est floue et les noms restent illisibles. Un scan plus fin, déposé sous le même nom, suffit à régler le problème.
+- L'image de la table de Peutinger ne faisait que 720 pixels de large. Réglé le jour même : Marc a déposé un scan de 4 218 pixels sous le même nom, les noms d'étapes se lisent à la loupe. Le fichier HTML passe de 18 à 21 Mo.
 - Les images qui contiennent du texte français ne sont pas traduites.
 - Les deux versions sont deux fichiers indépendants : toute correction est à faire deux fois.
 
