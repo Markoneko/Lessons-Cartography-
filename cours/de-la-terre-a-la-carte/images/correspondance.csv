@@ -1,17 +1,17 @@
 originale;version_web;largeur;hauteur
 AbbeGriveMap1740.jpg;abbe-de-la-grive-1740.jpg;1600;1150
 AusterlitzMap2-12-1805.jpg;austerlitz-1805.jpg;960;719
-BDForetV2Nancy.png;nancy-bd-foret.png;980;734
-BDhaie_Nancy.png;nancy-bd-haie.png;1016;728
+nancy_bd-foret.png;nancy-bd-foret.png;1340;1012
+nancy_bd-haie.png;nancy-bd-haie.png;1340;1012
 CAMIGN.jpg;camera-ign.jpg;454;328
 CadastreBedolina-Italie duNord-anterieur_a_l_ecriture.jpg;bedolina.jpg;960;718
-CarteCassiniNancy.png;nancy-cassini.jpg;996;730
+nancy_cassini.png;nancy-cassini.jpg;1340;1012
 CarteIndochine.png;indochine.jpg;1177;1570
 CassiniMap1780.png;cassini-paris-1780.jpg;960;720
 Cosmogony-MondePerse.jpg;cosmogonie-perse.jpg;435;574
 CratesGlobe.png;globe-crates.png;600;600
 English_School_-_The_world_according_to_Hecataeus_published_by_John_Murray_-_(MeisterDrucke-90450).jpg;hecatee.jpg;1203;1260
-EtatMajorCassini.png;nancy-etat-major.jpg;943;733
+nancy_etat-major.png;nancy-etat-major.jpg;1340;1012
 Howthinktheworld as spherical.png;cartes-antiques.png;514;720
 Islesdetailcarteindochine.png;indochine-detail-iles.jpg;823;1097
 LambertZones.png;lambert-zones.jpg;1600;1022
@@ -28,7 +28,7 @@ Projectionfromgeotoplan.png;projection-geo-plan.png;1600;708
 SchemaAcquisitionSpot.png;schema-acquisition-spot.jpg;801;636
 Spot.jpg;egmont-depuis-orbite.jpg;720;480
 Theodolite.jpg;theodolite.jpg;633;507
-Top25_Nancy.png;nancy-top25.jpg;987;736
+nancy-top25.png;nancy-top25.jpg;1340;1012
 Topoarabie.jpg;topographe-terrain.jpg;417;313
 Tour_geodésique.jpg;tour-geodesique.jpg;880;1247
 canevas-azimutal.png;canevas-azimutal.png;125;157
@@ -48,3 +48,6 @@ projection-principe.png;projection-principe.png;700;310
 tablette-babylone_Irak, 7eme Siècle avant JC – British museum.jpg;tablette-babylone.jpg;401;556
 Anglo-French_survey_of_1784-1790.jpg;triangulation-greenwich-paris.jpg;1600;822
 itiner-e.png;itiner-e.jpg;1230;549
+Coord_cartésiennes_geocentriques.png;coord-cartesiennes.png;246;238
+Geoide_coupe.png;geoide-coupe.png;882;675
+Coord_géographique.png;(non utilisée);;

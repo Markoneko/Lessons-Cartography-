@@ -2,6 +2,51 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-11 (suite) — Premier passage de corrections par les fiches
+
+Marc a dégelé 27 diapos, écrit ses demandes dans les fiches et retouché des textes directement. Le script a confirmé qu'aucune des 27 diapos restées figées n'a été modifiée, ni par lui ni par ce passage.
+
+**Appliqué**
+
+- 0.1 : plus d'illustration en couverture.
+- 0.5 : QCM resserré ; il ne déborde plus, toutes réponses ouvertes.
+- 0.6 : douze champs cliquables au lieu d'un ; zone des maisons élargie ; chemin inchangé.
+- 1.1 : plus de zones à cliquer (fiche : « Expérience : aucune ») ; bonus sur Edith Horsley et la vidéo d'Irving Finkel.
+- 1.5 : la distance Syène – Alexandrie reste fixe, c'est la Terre qui change de taille.
+- 1.8 : la réponse s'obtient en cliquant le mot « Oriens » sur la carte, agrandie de 15 %.
+- 2.1 : table de Peutinger agrandie de moitié, centrée.
+- 2.2 : la flèche du cap part du nœud de rhumbs à l'ouest du Portugal.
+- 2.5 : le principe du triangle (trois mesures connues, dont un côté, donnent les trois autres).
+- 2.7 : les trois cartes défilent en grand ; mention du musée de l'Armée.
+- 2.9 et 3.4 : nouvelles images de Nancy, ramenées à la même taille.
+- 3.1 : photo aérienne agrandie ; bonus photogrammétrie et CO3D.
+- 3.5 : neuf étiquettes à classer.
+- 4.1 : schéma en largeur, question et réponse dessous, formule signalée comme approchée.
+- 4.3 : le globe se déforme selon la réponse choisie.
+- 4.4 : coupe du champ de pesanteur ajoutée.
+- 4.6 : le curseur est remplacé par un schéma des trois ordres de grandeur.
+- 5.1 : nouvelle diapo sur les coordonnées cartésiennes géocentriques ; « Dans quel ordre ? » passe après « Projeter, c'est choisir » et porte le numéro 5.5b.
+- 5.6 : Mercator et Peters à la même largeur.
+- 5.8 : image corrigée (le fond transparent était devenu noir) ; 5.9 supprimée et devenue son bonus.
+
+**Ajouté au gabarit**
+
+- Brique « défiler », hauteur réglable des images cliquables, commentaire de zones déplaçable, QCM resserré, contenu révélé après un choix.
+
+**Corrigé au passage, à valider par Marc**
+
+- Trois fiches abîmées à la saisie (guillemet manquant en 2.7, fermeture manquante en 3.1, « a revoir » en 5.1).
+- 2.3 : « fin du 21eme siècle » écrit « fin du XX^e^ siècle » ; « un sixième d'arc » écrit « un sixième de cercle ».
+- 0.2 : « MAry Cassat » écrit « Mary Cassatt ».
+
+**Non fait, ou à vérifier**
+
+- 2.1 : la table n'occupe pas toute la largeur ; il faudrait la rogner ou supprimer du texte.
+- 2.2 : la demande annonçait deux ajustements, un seul était écrit.
+- 1.1 : la vidéo n'a pas pu être ouverte ; son éditeur (BBC ou British Museum) n'est pas cité sur la diapo.
+- 6.3 : la diapo des sources est figée ; le musée de l'Armée n'y est pas reporté.
+- Les commentaires des QCM sont un peu plus petits partout, y compris sur les diapos figées : « Quel système en France ? » débordait une fois toutes les réponses ouvertes.
+
 ## 2026-10-11 — Le plan fusionne avec le cours
 
 **Le problème**

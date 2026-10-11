@@ -7,15 +7,12 @@ date-format: "D MMMM YYYY"
 footer: "De la Terre à la carte"
 title-slide-attributes:
   data-state: plein
-  data-background-image: images/cassatt-la-lecon.jpg
-  data-background-size: 600px auto
-  data-background-position: right 56px center
 ---
 
 ::: {.fiche n="0.1" etat="a-revoir"}
 Intention : Deux jeunes filles penchées sur une carte : lire une carte, c'est déjà regarder le monde à plusieurs.
 Expérience : aucune
-Demande : On supprime la l'illustration en couverture.
+Demande :
 :::
 
 ## Que regardent-elles ?
@@ -34,7 +31,7 @@ Demande :
 :::
 ::: {.column width="48%"}
 ::: {.question}
-Deux jeunes filles dessinées par MAry Cassat observent une carte, sans quitter la pièce, et pourtant elles voyagent.
+Deux jeunes filles dessinées par Mary Cassatt observent une carte, sans quitter la pièce, et pourtant elles voyagent.
 
 **Que peut-on savoir d'un lieu sans y être allé ?**
 :::
@@ -102,7 +99,7 @@ Ces représentations de l'espace sont liées à des fonctions. Demander des exem
 ::: {.fiche n="0.5" etat="a-revoir"}
 Intention : Se repérer, s'orienter, se déplacer, contrôler, penser.
 Expérience : QCM à réponses multiples, sur la carte de Nancy au 1:25 000
-Demande : Une fois le QCM cocher, la réponse reste ouverte et fait qu'au final les réponses dépassent de la slide. Il faut soit donner plus de place au texte en réduisant sa taille par exemple.
+Demande :
 :::
 
 :::: {.columns}
@@ -112,7 +109,7 @@ Demande : Une fois le QCM cocher, la réponse reste ouverte et fait qu'au final 
 [Les environs de Nancy au 1:25 000]{.legende}
 :::
 ::: {.column width="54%"}
-::: {.qcm}
+::: {.qcm .serre}
 Que permet cette carte ? Plusieurs réponses sont justes.
 
 - [x] Se repérer
@@ -134,15 +131,26 @@ Que permet cette carte ? Plusieurs réponses sont justes.
 ::: {.fiche n="0.6" etat="a-revoir"}
 Intention : À Bedolina, on abstrait déjà un territoire : champs, chemins, maisons.
 Expérience : zones à cliquer : un champ, un chemin, une maison
-Demande : bonne inspiration, par contre, la surface sur les maisons doit etre plsu large pour englober la derni-ère maisons à gauche. , ne pas cahnger le chemin, mais multiplier les patchs pour les champs. Il n'y a pas de raison qu'un étudiant ne clique que sur celui ci
+Demande :
 :::
 
 :::: {.columns}
 ::: {.column width="62%"}
 ::: {.zones image="images/bedolina.jpg" alt="Gravure rupestre de Bedolina : rectangles ponctués, lignes sinueuses et petites constructions"}
+- [x] 11,23,9,7 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
+- [x] 10,31,9,7 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
+- [x] 1,50,9,9 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
+- [x] 22,65,7,13 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
+- [x] 38,30,17,6 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
 - [x] 40,49,12,19 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
+- [x] 48,18,6,7 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
+- [x] 56,29,7,5 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
+- [x] 57,36,7,6 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
+- [x] 62,49,8,7 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
+- [x] 73,16,7,5 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
+- [x] 30,59,7,6 : Un rectangle semé de points réguliers : on y lit un champ, ou un enclos.
 - [x] 30,20,11,13 : Une ligne sinueuse qui relie les parcelles : un chemin, ou un cours d'eau.
-- [x] 48,66,30,26 : Des constructions à toit pointu : des maisons ou des greniers, ajoutés plus tard.
+- [x] 29,66,49,27 : Des constructions à toit pointu : des maisons ou des greniers, ajoutés plus tard.
 :::
 :::
 ::: {.column width="38%"}
@@ -174,21 +182,15 @@ Premier regard : se situer dans le cosmos.
 ::: {.fiche n="1.1" etat="a-revoir"}
 Intention : Le monde connu, entouré d'eau, et au-delà l'inconnu.
 Expérience : aucune
-Demande : Il faut reprendre le texte tel qu'indiqué, et rajouter une puce pour aller plus loin.
-Cette puce met en valeur deux chose, la sicence participative et l'explicaiton complete de cette tablette par Irwing Finkel sur la BBC. Lien : https://www.youtube.com/watch?v=LUxFzh8r384
+Demande :
 :::
 
 :::: {.columns}
 ::: {.column width="42%"}
-::: {.zones image="images/tablette-babylone.jpg" alt="Tablette d'argile babylonienne gravée d'une carte circulaire du monde"}
-- [x] 34,50,18,7 : Le rectangle supérieur : Babylone.
-- [x] 39,57,8,17 : Les deux traits parallèles : l'Euphrate, qui coule vers le golfe.
-- [x] 22,52,9,24 : L'anneau : une eau qui encercle le monde connu.
-- [x] 54,38,14,11 : Un triangle au-delà du cercle : une région mystérieuse.
-:::
+![](images/tablette-babylone.jpg){fig-alt="Tablette d'argile babylonienne gravée d'une carte circulaire du monde" height="440"}
 :::
 ::: {.column width="58%"}
-Irak, VII^e^ siècle av. J.-C. Plus ancienne carte d'un monde connu. 
+Irak, VII^e^ siècle av. J.-C. Plus ancienne carte d'un monde connu.
 
 Cherchez sur la tablette :
 
@@ -200,6 +202,12 @@ Cherchez sur la tablette :
 [British Museum]{.legende}
 :::
 ::::
+
+::: {.plus titre="Une carte complétée par une élève"}
+Un fragment manquait à cette tablette. Il a été retrouvé par Edith Horsley, une élève d'Irving Finkel, conservateur au British Museum, puis remis à sa place : de la science participative avant l'heure.
+
+Irving Finkel raconte cette histoire et explique toute la tablette dans [cette vidéo](https://www.youtube.com/watch?v=LUxFzh8r384).
+:::
 
 ::: {.notes}
 Le golfe Persique est dessiné comme une rivière encerclant le monde.
@@ -213,7 +221,7 @@ C'est avant tout un outil pour se mouvoir : repérage et orientation.
 ::: {.fiche n="1.2" etat="a-revoir"}
 Intention : Chaque culture donne au monde la forme de son récit.
 Expérience : aucune
-Demande : texte mis à jour.
+Demande :
 :::
 
 :::: {.columns}
@@ -289,7 +297,7 @@ Demander aux étudiants d'en proposer d'autres.
 ::: {.fiche n="1.5" etat="a-revoir"}
 Intention : Ératosthène : un angle et une distance donnent un tour de Terre.
 Expérience : curseur : faire varier l'angle, lire le tour de la Terre
-Demande : L'idée est géniale, par contre, il faudrait adapter diféremment l'animation. On garde la logique générale, mais la distance entre Alexandrie et Syène reste fixe, quand on change l'angle, le tour de la terre, varie, c'est bien, mais il faut que la terre s'agrandisse plutot que la distance varie...
+Demande :
 :::
 
 :::: {.columns}
@@ -306,7 +314,7 @@ Le même jour à midi, le Soleil éclaire le fond d'un puits à Syène. À Alexa
 
 [Un angle et une distance suffisent pour mesurer la Terre.]{.a-retenir}
 
-Faites varier l'angle : que devient la Terre s'il se trompe d'un degré ?
+Faites varier l'angle. La distance entre les deux villes ne change pas : c'est la Terre qui grandit ou rétrécit.
 :::
 ::::
 
@@ -376,23 +384,28 @@ sur la vision sphérique de la Terre, d'où les longitudes et latitudes.
 
 ::: {.fiche n="1.8" etat="a-revoir"}
 Intention : Sur la carte en T dans l'O, l'Orient est en haut : orienter, c'est tourner vers l'est.
-Expérience : question sur le mot « orienter » ; bonus « Pour aller plus loin » sur la carte en T dans l'O
-Demande : Il faut reprendre le texte, je fais une proposition, pour éviter que la réponse soit dans la question.  Je reprends la question et l'activité devient... il faudra cliquer sur le mot Oriens pour avoir la réponse. On peut aussi agrandir le TO de 20 % je pense.
+Expérience : zones à cliquer : trouver sur la carte le mot « Oriens », qui donne la réponse ; bonus « Pour aller plus loin » sur la carte en T dans l'O
+Demande :
 :::
 
+
 :::: {.columns}
-::: {.column width="40%"}
-![](images/carte-t-o.jpg){fig-alt="Carte en T dans l'O : l'Asie en haut, l'Europe et l'Afrique en bas, le mot Oriens au sommet"}
+::: {.column width="47%"}
+::: {.zones image="images/carte-t-o.jpg" alt="Carte en T dans l'O : l'Asie en haut, l'Europe et l'Afrique en bas, quatre mots latins autour du cercle" hauteur="500"}
+- [x] 33,0,22,9 : Oriens : l'Orient, là où le Soleil se lève. Orienter une carte, c'était la tourner vers l'est. Le nord en haut viendra bien plus tard.
+- [ ] 35,91,27,9 : Occidens : le couchant, l'ouest. Il est en bas de la carte.
+- [ ] 2,32,10,36 : Septentrio : le nord. Il est ici à gauche.
+- [ ] 89,32,10,28 : Meridies : le midi, le sud. Il est ici à droite.
 :::
-::: {.column width="60%"}
+:::
+::: {.column width="53%"}
 ::: {.question}
 Cette carte est une représentation semi-symbolique du monde, faisant le lien entre une vision réelle et biblique. On y trouve l'origine du verbe orienter, la situes-tu?
 
-**D'où vient le verbe « orienter » ?**
+**Cliquez sur le mot qui en est l'origine.**
 :::
 
-::: {.reponse}
-Orienter une carte, c'était la tourner vers l'**Orient**, là où le Soleil se lève. Le nord en haut viendra bien plus tard.
+::: {.retour-ici}
 :::
 :::
 ::::
@@ -451,12 +464,14 @@ Deuxième regard : parcourir, mesurer, contrôler.
 ::: {.fiche n="2.1" etat="a-revoir"}
 Intention : La table de Peutinger garde les étapes et les liaisons, pas les formes.
 Expérience : question : ce qui est juste, ce qui est faux ; bonus vers itiner-e.org
-Demande : Il ne faut reprendre que la mise en page. La table de Peutinger doit être beaucoup plus grande en la positionnant si possible sur la largeur complète par juste la moitié. Pour le reste nickel.
+Demande :
 :::
 
-![](images/peutinger.jpg){fig-alt="Extrait de la table de Peutinger : routes, étapes et villes étirées en un long ruban" height="200"}
+::: {.centre}
+![](images/peutinger.jpg){fig-alt="Extrait de la table de Peutinger : routes, étapes et villes étirées en un long ruban" height="300"}
+:::
 
-:::: {.columns}
+:::: {.columns .resserre}
 ::: {.column width="50%"}
 ::: {.question}
 La table de Peutinger déroule l'Empire romain sur près de 7 mètres de long, pour 34 centimètres de haut.
@@ -489,10 +504,10 @@ Copie médiévale d'une carte romaine. Faire le lien avec la topologie d'un rés
 ::: {.fiche n="2.2" etat="a-revoir"}
 Intention : Les portulans tracent des routes : la carte devient un outil de navigation.
 Expérience : cap : un compas fait tourner la route sur le portulan, quart par quart
-Demande : Idem, expérience géniale, on peut juste faire 2 ajustement. 1 positionner la fleche du cap sur un point spécifique du portulans, le point nodal de croisement des cap qui est jsute à l'ouest du portugal.
+Demande :
 :::
 
-::: {.cap image="images/portulan-1540.jpg" alt="Portulan de 1540 : l'Europe et la Méditerranée couvertes de lignes de vents" x="44" y="57" depart="90"}
+::: {.cap image="images/portulan-1540.jpg" alt="Portulan de 1540 : l'Europe et la Méditerranée couvertes de lignes de vents" x="24.7" y="45.6" depart="90"}
 Sur un portulan, les lignes rayonnent des roses des vents. Le marin choisit celle qui mène au port, lit son cap, et le tient au compas.
 
 Faites venir le navire sur la gauche ou sur la droite : un cran vaut un **quart**, soit 11,25°.
@@ -517,7 +532,7 @@ Demande :
 ::: {.column width="42%"}
 « L'usage de cet instrument… »
 
-Viser un astre, lire un angle : avec l'alidade, la position se mesure au lieu de s'estimer. On l'utilisera jusqu'à la fin du 21eme siècle sous la forme du sextant. Un sixième d'arc.
+Viser un astre, lire un angle : avec l'alidade, la position se mesure au lieu de s'estimer. On l'utilisera jusqu'à la fin du XX^e^ siècle sous la forme du sextant, dont l'arc gradué vaut un sixième de cercle.
 :::
 ::::
 
@@ -560,7 +575,7 @@ Le planisphère de droite, lui, l'est.
 ::: {.fiche n="2.5" etat="a-revoir"}
 Intention : La triangulation : couvrir un territoire de triangles à partir d'une base.
 Expérience : visées : relier les stations par-dessus la Manche, sur le plan des triangles Greenwich – Paris
-Demande : Le texte qui précise le principe de 3 informations par triangle nécessaire pour déduire les 3 autres. Je te laisse adapter le texte. Pour le reste c'est génial bravo. 
+Demande :
 :::
 
 ::: {.visees image="images/triangulation-greenwich-paris.jpg" alt="Plan des triangles reliant les observatoires de Greenwich et de Paris, 1784-1790" objectif="2" solution="1-2 1-3 1-4 2-3 2-4 3-4"}
@@ -574,7 +589,7 @@ Reliez les stations deux à deux pour franchir la mer.
 - Montlambert : 69.4,90.0
 - Calais : 75.2,67.1
 
-**La mer est franchie.** On ne mesure qu'une seule longueur, la base. Tout le reste se déduit des angles, de triangle en triangle.
+**La mer est franchie.** Un triangle a six mesures : trois côtés et trois angles. En connaître trois, dont au moins un côté, suffit pour calculer les trois autres. On ne mesure donc qu'une longueur, la base ; ensuite, seulement des angles.
 :::
 
 ::: {.notes}
@@ -605,29 +620,29 @@ Elle servira de modèle à toute l'Europe.
 
 ## La carte, outil de pouvoir {.veille}
 
-::: {.fiche n="2.7" etat="a-revoir}
+::: {.fiche n="2.7" etat="a-revoir"}
 Intention : Du plan de bataille à la frontière coloniale : cartographier, c'est contrôler.
-Expérience : question : que dit la légende des îles sur celui qui dessine ?
-Demande : Les cartes sont beaucoup trop petite. Les faire défiler je pense . Ajouter une référence, elles proviennent du musée des armées aux Invalides. Pour le reste on garde, c'est clair.
-:::
-
-::: {.mosaique}
-![](images/austerlitz-1805.jpg){fig-alt="Plan de la bataille d'Austerlitz, 2 décembre 1805"}
-
-![](images/indochine.jpg){fig-alt="Carte de la frontière chinoise de l'Indochine"}
-
-![](images/indochine-detail-iles.jpg){fig-alt="Détail d'une carte ancienne : des îles et une légende manuscrite sur les nids d'oiseaux"}
+Expérience : défiler trois cartes en grand ; question : que dit la légende des îles sur celui qui dessine ?
+Demande :
 :::
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="56%"}
+::: {.defiler}
+- ![Bataille d'Austerlitz, 2 décembre 1805](images/austerlitz-1805.jpg)
+- ![Frontière chinoise de l'Indochine](images/indochine.jpg)
+- ![Détail : des îles et leur légende](images/indochine-detail-iles.jpg)
+:::
+
+[Cartes conservées au musée de l'Armée, hôtel des Invalides]{.legende}
+:::
+::: {.column width="44%"}
 ::: {.question}
 Austerlitz, 1805. La frontière de l'Indochine. Des îles et leur légende.
 
 **Que dit la légende des îles sur celui qui dessine ?**
 :::
-:::
-::: {.column width="50%"}
+
 ::: {.reponse}
 Elle note ce qui a de la valeur pour lui : ici, des nids que l'on vend cher. Cartographier, c'est déjà inventorier, donc contrôler.
 :::
@@ -665,7 +680,7 @@ La planchette pour dessiner sur place, le théodolite pour mesurer les angles, l
 ::: {.fiche n="2.9" etat="a-revoir"}
 Intention : Le même lieu, de Cassini à la carte au 1:25 000.
 Expérience : comparer : curseur entre Cassini, l'état-major et le 1:25 000
-Demande : J'ai changé les images pour qu'elles se superposent beuacoup mieux. Mêmes noms mais en png situées dans les originaux. Mettre à jour la slide en fonction.
+Demande :
 :::
 
 :::: {.columns}
@@ -686,8 +701,7 @@ La carte ancienne n'est pas une image du passé : c'est une donnée que l'on peu
 ::::
 
 ::: {.notes}
-Les trois extraits ne sont pas parfaitement calés : pour un rendu propre,
-réexporter les trois couches depuis un SIG sur la même emprise.
+Les trois extraits couvrent la même emprise : on peut suivre une lisière ou un méandre d'une carte à l'autre.
 :::
 
 ## Regarder d'en haut {.intercalaire}
@@ -704,13 +718,13 @@ Troisième regard : il se retourne, et se centre sur la Terre.
 
 ::: {.fiche n="3.1" etat="a-revoir"}
 Intention : La photographie aérienne remplace le lever sur le terrain.
-Expérience : aucune
-Demande : L'image aérienne est trop petite, elle peut être agrandi de 100% en surface sans soucis.
-Ajouter aussi un point "pour aller plus loin" avec ce texte. "L'imagerie aérienne permet aussi de construire des bases de données en 3D en exploitant le principe de la vision stéréoscopique et de la photogramétrie. Des pistes ici : https://www.ign.fr/institut/kiosque/la-photogrammetrie . Ces techniqiues sont aussi utilisées depuis l'espace pour construire des modèles de canopée par exemple avec le programme CO3D (insérer lien sur CO3D vers https://cnes.fr/projets/co3d)
+Expérience : bonus « Pour aller plus loin » : la photogrammétrie et CO3D
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="56%"}
-![](images/photo-aerienne.jpg){fig-alt="Photographie aérienne d'un bourg et de ses abords boisés"}
+![](images/photo-aerienne.jpg){fig-alt="Photographie aérienne d'un bourg et de ses abords boisés" height="480"}
 :::
 ::: {.column width="44%"}
 ![](images/camera-ign.jpg){fig-alt="Caméra aérienne numérique à plusieurs objectifs" height="200"}
@@ -720,6 +734,12 @@ Avec l'avion, on ne lève plus le terrain point par point : on le photographie, 
 [La carte se dessine désormais d'après une image.]{.a-retenir}
 :::
 ::::
+
+::: {.plus titre="La troisième dimension"}
+L'imagerie aérienne permet aussi de construire des bases de données en 3D en exploitant le principe de la vision stéréoscopique et de la photogrammétrie. Des pistes ici : [la photogrammétrie, sur le site de l'IGN](https://www.ign.fr/institut/kiosque/la-photogrammetrie).
+
+Ces techniques sont aussi utilisées depuis l'espace pour construire des modèles de canopée, par exemple avec le programme [CO3D](https://cnes.fr/projets/co3d).
+:::
 
 ## Le satellite {.appui}
 
@@ -747,7 +767,7 @@ Ce schéma est le point de départ du cours de télédétection.
 ::: {.fiche n="3.3" etat="a-revoir"}
 Intention : La limite du parc national d'Egmont se lit depuis l'orbite.
 Expérience : zones à cliquer : où passe la limite de la forêt ? puis « Qu'est-ce que cela dit du monde ? »
-Demande : changement mineur de texte.
+Demande :
 :::
 
 :::: {.columns}
@@ -774,7 +794,7 @@ Cette limite a d'abord été tracée au compas, sur une carte. La carte ne décr
 ::: {.fiche n="3.4" etat="a-revoir"}
 Intention : La forêt et les haies décrites en données, plus seulement dessinées.
 Expérience : comparer : curseur entre la carte, la BD Forêt et les haies
-Demande : Idem, j'ai repris la superposition des images. les mettre à jour depuis le dossier originaux ou elles portent le même nom en .png
+Demande :
 :::
 
 :::: {.columns}
@@ -798,11 +818,11 @@ C'est la matière première d'un SIG.
 
 ::: {.fiche n="3.5" etat="a-revoir"}
 Intention : Lever les yeux, regarder l'horizon, regarder d'en haut : la bascule.
-Expérience : classer six documents du cours dans leur regard
-Demande : Je rajouterai encore 3 étiquetes à classer, une dans chaque catégorie. La carte d'hécatée, celle de la bataille d'Austerlitz, et enfin le service EFFIS. Attention de bien mélanger les étiquettes.
+Expérience : classer neuf documents dans leur regard, trois par case
+Demande :
 :::
 
-::: {.schema fichier="images/schemas/trois-regards.svg" hauteur="170"}
+::: {.schema fichier="images/schemas/trois-regards.svg" hauteur="165"}
 :::
 
 ::: {.classer}
@@ -810,16 +830,19 @@ Demande : Je rajouterai encore 3 étiquetes à classer, une dans chaque catégor
 
 - Tablette de Babylone
 - Carte en T dans l'O
+- Carte d'Hécatée
 
 ### Regarder l'horizon
 
 - Portulan
 - Carte de Cassini
+- Bataille d'Austerlitz
 
 ### Regarder d'en haut
 
 - Photographie aérienne
 - BD Forêt
+- Service EFFIS
 :::
 
 ::: {.notes}
@@ -845,21 +868,21 @@ La montée : chaque forme corrige la précédente.
 ::: {.fiche n="4.1" etat="a-revoir"}
 Intention : Sur 1 km, la Terre s'écarte du plan de 8 cm ; sur 10 km, de 8 m.
 Expérience : question (prédiction) : à quelle distance l'erreur dépasse-t-elle un mètre ?
-Demande : La mise en page peut être optimiser avec le schéma sur la largeur, la question en bas à gacuhe, la réponse en bas à droite. Préciser aussi que la formule proposée est une approximation pour les petits écarts et pas la formule exacte.
+Demande :
+:::
+
+::: {.schema fichier="images/schemas/plan-sphere.svg" hauteur="200"}
 :::
 
 :::: {.columns}
-::: {.column width="50%"}
-::: {.schema fichier="images/schemas/plan-sphere.svg"}
-:::
-:::
 ::: {.column width="50%"}
 ::: {.question etiquette="Prédiction"}
 Vous levez une parcelle comme si la Terre était plate.
 
 **À quelle distance l'erreur dépasse-t-elle un mètre ?**
 :::
-
+:::
+::: {.column width="50%"}
 ::: {.reponse}
 | Distance | Écart au plan |
 |---------:|--------------:|
@@ -897,27 +920,32 @@ La sphère suffit pour raisonner, pour une carte du monde, pour un calcul rapide
 
 ::: {.fiche n="4.3" etat="a-revoir"}
 Intention : Newton contre Cassini : la Terre est aplatie aux pôles, d'une vingtaine de kilomètres.
-Expérience : QCM : allongée ou aplatie ?
-Demande : En cliquan sur la réponse, il faut faire apparaitre une animation qui trasnsforme le globe en un ellispoide exagéré
+Expérience : QCM : allongée ou aplatie ? Le globe se déforme selon la réponse choisie
+Demande :
 :::
 
 :::: {.columns}
 ::: {.column width="54%"}
 ::: {.qcm}
-Au XVIII^e^ siècle, deux camps s'opposent sur la forme de la Terre.
+Au XVIII^e^ siècle, deux camps s'opposent sur la forme de la Terre. Choisissez le vôtre.
 
 - [ ] Allongée vers les pôles, comme un citron
     - C'est ce que défendent les Cassini, d'après leurs mesures en France.
 - [x] Aplatie aux pôles, comme une mandarine
     - Newton a raison : la rotation renfle l'équateur.
 :::
-:::
-::: {.column width="46%"}
+
 Pour trancher, on mesure un degré de méridien en **Laponie** et au **Pérou**.
 
-[La Terre est aplatie aux pôles : 21 km d'écart entre les deux rayons.]{.a-retenir}
-
 L'ellipsoïde est une forme mathématique simple : deux nombres le définissent.
+:::
+::: {.column width="46%"}
+::: {.schema fichier="images/schemas/aplatissement.svg" hauteur="290"}
+:::
+
+::: {.apres-choix}
+[La Terre est aplatie aux pôles : 21 km d'écart entre les deux rayons.]{.a-retenir}
+:::
 :::
 ::::
 
@@ -931,22 +959,26 @@ on mesure des trajectoires en ellipse, puis on pense la Terre elle-même comme u
 ::: {.fiche n="4.4" etat="a-revoir"}
 Intention : L'altitude suit la gravité : la surface de référence est celle d'un océan au repos.
 Expérience : aucune
-Demande : Il faut ajouter une repésentation du champ de gravité, je l'ai ajouté dans les originaux Geoide_coupe.png
+Demande :
 :::
 
 :::: {.columns}
-::: {.column width="46%"}
-![](images/geoide-carte.jpg){fig-alt="Le géoïde, aux ondulations très exagérées, coloré selon son écart à l'ellipsoïde" height="380"}
-![](images/geoide-echelle.jpg){fig-alt="Échelle de couleur de −100 m à +75 m" height="250"}
+::: {.column width="45%"}
+![](images/geoide-coupe.png){fig-alt="Coupe de la Terre : des surfaces emboîtées où le potentiel de pesanteur W est constant, traversées par les lignes de force verticales"}
+
+[Surfaces d'égal potentiel de pesanteur et lignes verticales]{.legende}
 :::
-::: {.column width="54%"}
+::: {.column width="55%"}
 L'eau coule vers le bas, et le bas dépend de la **gravité**, qui n'est pas la même partout.
 
-On prolonge sous les continents le niveau moyen des mers : cette surface est le **géoïde**.
+Parmi ces surfaces, celle qui prolonge sous les continents le niveau moyen des mers est le **géoïde**.
 
 [L'altitude se mesure à partir du géoïde.]{.a-retenir}
 
 En France, l'origine est le marégraphe de Marseille.
+
+![](images/geoide-carte.jpg){fig-alt="Le géoïde, aux ondulations très exagérées, coloré selon son écart à l'ellipsoïde" height="170"}
+![](images/geoide-echelle.jpg){fig-alt="Échelle de couleur de −100 m à +75 m" height="160"}
 :::
 ::::
 
@@ -987,27 +1019,16 @@ Un GPS donne une hauteur au-dessus de l'ellipsoïde. Pour obtenir une altitude, 
 
 ::: {.fiche n="4.6" etat="a-revoir"}
 Intention : 21 km entre sphère et ellipsoïde, une centaine de mètres entre ellipsoïde et géoïde.
-Expérience : curseur : exagérer les hauteurs du géoïde
-Demande : L'expérience part d'une bonne idée, mais c'est brouillon, je ne comprends pas vraiment la démarche. Un simple schéma rappelant l'ordre de grandeur des différences suffirait.
+Expérience : aucune (schéma des trois ordres de grandeur)
+Demande :
 :::
 
-:::: {.columns}
-::: {.column width="56%"}
-::: {.curseur min="1" max="8000" pas="1" valeur="1" unite="fois" etiquette="Hauteurs exagérées" schema="images/schemas/geoide-exagere.svg"}
-- 100 m de géoïde occupent `{0.0056*x|2}` pixel sur ce dessin
+::: {.schema fichier="images/schemas/ordres-de-grandeur.svg" hauteur="250"}
 :::
-:::
-::: {.column width="44%"}
-| D'une forme à l'autre | Écart |
-|---|--:|
-| Sphère → ellipsoïde | 21 km |
-| Ellipsoïde → géoïde | ± 100 m |
 
-Poussez le curseur : sans exagération, le géoïde ne se distingue pas de l'ellipsoïde.
+[Chaque marche corrige deux à trois cents fois moins que la précédente.]{.a-retenir}
 
-Chaque marche corrige deux cents fois moins que la précédente.
-:::
-::::
+Sur un globe d'un mètre de diamètre, l'aplatissement ferait moins de 2 mm, et les ondulations du géoïde moins d'un centième de millimètre.
 
 ## Positionner un point M {.intercalaire}
 
@@ -1022,25 +1043,33 @@ La descente : du géoïde aux coordonnées sur la carte.
 ::: {.schema fichier="images/schemas/escalier-descente.svg"}
 :::
 
-## Dans quel ordre ? {.socle}
+## De la Terre à la sphère : X, Y, Z {.appui}
 
-::: {.fiche n="5.1" etat="a revoir"}
-Intention : Terre réelle, géoïde, ellipsoïde, système géodésique, projection, coordonnées planes.
-Expérience : remise en ordre : de la Terre réelle aux coordonnées planes
-Demande : J'ai peur que cela soit mieux en conclusion, du déroulé plutot qu'en introduction de cette partie. Le déplacer après l'introduction de toutes ces étapes, soit après la slide Projeter c'est choisir.
-
-A la plcace, il faut aussi créer une diapo qui Précise le passage de la Terre réelle à la sphére est introduisant le concept de coordoonnées cartésiennes géocentrique. J'ai mis dans les originaux un schéma ; Coord_cartésiennes_geocentriques.png
+::: {.fiche n="5.1" etat="a-revoir"}
+Intention : Le passage de la Terre réelle à la sphère introduit les coordonnées cartésiennes géocentriques.
+Expérience : aucune
+Demande :
 :::
 
-::: {.ordre}
-Du monde réel aux coordonnées que l'on lit dans un SIG : remettez la chaîne dans l'ordre.
+:::: {.columns}
+::: {.column width="42%"}
+![](images/coord-cartesiennes.png){fig-alt="Une sphère, un repère O x y z en son centre, et un point M repéré par X, Y et Z" height="400"}
+:::
+::: {.column width="58%"}
+Premier modèle : une sphère, et un repère posé en son centre.
 
-1. La Terre réelle
-2. Le géoïde
-3. L'ellipsoïde
-4. Le système géodésique
-5. La projection
-6. Les coordonnées planes
+- **O**, le centre des masses de la Terre ;
+- **Oz**, l'axe de rotation ;
+- **Oxy**, le plan de l'équateur.
+
+Tout point M s'y repère par trois distances, **X, Y, Z** : ce sont les **coordonnées cartésiennes géocentriques**.
+
+[On a fixé le centre et l'orientation. Reste à décrire la surface.]{.a-retenir}
+:::
+::::
+
+::: {.notes}
+Dans l'usage, ces coordonnées servent surtout à passer d'un système géodésique à un autre.
 :::
 
 ## Repérer M sur l'ellipsoïde {.socle}
@@ -1149,30 +1178,54 @@ Ne conserve ni l'un ni l'autre : un compromis.
 :::
 ::::
 
+## Dans quel ordre ? {.socle}
+
+::: {.fiche n="5.5b" etat="a-revoir"}
+Intention : Terre réelle, géoïde, ellipsoïde, système géodésique, projection, coordonnées planes.
+Expérience : remise en ordre : de la Terre réelle aux coordonnées planes
+Demande :
+:::
+
+::: {.ordre}
+Du monde réel aux coordonnées que l'on lit dans un SIG : remettez la chaîne dans l'ordre.
+
+1. La Terre réelle
+2. Le géoïde
+3. L'ellipsoïde
+4. Le système géodésique
+5. La projection
+6. Les coordonnées planes
+:::
+
 ## Où Mercator exagère-t-elle ? {.appui}
 
 ::: {.fiche n="5.6" etat="a-revoir"}
 Intention : Le prix de la conformité se lit sur les surfaces.
-Expérience : zones à cliquer : où les surfaces sont-elles exagérées ? puis comparaison avec Peters
-Demande : Faire en sorte que Peter et Mercartor soit vraiment comparable. Au moins avec la meme taille de carte.
+Expérience : zones à cliquer : où les surfaces sont-elles exagérées ? puis Peters à la même largeur, au clic suivant
+Demande :
 :::
 
+La projection de Mercator est **conforme**. Le prix à payer se lit sur les surfaces : cliquez là où elles sont exagérées.
+
 :::: {.columns}
-::: {.column width="62%"}
-::: {.zones image="images/proj-mercator.jpg" alt="Planisphère en projection de Mercator"}
+::: {.column width="50%"}
+::: {.zones image="images/proj-mercator.jpg" alt="Planisphère en projection de Mercator" hauteur="333"}
 - [x] 30,0,16,22 : Le Groenland paraît aussi grand que l'Afrique. Il est en réalité 14 fois plus petit.
 - [x] 0,80,100,20 : L'Antarctique s'étire sur toute la largeur de la carte. Plus on approche des pôles, plus les surfaces enflent.
 - [ ] 45,33,17,30 : L'Afrique est à cheval sur l'équateur : c'est là que les surfaces sont les plus justes.
 - [ ] 27,44,14,34 : L'Amérique du Sud est peu déformée, sauf à sa pointe.
 :::
+
+[Mercator, conforme]{.legende}
 :::
-::: {.column width="38%"}
-La projection de Mercator est **conforme**. Le prix à payer se lit sur les surfaces.
+::: {.column width="50%"}
+::: {.fragment}
+![](images/proj-peters.jpg){fig-alt="Planisphère en projection de Peters, équivalente" width="430"}
 
-::: {.reponse etiquette="Comparer"}
-![](images/proj-peters.jpg){fig-alt="Planisphère en projection de Peters, équivalente" height="150"}
+[Peters, équivalente : même largeur, surfaces justes]{.legende}
+:::
 
-[Projection de Peters, équivalente]{.legende}
+::: {.retour-ici}
 :::
 :::
 ::::
@@ -1210,8 +1263,8 @@ Un cylindre tangent ou sécant. *Ex. : UTM.*
 
 ::: {.fiche n="5.8" etat="a-revoir"}
 Intention : Les anciennes zones Lambert : pourquoi on a découpé.
-Expérience : aucune
-Demande : Problèeme sur l'illustration qui a subit une alteration colorimétrique. A recharger dans le document.
+Expérience : bonus « Pour aller plus loin » : les neuf coniques conformes
+Demande :
 :::
 
 :::: {.columns}
@@ -1227,17 +1280,11 @@ Vous croiserez encore ces coordonnées dans des données anciennes.
 :::
 ::::
 
-## Les neuf coniques conformes {.veille .optionnel}
-
-::: {.fiche n="5.9" etat="a-revoir"}
-Intention : Quand le Lambert 93 altère trop les longueurs.
-Expérience : aucune
-Demande : On supprime cette diapo qu'on transforme en "pour aller plus loin de la précédente.
-:::
-
+::: {.plus titre="Les neuf coniques conformes"}
 Le Lambert 93 altère trop les longueurs pour certains travaux de géomètre.
 
 Neuf projections **CC42 à CC50** le complètent : une zone de 2° de latitude chacune, centrée sur un parallèle de degré entier, avec une altération inférieure à 9 cm par kilomètre.
+:::
 
 ## Lambert 93 {.socle}
 

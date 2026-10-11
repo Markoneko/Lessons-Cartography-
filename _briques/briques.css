@@ -109,7 +109,7 @@
 
 /* --- QCM ----------------------------------------------------------------- */
 
-.reveal .qcm { display: flex; flex-direction: column; gap: 10px; }
+.reveal .qcm { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
 .reveal .qcm > p { margin-bottom: 6px; }
 .reveal .choix {
   display: grid;
@@ -132,7 +132,7 @@
   font-size: 17px; font-weight: 700; line-height: 21px; text-align: center;
 }
 .reveal .choix:hover, .reveal .choix:focus-visible { border-color: var(--bleu); outline: none; }
-.reveal .choix-retour { display: none; grid-column: 2; font-size: 21px; color: var(--gris); margin-top: 4px; }
+.reveal .choix-retour { display: none; grid-column: 2; font-size: 19px; line-height: 1.25; color: var(--gris); margin-top: 3px; }
 .reveal .choix-retour p { margin: 0; }
 .reveal .choix.choisi .choix-retour { display: block; }
 .reveal .choix.choisi.juste { border-color: var(--bleu); background: var(--fond-doux); }
@@ -176,7 +176,8 @@
 /* --- Zones cliquables sur une image -------------------------------------- */
 
 .reveal .zones-cadre { position: relative; display: inline-block; line-height: 0; cursor: crosshair; }
-.reveal .zones-cadre img { display: block; max-height: 430px; margin: 0; }
+.reveal .zones-cadre img { display: block; max-height: var(--hauteur-image, 430px); margin: 0; }
+.reveal .retour-ici .zones-retour { margin-top: 0; }
 .reveal .zone {
   position: absolute;
   background: transparent;
@@ -305,6 +306,29 @@
 }
 .reveal .comparer-etiquette.actif { color: var(--bleu); font-weight: 700; }
 
+/* --- Défiler des images, une à une --------------------------------------- */
+
+.reveal .defiler-vues { line-height: 0; text-align: center; }
+.reveal .defiler-vue { display: none; cursor: pointer; }
+.reveal .defiler-vue.visible { display: block; }
+.reveal .defiler-vue img { max-height: var(--hauteur-image, 400px); max-width: 100%; }
+.reveal .defiler-commande { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 10px; }
+.reveal .defiler-bouton {
+  width: 40px; height: 40px; border-radius: 50%; flex: none;
+  font-size: 18px; line-height: 1; color: var(--bleu);
+  background: var(--blanc); border: 2px solid var(--filet); cursor: pointer;
+}
+.reveal .defiler-bouton:hover { border-color: var(--bleu); }
+.reveal .defiler-legende { font-size: 18px; color: var(--gris); min-width: 300px; text-align: center; }
+
+/* --- QCM resserré, quand les commentaires sont nombreux ------------------- */
+
+.reveal .qcm.serre { gap: 7px; }
+.reveal .qcm.serre > p { margin-bottom: 2px; font-size: 23px; }
+.reveal .qcm.serre .choix { padding: 6px 14px; }
+.reveal .qcm.serre .choix-texte { font-size: 22px; }
+.reveal .qcm.serre .choix-retour { font-size: 17px; margin-top: 0; line-height: 1.25; }
+
 /* --- Curseur : une valeur, un schéma, des résultats ---------------------- */
 
 .reveal .curseur-commande { margin: 8px 0 6px 0; }
@@ -370,7 +394,7 @@
 
 .reveal .visees { display: flex; gap: 32px; align-items: flex-start; }
 .reveal .visee-cadre { position: relative; line-height: 0; flex: 0 1 auto; }
-.reveal .visee-cadre img { display: block; max-height: 450px; }
+.reveal .visee-cadre img { display: block; max-height: 410px; }
 .reveal .visee-traits { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .reveal .visee-traits line { stroke: var(--orange); stroke-width: 3; vector-effect: non-scaling-stroke; stroke-linecap: round; }
 .reveal .visee-traits polygon { fill: var(--orange); fill-opacity: 0.22; stroke: none; }
@@ -386,7 +410,7 @@
 }
 .reveal .visee-point.gauche span { left: auto; right: 24px; }
 .reveal .visee-point.choisi { background: var(--orange); border-color: var(--orange); }
-.reveal .visee-cote { flex: 1 1 250px; min-width: 250px; font-size: 22px; }
+.reveal .visee-cote { flex: 1 1 250px; min-width: 250px; font-size: 20px; }
 .reveal .visee-etat { font-family: var(--police-titre); font-weight: 700; color: var(--bleu); margin-bottom: 12px; }
 .reveal .visee-retour { display: none; }
 .reveal .visees.reussi .visee-retour { display: block; }
@@ -397,6 +421,14 @@
 
 /* --- Petits outils de mise en page --------------------------------------- */
 
+.reveal .centre { text-align: center; }
+/* colonnes au texte un peu plus petit, quand une image doit prendre la place */
+.reveal .resserre { font-size: 21px; }
+.reveal .resserre .question, .reveal .resserre .reponse { padding: 12px 18px 4px 18px; margin-bottom: 0; }
+.reveal .resserre p { margin-bottom: 8px; }
+.reveal .centre p { margin-bottom: 14px; }
+/* masqué tant qu'aucune réponse du QCM n'a été choisie */
+.reveal section:not([data-choix]) .apres-choix { visibility: hidden; }
 .reveal .petit { font-size: 19px; }
 .reveal .petit table { font-size: 16px; }
 .reveal .petit table td, .reveal .petit table th { padding: 4px 10px; }
@@ -427,7 +459,14 @@ html.reveal-print .reveal .comparer-couche::after {
   content: attr(data-nom); display: block; line-height: 1.3; font-size: 15px; color: var(--gris); margin-top: 4px;
 }
 html.reveal-print .reveal .comparer-commande { display: none; }
+/* les images à faire défiler se rangent côte à côte, elles aussi */
+html.reveal-print .reveal .defiler-vues { display: flex; gap: 10px; align-items: flex-end; }
+html.reveal-print .reveal .defiler-vue { display: block !important; flex: 1 1 0; }
+html.reveal-print .reveal .defiler-vue img { max-height: 300px !important; }
+html.reveal-print .reveal .defiler-commande { display: none; }
+html.reveal-print .reveal .retour-ici .zones-retour { display: block; font-size: 17px; min-height: 0; }
 /* Variante sans réponses : ?print-pdf&reponses=non */
 html.sans-reponses .reveal .reponse,
+html.sans-reponses .reveal .retour-ici .zones-retour,
 html.sans-reponses .reveal .pivot-retour,
 html.sans-reponses .reveal .visee-retour { visibility: hidden; }

@@ -5,7 +5,7 @@
     1. le pictogramme de niveau (socle / appui / veille) devant le titre de chaque diapo ;
     2. la diapo « carte du cours », générée toute seule ;
     3. les briques d'exercice (question, qcm, ordre, zones) et d'expérience
-       (pivoter, comparer, curseur, classer, cap, visées, pour aller plus loin, schéma) ;
+       (pivoter, comparer, défiler, curseur, classer, cap, visées, pour aller plus loin, schéma) ;
     4. le tri des diapos (ne garder qu'un niveau, masquer les optionnelles) ;
     5. le plan du cours, à partir des fiches posées sous chaque titre.
 
@@ -214,7 +214,8 @@ end
 local function brique_zones(div)
   local image = div.attributes["image"]
   local alt = div.attributes["alt"] or ""
-  div.attributes["image"], div.attributes["alt"] = nil, nil
+  local hauteur_image = div.attributes["hauteur"]
+  div.attributes["image"], div.attributes["alt"], div.attributes["hauteur"] = nil, nil, nil
   local avant, boutons = pandoc.List(), {}
   for _, bloc in ipairs(div.content) do
     if bloc.t == "BulletList" then
@@ -241,7 +242,8 @@ local function brique_zones(div)
   local cadre = pandoc.Div({
     pandoc.Plain({ img }),
     pandoc.RawBlock("html", table.concat(boutons, "\n")),
-  }, pandoc.Attr("", { "zones-cadre" }))
+  }, pandoc.Attr("", { "zones-cadre" },
+    hauteur_image and { style = "--hauteur-image:" .. hauteur_image .. "px" } or {}))
   avant:insert(cadre)
   avant:insert(pandoc.RawBlock("html", '<p class="zones-retour" aria-live="polite">Cliquez sur l’image.</p>'))
   div.content = avant
@@ -392,6 +394,37 @@ local function brique_comparer(div)
   avant:insert(pandoc.RawBlock("html", '<div class="comparer-commande"><input type="range" class="comparer-curseur" min="0" max="'
     .. (#images - 1) .. '" step="0.01" value="0" aria-label="Passer d’une image à l’autre">'
     .. '<div class="comparer-etiquettes">' .. etiquettes .. '</div></div>'))
+  div.content = avant
+  return div
+end
+
+-- ::: {.defiler}  liste d'images montrées une à une, en grand ; le texte alternatif sert de légende
+local function brique_defiler(div)
+  local images, avant = pandoc.List(), pandoc.List()
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "BulletList" then
+      for _, item in ipairs(bloc.content) do
+        pandoc.walk_block(pandoc.Div(item), { Image = function(i) images:insert(i) end })
+      end
+    else
+      avant:insert(bloc)
+    end
+  end
+  if not EN_HTML then
+    for _, i in ipairs(images) do avant:insert(pandoc.Para({ i })) end
+    div.content = avant
+    return div
+  end
+  local vues = pandoc.List()
+  for _, i in ipairs(images) do
+    local nom = pandoc.utils.stringify(i.caption)
+    vues:insert(pandoc.Div({ pandoc.Plain({ i }) }, pandoc.Attr("", { "defiler-vue" }, { ["data-nom"] = nom })))
+  end
+  avant:insert(pandoc.Div(vues, pandoc.Attr("", { "defiler-vues" })))
+  avant:insert(pandoc.RawBlock("html", '<div class="defiler-commande">'
+    .. '<button type="button" class="defiler-bouton" data-pas="-1" aria-label="Image précédente">◀</button>'
+    .. '<span class="defiler-legende" aria-live="polite"></span>'
+    .. '<button type="button" class="defiler-bouton" data-pas="1" aria-label="Image suivante">▶</button></div>'))
   div.content = avant
   return div
 end
@@ -565,6 +598,7 @@ local function briques(div)
   if div.classes:includes("pivoter") then return brique_pivoter(div) end
   if div.classes:includes("comparer") then return brique_comparer(div) end
   if div.classes:includes("curseur") then return brique_curseur(div) end
+  if div.classes:includes("defiler") then return brique_defiler(div) end
   if div.classes:includes("classer") then return brique_classer(div) end
   if div.classes:includes("cap") then return brique_cap(div) end
   if div.classes:includes("visees") then return brique_visees(div) end

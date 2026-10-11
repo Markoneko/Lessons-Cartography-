@@ -82,7 +82,7 @@ def main():
     degelees = [n for n, ref in reference.items() if n in presentes and presentes[n]["etat"] != "fige"]
     print(f"{len(reference)} diapos figées en référence, {len(figees)} figées dans le cours.")
     if degelees:
-        print("Dégelées depuis la référence : " + ", ".join(sorted(degelees, key=lambda x: [int(p) for p in x.split('.')])))
+        print("Dégelées depuis la référence : " + ", ".join(sorted(degelees)))
     if nouvelles:
         print("Figées depuis la référence, pas encore enregistrées : " + ", ".join(nouvelles))
     if ecarts:

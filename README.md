@@ -222,6 +222,15 @@ Le sud était en haut.
 :::
 ```
 
+**Défiler des images** — une seule à la fois, en grand, avec deux flèches. Le texte entre crochets sert de légende.
+
+```markdown
+::: {.defiler}
+- ![Bataille d'Austerlitz, 1805](images/austerlitz-1805.jpg)
+- ![Frontière de l'Indochine](images/indochine.jpg)
+:::
+```
+
 **Curseur** — une valeur `x` pilote des résultats calculés, écrits entre accents graves et accolades. Après la barre, le nombre de décimales.
 
 ```markdown
@@ -274,6 +283,19 @@ Le commentaire de réussite.
 ::: {.schema fichier="images/schemas/trois-regards.svg" hauteur="170"}
 :::
 ```
+
+### Réglages utiles
+
+| Écriture | Effet |
+|---|---|
+| `::: {.zones … hauteur="500"}` | fixe la hauteur de l'image cliquable, en pixels |
+| `::: {.retour-ici}` suivi de `:::` | le commentaire des zones s'affiche à cet endroit plutôt que sous l'image, et figure dans le PDF corrigé |
+| `::: {.qcm .serre}` | QCM plus compact, quand les commentaires sont nombreux |
+| `::: {.apres-choix}` … `:::` | contenu masqué tant qu'aucune réponse du QCM n'est choisie |
+| `:::: {.columns .resserre}` | colonnes au texte plus petit, pour laisser la place à une image |
+| `::: {.centre}` … `:::` | centre une image |
+
+Un schéma peut réagir au QCM de sa diapo : voir `images/schemas/aplatissement.svg` dans le cours.
 
 ## Les images d'un cours
 

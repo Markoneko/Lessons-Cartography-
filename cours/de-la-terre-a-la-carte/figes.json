@@ -1,39 +1,11 @@
 {
- "0.1": {
-  "empreinte": "8e9ee2515cfc99f1",
-  "titre": "Couverture"
- },
- "0.2": {
-  "empreinte": "0b8a957b9bea991c",
-  "titre": "Que regardent-elles ?"
- },
  "0.3": {
   "empreinte": "13637384b54cc4da",
   "titre": "Carte du cours"
  },
- "0.4": {
-  "empreinte": "0b9a30ad3273bd58",
-  "titre": "Représenter, c'est choisir"
- },
- "0.5": {
-  "empreinte": "d099da877520287d",
-  "titre": "À quoi sert une carte ?"
- },
- "0.6": {
-  "empreinte": "9fb7f9940a938f83",
-  "titre": "Avant l'écriture"
- },
  "1.0": {
   "empreinte": "5896153297b9765c",
   "titre": "Lever les yeux"
- },
- "1.1": {
-  "empreinte": "92895e4594985558",
-  "titre": "Le monde vu de Babylone"
- },
- "1.2": {
-  "empreinte": "4233c8e572d6cfa4",
-  "titre": "Des mondes en forme de mythes"
  },
  "1.3": {
   "empreinte": "3bb637f219bc5ad4",
@@ -43,10 +15,6 @@
   "empreinte": "dcb66f3e26a27d61",
   "titre": "Comment savoir que la Terre est ronde ?"
  },
- "1.5": {
-  "empreinte": "2e8cfa906f0afd1b",
-  "titre": "Mesurer la Terre avec une ombre"
- },
  "1.6": {
   "empreinte": "74c61fa5ef7a3956",
   "titre": "Une carte pour penser"
@@ -54,10 +22,6 @@
  "1.7": {
   "empreinte": "b86376e30c774bad",
   "titre": "Une grille sur le monde"
- },
- "1.8": {
-  "empreinte": "1a804eecb88b781a",
-  "titre": "Où est le haut de la carte ?"
  },
  "1.9": {
   "empreinte": "eff47ee03630276a",
@@ -67,101 +31,41 @@
   "empreinte": "5cd675ba41654401",
   "titre": "Regarder l'horizon"
  },
- "2.1": {
-  "empreinte": "acb5f46431e9295d",
-  "titre": "Une carte sans géométrie"
- },
- "2.2": {
-  "empreinte": "897fc882f5e6ef45",
-  "titre": "Suivre un cap"
- },
- "2.3": {
-  "empreinte": "f5c2d24d4fe49d6a",
-  "titre": "Des instruments"
- },
  "2.4": {
   "empreinte": "404424a4df2fefbd",
   "titre": "Mercator, pour garder le cap"
- },
- "2.5": {
-  "empreinte": "ea8984284c7902ee",
-  "titre": "Mesurer un pays"
  },
  "2.6": {
   "empreinte": "39979fef7ee92a85",
   "titre": "La carte de Cassini"
  },
- "2.7": {
-  "empreinte": "0185fbf0740f5e7c",
-  "titre": "La carte, outil de pouvoir"
- },
  "2.8": {
   "empreinte": "9dba5501624490a0",
   "titre": "Sur le terrain"
- },
- "2.9": {
-  "empreinte": "7d1703fd5f7c0d96",
-  "titre": "Nancy, trois siècles"
  },
  "3.0": {
   "empreinte": "711c20ee06e0bc74",
   "titre": "Regarder d'en haut"
  },
- "3.1": {
-  "empreinte": "9adadbaeddf35d00",
-  "titre": "Prendre de la hauteur"
- },
  "3.2": {
   "empreinte": "14c8f78e2c41809e",
   "titre": "Le satellite"
- },
- "3.3": {
-  "empreinte": "a6e0d2215cfe7ffc",
-  "titre": "Une forêt vue de l'espace"
- },
- "3.4": {
-  "empreinte": "98813d6008d9feaa",
-  "titre": "Nancy, aujourd'hui"
- },
- "3.5": {
-  "empreinte": "da3b4e5082014962",
-  "titre": "Les trois regards"
  },
  "4.0": {
   "empreinte": "ce437df5ad819be4",
   "titre": "De quelle forme parle-t-on ?"
  },
- "4.1": {
-  "empreinte": "ca9add601d989f43",
-  "titre": "Le plan suffit… jusqu'où ?"
- },
  "4.2": {
   "empreinte": "5e46c20e31f97c8b",
   "titre": "La sphère"
- },
- "4.3": {
-  "empreinte": "8b2f467d74f720f0",
-  "titre": "L'ellipsoïde"
- },
- "4.4": {
-  "empreinte": "f0a7131f9891378d",
-  "titre": "Le géoïde"
  },
  "4.5": {
   "empreinte": "3ba48d8d4f9e1e44",
   "titre": "Hauteur n'est pas altitude"
  },
- "4.6": {
-  "empreinte": "19866713e889491e",
-  "titre": "Des écarts sans commune mesure"
- },
  "5.0": {
   "empreinte": "fc84cee1ff9368bb",
   "titre": "Positionner un point M"
- },
- "5.1": {
-  "empreinte": "0518301727e8f6b2",
-  "titre": "Dans quel ordre ?"
  },
  "5.10": {
   "empreinte": "25fd20a13c840d86",
@@ -187,21 +91,9 @@
   "empreinte": "7377097f14b825b0",
   "titre": "Projeter, c'est choisir"
  },
- "5.6": {
-  "empreinte": "0add7bf85ee4c12e",
-  "titre": "Où Mercator exagère-t-elle ?"
- },
  "5.7": {
   "empreinte": "aed27d3cfd189273",
   "titre": "Trois familles de canevas"
- },
- "5.8": {
-  "empreinte": "5db92e8f6dda4133",
-  "titre": "La France en zones"
- },
- "5.9": {
-  "empreinte": "8c0db962c9ddd030",
-  "titre": "Les neuf coniques conformes"
  },
  "6.1": {
   "empreinte": "d53621f22dc7c47e",

@@ -42,10 +42,16 @@
 
   // --- QCM : on clique un choix, il dit s'il est juste et pourquoi
   tous(".qcm .choix").forEach(function (choix) {
+    // la diapo retient le dernier choix (data-choix="1", "2"…) : un schéma peut y réagir
+    function retenir() {
+      var diapo = choix.closest("section");
+      if (diapo) diapo.dataset.choix = tous(".choix", choix.closest(".qcm")).indexOf(choix) + 1;
+    }
     activer(choix, function () {
       choix.classList.add("choisi", choix.dataset.juste === "oui" ? "juste" : "faux");
+      retenir();
     });
-    if (CORRIGE && choix.dataset.juste === "oui") choix.classList.add("choisi", "juste");
+    if (CORRIGE && choix.dataset.juste === "oui") { choix.classList.add("choisi", "juste"); retenir(); }
   });
 
   // --- Remise en ordre : on clique les étapes dans le bon ordre
@@ -98,6 +104,19 @@
     var cadre = bloc.querySelector(".zones-cadre");
     var retour = bloc.querySelector(".zones-retour");
     if (!cadre || !retour) return;
+    // si la diapo contient un bloc .retour-ici, le commentaire s'y affiche (et figure dans le PDF corrigé)
+    var ailleurs = bloc.closest("section") && bloc.closest("section").querySelector(".retour-ici");
+    if (ailleurs) {
+      ailleurs.appendChild(retour);
+      retour.textContent = "Cliquez sur l’image.";
+      if (CORRIGE) {
+        var justes = [];
+        tous(".zone[data-juste='oui']", cadre).forEach(function (z) {
+          if (justes.indexOf(z.dataset.retour) < 0) justes.push(z.dataset.retour);
+        });
+        retour.textContent = "✓ " + justes.join(" ");
+      } else if (EN_PDF) { retour.textContent = ""; }
+    }
     tous(".zone", cadre).forEach(function (zone) {
       if (CORRIGE && zone.dataset.juste === "oui") zone.classList.add("trouvee");
       activer(zone, function () {
@@ -184,6 +203,24 @@
       activer(e, function () { curseur.value = e.dataset.rang; appliquer(); });
     });
     appliquer();
+  });
+
+  // --- Défiler : des images montrées une à une, en grand
+  tous(".defiler").forEach(function (bloc) {
+    var vues = tous(".defiler-vue", bloc);
+    var legende = bloc.querySelector(".defiler-legende");
+    var rang = 0;
+    function montrer() {
+      vues.forEach(function (v, i) { v.classList.toggle("visible", i === rang); });
+      legende.textContent = (rang + 1) + " / " + vues.length + " — " + vues[rang].dataset.nom;
+    }
+    tous(".defiler-bouton", bloc).forEach(function (b) {
+      activer(b, function () { rang = (rang + +b.dataset.pas + vues.length) % vues.length; montrer(); });
+    });
+    tous(".defiler-vue", bloc).forEach(function (v) {
+      activer(v, function () { rang = (rang + 1) % vues.length; montrer(); });
+    });
+    if (vues.length) montrer();
   });
 
   // --- Curseur : une valeur pilote un schéma (variable --x) et des résultats calculés
