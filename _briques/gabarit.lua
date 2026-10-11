@@ -15,6 +15,36 @@
 local NIVEAUX = { "socle", "appui", "veille" }
 local LIBELLE = { socle = "Socle", appui = "Appui", veille = "Veille" }
 
+-- Langue du cours : « lang: en » dans l'en-tête d'un cours bascule les textes du gabarit en anglais.
+local LANGUE = "fr"
+local TEXTES = {
+  fr = {
+    question = "Question", reponse = "Réponse", plus = "Pour aller plus loin", fermer = "Fermer",
+    cliquez_image = "Cliquez sur l’image.", recommencer = "Recommencer",
+    diapo = "diapo", diapos = "diapos", retour_carte = "Retour à la carte du cours",
+    tourner_gauche = "Tourner vers la gauche", tourner_droite = "Tourner vers la droite",
+    comparer = "Passer d’une image à l’autre", precedente = "Image précédente", suivante = "Image suivante",
+    venir_gauche = "Venir sur la gauche", venir_droite = "Venir sur la droite",
+    loupe = "Cliquez pour zoomer, déplacez pour explorer", effacer = "Effacer",
+    reponse_notes = "Réponse : ", ordre_notes = "Ordre attendu : ",
+  },
+  en = {
+    question = "Question", reponse = "Answer", plus = "Going further", fermer = "Close",
+    cliquez_image = "Click on the image.", recommencer = "Start again",
+    diapo = "slide", diapos = "slides", retour_carte = "Back to the course map",
+    tourner_gauche = "Rotate left", tourner_droite = "Rotate right",
+    comparer = "Fade from one image to the next", precedente = "Previous image", suivante = "Next image",
+    venir_gauche = "Come to port", venir_droite = "Come to starboard",
+    loupe = "Click to zoom, move to explore", effacer = "Clear",
+    reponse_notes = "Answer: ", ordre_notes = "Expected order: ",
+  },
+}
+local LIBELLES = {
+  fr = { socle = "Socle", appui = "Appui", veille = "Veille" },
+  en = { socle = "Core", appui = "Support", veille = "Further" },
+}
+local function t(cle) return (TEXTES[LANGUE] or TEXTES.fr)[cle] end
+
 local EN_HTML = FORMAT:match("revealjs") ~= nil
 
 -- Réglages lus dans l'en-tête du cours (ou donnés en ligne de commande avec -M)
@@ -32,9 +62,11 @@ end
 -- Espaces insécables de la typographie française : pas de « ? » ou de « : » seul en début de ligne.
 local INSECABLE = "\u{00A0}"
 local function typo(texte)
+  if LANGUE ~= "fr" then return texte end
   return (texte:gsub(" ([%?!:;»])", INSECABLE .. "%1"):gsub("« ", "«" .. INSECABLE))
 end
 local function typo_inlines(inlines)
+  if LANGUE ~= "fr" then return inlines end
   for i = 1, #inlines - 1 do
     local a, b = inlines[i], inlines[i + 1]
     if a.t == "Space" and b.t == "Str" and b.text:match("^[%?!:;»]") then
@@ -119,7 +151,7 @@ end
 
 -- ::: {.question}  … texte … :::   (étiquette modifiable : etiquette="Prédiction")
 local function brique_question(div)
-  local etiquette = div.attributes["etiquette"] or "Question"
+  local etiquette = div.attributes["etiquette"] or t("question")
   div.attributes["etiquette"] = nil
   table.insert(div.content, 1, pandoc.Div(pandoc.Plain(pandoc.Str(etiquette)), pandoc.Attr("", { "etiquette" })))
   return div
@@ -127,7 +159,7 @@ end
 
 -- ::: {.reponse}  … :::   → n'apparaît qu'au clic suivant
 local function brique_reponse(div)
-  local etiquette = div.attributes["etiquette"] or "Réponse"
+  local etiquette = div.attributes["etiquette"] or t("reponse")
   div.attributes["etiquette"] = nil
   table.insert(div.content, 1, pandoc.Div(pandoc.Plain(pandoc.Str(etiquette)), pandoc.Attr("", { "etiquette" })))
   if EN_HTML then div.classes:insert("fragment") end
@@ -167,7 +199,7 @@ local function brique_qcm(div)
     end
   end
   if not EN_HTML and #bonnes > 0 then
-    sortie:insert(pandoc.Div(pandoc.Para(pandoc.Str("Réponse : " .. table.concat(bonnes, " ; "))),
+    sortie:insert(pandoc.Div(pandoc.Para(pandoc.Str(t("reponse_notes") .. table.concat(bonnes, " ; "))),
       pandoc.Attr("", { "notes" })))
   end
   div.content = sortie
@@ -188,7 +220,7 @@ local function brique_ordre(div)
         sortie:insert(pandoc.Div(etapes, pandoc.Attr("", { "etapes" })))
         sortie:insert(pandoc.RawBlock("html",
           '<div class="ordre-pied"><span class="ordre-etat" aria-live="polite"></span>'
-          .. '<button type="button" class="ordre-recommencer">Recommencer</button></div>'))
+          .. '<button type="button" class="ordre-recommencer">' .. t("recommencer") .. '</button></div>'))
       else
         -- hors écran : on mélange de façon fixe, la solution va dans les notes
         local n, melange, solution = #bloc.content, pandoc.List(), pandoc.List()
@@ -198,7 +230,7 @@ local function brique_ordre(div)
           solution:insert(i .. ". " .. pandoc.utils.stringify(item))
         end
         sortie:insert(pandoc.BulletList(melange))
-        sortie:insert(pandoc.Div(pandoc.Para(pandoc.Str("Ordre attendu : " .. table.concat(solution, " — "))),
+        sortie:insert(pandoc.Div(pandoc.Para(pandoc.Str(t("ordre_notes") .. table.concat(solution, " — "))),
           pandoc.Attr("", { "notes" })))
       end
     else
@@ -245,7 +277,7 @@ local function brique_zones(div)
   }, pandoc.Attr("", { "zones-cadre" },
     hauteur_image and { style = "--hauteur-image:" .. hauteur_image .. "px" } or {}))
   avant:insert(cadre)
-  avant:insert(pandoc.RawBlock("html", '<p class="zones-retour" aria-live="polite">Cliquez sur l’image.</p>'))
+  avant:insert(pandoc.RawBlock("html", '<p class="zones-retour" aria-live="polite">' .. t("cliquez_image") .. '</p>'))
   div.content = avant
   return div
 end
@@ -322,7 +354,7 @@ end
 
 -- ::: {.plus titre="…"}  → « Pour aller plus loin » : un bonus qui s'ouvre au clic
 local function brique_plus(div)
-  local titre = attribut(div, "titre", "Pour aller plus loin")
+  local titre = attribut(div, "titre", t("plus"))
   if not EN_HTML then
     table.insert(div.content, 1, pandoc.Para(pandoc.Strong(pandoc.Str(titre))))
     return div
@@ -330,9 +362,9 @@ local function brique_plus(div)
   local corps = pandoc.Div(div.content, pandoc.Attr("", { "plus-corps" }))
   div.content = pandoc.List({
     pandoc.RawBlock("html", '<button type="button" class="plus-bouton" aria-expanded="false">'
-      .. '<span class="plus-signe" aria-hidden="true">+</span>Pour aller plus loin</button>'
+      .. '<span class="plus-signe" aria-hidden="true">+</span>' .. t("plus") .. '</button>'
       .. '<div class="plus-panneau" role="dialog" aria-label="' .. echappe(titre) .. '">'
-      .. '<button type="button" class="plus-fermer" aria-label="Fermer">×</button>'
+      .. '<button type="button" class="plus-fermer" aria-label="' .. t("fermer") .. '">×</button>'
       .. '<div class="plus-titre"><span class="plus-signe" aria-hidden="true">+</span>' .. echappe(titre) .. '</div>'),
     corps,
     pandoc.RawBlock("html", '</div>'),
@@ -357,9 +389,9 @@ local function brique_pivoter(div)
   div.content = pandoc.List({
     pandoc.Div({ pandoc.Plain({ img }) }, pandoc.Attr("", { "pivot-cadre" })),
     pandoc.RawBlock("html", '<div class="pivot-commandes">'
-      .. '<button type="button" class="pivot-tourner" data-pas="-15" aria-label="Tourner vers la gauche">↺</button>'
+      .. '<button type="button" class="pivot-tourner" data-pas="-15" aria-label="' .. t("tourner_gauche") .. '">↺</button>'
       .. '<span class="pivot-angle" aria-live="polite">0°</span>'
-      .. '<button type="button" class="pivot-tourner" data-pas="15" aria-label="Tourner vers la droite">↻</button>'
+      .. '<button type="button" class="pivot-tourner" data-pas="15" aria-label="' .. t("tourner_droite") .. '">↻</button>'
       .. '</div>'),
     retour,
   })
@@ -392,9 +424,21 @@ local function brique_comparer(div)
   end
   avant:insert(pandoc.Div(couches, pandoc.Attr("", { "comparer-pile" })))
   avant:insert(pandoc.RawBlock("html", '<div class="comparer-commande"><input type="range" class="comparer-curseur" min="0" max="'
-    .. (#images - 1) .. '" step="0.01" value="0" aria-label="Passer d’une image à l’autre">'
+    .. (#images - 1) .. '" step="0.01" value="0" aria-label="' .. t("comparer") .. '">'
     .. '<div class="comparer-etiquettes">' .. etiquettes .. '</div></div>'))
   div.content = avant
+  return div
+end
+
+-- ::: {.loupe zoom="3"}  une image que l'on agrandit d'un clic, puis que l'on explore en déplaçant le pointeur
+local function brique_loupe(div)
+  local zoom = attribut(div, "zoom", "3")
+  if not EN_HTML then return div end
+  div.attributes["data-zoom"] = zoom
+  div.attributes["role"] = "button"
+  div.attributes["tabindex"] = "0"
+  div.attributes["title"] = t("loupe")
+  div.content:insert(pandoc.RawBlock("html", '<span class="loupe-aide" aria-hidden="true">' .. t("loupe") .. '</span>'))
   return div
 end
 
@@ -422,9 +466,9 @@ local function brique_defiler(div)
   end
   avant:insert(pandoc.Div(vues, pandoc.Attr("", { "defiler-vues" })))
   avant:insert(pandoc.RawBlock("html", '<div class="defiler-commande">'
-    .. '<button type="button" class="defiler-bouton" data-pas="-1" aria-label="Image précédente">◀</button>'
+    .. '<button type="button" class="defiler-bouton" data-pas="-1" aria-label="' .. t("precedente") .. '">◀</button>'
     .. '<span class="defiler-legende" aria-live="polite"></span>'
-    .. '<button type="button" class="defiler-bouton" data-pas="1" aria-label="Image suivante">▶</button></div>'))
+    .. '<button type="button" class="defiler-bouton" data-pas="1" aria-label="' .. t("suivante") .. '">▶</button></div>'))
   div.content = avant
   return div
 end
@@ -451,7 +495,7 @@ local function brique_curseur(div)
   local h = ""
   if chemin then h = h .. schema_html(chemin, hauteur) end
   h = h .. '<div class="curseur-commande"><label><span class="curseur-etiquette">' .. echappe(etiquette)
-      .. ' : <output class="curseur-valeur"></output></span>'
+      .. (LANGUE == "fr" and ' : ' or ': ') .. '<output class="curseur-valeur"></output></span>'
       .. '<input type="range" class="curseur-entree" min="' .. mini .. '" max="' .. maxi .. '" step="' .. pas
       .. '" value="' .. valeur .. '" data-unite="' .. echappe(unite) .. '"></label></div>'
   if lignes ~= "" then h = h .. '<ul class="curseur-resultats" aria-live="polite">' .. lignes .. '</ul>' end
@@ -521,9 +565,9 @@ local function brique_cap(div)
     }, pandoc.Attr("", { "cap-cadre" })),
     pandoc.Div({
       pandoc.RawBlock("html", '<div class="cap-compas">'
-        .. '<button type="button" class="cap-bouton" data-pas="-1" aria-label="Venir sur la gauche">◀</button>'
+        .. '<button type="button" class="cap-bouton" data-pas="-1" aria-label="' .. t("venir_gauche") .. '">◀</button>'
         .. rose
-        .. '<button type="button" class="cap-bouton" data-pas="1" aria-label="Venir sur la droite">▶</button></div>'
+        .. '<button type="button" class="cap-bouton" data-pas="1" aria-label="' .. t("venir_droite") .. '">▶</button></div>'
         .. '<p class="cap-lecture" aria-live="polite"></p>'),
       texte,
     }, pandoc.Attr("", { "cap-cote" })),
@@ -580,7 +624,7 @@ local function brique_visees(div)
       pandoc.Div(avant, pandoc.Attr("", { "visee-consigne" })),
       pandoc.RawBlock("html", '<p class="visee-etat" aria-live="polite"></p>'),
       pandoc.Div(apres, pandoc.Attr("", { "visee-retour" })),
-      pandoc.RawBlock("html", '<button type="button" class="visee-effacer">Effacer</button>'),
+      pandoc.RawBlock("html", '<button type="button" class="visee-effacer">' .. t("effacer") .. '</button>'),
     }, pandoc.Attr("", { "visee-cote" })),
   })
   return div
@@ -598,6 +642,7 @@ local function briques(div)
   if div.classes:includes("pivoter") then return brique_pivoter(div) end
   if div.classes:includes("comparer") then return brique_comparer(div) end
   if div.classes:includes("curseur") then return brique_curseur(div) end
+  if div.classes:includes("loupe") then return brique_loupe(div) end
   if div.classes:includes("defiler") then return brique_defiler(div) end
   if div.classes:includes("classer") then return brique_classer(div) end
   if div.classes:includes("cap") then return brique_cap(div) end
@@ -641,7 +686,7 @@ local function carte_du_cours(inventaire, parties, seulement)
     local nb = #inventaire[n]
     h = h .. '<div class="carte-colonne niveau-' .. n .. '"><div class="carte-tete">' .. glyphe(n, 54)
         .. '<div><div class="niveau-mot">' .. LIBELLE[n] .. '</div><div class="carte-compte">'
-        .. nb .. ' diapo' .. (nb > 1 and 's' or '') .. '</div></div></div><ul>'
+        .. nb .. ' ' .. (nb > 1 and t("diapos") or t("diapo")) .. '</div></div></div><ul>'
     for _, d in ipairs(inventaire[n]) do
       h = h .. '<li><a href="#/' .. d.id .. '"><span class="puce-partie partie-' .. d.partie .. '">'
           .. (d.partie > 0 and d.partie or '') .. '</span>' .. echappe(d.titre) .. '</a></li>'
@@ -688,7 +733,7 @@ local function lire_fiche(div)
     local c = cle and cle:lower() or ""
     if c:match("^int") then champ = "intention"
     elseif c:match("^exp") then champ = "experience"
-    elseif c:match("^dem") then champ = "demande"
+    elseif c:match("^dem") or c:match("^req") then champ = "demande"
     else reste = ligne end
     if champ then
       fiche[champ] = (fiche[champ] ~= "" and (fiche[champ] .. " ") or "") .. (reste or "")
@@ -706,11 +751,13 @@ local function ecrire_plan(fiches, titre_cours)
   if #fiches == 0 then return end
   local entree = (quarto and quarto.doc and quarto.doc.input_file)
       or (PANDOC_STATE and PANDOC_STATE.input_files[1]) or ""
-  local chemin = pandoc.path.join({ pandoc.path.directory(entree), "plan.md" })
+  -- index.qmd donne plan.md ; index-en.qmd donne plan-en.md
+  local suffixe = pandoc.path.filename(entree):match("^index(.-)%.qmd$") or ""
+  local chemin = pandoc.path.join({ pandoc.path.directory(entree), "plan" .. suffixe .. ".md" })
   local comptes, demandes = {}, {}
   local l = {
     "# Plan — " .. titre_cours, "",
-    "> Fichier généré à chaque compilation à partir des fiches de `index.qmd`.",
+    "> Fichier généré à chaque compilation à partir des fiches de `index" .. suffixe .. ".qmd`.",
     "> Ne pas le modifier : pour changer le plan, modifier les fiches.", "",
     "| N° | Diapo | Niveau | État | Intention | Expérience | Demande |",
     "|----|-------|--------|------|-----------|------------|---------|",
@@ -743,6 +790,9 @@ end
 ----------------------------------------------------------------------------
 
 local function lire_reglages(meta)
+  local langue = meta["lang"] and pandoc.utils.stringify(meta["lang"]):sub(1, 2):lower() or "fr"
+  LANGUE = TEXTES[langue] and langue or "fr"
+  LIBELLE = LIBELLES[LANGUE]
   local g = meta["garder-niveaux"]
   if g then
     garder = {}
@@ -824,8 +874,8 @@ function Pandoc(doc)
         -- Le pictogramme passe devant le titre ; il ramène à la carte du cours quand elle existe.
         local picto = glyphe(n, 58)
         if id_carte then
-          picto = '<a class="niveau-picto" href="#/' .. id_carte .. '" title="Retour à la carte du cours" '
-              .. 'aria-label="' .. LIBELLE[n] .. ' — retour à la carte du cours">' .. picto .. '</a>'
+          picto = '<a class="niveau-picto" href="#/' .. id_carte .. '" title="' .. t("retour_carte") .. '" '
+              .. 'aria-label="' .. LIBELLE[n] .. ' — ' .. t("retour_carte") .. '">' .. picto .. '</a>'
         else
           picto = '<span class="niveau-picto">' .. picto .. '</span>'
         end

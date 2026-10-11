@@ -11,9 +11,24 @@
   function tous(selecteur, racine) {
     return Array.prototype.slice.call((racine || document).querySelectorAll(selecteur));
   }
+  // Langue du cours (attribut lang de la page) et textes de l'interface
+  var EN = (document.documentElement.lang || "fr").slice(0, 2) === "en";
+  var T = EN ? {
+    ordre_debut: "Click the steps in order.", chaine: "Chain complete", sans_faute: ", first time.",
+    hesitation: " slip", etape: "Step ", sur: " of ", cliquez_image: "Click on the image.",
+    pas_ici: "Not here. Try somewhere else.", choisir_case: "Now click the box it belongs to.",
+    choisir_etiquette: "Pick a label, then its box.", tout_range: "All sorted",
+    cap: "Heading ", visee: " sight line", triangle: " triangle", ferme: " closed", visee_debut: "Click one station, then another."
+  } : {
+    ordre_debut: "Cliquez les étapes dans l’ordre.", chaine: "Chaîne complète", sans_faute: ", sans faute.",
+    hesitation: " hésitation", etape: "Étape ", sur: " sur ", cliquez_image: "Cliquez sur l’image.",
+    pas_ici: "Pas ici. Essayez ailleurs.", choisir_case: "Cliquez maintenant la case où la ranger.",
+    choisir_etiquette: "Choisissez une étiquette, puis sa case.", tout_range: "Tout est rangé",
+    cap: "Cap ", visee: " visée", triangle: " triangle", ferme: " fermé", visee_debut: "Cliquez une station, puis une autre."
+  };
   function nombre(v, decimales) {
     if (decimales === undefined) decimales = Math.abs(v) >= 100 ? 0 : (Math.abs(v) >= 10 ? 1 : 2);
-    return v.toLocaleString("fr-FR", { minimumFractionDigits: decimales, maximumFractionDigits: decimales });
+    return v.toLocaleString(EN ? "en-GB" : "fr-FR", { minimumFractionDigits: decimales, maximumFractionDigits: decimales });
   }
 
   // --- Tri à la volée par l'adresse de la page, sans recompiler :
@@ -72,7 +87,7 @@
       } while (copie.length > 2 && copie.every(function (e, k) { return +e.dataset.rang === k + 1; }));
       copie.forEach(function (e) { e.classList.remove("placee", "refus"); boite.appendChild(e); });
       attendu = 1; erreurs = 0;
-      etat.textContent = "Cliquez les étapes dans l’ordre.";
+      etat.textContent = T.ordre_debut;
     }
 
     etapes.forEach(function (etape) {
@@ -83,8 +98,8 @@
           boite.insertBefore(etape, boite.children[attendu - 1] || null);
           attendu++;
           etat.textContent = attendu > etapes.length
-            ? "Chaîne complète" + (erreurs ? " — " + erreurs + " hésitation" + (erreurs > 1 ? "s" : "") + "." : ", sans faute.")
-            : "Étape " + attendu + " sur " + etapes.length + "…";
+            ? T.chaine + (erreurs ? " — " + erreurs + T.hesitation + (erreurs > 1 ? "s" : "") + "." : T.sans_faute)
+            : T.etape + attendu + T.sur + etapes.length + "…";
         } else {
           erreurs++;
           etape.classList.remove("refus");
@@ -108,7 +123,7 @@
     var ailleurs = bloc.closest("section") && bloc.closest("section").querySelector(".retour-ici");
     if (ailleurs) {
       ailleurs.appendChild(retour);
-      retour.textContent = "Cliquez sur l’image.";
+      retour.textContent = T.cliquez_image;
       if (CORRIGE) {
         var justes = [];
         tous(".zone[data-juste='oui']", cadre).forEach(function (z) {
@@ -124,7 +139,7 @@
         retour.textContent = (zone.dataset.juste === "oui" ? "✓ " : "✗ ") + zone.dataset.retour;
       });
     });
-    cadre.addEventListener("click", function () { retour.textContent = "Pas ici. Essayez ailleurs."; });
+    cadre.addEventListener("click", function () { retour.textContent = T.pas_ici; });
   });
 
   // --- Pour aller plus loin : un panneau qui s'ouvre par-dessus la diapo
@@ -205,6 +220,30 @@
     appliquer();
   });
 
+  // --- Loupe : un clic agrandit l'image, le pointeur (ou le doigt) choisit ce que l'on regarde
+  tous(".loupe").forEach(function (bloc) {
+    var img = bloc.querySelector("img");
+    if (!img) return;
+    var zoom = +bloc.dataset.zoom || 3, actif = false;
+    function viser(e) {
+      var r = bloc.getBoundingClientRect();
+      var x = Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100));
+      var y = Math.max(0, Math.min(100, (e.clientY - r.top) / r.height * 100));
+      img.style.transformOrigin = x + "% " + y + "%";
+    }
+    function basculer(e) {
+      actif = !actif;
+      bloc.classList.toggle("zoomee", actif);
+      if (actif && e && e.clientX !== undefined && (e.clientX || e.clientY)) viser(e);
+      img.style.transform = actif ? "scale(" + zoom + ")" : "";
+    }
+    activer(bloc, basculer);
+    bloc.addEventListener("pointermove", function (e) { if (actif) viser(e); });
+    bloc.addEventListener("pointerdown", function (e) { if (actif) e.stopPropagation(); });
+    bloc.addEventListener("touchmove", function (e) { if (actif) e.stopPropagation(); }, { passive: true });
+    if (window.Reveal) Reveal.on("slidechanged", function () { if (actif) basculer(); });
+  });
+
   // --- Défiler : des images montrées une à une, en grand
   tous(".defiler").forEach(function (bloc) {
     var vues = tous(".defiler-vue", bloc);
@@ -271,8 +310,8 @@
     function bilan() {
       var reste = tous(".classer-etiquette", reserve).length;
       etat.textContent = reste
-        ? (choisie ? "Cliquez maintenant la case où la ranger." : "Choisissez une étiquette, puis sa case.")
-        : "Tout est rangé" + (erreurs ? " — " + erreurs + " hésitation" + (erreurs > 1 ? "s" : "") + "." : ", sans faute.");
+        ? (choisie ? T.choisir_case : T.choisir_etiquette)
+        : T.tout_range + (erreurs ? " — " + erreurs + T.hesitation + (erreurs > 1 ? "s" : "") + "." : T.sans_faute);
     }
     if (CORRIGE) { etiquettes.forEach(ranger); return; }
     for (var i = etiquettes.length - 1; i > 0; i--) {
@@ -310,6 +349,12 @@
     "Sud-ouest quart sud", "Sud-ouest", "Sud-ouest quart ouest", "Ouest-sud-ouest", "Ouest quart sud-ouest", "Ouest",
     "Ouest quart nord-ouest", "Ouest-nord-ouest", "Nord-ouest quart ouest", "Nord-ouest", "Nord-ouest quart nord",
     "Nord-nord-ouest", "Nord quart nord-ouest"];
+  if (EN) RHUMBS = ["North", "North by east", "North-northeast", "Northeast by north", "Northeast", "Northeast by east",
+    "East-northeast", "East by north", "East", "East by south", "East-southeast", "Southeast by east", "Southeast",
+    "Southeast by south", "South-southeast", "South by east", "South", "South by west", "South-southwest",
+    "Southwest by south", "Southwest", "Southwest by west", "West-southwest", "West by south", "West",
+    "West by north", "West-northwest", "Northwest by west", "Northwest", "Northwest by north",
+    "North-northwest", "North by west"];
   tous(".cap").forEach(function (bloc) {
     var lecture = bloc.querySelector(".cap-lecture");
     var rhumb = Math.round((+bloc.dataset.depart || 0) / 11.25);
@@ -317,7 +362,7 @@
       var r = ((rhumb % 32) + 32) % 32, degres = r * 11.25;
       bloc.style.setProperty("--cap", (rhumb * 11.25) + "deg");
       var chiffres = ("00" + Math.round(degres)).slice(-3);
-      lecture.innerHTML = "Cap " + chiffres + "°<small>" + RHUMBS[r] + "</small>";
+      lecture.innerHTML = T.cap + chiffres + "°<small>" + RHUMBS[r] + "</small>";
     }
     tous(".cap-bouton", bloc).forEach(function (b) {
       activer(b, function () { rhumb += +b.dataset.pas; appliquer(); });
@@ -357,8 +402,10 @@
       });
       var visees = Object.keys(traits).length;
       etat.textContent = visees
-        ? visees + " visée" + (visees > 1 ? "s" : "") + ", " + triangles + " triangle" + (triangles > 1 ? "s" : "") + " fermé" + (triangles > 1 ? "s" : "")
-        : "Cliquez une station, puis une autre.";
+        ? (EN
+            ? visees + T.visee + (visees > 1 ? "s" : "") + ", " + triangles + T.triangle + (triangles === 1 ? "" : "s") + T.ferme
+            : visees + T.visee + (visees > 1 ? "s" : "") + ", " + triangles + T.triangle + (triangles > 1 ? "s" : "") + T.ferme + (triangles > 1 ? "s" : ""))
+        : T.visee_debut;
       bloc.classList.toggle("reussi", triangles >= objectif);
     }
     points.forEach(function (pt) {

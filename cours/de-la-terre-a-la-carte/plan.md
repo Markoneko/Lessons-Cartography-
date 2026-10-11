@@ -22,7 +22,7 @@
 | 1.8 | Où est le haut de la carte ? | Appui | à revoir | Sur la carte en T dans l’O, l’Orient est en haut : orienter, c’est tourner vers l’est. | zones à cliquer : trouver sur la carte le mot « Oriens », qui donne la réponse ; bonus « Pour aller plus loin » sur la carte en T dans l’O |  |
 | 1.9 | Tournez la carte | Socle | figé | Al-Idrisi place le sud en haut : le nord en haut n’est qu’une convention. | pivoter la carte jusqu’à reconnaître la Méditerranée |  |
 | 2.0 | Regarder l’horizon | partie | figé | Deuxième regard : vers l’horizon. | aucune |  |
-| 2.1 | Une carte sans géométrie | Appui | à revoir | La table de Peutinger garde les étapes et les liaisons, pas les formes. | question : ce qui est juste, ce qui est faux ; bonus vers itiner-e.org |  |
+| 2.1 | Une carte sans géométrie | Appui | à revoir | La table de Peutinger garde les étapes et les liaisons, pas les formes. | loupe sur la table ; question : ce qui est juste, ce qui est faux ; bonus vers itiner-e.org |  |
 | 2.2 | Suivre un cap |  | à revoir | Les portulans tracent des routes : la carte devient un outil de navigation. | cap : un compas fait tourner la route sur le portulan, quart par quart |  |
 | 2.3 | Des instruments | option | à revoir | Viser, mesurer un angle : l’alidade. | aucune |  |
 | 2.4 | Mercator, pour garder le cap | Appui | figé | Une projection qui conserve les angles, au prix des surfaces. | bonus « Pour aller plus loin » : une projection abandonnée à l’ONU |  |

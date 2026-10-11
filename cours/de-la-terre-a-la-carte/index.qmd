@@ -463,12 +463,14 @@ Deuxième regard : parcourir, mesurer, contrôler.
 
 ::: {.fiche n="2.1" etat="a-revoir"}
 Intention : La table de Peutinger garde les étapes et les liaisons, pas les formes.
-Expérience : question : ce qui est juste, ce qui est faux ; bonus vers itiner-e.org
+Expérience : loupe sur la table ; question : ce qui est juste, ce qui est faux ; bonus vers itiner-e.org
 Demande :
 :::
 
 ::: {.centre}
-![](images/peutinger.jpg){fig-alt="Extrait de la table de Peutinger : routes, étapes et villes étirées en un long ruban" height="300"}
+::: {.loupe zoom="3"}
+![](images/peutinger.jpg){fig-alt="Extrait de la table de Peutinger : routes, étapes et villes étirées en un long ruban" height="310"}
+:::
 :::
 
 :::: {.columns .resserre}

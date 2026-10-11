@@ -16,6 +16,8 @@ Demande : ce que l'enseignant veut changer.
 :::
 ```
 
+Quand un cours existe en deux langues, `index.qmd` reste la référence et `index-en.qmd` sa traduction (fiches `Intention :`, `Experience :`, `Request :`, registre `figes-en.json`). Une correction demandée dans l'un est reportée dans l'autre, et le compte rendu le dit.
+
 ## Ce que l'on a le droit de toucher
 
 | État | Règle |

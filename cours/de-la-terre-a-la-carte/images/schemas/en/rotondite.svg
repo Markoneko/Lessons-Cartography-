@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 330" role="img" aria-label="Three observations: a ship vanishing hull first, the Earth's round shadow on the Moon, stars changing height">
+  <!-- 1. le navire -->
+  <path class="s-eau" d="M20 250 Q180 150 340 250 Z"/>
+  <path class="s-trait" d="M20 250 Q180 150 340 250"/>
+  <path class="s-trait" d="M82 205 l34 -8 l-4 14 z M98 198 v-34 l20 26"/>
+  <path class="s-accent" d="M252 204 v-30 l18 24"/>
+  <path class="s-tirets" d="M60 150 L300 190"/>
+  <circle class="s-plein-accent" cx="54" cy="149" r="6"/>
+  <text class="s-titre" x="180" y="290" text-anchor="middle">The ship</text>
+  <text class="s-petit" x="180" y="312" text-anchor="middle">the hull vanishes before the mast</text>
+  <!-- 2. l'éclipse : the bright Moon, bitten by the Earth's round shadow -->
+  <defs><clipPath id="rotondite-lune-en"><circle cx="560" cy="150" r="78"/></clipPath></defs>
+  <circle cx="560" cy="150" r="78" style="fill: #fff"/>
+  <circle cx="452" cy="232" r="150" clip-path="url(#rotondite-lune-en)" style="fill: var(--encre)"/>
+  <circle class="s-trait" cx="560" cy="150" r="78"/>
+  <text class="s-titre" x="560" y="290" text-anchor="middle">The lunar eclipse</text>
+  <text class="s-petit" x="560" y="312" text-anchor="middle">the Earth's shadow is always round</text>
+  <!-- 3. les étoiles -->
+  <path class="s-eau" d="M780 250 Q940 150 1100 250 Z"/>
+  <path class="s-trait" d="M780 250 Q940 150 1100 250"/>
+  <path class="s-trait" d="M850 213 v-22 M1030 213 v-22"/>
+  <path class="s-accent" d="M850 191 L900 70 M1030 191 L1004 60"/>
+  <path class="s-plein-accent" d="M900 58 l4 9 l10 1 l-8 7 l3 10 l-9 -6 l-9 6 l3 -10 l-8 -7 l10 -1 z"/>
+  <path class="s-plein-accent" d="M1002 46 l4 9 l10 1 l-8 7 l3 10 l-9 -6 l-9 6 l3 -10 l-8 -7 l10 -1 z"/>
+  <text class="s-titre" x="940" y="290" text-anchor="middle">The stars</text>
+  <text class="s-petit" x="940" y="312" text-anchor="middle">their height changes as you travel north</text>
+</svg>

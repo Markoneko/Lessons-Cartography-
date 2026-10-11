@@ -306,6 +306,23 @@
 }
 .reveal .comparer-etiquette.actif { color: var(--bleu); font-weight: 700; }
 
+/* --- Loupe : agrandir une image d'un clic ----------------------------------- */
+
+.reveal .loupe {
+  display: inline-block; position: relative; overflow: hidden; line-height: 0;
+  cursor: zoom-in; touch-action: none; border: 1px solid var(--filet);
+}
+.reveal .loupe.zoomee { cursor: zoom-out; }
+.reveal .slides section .loupe p { margin: 0; }
+.reveal .slides section .loupe img { display: block; margin: 0; transition: transform 0.25s ease-out; will-change: transform; }
+.reveal .loupe-aide {
+  position: absolute; right: 8px; bottom: 8px; line-height: 1.2;
+  font-size: 14px; color: var(--blanc); background: rgba(40, 59, 137, 0.85);
+  padding: 4px 10px; border-radius: 12px; pointer-events: none;
+}
+.reveal .loupe.zoomee .loupe-aide { display: none; }
+html.reveal-print .reveal .loupe-aide { display: none; }
+
 /* --- Défiler des images, une à une --------------------------------------- */
 
 .reveal .defiler-vues { line-height: 0; text-align: center; }
@@ -443,6 +460,7 @@ html.reveal-print .reveal .ordre-etat { display: none; }
 html.reveal-print .reveal .zones-retour { display: none; }
 html.reveal-print .reveal .plus-bouton { position: absolute; }
 html.reveal-print .reveal .plus-bouton::after { content: " (version interactive)"; font-weight: 400; }
+html.reveal-print:lang(en) .reveal .plus-bouton::after { content: " (interactive version)"; }
 html.reveal-print .reveal .plus-panneau { display: none !important; }
 html.reveal-print .reveal .pivot-commandes,
 html.reveal-print .reveal .visee-effacer,

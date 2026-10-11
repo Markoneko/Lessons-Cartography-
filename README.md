@@ -231,6 +231,14 @@ Le sud était en haut.
 :::
 ```
 
+**Loupe** — un clic agrandit l'image dans son cadre, la souris (ou le doigt) déplace la zone agrandie, un second clic revient à la vue d'ensemble. `zoom` règle l'agrandissement, 3 par défaut. La loupe ne montre que ce que l'image contient : prévoir une image d'au moins 2 000 pixels de large.
+
+```markdown
+::: {.loupe zoom="3"}
+![](images/peutinger.jpg){fig-alt="Description" height="310"}
+:::
+```
+
 **Curseur** — une valeur `x` pilote des résultats calculés, écrits entre accents graves et accolades. Après la barre, le nombre de décimales.
 
 ```markdown
@@ -321,6 +329,17 @@ garder-niveaux: socle
 masquer-optionnels: true
 ```
 
+## Une version dans une autre langue
+
+La version anglaise d'un cours est un second fichier à côté du premier : `index-en.qmd`, avec `lang: en` dans son en-tête. Cette ligne suffit pour que tout ce que le gabarit écrit lui-même passe en anglais : noms des niveaux (Core, Support, Further), « Question », « Answer », « Going further », messages des exercices, format des nombres. La typographie française (espaces avant `:`, `;`, `?`) n'est appliquée qu'en français.
+
+- Les fiches gardent les mêmes numéros ; leurs lignes s'écrivent `Intention :`, `Experience :`, `Request :`.
+- Les schémas qui contiennent du texte sont doublés dans `images/schemas/en/`. Les images sont partagées.
+- La compilation produit `index-en.html` et `plan-en.md` ; le script de gel tient un registre séparé, `figes-en.json`.
+- Les deux fichiers sont indépendants : une correction faite dans l'un est à reporter dans l'autre.
+
+Pour une autre langue, ajouter un jeu de textes en tête de `_briques/gabarit.lua` et de `_briques/briques.html`.
+
 ## Où est quoi
 
 | Dossier | Contenu | On y touche ? |
@@ -340,4 +359,5 @@ Changer une couleur ou une police : tout est en tête de `_charte/geodata.css`.
 - Les bonus « Pour aller plus loin » ne figurent pas dans le PDF.
 - Les liens de la carte du cours ne fonctionnent pas dans le PDF.
 - Les réponses des étudiants ne sont pas enregistrées.
+- Dans la version anglaise, les images qui contiennent du texte français (profil du géoïde, zones Lambert, schéma SPOT…) ne sont pas traduites.
 - Les formules mathématiques s'affichent sans réseau, mais avec un rendu plus simple que LaTeX.

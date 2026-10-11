@@ -2,6 +2,33 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-11 (fin) — Deux retouches et version anglaise
+
+**Retouches demandées par Marc**
+
+- 2.1 : nouvelle brique `loupe`. Un clic sur la table de Peutinger l'agrandit trois fois dans son cadre, la souris déplace la zone vue, un second clic revient à l'ensemble. La diapo était à revoir, son état n'a pas été changé.
+- 1.4 : l'éclipse de Lune est redessinée, Lune claire et ombre ronde sombre. La diapo est figée ; seul le fichier `images/schemas/rotondite.svg` a changé, à la demande explicite de Marc, et le texte de la diapo n'a pas bougé (le script le confirme).
+
+**Version anglaise**
+
+- `index-en.qmd`, « From the Earth to the Map » : les 54 diapos, mêmes numéros de fiche, toutes à l'état « à revoir » puisque Marc ne l'a pas encore relue.
+- Le gabarit lit `lang` dans l'en-tête du cours : libellés, messages des exercices, format des nombres et rose des vents existent en français et en anglais. La typographie française n'est plus appliquée hors du français.
+- Neuf schémas doublés dans `images/schemas/en/`.
+- `plan-en.md` et `figes-en.json` sont tenus à part des fichiers français.
+
+**Choix faits, à confirmer par Marc**
+
+- Niveaux : Core, Support, Further. Les initiales S, A, V sont perdues ; les pictogrammes ne changent pas.
+- « Les trois regards » : Looking up, Looking at the horizon, Looking from above.
+- Altitude et hauteur : *elevation* (au-dessus du géoïde) et *height* (au-dessus de l'ellipsoïde).
+- Intercalaire 4 : « Which shape do we mean? », plus court que la traduction littérale, qui passait sur deux lignes.
+
+**Limites**
+
+- L'image de la table de Peutinger ne fait que 720 pixels de large : agrandie trois fois, elle est floue et les noms restent illisibles. Un scan plus fin, déposé sous le même nom, suffit à régler le problème.
+- Les images qui contiennent du texte français ne sont pas traduites.
+- Les deux versions sont deux fichiers indépendants : toute correction est à faire deux fois.
+
 ## 2026-10-11 (suite) — Premier passage de corrections par les fiches
 
 Marc a dégelé 27 diapos, écrit ses demandes dans les fiches et retouché des textes directement. Le script a confirmé qu'aucune des 27 diapos restées figées n'a été modifiée, ni par lui ni par ce passage.
