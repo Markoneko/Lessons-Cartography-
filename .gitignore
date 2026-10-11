@@ -5,3 +5,7 @@ _sortie/
 /.quarto/
 
 **/*.quarto_ipynb
+
+# Fichiers produits, déposés à côté du cours : ils se régénèrent, on ne les envoie pas
+cours/**/*.html
+cours/**/*.pdf

@@ -33,6 +33,41 @@ Pour travailler avec un aperçu qui se met à jour à chaque enregistrement :
 quarto preview cours/mon-cours/index.qmd
 ```
 
+## Le plan et le cours : un seul fichier
+
+Le plan n'est pas un document à part. Sous chaque titre de diapo, une **fiche** dit ce que la diapo doit faire et où elle en est. Elle n'apparaît ni dans le HTML ni dans le PDF.
+
+```markdown
+## Tournez la carte {.socle}
+
+::: {.fiche n="1.9" etat="fige"}
+Intention : Al-Idrisi place le sud en haut ; le nord en haut n'est qu'une convention.
+Expérience : pivoter la carte jusqu'à reconnaître la Méditerranée.
+Demande :
+:::
+```
+
+| État | Sens | Ce que fait un assistant |
+|---|---|---|
+| `fige` | la diapo convient | il n'y touche pas |
+| `a-revoir` | une demande est écrite | il modifie cette diapo, et elle seule |
+| `a-realiser` | la fiche existe, pas le contenu | il construit la diapo |
+
+- **Demander un changement** : passer l'état à `a-revoir` et écrire la ligne « Demande ». Ce qui est entre guillemets « » sera recopié mot pour mot.
+- **Ajouter une diapo** : écrire son titre et sa fiche, avec `etat="a-realiser"`.
+- **Déplacer ou supprimer une diapo** : couper-coller ou effacer le bloc, du `##` jusqu'au `##` suivant.
+- **Figer** : remettre `etat="fige"` quand la diapo convient.
+
+À chaque compilation, `plan.md` est régénéré à côté du cours : le tableau de toutes les diapos, leur état, et la liste des demandes en attente. On le lit, on ne le modifie pas.
+
+Un script garantit que les diapos figées ne bougent pas :
+
+```
+python3 outils/figer.py verifier cours/de-la-terre-a-la-carte/index.qmd
+```
+
+Les règles que doit suivre un assistant sont dans `CONSIGNES-IA.md`.
+
 ## Créer un nouveau cours
 
 1. Copier le dossier `cours/de-la-terre-a-la-carte` et le renommer.

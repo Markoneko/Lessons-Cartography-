@@ -6,7 +6,8 @@
     2. la diapo « carte du cours », générée toute seule ;
     3. les briques d'exercice (question, qcm, ordre, zones) et d'expérience
        (pivoter, comparer, curseur, classer, cap, visées, pour aller plus loin, schéma) ;
-    4. le tri des diapos (ne garder qu'un niveau, masquer les optionnelles).
+    4. le tri des diapos (ne garder qu'un niveau, masquer les optionnelles) ;
+    5. le plan du cours, à partir des fiches posées sous chaque titre.
 
   On n'a normalement pas besoin de modifier ce fichier pour écrire un cours.
 ]]
@@ -618,6 +619,92 @@ local function carte_du_cours(inventaire, parties, seulement)
 end
 
 ----------------------------------------------------------------------------
+-- Fiches : le plan du cours, porté par chaque diapo
+----------------------------------------------------------------------------
+
+local ETATS = { fige = "figé", ["a-revoir"] = "à revoir", ["a-realiser"] = "à réaliser" }
+
+-- Le texte d'un bloc, en gardant les retours à la ligne tels qu'ils sont écrits.
+local function texte_avec_lignes(blocs)
+  local morceaux = {}
+  for _, bloc in ipairs(blocs) do
+    if bloc.content then
+      local ligne = pandoc.List()
+      for _, el in ipairs(bloc.content) do
+        if el.t == "SoftBreak" or el.t == "LineBreak" then
+          table.insert(morceaux, pandoc.utils.stringify(pandoc.Plain(ligne)))
+          ligne = pandoc.List()
+        else
+          ligne:insert(el)
+        end
+      end
+      table.insert(morceaux, pandoc.utils.stringify(pandoc.Plain(ligne)))
+    end
+  end
+  return morceaux
+end
+
+-- ::: {.fiche n="1.9" etat="fige"}  Intention : … / Expérience : … / Demande : …
+local function lire_fiche(div)
+  local fiche = { n = div.attributes["n"] or "", etat = div.attributes["etat"] or "a-revoir",
+                  intention = "", experience = "", demande = "" }
+  local champ = nil
+  for _, ligne in ipairs(texte_avec_lignes(div.content)) do
+    local cle, reste = ligne:match("^%s*([^:]-)%s*:%s*(.*)$")
+    local c = cle and cle:lower() or ""
+    if c:match("^int") then champ = "intention"
+    elseif c:match("^exp") then champ = "experience"
+    elseif c:match("^dem") then champ = "demande"
+    else reste = ligne end
+    if champ then
+      fiche[champ] = (fiche[champ] ~= "" and (fiche[champ] .. " ") or "") .. (reste or "")
+    end
+  end
+  return fiche
+end
+
+local function cellule(texte)
+  return ((texte or ""):gsub("|", "/"):gsub("%s+", " "):gsub("^%s+", ""):gsub("%s+$", ""))
+end
+
+-- Écrit plan.md à côté du cours : une vue d'ensemble, régénérée à chaque compilation.
+local function ecrire_plan(fiches, titre_cours)
+  if #fiches == 0 then return end
+  local entree = (quarto and quarto.doc and quarto.doc.input_file)
+      or (PANDOC_STATE and PANDOC_STATE.input_files[1]) or ""
+  local chemin = pandoc.path.join({ pandoc.path.directory(entree), "plan.md" })
+  local comptes, demandes = {}, {}
+  local l = {
+    "# Plan — " .. titre_cours, "",
+    "> Fichier généré à chaque compilation à partir des fiches de `index.qmd`.",
+    "> Ne pas le modifier : pour changer le plan, modifier les fiches.", "",
+    "| N° | Diapo | Niveau | État | Intention | Expérience | Demande |",
+    "|----|-------|--------|------|-----------|------------|---------|",
+  }
+  for _, f in ipairs(fiches) do
+    comptes[f.etat] = (comptes[f.etat] or 0) + 1
+    if f.demande ~= "" then table.insert(demandes, f) end
+    table.insert(l, string.format("| %s | %s | %s | %s | %s | %s | %s |", cellule(f.n), cellule(f.titre),
+      cellule(f.niveau), ETATS[f.etat] or f.etat, cellule(f.intention), cellule(f.experience), cellule(f.demande)))
+  end
+  table.insert(l, "")
+  table.insert(l, "## Où en est-on")
+  table.insert(l, "")
+  table.insert(l, string.format("- %d diapos, dont %d figées, %d à revoir, %d à réaliser.", #fiches,
+    comptes["fige"] or 0, comptes["a-revoir"] or 0, comptes["a-realiser"] or 0))
+  if #demandes > 0 then
+    table.insert(l, "- Demandes en attente :")
+    for _, f in ipairs(demandes) do
+      table.insert(l, "    - " .. f.n .. " " .. cellule(f.titre) .. " — " .. cellule(f.demande))
+    end
+  else
+    table.insert(l, "- Aucune demande en attente.")
+  end
+  local f = io.open(chemin, "w")
+  if f then f:write(table.concat(l, "\n") .. "\n"); f:close() end
+end
+
+----------------------------------------------------------------------------
 -- Passage principal
 ----------------------------------------------------------------------------
 
@@ -642,7 +729,21 @@ function Pandoc(doc)
   local inventaire = { socle = {}, appui = {}, veille = {} }
   local parties, id_carte, dernier_id = {}, nil, nil
   local gardes, saute = pandoc.List(), false
+  local fiches, diapo = {}, { titre = "Couverture", niveau = "" }
   for _, bloc in ipairs(doc.blocks) do
+    if bloc.t == "Header" and bloc.level == 2 then
+      local niv = niveau_de(bloc.classes)
+      local mention = niv and LIBELLE[niv] or ""
+      if bloc.classes:includes("intercalaire") then mention = "partie" end
+      if bloc.classes:includes("optionnel") then mention = mention .. (mention ~= "" and ", " or "") .. "option" end
+      diapo = { titre = pandoc.utils.stringify(bloc.content), niveau = mention }
+    end
+    if bloc.t == "Div" and bloc.classes:includes("fiche") then
+      local f = lire_fiche(bloc)
+      f.titre, f.niveau = diapo.titre, diapo.niveau
+      table.insert(fiches, f)
+      goto suivant
+    end
     if bloc.t == "Header" and bloc.level <= 2 then
       saute = false
       if bloc.level == 2 then
@@ -663,7 +764,9 @@ function Pandoc(doc)
       id_carte = dernier_id
     end
     if not saute then gardes:insert(bloc) end
+    ::suivant::
   end
+  if EN_HTML then ecrire_plan(fiches, pandoc.utils.stringify(doc.meta.title or "")) end
 
   -- 2e passage : habiller chaque diapo
   local sortie, partie = pandoc.List(), 0

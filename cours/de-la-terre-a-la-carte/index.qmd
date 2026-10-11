@@ -12,7 +12,19 @@ title-slide-attributes:
   data-background-position: right 56px center
 ---
 
+::: {.fiche n="0.1" etat="fige"}
+Intention : Deux jeunes filles penchées sur une carte : lire une carte, c'est déjà regarder le monde à plusieurs.
+Expérience : aucune
+Demande :
+:::
+
 ## Que regardent-elles ?
+
+::: {.fiche n="0.2" etat="fige"}
+Intention : Une carte n'est pas le monde : c'est une représentation que l'on interroge et une exquisse du réel.
+Expérience : question : que peut-on savoir d'un lieu sans y être allé ?
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="52%"}
@@ -41,6 +53,12 @@ qui examinent une carte de géographie.
 
 ## Carte du cours
 
+::: {.fiche n="0.3" etat="fige"}
+Intention : Les deux mouvements, et la légende S / A / V.
+Expérience : liens vers chaque diapo
+Demande :
+:::
+
 ::: {.carte-du-cours}
 :::
 
@@ -51,6 +69,12 @@ Les exemples ne figurent pas ici : ils illustrent, ils ne sont pas à réviser.
 :::
 
 ## Représenter, c'est choisir {.socle}
+
+::: {.fiche n="0.4" etat="fige"}
+Intention : Un milieu, un sujet qui regarde, un objet que l'on montre : toute carte tranche.
+Expérience : aucune
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -74,6 +98,12 @@ Ces représentations de l'espace sont liées à des fonctions. Demander des exem
 :::
 
 ## À quoi sert une carte ? {.socle}
+
+::: {.fiche n="0.5" etat="fige"}
+Intention : Se repérer, s'orienter, se déplacer, contrôler, penser.
+Expérience : QCM à réponses multiples, sur la carte de Nancy au 1:25 000
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="46%"}
@@ -101,6 +131,12 @@ Que permet cette carte ? Plusieurs réponses sont justes.
 
 ## Avant l'écriture
 
+::: {.fiche n="0.6" etat="fige"}
+Intention : À Bedolina, on abstrait déjà un territoire : champs, chemins, maisons.
+Expérience : zones à cliquer : un champ, un chemin, une maison
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="62%"}
 ::: {.zones image="images/bedolina.jpg" alt="Gravure rupestre de Bedolina : rectangles ponctués, lignes sinueuses et petites constructions"}
@@ -125,9 +161,21 @@ Se confronter à un environnement à appréhender.
 
 ## Lever les yeux {.intercalaire}
 
+::: {.fiche n="1.0" etat="fige"}
+Intention : Premier regard : vers le ciel.
+Expérience : aucune
+Demande :
+:::
+
 Premier regard : se situer dans le cosmos.
 
 ## Le monde vu de Babylone
+
+::: {.fiche n="1.1" etat="fige"}
+Intention : Le monde connu, entouré d'eau, et au-delà l'inconnu.
+Expérience : zones à cliquer : Babylone, l'Euphrate, l'eau, une région inconnue
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="42%"}
@@ -161,6 +209,12 @@ C'est avant tout un outil pour se mouvoir : repérage et orientation.
 
 ## Des mondes en forme de mythes {.optionnel}
 
+::: {.fiche n="1.2" etat="fige"}
+Intention : Chaque culture donne au monde la forme de son récit.
+Expérience : aucune
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="40%"}
 ![](images/cosmogonie-perse.jpg){fig-alt="Planche illustrée du monde selon la cosmogonie perse : un œuf contenant la Terre"}
@@ -179,6 +233,12 @@ Cette connaissance va passer par la géométrie. Cartographie et géométrie ser
 :::
 
 ## Le connu et l'illimité {.veille}
+
+::: {.fiche n="1.3" etat="fige"}
+Intention : Hécatée dessine la frontière entre l'œkoumène et l'apeiron.
+Expérience : aucune
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="46%"}
@@ -203,6 +263,12 @@ On change d'échelle par rapport au cadastre. Pour Thalès de Milet, la Terre es
 
 ## Comment savoir que la Terre est ronde ? {.appui}
 
+::: {.fiche n="1.4" etat="fige"}
+Intention : Trois observations suffisent, sans quitter le sol.
+Expérience : question (prédiction), puis le schéma des trois observations
+Demande :
+:::
+
 ::: {.question etiquette="Prédiction"}
 Vous n'avez ni avion ni satellite. **Quelles observations suffisent ?**
 :::
@@ -218,6 +284,12 @@ Demander aux étudiants d'en proposer d'autres.
 :::
 
 ## Mesurer la Terre avec une ombre {.appui}
+
+::: {.fiche n="1.5" etat="fige"}
+Intention : Ératosthène : un angle et une distance donnent un tour de Terre.
+Expérience : curseur : faire varier l'angle, lire le tour de la Terre
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="52%"}
@@ -244,6 +316,12 @@ La longueur du stade reste discutée.
 
 ## Une carte pour penser {.veille .optionnel}
 
+::: {.fiche n="1.6" etat="fige"}
+Intention : Le globe de Cratès invente des terres que personne n'a vues.
+Expérience : aucune
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="42%"}
 ![](images/globe-crates.png){fig-alt="Globe de Cratès : quatre terres séparées par deux océans qui se croisent"}
@@ -263,6 +341,12 @@ et l'harmonie de la sphère supposent l'existence d'espaces autres.
 :::
 
 ## Une grille sur le monde {.socle}
+
+::: {.fiche n="1.7" etat="fige"}
+Intention : Avec Ptolémée, latitudes et longitudes : la première projection.
+Expérience : remise en ordre : quatre cartes antiques, par date
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="34%"}
@@ -288,6 +372,12 @@ sur la vision sphérique de la Terre, d'où les longitudes et latitudes.
 :::
 
 ## Où est le haut de la carte ? {.appui}
+
+::: {.fiche n="1.8" etat="fige"}
+Intention : Sur la carte en T dans l'O, l'Orient est en haut : orienter, c'est tourner vers l'est.
+Expérience : question sur le mot « orienter » ; bonus « Pour aller plus loin » sur la carte en T dans l'O
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -324,6 +414,12 @@ Période de repli spatial, intérêt plus fort pour le monde spirituel. Exceptio
 
 ## Tournez la carte {.socle}
 
+::: {.fiche n="1.9" etat="fige"}
+Intention : Al-Idrisi place le sud en haut : le nord en haut n'est qu'une convention.
+Expérience : pivoter la carte jusqu'à reconnaître la Méditerranée
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="46%"}
 ::: {.pivoter image="images/al-idrisi.jpg" alt="Planisphère circulaire d'Al-Idrisi, copie de 1456" cible="180" tolerance="20"}
@@ -341,9 +437,21 @@ Quelque chose vous échappe ? Faites tourner la carte, à la souris ou avec les 
 
 ## Regarder l'horizon {.intercalaire}
 
+::: {.fiche n="2.0" etat="fige"}
+Intention : Deuxième regard : vers l'horizon.
+Expérience : aucune
+Demande :
+:::
+
 Deuxième regard : parcourir, mesurer, contrôler.
 
 ## Une carte sans géométrie {.appui}
+
+::: {.fiche n="2.1" etat="fige"}
+Intention : La table de Peutinger garde les étapes et les liaisons, pas les formes.
+Expérience : question : ce qui est juste, ce qui est faux ; bonus vers itiner-e.org
+Demande :
+:::
 
 ![](images/peutinger.jpg){fig-alt="Extrait de la table de Peutinger : routes, étapes et villes étirées en un long ruban" height="200"}
 
@@ -377,6 +485,12 @@ Copie médiévale d'une carte romaine. Faire le lien avec la topologie d'un rés
 
 ## Suivre un cap
 
+::: {.fiche n="2.2" etat="fige"}
+Intention : Les portulans tracent des routes : la carte devient un outil de navigation.
+Expérience : cap : un compas fait tourner la route sur le portulan, quart par quart
+Demande :
+:::
+
 ::: {.cap image="images/portulan-1540.jpg" alt="Portulan de 1540 : l'Europe et la Méditerranée couvertes de lignes de vents" x="44" y="57" depart="90"}
 Sur un portulan, les lignes rayonnent des roses des vents. Le marin choisit celle qui mène au port, lit son cap, et le tient au compas.
 
@@ -388,6 +502,12 @@ Portulans : cartes de navigation, 1540. La carte devient un outil pour tenir une
 :::
 
 ## Des instruments {.optionnel}
+
+::: {.fiche n="2.3" etat="fige"}
+Intention : Viser, mesurer un angle : l'alidade.
+Expérience : aucune
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="58%"}
@@ -401,6 +521,12 @@ Viser un astre, lire un angle : avec l'alidade, la position se mesure au lieu de
 ::::
 
 ## Mercator, pour garder le cap {.appui}
+
+::: {.fiche n="2.4" etat="fige"}
+Intention : Une projection qui conserve les angles, au prix des surfaces.
+Expérience : bonus « Pour aller plus loin » : une projection abandonnée à l'ONU
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="44%"}
@@ -430,6 +556,12 @@ Le planisphère de droite, lui, l'est.
 
 ## Mesurer un pays {.socle}
 
+::: {.fiche n="2.5" etat="fige"}
+Intention : La triangulation : couvrir un territoire de triangles à partir d'une base.
+Expérience : visées : relier les stations par-dessus la Manche, sur le plan des triangles Greenwich – Paris
+Demande :
+:::
+
 ::: {.visees image="images/triangulation-greenwich-paris.jpg" alt="Plan des triangles reliant les observatoires de Greenwich et de Paris, 1784-1790" objectif="2" solution="1-2 1-3 1-4 2-3 2-4 3-4"}
 Entre 1784 et 1790, Anglais et Français relient leurs observatoires par-dessus la Manche.
 
@@ -451,6 +583,12 @@ Les visées au-dessus de la Manche dépassent 40 km ; on observe de nuit, sur de
 
 ## La carte de Cassini {.appui}
 
+::: {.fiche n="2.6" etat="fige"}
+Intention : Première carte d'un pays entier levée par triangulation.
+Expérience : aucune
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="58%"}
 ![](images/cassini-paris-1780.jpg){fig-alt="Paris et ses environs sur la carte de Cassini, vers 1780"}
@@ -465,6 +603,12 @@ Elle servira de modèle à toute l'Europe.
 ::::
 
 ## La carte, outil de pouvoir {.veille}
+
+::: {.fiche n="2.7" etat="fige"}
+Intention : Du plan de bataille à la frontière coloniale : cartographier, c'est contrôler.
+Expérience : question : que dit la légende des îles sur celui qui dessine ?
+Demande :
+:::
 
 ::: {.mosaique}
 ![](images/austerlitz-1805.jpg){fig-alt="Plan de la bataille d'Austerlitz, 2 décembre 1805"}
@@ -497,6 +641,12 @@ Elle se démarque aussi par la perspective plongeante : l'observateur domine et 
 
 ## Sur le terrain {.optionnel}
 
+::: {.fiche n="2.8" etat="fige"}
+Intention : Planchette, théodolite, tour géodésique : le métier de géomètre.
+Expérience : aucune
+Demande :
+:::
+
 ::: {.mosaique}
 ![](images/planchette-gravure.jpg){fig-alt="Gravure : deux géomètres et leur planchette"}
 
@@ -510,6 +660,12 @@ Elle se démarque aussi par la perspective plongeante : l'observateur domine et 
 La planchette pour dessiner sur place, le théodolite pour mesurer les angles, la tour pour voir plus loin : le métier ne change que par ses instruments.
 
 ## Nancy, trois siècles {.appui}
+
+::: {.fiche n="2.9" etat="fige"}
+Intention : Le même lieu, de Cassini à la carte au 1:25 000.
+Expérience : comparer : curseur entre Cassini, l'état-major et le 1:25 000
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="62%"}
@@ -535,9 +691,21 @@ réexporter les trois couches depuis un SIG sur la même emprise.
 
 ## Regarder d'en haut {.intercalaire}
 
+::: {.fiche n="3.0" etat="fige"}
+Intention : Troisième regard : depuis le ciel.
+Expérience : aucune
+Demande :
+:::
+
 Troisième regard : il se retourne, et se centre sur la Terre.
 
 ## Prendre de la hauteur {.appui}
+
+::: {.fiche n="3.1" etat="fige"}
+Intention : La photographie aérienne remplace le lever sur le terrain.
+Expérience : aucune
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="56%"}
@@ -554,6 +722,12 @@ Avec l'avion, on ne lève plus le terrain point par point : on le photographie, 
 
 ## Le satellite {.appui}
 
+::: {.fiche n="3.2" etat="fige"}
+Intention : Un capteur, une orbite, une image : le principe de l'acquisition.
+Expérience : aucune
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="56%"}
 ![](images/schema-acquisition-spot.jpg){fig-alt="Schéma d'acquisition d'une image par le satellite SPOT, du Soleil à la station de réception"}
@@ -568,6 +742,12 @@ Ce schéma est le point de départ du cours de télédétection.
 ::::
 
 ## Une forêt vue de l'espace
+
+::: {.fiche n="3.3" etat="fige"}
+Intention : La limite du parc national d'Egmont se lit depuis l'orbite.
+Expérience : zones à cliquer : où passe la limite de la forêt ? puis « Qu'est-ce que cela dit du monde ? »
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="60%"}
@@ -590,6 +770,12 @@ Cette limite a d'abord été tracée au compas, sur une carte. La carte ne décr
 
 ## Nancy, aujourd'hui
 
+::: {.fiche n="3.4" etat="fige"}
+Intention : La forêt et les haies décrites en données, plus seulement dessinées.
+Expérience : comparer : curseur entre la carte, la BD Forêt et les haies
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="62%"}
 ::: {.comparer}
@@ -608,6 +794,12 @@ C'est la matière première d'un SIG.
 ::::
 
 ## Les trois regards {.socle}
+
+::: {.fiche n="3.5" etat="fige"}
+Intention : Lever les yeux, regarder l'horizon, regarder d'en haut : la bascule.
+Expérience : classer six documents du cours dans leur regard
+Demande :
+:::
 
 ::: {.schema fichier="images/schemas/trois-regards.svg" hauteur="170"}
 :::
@@ -636,12 +828,24 @@ Rapport centrifuge, puis tangentiel, puis centripète.
 
 ## De quelle forme parle-t-on ? {.intercalaire}
 
+::: {.fiche n="4.0" etat="fige"}
+Intention : Du plan au géoïde : quatre formes, chacune corrige la précédente.
+Expérience : schéma de l'escalier des formes, à la montée
+Demande :
+:::
+
 La montée : chaque forme corrige la précédente.
 
 ::: {.schema fichier="images/schemas/escalier-montee.svg"}
 :::
 
 ## Le plan suffit… jusqu'où ? {.appui}
+
+::: {.fiche n="4.1" etat="fige"}
+Intention : Sur 1 km, la Terre s'écarte du plan de 8 cm ; sur 10 km, de 8 m.
+Expérience : question (prédiction) : à quelle distance l'erreur dépasse-t-elle un mètre ?
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -668,6 +872,12 @@ Entre 3 et 4 km : assez pour une parcelle, pas pour un massif.
 
 ## La sphère {.socle}
 
+::: {.fiche n="4.2" etat="fige"}
+Intention : Un centre, un rayon : le premier modèle global.
+Expérience : aucune
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="40%"}
 ![](images/globe.png){fig-alt="Globe terrestre en relief"}
@@ -683,6 +893,12 @@ La sphère suffit pour raisonner, pour une carte du monde, pour un calcul rapide
 ::::
 
 ## L'ellipsoïde {.socle}
+
+::: {.fiche n="4.3" etat="fige"}
+Intention : Newton contre Cassini : la Terre est aplatie aux pôles, d'une vingtaine de kilomètres.
+Expérience : QCM : allongée ou aplatie ?
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="54%"}
@@ -711,6 +927,12 @@ on mesure des trajectoires en ellipse, puis on pense la Terre elle-même comme u
 
 ## Le géoïde {.socle}
 
+::: {.fiche n="4.4" etat="fige"}
+Intention : L'altitude suit la gravité : la surface de référence est celle d'un océan au repos.
+Expérience : aucune
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="46%"}
 ![](images/geoide-carte.jpg){fig-alt="Le géoïde, aux ondulations très exagérées, coloré selon son écart à l'ellipsoïde" height="380"}
@@ -734,6 +956,12 @@ Causes des ondulations : masses internes, épaisseur de la croûte, attraction d
 
 ## Hauteur n'est pas altitude {.socle}
 
+::: {.fiche n="4.5" etat="fige"}
+Intention : h se mesure sur l'ellipsoïde, l'altitude sur le géoïde.
+Expérience : QCM : que mesure la double flèche du profil ?
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="52%"}
 ![](images/geoide-profil.png){fig-alt="Profil montrant la surface terrestre, le géoïde et l'ellipsoïde au droit d'un point M"}
@@ -756,6 +984,12 @@ Un GPS donne une hauteur au-dessus de l'ellipsoïde. Pour obtenir une altitude, 
 
 ## Des écarts sans commune mesure {.appui}
 
+::: {.fiche n="4.6" etat="fige"}
+Intention : 21 km entre sphère et ellipsoïde, une centaine de mètres entre ellipsoïde et géoïde.
+Expérience : curseur : exagérer les hauteurs du géoïde
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="56%"}
 ::: {.curseur min="1" max="8000" pas="1" valeur="1" unite="fois" etiquette="Hauteurs exagérées" schema="images/schemas/geoide-exagere.svg"}
@@ -776,12 +1010,24 @@ Chaque marche corrige deux cents fois moins que la précédente.
 
 ## Positionner un point M {.intercalaire}
 
+::: {.fiche n="5.0" etat="fige"}
+Intention : On redescend : du géoïde aux coordonnées sur la carte.
+Expérience : schéma de l'escalier, à la descente
+Demande :
+:::
+
 La descente : du géoïde aux coordonnées sur la carte.
 
 ::: {.schema fichier="images/schemas/escalier-descente.svg"}
 :::
 
 ## Dans quel ordre ? {.socle}
+
+::: {.fiche n="5.1" etat="fige"}
+Intention : Terre réelle, géoïde, ellipsoïde, système géodésique, projection, coordonnées planes.
+Expérience : remise en ordre : de la Terre réelle aux coordonnées planes
+Demande :
+:::
 
 ::: {.ordre}
 Du monde réel aux coordonnées que l'on lit dans un SIG : remettez la chaîne dans l'ordre.
@@ -795,6 +1041,12 @@ Du monde réel aux coordonnées que l'on lit dans un SIG : remettez la chaîne d
 :::
 
 ## Repérer M sur l'ellipsoïde {.socle}
+
+::: {.fiche n="5.2" etat="fige"}
+Intention : Longitude, latitude, hauteur.
+Expérience : aucune
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="46%"}
@@ -813,6 +1065,12 @@ Ce sont les **coordonnées géographiques**. Elles s'expriment en degrés, pas e
 
 ## Le système géodésique {.socle}
 
+::: {.fiche n="5.3" etat="fige"}
+Intention : Un ellipsoïde, posé et orienté : local hier, mondial aujourd'hui.
+Expérience : aucune
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="52%"}
 ![](images/ellipsoides-local-global.png){fig-alt="Un ellipsoïde local, ajusté à un pays, et un ellipsoïde global, ajusté à toute la Terre"}
@@ -828,6 +1086,12 @@ Un ellipsoïde ne suffit pas : il faut le **poser** et l'**orienter** par rappor
 ::::
 
 ## Quel système en France ? {.socle}
+
+::: {.fiche n="5.4" etat="fige"}
+Intention : RGF93, légal depuis 2000 ; WGS84 est celui du GPS.
+Expérience : QCM : le système légal en France
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="52%"}
@@ -858,6 +1122,12 @@ Lequel est le système légal en France métropolitaine ?
 
 ## Projeter, c'est choisir {.socle}
 
+::: {.fiche n="5.5" etat="fige"}
+Intention : Angles, surfaces ou distances : on ne garde pas tout.
+Expérience : aucune
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="54%"}
 ### Conforme
@@ -877,6 +1147,12 @@ Ne conserve ni l'un ni l'autre : un compromis.
 ::::
 
 ## Où Mercator exagère-t-elle ? {.appui}
+
+::: {.fiche n="5.6" etat="fige"}
+Intention : Le prix de la conformité se lit sur les surfaces.
+Expérience : zones à cliquer : où les surfaces sont-elles exagérées ? puis comparaison avec Peters
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="62%"}
@@ -899,6 +1175,12 @@ La projection de Mercator est **conforme**. Le prix à payer se lit sur les surf
 ::::
 
 ## Trois familles de canevas {.appui .optionnel}
+
+::: {.fiche n="5.7" etat="fige"}
+Intention : Azimutal, conique, cylindrique.
+Expérience : aucune
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="33%"}
@@ -923,6 +1205,12 @@ Un cylindre tangent ou sécant. *Ex. : UTM.*
 
 ## La France en zones {.veille .optionnel}
 
+::: {.fiche n="5.8" etat="fige"}
+Intention : Les anciennes zones Lambert : pourquoi on a découpé.
+Expérience : aucune
+Demande :
+:::
+
 :::: {.columns}
 ::: {.column width="58%"}
 ![](images/lambert-zones.jpg){fig-alt="Les quatre anciennes zones Lambert sur la carte de France"}
@@ -938,11 +1226,23 @@ Vous croiserez encore ces coordonnées dans des données anciennes.
 
 ## Les neuf coniques conformes {.veille .optionnel}
 
+::: {.fiche n="5.9" etat="fige"}
+Intention : Quand le Lambert 93 altère trop les longueurs.
+Expérience : aucune
+Demande :
+:::
+
 Le Lambert 93 altère trop les longueurs pour certains travaux de géomètre.
 
 Neuf projections **CC42 à CC50** le complètent : une zone de 2° de latitude chacune, centrée sur un parallèle de degré entier, avec une altération inférieure à 9 cm par kilomètre.
 
 ## Lambert 93 {.socle}
+
+::: {.fiche n="5.10" etat="fige"}
+Intention : La référence aujourd'hui : `EPSG:2154`.
+Expérience : aucune
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="44%"}
@@ -963,6 +1263,12 @@ La référence aujourd'hui, pour toute la métropole. Dans un SIG, c'est le code
 
 ## Un point, trois écritures {.appui .optionnel}
 
+::: {.fiche n="5.11" etat="fige"}
+Intention : Le même point M à Nancy, en géographiques, en Lambert 93, en UTM.
+Expérience : aucune (tableau des trois écritures)
+Demande :
+:::
+
 Le même point M, place Stanislas à Nancy :
 
 | Écriture | Coordonnées | Système |
@@ -977,14 +1283,32 @@ Superposer des couches qui n'ont pas la même écriture, sans le dire au logicie
 
 ## À retenir
 
+::: {.fiche n="6.1" etat="fige"}
+Intention : Le socle du cours, en une page.
+Expérience : liste du socle, générée, avec liens
+Demande :
+:::
+
 ::: {.carte-du-cours niveaux="socle"}
 :::
 
 ## À vous {.fin}
 
+::: {.fiche n="6.2" etat="fige"}
+Intention : Ouvrir QGIS, vérifier le système de coordonnées du projet.
+Expérience : pont vers le TP
+Demande :
+:::
+
 Ouvrez QGIS et vérifiez le système de coordonnées de votre projet.
 
 ## Sources et crédits {.petit}
+
+::: {.fiche n="6.3" etat="fige"}
+Intention : Auteur, date, lieu de conservation et licence de chaque image.
+Expérience : aucune
+Demande :
+:::
 
 :::: {.columns}
 ::: {.column width="50%"}

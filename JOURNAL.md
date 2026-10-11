@@ -2,6 +2,26 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-11 — Le plan fusionne avec le cours
+
+**Le problème**
+
+Deux fichiers de référence, `plan.md` et `index.qmd`, et un écart entre les deux : la réalisation avait réinterprété le plan. Marc veut pouvoir changer des diapos entières, sans que tout soit réinventé à chaque passage, et que ce qui est bon reste figé.
+
+**Décidé**
+
+- Une seule source par cours : `index.qmd`. Chaque diapo porte une fiche (intention, expérience, demande) et un état : `fige`, `a-revoir`, `a-realiser`.
+- `plan.md` devient une vue, régénérée à chaque compilation. Le plan annoté d'origine est archivé dans `plan-initial.md`.
+- Un assistant ne travaille que sur les diapos `a-revoir` et `a-realiser`, jamais sur le fichier entier.
+- Les 54 diapos partent figées : Marc dégèle ce qu'il veut changer.
+
+**Réalisé**
+
+- 54 fiches posées, à partir du plan annoté. Le contenu des diapos n'a pas changé.
+- `outils/figer.py` : une empreinte par diapo figée ; testé sur une virgule changée, détectée.
+- `CONSIGNES-IA.md` : les règles et le déroulé d'un passage, pour tout assistant, en ligne ou local.
+- Les fichiers HTML et PDF déposés dans le dossier d'un cours ne sont plus envoyés sur GitHub.
+
 ## 2026-10-10 — Premier cours complet : « De la Terre à la carte »
 
 **Décidé par Marc, sur le plan annoté**
