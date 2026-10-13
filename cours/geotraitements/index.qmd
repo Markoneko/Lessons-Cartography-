@@ -1,0 +1,328 @@
+---
+title: "Géotraitements"
+subtitle: "Interroger, enrichir, transformer : les outils de l'analyse spatiale"
+author: "Marc Poupée · Géodata Paris"
+date: "2026-10-13"
+date-format: "D MMMM YYYY"
+footer: "Géotraitements"
+title-slide-attributes:
+  data-state: plein
+---
+
+::: {.fiche n="0.1" etat="a-realiser"}
+Intention : Couverture. Support de référence, à consulter seul. Crédit à Malika Madelin, autrice du support d'origine. [PPT 1]
+Expérience : aucune
+Demande :
+:::
+
+## Comment lire ce support
+
+::: {.fiche n="0.2" etat="a-realiser"}
+Intention : Le même mode d'emploi que « GIS : Basics » (niveaux, exercices, bonus, ?niveau=socle). Prérequis : raster, vecteur, attributs et couches, vus dans « GIS : Basics ». [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+## Ce que vous saurez faire
+
+::: {.fiche n="0.3" etat="a-realiser"}
+Intention : Trois verbes, trois parties : interroger une couche, enrichir ses attributs, créer de nouveaux objets ; puis les mêmes gestes en raster, et le passage de l'un à l'autre. [PPT 2]
+Expérience : aucune
+Demande :
+:::
+
+## Carte du cours
+
+::: {.fiche n="0.4" etat="a-realiser"}
+Intention : Les cinq parties et la légende S / A / V.
+Expérience : liens vers chaque diapo
+Demande :
+:::
+
+## Interroger {.intercalaire}
+
+::: {.fiche n="1.0" etat="a-realiser"}
+Intention : Sélectionner les objets qui répondent à des critères. [PPT 3]
+Expérience : aucune
+Demande :
+:::
+
+## Une question posée à la base {.socle}
+
+::: {.fiche n="1.1" etat="a-realiser"}
+Intention : Une requête attributaire ou spatiale est une question adressée à la base pour visualiser, trier, modifier ou analyser. SQL, le langage standard des bases relationnelles, fondé sur l'algèbre relationnelle. [PPT 3]
+Expérience : classer quatre questions forestières en « attributaire » ou « spatiale »
+Demande :
+:::
+
+## SELECT, FROM, WHERE {.socle}
+
+::: {.fiche n="1.2" etat="a-realiser"}
+Intention : La forme de base d'une requête : les champs voulus, la couche, les conditions. La capture ArcGIS est remplacée par la requête écrite, avec son équivalent dans QGIS (sélection par expression). [PPT 4]
+Expérience : remise en ordre d'une requête sur les peuplements (SELECT, FROM, WHERE, condition)
+Demande :
+:::
+
+## Comparer {.socle}
+
+::: {.fiche n="1.3" etat="a-realiser"}
+Intention : Les opérateurs de comparaison : =, <>, <, >, <=, >= ; requêtes attributaires seulement. [PPT 5]
+Expérience : QCM : quelle condition garde les peuplements qui ne sont pas des chênes ?
+Demande :
+:::
+
+## Calculer {.appui}
+
+::: {.fiche n="1.4" etat="a-realiser"}
+Intention : Les opérations mathématiques (somme, produit, puissance, trigonométrie) et statistiques (somme, moyenne, extrêmes, écart-type) dans une requête. Exemple forestier : une densité de tiges par hectare. [PPT 6]
+Expérience : question : comment calculer la densité de tiges d'un peuplement à partir de deux champs ?
+Demande :
+:::
+
+## Interroger l'espace {.socle}
+
+::: {.fiche n="1.5" etat="a-realiser"}
+Intention : Les opérateurs topologiques et de distance, qui font la requête spatiale : intersecte, contient, est à moins de… Les captures de svgopen.org sont redessinées en un schéma. [PPT 7]
+Expérience : schéma des trois relations ; QCM : quel opérateur pour « les placettes situées dans la forêt domaniale » ?
+Demande :
+:::
+
+## Combiner les critères {.socle}
+
+::: {.fiche n="1.6" etat="a-realiser"}
+Intention : Les opérateurs booléens AND, OR, NOT, entre deux critères ou plus, lus sur des diagrammes de Venn. [PPT 8]
+Expérience : QCM avec diagramme : chêne AND plus de 5 ha, ou chêne OR plus de 5 ha ?
+Demande :
+:::
+
+## Enrichir les attributs {.intercalaire}
+
+::: {.fiche n="2.0" etat="a-realiser"}
+Intention : Ajouter à la table ce que la géométrie sait déjà. [PPT 9]
+Expérience : aucune
+Demande :
+:::
+
+## Mesurer {.appui}
+
+::: {.fiche n="2.1" etat="a-realiser"}
+Intention : Les propriétés métriques des objets (centroïde, longueur, périmètre, surface) deviennent des champs. La distance entre objets : cartésienne sur le plan, orthodromique sur la sphère ; renvoi au cours « De la Terre à la carte ». [PPT 9]
+Expérience : question : pourquoi la distance Paris – New York n'est-elle pas la même sur une carte en Mercator et sur le globe ?
+Demande :
+:::
+
+## La jointure spatiale {.socle}
+
+::: {.fiche n="2.2" etat="a-realiser"}
+Intention : Joindre deux couches par leur position et non par une clef : chaque objet reçoit les attributs de l'objet qui le contient. Exemple forestier : chaque placette d'inventaire reçoit l'essence du peuplement où elle tombe. Schéma redessiné. [PPT 10]
+Expérience : question (prédiction) : quelle table obtient-on après la jointure ?
+Demande :
+:::
+
+## Créer des objets {.intercalaire}
+
+::: {.fiche n="3.0" etat="a-realiser"}
+Intention : Des géométries nouvelles, calculées à partir des anciennes. [PPT 12]
+Expérience : aucune
+Demande :
+:::
+
+## Changer d'implantation {.appui}
+
+::: {.fiche n="3.1" etat="a-realiser"}
+Intention : Des points à la ligne (un chemin), des points au polygone (l'enveloppe convexe), du polygone au point (le centroïde). [PPT 12]
+Expérience : classer : quel outil pour passer des relevés GPS d'une piste à son tracé ? des arbres d'une placette à son emprise ? d'un peuplement à son étiquette ?
+Demande :
+:::
+
+## Les zones tampon {.socle}
+
+::: {.fiche n="3.2" etat="a-realiser"}
+Intention : Une zone d'influence à distance fixe autour d'un objet ; tampons fusionnés ou séparés ; tampons multiples. Exemple forestier : la bande de 50 m le long des pistes, ou autour des cours d'eau. Schéma redessiné. [PPT 13]
+Expérience : question (prédiction) : trois tampons qui se chevauchent, fusionnés ou non : combien d'objets en sortie ?
+Demande :
+:::
+
+## Superposer : découper, unir, intersecter {.socle}
+
+::: {.fiche n="3.3" etat="a-realiser"}
+Intention : Les géotraitements fondés sur la superposition : découper (clip), unir (union), intersecter (intersection). Ce qui change : la géométrie gardée, et les attributs hérités. Schéma redessiné. [PPT 14]
+Expérience : classer trois besoins forestiers dans leur outil (garder les peuplements de la commune ; croiser peuplements et zones Natura 2000 ; réunir deux inventaires)
+Demande :
+:::
+
+## Fusionner selon un attribut {.socle}
+
+::: {.fiche n="3.4" etat="a-realiser"}
+Intention : La fusion (dissolve) regroupe les objets qui partagent une même valeur : six parcelles, trois zones. Exemple forestier : des parcelles aux séries d'aménagement. [PPT 15]
+Expérience : question (prédiction) : combien d'objets reste-t-il après la fusion sur le champ « zone » ?
+Demande :
+:::
+
+## Pour aller plus loin : l'analyse spatiale {.veille}
+
+::: {.fiche n="3.5" etat="a-realiser"}
+Intention : Des outils plus spécialisés, empruntés à l'analyse spatiale : semis de points, autocorrélation spatiale, interpolation, localisation optimale, plus court chemin. [PPT 16]
+Expérience : aucune
+Demande :
+:::
+
+## Les traitements raster {.intercalaire}
+
+::: {.fiche n="4.0" etat="a-realiser"}
+Intention : Les mêmes questions, posées à une grille : un résumé. [PPT 17]
+Expérience : aucune
+Demande :
+:::
+
+## Trois familles d'opérations {.socle}
+
+::: {.fiche n="4.1" etat="a-realiser"}
+Intention : Locale (pixel à pixel), focale (selon les pixels voisins), zonale (selon des zones). Trois petits schémas de grille, à la place des figures de Jeremy Mennis. [PPT 18, 19, 30, 38]
+Expérience : schéma ; classer quatre traitements forestiers dans leur famille
+Demande :
+:::
+
+## Locales : reclasser, poser une condition {.socle}
+
+::: {.fiche n="4.2" etat="a-realiser"}
+Intention : Reclasser (une table de correspondance, ou n classes automatiques) ; poser une condition, souvent un seuil. Usages : un masque binaire, une classification simplifiée. Exemple forestier : les pentes de plus de 30 %, non mécanisables. Petit schéma de grille. [PPT 20, 21, 29]
+Expérience : question : sur une grille de pentes, quels pixels valent 1 après la condition « pente > 30 » ?
+Demande :
+:::
+
+## Locales : calculer entre couches {.appui}
+
+::: {.fiche n="4.3" etat="a-realiser"}
+Intention : L'algèbre raster (la calculatrice raster) : une couche et une constante, ou plusieurs couches pixel à pixel (somme, moyenne). Exemple : le NDVI, indice de végétation. La superposition pondérée, pour un indice composite. Petits schémas. [PPT 22 à 27]
+Expérience : curseur : faire varier la réflectance proche infrarouge, lire le NDVI
+Demande :
+:::
+
+## Des couches qui ne se superposent pas {.appui}
+
+::: {.fiche n="4.4" etat="a-realiser"}
+Intention : La calculatrice raster est puissante, mais deux grilles de résolution ou de calage différents ne se superposent pas pixel à pixel : il faut d'abord les mettre en cohérence. [PPT 28]
+Expérience : schéma de deux grilles décalées
+Demande :
+:::
+
+## Focales : la fenêtre glissante {.socle}
+
+::: {.fiche n="4.5" etat="a-realiser"}
+Intention : Chaque pixel reçoit une valeur calculée sur ses voisins, dans une fenêtre de 3 × 3, 5 × 5… ; la forme du voisinage peut varier. Filtres et statistiques focales. Petit schéma. [PPT 31, 32, 33]
+Expérience : question : quelle valeur reçoit le pixel central avec une moyenne 3 × 3 ?
+Demande :
+:::
+
+## Focales : dériver le relief {.socle}
+
+::: {.fiche n="4.6" etat="a-realiser"}
+Intention : Du MNT on tire la pente, l'orientation, l'ombrage. MNT (le sol) et MNS (le sol et le sursol, MNE dans l'ancien support) ; leur différence donne la hauteur de la végétation : le lien avec la forêt. [PPT 34, 35, 36]
+Expérience : schéma MNS − MNT = hauteur de canopée ; question : où lire la hauteur des arbres ?
+Demande :
+:::
+
+## Focales : la distance {.appui}
+
+::: {.fiche n="4.7" etat="a-realiser"}
+Intention : La distance euclidienne : chaque pixel reçoit sa distance à la source la plus proche ; avec un maximum, on obtient une zone tampon raster. [PPT 37]
+Expérience : aucune
+Demande :
+:::
+
+## Zonales {.socle}
+
+::: {.fiche n="4.8" etat="a-realiser"}
+Intention : Une statistique calculée sur les pixels d'une même zone (moyenne, somme, maximum…), la zone étant donnée par un raster ou un vecteur. Petit schéma. [PPT 38, 39]
+Expérience : question : quelle est la moyenne de la zone B ?
+Demande :
+:::
+
+## D'autres opérations courantes {.appui}
+
+::: {.fiche n="4.9" etat="a-realiser"}
+Intention : Rééchantillonner (changer la résolution), découper, extraire ; puis des traitements plus complexes : interpolation, bassins versants, rayonnement solaire, visibilité. [PPT 40, 42]
+Expérience : aucune
+Demande :
+:::
+
+## Entre raster et vecteur {.intercalaire}
+
+::: {.fiche n="5.0" etat="a-realiser"}
+Intention : Les traitements à cheval entre les deux modes, ceux que l'on utilise le plus en forêt. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+## Rasteriser, vectoriser {.socle}
+
+::: {.fiche n="5.1" etat="a-realiser"}
+Intention : Du vecteur au raster : chaque pixel prend la valeur de l'objet qui le couvre. Du raster au vecteur : les pixels voisins de même valeur deviennent un polygone ; exemple : d'une image classée à une carte d'occupation du sol. Ce que l'on perd dans chaque sens. [PPT 11, 41]
+Expérience : comparer : curseur entre les parcelles vecteur et leur version rasterisée
+Demande :
+:::
+
+## Le découpage change le résultat {.veille}
+
+::: {.fiche n="5.2" etat="a-realiser"}
+Intention : Le problème de l'unité spatiale modifiable (MAUP) : les mêmes données, agrégées selon deux découpages différents, donnent deux cartes différentes. [PPT 11]
+Expérience : question avec schéma : les mêmes points, deux grilles, deux résultats
+Demande :
+:::
+
+## Résumer un raster par des polygones {.socle}
+
+::: {.fiche n="5.3" etat="a-realiser"}
+Intention : Les statistiques zonales avec des zones vecteur : la pente moyenne de chaque parcelle, la hauteur moyenne de chaque peuplement. Le résultat revient dans la table attributaire. [PPT 39]
+Expérience : question (prédiction) : quel champ s'ajoute à la table des parcelles ?
+Demande :
+:::
+
+## Découper un raster par un vecteur {.appui}
+
+::: {.fiche n="5.4" etat="a-realiser"}
+Intention : Le masque : ne garder du MNT que les pixels situés dans la forêt. [PPT 40]
+Expérience : aucune
+Demande :
+:::
+
+## Lire un raster sous des points {.appui}
+
+::: {.fiche n="5.5" etat="a-realiser"}
+Intention : Échantillonner : chaque point reçoit la valeur du pixel sous lui ; exemple : l'altitude ou la pente de chaque placette d'inventaire. [PPT 40]
+Expérience : question : quelle valeur reçoit la placette 3 ?
+Demande :
+:::
+
+## Draper et extruder {.veille}
+
+::: {.fiche n="5.6" etat="a-realiser"}
+Intention : Draper une image sur le MNT, extruder des objets vecteur selon un attribut : la vue en 3D, où raster et vecteur se rejoignent. [PPT 43, 44]
+Expérience : défiler les deux images
+Demande :
+:::
+
+## À retenir
+
+::: {.fiche n="6.1" etat="a-realiser"}
+Intention : Les diapos du socle, en une liste.
+Expérience : liens vers chaque diapo
+Demande :
+:::
+
+## À vous {.fin}
+
+::: {.fiche n="6.2" etat="a-realiser"}
+Intention : Renvoi au TP géotraitements : l'enquête sur les données forestières.
+Expérience : aucune
+Demande :
+:::
+
+## Sources et crédits {.petit}
+
+::: {.fiche n="6.3" etat="a-realiser"}
+Intention : Malika Madelin pour le support d'origine ; les figures (Jeremy Mennis, ESRI, gvSIG, svgopen.org, Univ. Saint-Étienne, etc.), à compléter. [nouvelle]
+Expérience : aucune
+Demande :
+:::

@@ -2,6 +2,25 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-13 (soir) — Nouveau cours : « Géotraitements », le plan
+
+**Demande de Marc**
+
+- Troisième cours sur le même principe, assez court, d'après le PPT « DDMEG-04 Géotraitements » (44 diapos, dont 28 masquées sur le raster ; support d'origine de Malika Madelin).
+- Les 16 premières diapos, puis un résumé de tous les traitements raster avec de petits schémas, puis les traitements à cheval entre raster et vecteur.
+
+**Réalisé : le plan seul, en attente de validation**
+
+- `cours/geotraitements/index.qmd` : 40 fiches, toutes `a-realiser`, cinq parties : interroger, enrichir les attributs, créer des objets, les traitements raster (résumé en neuf diapos), entre raster et vecteur.
+- La diapo 11 d'origine (rasterisation, vectorisation, MAUP) passe dans la dernière partie, avec la diapo 41.
+- Exemples forestiers prévus partout : peuplements, placettes d'inventaire, pistes, pentes non mécanisables, hauteur de canopée (MNS − MNT), NDVI.
+- PPT d'origine dans `sources/Reference-Geotraitements.ppt`, 58 images extraites dans `images/originaux/`.
+
+**À trancher par Marc**
+
+- Les deux versions FR et EN, et le support consulté seul (comme « GIS : Basics ») : supposés, à confirmer.
+- La diapo finale renvoie au TP géotraitements en préparation.
+
 ## 2026-10-13 (fin) — « GIS : Basics », retours de Marc sur la V0
 
 Numéros de diapo de la V0 française. Chaque correction est reportée dans la version anglaise.
