@@ -2,6 +2,33 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-13 — Nouveau cours : « GIS : Basics »
+
+**Demande de Marc**
+
+- Reprendre le PPT « DDMEG-01 Initiation aux SIG » (IGN, 2016, 83 diapos) selon le même procédé, en garder la logique et retirer les diapos inutiles.
+- Différence avec le premier cours : ce support ne sera pas projeté. C'est une référence que les étudiants consultent seuls.
+
+**Réalisé : le plan seul, comme convenu, pas encore les diapos**
+
+- `cours/gis-basics/index.qmd` : 54 fiches, toutes `a-realiser`. Chaque intention se termine par les numéros des diapos d'origine (numérotation PowerPoint, diapos masquées comprises).
+- Le PPT d'origine est rangé dans `sources/Reference-IntroSIG.ppt` ; ses 65 images, extraites telles quelles, dans `cours/gis-basics/images/originaux/`.
+
+**Choix proposés, à valider par Marc**
+
+- Six parties, dans l'ordre de l'ancien support : d'où vient le SIG, qu'est-ce qu'un SIG, les données, les fonctions, les usages, la conception.
+- Pour un usage autonome : une diapo « Comment lire ce support », les notes orales passées sur les diapos, chaque brainstorm devenu un exercice avec sa réponse, un glossaire à la place de « Présenter le glossaire ».
+- Les quatre diapos de l'exemple autoroutier tiennent en une ; les neuf diapos d'exemples (enjeux) deviennent une galerie et un exercice de classement.
+- Coordonnées et projections : renvoi au cours « De la Terre à la carte », sans les répéter.
+- Mise à jour : QGIS et ArcGIS Pro à la place de Géoconcept et MapInfo, Géoplateforme et flux WMS / WMTS / WFS, LiDAR HD ; la table à digitaliser disparaît.
+- Historique : l'ancien support (diapo 9, masquée) fait d'Esri l'inventeur du SIG. Le premier SIG est généralement attribué à Roger Tomlinson (CGIS, Canada, années 1960). À vérifier au moment de la réalisation.
+- Les diapos 50 et 51 (types de SIG) étaient masquées : gardées en 4.8, niveau veille, à confirmer.
+
+**Constats**
+
+- Les images d'origine sont petites (souvent moins de 700 pixels) et beaucoup datent de 2009 à 2014 (captures de logiciels, cartes INSEE). Sept schémas sont à redessiner aux couleurs de la charte.
+- Le titre est en anglais, le contenu prévu en français : langue du cours à confirmer.
+
 ## 2026-10-11 (fin) — Deux retouches et version anglaise
 
 **Retouches demandées par Marc**
