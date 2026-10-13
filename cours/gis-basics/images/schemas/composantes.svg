@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 150" role="img" aria-label="Les composantes d'un SIG : données, équipements, personnes, organisation, applications">
+  <circle class="s-blanc" cx="60" cy="75" r="52"/>
+  <text class="s-titre" x="60" y="83" text-anchor="middle" style="font-size:26px">SIG</text>
+  <path class="s-tirets" d="M112 75 H1140"/>
+  <rect class="s-fond" x="135" y="20" width="190" height="110" rx="10"/>
+  <text class="s-titre" x="230" y="62" text-anchor="middle">Données</text>
+  <text x="230" y="90" text-anchor="middle">de référence</text><text x="230" y="112" text-anchor="middle">métier</text>
+  <rect class="s-fond" x="340" y="20" width="190" height="110" rx="10"/>
+  <text class="s-titre" x="435" y="62" text-anchor="middle">Équipements</text>
+  <text x="435" y="90" text-anchor="middle">matériel</text><text x="435" y="112" text-anchor="middle">logiciels</text>
+  <rect class="s-fond" x="545" y="20" width="200" height="110" rx="10"/>
+  <text class="s-titre" x="645" y="62" text-anchor="middle">Personnes</text>
+  <text x="645" y="90" text-anchor="middle">administrateurs</text><text x="645" y="112" text-anchor="middle">gestionnaires, utilisateurs</text>
+  <rect class="s-fond" x="760" y="20" width="190" height="110" rx="10"/>
+  <text class="s-titre" x="855" y="62" text-anchor="middle">Organisation</text>
+  <text x="855" y="90" text-anchor="middle">procédures</text><text x="855" y="112" text-anchor="middle">mises à jour</text>
+  <rect class="s-blanc" x="965" y="20" width="180" height="110" rx="10" style="stroke:var(--orange)"/>
+  <text class="s-titre" x="1055" y="62" text-anchor="middle" style="fill:var(--orange-texte)">Applications</text>
+  <text x="1055" y="90" text-anchor="middle">ce que l'on</text><text x="1055" y="112" text-anchor="middle">en fait</text>
+</svg>
