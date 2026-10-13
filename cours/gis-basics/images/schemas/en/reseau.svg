@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 320" role="img" aria-label="A network: nodes linked by segments, and a route">
+  <path class="s-trait" d="M60 250 L170 170 L300 210 L420 120 L560 160 M170 170 L210 60 L360 70 L420 120 M300 210 L360 70 M300 210 L470 270 L560 160"/>
+  <path class="s-accent" d="M60 250 L170 170 L300 210 L470 270 L560 160" style="stroke-width:6;opacity:0.85"/>
+  <g class="s-blanc"><circle cx="60" cy="250" r="9"/><circle cx="170" cy="170" r="9"/><circle cx="300" cy="210" r="9"/><circle cx="420" cy="120" r="9"/><circle cx="560" cy="160" r="9"/><circle cx="210" cy="60" r="9"/><circle cx="360" cy="70" r="9"/><circle cx="470" cy="270" r="9"/></g>
+  <text class="s-petit" x="60" y="282" text-anchor="middle">start</text>
+  <text class="s-petit" x="575" y="140">end</text>
+  <text class="s-petit" x="225" y="45">a node</text>
+  <text class="s-petit" x="250" y="125" transform="rotate(-62 250 125)">a segment</text>
+  <text class="s-orange" x="350" y="300">the route</text>
+</svg>

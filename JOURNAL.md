@@ -2,6 +2,42 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-13 (suite) — « GIS : Basics », V0 en français et en anglais
+
+**Décidé par Marc**
+
+- Deux versions, française et anglaise. Les diapos 50-51 (types de SIG), masquées dans le PPT, sont gardées. Des exemples forestiers, pour FIRS. Les cartes d'exemple seront revues à partir de cette V0.
+
+**Réalisé**
+
+- `index.qmd` et `index-en.qmd` (« GIS: Basics ») : les 54 diapos du plan, mêmes numéros de fiche. Toutes les fiches passent de « à réaliser » à « à revoir », avec la ligne Demande vide : c'est Marc qui fige.
+- Exemples forestiers : table d'attributs de peuplements (essence, surface, âge), classements (piste forestière, arbre remarquable, parcelle), types de valeurs (tiges par hectare, certification PEFC), requête sur les chênes de plus de 5 ha, croisement peuplements × cours d'eau, lidar sous la canopée, départs de feux dans le Var, BD Forêt à Nancy, situations de gestion (coupes, scolytes, desserte), une forêt dans le terrain nominal.
+- 15 schémas dessinés aux couleurs de la charte, doublés en anglais dans `images/schemas/en/`. Le schéma « vocabulaire » est cliquable : sept mots mènent à leur diapo (identifiants explicites sur ces diapos : `#raster`, `#mnt`, `#vecteur`, `#attributs`, `#types-valeurs`, `#couches`, `#ou-et-quoi`).
+- 29 images légères dans `images/`, avec `correspondance.csv` ; la BD Forêt de Nancy est reprise du premier cours.
+- Vérifié : aucun débordement sur les 54 diapos, réponses affichées comprises, dans les deux langues ; les sept liens du schéma ; les bonus ; le curseur du terrain nominal ; PDF de 54 pages avec corrigés.
+- La réponse du croisement (P1, P3, P4, P5) a été calculée, pas estimée : une première estimation à l'œil était fausse.
+
+**Écarts par rapport au plan**
+
+- 2.2 : le schéma des composantes devient un bandeau horizontal, sinon illisible à côté de l'exercice.
+- 3.10 : une question remplace le classement, que le schéma donnait déjà.
+- 6.9 : un classement (classe, attribut, relation, objet) remplace la remise en ordre, qui ne convient pas à des paires.
+- 4.2 « Consulter » et 6.5 « Un rond-point » passent du socle à l'appui : avec 19 diapos, la carte du cours débordait.
+
+**Faits vérifiés pour ce cours**
+
+- CGIS : Roger Tomlinson, années 1960, pour l'inventaire des terres du Canada (agriculture, forêt, faune). QGIS : commencé en 2002 par Gary Sherman.
+- BD Forêt V2 : une formation est décrite à partir de 0,5 ha. LiDAR HD : au moins 10 impulsions par m², MNT au pas de 50 cm, licence ouverte.
+
+**À vérifier par Marc**
+
+- Deux liens n'ont pas pu être ouverts : la page BD TOPO de geoservices.ign.fr (6.7) et l'article sur les parasites, dont l'adresse a été transposée de eps.revues.org vers journals.openedition.org (6.9).
+- ARC/INFO « au début des années 1980 », Esri fondée par Jack et Laura Dangermond : de mémoire, non vérifié en ligne.
+- Les règles de sélection (cimetières de plus de 2 ha, gares) et la modélisation des ronds-points viennent de l'ancien support : à confirmer avec la BD TOPO actuelle.
+- Les crédits des images d'exemple : plusieurs « à compléter » ; Articque pour Bourges et Bordeaux est une supposition tirée des logos.
+- Les images 3D (extrusion, drapé, relief) font environ 250 pixels de large : floues en grand.
+- Le plan du métro (RATP) et plusieurs cartes ont des droits incertains, comme signalé pour le dépôt public.
+
 ## 2026-10-13 — Nouveau cours : « GIS : Basics »
 
 **Demande de Marc**

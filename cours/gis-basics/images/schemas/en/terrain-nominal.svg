@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="The nominal ground: a building, a road centreline, a river centreline, a forest; neither the isolated trees nor the car">
+  <rect width="800" height="450" fill="#FFFFFF"/>
+  <path d="M505 0 C 475 90 555 160 515 240 S 465 380 505 450" fill="none" stroke="#4A7CC2" stroke-width="4"/>
+  <path d="M0 300 L800 270" stroke="#E38226" stroke-width="5"/>
+  <path d="M600 60 C 660 30 760 40 790 90 C 800 160 740 200 670 190 C 600 185 570 120 600 60 Z" fill="#F2AE6D" fill-opacity="0.35" stroke="#283B89" stroke-width="2.5"/>
+  <rect x="150" y="160" width="150" height="90" fill="#2B2B33"/>
+  <circle cx="505" cy="285" r="9" fill="#FFFFFF" stroke="#283B89" stroke-width="3"/>
+  <text x="520" y="330" font-family="Roboto, Arial, sans-serif" font-size="18" fill="#6E6F7A">a bridge: a node</text>
+  <text x="640" y="225" font-family="Roboto, Arial, sans-serif" font-size="18" fill="#6E6F7A">forest &gt; 0.5 ha</text>
+  <text x="20" y="40" font-family="Raleway, Arial, sans-serif" font-weight="700" font-size="26" fill="#283B89">The nominal ground</text>
+  <text x="20" y="420" font-family="Roboto, Arial, sans-serif" font-size="18" fill="#6E6F7A">no car, no isolated trees, no driveway</text>
+</svg>

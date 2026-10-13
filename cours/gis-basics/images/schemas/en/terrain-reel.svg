@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="The real world: a house, a road, a river, a forest, isolated trees, a car">
+  <rect width="800" height="450" fill="#EEF2E6"/>
+  <path d="M470 0 C 440 90 520 160 480 240 S 430 380 470 450 L 540 450 C 500 380 560 300 540 240 S 510 90 540 0 Z" fill="#9CC3E6"/>
+  <path d="M0 300 L800 270" stroke="#8C8C8C" stroke-width="34"/>
+  <path d="M0 300 L800 270" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="14 12"/>
+  <path d="M600 60 C 660 30 760 40 790 90 C 800 160 740 200 670 190 C 600 185 570 120 600 60 Z" fill="#7FA86A"/>
+  <g fill="#5E8C4A"><circle cx="640" cy="90" r="18"/><circle cx="690" cy="70" r="20"/><circle cx="740" cy="100" r="18"/><circle cx="670" cy="140" r="19"/><circle cx="720" cy="155" r="17"/><circle cx="625" cy="140" r="14"/></g>
+  <g fill="#5E8C4A"><circle cx="330" cy="380" r="14"/><circle cx="90" cy="390" r="12"/></g>
+  <path d="M300 300 v-0" />
+  <g transform="translate(150,110)">
+    <rect x="0" y="50" width="150" height="90" fill="#F3E2C7" stroke="#6E6F7A" stroke-width="2"/>
+    <path d="M-12 55 L75 0 L162 55 Z" fill="#B5600E"/>
+    <rect x="60" y="95" width="30" height="45" fill="#6E6F7A"/>
+    <rect x="15" y="70" width="28" height="22" fill="#9CC3E6"/><rect x="108" y="70" width="28" height="22" fill="#9CC3E6"/>
+  </g>
+  <path d="M225 250 L225 288" stroke="#B9B9B9" stroke-width="10"/>
+  <g transform="translate(330,272)"><rect x="0" y="0" width="56" height="22" rx="6" fill="#C0392B"/><rect x="10" y="-12" width="32" height="14" rx="4" fill="#C0392B"/><circle cx="12" cy="24" r="6" fill="#2B2B33"/><circle cx="44" cy="24" r="6" fill="#2B2B33"/></g>
+  <rect x="455" y="268" width="100" height="36" fill="#B9B9B9"/>
+  <text x="20" y="40" font-family="Raleway, Arial, sans-serif" font-weight="700" font-size="26" fill="#283B89">The real world</text>
+</svg>
