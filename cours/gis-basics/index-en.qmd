@@ -10,7 +10,7 @@ title-slide-attributes:
   data-state: plein
 ---
 
-::: {.fiche n="0.1" etat="a-revoir"}
+::: {.fiche n="0.1" etat="fige"}
 Intention : Cover. A reference to read on one's own, not to project. [PPT 1]
 Experience : none
 Request :
@@ -18,7 +18,7 @@ Request :
 
 ## How to use this handout
 
-::: {.fiche n="0.2" etat="a-revoir"}
+::: {.fiche n="0.2" etat="fige"}
 Intention : User guide for a student working alone: the three levels, exercises to do before reading the answer, "Going further" bonuses, the ?niveau=socle address for revision. Points to "From the Earth to the Map" for coordinates and projections. [new]
 Experience : none
 Request :
@@ -35,7 +35,7 @@ This handout is meant to be read on your own, at your own pace. Use the arrow ke
 
 ## What you will be able to do
 
-::: {.fiche n="0.3" etat="a-revoir"}
+::: {.fiche n="0.3" etat="fige"}
 Intention : The three objectives of the old handout, rephrased: understand what geographic information brings to managing a territory; use a GIS; define a GIS and oversee its implementation. QGIS in practicals, principles valid for all software. [PPT 2, 15]
 Experience : none
 Request :
@@ -51,7 +51,7 @@ By the end of this handout, you will be able to:
 
 ## Course map
 
-::: {.fiche n="0.4" etat="a-revoir"}
+::: {.fiche n="0.4" etat="fige"}
 Intention : The six parts and the key to the three levels.
 Experience : links to each slide
 Request :
@@ -62,7 +62,7 @@ Request :
 
 ## Where does GIS come from? {.intercalaire}
 
-::: {.fiche n="1.0" etat="a-revoir"}
+::: {.fiche n="1.0" etat="fige"}
 Intention : Two families of tools that meet. [PPT 3]
 Experience : none
 Request :
@@ -72,7 +72,7 @@ Two families of tools that meet.
 
 ## Drawing or storing? {.appui}
 
-::: {.fiche n="1.1" etat="a-revoir"}
+::: {.fiche n="1.1" etat="fige"}
 Intention : Two ancestors: computer-aided drawing (shapes, relative coordinates, a visual use) and the database (tables, fields, values linked by keys, an informational use). Software examples updated. [PPT 4, 5]
 Experience : sort six properties into "drawing" or "database"
 Request :
@@ -105,7 +105,7 @@ GIS has two ancestors. Which family does each property belong to?
 
 ## The merger {.socle}
 
-::: {.fiche n="1.2" etat="a-revoir"}
+::: {.fiche n="1.2" etat="fige"}
 Intention : A GIS couples a database and a mapping system, in an absolute coordinate system. The original diagram (DBMS, software layer, map layers) redrawn in the school's colours. [PPT 6]
 Experience : diagram
 Request :
@@ -118,7 +118,7 @@ Request :
 
 ## What the merger makes possible {.appui}
 
-::: {.fiche n="1.3" etat="a-revoir"}
+::: {.fiche n="1.3" etat="fige"}
 Intention : Freedom from scale and projection; storing a feature and its characteristics (a parcel and its number); linking features and data (a parcel and its owner); using space as a variable of analysis. Forest examples. [PPT 7]
 Experience : multiple choice: which of these operations is impossible with a paper map alone?
 Request :
@@ -148,7 +148,7 @@ Which of these operations is impossible with a paper map alone?
 
 ## A short history {.veille}
 
-::: {.fiche n="1.4" etat="a-revoir"}
+::: {.fiche n="1.4" etat="fige"}
 Intention : From the 1960s to today: the first GIS in Canada (CGIS, Roger Tomlinson), the first commercial software, business functions, the web and free software (QGIS), 3D, mobile, open data. Corrects the old handout, which made Esri the inventor of GIS. [PPT 8, 9 hidden]
 Experience : put five steps in order; "Going further" bonus on Esri and ArcGIS
 Request :
@@ -172,7 +172,7 @@ Esri did not invent GIS: the first one, CGIS, is Canadian and dates from the 196
 
 ## What is a GIS? {.intercalaire}
 
-::: {.fiche n="2.0" etat="a-revoir"}
+::: {.fiche n="2.0" etat="fige"}
 Intention : More than software. [PPT 10]
 Experience : none
 Request :
@@ -182,7 +182,7 @@ More than software.
 
 ## First of all, a system {.socle}
 
-::: {.fiche n="2.1" etat="a-revoir"}
+::: {.fiche n="2.1" etat="fige"}
 Intention : Five nested definitions: a spatially referenced database, an information system, software, a way of managing data, a team. The key word is "system". [PPT 11, 12]
 Experience : question before the answer: what is part of a GIS? (the old brainstorm)
 Request :
@@ -211,7 +211,7 @@ A GIS is, all at once:
 
 ## The components of a GIS {.socle}
 
-::: {.fiche n="2.2" etat="a-revoir"}
+::: {.fiche n="2.2" etat="fige"}
 Intention : Data (reference, business), equipment (hardware, software), people (administrators, managers, users), an organisation, applications. Diagram redrawn without the 2010 thumbnails. [PPT 13]
 Experience : sort eight items (QGIS, BD TOPO, a forest management plan, a server, a geomatics specialist, an update procedure…) into Data / Tools / People / Organisation
 Request :
@@ -244,7 +244,7 @@ Request :
 
 ## The vocabulary in one diagram {.appui}
 
-::: {.fiche n="2.3" etat="a-revoir"}
+::: {.fiche n="2.3" etat="fige"}
 Intention : The overview from the old handout, to keep at hand: tables, fields, values, keys, DBMS; raster, vector and DTM layers; point, line and polygon features; coordinate system; interface. Each word links to the slide that explains it. [PPT 16]
 Experience : diagram, words clickable to the slides
 Request :
@@ -257,7 +257,7 @@ Request :
 
 ## Geographic data {.intercalaire}
 
-::: {.fiche n="3.0" etat="a-revoir"}
+::: {.fiche n="3.0" etat="fige"}
 Intention : The G in GIS: information that is located, or can be located. [PPT 18, 26, 32]
 Experience : none
 Request :
@@ -267,7 +267,7 @@ The G in GIS: information that is located, or can be located.
 
 ## Where, and what {#ou-et-quoi .socle}
 
-::: {.fiche n="3.1" etat="a-revoir"}
+::: {.fiche n="3.1" etat="fige"}
 Intention : Geographic data have two components: spatial (where?) and semantic (what?). The geometry relies on a coordinate system: see "From the Earth to the Map". It is stored in two ways: raster or vector. [PPT 19]
 Experience : question: in "D400, departmental road, 2 lanes", what says where, what says what?
 Request :
@@ -290,7 +290,7 @@ The four coordinate pairs say *where*: that is the spatial component. "D400, dep
 
 ## Raster: a grid {#raster .socle}
 
-::: {.fiche n="3.2" etat="a-revoir"}
+::: {.fiche n="3.2" etat="fige"}
 Intention : A regular grid over the ground; each pixel carries a value (radiometry of an image, colour of a scan). On 8 bits, 256 values per band; several bands are stacked. The speaker notes move onto the slide. [PPT 20]
 Experience : multiple choice: how many different values can an 8-bit pixel take?; bonus: a satellite image and a scan
 Request :
@@ -334,7 +334,7 @@ On 8 bits, how many different values can a pixel take?
 
 ## An elevation raster: the DTM {#mnt .appui}
 
-::: {.fiche n="3.3" etat="a-revoir"}
+::: {.fiche n="3.3" etat="fige"}
 Intention : In a digital terrain model, each pixel carries an elevation; the software derives shaded relief or a 3D view from it. Forest example: slope. [PPT 21]
 Experience : "Going further" bonus: IGN's RGE ALTI and the LiDAR HD programme
 Request :
@@ -361,7 +361,7 @@ The **LiDAR HD** programme surveys the whole country as point clouds, with at le
 
 ## Vector: point, line, polygon {#vecteur .socle}
 
-::: {.fiche n="3.4" etat="a-revoir"}
+::: {.fiche n="3.4" etat="fige"}
 Intention : The geometric primitives: the point (a boundary marker), the line (a road centreline), the polygon (a municipality). Text (a place name) is an in-between case. The choice of primitive depends on scale. [PPT 22]
 Experience : sort six forest features (veteran tree, well, forest road, power line, forest parcel, municipality); then question: is a river always a line?
 Request :
@@ -402,7 +402,7 @@ No. At a large scale, the Loire is a polygon; at a small scale, a line. The choi
 
 ## Special vectors: TINs and networks {.veille}
 
-::: {.fiche n="3.5" etat="a-revoir"}
+::: {.fiche n="3.5" etat="fige"}
 Intention : The TIN, a network of irregular triangles, describes relief as slope facets (useful in hydrology). The network links segments through nodes: it is used for routing. The 2014 Google Maps screenshot is replaced by a diagram. [PPT 23, 24]
 Experience : none
 Request :
@@ -426,7 +426,7 @@ The **network** links segments through nodes. It is used to compute a route, to 
 
 ## Raster or vector? {.socle}
 
-::: {.fiche n="3.6" etat="a-revoir"}
+::: {.fiche n="3.6" etat="fige"}
 Intention : Raster is easy to use, already symbolised, heavy, and limits analysis; vector is richer, lighter, allows any analysis, but needs styling and more skill. [PPT 25]
 Experience : scroll from raster to vector, in large format; sort eight properties into "raster" or "vector" (the old spoken prompt "suggest differences")
 Request :
@@ -460,7 +460,7 @@ Request :
 
 ## Attributes {#attributs .socle}
 
-::: {.fiche n="3.7" etat="a-revoir"}
+::: {.fiche n="3.7" etat="fige"}
 Intention : Each feature carries semantic information, stored in an attribute table: for a forest stand, its species, area, age; for a road, its name, number of lanes; for a municipality, its name, INSEE code, population. Feature and table row are linked by a key. [PPT 27]
 Experience : none
 Request :
@@ -485,7 +485,7 @@ Each feature carries semantic information, stored in an **attribute table**: one
 
 ## Value types {#types-valeurs .appui}
 
-::: {.fiche n="3.8" etat="a-revoir"}
+::: {.fiche n="3.8" etat="fige"}
 Intention : Text, real, integer, boolean, list of values: the type says what can be computed. [PPT 28]
 Experience : sort six values ("Seine", 12.4 ha, 2,154 inhabitants, 340 stems per hectare, PEFC certified: yes, "broadleaved" from a list) into their type; then question: why not store everything as text?
 Request :
@@ -524,7 +524,7 @@ The type says what you can do with the value: add, sort, filter on yes or no. A 
 
 ## One layer per kind of feature {#couches .socle}
 
-::: {.fiche n="3.9" etat="a-revoir"}
+::: {.fiche n="3.9" etat="fige"}
 Intention : Features of the same kind and geometry form a layer (a class), with its attributes; layers are stacked: stands, rivers, raster background. [PPT 29, 30]
 Experience : none
 Request :
@@ -546,7 +546,7 @@ Each layer has its attributes. Layers can be stacked because they share a coordi
 
 ## Where do data come from? {.appui}
 
-::: {.fiche n="3.10" etat="a-revoir"}
+::: {.fiche n="3.10" etat="fige"}
 Intention : Produce (GNSS survey, photogrammetry, satellite image, lidar, digitising a paper map) or reuse (existing databases: BD TOPO, BD Forêt, cadastre, OpenStreetMap; WMS, WMTS, WFS services from the Géoplateforme). Acquisition diagram redrawn; the digitising table is gone. [PPT 31]
 Experience : question: to map the roads of a forest, produce or reuse?; bonus on cartes.gouv.fr
 Request :
@@ -571,7 +571,7 @@ They can also be loaded into QGIS as services, without downloading them: WMS and
 
 ## Topology {.appui}
 
-::: {.fiche n="3.11" etat="a-revoir"}
+::: {.fiche n="3.11" etat="fige"}
 Intention : What does not change under deformation: inclusion, adjacency, neighbourhood, intersection. The metro map respects neither distances nor shapes, but respects topology. Link with the Peutinger Table in the first course. [PPT 33, 34]
 Experience : question: is the metro map wrong?; "Going further" bonus: the spatial relationship matrix (the image on slide 33)
 Request :
@@ -609,7 +609,7 @@ Software relies on a model of this kind, DE-9IM, for spatial queries: "the stand
 
 ## And the third dimension? {.veille}
 
-::: {.fiche n="3.12" etat="a-revoir"}
+::: {.fiche n="3.12" etat="fige"}
 Intention : 2D GIS; 2.5D, where elevation is an attribute; 3D, where it is a Z coordinate; and DTM modules. Examples: TIN, building extrusion, a draped scan, a lidar point cloud, lidar under the forest. [PPT 35, 36, 37]
 Experience : scroll through the 3D images; multiple choice: a building that carries its height in an attribute is 2D, 2.5D or 3D?
 Request :
@@ -646,7 +646,7 @@ A building carries its height in an attribute. This is…
 
 ## Describing a geographic feature {.socle}
 
-::: {.fiche n="3.13" etat="a-revoir"}
+::: {.fiche n="3.13" etat="fige"}
 Intention : The summary of the part: required, a geometry and a semantic description; optional, topological information; always, a coordinate system (Lambert 93). The D400 example. Diagram redrawn. [PPT 38]
 Experience : diagram; multiple choice: what is required?
 Request :
@@ -670,7 +670,7 @@ To describe a geographic feature, what is essential? More than one answer is cor
 
 ## Basic functions {.intercalaire}
 
-::: {.fiche n="4.0" etat="a-revoir"}
+::: {.fiche n="4.0" etat="fige"}
 Intention : What we do with a GIS, in five verbs. [PPT 39]
 Experience : none
 Request :
@@ -680,7 +680,7 @@ What we do with a GIS.
 
 ## Five verbs {.socle}
 
-::: {.fiche n="4.1" etat="a-revoir"}
+::: {.fiche n="4.1" etat="fige"}
 Intention : Look up, select, display, edit, analyse. [PPT 14, 39, 40]
 Experience : sort nine forest tasks by verb: replaces the old brainstorm "What are they?"
 Request :
@@ -713,9 +713,9 @@ Request :
 - Find the stands crossed by a river
 :::
 
-## Look up {.appui}
+## Look up {.socle}
 
-::: {.fiche n="4.2" etat="a-revoir"}
+::: {.fiche n="4.2" etat="fige"}
 Intention : Find the information of a feature by pointing at it, or find the feature from a piece of information. [PPT 41]
 Experience : question: give one example in each direction (the old "e.g.: ?")
 Request :
@@ -734,7 +734,7 @@ Give one example in each direction.
 
 ## Select {.socle}
 
-::: {.fiche n="4.3" etat="a-revoir"}
+::: {.fiche n="4.3" etat="fige"}
 Intention : Build a coherent set from a semantic, geometric or topological criterion, which can be combined; it is often written in SQL. Example: "ROUTE" = 'D100'; buildings over 100 m²; a forest example. The Géoconcept screenshot is replaced by the written expression. [PPT 42]
 Experience : multiple choice: which query keeps buildings over 100 m²?
 Request :
@@ -768,9 +768,9 @@ Which expression keeps buildings over 100 m²?
 :::
 ::::
 
-## Display {.socle}
+## Display {.appui}
 
-::: {.fiche n="4.4" etat="a-revoir"}
+::: {.fiche n="4.4" etat="fige"}
 Intention : Define symbology rules (colour, size, width, transparency), which can change with scale; produce thematic maps from them (unemployment rate by département). See the cartography course for semiology. The Géoconcept and MapInfo screenshots are gone. [PPT 43, 44, 45]
 Experience : none
 Request :
@@ -793,7 +793,7 @@ When the symbol varies with an attribute, you get a **thematic map**: colouring 
 
 ## Map layout {.appui}
 
-::: {.fiche n="4.5" etat="a-revoir"}
+::: {.fiche n="4.5" etat="fige"}
 Intention : A published map has a frame, a title, a legend, a scale, sources; and an orientation, unless it is obvious to everyone (a map of France for French readers). In QGIS, the layout is prepared in a separate window. [PPT 46]
 Experience : multiple choice, several answers: which elements must a published map carry?
 Request :
@@ -827,9 +827,9 @@ Which elements must a published map carry? More than one answer is correct.
 :::
 ::::
 
-## Edit {.appui}
+## Edit {.socle}
 
-::: {.fiche n="4.6" etat="a-revoir"}
+::: {.fiche n="4.6" etat="fige"}
 Intention : Change values, the structure of a table, add or delete features, change their shape or type, merge, split. This often means creating new layers: organisation matters. Forest example: after a felling. [PPT 47]
 Experience : none
 Request :
@@ -849,7 +849,7 @@ After a felling, you split the stand, create the new polygon and update its age.
 
 ## Analyse {.socle}
 
-::: {.fiche n="4.7" etat="a-revoir"}
+::: {.fiche n="4.7" etat="fige"}
 Intention : Simple calculations (area, perimeter, centroid), a change of coordinate system, smoothing; above all, overlaying layers: the stands crossed by a river (instead of the irrigated parcels). Overlay diagram redrawn. [PPT 48, 49]
 Experience : question (prediction): which stands will come out of this overlay?
 Request :
@@ -878,7 +878,7 @@ P1, P3, P4 and P5: all those the river crosses, even for a few metres. P2 and P6
 
 ## Which GIS for which use? {.veille}
 
-::: {.fiche n="4.8" etat="a-revoir"}
+::: {.fiche n="4.8" etat="fige"}
 Intention : Management, study, monitoring and synthesis GIS. Today's software: QGIS, ArcGIS Pro, PostGIS, FME, web tools. These two slides were hidden in the PPT; kept at Marc's request. [PPT 50, 51 hidden]
 Experience : sort four forest situations by type of GIS
 Request :
@@ -916,7 +916,7 @@ Software: QGIS (free), ArcGIS Pro (commercial), PostGIS (database), FME (process
 
 ## What is a GIS for? {.intercalaire}
 
-::: {.fiche n="5.0" etat="a-revoir"}
+::: {.fiche n="5.0" etat="fige"}
 Intention : Communicate, analyse, simulate. [PPT 52]
 Experience : none
 Request :
@@ -926,7 +926,7 @@ Communicate, analyse, simulate.
 
 ## Communicate, analyse, simulate
 
-::: {.fiche n="5.1" etat="a-revoir"}
+::: {.fiche n="5.1" etat="fige"}
 Intention : A gallery of real examples, without a level tag: wildfire starts in the Var, taxa in Guadeloupe, phosphorus in soils, population of Martinique, BD Forêt around Nancy, land uses in the Massif Central, traffic, isochrones in Bourges, siting in Bordeaux, exposure to radio waves, odour impact. Captions and sources under each image. [PPT 53 to 61]
 Experience : scroll through the maps in large format, arrows fixed under the title
 Request :
@@ -948,7 +948,7 @@ Request :
 
 ## Which use? {.appui}
 
-::: {.fiche n="5.2" etat="a-revoir"}
+::: {.fiche n="5.2" etat="fige"}
 Intention : Tell the three main uses apart by what must stand out most: to communicate, the clarity of the result; to analyse, the relevance of the process; to simulate, the relationship between inputs and outputs. [PPT 53, 56, 59]
 Experience : question: a simulation map without its assumptions, what is the reader missing?
 Request :
@@ -991,7 +991,7 @@ A way to judge the result: without the inputs, they know neither what the map si
 
 ## Jobs and sectors {.veille}
 
-::: {.fiche n="5.3" etat="a-revoir"}
+::: {.fiche n="5.3" etat="fige"}
 Intention : Data production, development, environment and planning, risks, agriculture, forestry, health, telecommunications, research. A focus on forestry. [PPT 62]
 Experience : none
 Request :
@@ -1023,7 +1023,7 @@ GIS is everywhere:
 
 ## Designing a GIS {.intercalaire}
 
-::: {.fiche n="6.0" etat="a-revoir"}
+::: {.fiche n="6.0" etat="fige"}
 Intention : Before capturing data, decide what to capture. [PPT 63]
 Experience : none
 Request :
@@ -1033,7 +1033,7 @@ Before capturing data, decide what to capture.
 
 ## Needs first {.socle}
 
-::: {.fiche n="6.1" etat="a-revoir"}
+::: {.fiche n="6.1" etat="fige"}
 Intention : Output information: who the database is for, what it is for, what other uses, who the experts are. This defines the content, the partners, the useful accuracy. [PPT 64, 66]
 Experience : none
 Request :
@@ -1051,7 +1051,7 @@ Designing a GIS starts with an analysis of needs and of what already exists. We 
 
 ## With what means? {.appui}
 
-::: {.fiche n="6.2" etat="a-revoir"}
+::: {.fiche n="6.2" etat="fige"}
 Intention : The area to capture, sources available or to buy, people, hardware, software, budget. What can be done, and how fast; these choices feed back into the needs. [PPT 67]
 Experience : none
 Request :
@@ -1070,7 +1070,7 @@ Then the production capacity is analysed:
 
 ## Specifying {.appui}
 
-::: {.fiche n="6.3" etat="a-revoir"}
+::: {.fiche n="6.3" etat="fige"}
 Intention : Input information: identify what, in the real world, is necessary and sufficient; define each piece of information and its selection rule; write the specification. Modelling means deciding what goes into the database, what does not, and how accurately. [PPT 65, 68, 69]
 Experience : none
 Request :
@@ -1088,7 +1088,7 @@ It is then used to choose a GIS according to its capabilities, and to implement 
 
 ## The nominal ground {.socle}
 
-::: {.fiche n="6.4" etat="a-revoir"}
+::: {.fiche n="6.4" etat="fige"}
 Intention : "The modelling of the real world through the filter of the specifications." The real world on one side, what the database keeps of it on the other; not forgetting the coordinate system and accuracy (speaker note). Diagrams redrawn, with a forest. [PPT 70]
 Experience : compare: slider between the real world and the nominal ground
 Request :
@@ -1112,7 +1112,7 @@ Move the slider: the building becomes a block, the road and the river become cen
 
 ## One roundabout, three models {.appui}
 
-::: {.fiche n="6.5" etat="a-revoir"}
+::: {.fiche n="6.5" etat="fige"}
 Intention : Capture depends on the need. In BD TOPO, an ordinary roundabout becomes a ring of segments, the Place de l'Étoile is modelled with dummy centrelines; one could have chosen two lines and a point carrying the attribute "roundabout". Diagram redrawn. [PPT 71, 72]
 Experience : multiple choice: which roundabout model for the database of a route guidance tool?
 Request :
@@ -1139,7 +1139,7 @@ You are building a road database for a route guidance tool. Which roundabout mod
 
 ## Feature catalogue and selection rules {.appui}
 
-::: {.fiche n="6.6" etat="a-revoir"}
+::: {.fiche n="6.6" etat="fige"}
 Intention : Separate principles (the feature catalogue: groups, properties, definitions; selection rules: the conditions to enter the database) from examples (roads, motorway; cemeteries, stations, BD Forêt). [PPT 73, 74, 75]
 Experience : multiple choice: with the given rule, is this one-hectare cemetery in the database?
 Request :
@@ -1181,7 +1181,7 @@ With these rules, is a one-hectare municipal cemetery in the database?
 
 ## The data dictionary {.socle}
 
-::: {.fiche n="6.7" etat="a-revoir"}
+::: {.fiche n="6.7" etat="fige"}
 Intention : The summary of the approach: needs and means, definition of layers, properties and relationships, selection rules, nominal ground; everything is gathered in a data dictionary. [PPT 76]
 Experience : put the five steps in order; bonus pointing to the BD TOPO documentation
 Request :
@@ -1205,7 +1205,7 @@ Each IGN database has its own. The one for BD TOPO, its "descriptif de contenu",
 
 ## Example: a motorway network
 
-::: {.fiche n="6.8" etat="a-revoir"}
+::: {.fiche n="6.8" etat="fige"}
 Intention : The approach applied, in one slide: why (manage the network, accidents, works, inform), for whom (works managers, traveller information, crisis management), how, and the classification by theme (infrastructure, equipment, drainage, signage…). [PPT 77 to 80]
 Experience : diagram of a motorway section and the features its GIS manages, each with its theme
 Request :
@@ -1231,7 +1231,7 @@ Request :
 
 ## What is a data model? {.appui}
 
-::: {.fiche n="6.8b" etat="a-revoir"}
+::: {.fiche n="6.8b" etat="fige"}
 Intention : Introduce models before using them: a model describes how data are organised, at three levels (conceptual, logical, physical). No detail: a separate course covers it. [new, requested by Marc]
 Experience : diagram of the three levels
 Request :
@@ -1248,7 +1248,7 @@ It is drawn with standard notations, such as UML or the entity-relationship mode
 
 ## From specification to model {.appui}
 
-::: {.fiche n="6.9" etat="a-revoir"}
+::: {.fiche n="6.9" etat="fige"}
 Intention : Once the specification is written, the database is organised in a conceptual model: group → class, property → attribute, relationship → relationship, element → feature. Example: the study of parasites in urban areas. [PPT 81, 82]
 Experience : sort four examples into Class / Attribute / Relationship / Feature (rather than ordering, which does not suit pairs); bonus: the model of the parasite study
 Request :
@@ -1289,7 +1289,7 @@ The model of a study on parasites in urban areas: space, social system, health, 
 
 ## Key points
 
-::: {.fiche n="7.1" etat="a-revoir"}
+::: {.fiche n="7.1" etat="fige"}
 Intention : The core slides, in one list: the revision sheet.
 Experience : links to each slide
 Request :
@@ -1300,7 +1300,7 @@ Request :
 
 ## Glossary {.petit}
 
-::: {.fiche n="7.2" etat="a-revoir"}
+::: {.fiche n="7.2" etat="fige"}
 Intention : About twenty terms defined in one line (GIS, DBMS, layer, raster, vector, DTM, TIN, attribute, key, topology, query, nominal ground, specification…). Replaces the old "Present the glossary". [PPT 17]
 Experience : none
 Request :
@@ -1342,7 +1342,7 @@ Request :
 
 ## Your turn {.fin}
 
-::: {.fiche n="7.3" etat="a-revoir"}
+::: {.fiche n="7.3" etat="fige"}
 Intention : Move to practice: open QGIS, load a layer, open its attribute table, make a selection. Points to the practicals. [PPT 83]
 Experience : none
 Request :
@@ -1352,7 +1352,7 @@ Open QGIS, load a layer, open its attribute table, then select the features that
 
 ## Sources and credits {.petit}
 
-::: {.fiche n="7.4" etat="a-revoir"}
+::: {.fiche n="7.4" etat="fige"}
 Intention : Sources of the images and examples, to be completed. [new]
 Experience : none
 Request :
