@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 285" role="img" aria-label="Overlaying: clip, union, intersect">
+<defs><clipPath id="cB"><path d="M110 90 L320 90 L320 230 L110 230 Z"/></clipPath></defs>
+<g transform="translate(0,0)">
+<path d="M30 40 L150 30 L160 150 L40 160 Z" class="s-plein-accent" opacity="0.35"/><path class="s-trait" d="M30 40 L150 30 L160 150 L40 160 Z"/>
+<path d="M150 30 L260 45 L250 170 L160 150 Z" class="s-plein-accent" opacity="0.18"/><path class="s-trait" d="M150 30 L260 45 L250 170 L160 150 Z"/>
+<path d="M110 90 L320 90 L320 230 L110 230 Z" style="fill:#9655A2;opacity:0.18"/><path d="M110 90 L320 90 L320 230 L110 230 Z" class="s-violet" style="stroke-dasharray:7 5"/>
+</g>
+<text class="s-titre" x="175" y="270" text-anchor="middle">Stands + Zone</text>
+<g transform="translate(380,-10) scale(0.75)">
+<path d="M30 40 L150 30 L160 150 L40 160 Z" clip-path="url(#cB)" class="s-plein-accent" opacity="0.45"/><path class="s-trait" d="M30 40 L150 30 L160 150 L40 160 Z" clip-path="url(#cB)"/>
+<path d="M150 30 L260 45 L250 170 L160 150 Z" clip-path="url(#cB)" class="s-plein-accent" opacity="0.25"/><path class="s-trait" d="M150 30 L260 45 L250 170 L160 150 Z" clip-path="url(#cB)"/>
+<path d="M30 40 L150 30 L160 150 L40 160 Z" class="s-fin" style="stroke-dasharray:4 4"/>
+<path d="M150 30 L260 45 L250 170 L160 150 Z" class="s-fin" style="stroke-dasharray:4 4"/>
+<path d="M110 90 L320 90 L320 230 L110 230 Z" class="s-fin" style="stroke-dasharray:4 4"/>
+</g>
+<text class="s-titre" x="490" y="230" text-anchor="middle">Clip</text>
+<text class="s-petit" x="490" y="252" text-anchor="middle" style="font-size:12px">the zone shape, the stand attributes</text>
+<g transform="translate(640,-10) scale(0.75)">
+<path d="M110 90 L320 90 L320 230 L110 230 Z" style="fill:#9655A2;opacity:0.18"/>
+<path d="M30 40 L150 30 L160 150 L40 160 Z" class="s-plein-accent" opacity="0.35"/>
+<path d="M150 30 L260 45 L250 170 L160 150 Z" class="s-plein-accent" opacity="0.18"/>
+<path class="s-trait" d="M30 40 L150 30 L160 150 L40 160 Z"/>
+<path class="s-trait" d="M150 30 L260 45 L250 170 L160 150 Z"/>
+<path d="M110 90 L320 90 L320 230 L110 230 Z" class="s-trait"/>
+</g>
+<text class="s-titre" x="760" y="230" text-anchor="middle">Union</text>
+<text class="s-petit" x="760" y="252" text-anchor="middle" style="font-size:12px">the whole area of both layers</text>
+<g transform="translate(900,-10) scale(0.75)">
+<path d="M30 40 L150 30 L160 150 L40 160 Z" clip-path="url(#cB)" class="s-plein-accent" opacity="0.55"/><path class="s-trait" d="M30 40 L150 30 L160 150 L40 160 Z" clip-path="url(#cB)"/>
+<path d="M150 30 L260 45 L250 170 L160 150 Z" clip-path="url(#cB)" class="s-plein-accent" opacity="0.35"/><path class="s-trait" d="M150 30 L260 45 L250 170 L160 150 Z" clip-path="url(#cB)"/>
+<path d="M30 40 L150 30 L160 150 L40 160 Z" clip-path="url(#cB)" style="fill:#9655A2;opacity:0.22"/>
+<path d="M150 30 L260 45 L250 170 L160 150 Z" clip-path="url(#cB)" style="fill:#9655A2;opacity:0.22"/>
+<path d="M110 90 L320 90 L320 230 L110 230 Z" class="s-fin" style="stroke-dasharray:4 4"/>
+</g>
+<text class="s-titre" x="1020" y="230" text-anchor="middle">Intersect</text>
+<text class="s-petit" x="1020" y="252" text-anchor="middle" style="font-size:12px">the common part, attributes of both</text>
+<path class="s-tirets" d="M345 20 V260"/>
+</svg>

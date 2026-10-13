@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 300" role="img" aria-label="MNS, MNT et hauteur de canopée">
+<path d="M20 250 C 200 230 380 270 560 240 S 900 220 1080 245 L1080 300 L20 300 Z" style="fill:#E7E1D0"/>
+<path d="M140 252 V187" style="stroke:#8C6E4A;stroke-width:5"/>
+<ellipse cx="140" cy="177" rx="34" ry="30" style="fill:#7FA86A"/>
+<path d="M200 252 V162" style="stroke:#8C6E4A;stroke-width:5"/>
+<ellipse cx="200" cy="152" rx="34" ry="30" style="fill:#7FA86A"/>
+<path d="M260 252 V177" style="stroke:#8C6E4A;stroke-width:5"/>
+<ellipse cx="260" cy="167" rx="34" ry="30" style="fill:#7FA86A"/>
+<path d="M320 250 V150" style="stroke:#8C6E4A;stroke-width:5"/>
+<ellipse cx="320" cy="140" rx="34" ry="30" style="fill:#7FA86A"/>
+<path d="M380 250 V165" style="stroke:#8C6E4A;stroke-width:5"/>
+<ellipse cx="380" cy="155" rx="34" ry="30" style="fill:#7FA86A"/>
+<path d="M440 250 V180" style="stroke:#8C6E4A;stroke-width:5"/>
+<ellipse cx="440" cy="170" rx="34" ry="30" style="fill:#7FA86A"/>
+<path d="M500 250 V155" style="stroke:#8C6E4A;stroke-width:5"/>
+<ellipse cx="500" cy="145" rx="34" ry="30" style="fill:#7FA86A"/>
+<rect x="700" y="170" width="90" height="70" style="fill:#F3E2C7;stroke:#6E6F7A;stroke-width:2"/>
+<path class="s-accent" d="M20 225 C 80 215 110 140 140 128 S 220 100 260 118 S 330 92 380 108 S 470 100 530 102 S 590 220 640 228 S 690 165 700 168 H790 S 820 225 860 228 S 1000 222 1080 230" style="stroke-width:3.5"/>
+<path class="s-trait" d="M20 250 C 200 230 380 270 560 240 S 900 220 1080 245" style="stroke-width:3.5"/>
+<path class="s-plein" d="M320 110 V244" style="stroke:var(--violet);stroke-width:3"/><path d="M320 104 l-7 12 h14 z M320 250 l-7 -12 h14 z" style="fill:var(--violet)"/>
+<text x="330" y="62" text-anchor="start" style="fill:var(--violet);font-weight:700">hauteur = MNS − MNT</text>
+<text class="s-orange" x="880" y="205" text-anchor="start">MNS : le sol et le sursol</text>
+<text x="880" y="270" text-anchor="start" style="fill:var(--bleu);font-weight:700">MNT : le sol</text>
+</svg>

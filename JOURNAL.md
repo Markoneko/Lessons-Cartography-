@@ -2,6 +2,33 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-13 (nuit) — « GIS : Geoprocessing », V0 en français et en anglais
+
+**Décidé par Marc**
+
+- Titre : « GIS : Geoprocessing » (« GIS: Geoprocessing » en anglais). Deux versions. Le cours est présenté avant le TP, puis relu seul.
+
+**Réalisé**
+
+- `index.qmd` et `index-en.qmd` : les 40 diapos du plan, mêmes numéros de fiche, toutes « à revoir ».
+- 24 schémas dessinés (et doublés en anglais), produits par `outils/schemas-geotraitements.py`. Les réponses des exercices y sont calculées, pas recopiées : jointure (placettes 1 et 3 dans P1), fusion (3 zones), condition (7 pixels à 1), moyenne 3 × 3 (5), zone B (6), placette 3 (412 m). Pour changer un schéma ou une valeur : modifier le script et le relancer.
+- 13 images reprises du support d'origine.
+- Vérifié : aucun débordement, réponses affichées comprises, dans les deux langues ; PDF de 40 pages.
+
+**Écarts par rapport au plan**
+
+- 1.2 : la requête est écrite en liste, plus lisible qu'un bloc de code.
+- 3.2 : la question ne montre que les trois tampons ; le schéma séparés / fusionnés / multiples passe en bonus, sinon il donnait la réponse.
+- 4.1 : cinq traitements à classer au lieu de quatre.
+- 5.2 : MAUP illustré par les deux cartes européennes du support d'origine.
+
+**À vérifier par Marc**
+
+- MNE (ancien support) devient MNS, le terme de l'IGN.
+- Stan Openshaw, 1984, pour le MAUP : de mémoire, non vérifié en ligne.
+- Les images reprises sont petites (230 à 680 pixels de large) ; plusieurs crédits restent « à compléter ».
+- Les noms d'outils QGIS ne sont cités qu'une fois (Sélectionner par expression) : à compléter si le TP en a besoin.
+
 ## 2026-10-13 (soir) — Nouveau cours : « Géotraitements », le plan
 
 **Demande de Marc**
