@@ -2,6 +2,32 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-14 — « GIS : Geoprocessing », retours de Marc sur la V0
+
+Numéros de diapo de la V0 française ; chaque correction est reportée dans la version anglaise.
+
+**Appliqué**
+
+- Partie 4 (traitements raster) : toutes les diapos passent en appui, le cours portant d'abord sur le vecteur.
+- Couverture datée du 14 octobre ; la mention du support d'origine est retirée, de la couverture comme des sources : Marc refait ces contenus lui-même.
+- 2 (0.2) : plus d'allusion au système de révision (`?niveau=socle`), qui n'est pas prêt.
+- 14 (2.2) : un seul schéma, `jointure.svg`. La colonne « essence » apparaît à droite de la table au moment de la réponse, avec une flèche venue des peuplements. Le schéma passe en pleine largeur, la question et la réponse côte à côte dessous.
+- 16 (3.1) : trois panneaux séparés. Le chemin passe par les points d'origine, et ne se mêle plus à l'enveloppe convexe.
+- 24 (4.3) : le curseur du NDVI est retiré. On donne le seuil d'environ 0,3 entre végétation et absence de végétation.
+- 27 (4.6) : la maison est posée sur le sol. Le MNS est désormais calculé à partir du MNT : il le rejoint exactement là où il n'y a ni arbre ni bâtiment.
+
+**Ajouté au gabarit**
+
+- Dans un schéma, la classe `s-apparait` cache un élément jusqu'à l'ouverture de la réponse de la diapo. L'élément figure dans le PDF corrigé, pas dans la version vierge. Documenté dans le README.
+
+**Vérifié**
+
+- 40 diapos par langue, aucun débordement ; colonne cachée avant la réponse, visible après, présente dans le PDF.
+
+**Remarque**
+
+- « GIS : Basics » mentionne encore `?niveau=socle` dans sa diapo « Comment lire ce support » : à retirer aussi si le système de révision n'est pas prêt.
+
 ## 2026-10-13 (nuit) — « GIS : Geoprocessing », V0 en français et en anglais
 
 **Décidé par Marc**

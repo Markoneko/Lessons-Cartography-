@@ -1,33 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 265" role="img" aria-label="Changing the geometry type: path, convex hull, centroid">
-<circle class="s-plein" cx="40" cy="150" r="6"/>
-<circle class="s-plein" cx="90" cy="110" r="6"/>
-<circle class="s-plein" cx="140" cy="130" r="6"/>
-<circle class="s-plein" cx="190" cy="80" r="6"/>
-<circle class="s-plein" cx="240" cy="100" r="6"/>
-<path class="s-accent" d="M260 115 H290"/><path class="s-plein-accent" d="M300 115 l-12 -7 v14 z"/>
-<path class="s-accent" d="M320 150 L370 110 L420 130 L470 80 L520 100"/>
-<text class="s-titre" x="260" y="230" text-anchor="middle">Path</text>
-<text class="s-petit" x="260" y="252" text-anchor="middle">from points to a line</text>
-<circle class="s-plein" cx="430" cy="120" r="6"/>
-<circle class="s-plein" cx="470" cy="70" r="6"/>
-<circle class="s-plein" cx="520" cy="100" r="6"/>
-<circle class="s-plein" cx="500" cy="160" r="6"/>
-<circle class="s-plein" cx="450" cy="170" r="6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 250" role="img" aria-label="Changing the geometry type: path, convex hull, centroid">
+<path class="s-tirets" d="M383 20 V250"/>
+<path class="s-tirets" d="M766 20 V250"/>
+<circle class="s-plein" cx="25" cy="150" r="6"/>
+<circle class="s-plein" cx="57" cy="105" r="6"/>
+<circle class="s-plein" cx="89" cy="125" r="6"/>
+<circle class="s-plein" cx="121" cy="70" r="6"/>
+<circle class="s-plein" cx="153" cy="90" r="6"/>
+<path class="s-accent" d="M168 112 H198"/><path class="s-plein-accent" d="M208 112 l-12 -7 v14 z"/>
+<path class="s-accent" d="M228 150 L260 105 L292 125 L324 70 L356 90"/>
+<circle class="s-plein" cx="228" cy="150" r="6"/>
+<circle class="s-plein" cx="260" cy="105" r="6"/>
+<circle class="s-plein" cx="292" cy="125" r="6"/>
+<circle class="s-plein" cx="324" cy="70" r="6"/>
+<circle class="s-plein" cx="356" cy="90" r="6"/>
+<text class="s-titre" x="191" y="215" text-anchor="middle">Path</text>
+<text class="s-petit" x="191" y="237" text-anchor="middle">from points to a line</text>
+<circle class="s-plein" cx="415" cy="100" r="6"/>
+<circle class="s-plein" cx="455" cy="50" r="6"/>
+<circle class="s-plein" cx="510" cy="75" r="6"/>
+<circle class="s-plein" cx="495" cy="140" r="6"/>
+<circle class="s-plein" cx="440" cy="150" r="6"/>
+<circle class="s-plein" cx="465" cy="100" r="6"/>
 <circle class="s-plein" cx="480" cy="120" r="6"/>
-<path class="s-accent" d="M540 115 H570"/><path class="s-plein-accent" d="M580 115 l-12 -7 v14 z"/>
-<path class="s-plein-accent" opacity="0.35" d="M600 120 L640 70 L690 100 L670 160 L620 170 Z"/><path class="s-trait" d="M600 120 L640 70 L690 100 L670 160 L620 170 Z"/>
-<circle cx="600" cy="120" r="4" style="fill:var(--gris)"/>
-<circle cx="640" cy="70" r="4" style="fill:var(--gris)"/>
-<circle cx="690" cy="100" r="4" style="fill:var(--gris)"/>
-<circle cx="670" cy="160" r="4" style="fill:var(--gris)"/>
-<circle cx="620" cy="170" r="4" style="fill:var(--gris)"/>
-<circle cx="650" cy="120" r="4" style="fill:var(--gris)"/>
-<text class="s-titre" x="560" y="230" text-anchor="middle">Convex hull</text>
-<text class="s-petit" x="560" y="252" text-anchor="middle">from points to a polygon</text>
-<path class="s-plein-accent" opacity="0.35" d="M770 80 L850 60 L880 130 L830 170 L760 150 Z"/><path class="s-trait" d="M770 80 L850 60 L880 130 L830 170 L760 150 Z"/>
-<path class="s-accent" d="M895 115 H925"/><path class="s-plein-accent" d="M935 115 l-12 -7 v14 z"/>
-<path class="s-fin" d="M980 80 L1060 60 L1090 130 L1040 170 L970 150 Z" style="stroke-dasharray:4 4"/>
-<circle class="s-plein" cx="1028" cy="118" r="8"/>
-<text class="s-titre" x="930" y="230" text-anchor="middle">Centroid</text>
-<text class="s-petit" x="930" y="252" text-anchor="middle">from a polygon to a point</text>
+<path class="s-accent" d="M530 100 H560"/><path class="s-plein-accent" d="M570 100 l-12 -7 v14 z"/>
+<path class="s-plein-accent" opacity="0.35" d="M610 100 L650 50 L705 75 L690 140 L635 150 Z"/><path class="s-trait" d="M610 100 L650 50 L705 75 L690 140 L635 150 Z"/>
+<circle class="s-fin" cx="610" cy="100" r="4"/>
+<circle class="s-fin" cx="650" cy="50" r="4"/>
+<circle class="s-fin" cx="705" cy="75" r="4"/>
+<circle class="s-fin" cx="690" cy="140" r="4"/>
+<circle class="s-fin" cx="635" cy="150" r="4"/>
+<circle class="s-fin" cx="660" cy="100" r="4"/>
+<circle class="s-fin" cx="675" cy="120" r="4"/>
+<text class="s-titre" x="574" y="215" text-anchor="middle">Convex hull</text>
+<text class="s-petit" x="574" y="237" text-anchor="middle">from points to a polygon</text>
+<path class="s-plein-accent" opacity="0.35" d="M800 70 L880 50 L910 120 L860 160 L790 140 Z"/><path class="s-trait" d="M800 70 L880 50 L910 120 L860 160 L790 140 Z"/>
+<path class="s-accent" d="M925 105 H955"/><path class="s-plein-accent" d="M965 105 l-12 -7 v14 z"/>
+<path class="s-fin" d="M990 70 L1070 50 L1100 120 L1050 160 L980 140 Z" style="stroke-dasharray:4 4"/>
+<circle class="s-plein" cx="1038" cy="108" r="8"/>
+<text class="s-titre" x="957" y="215" text-anchor="middle">Centroid</text>
+<text class="s-petit" x="957" y="237" text-anchor="middle">from a polygon to a point</text>
 </svg>

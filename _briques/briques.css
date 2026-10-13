@@ -222,6 +222,11 @@
 .reveal .schema .s-titre   { font-family: var(--police-titre); font-weight: 700; font-size: 19px; fill: var(--bleu); }
 .reveal .schema .s-petit   { font-size: 14px; fill: var(--gris); }
 .reveal .schema .s-orange  { fill: var(--orange-texte); font-weight: 700; }
+/* Ce qui porte la classe s-apparait n'apparaît qu'avec la réponse de la diapo (et figure dans le PDF corrigé) */
+.reveal .schema .s-apparait { opacity: 0; transition: opacity 0.4s; }
+.reveal section:has(.reponse.visible) .schema .s-apparait { opacity: 1; }
+html.reveal-print .reveal .schema .s-apparait { opacity: 1; }
+html.sans-reponses .reveal .schema .s-apparait { opacity: 0; }
 
 /* --- Pour aller plus loin ------------------------------------------------ */
 

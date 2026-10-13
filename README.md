@@ -306,6 +306,8 @@ Le commentaire de réussite.
 
 Un schéma peut réagir au QCM de sa diapo : voir `images/schemas/aplatissement.svg` dans le cours.
 
+Dans un schéma, les éléments marqués `class="s-apparait"` restent cachés jusqu'à l'ouverture de la réponse de la diapo, et figurent dans le PDF corrigé : voir `images/schemas/jointure.svg` dans le cours `geotraitements`.
+
 ## Les images d'un cours
 
 - `images/` contient les versions légères, celles que le cours utilise : 1 600 pixels au plus, noms simples, sans espace ni accent.

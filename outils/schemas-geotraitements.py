@@ -121,9 +121,9 @@ def table(x, y, entetes, lignes, largeurs, surligne=None):
     for r in range(len(lignes)):
         o.append(f'<path class="s-fin" d="M{x} {y+h*(r+1)} H{x+tot}"/>')
     return o
-def jointure(lg, resultat):
-    t = {'fr': ['Jointure spatiale : chaque placette reçoit les attributs du peuplement où elle tombe', 'Peuplements', 'Placettes', 'placette', 'diamètre', 'essence', 'Résultat de la jointure'],
-         'en': ['Spatial join: each plot receives the attributes of the stand it falls in', 'Stands', 'Plots', 'plot', 'diameter', 'species', 'Result of the join']}[lg]
+def jointure(lg):
+    t = {'fr': ['Jointure spatiale : chaque placette reçoit les attributs du peuplement où elle tombe', 'Peuplements', 'Placettes', 'placette', 'diamètre', 'essence', "l'essence du peuplement"],
+         'en': ['Spatial join: each plot receives the attributes of the stand it falls in', 'Stands', 'Plots', 'plot', 'diameter', 'species', 'the species of the stand']}[lg]
     o = []
     for nom, d, ess in PEUPL:
         o.append(f'<path d="{d}" class="s-plein-accent" opacity="{0.25 if nom=="P1" else 0.12}"/><path class="s-trait" d="{d}"/>')
@@ -132,43 +132,62 @@ def jointure(lg, resultat):
     for n, x, y, _ in PLAC:
         o.append(f'<circle class="s-plein" cx="{x}" cy="{y}" r="8"/>'); o.append(T(x + 18, y + 6, str(n), style='font-weight:700', anchor='start'))
     o.append(T(310, 295, f'{t[1]} + {t[2]}', 's-titre'))
-    if not resultat:
-        o += table(640, 70, [t[3], t[4]], [[str(n), f'{d} cm'] for n, _, _, d in PLAC], [110, 150])
-        o.append(T(770, 40, t[2], 's-titre'))
-    else:
-        o += table(620, 70, [t[3], t[4], t[5]], [[str(n), f'{d} cm', JOINT[n][2][lg]] for n, _, _, d in PLAC], [100, 140, 140], surligne=2)
-        o.append(T(810, 40, t[6], 's-titre'))
+    x0, y0, h = 640, 70, 34
+    o += table(x0, y0, [t[3], t[4]], [[str(n), f'{d} cm'] for n, _, _, d in PLAC], [100, 140])
+    o.append(T(x0, 40, t[2], 's-titre', anchor='start'))
+    # la nouvelle colonne, cachée jusqu'à la réponse
+    xc, w = x0 + 240, 140
+    g = ['<g class="s-apparait">']
+    g.append(f'<rect x="{xc}" y="{y0}" width="{w}" height="{h*4}" style="fill:#FCEFE2;stroke:var(--orange);stroke-width:2.5"/>')
+    g.append(T(xc + w / 2, y0 + 23, t[5], style='font-weight:700;fill:var(--orange-texte)'))
+    for r, (n, _, _, _) in enumerate(PLAC):
+        g.append(f'<path class="s-fin" d="M{xc} {y0+h*(r+1)} H{xc+w}"/>')
+        g.append(T(xc + w / 2, y0 + h * (r + 1) + 23, JOINT[n][2][lg], style='fill:var(--orange-texte);font-weight:700'))
+    yb = y0 + h * 4
+    g.append(f'<path class="s-accent" d="M552 215 C 680 300 {xc+w/2-20} 300 {xc+w/2} {yb+14}"/>')
+    g.append(f'<path class="s-plein-accent" d="M{xc+w/2} {yb+2} l-8 14 h16 z"/>')
+    g.append(T(760, 292, t[6], 's-orange'))
+    g.append('</g>')
+    o += g
     return svg('0 0 1150 310', t[0], o)
-ecrire('jointure-entrees.svg', jointure('fr', False), jointure('en', False))
-ecrire('jointure-resultat.svg', jointure('fr', True), jointure('en', True))
+ecrire('jointure.svg', jointure('fr'), jointure('en'))
 
 # ---------------------------------------------------------------- 3.1 implantation
 def implantation(lg):
     t = {'fr': ["Changer d'implantation : chemin, enveloppe convexe, centroïde", 'Chemin', 'des points à la ligne', 'Enveloppe convexe', 'des points au polygone', 'Centroïde', 'du polygone au point'],
          'en': ['Changing the geometry type: path, convex hull, centroid', 'Path', 'from points to a line', 'Convex hull', 'from points to a polygon', 'Centroid', 'from a polygon to a point']}[lg]
     o = []
-    pts = [(40, 150), (90, 110), (140, 130), (190, 80), (240, 100)]
-    for x, y in pts: o.append(f'<circle class="s-plein" cx="{x}" cy="{y}" r="6"/>')
-    o.append(fleche(260, 115, 300))
-    o.append('<path class="s-accent" d="M' + ' L'.join(f'{x+280} {y}' for x, y in pts) + '"/>')
-    o.append(T(260, 230, t[1], 's-titre')); o.append(T(260, 252, t[2], 's-petit'))
-    pts2 = [(430, 120), (470, 70), (520, 100), (500, 160), (450, 170), (480, 120)]
-    for x, y in pts2: o.append(f'<circle class="s-plein" cx="{x}" cy="{y}" r="6"/>')
-    o.append(fleche(540, 115, 580))
-    hull = [(430, 120), (470, 70), (520, 100), (500, 160), (450, 170)]
-    d = 'M' + ' L'.join(f'{x+170} {y}' for x, y in hull) + ' Z'
+    def pts_(dx, pts, r=6, cls='s-plein'):
+        return [f'<circle class="{cls}" cx="{x+dx}" cy="{y}" r="{r}"/>' for x, y in pts]
+    for k in (1, 2):
+        o.append(f'<path class="s-tirets" d="M{k*383} 20 V250"/>')
+    # 1. chemin
+    chemin = [(0, 150), (32, 105), (64, 125), (96, 70), (128, 90)]
+    o += pts_(25, chemin)
+    o.append(fleche(168, 112, 208))
+    o.append('<path class="s-accent" d="M' + ' L'.join(f'{x+228} {y}' for x, y in chemin) + '"/>')
+    o += pts_(228, chemin)
+    o.append(T(191, 215, t[1], 's-titre')); o.append(T(191, 237, t[2], 's-petit'))
+    # 2. enveloppe convexe
+    nuage = [(0, 100), (40, 50), (95, 75), (80, 140), (25, 150), (50, 100), (65, 120)]
+    hull = [(0, 100), (40, 50), (95, 75), (80, 140), (25, 150)]
+    o += pts_(415, nuage)
+    o.append(fleche(530, 100, 570))
+    d = 'M' + ' L'.join(f'{x+610} {y}' for x, y in hull) + ' Z'
     o.append(f'<path class="s-plein-accent" opacity="0.35" d="{d}"/><path class="s-trait" d="{d}"/>')
-    for x, y in pts2: o.append(f'<circle cx="{x+170}" cy="{y}" r="4" style="fill:var(--gris)"/>')
-    o.append(T(560, 230, t[3], 's-titre')); o.append(T(560, 252, t[4], 's-petit'))
-    poly = [(770, 80), (850, 60), (880, 130), (830, 170), (760, 150)]
-    d = 'M' + ' L'.join(f'{x} {y}' for x, y in poly) + ' Z'
+    o += pts_(610, nuage, r=4, cls='s-fin')
+    o.append(T(574, 215, t[3], 's-titre')); o.append(T(574, 237, t[4], 's-petit'))
+    # 3. centroïde
+    poly = [(0, 70), (80, 50), (110, 120), (60, 160), (-10, 140)]
+    d = 'M' + ' L'.join(f'{x+800} {y}' for x, y in poly) + ' Z'
     o.append(f'<path class="s-plein-accent" opacity="0.35" d="{d}"/><path class="s-trait" d="{d}"/>')
-    o.append(fleche(895, 115, 935))
+    o.append(fleche(925, 105, 965))
+    d2 = 'M' + ' L'.join(f'{x+990} {y}' for x, y in poly) + ' Z'
+    o.append(f'<path class="s-fin" d="{d2}" style="stroke-dasharray:4 4"/>')
     cx = sum(x for x, _ in poly) / 5; cy = sum(y for _, y in poly) / 5
-    o.append(f'<path class="s-fin" d="M{poly[0][0]+210} {poly[0][1]}' + ''.join(f' L{x+210} {y}' for x, y in poly[1:]) + ' Z" style="stroke-dasharray:4 4"/>')
-    o.append(f'<circle class="s-plein" cx="{cx+210:.0f}" cy="{cy:.0f}" r="8"/>')
-    o.append(T(930, 230, t[5], 's-titre')); o.append(T(930, 252, t[6], 's-petit'))
-    return svg('0 0 1150 265', t[0], o)
+    o.append(f'<circle class="s-plein" cx="{cx+990:.0f}" cy="{cy:.0f}" r="8"/>')
+    o.append(T(957, 215, t[5], 's-titre')); o.append(T(957, 237, t[6], 's-petit'))
+    return svg('0 0 1150 250', t[0], o)
 ecrire('implantation.svg', implantation('fr'), implantation('en'))
 
 # ---------------------------------------------------------------- 3.2 tampons
@@ -373,22 +392,48 @@ def fenetre(lg):
 ecrire('fenetre.svg', fenetre('fr'), fenetre('en'))
 
 # ---------------------------------------------------------------- 4.6 MNS - MNT
+import math
+def sol(x):
+    """Le MNT : une altitude (y écran) pour chaque abscisse."""
+    return 250 - 14 * math.sin(x / 170) - 8 * math.sin(x / 63 + 1)
+ARBRES = [(140, 95), (200, 120), (260, 105), (320, 130), (380, 115), (440, 100), (500, 125)]
+MAISON = (700, 790, 62)      # de x1 à x2, hauteur
+RX, RY = 34, 30
+def mns_y(x):
+    """Le MNS : le plus haut de ce qui couvre x (sol, houppiers, toit)."""
+    y = sol(x)
+    for xt, h in ARBRES:
+        cy = sol(xt) - h + 20
+        if abs(x - xt) < RX:
+            y = min(y, cy - RY * math.sqrt(1 - ((x - xt) / RX) ** 2))
+    x1, x2, hm = MAISON
+    if x1 <= x <= x2:
+        y = min(y, min(sol(x1), sol(x2)) - hm)
+    return y
 def mns(lg):
     t = {'fr': ['MNS, MNT et hauteur de canopée', 'MNS : le sol et le sursol', 'MNT : le sol', 'hauteur = MNS − MNT'],
          'en': ['DSM, DTM and canopy height', 'DSM: ground and above-ground', 'DTM: bare ground', 'height = DSM − DTM']}[lg]
     o = []
-    sol = 'M20 250 C 200 230 380 270 560 240 S 900 220 1080 245'
-    o.append(f'<path d="{sol} L1080 300 L20 300 Z" style="fill:#E7E1D0"/>')
-    for x, h in [(140, 95), (200, 120), (260, 105), (320, 130), (380, 115), (440, 100), (500, 125)]:
-        yb = 252 if x < 300 else 250
-        o.append(f'<path d="M{x} {yb} V{yb-h+30}" style="stroke:#8C6E4A;stroke-width:5"/>')
-        o.append(f'<ellipse cx="{x}" cy="{yb-h+20}" rx="34" ry="30" style="fill:#7FA86A"/>')
-    o.append('<rect x="700" y="170" width="90" height="70" style="fill:#F3E2C7;stroke:#6E6F7A;stroke-width:2"/>')
-    o.append('<path class="s-accent" d="M20 225 C 80 215 110 140 140 128 S 220 100 260 118 S 330 92 380 108 S 470 100 530 102 S 590 220 640 228 S 690 165 700 168 H790 S 820 225 860 228 S 1000 222 1080 230" style="stroke-width:3.5"/>')
-    o.append(f'<path class="s-trait" d="{sol}" style="stroke-width:3.5"/>')
-    o.append('<path class="s-plein" d="M320 110 V244" style="stroke:var(--violet);stroke-width:3"/><path d="M320 104 l-7 12 h14 z M320 250 l-7 -12 h14 z" style="fill:var(--violet)"/>')
+    xs = list(range(20, 1081, 4))
+    ligne_sol = 'M' + ' L'.join(f'{x} {sol(x):.1f}' for x in xs)
+    o.append(f'<path d="{ligne_sol} L1080 300 L20 300 Z" style="fill:#E7E1D0"/>')
+    for xt, h in ARBRES:
+        yb = sol(xt); cy = yb - h + 20
+        o.append(f'<path d="M{xt} {yb:.1f} V{cy+20:.1f}" style="stroke:#8C6E4A;stroke-width:5"/>')
+        o.append(f'<ellipse cx="{xt}" cy="{cy:.1f}" rx="{RX}" ry="{RY}" style="fill:#7FA86A"/>')
+    x1, x2, hm = MAISON
+    toit = min(sol(x1), sol(x2)) - hm
+    bas = ' L'.join(f'{x} {sol(x):.1f}' for x in range(x2, x1 - 1, -5))
+    o.append(f'<path d="M{x1} {toit:.1f} L{x2} {toit:.1f} L{bas} Z" style="fill:#F3E2C7;stroke:#6E6F7A;stroke-width:2"/>')
+    ligne_mns = 'M' + ' L'.join(f'{x} {mns_y(x):.1f}' for x in xs)
+    o.append(f'<path class="s-accent" d="{ligne_mns}" style="stroke-width:3.5"/>')
+    o.append(f'<path class="s-trait" d="{ligne_sol}" style="stroke-width:3"/>')
+    xa = 320; ya, yb = mns_y(xa), sol(xa)
+    o.append(f'<path d="M{xa} {ya+6:.1f} V{yb-6:.1f}" style="stroke:var(--violet);stroke-width:3"/>')
+    o.append(f'<path d="M{xa} {ya:.1f} l-7 12 h14 z M{xa} {yb:.1f} l-7 -12 h14 z" style="fill:var(--violet)"/>')
     o.append(T(330, 62, t[3], anchor='start', style='fill:var(--violet);font-weight:700'))
-    o.append(T(880, 205, t[1], 's-orange', anchor='start')); o.append(T(880, 270, t[2], anchor='start', style='fill:var(--bleu);font-weight:700'))
+    o.append(T(1085, mns_y(1000) - 14, t[1], 's-orange', anchor='end'))
+    o.append(T(1085, sol(1000) + 30, t[2], anchor='end', style='fill:var(--bleu);font-weight:700'))
     return svg('0 0 1100 300', t[0], o)
 ecrire('mns-mnt.svg', mns('fr'), mns('en'))
 

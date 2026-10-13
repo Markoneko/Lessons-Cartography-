@@ -1,8 +1,8 @@
 ---
 title: "GIS : Geoprocessing"
 subtitle: "Les géotraitements : interroger, enrichir, transformer"
-author: "Marc Poupée · Géodata Paris — d'après le support de Malika Madelin"
-date: "2026-10-13"
+author: "Marc Poupée · Géodata Paris"
+date: "2026-10-14"
 date-format: "D MMMM YYYY"
 footer: "GIS : Geoprocessing"
 title-slide-attributes:
@@ -10,7 +10,7 @@ title-slide-attributes:
 ---
 
 ::: {.fiche n="0.1" etat="a-revoir"}
-Intention : Couverture. Support présenté avant le TP, puis consulté seul. Crédit à Malika Madelin, autrice du support d'origine. [PPT 1]
+Intention : Couverture. Support présenté avant le TP, puis consulté seul. [PPT 1]
 Expérience : aucune
 Demande :
 :::
@@ -18,7 +18,7 @@ Demande :
 ## Comment lire ce support
 
 ::: {.fiche n="0.2" etat="a-revoir"}
-Intention : Le même mode d'emploi que « GIS : Basics » (niveaux, exercices, bonus, ?niveau=socle). Prérequis : raster, vecteur, attributs et couches, vus dans « GIS : Basics ». [nouvelle]
+Intention : Le même mode d'emploi que « GIS : Basics » (niveaux, exercices, bonus), sans le système de révision, pas encore prêt. Prérequis : raster, vecteur, attributs et couches, vus dans « GIS : Basics ». [nouvelle]
 Expérience : aucune
 Demande :
 :::
@@ -28,7 +28,6 @@ Ce support accompagne la présentation du cours, puis se relit seul, avant et pe
 - Le **pictogramme** devant chaque titre donne le niveau : **socle**, à maîtriser ; **appui**, pour consolider ; **veille**, pour aller plus loin. Une diapo sans pictogramme est un exemple.
 - Les **exercices** : répondez d'abord, puis cliquez.
 - Le bouton **+** en haut à droite ouvre un bonus « Pour aller plus loin ».
-- Pour **réviser**, ajoutez `?niveau=socle` à la fin de l'adresse de la page.
 
 [Prérequis : raster, vecteur, attributs et couches, vus dans « GIS : Basics ».]{.a-retenir}
 
@@ -286,22 +285,22 @@ La projection déforme les distances, d'autant plus loin de l'équateur. Le plus
 
 ::: {.fiche n="2.2" etat="a-revoir"}
 Intention : Joindre deux couches par leur position et non par une clef : chaque objet reçoit les attributs de l'objet qui le contient. Exemple forestier : chaque placette d'inventaire reçoit l'essence du peuplement où elle tombe. Schéma redessiné. [PPT 10]
-Expérience : question (prédiction) : quelle table obtient-on après la jointure ?
+Expérience : question (prédiction) : quelle table obtient-on après la jointure ? Avec la réponse, la nouvelle colonne apparaît à droite de la table, avec une flèche venue des peuplements.
 Demande :
 :::
 
 Une **jointure spatiale** relie deux couches par leur position, et non par une clef : chaque objet reçoit les attributs de l'objet qui le contient, ou qu'il touche.
 
+::: {.schema fichier="images/schemas/jointure.svg" hauteur="250"}
+:::
+
 :::: {.columns}
-::: {.column width="58%"}
-::: {.schema fichier="images/schemas/jointure-entrees.svg" hauteur="250"}
-:::
-:::
-::: {.column width="42%"}
+::: {.column width="50%"}
 ::: {.question etiquette="Prédiction"}
 Chaque placette reçoit l'essence du peuplement où elle tombe. **Que contient la table des placettes après la jointure ?**
 :::
-
+:::
+::: {.column width="50%"}
 ::: {.reponse}
 Une colonne de plus, « essence » : chêne pour les placettes 1 et 3, dans P1 ; hêtre pour la placette 2, dans P2.
 :::
@@ -472,7 +471,7 @@ Demande :
 
 Les mêmes questions, posées à une grille.
 
-## Trois familles d'opérations {.socle}
+## Trois familles d'opérations {.appui}
 
 ::: {.fiche n="4.1" etat="a-revoir"}
 Intention : Locale (pixel à pixel), focale (selon les pixels voisins), zonale (selon des zones). Trois petits schémas de grille, à la place des figures de Jeremy Mennis. [PPT 18, 19, 30, 38]
@@ -499,7 +498,7 @@ Demande :
 - La pente moyenne de chaque parcelle
 :::
 
-## Locales : reclasser, poser une condition {.socle}
+## Locales : reclasser, poser une condition {.appui}
 
 ::: {.fiche n="4.2" etat="a-revoir"}
 Intention : Reclasser (une table de correspondance, ou n classes automatiques) ; poser une condition, souvent un seuil. Usages : un masque binaire, une classification simplifiée. Exemple forestier : les pentes de plus de 30 %, non mécanisables. Petit schéma de grille. [PPT 20, 21, 29]
@@ -537,7 +536,7 @@ Les sept pixels au-delà de 30, regroupés à l'est : la zone à exploiter autre
 
 ::: {.fiche n="4.3" etat="a-revoir"}
 Intention : L'algèbre raster (la calculatrice raster) : une couche et une constante, ou plusieurs couches pixel à pixel (somme, moyenne). Exemple : le NDVI, indice de végétation. La superposition pondérée, pour un indice composite. Petits schémas. [PPT 22 à 27]
-Expérience : curseur : faire varier la réflectance proche infrarouge, lire le NDVI ; bonus : la superposition pondérée
+Expérience : aucune ; bonus : la superposition pondérée. Le seuil de 0,3 entre végétation et absence de végétation est donné.
 Demande :
 :::
 
@@ -551,13 +550,13 @@ L'**algèbre raster** combine des couches pixel à pixel : avec une constante, o
 Un exemple très courant, le **NDVI**, indice de végétation : `(PIR − R) / (PIR + R)`. La végétation réfléchit fortement le proche infrarouge (PIR) et absorbe le rouge (R).
 :::
 ::: {.column width="50%"}
-::: {.curseur min="0.05" max="0.6" pas="0.01" valeur="0.4" etiquette="Réflectance proche infrarouge, pour un rouge à 0,05"}
-- NDVI : `{(x-0.05)/(x+0.05)|2}`
-:::
+Le NDVI varie de −1 à 1.
 
-Proche de 0 : sol nu ou bâti. Au-delà de 0,6 : une végétation dense et active.
+- En dessous de 0,3 environ : sol nu, bâti, eau.
+- Vers **0,3** : la limite entre ce qui est végétalisé et ce qui ne l'est pas.
+- Au-delà, plus la valeur monte, plus la végétation est dense et active.
 
-![](images/ndvi-agrumes.png){fig-alt="Vergers d'agrumes en image aérienne et leur indice de végétation" height="200"}
+![](images/ndvi-agrumes.png){fig-alt="Vergers d'agrumes en image aérienne et leur indice de végétation" height="170"}
 :::
 ::::
 
@@ -587,7 +586,7 @@ La calculatrice raster est puissante, simple et rapide. Mais elle suppose que le
 
 [Avant de combiner deux rasters, vérifier qu'ils ont le même système de coordonnées, la même résolution et le même calage ; sinon, rééchantillonner l'un sur l'autre.]{.a-retenir}
 
-## Focales : la fenêtre glissante {.socle}
+## Focales : la fenêtre glissante {.appui}
 
 ::: {.fiche n="4.5" etat="a-revoir"}
 Intention : Chaque pixel reçoit une valeur calculée sur ses voisins, dans une fenêtre de 3 × 3, 5 × 5… ; la forme du voisinage peut varier. Filtres et statistiques focales. Petit schéma. [PPT 31, 32, 33]
@@ -613,7 +612,7 @@ La moyenne des neuf valeurs de la fenêtre : (3 + 6 + 9 + 4 + 8 + 5 + 7 + 2 + 1)
 :::
 ::::
 
-## Focales : dériver le relief {.socle}
+## Focales : dériver le relief {.appui}
 
 ::: {.fiche n="4.6" etat="a-revoir"}
 Intention : Du MNT on tire la pente, l'orientation, l'ombrage. MNT (le sol) et MNS (le sol et le sursol, MNE dans l'ancien support) ; leur différence donne la hauteur de la végétation : le lien avec la forêt. [PPT 34, 35, 36]
@@ -669,7 +668,7 @@ Avec une distance maximale, on obtient une **zone tampon en raster**.
 :::
 ::::
 
-## Zonales {.socle}
+## Zonales {.appui}
 
 ::: {.fiche n="4.8" etat="a-revoir"}
 Intention : Une statistique calculée sur les pixels d'une même zone (moyenne, somme, maximum…), la zone étant donnée par un raster ou un vecteur. Petit schéma. [PPT 38, 39]
@@ -893,7 +892,7 @@ Place au TP : une enquête sur des données forestières, de la première requê
 ## Sources et crédits {.petit}
 
 ::: {.fiche n="6.3" etat="a-revoir"}
-Intention : Malika Madelin pour le support d'origine ; les figures (Jeremy Mennis, ESRI, gvSIG, svgopen.org, Univ. Saint-Étienne, etc.), à compléter. [nouvelle]
+Intention : Les sources des figures reprises (ESRI, FAO, ESPON, etc.), à compléter. [nouvelle]
 Expérience : aucune
 Demande :
 :::
@@ -902,7 +901,6 @@ Demande :
 ::: {.column width="50%"}
 | Document | Origine |
 |---|---|
-| Support d'origine | Malika Madelin, *Géotraitements*, DDMEG |
 | Distance sur le planisphère et le globe | ancien support, à compléter |
 | Classification et occupation du sol | FAO |
 | Cartes agrégées par régions et sur une grille | ESPON, UMS RIATE |

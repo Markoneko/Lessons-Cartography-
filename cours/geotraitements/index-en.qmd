@@ -1,8 +1,8 @@
 ---
 title: "GIS: Geoprocessing"
 subtitle: "Query, enrich, transform"
-author: "Marc Poupée · Géodata Paris — after the handout by Malika Madelin"
-date: "2026-10-13"
+author: "Marc Poupée · Géodata Paris"
+date: "2026-10-14"
 date-format: "D MMMM YYYY"
 footer: "GIS: Geoprocessing"
 lang: en
@@ -11,7 +11,7 @@ title-slide-attributes:
 ---
 
 ::: {.fiche n="0.1" etat="a-revoir"}
-Intention : Cover. Presented before the practical, then read on one's own. Credit to Malika Madelin, author of the original handout. [PPT 1]
+Intention : Cover. Presented before the practical, then read on one's own. [PPT 1]
 Experience : none
 Request :
 :::
@@ -19,7 +19,7 @@ Request :
 ## How to use this handout
 
 ::: {.fiche n="0.2" etat="a-revoir"}
-Intention : The same user guide as "GIS: Basics" (levels, exercises, bonuses, ?niveau=socle). Prerequisites: raster, vector, attributes and layers, from "GIS: Basics". [new]
+Intention : The same user guide as "GIS: Basics" (levels, exercises, bonuses), without the revision system, not ready yet. Prerequisites: raster, vector, attributes and layers, from "GIS: Basics". [new]
 Experience : none
 Request :
 :::
@@ -29,7 +29,6 @@ This handout goes with the presentation of the course, then is read again on you
 - The **icon** in front of each title gives the level: **core**, to master; **support**, to consolidate; **further**, to go beyond. A slide without an icon is an example.
 - **Exercises**: answer first, then click.
 - The **+** button at the top right opens a "Going further" bonus.
-- To **revise**, add `?niveau=socle` to the end of the page address.
 
 [Prerequisites: raster, vector, attributes and layers, covered in "GIS: Basics".]{.a-retenir}
 
@@ -287,22 +286,22 @@ The projection distorts distances, all the more far from the equator. The shorte
 
 ::: {.fiche n="2.2" etat="a-revoir"}
 Intention : Joining two layers by position rather than by a key: each feature receives the attributes of the feature that contains it. Forest example: each inventory plot receives the species of the stand it falls in. Diagram redrawn. [PPT 10]
-Experience : question (prediction): which table do you get after the join?
+Experience : question (prediction): which table do you get after the join? With the answer, the new column appears to the right of the table, with an arrow from the stands.
 Request :
 :::
 
 A **spatial join** links two layers by position, not by a key: each feature receives the attributes of the feature that contains it, or that it touches.
 
+::: {.schema fichier="images/schemas/en/jointure.svg" hauteur="250"}
+:::
+
 :::: {.columns}
-::: {.column width="58%"}
-::: {.schema fichier="images/schemas/en/jointure-entrees.svg" hauteur="250"}
-:::
-:::
-::: {.column width="42%"}
+::: {.column width="50%"}
 ::: {.question etiquette="Prediction"}
 Each plot receives the species of the stand it falls in. **What does the plot table contain after the join?**
 :::
-
+:::
+::: {.column width="50%"}
 ::: {.reponse}
 One more column, "species": oak for plots 1 and 3, in P1; beech for plot 2, in P2.
 :::
@@ -473,7 +472,7 @@ Request :
 
 The same questions, asked of a grid.
 
-## Three families of operations {.socle}
+## Three families of operations {.appui}
 
 ::: {.fiche n="4.1" etat="a-revoir"}
 Intention : Local (cell by cell), focal (from neighbouring cells), zonal (by zone). Three small grid diagrams, instead of Jeremy Mennis's figures. [PPT 18, 19, 30, 38]
@@ -500,7 +499,7 @@ Request :
 - The mean slope of each parcel
 :::
 
-## Local: reclassify, apply a condition {.socle}
+## Local: reclassify, apply a condition {.appui}
 
 ::: {.fiche n="4.2" etat="a-revoir"}
 Intention : Reclassify (a lookup table, or n automatic classes); apply a condition, often a threshold. Uses: a binary mask, a simplified classification. Forest example: slopes over 30%, too steep for machines. Small grid diagram. [PPT 20, 21, 29]
@@ -538,7 +537,7 @@ The seven cells above 30, grouped to the east: the area to be worked differently
 
 ::: {.fiche n="4.3" etat="a-revoir"}
 Intention : Raster algebra (the raster calculator): a layer and a constant, or several layers cell by cell (sum, mean). Example: the NDVI, a vegetation index. Weighted overlay, for a composite index. Small diagrams. [PPT 22 to 27]
-Experience : slider: vary the near-infrared reflectance, read the NDVI; bonus: weighted overlay
+Experience : none; bonus: weighted overlay. The 0.3 threshold between vegetation and no vegetation is given.
 Request :
 :::
 
@@ -552,13 +551,13 @@ Request :
 A very common example, the **NDVI**, a vegetation index: `(NIR − R) / (NIR + R)`. Vegetation strongly reflects near-infrared (NIR) and absorbs red (R).
 :::
 ::: {.column width="50%"}
-::: {.curseur min="0.05" max="0.6" pas="0.01" valeur="0.4" etiquette="Near-infrared reflectance, with red at 0.05"}
-- NDVI: `{(x-0.05)/(x+0.05)|2}`
-:::
+The NDVI ranges from −1 to 1.
 
-Close to 0: bare soil or built-up. Above 0.6: dense, active vegetation.
+- Below about 0.3: bare soil, built-up areas, water.
+- Around **0.3**: the boundary between vegetated and non-vegetated.
+- Above it, the higher the value, the denser and more active the vegetation.
 
-![](images/ndvi-agrumes.png){fig-alt="Citrus orchards in an aerial image and their vegetation index" height="200"}
+![](images/ndvi-agrumes.png){fig-alt="Citrus orchards in an aerial image and their vegetation index" height="170"}
 :::
 ::::
 
@@ -588,7 +587,7 @@ The raster calculator is powerful, simple and fast. But it assumes that the cell
 
 [Before combining two rasters, check that they share the same coordinate system, resolution and alignment; otherwise, resample one onto the other.]{.a-retenir}
 
-## Focal: the moving window {.socle}
+## Focal: the moving window {.appui}
 
 ::: {.fiche n="4.5" etat="a-revoir"}
 Intention : Each cell receives a value computed from its neighbours, in a 3 × 3, 5 × 5… window; the shape of the neighbourhood can vary. Filters and focal statistics. Small diagram. [PPT 31, 32, 33]
@@ -614,7 +613,7 @@ The mean of the nine values in the window: (3 + 6 + 9 + 4 + 8 + 5 + 7 + 2 + 1) /
 :::
 ::::
 
-## Focal: deriving the terrain {.socle}
+## Focal: deriving the terrain {.appui}
 
 ::: {.fiche n="4.6" etat="a-revoir"}
 Intention : From the DTM come slope, aspect, hillshade. DTM (the ground) and DSM (ground and above-ground); their difference gives vegetation height: the link with the forest. [PPT 34, 35, 36]
@@ -670,7 +669,7 @@ With a maximum distance, you get a **raster buffer**.
 :::
 ::::
 
-## Zonal {.socle}
+## Zonal {.appui}
 
 ::: {.fiche n="4.8" etat="a-revoir"}
 Intention : A statistic computed over the cells of the same zone (mean, sum, maximum…), the zones being given by a raster or a vector. Small diagram. [PPT 38, 39]
@@ -894,7 +893,7 @@ Over to the practical: an investigation on forest data, from the first query to 
 ## Sources and credits {.petit}
 
 ::: {.fiche n="6.3" etat="a-revoir"}
-Intention : Malika Madelin for the original handout; the figures (Jeremy Mennis, ESRI, gvSIG, svgopen.org, Univ. Saint-Étienne, etc.), to be completed. [new]
+Intention : Sources of the figures reused (ESRI, FAO, ESPON, etc.), to be completed. [new]
 Experience : none
 Request :
 :::
@@ -903,7 +902,6 @@ Request :
 ::: {.column width="50%"}
 | Document | Origin |
 |---|---|
-| Original handout | Malika Madelin, *Géotraitements*, DDMEG |
 | Distance on the world map and the globe | original handout, to be completed |
 | Classification and land cover | FAO |
 | Maps aggregated by region and on a grid | ESPON, UMS RIATE |
