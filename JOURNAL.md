@@ -2,6 +2,32 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-13 (fin) — « GIS : Basics », retours de Marc sur la V0
+
+Numéros de diapo de la V0 française. Chaque correction est reportée dans la version anglaise.
+
+**Appliqué**
+
+- 7 (1.2) : schéma de la fusion redessiné. La base de données est faite de trois tables reliées par leurs clefs (peuplements, parcelles, propriétaires), à la manière d'un schéma conceptuel. Une couche raster s'ajoute aux couches vecteur, et le repère passe en 3D : X et Y parallèles aux couches, Z vertical.
+- 13 (2.3) : schéma du vocabulaire. Repère en 3D. Le lien part de la ligne en surbrillance et arrive sur le polygone. Le MNT est dessiné en TIN, le raster en grille de valeurs différentes.
+- 19 (3.5) : TIN agrandi. « Un tronçon » est écrit parallèle à son segment.
+- 20 (3.6) : raster et vecteur défilent en grand, l'un après l'autre.
+- 26 (3.12) : images 3D agrandies (rééchantillonnées, donc floues : de meilleurs originaux restent à trouver) ; colonne d'images élargie.
+- 33 (4.5) : l'orientation n'est plus exigée. On peut l'enlever quand elle est évidente pour tous, comme une carte de France pour des Français.
+- 38 (5.1) : flèches et légende fixes, sous le titre. Nouvelle option de la brique : `::: {.defiler commande="haut"}`. Sans l'option, rien ne change : le premier cours n'est pas touché.
+- 39 (5.2) : le classement est supprimé. Il est remplacé par ce qui doit ressortir le plus dans chaque usage : la clarté du résultat pour communiquer, la pertinence du processus pour analyser, le lien entre intrants et extrants pour simuler. Une question s'ajoute : une simulation publiée sans ses hypothèses. La conclusion est gardée.
+- 40 (5.3) : « etc. » à la fin des deux listes.
+- 45 (6.4) : pont recalé sur la route. Le nœud du terrain nominal suit.
+- 46 (6.5) : la question devient « Vous réalisez une base routière pour un outil de guidage routier… ».
+- 47 (6.6) : les principes et les exemples sont séparés, en deux blocs : nomenclature, règles de sélection.
+- 49 (6.8) : bonus supprimé. Une illustration montre un tronçon d'autoroute et onze objets que gère son SIG, chacun avec son thème.
+- Nouvelle diapo 6.8b, « Qu'est-ce qu'un modèle de données ? » : les trois niveaux, conceptuel, logique et physique, sans détail ; la modélisation a son propre cours. La diapo 6.9 s'y réfère.
+
+**Vérifié**
+
+- 55 diapos dans chaque langue, aucun débordement, réponses affichées comprises ; les sept liens du schéma ; PDF de 55 pages.
+- Le premier cours compile toujours ; aucune diapo figée n'a été modifiée.
+
 ## 2026-10-13 (suite) — « GIS : Basics », V0 en français et en anglais
 
 **Décidé par Marc**

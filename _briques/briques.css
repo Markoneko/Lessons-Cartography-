@@ -337,6 +337,8 @@ html.reveal-print .reveal .loupe-aide { display: none; }
 }
 .reveal .defiler-bouton:hover { border-color: var(--bleu); }
 .reveal .defiler-legende { font-size: 18px; color: var(--gris); min-width: 300px; text-align: center; }
+.reveal .defiler.commande-haut .defiler-commande { justify-content: space-between; margin: 0 0 12px 0; }
+.reveal .defiler.commande-haut .defiler-legende { flex: 1 1 auto; min-width: 0; }
 
 /* --- QCM resserré, quand les commentaires sont nombreux ------------------- */
 

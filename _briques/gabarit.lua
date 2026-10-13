@@ -464,11 +464,19 @@ local function brique_defiler(div)
     local nom = pandoc.utils.stringify(i.caption)
     vues:insert(pandoc.Div({ pandoc.Plain({ i }) }, pandoc.Attr("", { "defiler-vue" }, { ["data-nom"] = nom })))
   end
-  avant:insert(pandoc.Div(vues, pandoc.Attr("", { "defiler-vues" })))
-  avant:insert(pandoc.RawBlock("html", '<div class="defiler-commande">'
+  local commande = pandoc.RawBlock("html", '<div class="defiler-commande">'
     .. '<button type="button" class="defiler-bouton" data-pas="-1" aria-label="' .. t("precedente") .. '">◀</button>'
     .. '<span class="defiler-legende" aria-live="polite"></span>'
-    .. '<button type="button" class="defiler-bouton" data-pas="1" aria-label="' .. t("suivante") .. '">▶</button></div>'))
+    .. '<button type="button" class="defiler-bouton" data-pas="1" aria-label="' .. t("suivante") .. '">▶</button></div>')
+  -- commande="haut" : boutons et légende au-dessus des images, à position fixe
+  if div.attributes["commande"] == "haut" then
+    div.classes:insert("commande-haut")
+    avant:insert(commande)
+    avant:insert(pandoc.Div(vues, pandoc.Attr("", { "defiler-vues" })))
+  else
+    avant:insert(pandoc.Div(vues, pandoc.Attr("", { "defiler-vues" })))
+    avant:insert(commande)
+  end
   div.content = avant
   return div
 end

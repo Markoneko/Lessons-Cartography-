@@ -408,13 +408,15 @@ Demande :
 :::
 
 :::: {.columns}
-::: {.column width="44%"}
-![](images/tin.jpg){fig-alt="Relief découpé en triangles irréguliers" height="230"}
+::: {.column width="48%"}
+::: {.centre}
+![](images/tin.jpg){fig-alt="Relief découpé en triangles irréguliers" height="300"}
+:::
 
 Le **TIN** (*Triangulated Irregular Network*) découpe le relief en triangles de taille variable. Chaque facette a une pente et une orientation : on suit par où l'eau s'écoule.
 :::
-::: {.column width="56%"}
-::: {.schema fichier="images/schemas/reseau.svg" hauteur="300"}
+::: {.column width="52%"}
+::: {.schema fichier="images/schemas/reseau.svg" hauteur="320"}
 :::
 
 Le **réseau** relie des tronçons par des nœuds. Il sert à calculer un itinéraire, à organiser la desserte d'une forêt, à gérer des réseaux d'eau.
@@ -425,21 +427,18 @@ Le **réseau** relie des tronçons par des nœuds. Il sert à calculer un itiné
 
 ::: {.fiche n="3.6" etat="a-revoir"}
 Intention : Le raster est facile d'emploi, déjà symbolisé, lourd, et limite les analyses ; le vecteur est plus riche, plus léger, permet toutes les analyses, mais demande un habillage et plus de savoir-faire. [PPT 25]
-Expérience : classer huit propriétés dans « raster » ou « vecteur » (l'ancienne consigne orale « proposer des différences »)
+Expérience : défiler du raster au vecteur, en grand ; classer huit propriétés dans « raster » ou « vecteur » (l'ancienne consigne orale « proposer des différences »)
 Demande :
 :::
 
 :::: {.columns .resserre}
-::: {.column width="30%"}
-![](images/image-aerienne.png){fig-alt="Photographie aérienne d'une zone urbaine" height="150"}
-
-[Raster : une photo aérienne]{.legende}
-
-![](images/vecteur-ecran.png){fig-alt="Couches vectorielles affichées dans un logiciel" height="150"}
-
-[Vecteur : des objets dans un logiciel]{.legende}
+::: {.column width="42%"}
+::: {.defiler commande="haut"}
+- ![Raster : une photo aérienne](images/image-aerienne.png)
+- ![Vecteur : des objets dans un logiciel](images/vecteur-ecran.png)
 :::
-::: {.column width="70%"}
+:::
+::: {.column width="58%"}
 ::: {.classer}
 ### Raster
 
@@ -616,7 +615,7 @@ Demande :
 :::
 
 :::: {.columns .resserre}
-::: {.column width="46%"}
+::: {.column width="40%"}
 - **2D** : la troisième dimension est ignorée.
 - **2D½** : l'altitude est un attribut de l'objet.
 - **3D** : l'altitude est une coordonnée, Z.
@@ -633,8 +632,8 @@ Un bâtiment porte sa hauteur dans un attribut. C'est…
     - Il faudrait une coordonnée Z pour chaque sommet.
 :::
 :::
-::: {.column width="54%"}
-::: {.defiler}
+::: {.column width="60%"}
+::: {.defiler commande="haut"}
 - ![Un relief en 3D, à partir d'un MNT](images/3d-mnt.png)
 - ![L'extrusion des bâtiments, à partir de leur hauteur](images/3d-extrusion.png)
 - ![Une carte scannée drapée sur le MNT](images/3d-drape.png)
@@ -794,7 +793,7 @@ Quand le symbole varie selon un attribut, on obtient une **carte thématique** :
 ## Mettre en page {.appui}
 
 ::: {.fiche n="4.5" etat="a-revoir"}
-Intention : Une carte publiée a un cadre, un titre, une légende, une échelle, une orientation, des sources. Dans QGIS, la mise en page se fait dans une fenêtre à part. [PPT 46]
+Intention : Une carte publiée a un cadre, un titre, une légende, une échelle, des sources ; l'orientation, sauf quand elle est évidente pour tous (une carte de France pour des Français). Dans QGIS, la mise en page se fait dans une fenêtre à part. [PPT 46]
 Expérience : QCM à réponses multiples : quels éléments une carte publiée doit-elle porter ?
 Demande :
 :::
@@ -817,8 +816,8 @@ Quels éléments une carte publiée doit-elle porter ? Plusieurs réponses sont 
     - Oui : elle donne le sens des symboles.
 - [x] Une échelle
     - Oui : pour mesurer.
-- [x] Une orientation
-    - Oui, au moins quand le nord n'est pas en haut.
+- [ ] Une orientation
+    - Pas toujours : on peut l'enlever quand elle est évidente pour tout le monde, par exemple une carte de France pour des Français.
 - [x] La source et la date des données
     - Oui : le lecteur doit savoir d'où vient l'information.
 - [ ] La liste des couches du projet
@@ -928,11 +927,11 @@ Communiquer, analyser, simuler.
 
 ::: {.fiche n="5.1" etat="a-revoir"}
 Intention : Une galerie d'exemples réels, sans étiquette de niveau : départs de feux dans le Var, taxons en Guadeloupe, phosphore dans les sols, population de la Martinique, BD Forêt à Nancy, usages du Massif Central, trafic, isochrones de Bourges, implantation à Bordeaux, exposition aux ondes, impact odorant. Légendes et sources sous chaque image. [PPT 53 à 61]
-Expérience : défiler les cartes en grand
+Expérience : défiler les cartes en grand, flèches fixes sous le titre
 Demande :
 :::
 
-::: {.defiler}
+::: {.defiler commande="haut"}
 - ![Départs de feux de forêt par commune dans le Var, 1997-2001 (base Prométhée)](images/var-eclosions-feux.png)
 - ![La forêt autour de Nancy, décrite par la BD Forêt (IGN)](images/nancy-bd-foret.png)
 - ![Massif Central : les multiples usages du territoire, dont les massifs forestiers](images/massif-central-usages.png)
@@ -949,33 +948,40 @@ Demande :
 ## Quel usage ? {.appui}
 
 ::: {.fiche n="5.2" etat="a-revoir"}
-Intention : Distinguer les trois grands usages à partir des exemples de la galerie. [PPT 53, 56, 59]
-Expérience : classer six exemples dans « communiquer », « analyser » ou « simuler »
+Intention : Distinguer les trois grands usages par ce qui doit ressortir le plus : pour communiquer, la clarté du résultat ; pour analyser, la pertinence du processus ; pour simuler, la relation entre intrants et extrants. [PPT 53, 56, 59]
+Expérience : question : une carte de simulation sans ses hypothèses, que manque-t-il au lecteur ?
 Demande :
 :::
 
-:::: {.columns .resserre}
-::: {.column width="40%"}
-- **Communiquer** : cartes thématiques et statistiques, localisation, diffusion du cadastre.
-- **Analyser** : gestion de la circulation, des flux, des réseaux ; corrélations et répartitions dans l'espace.
-- **Simuler** : préparer un projet, optimiser une implantation, étudier un impact, faire de la prospective.
-:::
-::: {.column width="60%"}
-::: {.classer}
+Les trois usages ne demandent pas la même chose. Ce qui doit ressortir le plus :
+
+:::: {.columns}
+::: {.column width="33%"}
 ### Communiquer
 
-- La population de la Martinique
-- Les teneurs en phosphore des sols
-
+**La clarté du résultat** : un message lisible au premier coup d'œil.
+:::
+::: {.column width="34%"}
 ### Analyser
 
-- Les isochrones de Bourges
-- Le trafic routier, cycliste et piéton
-
+**La pertinence du processus** : des données adaptées, une méthode explicite, que l'on peut refaire.
+:::
+::: {.column width="33%"}
 ### Simuler
 
-- L'exposition aux ondes
-- L'impact odorant d'une usine
+**Le lien entre intrants et extrants** : des hypothèses affichées, des paramètres que l'on fait varier.
+:::
+::::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.question}
+Une carte de simulation est publiée sans ses hypothèses. **Que manque-t-il au lecteur ?**
+:::
+:::
+::: {.column width="50%"}
+::: {.reponse}
+Le moyen de juger le résultat : sans les intrants, il ne sait ni ce que la carte simule, ni ce qui changerait avec une autre hypothèse.
 :::
 :::
 ::::
@@ -999,7 +1005,8 @@ Les SIG sont partout :
 - environnement et aménagement ;
 - risques, agriculture, forêt ;
 - santé, télécommunications ;
-- formation et recherche.
+- formation et recherche ;
+- etc.
 :::
 ::: {.column width="50%"}
 **En forêt**, le SIG sert à :
@@ -1008,7 +1015,8 @@ Les SIG sont partout :
 - rédiger et suivre les plans d'aménagement ;
 - organiser la desserte ;
 - défendre les forêts contre l'incendie ;
-- suivre la santé des peuplements.
+- suivre la santé des peuplements ;
+- etc.
 :::
 ::::
 
@@ -1105,7 +1113,7 @@ Faites glisser le curseur : le bâtiment devient un bloc, la route et la rivièr
 
 ::: {.fiche n="6.5" etat="a-revoir"}
 Intention : La saisie dépend du besoin. Dans la BD TOPO, un rond-point ordinaire devient un cercle de tronçons, la place de l'Étoile se modélise avec des axes fictifs ; on aurait pu choisir deux lignes et un point portant l'attribut « rond-point ». Schéma redessiné. [PPT 71, 72]
-Expérience : QCM : quelle modélisation pour un calcul d'itinéraire ?
+Expérience : QCM : quel modèle de rond-point pour la base d'un outil de guidage routier ?
 Demande :
 :::
 
@@ -1118,7 +1126,7 @@ La représentation se choisit selon le besoin. Dans la BD TOPO, un rond-point or
 :::
 ::: {.column width="50%"}
 ::: {.qcm .serre}
-Vous calculez des itinéraires. Quel modèle choisir ?
+Vous réalisez une base routière pour un outil de guidage routier. Quel modèle de rond-point choisir ?
 
 - [x] L'anneau de tronçons
     - Oui : il donne le sens de circulation et la vraie longueur du trajet.
@@ -1131,27 +1139,37 @@ Vous calculez des itinéraires. Quel modèle choisir ?
 ## Nomenclature et règles de sélection {.appui}
 
 ::: {.fiche n="6.6" etat="a-revoir"}
-Intention : Lister les groupes d'information, définir chacun et ses propriétés, puis les conditions qu'un objet du monde réel doit remplir pour entrer dans la base (chemins balisés, gares desservies par le train, cimetières de plus de 2 ha, forêts de plus de 0,5 ha dans la BD Forêt). [PPT 73, 74, 75]
+Intention : Distinguer les principes (la nomenclature : groupes, propriétés, définitions ; les règles de sélection : les conditions pour entrer dans la base) et les exemples (routes, autoroute ; cimetières, gares, BD Forêt). [PPT 73, 74, 75]
 Expérience : QCM : avec la règle donnée, ce cimetière d'un hectare est-il dans la base ?
 Demande :
 :::
 
 :::: {.columns .resserre}
 ::: {.column width="50%"}
-**La nomenclature**
+### La nomenclature
 
-- la liste des groupes d'information : routes, rivières, végétation, bâtiments… ;
-- pour chaque groupe, ses propriétés : pour les routes, le numéro, le revêtement, le nombre de voies ;
-- la définition de chaque objet : « Une autoroute est… ».
+*Le principe* : lister les groupes d'information, les propriétés de chaque groupe, et définir chaque objet.
 
-**Les règles de sélection** : les conditions qu'un objet du monde réel doit remplir pour entrer dans la base.
+*Des exemples* :
 
-- Les gares desservies uniquement par autocar ne sont pas retenues.
-- Les nécropoles nationales sont toutes retenues ; les autres cimetières, à partir de 2 ha.
-- Dans la BD Forêt, une formation boisée est décrite à partir de 0,5 ha.
+- routes, rivières, végétation, bâtiments ;
+- pour les routes : numéro, revêtement, nombre de voies ;
+- « Une autoroute est… ».
 :::
 ::: {.column width="50%"}
-::: {.qcm}
+### Les règles de sélection
+
+*Le principe* : fixer les conditions qu'un objet du monde réel doit remplir pour entrer dans la base : une taille, une fonction, un statut.
+
+*Des exemples* :
+
+- toutes les nécropoles nationales ; les autres cimetières à partir de 2 ha ;
+- pas les gares desservies uniquement par autocar ;
+- BD Forêt : les formations boisées à partir de 0,5 ha.
+:::
+::::
+
+::: {.qcm .serre}
 Avec ces règles, un cimetière communal d'un hectare est-il dans la base ?
 
 - [ ] Oui
@@ -1159,8 +1177,6 @@ Avec ces règles, un cimetière communal d'un hectare est-il dans la base ?
 - [x] Non
     - Il fait moins de 2 ha : il n'entre pas dans le terrain nominal.
 :::
-:::
-::::
 
 ## Le dictionnaire des données {.socle}
 
@@ -1190,8 +1206,11 @@ Chaque base de l'IGN a le sien. Celui de la BD TOPO, son « descriptif de conten
 
 ::: {.fiche n="6.8" etat="a-revoir"}
 Intention : La démarche appliquée, en une diapo : pourquoi (gérer le réseau, les accidents, les travaux, informer), pour qui (conducteurs de travaux, information des usagers, gestion de crise), comment, et le classement par thèmes (infrastructures, équipements, assainissement, signalisation…). [PPT 77 à 80]
-Expérience : bonus « Pour aller plus loin » : le détail des thèmes déclinés
+Expérience : schéma d'un tronçon d'autoroute et des objets que gère son SIG, chacun avec son thème
 Demande :
+:::
+
+::: {.schema fichier="images/schemas/autoroute.svg" hauteur="250"}
 :::
 
 :::: {.columns .resserre}
@@ -1209,16 +1228,22 @@ Demande :
 :::
 ::::
 
-::: {.plus titre="Deux thèmes déclinés"}
-:::: {.columns}
-::: {.column width="50%"}
-**Infrastructures** : tronçon, éclairage, accès de service, accès de secours, échangeur, itinéraires, refuge…
+## Qu'est-ce qu'un modèle de données ? {.appui}
+
+::: {.fiche n="6.8b" etat="a-revoir"}
+Intention : Introduire les modèles avant d'en parler : un modèle décrit l'organisation des données, en trois niveaux (conceptuel, logique, physique). Sans entrer dans le détail : un cours y est consacré. [nouvelle, demandée par Marc]
+Expérience : schéma des trois niveaux
+Demande :
 :::
-::: {.column width="50%"}
-**Équipement dynamique** : panneau à message variable, antenne, capteur météo, point de comptage, caméra, feux d'affectation de voie…
+
+Un **modèle de données** décrit comment les informations d'une base sont organisées. On le construit en trois niveaux, du plus abstrait au plus concret :
+
+::: {.schema fichier="images/schemas/modele-niveaux.svg" hauteur="220"}
 :::
-::::
-:::
+
+On le dessine avec des formalismes normalisés, comme UML ou le modèle entité-association.
+
+[La modélisation des données a son propre cours. Ici, retenez les trois niveaux, et le vocabulaire du niveau conceptuel : classe, attribut, relation.]{.a-retenir}
 
 ## De la spécification au modèle {.appui}
 
@@ -1228,7 +1253,7 @@ Expérience : classer quatre exemples dans Classe / Attribut / Relation / Objet 
 Demande :
 :::
 
-Une fois la spécification écrite, on organise la base dans un **modèle conceptuel** : chaque groupe devient une **classe**, chaque propriété un **attribut**, chaque relation un **lien**, chaque élément un **objet**.
+Une fois la spécification écrite, on la traduit dans le **modèle conceptuel** : chaque groupe devient une **classe**, chaque propriété un **attribut**, chaque relation un **lien**, chaque élément un **objet**.
 
 ::: {.classer}
 ### Classe

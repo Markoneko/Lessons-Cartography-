@@ -4,7 +4,7 @@
   <g class="s-blanc"><circle cx="60" cy="250" r="9"/><circle cx="170" cy="170" r="9"/><circle cx="300" cy="210" r="9"/><circle cx="420" cy="120" r="9"/><circle cx="560" cy="160" r="9"/><circle cx="210" cy="60" r="9"/><circle cx="360" cy="70" r="9"/><circle cx="470" cy="270" r="9"/></g>
   <text class="s-petit" x="60" y="282" text-anchor="middle">start</text>
   <text class="s-petit" x="575" y="140">end</text>
-  <text class="s-petit" x="225" y="45">a node</text>
-  <text class="s-petit" x="250" y="125" transform="rotate(-62 250 125)">a segment</text>
+  <text class="s-petit" x="432" y="110">a node</text>
+  <text class="s-petit" x="285" y="56" text-anchor="middle" transform="rotate(3.8 285 56)">a segment</text>
   <text class="s-orange" x="350" y="300">the route</text>
 </svg>

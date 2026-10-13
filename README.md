@@ -302,6 +302,7 @@ Le commentaire de réussite.
 | `::: {.apres-choix}` … `:::` | contenu masqué tant qu'aucune réponse du QCM n'est choisie |
 | `:::: {.columns .resserre}` | colonnes au texte plus petit, pour laisser la place à une image |
 | `::: {.centre}` … `:::` | centre une image |
+| `::: {.defiler commande="haut"}` | les flèches et la légende passent au-dessus des images et ne bougent plus d'une image à l'autre |
 
 Un schéma peut réagir au QCM de sa diapo : voir `images/schemas/aplatissement.svg` dans le cours.
 

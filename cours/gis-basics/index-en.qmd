@@ -409,13 +409,15 @@ Request :
 :::
 
 :::: {.columns}
-::: {.column width="44%"}
-![](images/tin.jpg){fig-alt="Relief cut into irregular triangles" height="230"}
+::: {.column width="48%"}
+::: {.centre}
+![](images/tin.jpg){fig-alt="Relief cut into irregular triangles" height="300"}
+:::
 
 The **TIN** (*Triangulated Irregular Network*) cuts relief into triangles of varying size. Each facet has a slope and an aspect: you can follow where water flows.
 :::
-::: {.column width="56%"}
-::: {.schema fichier="images/schemas/en/reseau.svg" hauteur="300"}
+::: {.column width="52%"}
+::: {.schema fichier="images/schemas/en/reseau.svg" hauteur="320"}
 :::
 
 The **network** links segments through nodes. It is used to compute a route, to plan access in a forest, to manage water networks.
@@ -426,21 +428,18 @@ The **network** links segments through nodes. It is used to compute a route, to 
 
 ::: {.fiche n="3.6" etat="a-revoir"}
 Intention : Raster is easy to use, already symbolised, heavy, and limits analysis; vector is richer, lighter, allows any analysis, but needs styling and more skill. [PPT 25]
-Experience : sort eight properties into "raster" or "vector" (the old spoken prompt "suggest differences")
+Experience : scroll from raster to vector, in large format; sort eight properties into "raster" or "vector" (the old spoken prompt "suggest differences")
 Request :
 :::
 
 :::: {.columns .resserre}
-::: {.column width="30%"}
-![](images/image-aerienne.png){fig-alt="Aerial photograph of an urban area" height="150"}
-
-[Raster: an aerial photo]{.legende}
-
-![](images/vecteur-ecran.png){fig-alt="Vector layers displayed in a program" height="150"}
-
-[Vector: features in a program]{.legende}
+::: {.column width="42%"}
+::: {.defiler commande="haut"}
+- ![Raster: an aerial photo](images/image-aerienne.png)
+- ![Vector: features in a program](images/vecteur-ecran.png)
 :::
-::: {.column width="70%"}
+:::
+::: {.column width="58%"}
 ::: {.classer}
 ### Raster
 
@@ -617,7 +616,7 @@ Request :
 :::
 
 :::: {.columns .resserre}
-::: {.column width="46%"}
+::: {.column width="40%"}
 - **2D**: the third dimension is ignored.
 - **2.5D**: elevation is an attribute of the feature.
 - **3D**: elevation is a coordinate, Z.
@@ -634,8 +633,8 @@ A building carries its height in an attribute. This is…
     - Each vertex would need a Z coordinate.
 :::
 :::
-::: {.column width="54%"}
-::: {.defiler}
+::: {.column width="60%"}
+::: {.defiler commande="haut"}
 - ![Relief in 3D, from a DTM](images/3d-mnt.png)
 - ![Building extrusion, from their height](images/3d-extrusion.png)
 - ![A scanned map draped over the DTM](images/3d-drape.png)
@@ -795,7 +794,7 @@ When the symbol varies with an attribute, you get a **thematic map**: colouring 
 ## Map layout {.appui}
 
 ::: {.fiche n="4.5" etat="a-revoir"}
-Intention : A published map has a frame, a title, a legend, a scale, an orientation, sources. In QGIS, the layout is prepared in a separate window. [PPT 46]
+Intention : A published map has a frame, a title, a legend, a scale, sources; and an orientation, unless it is obvious to everyone (a map of France for French readers). In QGIS, the layout is prepared in a separate window. [PPT 46]
 Experience : multiple choice, several answers: which elements must a published map carry?
 Request :
 :::
@@ -818,8 +817,8 @@ Which elements must a published map carry? More than one answer is correct.
     - Yes: it gives the meaning of the symbols.
 - [x] A scale
     - Yes: to measure.
-- [x] An orientation
-    - Yes, at least when north is not at the top.
+- [ ] An orientation
+    - Not always: it can be left out when it is obvious to everyone, for example a map of France for French readers.
 - [x] The source and date of the data
     - Yes: readers must know where the information comes from.
 - [ ] The list of the project's layers
@@ -929,11 +928,11 @@ Communicate, analyse, simulate.
 
 ::: {.fiche n="5.1" etat="a-revoir"}
 Intention : A gallery of real examples, without a level tag: wildfire starts in the Var, taxa in Guadeloupe, phosphorus in soils, population of Martinique, BD Forêt around Nancy, land uses in the Massif Central, traffic, isochrones in Bourges, siting in Bordeaux, exposure to radio waves, odour impact. Captions and sources under each image. [PPT 53 to 61]
-Experience : scroll through the maps in large format
+Experience : scroll through the maps in large format, arrows fixed under the title
 Request :
 :::
 
-::: {.defiler}
+::: {.defiler commande="haut"}
 - ![Wildfire starts by municipality in the Var, 1997-2001 (Prométhée database)](images/var-eclosions-feux.png)
 - ![The forest around Nancy, described by BD Forêt (IGN)](images/nancy-bd-foret.png)
 - ![Massif Central: the many uses of the territory, including forests](images/massif-central-usages.png)
@@ -950,33 +949,40 @@ Request :
 ## Which use? {.appui}
 
 ::: {.fiche n="5.2" etat="a-revoir"}
-Intention : Tell the three main uses apart, from the examples in the gallery. [PPT 53, 56, 59]
-Experience : sort six examples into "communicate", "analyse" or "simulate"
+Intention : Tell the three main uses apart by what must stand out most: to communicate, the clarity of the result; to analyse, the relevance of the process; to simulate, the relationship between inputs and outputs. [PPT 53, 56, 59]
+Experience : question: a simulation map without its assumptions, what is the reader missing?
 Request :
 :::
 
-:::: {.columns .resserre}
-::: {.column width="40%"}
-- **Communicate**: thematic and statistical maps, locating, publishing the cadastre.
-- **Analyse**: managing traffic, flows, networks; spatial correlations and distributions.
-- **Simulate**: preparing a project, optimising a location, studying an impact, foresight.
-:::
-::: {.column width="60%"}
-::: {.classer}
+The three uses do not call for the same thing. What must stand out most:
+
+:::: {.columns}
+::: {.column width="33%"}
 ### Communicate
 
-- The population of Martinique
-- Soil phosphorus content
-
+**The clarity of the result**: a message readable at a glance.
+:::
+::: {.column width="34%"}
 ### Analyse
 
-- The isochrones of Bourges
-- Road, cycle and pedestrian traffic
-
+**The relevance of the process**: suitable data, an explicit method, steps that can be repeated.
+:::
+::: {.column width="33%"}
 ### Simulate
 
-- Exposure to radio waves
-- The odour impact of a plant
+**The link between inputs and outputs**: stated assumptions, parameters you can vary.
+:::
+::::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.question}
+A simulation map is published without its assumptions. **What is the reader missing?**
+:::
+:::
+::: {.column width="50%"}
+::: {.reponse}
+A way to judge the result: without the inputs, they know neither what the map simulates nor what would change with another assumption.
 :::
 :::
 ::::
@@ -1000,7 +1006,8 @@ GIS is everywhere:
 - environment and planning;
 - risks, agriculture, forestry;
 - health, telecommunications;
-- teaching and research.
+- teaching and research;
+- etc.
 :::
 ::: {.column width="50%"}
 **In forestry**, GIS is used to:
@@ -1009,7 +1016,8 @@ GIS is everywhere:
 - write and follow management plans;
 - plan forest access;
 - protect forests against fire;
-- monitor forest health.
+- monitor forest health;
+- etc.
 :::
 ::::
 
@@ -1106,7 +1114,7 @@ Move the slider: the building becomes a block, the road and the river become cen
 
 ::: {.fiche n="6.5" etat="a-revoir"}
 Intention : Capture depends on the need. In BD TOPO, an ordinary roundabout becomes a ring of segments, the Place de l'Étoile is modelled with dummy centrelines; one could have chosen two lines and a point carrying the attribute "roundabout". Diagram redrawn. [PPT 71, 72]
-Experience : multiple choice: which model for routing?
+Experience : multiple choice: which roundabout model for the database of a route guidance tool?
 Request :
 :::
 
@@ -1119,7 +1127,7 @@ The representation is chosen according to the need. In BD TOPO, an ordinary roun
 :::
 ::: {.column width="50%"}
 ::: {.qcm .serre}
-You compute routes. Which model should you choose?
+You are building a road database for a route guidance tool. Which roundabout model should you choose?
 
 - [x] The ring of segments
     - Yes: it gives the direction of traffic and the true length of the trip.
@@ -1132,27 +1140,37 @@ You compute routes. Which model should you choose?
 ## Feature catalogue and selection rules {.appui}
 
 ::: {.fiche n="6.6" etat="a-revoir"}
-Intention : List the groups of information, define each one and its properties, then the conditions a real-world object must meet to enter the database (waymarked paths, stations served by train, cemeteries over 2 ha, forests over 0.5 ha in BD Forêt). [PPT 73, 74, 75]
+Intention : Separate principles (the feature catalogue: groups, properties, definitions; selection rules: the conditions to enter the database) from examples (roads, motorway; cemeteries, stations, BD Forêt). [PPT 73, 74, 75]
 Experience : multiple choice: with the given rule, is this one-hectare cemetery in the database?
 Request :
 :::
 
 :::: {.columns .resserre}
 ::: {.column width="50%"}
-**The feature catalogue**
+### The feature catalogue
 
-- the list of groups of information: roads, rivers, vegetation, buildings…;
-- for each group, its properties: for roads, the number, the surface, the number of lanes;
-- the definition of each feature: "A motorway is…".
+*The principle*: list the groups of information, the properties of each group, and define each feature.
 
-**Selection rules**: the conditions a real-world object must meet to enter the database.
+*Examples*:
 
-- Stations served only by coach are not included.
-- National war cemeteries are all included; other cemeteries from 2 ha.
-- In BD Forêt, a wooded area is described from 0.5 ha.
+- roads, rivers, vegetation, buildings;
+- for roads: number, surface, number of lanes;
+- "A motorway is…".
 :::
 ::: {.column width="50%"}
-::: {.qcm}
+### Selection rules
+
+*The principle*: set the conditions a real-world object must meet to enter the database: a size, a function, a status.
+
+*Examples*:
+
+- all national war cemeteries; other cemeteries from 2 ha;
+- not the stations served only by coach;
+- BD Forêt: wooded areas from 0.5 ha.
+:::
+::::
+
+::: {.qcm .serre}
 With these rules, is a one-hectare municipal cemetery in the database?
 
 - [ ] Yes
@@ -1160,8 +1178,6 @@ With these rules, is a one-hectare municipal cemetery in the database?
 - [x] No
     - It is smaller than 2 ha: it is not part of the nominal ground.
 :::
-:::
-::::
 
 ## The data dictionary {.socle}
 
@@ -1191,8 +1207,11 @@ Each IGN database has its own. The one for BD TOPO, its "descriptif de contenu",
 
 ::: {.fiche n="6.8" etat="a-revoir"}
 Intention : The approach applied, in one slide: why (manage the network, accidents, works, inform), for whom (works managers, traveller information, crisis management), how, and the classification by theme (infrastructure, equipment, drainage, signage…). [PPT 77 to 80]
-Experience : "Going further" bonus: the themes in detail
+Experience : diagram of a motorway section and the features its GIS manages, each with its theme
 Request :
+:::
+
+::: {.schema fichier="images/schemas/en/autoroute.svg" hauteur="250"}
 :::
 
 :::: {.columns .resserre}
@@ -1210,16 +1229,22 @@ Request :
 :::
 ::::
 
-::: {.plus titre="Two themes in detail"}
-:::: {.columns}
-::: {.column width="50%"}
-**Infrastructure**: segment, lighting, service access, emergency access, interchange, routes, refuge…
+## What is a data model? {.appui}
+
+::: {.fiche n="6.8b" etat="a-revoir"}
+Intention : Introduce models before using them: a model describes how data are organised, at three levels (conceptual, logical, physical). No detail: a separate course covers it. [new, requested by Marc]
+Experience : diagram of the three levels
+Request :
 :::
-::: {.column width="50%"}
-**Dynamic equipment**: variable message sign, antenna, weather sensor, counting point, camera, lane control signals…
+
+A **data model** describes how the information in a database is organised. It is built at three levels, from the most abstract to the most concrete:
+
+::: {.schema fichier="images/schemas/en/modele-niveaux.svg" hauteur="220"}
 :::
-::::
-:::
+
+It is drawn with standard notations, such as UML or the entity-relationship model.
+
+[Data modelling has its own course. Here, remember the three levels, and the vocabulary of the conceptual level: class, attribute, relationship.]{.a-retenir}
 
 ## From specification to model {.appui}
 
@@ -1229,7 +1254,7 @@ Experience : sort four examples into Class / Attribute / Relationship / Feature 
 Request :
 :::
 
-Once the specification is written, the database is organised in a **conceptual model**: each group becomes a **class**, each property an **attribute**, each relationship a **link**, each element a **feature**.
+Once the specification is written, it is translated into the **conceptual model**: each group becomes a **class**, each property an **attribute**, each relationship a **link**, each element a **feature**.
 
 ::: {.classer}
 ### Class
