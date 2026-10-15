@@ -2,6 +2,30 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-15 — « Cartography : Basics », V0 FR et EN
+
+**Demande de Marc**
+
+- Marc a repris le plan dans `index.qmd` et y a placé ses cartes et celles de ses étudiants.
+- La carte vivante devra, à terme, être la carte du TP : les coupes rases des Vosges. Marc la prépare ; elle servira aussi de corrigé. En attendant, une carte élaborée par Claude.
+- Deux versions, FR et EN.
+
+**Réalisé**
+
+- `index.qmd` et `index-en.qmd` : 39 diapos chacun, fiches `a-revoir`, aucun débordement, aucune erreur JavaScript. PDF de 39 pages par langue.
+- Trois briques nouvelles, documentées dans le README : « atelier » (carte vivante avec discrétisation, classes, palette, histogramme), « flash » (image visible quelques secondes), « couleur3d » (solide des couleurs en 3D, à la place des trois curseurs sur un aplat prévus au plan).
+- Un territoire fictif de 110 communes (`outils/territoire-fictif.py`, graine 2026), avec un foyer de coupes au nord-est ; annoncé comme fictif sur la diapo.
+- `outils/schemas-cartography.py` : 16 schémas FR et EN (cartes en cercles et en aplats, piège du rayon, échelle des cercles, seuils, Ebbinghaus, Adelson avec l'image d'origine, mot rouge, paliers, tableau des variables, mises en page, simulation du daltonisme selon Machado 2009).
+- Chiffres calculés : sextiles des taux pour la légende à remettre en ordre ; 96× contre 9,8× pour le piège du rayon ; 72 communes sur 110 en classe claire en amplitudes égales, 44 en classes foncées en effectifs égaux.
+- Citation de l'ancien support vérifiée : Éric Blin et Jean-Paul Bord, *Initiation géo-graphique*, 2e éd. 1995.
+
+**À trancher ou fournir par Marc**
+
+- Les données des Vosges pour l'atelier : par commune, surface forestière et surface en coupes rases, avec la source. Le format attendu est décrit dans le README.
+- La version « avant » de la carte du Sahel, pour un vrai avant / après sur la diapo 6.4.
+- Les crédits « à compléter » : Gaza, Irma, comtés américains, flux circulaire, images de l'ancien support, auteurs des autres cartes d'étudiants.
+- « Un homme sur douze, une femme sur deux cents » pour le daltonisme rouge-vert en Europe : ordre de grandeur courant, non vérifié à la source.
+
 ## 2026-10-15 — Nouveau cours : « Cartography : Basics », le plan
 
 **Demande de Marc**
