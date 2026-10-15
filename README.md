@@ -20,7 +20,7 @@ quarto render cours/mon-cours/index.qmd
 
 Le résultat arrive dans `_sortie/cours/mon-cours/` :
 
-`index.html` : un seul fichier, qui fonctionne sans réseau. Il sert à projeter et à faire manipuler les étudiants. Touche `F` : plein écran. Touche `S` : vue orateur avec les notes.
+`index.html` (ou le nom donné par `output-file:` dans l'en-tête du cours, par exemple `Cartography-Basics.html`) : un seul fichier, qui fonctionne sans réseau. Il sert à projeter et à faire manipuler les étudiants. Touche `F` : plein écran. Touche `S` : vue orateur avec les notes.
 
 Pour le **PDF**, qui sert de support de cours : ouvrir `index.html` dans Chrome ou Edge, ajouter `?print-pdf` à la fin de l'adresse, puis Imprimer → Enregistrer au format PDF (marges : aucune, graphiques d'arrière-plan : cochés).
 
@@ -321,12 +321,46 @@ Le fichier de données est un JSON : `largeur`, `hauteur`, un `contour` (chemin 
 :::
 ```
 
-**Solide des couleurs** — un solide teinte-saturation-valeur en 3D, qui tourne seul et se fait pivoter à la souris, avec trois curseurs, l'aplat choisi et ses valeurs RVB, hexadécimale et CMJN.
+**Solide des couleurs** — un solide teinte-saturation-valeur en 3D, coupé à la valeur choisie, avec trois curseurs crantés (24 teintes, 6 saturations, 8 valeurs). La case choisie se soulève et se cerne ; à côté, l'aplat et ses valeurs RVB, hexadécimale et CMJN. On le fait pivoter à la souris. Le texte écrit dans la brique (question, réponse) passe dans le panneau, sous les curseurs.
 
 ```markdown
-::: {.couleur3d style="--hauteur-couleur: 300px"}
+::: {.couleur3d style="--hauteur-couleur: 370px"}
+La teinte tourne autour de l'axe…
+
+::: {.question}
+…
+:::
 :::
 ```
+
+**Synthèse des couleurs** — deux jeux de trois cercles : la synthèse additive (rouge, vert, bleu, sur du noir) et la soustractive (cyan, magenta, jaune, sur du blanc). Un curseur par couleur ; la couleur du centre est donnée.
+
+```markdown
+::: {.synthese}
+:::
+```
+
+**Puzzle de légende** — l'étudiant construit, pièce à pièce et dans l'ordre de lecture, la légende d'une carte qui n'en a pas. La liste numérotée donne les pièces justes dans l'ordre ; « = » en tête d'une pièce lui donne le même rang que la précédente (ordre libre entre elles). La liste à puces donne les pièces fausses, chacune avec son commentaire après « : ». Le texte placé après les listes s'affiche quand la légende est complète. Le PDF corrigé porte la légende terminée.
+
+```markdown
+::: {.puzzle-legende carte="images/schemas/legende-carte.svg" alt="Description" style="--hauteur-puzzle: 330px"}
+La consigne.
+
+1. titre | Coupes rases
+2. sous-titre | Part de la forêt coupée (%)
+3. aplat #5c2c06 | 6,3 – 18,2
+4. cercles #3E8FD0 16 10.2 5.1 | 245, 100, 25
+5. titre | Filière bois
+6. ligne #FFFFFF 2.5 #1B1B22 5.5 | Route forestière
+7. = point #FFFFFF #1B1B22 9 | Scierie
+
+- sous-titre | Part de la forêt coupée (ha) : Une part se dit en %, pas en hectares.
+
+Légende complète : …
+:::
+```
+
+Figurés : `titre`, `sous-titre`, `aplat COULEUR`, `ligne COULEUR ÉPAISSEUR [ENCADREMENT ÉPAISSEUR]`, `point COULEUR [CONTOUR] [TAILLE]`, `cercles [COULEUR] R1 R2 R3` (rayons dans les unités de la carte, ramenés à sa taille d'affichage).
 
 Les schémas du cours (cartes en symboles, palettes, illusions) sont produits par `python3 outils/schemas-cartography.py cours/cartography-basics`, en français et en anglais. Les valeurs données dans les réponses sont calculées par ce script, pas recopiées à la main.
 

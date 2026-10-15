@@ -30,7 +30,7 @@
 
 /* --- Flash : une image visible quelques secondes ------------------------ */
 .reveal .flash { position: relative; text-align: center; line-height: 0; }
-.reveal .flash img { visibility: hidden; }
+.reveal .flash img { visibility: hidden; margin: 0; }
 .reveal .flash.montre img { visibility: visible; }
 .reveal .flash::before {
   content: ""; position: absolute; inset: 0; background: var(--fond-doux); border: 2px dashed var(--filet);
@@ -47,16 +47,63 @@
 html.reveal-print .reveal .flash img { visibility: visible; }
 html.reveal-print .reveal .flash::before, html.reveal-print .reveal .flash-bouton { display: none; }
 
-/* --- Couleur 3D : le solide des couleurs -------------------------------- */
-.reveal .couleur3d { display: grid; grid-template-columns: 560px 1fr; gap: 22px; align-items: center; }
-.reveal .couleur3d-toile { width: auto; max-width: 100%; height: auto; max-height: var(--hauteur-couleur, 360px); justify-self: center; cursor: grab; touch-action: none; }
+/* --- Couleur 3D : le solide des couleurs, coupé à la valeur choisie --- */
+.reveal .couleur3d { display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: start; }
+.reveal .couleur3d-toile { width: auto; max-width: 100%; height: auto; max-height: var(--hauteur-couleur, 400px); cursor: grab; touch-action: none; }
 .reveal .couleur3d-toile:active { cursor: grabbing; }
-.reveal .couleur3d-curseur { display: grid; grid-template-columns: 92px 1fr 56px; gap: 10px; align-items: center; font-size: 17px; margin: 6px 0; }
+.reveal .couleur3d-curseur { display: grid; grid-template-columns: 92px 1fr 56px; gap: 10px; align-items: center; font-size: 17px; margin: 4px 0; }
 .reveal .couleur3d-curseur input { accent-color: var(--orange); }
 .reveal .couleur3d-curseur output { font-weight: 700; color: var(--bleu); text-align: right; }
-.reveal .couleur3d-aplat { height: 84px; border-radius: 8px; border: 1px solid var(--filet); margin: 12px 0 8px 0; }
-.reveal .couleur3d-infos { font-family: var(--police-mono); font-size: 14px; color: var(--encre); line-height: 1.5; }
-.reveal .couleur3d-aide { font-size: 13px; color: var(--gris); margin-top: 6px; }
+.reveal .couleur3d-resultat { display: grid; grid-template-columns: 80px 1fr; gap: 14px; align-items: center; margin: 8px 0 2px 0; }
+.reveal .couleur3d-aplat { height: 50px; border-radius: 8px; border: 1px solid var(--filet); }
+.reveal .couleur3d-infos { font-family: var(--police-mono); font-size: 13px; color: var(--encre); line-height: 1.4; }
+.reveal .couleur3d-aide { font-size: 13px; color: var(--gris); margin: 4px 0 10px 0; }
+.reveal .couleur3d-panneau > p { font-size: 17px; margin: 4px 0 8px 0; }
+
+/* --- Synthèse : additive et soustractive ---------------------------------- */
+.reveal .synthese-zone { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.reveal .synthese-titre { font-family: var(--police-titre); font-weight: 700; font-size: 19px; color: var(--bleu); }
+.reveal .synthese-sous { font-size: 14px; color: var(--gris); margin-bottom: 6px; }
+.reveal .synthese-corps { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: center; }
+.reveal .synthese-corps svg { width: 220px; height: auto; display: block; }
+.reveal .synthese-curseur { display: grid; grid-template-columns: 74px 1fr 48px; gap: 8px; align-items: center; font-size: 15px; margin: 4px 0; }
+.reveal .synthese-curseur output { font-weight: 700; color: var(--bleu); text-align: right; font-size: 14px; }
+.reveal .synthese-resultat { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 13px; color: var(--encre); font-family: var(--police-mono); }
+.reveal .synthese-pastille { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--filet); flex: none; }
+
+/* --- Puzzle : construire une légende --------------------------------------- */
+.reveal .puzzle-zone { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; align-items: start; }
+.reveal .puzzle-carte { display: block; height: var(--hauteur-puzzle, 340px); width: auto; max-width: 100%; margin: 0 0 10px 0; }
+.reveal .puzzle-reserve { display: flex; flex-wrap: wrap; gap: 6px; }
+.reveal .puzzle-piece {
+  font: inherit; font-size: 14px; line-height: 1.2; padding: 3px 8px; border-radius: 6px; cursor: pointer;
+  border: 1.5px solid var(--filet); background: var(--blanc); color: var(--encre);
+}
+.reveal .puzzle-piece:hover { border-color: var(--bleu); }
+.reveal .puzzle-piece.ecartee { opacity: 0.35; text-decoration: line-through; cursor: default; }
+.reveal .puzzle-piece.secoue { animation: puzzle-secoue 0.35s; }
+@keyframes puzzle-secoue { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+.reveal .puzzle-piece-contenu { display: inline-flex; align-items: center; gap: 6px; }
+.reveal .puzzle-figure { flex: none; }
+.reveal .puzzle-piece .puzzle-titre { font-weight: 700; color: var(--bleu); }
+.reveal .puzzle-piece .puzzle-sous-titre { font-style: italic; }
+.reveal .puzzle-consigne p { font-size: 17px; margin: 0 0 8px 0; }
+.reveal .puzzle-cadre { border: 1.5px solid var(--bleu); border-radius: 8px; padding: 8px 12px; min-height: 60px; background: var(--blanc); }
+.reveal .puzzle-cadre-titre { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris); margin-bottom: 4px; }
+.reveal .puzzle-ligne { font-size: 15px; line-height: 1.25; margin: 2px 0; }
+.reveal .puzzle-ligne-titre { font-family: var(--police-titre); font-weight: 700; font-size: 16px; color: var(--bleu); margin-top: 6px; }
+.reveal .puzzle-ligne-sous-titre { font-style: italic; color: var(--encre); margin-top: 3px; }
+.reveal .puzzle-ligne-aplat, .reveal .puzzle-ligne-ligne, .reveal .puzzle-ligne-point, .reveal .puzzle-ligne-cercles { padding-left: 14px; }
+.reveal .puzzle-attente { border: 1.5px dashed var(--filet); border-radius: 6px; color: var(--gris); text-align: center; font-size: 14px; margin-top: 4px; }
+.reveal .puzzle-message { font-size: 15px; min-height: 1.3em; margin: 8px 0 4px 0; color: var(--gris); }
+.reveal .puzzle-message.faux { color: #B3261E; }
+.reveal .puzzle-message.juste { color: #2E7D32; }
+.reveal .puzzle-message::after { content: "  " attr(data-compte); color: var(--gris); font-size: 13px; }
+.reveal .puzzle-fin { display: none; font-size: 16px; }
+.reveal .puzzle-zone.fini .puzzle-fin { display: block; }
+.reveal .puzzle-fin p { margin: 4px 0; color: var(--bleu); font-weight: 700; }
+.reveal .puzzle-recommencer { margin-top: 6px; }
+html.reveal-print .reveal .puzzle-recommencer, html.reveal-print .reveal .puzzle-message { display: none; }
 
 /* Une légende écrite dans l'atelier se place sous la carte, à gauche */
 .reveal .atelier { position: relative; }

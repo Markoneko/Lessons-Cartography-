@@ -299,7 +299,7 @@ html.sans-reponses .reveal .schema .s-apparait { opacity: 0; }
 .reveal .comparer-pile { position: relative; line-height: 0; border: 1px solid var(--filet); }
 .reveal .comparer-couche { position: absolute; inset: 0; opacity: 0; }
 .reveal .comparer-couche:first-child { position: relative; opacity: 1; }
-.reveal .comparer-couche img { display: block; width: 100%; height: 100%; max-height: none; object-fit: fill; }
+.reveal .comparer-couche img { display: block; width: 100%; height: 100%; max-height: none; object-fit: fill; margin: 0; }
 .reveal .comparer-pile .comparer-couche:first-child img { height: auto; max-height: 390px; width: auto; max-width: 100%; }
 .reveal .comparer-pile { display: inline-block; }
 .reveal .comparer-commande { margin-top: 10px; }

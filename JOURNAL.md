@@ -2,6 +2,39 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-15 — « Cartography : Basics », retours de Marc sur la V0
+
+Numéros de diapo de la V0 (39 diapos) ; la V1 en compte 41. Chaque correction est reportée dans la version anglaise.
+
+**Appliqué**
+
+- Fichiers produits nommés d'après le titre : `Cartography-Basics.html` / `-EN.html` et leurs PDF (`output-file:` dans l'en-tête).
+- 3 (0.3) : quatre objectifs, avec « structurer l'information… du plus important au moins important » en troisième ; la mise en page « donne aussi les clefs de compréhension du message ».
+- 6 (1.1) : cartes du test des cinq secondes agrandies (hauteur 250 → 350 px, surface ×1,96) ; la phrase d'introduction passe dans le bouton et la question.
+- Nouvelle 1.2 « Voir, puis comprendre » : compréhension graphique (voir, signifiant) et mentale (regarder, signifié), avec le « WTF » dessiné : un petit lecteur aux yeux en spirale, des paillettes qui scintillent.
+- 8 (1.3, « La sémiologie graphique ») : figure recadrée par Marc, en grand ; bonus vers la page de K. Viswanathan (2015). La réponse est corrigée : la figure montre des échanges de marchandises entre une métropole américaine et d'autres régions (Brookings, *Metro Freight*), pas des flux ferroviaires en Floride. L'ordre de la partie 1 devient : cinq secondes, voir puis comprendre, sémiologie, rédiger et mettre en page.
+- 10 (2.1) : trois seuils, avec les figurés de l'ancien support : être vu (huit figurés et leur taille minimale), être séparé (0,2 mm), être distingué (surfaces dans un rapport de 2, épaisseurs à 0,1 et 0,3 mm d'écart). Le curseur règle la taille en multiple du seuil. Lien vers la généralisation.
+- 20 et 25 (comparer) : décalage corrigé. La marge par défaut des images de reveal.js étirait la couche du dessus ; correction dans `_briques/briques.css`, donc aussi pour les autres cours.
+- 21 (3.8) : l'image d'orientation est nettoyée (agrandie ×3, niveaux, netteté) : `orientation.png`.
+- Nouvelle 4.1 « La lumière et l'encre » : brique `synthese`, cercles RVB sur du noir et CMJ sur du blanc, un curseur par couleur ; la question sur la carte imprimée plus terne y passe.
+- 23 (4.2) : solide TSV en grand, curseurs crantés, solide coupé à la valeur choisie, case soulevée et cernée ; plus de rotation automatique ; plus de bonus, la conclusion est dans la diapo ; nouvelle question (RVB, CMJN ou TSV ?). L'image `s26_9d1ec19a.jpg` ne montre qu'une valeur : on ne peut pas y placer la valeur. Le solide calculé, coupé à la valeur choisie, en reprend l'aspect.
+- 24 (4.3) : quatre codes d'autres cultures, révélés avec la réponse : rouge en Chine, Japon, Corée (prospérité, hausse en bourse) ; blanc du deuil en Asie de l'Est ; rouge et bleu aux États-Unis ; vert de l'islam. Source pour les deux premiers usages de la liste : data.europa.eu, « Colour connotations ».
+- 25 (4.4) : bonus « Le jeu vidéo a de l'avance », avec la capture de Fortnite.
+- 27 (5.1) : chaque donnée porte un exemple ou son unité ; consigne : nature, ordre ou quantité ?
+- 33 (6.1) : carte des JO à droite, sur toute la hauteur.
+- 34 (6.2) : recommandation « Maximiser la place de la carte… Jouez avec ! » en troisième ; la mise en page A du schéma intègre la légende dans la carte.
+- 35 (6.3) : la légende devient un puzzle (brique `puzzle-legende`) : onze pièces justes, six fausses commentées (unité, figuré, taille des cercles, titre « Divers », classes qui se chevauchent).
+- Fin (7.2) : « clairement, honnêtement, esthétiquement », à la place du renvoi au TP. Style de la diapo de fin complété pour accepter une liste (`_charte/geodata.css`).
+- Sources : graphe circulaire, Fortnite, codes de couleur ; le solide des couleurs est désormais calculé.
+
+**Données de l'atelier**
+
+- Marc n'aura pas le temps de fournir les données des Vosges : le territoire fictif reste.
+
+**Vérifié**
+
+- 41 diapos par langue, aucun débordement réponses ouvertes, aucune erreur JavaScript ; puzzle joué de bout en bout ; PDF de 41 pages, puzzle terminé dans le corrigé.
+
 ## 2026-10-15 — « Cartography : Basics », V0 FR et EN
 
 **Demande de Marc**

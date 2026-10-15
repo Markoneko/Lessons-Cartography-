@@ -195,17 +195,68 @@ ecrire('cercles-rayon.svg', cercles('fr', 'rayon'), cercles('en', 'rayon'))
 ecrire('cercles-echelle.svg', cercles('fr', 'aire', True), cercles('en', 'aire', True))
 
 
-# ------------------------------------------------------------------ seuils de perception (curseur : x = épaisseur en mm sur papier)
+# ------------------------------------------------------------------ seuils de perception (curseur : x = taille des figurés, en multiple du seuil)
+# Valeurs de l'ancien support (d'après É. Blin et J.-P. Bord) : taille minimale, séparation, différenciation.
+PX_MM = 5          # échelle d'affichage : 5 px pour 1 mm, à peu près la taille réelle sur un écran de portable
+
+
 def seuils(lg):
-    t = {'fr': ['Un trait et un point, à l’épaisseur choisie', 'trait', 'point (diamètre double)', 'seuil du trait : 0,1 mm', 'seuil du point : 0,2 mm'],
-         'en': ['A line and a point, at the chosen width', 'line', 'point (twice the width)', 'line threshold: 0.1 mm', 'point threshold: 0.2 mm']}[lg]
-    o = ['<rect x="0" y="0" width="900" height="220" class="s-fond"/>']
-    o.append('<path d="M60 70 C 250 30 420 120 620 60 S 800 50 840 80" style="fill:none;stroke:#2B2B33;stroke-width:calc(var(--x, 0.3) * 6px)"/>')
-    for k, x in enumerate([90, 230, 370, 510, 650, 790]):
-        o.append(f'<circle cx="{x}" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>')
-    o.append(T(60, 112, t[1], 's-petit', 'start'))
-    o.append(T(60, 195, t[2], 's-petit', 'start'))
-    return svg('0 0 900 220', t[0], o)
+    t = {'fr': ['Les seuils de perception : être vu, être séparé, être distingué',
+                ('Être vu', 'taille minimale'), ('Être séparé', '0,2 mm entre deux éléments'), ('Être distingué', 'un écart suffisant'),
+                ['0,2 mm', '0,3 mm', '0,4 mm', '0,5 mm', '0,4 × 0,6', '0,6 × 0,8', '1 mm', '0,1 mm'],
+                ['deux traits', 'deux carrés', 'deux points'],
+                ['surfaces dans un rapport de 2', 'traits rapprochés : 0,1 mm d’écart', 'traits éloignés : 0,3 mm d’écart']],
+         'en': ['Perception thresholds: being seen, being separated, being told apart',
+                ('Being seen', 'minimum size'), ('Being separated', '0.2 mm between two features'), ('Being told apart', 'a large enough gap'),
+                ['0.2 mm', '0.3 mm', '0.4 mm', '0.5 mm', '0.4 × 0.6', '0.6 × 0.8', '1 mm', '0.1 mm'],
+                ['two lines', 'two squares', 'two dots'],
+                ['areas in a ratio of 2', 'close lines: 0.1 mm apart in width', 'distant lines: 0.3 mm apart in width']]}[lg]
+    K = 'var(--x, 4)'
+    ENC = '#2B2B33'
+    def fig(x, y, corps):      # un figuré dessiné en millimètres autour de (0, 0), agrandi par le curseur
+        return f'<g transform="translate({x} {y})"><g style="transform: scale(calc({K} * {PX_MM}))">{corps}</g></g>'
+    def trait(x, y, long, ep_mm, dy_mm=0):
+        return (f'<path d="M{x - long / 2} {y} H{x + long / 2}" style="stroke:{ENC};'
+                f'stroke-width:calc({K} * {ep_mm * PX_MM}px);transform:translateY(calc({K} * {dy_mm * PX_MM}px))"/>')
+    o = ['<rect x="0" y="0" width="960" height="330" class="s-fond"/>']
+    for r, (titre, sous) in enumerate(t[1:4]):
+        y = 34 + r * 105
+        o.append(f'<path d="M14 {y + 75} H946" stroke="#D8DAEC" stroke-width="1"/>' if r < 2 else '')
+        o.append(T(16, y + 6, titre, 's-titre', 'start'))
+        o.append(T(16, y + 28, sous, 's-petit', 'start'))
+    # 1. être vu
+    y1, xs = 60, [250, 335, 420, 505, 590, 680, 775, 880]
+    v = 0.08                                  # épaisseur des contours, en mm
+    corps = [f'<circle r="0.1" fill="{ENC}"/>',
+             f'<circle r="{0.15 - v / 2}" fill="none" stroke="{ENC}" stroke-width="{v}"/>',
+             f'<rect x="-0.2" y="-0.2" width="0.4" height="0.4" fill="{ENC}"/>',
+             f'<rect x="{-0.25 + v / 2}" y="{-0.25 + v / 2}" width="{0.5 - v}" height="{0.5 - v}" fill="none" stroke="{ENC}" stroke-width="{v}"/>',
+             f'<rect x="-0.3" y="-0.2" width="0.6" height="0.4" fill="{ENC}"/>',
+             f'<rect x="{-0.4 + v / 2}" y="{-0.3 + v / 2}" width="{0.8 - v}" height="{0.6 - v}" fill="none" stroke="{ENC}" stroke-width="{v}"/>',
+             f'<path d="M0 -0.5 L0.5 0.37 H-0.5 Z" fill="none" stroke="{ENC}" stroke-width="{v}" stroke-linejoin="round"/>']
+    for x, c in zip(xs, corps):
+        o.append(fig(x, y1, c))
+    o.append(trait(xs[7], y1, 60, 0.1))
+    for x, lab in zip(xs, t[4]):
+        o.append(T(x, y1 + 40, lab, 's-petit'))
+    # 2. être séparé : 0,2 mm d'écart
+    y2 = 165
+    o.append(trait(300, y2, 70, 0.1, -0.15))
+    o.append(trait(300, y2, 70, 0.1, 0.15))
+    o.append(fig(470, y2, f'<rect x="-0.5" y="-0.2" width="0.4" height="0.4" fill="{ENC}"/><rect x="0.1" y="-0.2" width="0.4" height="0.4" fill="{ENC}"/>'))
+    o.append(fig(640, y2, f'<circle cx="-0.2" r="0.1" fill="{ENC}"/><circle cx="0.2" r="0.1" fill="{ENC}"/>'))
+    for x, lab in zip([300, 470, 640], t[5]):
+        o.append(T(x, y2 + 40, lab, 's-petit'))
+    # 3. être distingué
+    y3 = 268
+    o.append(fig(300, y3, f'<circle cx="-1.05" r="0.5" fill="{ENC}"/><circle cx="1.2" r="{0.5 * math.sqrt(2):.4f}" fill="{ENC}"/>'))
+    o.append(trait(520, y3, 90, 0.1, -0.3))
+    o.append(trait(520, y3, 90, 0.2, 0.3))
+    o.append(trait(735, y3, 70, 0.1))
+    o.append(trait(855, y3, 70, 0.4))
+    for x, lab in zip([300, 520, 795], t[6]):
+        o.append(T(x, y3 + 44, lab, 's-petit'))
+    return svg('0 0 960 330', t[0], o)
 
 
 ecrire('seuils.svg', seuils('fr'), seuils('en'))
@@ -358,6 +409,141 @@ def variables(lg):
 ecrire('variables.svg', variables('fr'), variables('en'))
 
 
+# ------------------------------------------------------------------ des codes de couleur d'autres cultures (sens révélé avec la réponse)
+# Sources : data.europa.eu, guide de visualisation des données, « Colour connotations » (rouge en Chine,
+# rouge et bleu aux États-Unis) ; le blanc du deuil en Asie de l'Est et le vert de l'islam sont des usages courants.
+def codes_ailleurs(lg):
+    t = {'fr': ['Quatre codes de couleur venus d’ailleurs',
+                [('Rouge', 'Chine, Japon, Corée', ['la prospérité ; en bourse,', 'la hausse'], ['#D7191C']),
+                 ('Blanc', 'Asie de l’Est', ['le deuil'], ['#FFFFFF']),
+                 ('Rouge, bleu', 'États-Unis', ['républicains, démocrates', '(en France, rouge = gauche)'], ['#D7191C', '#2C5AA0']),
+                 ('Vert', 'monde musulman', ['la couleur de l’islam'], ['#11845B'])]],
+         'en': ['Four colour codes from elsewhere',
+                [('Red', 'China, Japan, Korea', ['prosperity; on the stock', 'market, a rise'], ['#D7191C']),
+                 ('White', 'East Asia', ['mourning'], ['#FFFFFF']),
+                 ('Red, blue', 'United States', ['Republicans, Democrats', '(in France, red = left)'], ['#D7191C', '#2C5AA0']),
+                 ('Green', 'Muslim world', ['the colour of Islam'], ['#11845B'])]]}[lg]
+    o = []
+    for k, (nom, ou, sens, cols) in enumerate(t[1]):
+        x, y = (k % 2) * 300, (k // 2) * 140
+        o.append(f'<rect x="{x}" y="{y}" width="290" height="128" rx="10" class="s-fond"/>')
+        for j, c in enumerate(cols):
+            h = 100 / len(cols)
+            o.append(f'<rect x="{x + 12}" y="{y + 14 + j * h:.1f}" width="50" height="{h:.1f}" fill="{c}" stroke="#9A9AA4" stroke-width="1"/>')
+        o.append(T(x + 76, y + 36, nom, 's-titre', 'start'))
+        o.append(T(x + 76, y + 57, ou, 's-petit', 'start'))
+        o.append('<g class="s-apparait">')
+        for j, ligne in enumerate(sens):
+            o.append(T(x + 76, y + 86 + j * 20, ligne, anchor='start', style='font-size:15px;fill:#2B2B33'))
+        o.append('</g>')
+    return svg('0 0 590 268', t[0], o)
+
+
+ecrire('codes-ailleurs.svg', codes_ailleurs('fr'), codes_ailleurs('en'))
+
+
+# ------------------------------------------------------------------ « WTF » : on voit tout, on ne comprend rien (paillettes animées)
+def wtf(lg):
+    t = {'fr': 'Un petit lecteur ébloui par une carte : il voit tout, il ne comprend rien',
+         'en': 'A little reader dazzled by a map: sees everything, understands nothing'}[lg]
+    etoile = 'M0 -1 C0.14 -0.14 0.14 -0.14 1 0 C0.14 0.14 0.14 0.14 0 1 C-0.14 0.14 -0.14 0.14 -1 0 C-0.14 -0.14 -0.14 -0.14 0 -1 Z'
+    o = ['<style>'
+         '.wtf-p{transform-box:fill-box;transform-origin:center;animation:wtf-scintille 1.8s ease-in-out infinite}'
+         '.wtf-q{animation:wtf-flotte 3s ease-in-out infinite}'
+         '@keyframes wtf-scintille{0%,100%{opacity:.25;transform:scale(.55) rotate(0deg)}50%{opacity:1;transform:scale(1.1) rotate(25deg)}}'
+         '@keyframes wtf-flotte{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}'
+         '@media (prefers-reduced-motion: reduce){.wtf-p,.wtf-q{animation:none}}'
+         '</style>']
+    # le petit lecteur, tout rond
+    o.append('<ellipse cx="215" cy="205" rx="98" ry="90" fill="#FDE3CF" stroke="#283B89" stroke-width="3.5"/>')
+    o.append('<ellipse cx="160" cy="222" rx="14" ry="9" fill="#F7A1B5" opacity="0.8"/><ellipse cx="270" cy="222" rx="14" ry="9" fill="#F7A1B5" opacity="0.8"/>')
+    def spirale(cx, cy):
+        pts = []
+        for k in range(0, 160):
+            a = k * 0.16
+            r = 1.1 * a
+            pts.append(f'{cx + r * math.cos(a):.1f} {cy + r * math.sin(a):.1f}')
+        return f'<path d="M{" L".join(pts)}" fill="none" stroke="#283B89" stroke-width="3" stroke-linecap="round"/>'
+    o.append(spirale(178, 182))
+    o.append(spirale(252, 182))
+    o.append('<path d="M196 240 q7 -8 14 0 t14 0 t14 0" fill="none" stroke="#283B89" stroke-width="3" stroke-linecap="round"/>')
+    # la carte, tenue à l'envers, trop chargée
+    o.append('<g transform="rotate(-9 215 306)">'
+             '<rect x="150" y="262" width="130" height="88" rx="4" fill="#FFFFFF" stroke="#283B89" stroke-width="3"/>'
+             '<path d="M158 337 C180 287 200 327 222 282 S262 317 272 273" fill="none" stroke="#E38226" stroke-width="5"/>'
+             '<path d="M160 277 C190 307 230 267 270 337" fill="none" stroke="#4FA3D9" stroke-width="4"/>'
+             '<circle cx="186" cy="299" r="9" fill="#9655A2"/><circle cx="246" cy="317" r="7" fill="#4E8A5A"/>'
+             '<rect x="206" y="287" width="14" height="14" fill="#D7191C"/><path d="M255 282 l8 14 h-16 z" fill="#F2B705"/>'
+             '</g>')
+    # les mains qui tiennent la carte
+    o.append('<ellipse cx="152" cy="318" rx="13" ry="11" fill="#FDE3CF" stroke="#283B89" stroke-width="3"/>')
+    o.append('<ellipse cx="280" cy="294" rx="13" ry="11" fill="#FDE3CF" stroke="#283B89" stroke-width="3"/>')
+    # la bulle
+    o.append('<path d="M330 30 h170 a22 22 0 0 1 22 22 v62 a22 22 0 0 1 -22 22 h-120 l-34 30 l6 -30 h-22 a22 22 0 0 1 -22 -22 v-62 a22 22 0 0 1 22 -22 z" '
+             'fill="#FFFFFF" stroke="#283B89" stroke-width="3.5" transform="translate(-24 0)"/>')
+    o.append('<text x="391" y="108" text-anchor="middle" style="font-family:Raleway,Arial,sans-serif;font-size:58px;font-weight:800;fill:#283B89">WTF ?!</text>')
+    # les points d'interrogation qui flottent
+    for k, (x, y, s, col) in enumerate([(70, 90, 40, '#9655A2'), (95, 150, 26, '#E38226'), (330, 210, 34, '#4FA3D9')]):
+        o.append(f'<text class="wtf-q" x="{x}" y="{y}" style="animation-delay:{k * 0.7:.1f}s;font-family:Raleway,Arial,sans-serif;font-size:{s}px;font-weight:800;fill:{col}">?</text>')
+    # les paillettes
+    pail = [(40, 40, 12, '#F2B705'), (130, 60, 8, '#FF6FB5'), (300, 28, 9, '#4FC3F7'), (560, 70, 11, '#F2B705'),
+            (545, 170, 8, '#FF6FB5'), (440, 200, 13, '#9655A2'), (360, 300, 10, '#4FC3F7'), (60, 230, 10, '#FF6FB5'),
+            (35, 320, 13, '#F2B705'), (320, 165, 7, '#E38226'), (500, 250, 9, '#4FC3F7'), (115, 330, 7, '#9655A2'),
+            (585, 300, 12, '#FF6FB5'), (250, 330, 8, '#F2B705'), (420, 300, 6, '#E38226'), (205, 82, 7, '#4FC3F7')]
+    for k, (x, y, s, col) in enumerate(pail):
+        o.append(f'<g transform="translate({x} {y}) scale({s})"><path class="wtf-p" d="{etoile}" fill="{col}" style="animation-delay:{(k * 0.37) % 1.8:.2f}s"/></g>')
+    for k in range(26):   # quelques grains de paillettes
+        x = 20 + (k * 157) % 590
+        y = 15 + (k * 89) % 335
+        col = ['#F2B705', '#FF6FB5', '#4FC3F7', '#9655A2'][k % 4]
+        if ((x - 215) / 112) ** 2 + ((y - 215) / 112) ** 2 < 1 or (300 < x < 545 and 20 < y < 175):
+            continue          # pas sur le visage ni dans la bulle
+        o.append(f'<circle cx="{x}" cy="{y}" r="{1.6 + (k % 3) * 0.8:.1f}" fill="{col}" opacity="0.8"/>')
+    return svg('0 0 620 360', t, o, ' width="620" height="360"')
+
+
+ecrire('wtf.svg', wtf('fr'), wtf('en'))
+
+
+# ------------------------------------------------------------------ la carte du puzzle de légende (sans légende)
+# Aplats : taux de coupes en 4 classes (effectifs égaux) ; cercles : surface coupée ; lignes : routes forestières ;
+# carrés : scieries. Les valeurs et les rayons sont imprimés en fin de script, pour les pièces du puzzle.
+B4 = quantiles(TAUX, 4)
+RMAXL = 16.0
+COUL4 = gamme(SEQ, 4)
+CERCLE_L = '#3E8FD0'
+
+
+def legende_carte(lg):
+    nom = {'fr': 'Coupes rases et filière bois dans le territoire fictif', 'en': 'Clear-cuts and the timber industry in the fictional territory'}[lg]
+    o = ['<rect width="800" height="560" fill="#FFFFFF"/>']
+    for c in COMMUNES:
+        o.append(f'<path d="{c["chemin"]}" fill="{COUL4[classe(c["taux"], B4)]}" stroke="#FFFFFF" stroke-width="0.9"/>')
+    o.append(f'<path d="{TERR["contour"]}" fill="none" stroke="#283B89" stroke-width="2"/>')
+    # cercles : la surface coupée
+    for c in sorted(COMMUNES, key=lambda c: -c['coupes_ha']):
+        if c['coupes_ha'] >= 8:
+            r = RMAXL * math.sqrt(c['coupes_ha'] / VMAX)
+            o.append(f'<circle cx="{c["cx"]}" cy="{c["cy"]}" r="{r:.2f}" fill="{CERCLE_L}" fill-opacity="0.8" stroke="#FFFFFF" stroke-width="1"/>')
+    # routes forestières : par bandes, d'ouest en est, à travers l'est boisé ; un trait blanc cerné de noir
+    for y0, y1, x0 in [(140, 215, 330), (290, 365, 360), (405, 470, 450)]:
+        pts, dernier = [], -999
+        for x, y in sorted([(c['cx'], c['cy']) for c in COMMUNES if y0 <= c['cy'] <= y1 and c['cx'] >= x0]):
+            if x - dernier >= 55:
+                pts.append((x, y)); dernier = x
+        d = 'M' + ' L'.join(f'{x:.0f} {y:.0f}' for x, y in pts)
+        o.append(f'<path d="{d}" fill="none" stroke="#1B1B22" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/>')
+        o.append(f'<path d="{d}" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>')
+    # scieries : sur quatre communes boisées
+    boisees = sorted(COMMUNES, key=lambda c: -c['foret_ha'])[:12:3]
+    for c in boisees:
+        o.append(f'<rect x="{c["cx"] + 9:.0f}" y="{c["cy"] - 14:.0f}" width="11" height="11" fill="#FFFFFF" stroke="#1B1B22" stroke-width="2.2"/>')
+    return svg('0 0 800 560', nom, o, ' width="800" height="560"')
+
+
+ecrire('legende-carte.svg', legende_carte('fr'), legende_carte('en'))
+
+
 # ------------------------------------------------------------------ quatre mises en page
 def mises_en_page(lg):
     t = {'fr': ['Quatre mises en page de la même carte', 'titre', 'légende', 'échelle', 'source'],
@@ -371,7 +557,9 @@ def mises_en_page(lg):
             o.append(f'<rect x="{x + bx}" y="{10 + by}" width="{bw}" height="{bh}" fill="{col}"/>')
         o.append(T(x + 100, 310, lettre, 's-titre', style='font-size:26px'))
     TI, LE, EC = '#283B89', '#E38226', '#6E6F7A'
-    page(20, 'A', [(12, 14, 176, 22, TI), (130, 50, 58, 150, LE), (12, 240, 60, 8, EC), (110, 252, 78, 6, EC)], (12, 50, 110, 180))
+    # A : la carte occupe la page et accueille la légende (recommandation : maximiser la carte)
+    page(20, 'A', [(12, 14, 176, 22, TI), (128, 150, 54, 76, LE), (12, 246, 60, 8, EC), (110, 256, 78, 6, EC)], (12, 46, 176, 190))
+    o.append('<rect x="148" y="160" width="54" height="76" fill="none" stroke="#FFFFFF" stroke-width="2"/>')
     page(270, 'B', [(150, 230, 40, 14, TI), (10, 14, 60, 40, LE), (12, 120, 30, 8, EC), (140, 18, 50, 6, EC)], (40, 60, 120, 150))
     page(520, 'C', [(12, 14, 176, 22, TI), (12, 210, 176, 50, LE), (160, 50, 30, 8, EC), (40, 50, 100, 6, EC), (12, 64, 20, 20, LE), (166, 160, 24, 30, LE)], (40, 80, 120, 120))
     page(770, 'D', [(12, 14, 176, 22, TI), (14, 200, 80, 60, LE), (120, 230, 68, 8, EC), (120, 250, 68, 6, EC)], (70, 70, 60, 50))
@@ -385,3 +573,5 @@ print('seuils sextiles du taux :', [round(b, 1) for b in B6])
 print('stock max :', VMAX, 'ha ; communes :', len(COMMUNES))
 print('rapport des surfaces de cercles, max / 25 ha : rayon', round((VMAX / 25) ** 2, 1), 'fois ; aire', round(VMAX / 25, 1), 'fois')
 print('deutéranope :', [deuteranope(h) for h in gamme(RVERT, 6)])
+print('puzzle de légende : quartiles du taux', [round(b, 1) for b in B4], '; couleurs', COUL4,
+      '; rayons 245/100/25 ha :', [round(RMAXL * math.sqrt(v / VMAX), 1) for v in (VMAX, 100, 25)])

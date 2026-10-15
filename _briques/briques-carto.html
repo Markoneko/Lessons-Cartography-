@@ -1,5 +1,5 @@
 <script>
-/* Briques de cartographie : atelier (carte vivante), flash, couleur 3D.
+/* Briques de cartographie : atelier (carte vivante), flash, couleur 3D, synthèse des couleurs.
    Aucun réseau, aucune donnée envoyée : tout se passe dans la page. */
 (function () {
   function tous(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
@@ -15,14 +15,25 @@
     classes: "Classes", palette: "Palette", sequentielle: "Sequential", "arc-en-ciel": "Rainbow",
     divergente: "Diverging", "rouge-vert": "Red–green", commune: "Municipality", communes: "municipalities",
     histo: "Distribution of values and class breaks", teinte: "Hue", saturation: "Saturation", valeur: "Value",
-    rvb: "RGB", cmjn: "CMYK (simple conversion)", tourner: "Drag to rotate"
+    rvb: "RGB", cmjn: "CMYK (simple conversion)", tourner: "Drag to rotate · the solid is cut at the chosen value",
+    additive: "Additive synthesis · RGB", ecran: "light from the screen, on black",
+    soustractive: "Subtractive synthesis · CMY", encre: "inks on paper, on white",
+    rouge: "Red", vert: "Green", bleu: "Blue", cyan: "Cyan", magenta: "Magenta", jaune: "Yellow", centre: "Centre",
+    legende: "Legend", pasEncore: "Not yet: this piece belongs further down. What is read before it?",
+    places: "pieces placed", bravo: "Well done.", cadreVide: "Click the first piece of the legend."
   } : {
     methode: "Discrétisation", egales: "Amplitudes égales", effectifs: "Effectifs égaux", naturels: "Seuils naturels",
     classes: "Classes", palette: "Palette", sequentielle: "Dégradé", "arc-en-ciel": "Arc-en-ciel",
     divergente: "Divergente", "rouge-vert": "Rouge-vert", commune: "Commune", communes: "communes",
     histo: "Répartition des valeurs et seuils des classes", teinte: "Teinte", saturation: "Saturation", valeur: "Valeur",
-    rvb: "RVB", cmjn: "CMJN (conversion simple)", tourner: "Faites glisser pour tourner"
+    rvb: "RVB", cmjn: "CMJN (conversion simple)", tourner: "Faites glisser pour tourner · le solide est coupé à la valeur choisie",
+    additive: "Synthèse additive · RVB", ecran: "la lumière de l'écran, sur du noir",
+    soustractive: "Synthèse soustractive · CMJ", encre: "les encres sur le papier, sur du blanc",
+    rouge: "Rouge", vert: "Vert", bleu: "Bleu", cyan: "Cyan", magenta: "Magenta", jaune: "Jaune", centre: "Au centre",
+    legende: "Légende", pasEncore: "Pas encore : cette pièce a sa place, plus bas. Qu'est-ce qui se lit avant ?",
+    places: "pièces placées", bravo: "Bien vu.", cadreVide: "Cliquez la première pièce de la légende."
   };
+  var CORRIGE = EN_PDF && new URLSearchParams(window.location.search).get("reponses") !== "non";
   function nombre(v, d) {
     return v.toLocaleString(EN ? "en-GB" : "fr-FR", { minimumFractionDigits: d, maximumFractionDigits: d });
   }
@@ -224,25 +235,33 @@
     var toile = bloc.querySelector(".couleur3d-toile"), ctx = toile.getContext("2d");
     var panneau = bloc.querySelector(".couleur3d-panneau");
     stopper(panneau); stopper(toile);
+    // le texte écrit dans la brique passe dans le panneau, sous les curseurs
+    var suite = Array.prototype.slice.call(bloc.children).filter(function (c) { return c !== toile && c !== panneau; });
+    // NT secteurs de teinte (15°) × NS anneaux de saturation × NV couches de valeur ; les curseurs sont crantés
     var NT = 24, NS_ = 6, NV = 8;
-    var etat = { h: 30, s: 80, v: 90, phi: 0.6 }, glisse = null;
+    var etat = { it: 2, is: 4, iv: 7, phi: 0.95 }, glisse = null;
+    function couleurCase(it, is, iv) { return hsv(it * 360 / NT, (is + 1) / NS_, (iv + 1) / NV); }
     var champs = {};
-    [["h", T.teinte, 0, 359, "°"], ["s", T.saturation, 0, 100, " %"], ["v", T.valeur, 0, 100, " %"]].forEach(function (d) {
+    [["it", T.teinte, NT - 1, function (k) { return k * 360 / NT + "°"; }],
+     ["is", T.saturation, NS_ - 1, function (k) { return Math.round((k + 1) / NS_ * 100) + " %"; }],
+     ["iv", T.valeur, NV - 1, function (k) { return Math.round((k + 1) / NV * 100) + " %"; }]].forEach(function (d) {
       var l = document.createElement("label"); l.className = "couleur3d-curseur";
       var nom = document.createElement("span"); nom.textContent = d[1];
-      var e = document.createElement("input"); e.type = "range"; e.min = d[2]; e.max = d[3]; e.value = etat[d[0]];
+      var e = document.createElement("input"); e.type = "range"; e.min = 0; e.max = d[2]; e.step = 1; e.value = etat[d[0]];
       var o = document.createElement("output");
       e.addEventListener("input", function () { etat[d[0]] = +e.value; maj(); });
       l.appendChild(nom); l.appendChild(e); l.appendChild(o); panneau.appendChild(l);
-      champs[d[0]] = { entree: e, sortie: o, unite: d[4] };
+      champs[d[0]] = { sortie: o, texte: d[3] };
     });
-    var aplat = document.createElement("div"); aplat.className = "couleur3d-aplat"; panneau.appendChild(aplat);
-    var infos = document.createElement("div"); infos.className = "couleur3d-infos"; panneau.appendChild(infos);
+    var ligne = document.createElement("div"); ligne.className = "couleur3d-resultat"; panneau.appendChild(ligne);
+    var aplat = document.createElement("div"); aplat.className = "couleur3d-aplat"; ligne.appendChild(aplat);
+    var infos = document.createElement("div"); infos.className = "couleur3d-infos"; ligne.appendChild(infos);
     var aide = document.createElement("div"); aide.className = "couleur3d-aide"; aide.textContent = T.tourner; panneau.appendChild(aide);
+    suite.forEach(function (c) { panneau.appendChild(c); });
 
     function maj() {
-      ["h", "s", "v"].forEach(function (k) { champs[k].sortie.textContent = etat[k] + champs[k].unite; });
-      var c = hsv(etat.h % 360, etat.s / 100, etat.v / 100);
+      ["it", "is", "iv"].forEach(function (k) { champs[k].sortie.textContent = champs[k].texte(etat[k]); });
+      var c = couleurCase(etat.it, etat.is, etat.iv);
       aplat.style.background = rvbHex(c);
       var r = c[0] / 255, g = c[1] / 255, b = c[2] / 255, k = 1 - Math.max(r, g, b);
       var cmj = k >= 1 ? [0, 0, 0] : [(1 - r - k) / (1 - k), (1 - g - k) / (1 - k), (1 - b - k) / (1 - k)];
@@ -251,8 +270,7 @@
       dessiner();
     }
 
-    // le solide : NT secteurs de teinte × NS anneaux de saturation × NV couches de valeur
-    var W = toile.width, H = toile.height, CX = W / 2, CY = H * 0.6, R = 230, HAUT = 230, INCL = 0.5;
+    var W = toile.width, H = toile.height, CX = W / 2, CY = H * 0.70, R = W * 0.43, HAUT = H * 0.39, INCL = 0.42;
     function proj(r, a, z) {
       var x = r * Math.cos(a + etat.phi), y = r * Math.sin(a + etat.phi);
       return [CX + R * x, CY - HAUT * z + R * INCL * y, y];
@@ -262,61 +280,198 @@
       for (var i = 0; i <= pas; i++) p.push(proj(r, a0 + (a1 - a0) * i / pas, z));
       return p;
     }
-    function poly(pts, fond) {
+    function poly(pts, fond, trait, ep) {
       ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
       for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
-      ctx.closePath(); ctx.fillStyle = fond; ctx.fill(); ctx.stroke();
+      ctx.closePath();
+      if (fond) { ctx.fillStyle = fond; ctx.fill(); }
+      ctx.strokeStyle = trait || "rgba(0,0,0,0.16)"; ctx.lineWidth = ep || 0.7; ctx.stroke();
     }
-    function voxel(it, is, iv, contour) {
-      var a0 = it / NT * 2 * Math.PI, a1 = (it + 1) / NT * 2 * Math.PI;
-      var r0 = is / NS_, r1 = (is + 1) / NS_, z0 = iv / NV, z1 = (iv + 1) / NV - 0.012;
-      var c = hsv((it + 0.5) * 360 / NT, (is + 0.5) / NS_, (iv + 0.5) / NV);
-      ctx.strokeStyle = contour || "rgba(0,0,0,0.18)"; ctx.lineWidth = contour ? 3 : 0.6;
-      var am = (a0 + a1) / 2;
-      // faces radiales, face intérieure, face extérieure, dessus
-      poly([proj(r0, a0, z0), proj(r1, a0, z0), proj(r1, a0, z1), proj(r0, a0, z1)], assombrir(c, 0.72));
-      poly([proj(r0, a1, z0), proj(r1, a1, z0), proj(r1, a1, z1), proj(r0, a1, z1)], assombrir(c, 0.72));
-      if (Math.sin(am + etat.phi) > 0) {
-        poly(arc(r1, a0, a1, z0, 3).concat(arc(r1, a1, a0, z1, 3)), assombrir(c, 0.85));
-      } else if (r0 > 0) {
-        poly(arc(r0, a0, a1, z0, 3).concat(arc(r0, a1, a0, z1, 3)), assombrir(c, 0.8));
-      }
-      var dessus = arc(r1, a0, a1, z1, 3).concat(r0 > 0 ? arc(r0, a1, a0, z1, 3) : [proj(0, 0, z1)]);
-      poly(dessus, assombrir(c, 1));
+    // une case : un petit bloc d'anneau, avec un léger jeu entre les cases, comme un pavé
+    function voxel(it, is, iv, leve) {
+      var jeu = 0.05;
+      var a0 = (it + jeu) / NT * 2 * Math.PI, a1 = (it + 1 - jeu) / NT * 2 * Math.PI;
+      var r0 = is === 0 ? 0.02 : (is + jeu) / NS_, r1 = (is + 1 - jeu) / NS_;
+      var z0 = iv / NV + (leve || 0), z1 = (iv + 1) / NV - 0.015 + (leve || 0);
+      var c = couleurCase(it, is, iv), am = (a0 + a1) / 2;
+      poly([proj(r0, a0, z0), proj(r1, a0, z0), proj(r1, a0, z1), proj(r0, a0, z1)], assombrir(c, 0.7));
+      poly([proj(r0, a1, z0), proj(r1, a1, z0), proj(r1, a1, z1), proj(r0, a1, z1)], assombrir(c, 0.7));
+      if (Math.sin(am + etat.phi) > 0) poly(arc(r1, a0, a1, z0, 3).concat(arc(r1, a1, a0, z1, 3)), assombrir(c, 0.82));
+      else poly(arc(r0, a0, a1, z0, 3).concat(arc(r0, a1, a0, z1, 3)), assombrir(c, 0.78));
+      return arc(r1, a0, a1, z1, 4).concat(arc(r0, a1, a0, z1, 4));
     }
     function dessiner() {
       ctx.clearRect(0, 0, W, H);
-      var sel = [Math.min(NT - 1, Math.floor((etat.h % 360) / 360 * NT)), Math.min(NS_ - 1, Math.floor(etat.s / 100 * NS_)),
-                 Math.min(NV - 1, Math.floor(etat.v / 100 * NV))];
       var liste = [];
-      for (var it = 0; it < NT; it++) {
-        var am = (it + 0.5) / NT * 2 * Math.PI + etat.phi, devant = ((am % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
-        // on retire la part tournée vers nous, pour voir l'intérieur du solide
-        var coupe = Math.abs(devant - Math.PI / 2) < 0.95;
-        for (var is = 0; is < NS_; is++) for (var iv = 0; iv < NV; iv++) {
-          if (coupe && !(it === sel[0] && is === sel[1] && iv === sel[2])) continue;
-          var p = proj((is + 0.5) / NS_, (it + 0.5) / NT * 2 * Math.PI, 0);
-          liste.push([p[2] + (is === 0 ? -0.0 : 0), iv, it, is]);
-        }
+      // le solide est coupé à la valeur choisie : la couche du dessus est celle de la couleur choisie
+      for (var it = 0; it < NT; it++) for (var is = 0; is < NS_; is++) for (var iv = 0; iv <= etat.iv; iv++) {
+        if (it === etat.it && is === etat.is && iv === etat.iv) continue;
+        var p = proj((is + 0.5) / NS_, (it + 0.5) / NT * 2 * Math.PI, 0);
+        liste.push([iv, p[2], it, is]);
       }
+      // de bas en haut, puis de l'arrière vers l'avant
       liste.sort(function (a, b) { return a[0] - b[0] || a[1] - b[1]; });
-      liste.forEach(function (e) { voxel(e[2], e[3], e[1]); });
-      voxel(sel[0], sel[1], sel[2], "#111");
+      liste.forEach(function (e) { var d = voxel(e[2], e[3], e[0]); poly(d, rvbHex(couleurCase(e[2], e[3], e[0]))); });
+      // la case choisie, soulevée et cernée
+      var d = voxel(etat.it, etat.is, etat.iv, 0.05);
+      poly(d, rvbHex(couleurCase(etat.it, etat.is, etat.iv)), "#FFFFFF", 6);
+      poly(d, null, "#1B1B22", 2.5);
     }
     toile.addEventListener("pointerdown", function (e) { glisse = { x: e.clientX, phi: etat.phi }; toile.setPointerCapture(e.pointerId); });
-    toile.addEventListener("pointermove", function (e) { if (glisse) { etat.phi = glisse.phi - (e.clientX - glisse.x) / 120; dessiner(); } });
+    toile.addEventListener("pointermove", function (e) { if (glisse) { etat.phi = glisse.phi - (e.clientX - glisse.x) / 160; dessiner(); } });
     toile.addEventListener("pointerup", function () { glisse = null; });
-    // rotation lente quand la diapo est visible et qu'on ne touche à rien
-    var dernier = 0;
-    function tourner(t) {
-      var section = bloc.closest("section");
-      if (!EN_PDF && !glisse && section && section.classList.contains("present") && t - dernier > 40) {
-        etat.phi += 0.006; dernier = t; dessiner();
-      }
-      requestAnimationFrame(tourner);
-    }
     maj();
-    if (!EN_PDF) requestAnimationFrame(tourner);
+  });
+
+  // ------------------------------------------------------------------ synthèse additive et soustractive
+  tous(".synthese-zone").forEach(function (zone) {
+    stopper(zone);
+    function panneau(titre, sous, fond, mode, noms, couleurs, defaut) {
+      var p = document.createElement("div"); p.className = "synthese-panneau"; zone.appendChild(p);
+      var h = document.createElement("div"); h.className = "synthese-titre"; h.textContent = titre; p.appendChild(h);
+      var st = document.createElement("div"); st.className = "synthese-sous"; st.textContent = sous; p.appendChild(st);
+      var corps = document.createElement("div"); corps.className = "synthese-corps"; p.appendChild(corps);
+      var svg = el("svg", { viewBox: "0 0 300 270", width: "300", height: "270", role: "img", "aria-label": titre }, corps);
+      el("rect", { x: 0, y: 0, width: 300, height: 270, rx: 10, fill: fond }, svg);
+      var g = el("g", { style: "isolation:isolate" }, svg);
+      var pos = [[150, 98], [108, 170], [192, 170]], ronds = [];
+      pos.forEach(function (q) { ronds.push(el("circle", { cx: q[0], cy: q[1], r: 74, style: "mix-blend-mode:" + mode }, g)); });
+      var cote = document.createElement("div"); cote.className = "synthese-reglages"; corps.appendChild(cote);
+      var val = defaut.slice(), sorties = [];
+      noms.forEach(function (nom, k) {
+        var l = document.createElement("label"); l.className = "synthese-curseur";
+        var n = document.createElement("span"); n.textContent = nom;
+        var e = document.createElement("input"); e.type = "range"; e.min = 0; e.max = 100; e.value = val[k];
+        e.style.accentColor = couleurs[k];
+        var o = document.createElement("output"); sorties.push(o);
+        e.addEventListener("input", function () { val[k] = +e.value; maj(); });
+        l.appendChild(n); l.appendChild(e); l.appendChild(o); cote.appendChild(l);
+      });
+      var res = document.createElement("div"); res.className = "synthese-resultat"; cote.appendChild(res);
+      var pastille = document.createElement("span"); pastille.className = "synthese-pastille"; res.appendChild(pastille);
+      var texte = document.createElement("span"); res.appendChild(texte);
+      function maj() {
+        var centre;
+        if (mode === "screen") {        // la lumière s'additionne
+          ronds[0].setAttribute("fill", rvbHex([val[0] * 2.55, 0, 0]));
+          ronds[1].setAttribute("fill", rvbHex([0, val[1] * 2.55, 0]));
+          ronds[2].setAttribute("fill", rvbHex([0, 0, val[2] * 2.55]));
+          centre = [val[0] * 2.55, val[1] * 2.55, val[2] * 2.55];
+        } else {                        // chaque encre retient une part de la lumière : le blanc moins…
+          ronds[0].setAttribute("fill", rvbHex([255 * (1 - val[0] / 100), 255, 255]));
+          ronds[1].setAttribute("fill", rvbHex([255, 255 * (1 - val[1] / 100), 255]));
+          ronds[2].setAttribute("fill", rvbHex([255, 255, 255 * (1 - val[2] / 100)]));
+          centre = [255 * (1 - val[0] / 100), 255 * (1 - val[1] / 100), 255 * (1 - val[2] / 100)];
+        }
+        sorties.forEach(function (o, k) { o.textContent = val[k] + " %"; });
+        pastille.style.background = rvbHex(centre);
+        texte.textContent = T.centre + " : " + T.rvb + " " + centre.map(Math.round).join(", ");
+      }
+      maj();
+    }
+    panneau(T.additive, T.ecran, "#000000", "screen", [T.rouge, T.vert, T.bleu], ["#E0201B", "#1FA34A", "#2A52D6"], [100, 100, 100]);
+    panneau(T.soustractive, T.encre, "#FFFFFF", "multiply", [T.cyan, T.magenta, T.jaune], ["#00A3D9", "#D6007E", "#E8C400"], [100, 100, 100]);
+  });
+
+  // ------------------------------------------------------------------ puzzle : construire une légende
+  tous(".puzzle-zone").forEach(function (zone) {
+    var bloc = zone.parentNode;
+    stopper(zone);
+    var pieces = JSON.parse(zone.querySelector(".puzzle-donnees").textContent);
+    var carte = zone.querySelector(".puzzle-carte"), reserve = zone.querySelector(".puzzle-reserve");
+    var cadre = zone.querySelector(".puzzle-cadre"), message = zone.querySelector(".puzzle-message");
+    var fin = zone.querySelector(".puzzle-fin"), bouton = zone.querySelector(".puzzle-recommencer");
+    var consigne = bloc.querySelector(".puzzle-texte-consigne"), texteFin = bloc.querySelector(".puzzle-texte-fin");
+    if (consigne) zone.querySelector(".puzzle-consigne").appendChild(consigne);
+    if (texteFin) fin.appendChild(texteFin);
+    var justes = pieces.filter(function (p) { return p.r > 0; });
+    var maxRang = Math.max.apply(null, justes.map(function (p) { return p.r; }));
+    // le figuré d'une pièce, dessiné à la taille de la carte
+    function figure(p) {
+      var largeur = 30, haut = 18, svg = el("svg", { "class": "puzzle-figure", width: largeur, height: haut, viewBox: "0 0 " + largeur + " " + haut });
+      var c = p.p.split(/\s+/)[0];
+      if (p.s === "aplat") el("rect", { x: 1, y: 2, width: 28, height: 14, fill: c, stroke: "#9A9AA4", "stroke-width": 1 }, svg);
+      else if (p.s === "ligne") {          // ligne COULEUR ÉPAISSEUR [ENCADREMENT ÉPAISSEUR]
+        var q = p.p.split(/\s+/);
+        if (q[2]) el("path", { d: "M2 9 H28", stroke: q[2], "stroke-width": q[3] || 5, "stroke-linecap": "round" }, svg);
+        el("path", { d: "M2 9 H28", stroke: c, "stroke-width": q[1] || 3, "stroke-linecap": "round" }, svg);
+      }
+      else if (p.s === "point") {          // point COULEUR [CONTOUR] [TAILLE]
+        var q2 = p.p.split(/\s+/), cote = parseFloat(q2[2] || 10);
+        el("rect", { x: 15 - cote / 2, y: 9 - cote / 2, width: cote, height: cote, fill: c, stroke: q2[1] || "#FFFFFF", "stroke-width": 2 }, svg);
+      }
+      else if (p.s === "cercles") {
+        var hc = parseFloat(getComputedStyle(carte).height), echelle = (hc > 0 ? hc : 340) / (carte.naturalHeight || 560);
+        var morceaux = p.p.split(/[\s,]+/).filter(Boolean), c0 = morceaux[0].charAt(0) === "#" ? morceaux.shift() : "#283B89";
+        var r = morceaux.map(function (v) { return parseFloat(v) * echelle; });
+        var R = Math.max.apply(null, r), w = 2 * R + 4;
+        svg.setAttribute("width", w); svg.setAttribute("height", w); svg.setAttribute("viewBox", "0 0 " + w + " " + w);
+        r.forEach(function (rr) {
+          el("circle", { cx: R + 2, cy: w - 2 - rr, r: rr, fill: c0, "fill-opacity": 0.8, stroke: "#FFFFFF", "stroke-width": 1 }, svg);
+        });
+      } else return null;
+      return svg;
+    }
+    function etiquette(p) {
+      var e = document.createElement("span"); e.className = "puzzle-piece-contenu puzzle-" + p.s;
+      var f = figure(p); if (f) e.appendChild(f);
+      var t = document.createElement("span"); t.textContent = p.t; e.appendChild(t);
+      return e;
+    }
+    // un mélange fixe, pour que tout le monde voie la même réserve
+    var ordre = pieces.map(function (p, i) { return i; });
+    var graine = 7;
+    for (var i = ordre.length - 1; i > 0; i--) { graine = (graine * 9301 + 49297) % 233280; var j = graine % (i + 1); var x = ordre[i]; ordre[i] = ordre[j]; ordre[j] = x; }
+    var rang, place;
+    function poser(p) {
+      var ligne = document.createElement("div"); ligne.className = "puzzle-ligne puzzle-ligne-" + p.s;
+      ligne.appendChild(etiquette(p)); cadre.insertBefore(ligne, cadre.querySelector(".puzzle-attente"));
+    }
+    function etat() {
+      var reste = justes.filter(function (p) { return !p.pose; });
+      if (!reste.length) {
+        var a = cadre.querySelector(".puzzle-attente"); if (a) a.remove();
+        zone.classList.add("fini"); message.textContent = "";
+        message.dataset.compte = justes.length + " / " + justes.length + " " + T.places;
+        return;
+      }
+      rang = Math.min.apply(null, reste.map(function (p) { return p.r; }));
+      message.dataset.compte = (justes.length - reste.length) + " / " + justes.length + " " + T.places;
+    }
+    function depart() {
+      reserve.innerHTML = ""; cadre.innerHTML = ""; message.textContent = ""; zone.classList.remove("fini");
+      var titre = document.createElement("div"); titre.className = "puzzle-cadre-titre"; titre.textContent = T.legende; cadre.appendChild(titre);
+      var attente = document.createElement("div"); attente.className = "puzzle-attente"; attente.textContent = "?"; cadre.appendChild(attente);
+      pieces.forEach(function (p) { p.pose = false; });
+      ordre.forEach(function (k) {
+        var p = pieces[k];
+        var b = document.createElement("button"); b.type = "button"; b.className = "puzzle-piece";
+        b.appendChild(etiquette(p));
+        b.addEventListener("click", function () {
+          if (p.r === 0) {                       // une pièce fausse : on dit pourquoi, on l'écarte
+            b.classList.add("ecartee"); b.disabled = true; message.className = "puzzle-message faux"; message.textContent = p.e;
+          } else if (p.r === rang) {
+            p.pose = true; b.remove(); poser(p); message.className = "puzzle-message juste"; message.textContent = T.bravo; etat();
+          } else {
+            message.className = "puzzle-message pas-encore"; message.textContent = T.pasEncore;
+            b.classList.remove("secoue"); void b.offsetWidth; b.classList.add("secoue");
+          }
+        });
+        reserve.appendChild(b);
+      });
+      etat();
+      if (!message.textContent) message.textContent = T.cadreVide;
+    }
+    bouton.addEventListener("click", depart);
+    function lancer() {
+      depart();
+      if (CORRIGE) {                              // le PDF corrigé porte la légende terminée
+        justes.slice().sort(function (a, b) { return a.r - b.r; }).forEach(function (p) { p.pose = true; poser(p); });
+        tous(".puzzle-piece", reserve).forEach(function (b, i) { if (pieces[ordre[i]].r > 0) b.remove(); });
+        etat();
+      }
+    }
+    if (carte.complete) lancer(); else carte.addEventListener("load", lancer);
   });
 })();
 </script>

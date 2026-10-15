@@ -1,11 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990 320" role="img" aria-label="Four layouts of the same map">
 <rect x="20" y="10" width="200" height="270" fill="#FFFFFF" stroke="#283B89" stroke-width="2"/>
-<rect x="32" y="60" width="110" height="180" rx="16" fill="#C9D3B8"/>
+<rect x="32" y="56" width="176" height="190" rx="16" fill="#C9D3B8"/>
 <rect x="32" y="24" width="176" height="22" fill="#283B89"/>
-<rect x="150" y="60" width="58" height="150" fill="#E38226"/>
-<rect x="32" y="250" width="60" height="8" fill="#6E6F7A"/>
-<rect x="130" y="262" width="78" height="6" fill="#6E6F7A"/>
+<rect x="148" y="160" width="54" height="76" fill="#E38226"/>
+<rect x="32" y="256" width="60" height="8" fill="#6E6F7A"/>
+<rect x="130" y="266" width="78" height="6" fill="#6E6F7A"/>
 <text class="s-titre" x="120" y="310" text-anchor="middle" style="font-size:26px">A</text>
+<rect x="148" y="160" width="54" height="76" fill="none" stroke="#FFFFFF" stroke-width="2"/>
 <rect x="270" y="10" width="200" height="270" fill="#FFFFFF" stroke="#283B89" stroke-width="2"/>
 <rect x="310" y="70" width="120" height="150" rx="16" fill="#C9D3B8"/>
 <rect x="420" y="240" width="40" height="14" fill="#283B89"/>

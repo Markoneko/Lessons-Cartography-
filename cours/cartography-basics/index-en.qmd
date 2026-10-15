@@ -5,6 +5,7 @@ author: "Marc Poupée · Géodata Paris"
 date: "2026-10-16"
 date-format: "D MMMM YYYY"
 footer: "Cartography: Basics"
+output-file: Cartography-Basics-EN.html
 lang: en
 title-slide-attributes:
   data-state: plein
@@ -39,7 +40,7 @@ This course is practised more than read: almost every slide asks you to **try be
 ## What you will be able to do
 
 ::: {.fiche n="0.3" etat="a-revoir"}
-Intention : Choose the right visual variable for a dataset; anticipate what a choice (classes, colours, sizes) makes the map say; lay out a readable map. [PPT 3]
+Intention : Choose the right visual variable for a dataset; anticipate what a choice (classes, colours, sizes) makes the map say; structure the information, from the most to the least important; lay out a readable map that gives the keys to understanding its message. [PPT 3]
 Experience : none
 Request :
 :::
@@ -48,7 +49,8 @@ By the end of this course, you will be able to:
 
 1. **choose** the visual variable that suits a dataset;
 2. **anticipate** what a choice of classes, colours or sizes makes the map say;
-3. **lay out** a map that is understood at first glance.
+3. **structure** the information to make it easy to access, from the most to the least important;
+4. **lay out** a map that is understood at first glance, while also giving the keys to understanding its message.
 
 [Every map is a series of choices. Each one changes the message.]{.a-retenir}
 
@@ -81,37 +83,91 @@ Experience : the image hides itself after 5 s ("flash" brick); question: what wa
 Request :
 :::
 
-Each map is shown for five seconds only. Look, then say what you remember.
-
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="47%"}
 ::: {.flash duree="5"}
-![](images/noel.png){height="250" fig-alt="Map: the wanderings of Santa Claus"}
+![](images/noel.png){height="350" fig-alt="Map: the wanderings of Santa Claus"}
 :::
 :::
-::: {.column width="50%"}
+::: {.column width="53%"}
 ::: {.flash duree="5"}
-![](images/gaza.jpg){height="250" fig-alt="Working map: vegetation loss in the Gaza Strip"}
+![](images/gaza.jpg){height="350" fig-alt="Working map: vegetation loss in the Gaza Strip"}
 :::
 :::
 ::::
 
 :::: {.columns}
-::: {.column width="35%"}
+::: {.column width="36%"}
 ::: {.question}
 **What was the message of each map?**
 :::
 :::
-::: {.column width="65%"}
+::: {.column width="64%"}
 ::: {.reponse}
-Left, the journey of a legend, from Saint Nicholas to Santa Claus: understood in five seconds. Right, a working map with no title: red patches, but of what? You have to read the legend.
+Left, a legend travels from Saint Nicholas to Santa Claus: understood in five seconds. Right, a working map with no title: red patches, but of what?
 :::
 :::
 ::::
 
-## Drawing up, laying out {.socle}
+## Seeing, then understanding {.socle}
 
 ::: {.fiche n="1.2" etat="a-revoir"}
+Intention : Two notions from the old deck, not to be kept as they were: graphic understanding (taking in the purely graphic aspect of the image: seeing, the signifier) and mental understanding (taking in the message delivered: looking, the signified). The "WTF" is kept, drawn in a cute way, with sparkles for the confusion of messages (Marc's request). [PPT 10, 11]
+Experience : none; the drawing sparkles
+Request :
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+Reading a map happens in two stages.
+
+- **Graphic understanding**: we **see** the image, its purely graphic aspect, the shapes and colours. This is the **signifier**.
+- **Mental understanding**: we **look**, and grasp the message. This is the **signified**.
+
+[A map can be very easy to see and say nothing: the reader is dazzled, and lost.]{.a-retenir}
+:::
+::: {.column width="52%"}
+::: {.schema fichier="images/schemas/en/wtf.svg" hauteur="380"}
+:::
+:::
+::::
+
+## Graphic semiology {.socle}
+
+::: {.fiche n="1.3" etat="a-revoir"}
+Intention : Semiology, "the set of rules for using a graphic system of signs to convey information" (Béguin and Pumain). A spectacular figure that is hard to read: very easy to see, the message does not get through. Figure re-cropped by Marc; bonus: K. Viswanathan's page (2015). [PPT 9, 12]
+Experience : question on the circular flow graph; bonus with the link
+Request :
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+**Graphic semiology**: "the set of rules for using a graphic system of signs to convey information" (Béguin and Pumain).
+
+::: {.question}
+This figure is very easy to **see**. **What do you understand?**
+:::
+
+::: {.reponse}
+Not much without the legend: goods trade between one US metropolitan area and the rest of the United States and the world. The image strikes, the message does not get through.
+:::
+:::
+::: {.column width="50%"}
+::: {.centre}
+![](images/flux-circulaire.png){height="520" fig-alt="Circular graph of goods trade between a US metropolitan area and other regions"}
+:::
+:::
+::::
+
+::: {.plus titre="Circular Visualization of Flow Matrices"}
+Krishnan Viswanathan, *Circular Visualization of Flow Matrices*, 28 July 2015: [the original page](https://rstudio-pubs-static.s3.amazonaws.com/97904_42cb2a8840714df89af3a1e2c37e8916.html).
+
+The author reproduces a Brookings Institution figure (*Metro Freight* series) with the R package *circlize*, then builds a flow diagram of the same kind step by step from an origin-destination matrix: rail flows between Florida counties.
+:::
+
+## Drawing up, laying out {.socle}
+
+::: {.fiche n="1.4" etat="a-revoir"}
 Intention : Cartographic drawing (representing the information itself) and layout (organising the blocks around it: title, legend, scale…). [PPT 3]
 Experience : sort eight decisions into "drawing up" or "layout"
 Request :
@@ -138,35 +194,6 @@ Making a map means two jobs:
 - Balancing the blocks on the page
 :::
 
-## Seeing, then understanding {.socle}
-
-::: {.fiche n="1.3" etat="a-revoir"}
-Intention : Semiology, "the set of rules for using a graphic system of signs to convey information" (Béguin and Pumain). Graphic understanding (seeing, the signifier) and mental understanding (looking, the signified). The four original text slides fit in one. [PPT 9, 10, 11, 12]
-Experience : question on a spectacular figure that is hard to read (the circular flow graph)
-Request :
-:::
-
-:::: {.columns}
-::: {.column width="55%"}
-**Graphic semiology**: "the set of rules for using a graphic system of signs to convey information" (Béguin and Pumain).
-
-Reading a map means first **seeing** (shapes, colours), then **understanding** (the message).
-
-::: {.question}
-This figure is very easy to **see**. **What do you understand?**
-:::
-
-::: {.reponse}
-Not much without reading the text: rail flows between Florida counties. The image strikes, the message does not get through.
-:::
-:::
-::: {.column width="45%"}
-::: {.centre}
-![](images/flux-circulaire.png){height="430" fig-alt="Circular flow graph between counties"}
-:::
-:::
-::::
-
 ## What the eye can see {.intercalaire}
 
 ::: {.fiche n="2.0" etat="a-revoir"}
@@ -180,18 +207,18 @@ The limits of the eye, and of the medium.
 ## Perception thresholds {.appui}
 
 ::: {.fiche n="2.1" etat="a-revoir"}
-Intention : At 30 cm, the eye resolves about 0.1 mm; a dot must be at least 0.2 mm, a line 0.1 mm; separating two lines, telling two sizes apart. The four slides of figures become an experiment. [PPT 6, 7, 8]
-Experience : slider: thin a line and a dot until they vanish on screen; read their size on paper
+Intention : At 30 cm, the eye resolves about 0.1 mm. Three thresholds, with the symbols of the old deck: being seen (minimum size of each symbol), being separated (0.2 mm between two features), being told apart (areas in a ratio of 2, widths differing by 0.1 mm or 0.3 mm). The limits of differentiation lead on to generalisation (Marc's request). [PPT 6, 7, 8]
+Experience : slider: shrink all the symbols down to their threshold (×1) and below; read their size on paper
 Request :
 :::
 
-::: {.curseur min="0.02" max="0.6" pas="0.01" valeur="0.3" unite="mm" etiquette="Line width on paper" schema="images/schemas/en/seuils.svg" hauteur="200"}
-- The dot is `{2*x|2}` mm across; the line is `{x/0.1|1}` times the 0.1 mm threshold
+::: {.curseur min="0.5" max="6" pas="0.1" valeur="4" unite="×" etiquette="Symbol size, as a multiple of its threshold" schema="images/schemas/en/seuils.svg" hauteur="260"}
+- On paper, the dot is `{0.2*x|2}` mm across and the gap between two lines `{0.2*x|2}` mm. At ×1, each symbol sits at its threshold.
 :::
 
-At 30 cm, the eye resolves a detail of about **0.1 mm**. Below that, a line vanishes; a dot needs at least **0.2 mm**. Separating two neighbouring lines, or telling two sizes apart, takes a sufficient gap as well.
+Below these thresholds, a symbol vanishes, two symbols merge. This is what drives **generalisation**: as the scale gets smaller, we must simplify, group, exaggerate or remove.
 
-[A screen is not paper: the experiment gives an order of magnitude. Print your map to check.]{.legende}
+[A screen is not paper: here, about 5 pixels to 1 mm. Print your map to check.]{.legende}
 
 ## Size is relative {.appui}
 
@@ -451,7 +478,7 @@ Request :
 :::
 ::: {.column width="62%"}
 ::: {.defiler commande="haut"}
-- ![The orientation of hatching distinguishes categories](images/orientation.jpg)
+- ![The orientation of hatching distinguishes categories](images/orientation.png)
 - ![Three patterns: to avoid, good, most effective](images/trames.jpg)
 - ![1960 US presidential election: an animated map](images/election-1960.gif)
 :::
@@ -468,54 +495,63 @@ Request :
 
 A sensation, ways of producing it, codes.
 
-## Hue, saturation, value {.appui}
+## Light and ink {.appui}
 
 ::: {.fiche n="4.1" etat="a-revoir"}
-Intention : Additive (RGB, the screen) and subtractive (CMYK, print) synthesis; a conversion changes colours. The HSL or HSV model: hue, saturation, value. The colour solid in 3D, animated (Marc's request), with the original views as a bonus. [PPT 23, 24, 25, 26]
-Experience : the colour solid rotates; three sliders (hue, saturation, value) move the chosen cube ("couleur3d" brick); question: why does a printed map look duller than on screen?
+Intention : Additive (RGB, light from the screen) and subtractive (CMYK, printing inks) synthesis, with the circles and their mixture; one changes the intensity of each colour and sees the effect on the mixture (Marc's request). Converting from one to the other changes colours. [PPT 23, 24]
+Experience : two sets of three circles and three sliders ("synthese" brick); question: why does a printed map look duller than on screen?
 Request :
 :::
 
-::: {.couleur3d style="--hauteur-couleur: 300px"}
+A screen **adds up** lights; a printer **layers** inks, each holding back part of the light. Turn each colour up and down: watch the centre.
+
+::: {.synthese}
 :::
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="40%"}
 ::: {.question}
 **Why does a printed map look duller than on screen?**
 :::
 :::
-::: {.column width="50%"}
+::: {.column width="60%"}
 ::: {.reponse}
-A screen adds up lights (RGB); a printer layers inks that hold some back (CMYK). The most vivid screen colours do not exist in ink.
+The most vivid screen colours do not exist in ink: converting RGB to CMYK dulls them. And the three inks mixed give a dark brown: a black ink is added, the K of CMYK.
 :::
 :::
 ::::
 
-::: {.plus titre="The colour solid"}
-:::: {.columns}
-::: {.column width="50%"}
-![](images/solide-couleurs.png){height="380" fig-alt="Cross-section of the colour solid"}
-:::
-::: {.column width="50%"}
-![](images/solide-couleurs-anneaux.jpg){fig-alt="The rings of the colour solid"}
+## Hue, saturation, value {.appui}
 
+::: {.fiche n="4.2" etat="a-revoir"}
+Intention : The HSV model: hue, saturation, value. The colour solid shown large, like the rings of the old deck: the sliders move in steps, the solid is cut at the chosen value, the chosen cell lifts and its colour shows alongside (Marc's request). No more bonus: the conclusion is on the slide. [PPT 25, 26]
+Experience : three stepped sliders move the cell on the solid ("couleur3d" brick); question: is it easier to keep the same hue in RGB, CMYK or HSV?
+Request :
+:::
+
+::: {.couleur3d style="--hauteur-couleur: 370px"}
 **Hue** turns around the axis, **saturation** moves away from the axis, **value** rises from black to white.
+
+::: {.question}
+**Is it easier to keep the same hue in RGB, CMYK or HSV?**
 :::
-::::
+
+::: {.reponse}
+In HSV: a single slider for hue. In RGB or CMYK, three values to change together, in the right proportions.
+:::
 :::
 
 ## Codes to respect {.socle}
 
-::: {.fiche n="4.2" etat="a-revoir"}
-Intention : Warm and cool colours; conventional codes (water in blue, forest in green, red for danger); codes that change across cultures and trades; harmony and contrast. [PPT 30, 31, 32, 33]
-Experience : sort colours into the themes they evoke; question: a forest map in red, what does the reader understand?
+::: {.fiche n="4.3" etat="a-revoir"}
+Intention : Warm and cool colours; conventional codes (water in blue, forest in green, red for danger); codes that change across cultures and trades, with four codes from other cultures to show it is not that simple (Marc's request); harmony and contrast. [PPT 30, 31, 32, 33]
+Experience : sort colours into the themes they evoke; question: what do these four colours say elsewhere? The answer reveals their meaning on the diagram.
 Request :
 :::
 
 :::: {.columns}
-::: {.column width="55%"}
-**Warm** colours advance and catch the eye; **cool** colours recede. Readers come with **codes**: water in blue, forest in green, danger in red. These codes vary across cultures (white for mourning in Asia) and trades.
+::: {.column width="47%"}
+**Warm** colours advance and catch the eye; **cool** colours recede. Readers come with **codes**: a forest in bright red, and they think of a fire.
 
 ::: {.classer}
 ### Water
@@ -526,7 +562,7 @@ Request :
 
 - Green
 
-### Danger, alert
+### Danger
 
 - Red
 
@@ -535,21 +571,24 @@ Request :
 - Bistre
 :::
 :::
-::: {.column width="45%"}
+::: {.column width="53%"}
+::: {.schema fichier="images/schemas/en/codes-ailleurs.svg" hauteur="215"}
+:::
+
 ::: {.question}
-A map of French forests colours the massifs bright red. **What does the reader understand?**
+These codes change across cultures. **What do these colours say elsewhere?**
 :::
 
 ::: {.reponse}
-That something is wrong: a fire, a danger, an alert. Against the code, you fight the reader at every glance. Unless it is intended: red can say precisely that a forest is in danger.
+The meaning appears on each card. Know your reader: the same colour can say the opposite.
 :::
 :::
 ::::
 
 ## A map for every eye {.appui}
 
-::: {.fiche n="4.3" etat="a-revoir"}
-Intention : A notable share of men do not tell red from green well: a red–green palette loses its message. Choose palettes that hold up. [new]
+::: {.fiche n="4.4" etat="a-revoir"}
+Intention : A notable share of men do not tell red from green well: a red–green palette loses its message. Choose palettes that hold up. Bonus: Fortnite's colour-blind mode, the game industry being ahead on this (Marc's request). [new]
 Experience : compare: the same map seen normally and seen by a deuteranope eye (Machado simulation, 2009)
 Request :
 :::
@@ -570,6 +609,21 @@ Drag the slider: with a red–green palette, the low and high classes merge. The
 :::
 ::::
 
+::: {.plus titre="Video games are ahead"}
+:::: {.columns}
+::: {.column width="62%"}
+![](images/fortnite.jpg){fig-alt="The accessibility menu of the game Fortnite: colour-blind mode and correction strength (in French)"}
+:::
+::: {.column width="38%"}
+The video game industry is ahead on this. Fortnite, for example, offers a **colour-blind mode** for each type of vision, with an adjustable **correction strength**.
+
+A good idea for interactive maps.
+
+[Screenshot: Fortnite, Epic Games.]{.legende}
+:::
+::::
+:::
+
 ## The consequences of choices {.intercalaire}
 
 ::: {.fiche n="5.0" etat="a-revoir"}
@@ -584,27 +638,27 @@ The same data can say very different things.
 
 ::: {.fiche n="5.1" etat="a-revoir"}
 Intention : The data drives the variable: qualitative (differentiate: shape, colour), ordered (value), quantitative stock (size), rate (value, in classes). The example maps from the old deck and the Hurricane Irma map are used here. [PPT 39 to 43]
-Experience : sort six forest datasets by variable; bonus: the example maps in a scroll
+Experience : sort six forest datasets by variable; each one carries an example or its unit, so one knows what it is made of; bonus: the example maps in a scroll
 Request :
 :::
 
-The **data** drives the **variable**. Sort each dataset by the variable that represents it best.
+The **data** drives the **variable**. Ask whether it tells a **kind**, an **order** or a **quantity**, then sort it.
 
 ::: {.classer}
 ### Colour or shape
 
-- The dominant species of each stand
-- The type of forest track
+- The dominant species of each stand: oak, beech, fir…
+- The type of forest access: road, track, path
 
 ### Value
 
-- The age class of the stands
-- The forest cover rate of each municipality
+- The age class of the stands: young, mature, old
+- The forest cover rate of each municipality, in %
 
 ### Size
 
-- The standing timber volume per municipality
-- The burnt area of each fire
+- The standing timber volume of each municipality, in m³
+- The area burnt by each fire, in ha
 :::
 
 ::: {.plus titre="Example maps: what else could have been chosen?"}
@@ -754,24 +808,13 @@ Request :
 :::
 
 :::: {.columns}
-::: {.column width="40%"}
-::: {.zones image="images/jo-2030.jpg" alt="Map of snow forecasts for the 2030 Winter Olympics resorts" hauteur="430"}
-- [x] 0,93,68,7 : The title: it gives the theme, the place and the date.
-- [x] 52,84,44,10 : The legend.
-- [x] 94,0,6,5 : The orientation: a north arrow.
-- [x] 70,94,30,6 : The author, the date and the data source.
-- [ ] 20,35,40,30 : This is the map itself. Look around it.
-:::
-:::
-::: {.column width="60%"}
-A published map carries:
+::: {.column width="58%"}
+A published map carries, and you will find them on the map:
 
 - a **title**: the theme, the place, the date;
 - a **legend** and a **scale**;
 - the **source**, the **date**, the **author**;
 - the **orientation**, if it is not obvious.
-
-Find them on the map.
 
 ::: {.question}
 **Which element is missing from this map?**
@@ -781,12 +824,21 @@ Find them on the map.
 The scale: are the venues 10 or 100 km apart?
 :::
 :::
+::: {.column width="42%"}
+::: {.zones image="images/jo-2030.jpg" alt="Map of snow forecasts for the 2030 Winter Olympics resorts" hauteur="500"}
+- [x] 0,93,68,7 : The title: it gives the theme, the place and the date.
+- [x] 52,84,44,10 : The legend.
+- [x] 94,0,6,5 : The orientation: a north arrow.
+- [x] 70,94,30,6 : The author, the date and the data source.
+- [ ] 20,35,40,30 : This is the map itself. Look around it.
+:::
+:::
 ::::
 
 ## Ranking and grouping {.appui}
 
 ::: {.fiche n="6.2" etat="a-revoir"}
-Intention : List the elements, rank them by importance, group them into blocks, limit their number; balance, alignment, symmetry, golden ratio. [PPT 46, 47, 48, 49]
+Intention : List the elements, rank them by importance, maximise the space given to the map by fitting the other elements into it where needed (Marc's main recommendation), group them into blocks, limit their number; balance, alignment, symmetry, golden ratio. [PPT 46, 47, 48, 49]
 Experience : multiple choice on four drawn layouts (which one is balanced?); bonus: two successful student layouts
 Request :
 :::
@@ -798,15 +850,16 @@ Request :
 ::: {.column width="50%"}
 1. **List** the elements.
 2. **Rank** them by importance.
-3. **Group** elements of the same kind into blocks, and **limit** their number.
-4. **Balance** and align the blocks.
+3. **Maximise** the space given to the map, fitting the other elements into it where needed. Play with it!
+4. **Group** elements of the same kind into blocks, and **limit** their number.
+5. **Balance** and align the blocks.
 :::
 ::: {.column width="50%"}
 ::: {.qcm .serre}
 Which layout is balanced?
 
 - [x] A
-    - Yes: a title at the top, the map at the centre of gravity, an aligned legend, the scale and source at the foot.
+    - Yes: a title at the top, a map that fills the page and holds the legend, the scale and source at the foot.
 - [ ] B
     - No: scattered blocks, the title lost at the bottom.
 - [ ] C
@@ -832,33 +885,35 @@ Insets that each have a role, a legend structured by theme, a title that says it
 ## The legend {.socle}
 
 ::: {.fiche n="6.3" etat="a-revoir"}
-Intention : Group by theme, give the unit, symbols the same size as on the map, a continuous reading from maximum to minimum; one legend per implantation. [PPT 53, 54, 55]
-Experience : put a jumbled class legend back in order
+Intention : Group by theme, give the unit, symbols identical to those on the map (same size), from highest to lowest; separate the implantations. A puzzle rather than just ordering values: choose the unit, the symbol, group the themes (Marc's request). [PPT 53, 54, 55]
+Experience : build, piece by piece and in reading order, the legend of a map that has none ("puzzle-legende" brick); six wrong pieces (unit, symbol, size, group heading, classes) are set aside with a comment
 Request :
 :::
 
-:::: {.columns}
-::: {.column width="50%"}
-The **legend** decodes the message:
+::: {.puzzle-legende carte="images/schemas/en/legende-carte.svg" alt="Map without a legend: clear-cuts and the timber industry in the fictional territory" style="--hauteur-puzzle: 330px"}
+Build the legend of this map, **from top to bottom**: click the pieces in reading order. Careful, some of them are wrong.
 
-- group elements of the same kind, under a heading;
-- give the **unit**;
-- draw symbols **at the same size** as on the map;
-- read in one go, from **highest to lowest**, usually top to bottom;
-- separate the implantations: points, lines, areas.
-:::
-::: {.column width="50%"}
-::: {.ordre}
-Put this legend back in reading order, from top to bottom.
+1. titre | Clear-cuts
+2. sous-titre | Share of the forest cut (%)
+3. aplat #5c2c06 | 6.3 – 18.2
+4. aplat #c46b16 | 3.2 – 6.3
+5. aplat #f0ab69 | 2.1 – 3.2
+6. aplat #fff4e6 | 1.3 – 2.1
+7. sous-titre | Area cut (ha)
+8. cercles #3E8FD0 16 10.2 5.1 | 245, 100, 25
+9. titre | Timber industry
+10. ligne #FFFFFF 2.5 #1B1B22 5.5 | Forest road
+11. = point #FFFFFF #1B1B22 9 | Sawmill
 
-1. Clear-cut rate (%)
-2. 9.3 – 18.2
-3. 4.9 – 9.3
-4. 3.2 – 4.9
-5. 1.3 – 3.2
+- sous-titre | Share of the forest cut (ha) : A share is given in %, not in hectares.
+- sous-titre | Area cut (%) : An area is measured in hectares.
+- cercles #3E8FD0 8 5.1 2.6 | 245, 100, 25 : These circles are smaller than on the map: the legend uses the map's size.
+- aplat #1B1B22 | Sawmill : On the map, a sawmill is a point, not an area.
+- titre | Miscellaneous : "Miscellaneous" says nothing: a group heading names a theme.
+- aplat #c46b16 | 3.2 – 18.2 : Classes do not overlap: each one has its own bounds.
+
+Legend complete: grouped by theme, with its units, symbols identical to those on the map, from highest to lowest.
 :::
-:::
-::::
 
 ## Two finished maps
 
@@ -902,12 +957,16 @@ Request :
 ## Your turn {.fin}
 
 ::: {.fiche n="7.2" etat="a-revoir"}
-Intention : The bridge to the cartography practical: laying out one's map in QGIS.
+Intention : A general recommendation for every forest study: report clearly (summary, priorities, relevant symbols), honestly (openness about the data, the processing and their quality) and beautifully (make people want to take an interest).
 Experience : none
 Request :
 :::
 
-Over to the practical: your map of clear-cuts in the Vosges, from classification to layout.
+Report on your forest studies **clearly**, **honestly** and **beautifully**.
+
+- **Clearly**: summarise, set priorities, choose the right symbols.
+- **Honestly**: be open about the data, the processing and their quality.
+- **Beautifully**: make people want to take an interest, simply.
 
 ## Sources and credits {.petit}
 
@@ -927,6 +986,7 @@ Request :
 | Making a map lie | M. Monmonier, *How to Lie with Maps*, University of Chicago Press, 1991 |
 | Adelson's checkerboard | Edward H. Adelson, 1995 |
 | Colour-blindness simulation | G. Machado *et al.*, 2009 |
+| Colour codes of other cultures | data.europa.eu, data visualisation guide, "Colour connotations" |
 | Fictional territory | data simulated for this course |
 :::
 ::: {.column width="50%"}
@@ -935,9 +995,10 @@ Request :
 | Réunion, CORINE Land Cover; Santa Claus | Marc Poupée |
 | 2030 Olympics | Alice Jouanjan, M2 Geopolitics, 2025 |
 | Other student maps | M2 Geopolitics students, to be completed |
-| Gaza, Irma, USA, circular flows | to be completed |
+| Circular flow graph | Brookings Institution, *Metro Freight*; reproduced by K. Viswanathan, 2015 |
+| Colour-blind mode | Fortnite, Epic Games, screenshot |
+| Gaza, Irma, USA | to be completed |
 | 1960 election, orientation, patterns, examples | old deck, to be completed |
-| Colour solid | old deck, to be completed |
-| Diagrams and live map | made for this course |
+| Diagrams, colour solid, live map, puzzle | made for this course |
 :::
 ::::

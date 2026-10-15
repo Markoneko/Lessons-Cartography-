@@ -27,7 +27,7 @@ local TEXTES = {
     venir_gauche = "Venir sur la gauche", venir_droite = "Venir sur la droite",
     loupe = "Cliquez pour zoomer, déplacez pour explorer", effacer = "Effacer",
     reponse_notes = "Réponse : ", ordre_notes = "Ordre attendu : ",
-    flash_voir = "Voir la carte", flash_revoir = "Revoir",
+    flash_voir = "Voir la carte", flash_revoir = "Revoir", pieces = "Les pièces",
   },
   en = {
     question = "Question", reponse = "Answer", plus = "Going further", fermer = "Close",
@@ -38,7 +38,7 @@ local TEXTES = {
     venir_gauche = "Come to port", venir_droite = "Come to starboard",
     loupe = "Click to zoom, move to explore", effacer = "Clear",
     reponse_notes = "Answer: ", ordre_notes = "Expected order: ",
-    flash_voir = "Show the map", flash_revoir = "Show again",
+    flash_voir = "Show the map", flash_revoir = "Show again", pieces = "The pieces",
   },
 }
 local LIBELLES = {
@@ -684,9 +684,93 @@ local function brique_flash(div)
 end
 
 -- ::: {.couleur3d} :::  le solide des couleurs (teinte, saturation, valeur), qui tourne, et trois curseurs
+-- ::: {.puzzle-legende carte="images/schemas/legende-carte.svg" alt="…"}
+--   Consigne (paragraphes avant les listes).
+--   1. titre | Coupes rases             liste numérotée : les pièces justes, dans l'ordre de lecture
+--   2. = point #000 | Scierie           « = » : même rang que la pièce précédente (ordre libre entre elles)
+--   - sous-titre | Surface (%) : Une surface se mesure en hectares.   liste à puces : pièces fausses et leur commentaire
+--   Texte final (paragraphes après les listes) : affiché quand la légende est complète.
+-- Figurés : titre, sous-titre, aplat COULEUR, ligne COULEUR, point COULEUR, cercles R1,R2,R3 (rayons en unités de la carte).
+local function json_chaine(s)
+  s = s:gsub('\\', '\\\\'):gsub('"', '\\"'):gsub('\n', ' ')
+  return '"' .. s .. '"'
+end
+local function piece_lue(texte, juste)
+  local rang_egal = false
+  texte = texte:gsub("\u{a0}", " "):gsub("\u{202f}", " "):gsub("^%s+", "")
+  if texte:sub(1, 2) == "= " then rang_egal = true; texte = texte:sub(3) end
+  local figure, reste = texte:match("^(.-)%s*|%s*(.*)$")
+  if not figure then figure, reste = "", texte end
+  local libelle, commentaire = reste, ""
+  if not juste then
+    local a, b = reste:find(" : ", 1, true)
+    if a then libelle, commentaire = reste:sub(1, a - 1), reste:sub(b + 1) end
+  end
+  local sorte, param = figure:match("^(%S+)%s*(.*)$")
+  return { sorte = sorte or "", param = param or "", libelle = libelle, commentaire = commentaire, egal = rang_egal }
+end
+local function brique_puzzle_legende(div)
+  local carte = attribut(div, "carte", "")
+  local alt = attribut(div, "alt", "")
+  local avant, apres, justes, fausses = pandoc.List(), pandoc.List(), {}, {}
+  local vu_liste = false
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "OrderedList" then
+      vu_liste = true
+      for _, item in ipairs(bloc.content) do table.insert(justes, piece_lue(pandoc.utils.stringify(item), true)) end
+    elseif bloc.t == "BulletList" then
+      vu_liste = true
+      for _, item in ipairs(bloc.content) do table.insert(fausses, piece_lue(pandoc.utils.stringify(item), false)) end
+    elseif vu_liste then apres:insert(bloc) else avant:insert(bloc) end
+  end
+  local morceaux, rang = {}, 0
+  for _, p in ipairs(justes) do
+    if not p.egal or rang == 0 then rang = rang + 1 end
+    table.insert(morceaux, '{"s":' .. json_chaine(p.sorte) .. ',"p":' .. json_chaine(p.param) .. ',"t":' .. json_chaine(p.libelle)
+      .. ',"r":' .. rang .. '}')
+  end
+  for _, p in ipairs(fausses) do
+    table.insert(morceaux, '{"s":' .. json_chaine(p.sorte) .. ',"p":' .. json_chaine(p.param) .. ',"t":' .. json_chaine(p.libelle)
+      .. ',"r":0,"e":' .. json_chaine(p.commentaire) .. '}')
+  end
+  if not EN_HTML then
+    -- hors écran : la légende attendue, en liste
+    local l = pandoc.List()
+    for _, p in ipairs(justes) do l:insert({ pandoc.Plain(pandoc.Str(p.libelle)) }) end
+    local sortie = pandoc.List()
+    sortie:extend(avant)
+    sortie:insert(pandoc.Para({ pandoc.Image({ pandoc.Str(alt) }, carte) }))
+    sortie:insert(pandoc.OrderedList(l))
+    sortie:extend(apres)
+    div.content = sortie
+    return div
+  end
+  local h = '<div class="puzzle-zone"><script type="application/json" class="puzzle-donnees">['
+      .. table.concat(morceaux, ",") .. ']</script>'
+      .. '<div class="puzzle-gauche"><img class="puzzle-carte" src="' .. echappe(carte) .. '" alt="' .. echappe(alt) .. '">'
+      .. '<div class="puzzle-reserve" aria-label="' .. echappe(t("pieces")) .. '"></div></div>'
+      .. '<div class="puzzle-droite"><div class="puzzle-consigne"></div><div class="puzzle-cadre"></div>'
+      .. '<div class="puzzle-message" aria-live="polite"></div><div class="puzzle-fin"></div>'
+      .. '<button type="button" class="ordre-recommencer puzzle-recommencer">' .. t("recommencer") .. '</button></div></div>'
+  local sortie = pandoc.List({ pandoc.RawBlock("html", h) })
+  sortie:insert(pandoc.Div(avant, pandoc.Attr("", { "puzzle-texte-consigne" })))
+  sortie:insert(pandoc.Div(apres, pandoc.Attr("", { "puzzle-texte-fin" })))
+  div.content = sortie
+  div.attributes["carte"], div.attributes["alt"] = nil, nil
+  return div
+end
+
+-- ::: {.synthese} :::  synthèse additive (RVB, sur du noir) et soustractive (CMJ, sur du blanc),
+-- trois cercles et trois curseurs par mode ; la couleur du centre est donnée
+local function brique_synthese(div)
+  if not EN_HTML then return div end
+  div.content:insert(1, pandoc.RawBlock("html", '<div class="synthese-zone"></div>'))
+  return div
+end
+
 local function brique_couleur3d(div)
   if not EN_HTML then return div end
-  div.content:insert(1, pandoc.RawBlock("html", '<canvas class="couleur3d-toile" width="560" height="460"></canvas>'
+  div.content:insert(1, pandoc.RawBlock("html", '<canvas class="couleur3d-toile" width="760" height="500"></canvas>'
       .. '<div class="couleur3d-panneau"></div>'))
   return div
 end
@@ -711,6 +795,8 @@ local function briques(div)
   if div.classes:includes("atelier") then return brique_atelier(div) end
   if div.classes:includes("flash") then return brique_flash(div) end
   if div.classes:includes("couleur3d") then return brique_couleur3d(div) end
+  if div.classes:includes("synthese") then return brique_synthese(div) end
+  if div.classes:includes("puzzle-legende") then return brique_puzzle_legende(div) end
   return nil
 end
 

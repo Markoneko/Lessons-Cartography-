@@ -5,6 +5,7 @@ author: "Marc Poupée · Géodata Paris"
 date: "2026-10-16"
 date-format: "D MMMM YYYY"
 footer: "Cartography : Basics"
+output-file: Cartography-Basics.html
 title-slide-attributes:
   data-state: plein
   data-background-image: images/clc-reunion.jpg
@@ -38,7 +39,7 @@ Ce cours se pratique plus qu'il ne se lit : presque chaque diapo vous demande d'
 ## Ce que vous saurez faire
 
 ::: {.fiche n="0.3" etat="a-revoir"}
-Intention : Choisir la bonne variable visuelle pour une donnée ; anticiper ce qu'un choix (classes, couleurs, tailles) fait dire à la carte ; mettre en page une carte lisible. [PPT 3]
+Intention : Choisir la bonne variable visuelle pour une donnée ; anticiper ce qu'un choix (classes, couleurs, tailles) fait dire à la carte ; structurer l'information, du plus important au moins important ; mettre en page une carte lisible, qui donne les clefs de compréhension de son message. [PPT 3]
 Expérience : aucune
 Demande :
 :::
@@ -47,7 +48,8 @@ Demande :
 
 1. **choisir** la variable visuelle qui convient à une donnée ;
 2. **anticiper** ce qu'un choix de classes, de couleurs ou de tailles fait dire à la carte ;
-3. **mettre en page** une carte que l'on comprend du premier coup d'œil.
+3. **structurer** l'information pour la rendre facilement accessible, du plus important au moins important ;
+4. **mettre en page** une carte que l'on comprend du premier coup d'œil, en donnant aussi les clefs de compréhension du message transmis.
 
 [Toute carte est une suite de choix. Chacun change le message.]{.a-retenir}
 
@@ -80,37 +82,91 @@ Expérience : l'image s'efface d'elle-même après 5 s (brique « flash ») ; qu
 Demande :
 :::
 
-Chaque carte ne s'affiche que cinq secondes. Regardez, puis dites ce que vous en avez retenu.
-
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="47%"}
 ::: {.flash duree="5"}
-![](images/noel.png){height="250" fig-alt="Carte : les pérégrinations du père Noël"}
+![](images/noel.png){height="350" fig-alt="Carte : les pérégrinations du père Noël"}
 :::
 :::
-::: {.column width="50%"}
+::: {.column width="53%"}
 ::: {.flash duree="5"}
-![](images/gaza.jpg){height="250" fig-alt="Carte de travail : perte de végétation dans la bande de Gaza"}
+![](images/gaza.jpg){height="350" fig-alt="Carte de travail : perte de végétation dans la bande de Gaza"}
 :::
 :::
 ::::
 
 :::: {.columns}
-::: {.column width="35%"}
+::: {.column width="36%"}
 ::: {.question}
 **Quel était le message de chaque carte ?**
 :::
 :::
-::: {.column width="65%"}
+::: {.column width="64%"}
 ::: {.reponse}
-À gauche, le parcours d'une légende, de saint Nicolas au père Noël : compris en cinq secondes. À droite, une carte de travail sans titre : des taches rouges, mais quoi ? Il faut lire la légende.
+À gauche, une légende, de saint Nicolas au père Noël : comprise en cinq secondes. À droite, une carte de travail sans titre : des taches rouges, mais de quoi ?
 :::
 :::
 ::::
 
-## Rédiger, mettre en page {.socle}
+## Voir, puis comprendre {.socle}
 
 ::: {.fiche n="1.2" etat="a-revoir"}
+Intention : Deux notions de l'ancien support, à ne pas garder telles quelles : la compréhension graphique (assimiler l'aspect purement graphique de l'image : voir, le signifiant) et la compréhension mentale (assimiler le message délivré : regarder, le signifié). On garde le « WTF », dessiné de façon mignonne, avec des paillettes pour la confusion des messages (demande de Marc). [PPT 10, 11]
+Expérience : aucune ; le dessin scintille
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+Lire une carte se fait en deux temps.
+
+- La **compréhension graphique** : on **voit** l'image, son aspect purement graphique, les formes et les couleurs. C'est le **signifiant**.
+- La **compréhension mentale** : on **regarde**, et l'on saisit le message. C'est le **signifié**.
+
+[Une carte peut se voir très bien et ne rien dire : le lecteur reste ébloui, et perdu.]{.a-retenir}
+:::
+::: {.column width="52%"}
+::: {.schema fichier="images/schemas/wtf.svg" hauteur="380"}
+:::
+:::
+::::
+
+## La sémiologie graphique {.socle}
+
+::: {.fiche n="1.3" etat="a-revoir"}
+Intention : La sémiologie, « ensemble des règles qui permettent l'utilisation d'un système graphique de signes pour la transmission d'une information » (Béguin et Pumain). Une figure spectaculaire, difficile à lire : elle se voit très bien, le message ne passe pas. Figure recadrée par Marc ; bonus : la page de K. Viswanathan (2015). [PPT 9, 12]
+Expérience : question sur le graphe circulaire de flux ; bonus avec le lien
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+La **sémiologie graphique** : « l'ensemble des règles qui permettent l'utilisation d'un système graphique de signes pour la transmission d'une information » (Béguin et Pumain).
+
+::: {.question}
+Cette figure se **voit** très bien. **Que comprenez-vous ?**
+:::
+
+::: {.reponse}
+Pas grand-chose sans la légende : des échanges de marchandises entre une métropole américaine et le reste des États-Unis et du monde. L'image frappe, le message ne passe pas.
+:::
+:::
+::: {.column width="50%"}
+::: {.centre}
+![](images/flux-circulaire.png){height="520" fig-alt="Graphe circulaire des échanges de marchandises entre une métropole américaine et d'autres régions"}
+:::
+:::
+::::
+
+::: {.plus titre="Circular Visualization of Flow Matrices"}
+Krishnan Viswanathan, *Circular Visualization of Flow Matrices*, 28 juillet 2015 : [la page d'origine](https://rstudio-pubs-static.s3.amazonaws.com/97904_42cb2a8840714df89af3a1e2c37e8916.html).
+
+L'auteur y reproduit, avec le paquet R *circlize*, une figure de la Brookings Institution (série *Metro Freight*), puis construit pas à pas un diagramme de flux du même type à partir d'une matrice origine-destination : des flux ferroviaires entre comtés de Floride.
+:::
+
+## Rédiger, mettre en page {.socle}
+
+::: {.fiche n="1.4" etat="a-revoir"}
 Intention : La rédaction cartographique (représenter l'information elle-même) et la mise en page (organiser les blocs autour : titre, légende, échelle…). [PPT 3]
 Expérience : classer huit décisions en « rédaction » ou « mise en page »
 Demande :
@@ -137,35 +193,6 @@ Faire une carte, c'est deux métiers :
 - Équilibrer les blocs sur la page
 :::
 
-## Voir, puis comprendre {.socle}
-
-::: {.fiche n="1.3" etat="a-revoir"}
-Intention : La sémiologie, « ensemble des règles qui permettent l'utilisation d'un système graphique de signes pour la transmission d'une information » (Béguin et Pumain). Compréhension graphique (voir, le signifiant) et compréhension mentale (regarder, le signifié). Les quatre diapos de texte d'origine tiennent en une. [PPT 9, 10, 11, 12]
-Expérience : question sur une figure spectaculaire et difficile à lire (le graphe circulaire de flux)
-Demande :
-:::
-
-:::: {.columns}
-::: {.column width="55%"}
-La **sémiologie graphique** : « l'ensemble des règles qui permettent l'utilisation d'un système graphique de signes pour la transmission d'une information » (Béguin et Pumain).
-
-Lire une carte, c'est d'abord **voir** (les formes, les couleurs), puis **comprendre** (le message).
-
-::: {.question}
-Cette figure se **voit** très bien. **Que comprenez-vous ?**
-:::
-
-::: {.reponse}
-Pas grand-chose sans lire le texte : des flux ferroviaires entre comtés de Floride. L'image frappe, le message ne passe pas.
-:::
-:::
-::: {.column width="45%"}
-::: {.centre}
-![](images/flux-circulaire.png){height="430" fig-alt="Graphe circulaire de flux entre des comtés"}
-:::
-:::
-::::
-
 ## Ce que l'œil peut voir {.intercalaire}
 
 ::: {.fiche n="2.0" etat="a-revoir"}
@@ -179,18 +206,18 @@ Les contraintes de l'œil, et du support.
 ## Les seuils de perception {.appui}
 
 ::: {.fiche n="2.1" etat="a-revoir"}
-Intention : À 30 cm, l'œil discrimine environ 0,1 mm ; un point doit faire au moins 0,2 mm, un trait 0,1 mm ; séparer deux traits, différencier deux tailles. Les quatre diapos de chiffres deviennent une expérience. [PPT 6, 7, 8]
-Expérience : curseur : on affine un trait et un point jusqu'à ce qu'ils disparaissent à l'écran ; on lit leur taille sur papier
+Intention : À 30 cm, l'œil discrimine environ 0,1 mm. Trois seuils, avec les figurés de l'ancien support : être vu (taille minimale de chaque figuré), être séparé (0,2 mm entre deux éléments), être distingué (surfaces dans un rapport de 2, épaisseurs différentes de 0,1 mm ou 0,3 mm). Les limites de différenciation introduisent la généralisation (demande de Marc). [PPT 6, 7, 8]
+Expérience : curseur : on réduit tous les figurés jusqu'à leur seuil (×1) et en dessous ; on lit leur taille sur papier
 Demande :
 :::
 
-::: {.curseur min="0.02" max="0.6" pas="0.01" valeur="0.3" unite="mm" etiquette="Épaisseur du trait sur papier" schema="images/schemas/seuils.svg" hauteur="200"}
-- Le point fait `{2*x|2}` mm de diamètre ; le trait vaut `{x/0.1|1}` fois le seuil de 0,1 mm
+::: {.curseur min="0.5" max="6" pas="0.1" valeur="4" unite="×" etiquette="Taille des figurés, en multiple de leur seuil" schema="images/schemas/seuils.svg" hauteur="260"}
+- Sur papier, le point mesure `{0.2*x|2}` mm et l'écart entre deux traits `{0.2*x|2}` mm. À ×1, chaque figuré est à son seuil.
 :::
 
-À 30 cm, l'œil distingue un détail d'environ **0,1 mm**. En dessous, un trait disparaît ; un point doit faire au moins **0,2 mm**. Pour séparer deux traits voisins, ou distinguer deux tailles, il faut encore un écart suffisant.
+Sous ces seuils, un figuré disparaît, deux figurés se confondent. C'est ce qui commande la **généralisation** : quand l'échelle diminue, il faut simplifier, regrouper, exagérer ou supprimer.
 
-[L'écran n'est pas le papier : l'expérience donne un ordre de grandeur. Imprimez votre carte pour vérifier.]{.legende}
+[L'écran n'est pas le papier : ici, environ 5 pixels pour 1 mm. Imprimez votre carte pour vérifier.]{.legende}
 
 ## La taille est relative {.appui}
 
@@ -450,7 +477,7 @@ Demande :
 :::
 ::: {.column width="62%"}
 ::: {.defiler commande="haut"}
-- ![L'orientation des hachures distingue des catégories](images/orientation.jpg)
+- ![L'orientation des hachures distingue des catégories](images/orientation.png)
 - ![Trois trames : à éviter, bonne, la plus efficace](images/trames.jpg)
 - ![Élection présidentielle américaine de 1960 : une carte animée](images/election-1960.gif)
 :::
@@ -467,54 +494,63 @@ Demande :
 
 Une sensation, des modes de fabrication, des codes.
 
-## Teinte, saturation, valeur {.appui}
+## La lumière et l'encre {.appui}
 
 ::: {.fiche n="4.1" etat="a-revoir"}
-Intention : Synthèse additive (RVB, l'écran) et soustractive (CMJN, l'impression) ; une conversion change les couleurs. Le modèle TSL ou TSV : teinte, saturation, valeur. Le solide des couleurs en 3D, animé (demande de Marc), avec les vues d'origine en bonus. [PPT 23, 24, 25, 26]
-Expérience : le solide des couleurs tourne ; trois curseurs (teinte, saturation, valeur) déplacent le cube choisi (brique « couleur3d ») ; question : pourquoi la carte imprimée paraît-elle plus terne qu'à l'écran ?
+Intention : Synthèse additive (RVB, la lumière de l'écran) et soustractive (CMJN, les encres de l'impression), avec les cercles et leur mélange ; on change l'intensité de chaque couleur et l'on voit l'effet sur le mélange (demande de Marc). Une conversion de l'une à l'autre change les couleurs. [PPT 23, 24]
+Expérience : deux jeux de trois cercles et trois curseurs (brique « synthese ») ; question : pourquoi une carte imprimée paraît-elle plus terne qu'à l'écran ?
 Demande :
 :::
 
-::: {.couleur3d style="--hauteur-couleur: 300px"}
+L'écran **additionne** des lumières ; l'imprimante **superpose** des encres, qui en retiennent chacune une part. Montez et baissez chaque couleur : regardez le centre.
+
+::: {.synthese}
 :::
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="40%"}
 ::: {.question}
 **Pourquoi une carte imprimée paraît-elle plus terne qu'à l'écran ?**
 :::
 :::
-::: {.column width="50%"}
+::: {.column width="60%"}
 ::: {.reponse}
-L'écran additionne des lumières (RVB), l'imprimante superpose des encres qui en retiennent (CMJN). Les couleurs les plus vives de l'écran n'existent pas en encre.
+Les couleurs les plus vives de l'écran n'existent pas en encre : la conversion de RVB en CMJN les ternit. Et les trois encres mêlées donnent un brun sombre : on ajoute une encre noire, le K de CMJN.
 :::
 :::
 ::::
 
-::: {.plus titre="Le solide des couleurs"}
-:::: {.columns}
-::: {.column width="50%"}
-![](images/solide-couleurs.png){height="380" fig-alt="Solide des couleurs en coupe"}
-:::
-::: {.column width="50%"}
-![](images/solide-couleurs-anneaux.jpg){fig-alt="Les anneaux du solide des couleurs"}
+## Teinte, saturation, valeur {.appui}
 
+::: {.fiche n="4.2" etat="a-revoir"}
+Intention : Le modèle TSV : teinte, saturation, valeur. Le solide des couleurs en grand, à l'image des anneaux de l'ancien support : les curseurs sont crantés, le solide est coupé à la valeur choisie, la case choisie se soulève et la couleur s'affiche à côté (demande de Marc). Plus de bonus : la conclusion est dans la diapo. [PPT 25, 26]
+Expérience : trois curseurs crantés déplacent la case sur le solide (brique « couleur3d ») ; question : est-il plus facile de garder la même teinte en RVB, en CMJN ou en TSV ?
+Demande :
+:::
+
+::: {.couleur3d style="--hauteur-couleur: 370px"}
 La **teinte** tourne autour de l'axe, la **saturation** s'éloigne de l'axe, la **valeur** monte du noir au blanc.
+
+::: {.question}
+**Est-il plus facile de garder la même teinte en RVB, en CMJN ou en TSV ?**
 :::
-::::
+
+::: {.reponse}
+En TSV : un seul curseur pour la teinte. En RVB ou en CMJN, trois valeurs à changer ensemble, dans les bonnes proportions.
+:::
 :::
 
 ## Des codes à respecter {.socle}
 
-::: {.fiche n="4.2" etat="a-revoir"}
-Intention : Couleurs chaudes et froides ; codes conventionnels (l'eau en bleu, la forêt en vert, le rouge pour le danger) ; codes qui changent selon les cultures et les métiers ; harmonie et contraste. [PPT 30, 31, 32, 33]
-Expérience : classer des couleurs dans les thèmes qu'elles évoquent ; question : une carte de la forêt en rouge, qu'est-ce que le lecteur comprend ?
+::: {.fiche n="4.3" etat="a-revoir"}
+Intention : Couleurs chaudes et froides ; codes conventionnels (l'eau en bleu, la forêt en vert, le rouge pour le danger) ; codes qui changent selon les cultures et les métiers, avec quatre codes d'autres cultures pour montrer que ce n'est pas si simple (demande de Marc) ; harmonie et contraste. [PPT 30, 31, 32, 33]
+Expérience : classer des couleurs dans les thèmes qu'elles évoquent ; question : que disent ces quatre couleurs ailleurs ? La réponse révèle leur sens sur le schéma.
 Demande :
 :::
 
 :::: {.columns}
-::: {.column width="55%"}
-Les couleurs **chaudes** avancent et attirent l'œil ; les **froides** reculent. Le lecteur arrive avec des **codes** : l'eau en bleu, la forêt en vert, le danger en rouge. Ces codes varient selon les cultures (le blanc du deuil en Asie) et les métiers.
+::: {.column width="47%"}
+Les couleurs **chaudes** avancent et attirent l'œil ; les **froides** reculent. Le lecteur arrive avec des **codes** : une forêt en rouge vif, il comprend un incendie.
 
 ::: {.classer}
 ### L'eau
@@ -525,7 +561,7 @@ Les couleurs **chaudes** avancent et attirent l'œil ; les **froides** reculent.
 
 - Vert
 
-### Le danger, l'alerte
+### Le danger
 
 - Rouge
 
@@ -534,21 +570,24 @@ Les couleurs **chaudes** avancent et attirent l'œil ; les **froides** reculent.
 - Bistre
 :::
 :::
-::: {.column width="45%"}
+::: {.column width="53%"}
+::: {.schema fichier="images/schemas/codes-ailleurs.svg" hauteur="215"}
+:::
+
 ::: {.question}
-Une carte de la forêt française colorie les massifs en rouge vif. **Que comprend le lecteur ?**
+Ces codes changent selon les cultures. **Que disent ces couleurs ailleurs ?**
 :::
 
 ::: {.reponse}
-Qu'il y a un problème : un incendie, un danger, une alerte. Contre le code, il faut se battre avec le lecteur à chaque regard. Sauf si c'est voulu : le rouge peut justement dire une forêt en danger.
+Le sens apparaît sur chaque carte. Connaissez votre lecteur : la même couleur peut dire le contraire.
 :::
 :::
 ::::
 
 ## Une carte pour tous les yeux {.appui}
 
-::: {.fiche n="4.3" etat="a-revoir"}
-Intention : Une part notable des hommes ne distingue pas bien le rouge du vert : une palette rouge-vert perd son message. Choisir des palettes qui tiennent. [nouvelle]
+::: {.fiche n="4.4" etat="a-revoir"}
+Intention : Une part notable des hommes ne distingue pas bien le rouge du vert : une palette rouge-vert perd son message. Choisir des palettes qui tiennent. Bonus : le mode daltonien de Fortnite, l'industrie du jeu étant en avance sur ce sujet (demande de Marc). [nouvelle]
 Expérience : comparer : la même carte vue normalement et vue par un œil deutéranope (simulation de Machado, 2009)
 Demande :
 :::
@@ -569,6 +608,21 @@ Faites glisser le curseur : avec une palette rouge-vert, les classes faibles et 
 :::
 ::::
 
+::: {.plus titre="Le jeu vidéo a de l'avance"}
+:::: {.columns}
+::: {.column width="62%"}
+![](images/fortnite.jpg){fig-alt="Le menu d'accessibilité du jeu Fortnite : mode daltonien et force de la correction"}
+:::
+::: {.column width="38%"}
+L'industrie du jeu vidéo a pris de l'avance sur ce sujet. Fortnite, par exemple, propose un **mode daltonien** selon le type de vision, avec une **force de correction** réglable.
+
+Une bonne idée pour les cartes interactives.
+
+[Capture d'écran : Fortnite, Epic Games.]{.legende}
+:::
+::::
+:::
+
 ## Les conséquences des choix {.intercalaire}
 
 ::: {.fiche n="5.0" etat="a-revoir"}
@@ -583,27 +637,27 @@ La même donnée peut dire des choses très différentes.
 
 ::: {.fiche n="5.1" etat="a-revoir"}
 Intention : La donnée commande la variable : qualitative (différencier : forme, couleur), ordonnée (valeur), quantitative de stock (taille), de taux (valeur, en classes). Les cartes d'exemple de l'ancien support et la carte du cyclone Irma servent ici. [PPT 39 à 43]
-Expérience : classer six données forestières dans leur variable ; bonus : les cartes d'exemple en défilé
+Expérience : classer six données forestières dans leur variable ; chaque donnée porte un exemple ou son unité, pour que l'on sache de quoi elle est faite ; bonus : les cartes d'exemple en défilé
 Demande :
 :::
 
-La **donnée** commande la **variable**. Rangez chaque donnée selon la variable qui la représente le mieux.
+La **donnée** commande la **variable**. Demandez-vous si elle dit une **nature**, un **ordre** ou une **quantité**, puis rangez-la.
 
 ::: {.classer}
 ### Couleur ou forme
 
-- L'essence dominante de chaque peuplement
-- Le type de piste
+- L'essence dominante de chaque peuplement : chêne, hêtre, sapin…
+- Le type de desserte : route, piste, sentier
 
 ### Valeur
 
-- La classe d'âge des peuplements
-- Le taux de boisement de chaque commune
+- La classe d'âge des peuplements : jeune, adulte, mûr
+- Le taux de boisement de chaque commune, en %
 
 ### Taille
 
-- Le volume de bois sur pied par commune
-- La surface brûlée de chaque incendie
+- Le volume de bois sur pied de chaque commune, en m³
+- La surface brûlée par chaque incendie, en ha
 :::
 
 ::: {.plus titre="Des cartes d'exemple : qu'aurait-on pu choisir d'autre ?"}
@@ -753,24 +807,13 @@ Demande :
 :::
 
 :::: {.columns}
-::: {.column width="40%"}
-::: {.zones image="images/jo-2030.jpg" alt="Carte des prévisions d'enneigement dans les stations des JO d'hiver 2030" hauteur="430"}
-- [x] 0,93,68,7 : Le titre : il dit le thème, le lieu et la date.
-- [x] 52,84,44,10 : La légende.
-- [x] 94,0,6,5 : L'orientation : une flèche nord.
-- [x] 70,94,30,6 : L'autrice, la date et la source des données.
-- [ ] 20,35,40,30 : C'est la carte elle-même. Cherchez autour.
-:::
-:::
-::: {.column width="60%"}
-Une carte publiée porte :
+::: {.column width="58%"}
+Une carte publiée porte, et vous les trouverez sur la carte :
 
 - un **titre** : le thème, le lieu, la date ;
 - une **légende** et une **échelle** ;
 - la **source**, la **date**, l'**auteur** ;
 - l'**orientation**, si elle n'est pas évidente.
-
-Trouvez-les sur la carte.
 
 ::: {.question}
 **Quel élément manque à cette carte ?**
@@ -780,12 +823,21 @@ Trouvez-les sur la carte.
 L'échelle : les pôles sont-ils à 10 ou à 100 km les uns des autres ?
 :::
 :::
+::: {.column width="42%"}
+::: {.zones image="images/jo-2030.jpg" alt="Carte des prévisions d'enneigement dans les stations des JO d'hiver 2030" hauteur="500"}
+- [x] 0,93,68,7 : Le titre : il dit le thème, le lieu et la date.
+- [x] 52,84,44,10 : La légende.
+- [x] 94,0,6,5 : L'orientation : une flèche nord.
+- [x] 70,94,30,6 : L'autrice, la date et la source des données.
+- [ ] 20,35,40,30 : C'est la carte elle-même. Cherchez autour.
+:::
+:::
 ::::
 
 ## Hiérarchiser et regrouper {.appui}
 
 ::: {.fiche n="6.2" etat="a-revoir"}
-Intention : Faire l'inventaire des éléments, les classer par importance, regrouper en pavés, en limiter le nombre ; équilibre, alignement, symétrie, nombre d'or. [PPT 46, 47, 48, 49]
+Intention : Faire l'inventaire des éléments, les classer par importance, maximiser la place de la carte en y intégrant au besoin les éléments annexes (la recommandation principale de Marc), regrouper en pavés, en limiter le nombre ; équilibre, alignement, symétrie, nombre d'or. [PPT 46, 47, 48, 49]
 Expérience : QCM sur quatre mises en page dessinées (laquelle est équilibrée ?) ; bonus : deux mises en page d'étudiants réussies
 Demande :
 :::
@@ -797,15 +849,16 @@ Demande :
 ::: {.column width="50%"}
 1. Faire l'**inventaire** des éléments.
 2. Les **classer** par importance.
-3. **Regrouper** les éléments de même nature en pavés, et en **limiter** le nombre.
-4. **Équilibrer** et aligner les pavés.
+3. **Maximiser** la place de la carte, en y intégrant au besoin les éléments annexes. Jouez avec !
+4. **Regrouper** les éléments de même nature en pavés, et en **limiter** le nombre.
+5. **Équilibrer** et aligner les pavés.
 :::
 ::: {.column width="50%"}
 ::: {.qcm .serre}
 Quelle mise en page est équilibrée ?
 
 - [x] A
-    - Oui : un titre en tête, la carte au centre de gravité, une légende alignée, l'échelle et la source en pied.
+    - Oui : un titre en tête, une carte qui occupe la page et accueille la légende, l'échelle et la source en pied.
 - [ ] B
     - Non : des pavés épars, le titre en bas, perdu.
 - [ ] C
@@ -831,33 +884,35 @@ Des encarts qui ont chacun un rôle, une légende structurée par thèmes, un ti
 ## La légende {.socle}
 
 ::: {.fiche n="6.3" etat="a-revoir"}
-Intention : Regrouper par thème, préciser l'unité, même taille de symboles que sur la carte, lecture continue du maximum au minimum ; une légende par implantation. [PPT 53, 54, 55]
-Expérience : remise en ordre d'une légende de classes en désordre
+Intention : Regrouper par thème, préciser l'unité, des figurés identiques à ceux de la carte (même taille), du plus fort au plus faible ; séparer les implantations. Un puzzle plutôt qu'un simple classement des valeurs : choisir l'unité, le figuré, regrouper les thèmes (demande de Marc). [PPT 53, 54, 55]
+Expérience : construire pièce à pièce, dans l'ordre de lecture, la légende d'une carte qui n'en a pas (brique « puzzle-legende ») ; six pièces fausses (unité, figuré, taille, titre de groupe, classes) sont écartées avec un commentaire
 Demande :
 :::
 
-:::: {.columns}
-::: {.column width="50%"}
-La **légende** décrypte le message :
+::: {.puzzle-legende carte="images/schemas/legende-carte.svg" alt="Carte sans légende : coupes rases et filière bois dans le territoire fictif" style="--hauteur-puzzle: 330px"}
+Construisez la légende de cette carte, **de haut en bas** : cliquez les pièces dans l'ordre de lecture. Attention, certaines sont fausses.
 
-- regrouper les éléments de même nature, sous un titre ;
-- préciser l'**unité** ;
-- dessiner les symboles **à la même taille** que sur la carte ;
-- se lire d'un trait, du **plus fort au plus faible**, en général de haut en bas ;
-- séparer les implantations : points, lignes, surfaces.
-:::
-::: {.column width="50%"}
-::: {.ordre}
-Remettez cette légende dans l'ordre de lecture, de haut en bas.
+1. titre | Coupes rases
+2. sous-titre | Part de la forêt coupée (%)
+3. aplat #5c2c06 | 6,3 – 18,2
+4. aplat #c46b16 | 3,2 – 6,3
+5. aplat #f0ab69 | 2,1 – 3,2
+6. aplat #fff4e6 | 1,3 – 2,1
+7. sous-titre | Surface coupée (ha)
+8. cercles #3E8FD0 16 10.2 5.1 | 245, 100, 25
+9. titre | Filière bois
+10. ligne #FFFFFF 2.5 #1B1B22 5.5 | Route forestière
+11. = point #FFFFFF #1B1B22 9 | Scierie
 
-1. Taux de coupes rases (%)
-2. 9,3 – 18,2
-3. 4,9 – 9,3
-4. 3,2 – 4,9
-5. 1,3 – 3,2
+- sous-titre | Part de la forêt coupée (ha) : Une part se dit en %, pas en hectares.
+- sous-titre | Surface coupée (%) : Une surface se mesure en hectares.
+- cercles #3E8FD0 8 5.1 2.6 | 245, 100, 25 : Ces cercles sont plus petits que sur la carte : la légende reprend la taille de la carte.
+- aplat #1B1B22 | Scierie : Sur la carte, une scierie est un point, pas une surface.
+- titre | Divers : « Divers » ne dit rien : un titre de groupe nomme un thème.
+- aplat #c46b16 | 3,2 – 18,2 : Les classes ne se chevauchent pas : chacune a ses bornes.
+
+Légende complète : regroupée par thème, avec ses unités, des figurés identiques à ceux de la carte, du plus fort au plus faible.
 :::
-:::
-::::
 
 ## Deux cartes abouties
 
@@ -901,12 +956,16 @@ Demande :
 ## À vous {.fin}
 
 ::: {.fiche n="7.2" etat="a-revoir"}
-Intention : Le pont vers le TP de cartographie : mettre en page sa carte dans QGIS.
+Intention : Une recommandation générale pour toutes les études forestières : rendre compte clairement (synthèse, hiérarchie, figurés pertinents), honnêtement (transparence sur les données, les traitements et leur qualité) et esthétiquement (donner envie de s'y intéresser).
 Expérience : aucune
 Demande :
 :::
 
-Place au TP : votre carte des coupes rases des Vosges, de la discrétisation à la mise en page.
+Rendez compte de vos études forestières **clairement**, **honnêtement** et **esthétiquement**.
+
+- **Clairement** : synthétiser, hiérarchiser, choisir des figurés pertinents.
+- **Honnêtement** : être transparent sur les données, les traitements et leur qualité.
+- **Esthétiquement** : donner envie de s'y intéresser, tout simplement.
 
 ## Sources et crédits {.petit}
 
@@ -926,6 +985,7 @@ Demande :
 | Faire mentir une carte | M. Monmonier, *How to Lie with Maps*, University of Chicago Press, 1991 |
 | Échiquier d'Adelson | Edward H. Adelson, 1995 |
 | Simulation du daltonisme | G. Machado *et al.*, 2009 |
+| Codes de couleur d'autres cultures | data.europa.eu, guide de visualisation des données, « Colour connotations » |
 | Territoire fictif | données simulées pour ce cours |
 :::
 ::: {.column width="50%"}
@@ -934,9 +994,10 @@ Demande :
 | La Réunion, CORINE Land Cover ; père Noël | Marc Poupée |
 | JO 2030 | Alice Jouanjan, M2 Géopolitique, 2025 |
 | Autres cartes d'étudiants | étudiants du M2 Géopolitique, à compléter |
-| Gaza, Irma, USA, flux circulaire | à compléter |
+| Graphe circulaire de flux | Brookings Institution, *Metro Freight* ; repris par K. Viswanathan, 2015 |
+| Mode daltonien | Fortnite, Epic Games, capture d'écran |
+| Gaza, Irma, USA | à compléter |
 | Élection de 1960, orientation, trames, exemples | ancien support, à compléter |
-| Solide des couleurs | ancien support, à compléter |
-| Schémas et carte vivante | réalisés pour ce cours |
+| Schémas, solide des couleurs, carte vivante, puzzle | réalisés pour ce cours |
 :::
 ::::

@@ -1,12 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" role="img" aria-label="A line and a point, at the chosen width">
-<rect x="0" y="0" width="900" height="220" class="s-fond"/>
-<path d="M60 70 C 250 30 420 120 620 60 S 800 50 840 80" style="fill:none;stroke:#2B2B33;stroke-width:calc(var(--x, 0.3) * 6px)"/>
-<circle cx="90" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
-<circle cx="230" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
-<circle cx="370" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
-<circle cx="510" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
-<circle cx="650" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
-<circle cx="790" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
-<text class="s-petit" x="60" y="112" text-anchor="start">line</text>
-<text class="s-petit" x="60" y="195" text-anchor="start">point (twice the width)</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" role="img" aria-label="Perception thresholds: being seen, being separated, being told apart">
+<rect x="0" y="0" width="960" height="330" class="s-fond"/>
+<path d="M14 109 H946" stroke="#D8DAEC" stroke-width="1"/>
+<text class="s-titre" x="16" y="40" text-anchor="start">Being seen</text>
+<text class="s-petit" x="16" y="62" text-anchor="start">minimum size</text>
+<path d="M14 214 H946" stroke="#D8DAEC" stroke-width="1"/>
+<text class="s-titre" x="16" y="145" text-anchor="start">Being separated</text>
+<text class="s-petit" x="16" y="167" text-anchor="start">0.2 mm between two features</text>
+
+<text class="s-titre" x="16" y="250" text-anchor="start">Being told apart</text>
+<text class="s-petit" x="16" y="272" text-anchor="start">a large enough gap</text>
+<g transform="translate(250 60)"><g style="transform: scale(calc(var(--x, 4) * 5))"><circle r="0.1" fill="#2B2B33"/></g></g>
+<g transform="translate(335 60)"><g style="transform: scale(calc(var(--x, 4) * 5))"><circle r="0.10999999999999999" fill="none" stroke="#2B2B33" stroke-width="0.08"/></g></g>
+<g transform="translate(420 60)"><g style="transform: scale(calc(var(--x, 4) * 5))"><rect x="-0.2" y="-0.2" width="0.4" height="0.4" fill="#2B2B33"/></g></g>
+<g transform="translate(505 60)"><g style="transform: scale(calc(var(--x, 4) * 5))"><rect x="-0.21" y="-0.21" width="0.42" height="0.42" fill="none" stroke="#2B2B33" stroke-width="0.08"/></g></g>
+<g transform="translate(590 60)"><g style="transform: scale(calc(var(--x, 4) * 5))"><rect x="-0.3" y="-0.2" width="0.6" height="0.4" fill="#2B2B33"/></g></g>
+<g transform="translate(680 60)"><g style="transform: scale(calc(var(--x, 4) * 5))"><rect x="-0.36000000000000004" y="-0.26" width="0.7200000000000001" height="0.52" fill="none" stroke="#2B2B33" stroke-width="0.08"/></g></g>
+<g transform="translate(775 60)"><g style="transform: scale(calc(var(--x, 4) * 5))"><path d="M0 -0.5 L0.5 0.37 H-0.5 Z" fill="none" stroke="#2B2B33" stroke-width="0.08" stroke-linejoin="round"/></g></g>
+<path d="M850.0 60 H910.0" style="stroke:#2B2B33;stroke-width:calc(var(--x, 4) * 0.5px);transform:translateY(calc(var(--x, 4) * 0px))"/>
+<text class="s-petit" x="250" y="100" text-anchor="middle">0.2 mm</text>
+<text class="s-petit" x="335" y="100" text-anchor="middle">0.3 mm</text>
+<text class="s-petit" x="420" y="100" text-anchor="middle">0.4 mm</text>
+<text class="s-petit" x="505" y="100" text-anchor="middle">0.5 mm</text>
+<text class="s-petit" x="590" y="100" text-anchor="middle">0.4 × 0.6</text>
+<text class="s-petit" x="680" y="100" text-anchor="middle">0.6 × 0.8</text>
+<text class="s-petit" x="775" y="100" text-anchor="middle">1 mm</text>
+<text class="s-petit" x="880" y="100" text-anchor="middle">0.1 mm</text>
+<path d="M265.0 165 H335.0" style="stroke:#2B2B33;stroke-width:calc(var(--x, 4) * 0.5px);transform:translateY(calc(var(--x, 4) * -0.75px))"/>
+<path d="M265.0 165 H335.0" style="stroke:#2B2B33;stroke-width:calc(var(--x, 4) * 0.5px);transform:translateY(calc(var(--x, 4) * 0.75px))"/>
+<g transform="translate(470 165)"><g style="transform: scale(calc(var(--x, 4) * 5))"><rect x="-0.5" y="-0.2" width="0.4" height="0.4" fill="#2B2B33"/><rect x="0.1" y="-0.2" width="0.4" height="0.4" fill="#2B2B33"/></g></g>
+<g transform="translate(640 165)"><g style="transform: scale(calc(var(--x, 4) * 5))"><circle cx="-0.2" r="0.1" fill="#2B2B33"/><circle cx="0.2" r="0.1" fill="#2B2B33"/></g></g>
+<text class="s-petit" x="300" y="205" text-anchor="middle">two lines</text>
+<text class="s-petit" x="470" y="205" text-anchor="middle">two squares</text>
+<text class="s-petit" x="640" y="205" text-anchor="middle">two dots</text>
+<g transform="translate(300 268)"><g style="transform: scale(calc(var(--x, 4) * 5))"><circle cx="-1.05" r="0.5" fill="#2B2B33"/><circle cx="1.2" r="0.7071" fill="#2B2B33"/></g></g>
+<path d="M475.0 268 H565.0" style="stroke:#2B2B33;stroke-width:calc(var(--x, 4) * 0.5px);transform:translateY(calc(var(--x, 4) * -1.5px))"/>
+<path d="M475.0 268 H565.0" style="stroke:#2B2B33;stroke-width:calc(var(--x, 4) * 1.0px);transform:translateY(calc(var(--x, 4) * 1.5px))"/>
+<path d="M700.0 268 H770.0" style="stroke:#2B2B33;stroke-width:calc(var(--x, 4) * 0.5px);transform:translateY(calc(var(--x, 4) * 0px))"/>
+<path d="M820.0 268 H890.0" style="stroke:#2B2B33;stroke-width:calc(var(--x, 4) * 2.0px);transform:translateY(calc(var(--x, 4) * 0px))"/>
+<text class="s-petit" x="300" y="312" text-anchor="middle">areas in a ratio of 2</text>
+<text class="s-petit" x="520" y="312" text-anchor="middle">close lines: 0.1 mm apart in width</text>
+<text class="s-petit" x="795" y="312" text-anchor="middle">distant lines: 0.3 mm apart in width</text>
 </svg>

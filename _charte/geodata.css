@@ -309,6 +309,15 @@
   font-size: 24px;
   color: var(--blanc);
 }
+.reveal .slides section.fin strong { color: var(--orange); }
+.reveal .slides section.fin ul {
+  position: absolute;
+  left: 620px; top: 430px; right: 64px;
+  margin: 0; font-size: 20px; line-height: 1.35;
+  color: var(--blanc);
+}
+.reveal .slides section.fin li { margin: 6px 0; }
+.reveal .slides section.fin li::marker { color: var(--orange); }
 
 /* --- Image en pleine diapo ----------------------------------------------- */
 
