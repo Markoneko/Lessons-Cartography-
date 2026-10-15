@@ -12,7 +12,7 @@ Décisions et constats, du plus récent au plus ancien.
 
 **Réalisé : le plan seul, en attente de validation**
 
-- `cours/cartography-basics/index.qmd` : 38 fiches, toutes `a-realiser`, six parties : une carte est un message, ce que l'œil peut voir, les variables visuelles, la couleur, les conséquences des choix, la mise en page.
+- `cours/cartography-basics/index.qmd` : 39 fiches, toutes `a-realiser`, six parties : une carte est un message, ce que l'œil peut voir, les variables visuelles, la couleur, les conséquences des choix, la mise en page.
 - Les emplacements prévus pour les cartes de Marc portent la mention « [carte de Marc ?] » dans la fiche.
 - PPT d'origine dans `sources/Reference-Semiologie.ppt`, 29 images dans `images/originaux/`.
 
