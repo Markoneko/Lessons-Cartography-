@@ -292,6 +292,44 @@ Le commentaire de réussite.
 :::
 ```
 
+### Les briques de cartographie
+
+Elles vivent dans `_briques/briques-carto.html` et `_briques/briques-carto.css`. Le cours `cours/cartography-basics` en contient un exemple de chacune.
+
+**Carte vivante (atelier)** — une carte choroplèthe que l'étudiant reclasse lui-même : méthode de discrétisation (amplitudes égales, effectifs égaux, seuils naturels de Jenks), nombre de classes (3 à 7), palette. La légende donne l'effectif de chaque classe ; l'histogramme montre où tombent les seuils. Un texte écrit dans la brique se place sous la carte.
+
+```markdown
+::: {.atelier donnees="donnees/territoire.json" variable="taux" unite="%" methode="egales" classes="5" palette="sequentielle" style="--hauteur-atelier: 370px"}
+[Source des données.]{.legende}
+:::
+```
+
+| Réglage | Effet |
+|---|---|
+| `reglages="methode"` | ne montre que les boutons de méthode (par défaut `methode,classes,palette`) |
+| `palettes="sequentielle,rouge-vert"` | les palettes proposées, parmi `sequentielle`, `arc-en-ciel`, `divergente`, `rouge-vert` |
+| `histogramme="non"` | sans histogramme |
+| `style="--hauteur-atelier: 290px"` | hauteur maximale de la carte |
+
+Le fichier de données est un JSON : `largeur`, `hauteur`, un `contour` (chemin SVG) et une liste `communes`, chacune avec son `chemin` SVG et ses valeurs (`taux`, etc.). `outils/territoire-fictif.py` fabrique le territoire fictif du cours ; des données réelles exportées de QGIS (en coordonnées de page) prennent la même forme.
+
+**Flash** — l'image n'apparaît que `duree` secondes, au clic sur un bouton ; on la revoit d'un second clic. Elle est toujours visible dans le PDF.
+
+```markdown
+::: {.flash duree="5"}
+![](images/noel.png){height="250" fig-alt="Description"}
+:::
+```
+
+**Solide des couleurs** — un solide teinte-saturation-valeur en 3D, qui tourne seul et se fait pivoter à la souris, avec trois curseurs, l'aplat choisi et ses valeurs RVB, hexadécimale et CMJN.
+
+```markdown
+::: {.couleur3d style="--hauteur-couleur: 300px"}
+:::
+```
+
+Les schémas du cours (cartes en symboles, palettes, illusions) sont produits par `python3 outils/schemas-cartography.py cours/cartography-basics`, en français et en anglais. Les valeurs données dans les réponses sont calculées par ce script, pas recopiées à la main.
+
 ### Réglages utiles
 
 | Écriture | Effet |

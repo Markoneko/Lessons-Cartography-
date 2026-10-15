@@ -1,0 +1,322 @@
+<script>
+/* Briques de cartographie : atelier (carte vivante), flash, couleur 3D.
+   Aucun réseau, aucune donnée envoyée : tout se passe dans la page. */
+(function () {
+  function tous(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function stopper(el) {
+    ["pointerdown", "keydown", "click", "wheel"].forEach(function (n) {
+      el.addEventListener(n, function (e) { e.stopPropagation(); });
+    });
+  }
+  var EN = (document.documentElement.lang || "fr").slice(0, 2) === "en";
+  var EN_PDF = new URLSearchParams(window.location.search).has("print-pdf");
+  var T = EN ? {
+    methode: "Classification", egales: "Equal intervals", effectifs: "Quantiles", naturels: "Natural breaks",
+    classes: "Classes", palette: "Palette", sequentielle: "Sequential", "arc-en-ciel": "Rainbow",
+    divergente: "Diverging", "rouge-vert": "Red–green", commune: "Municipality", communes: "municipalities",
+    histo: "Distribution of values and class breaks", teinte: "Hue", saturation: "Saturation", valeur: "Value",
+    rvb: "RGB", cmjn: "CMYK (simple conversion)", tourner: "Drag to rotate"
+  } : {
+    methode: "Discrétisation", egales: "Amplitudes égales", effectifs: "Effectifs égaux", naturels: "Seuils naturels",
+    classes: "Classes", palette: "Palette", sequentielle: "Dégradé", "arc-en-ciel": "Arc-en-ciel",
+    divergente: "Divergente", "rouge-vert": "Rouge-vert", commune: "Commune", communes: "communes",
+    histo: "Répartition des valeurs et seuils des classes", teinte: "Teinte", saturation: "Saturation", valeur: "Valeur",
+    rvb: "RVB", cmjn: "CMJN (conversion simple)", tourner: "Faites glisser pour tourner"
+  };
+  function nombre(v, d) {
+    return v.toLocaleString(EN ? "en-GB" : "fr-FR", { minimumFractionDigits: d, maximumFractionDigits: d });
+  }
+  var NS = "http://www.w3.org/2000/svg";
+  function el(nom, attrs, parent) {
+    var e = document.createElementNS(NS, nom);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  // ------------------------------------------------------------------ couleurs
+  var ANCRES = {
+    "sequentielle": ["#FFF4E6", "#F7C08A", "#E38226", "#B5600E", "#5C2C06"],
+    "arc-en-ciel": ["#5E3C99", "#2C7BB6", "#00A884", "#A6D96A", "#FFD92F", "#F46D43", "#D7191C"],
+    "divergente": ["#2166AC", "#92C5DE", "#F7F7F7", "#F4A582", "#B2182B"],
+    "rouge-vert": ["#1A9850", "#91CF60", "#FFFFBF", "#FC8D59", "#D73027"]
+  };
+  function hexRvb(h) { return [1, 3, 5].map(function (i) { return parseInt(h.slice(i, i + 2), 16); }); }
+  function rvbHex(c) { return "#" + c.map(function (v) { return ("0" + Math.round(v).toString(16)).slice(-2); }).join(""); }
+  function gamme(nom, n) {
+    var a = (ANCRES[nom] || ANCRES.sequentielle).map(hexRvb), sortie = [];
+    for (var i = 0; i < n; i++) {
+      var t = n === 1 ? 0.5 : i / (n - 1), p = t * (a.length - 1), k = Math.min(Math.floor(p), a.length - 2), f = p - k;
+      sortie.push(rvbHex(a[k].map(function (v, j) { return v + (a[k + 1][j] - v) * f; })));
+    }
+    return sortie;
+  }
+
+  // ------------------------------------------------------------------ discrétisation
+  function seuils(valeurs, n, methode) {
+    var v = valeurs.slice().sort(function (a, b) { return a - b; }), N = v.length, min = v[0], max = v[N - 1], b = [min];
+    if (methode === "effectifs") {
+      for (var k = 1; k < n; k++) b.push(v[Math.min(N - 1, Math.round(k * N / n) - 1)]);
+    } else if (methode === "naturels") {
+      b = jenks(v, n);
+      return b;
+    } else {
+      for (var j = 1; j < n; j++) b.push(min + (max - min) * j / n);
+    }
+    b.push(max);
+    return b;
+  }
+  // Seuils naturels de Jenks (algorithme de Fisher), sur des valeurs triées
+  function jenks(d, n) {
+    var N = d.length, m1 = [], m2 = [], i, j, l, m;
+    for (i = 0; i <= N; i++) { m1.push(new Array(n + 1).fill(0)); m2.push(new Array(n + 1).fill(0)); }
+    for (i = 1; i <= n; i++) { m1[1][i] = 1; m2[1][i] = 0; for (j = 2; j <= N; j++) m2[j][i] = Infinity; }
+    for (l = 2; l <= N; l++) {
+      var s1 = 0, s2 = 0, w = 0, va = 0;
+      for (m = 1; m <= l; m++) {
+        var i3 = l - m + 1, val = d[i3 - 1];
+        s2 += val * val; s1 += val; w++; va = s2 - s1 * s1 / w;
+        var i4 = i3 - 1;
+        if (i4 !== 0) for (j = 2; j <= n; j++) {
+          if (m2[l][j] >= va + m2[i4][j - 1]) { m1[l][j] = i3; m2[l][j] = va + m2[i4][j - 1]; }
+        }
+      }
+      m1[l][1] = 1; m2[l][1] = va;
+    }
+    var k = N, b = new Array(n + 1);
+    b[n] = d[N - 1]; b[0] = d[0];
+    for (j = n; j >= 2; j--) { var id = m1[k][j] - 2; b[j - 1] = d[id]; k = m1[k][j] - 1; }
+    return b;
+  }
+  function classeDe(v, b) {
+    for (var k = 1; k < b.length - 1; k++) if (v <= b[k]) return k - 1;
+    return b.length - 2;
+  }
+
+  // ------------------------------------------------------------------ atelier
+  tous(".atelier-zone").forEach(function (zone) {
+    var donnees = JSON.parse(zone.querySelector(".atelier-donnees").textContent);
+    var variable = zone.dataset.variable, unite = zone.dataset.unite ? " " + zone.dataset.unite : "";
+    var etat = { methode: zone.dataset.methode, classes: +zone.dataset.classes, palette: zone.dataset.palette };
+    var reglages = zone.dataset.reglages.split(",").map(function (s) { return s.trim(); }).filter(Boolean);
+    var communes = donnees.communes, valeurs = communes.map(function (c) { return c[variable]; });
+    var dec = valeurs.every(function (v) { return v === Math.round(v); }) ? 0 : 1;
+
+    // la carte
+    var svg = el("svg", { viewBox: "0 0 " + donnees.largeur + " " + donnees.hauteur, role: "img",
+      "aria-label": donnees.nom }, zone.querySelector(".atelier-carte"));
+    var chemins = communes.map(function (c) {
+      var p = el("path", { d: c.chemin, "class": "atelier-commune" }, svg);
+      el("title", {}, p).textContent = T.commune + " " + c.id + " : " + nombre(c[variable], dec) + unite;
+      return p;
+    });
+    el("path", { d: donnees.contour, "class": "atelier-contour" }, svg);
+
+    // le panneau
+    var panneau = zone.querySelector(".atelier-panneau");
+    stopper(panneau);
+    function groupe(titre) {
+      var g = document.createElement("div"); g.className = "atelier-groupe";
+      var t = document.createElement("div"); t.className = "atelier-titre"; t.textContent = titre;
+      g.appendChild(t); panneau.appendChild(g); return g;
+    }
+    function boutons(cle, options) {
+      var g = groupe(T[cle]), ligne = document.createElement("div"); ligne.className = "atelier-boutons";
+      options.forEach(function (o) {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = T[o]; b.dataset.valeur = o;
+        b.addEventListener("click", function () { etat[cle] = o; dessiner(); });
+        ligne.appendChild(b);
+      });
+      g.appendChild(ligne);
+      return ligne;
+    }
+    var bMethode = reglages.indexOf("methode") >= 0 ? boutons("methode", ["egales", "effectifs", "naturels"]) : null;
+    var curseur = null, sortie = null;
+    if (reglages.indexOf("classes") >= 0) {
+      var g = groupe(T.classes), l = document.createElement("label"); l.className = "atelier-classes";
+      curseur = document.createElement("input"); curseur.type = "range"; curseur.min = 3; curseur.max = 7; curseur.step = 1;
+      curseur.value = etat.classes; sortie = document.createElement("output");
+      curseur.addEventListener("input", function () { etat.classes = +curseur.value; dessiner(); });
+      l.appendChild(curseur); l.appendChild(sortie); g.appendChild(l);
+    }
+    var palettes = (zone.dataset.palettes || "sequentielle,arc-en-ciel,divergente").split(",");
+    var bPalette = reglages.indexOf("palette") >= 0 ? boutons("palette", palettes) : null;
+    var legende = document.createElement("div"); legende.className = "atelier-legende"; panneau.appendChild(legende);
+    var histo = null;
+    if (zone.dataset.histogramme !== "non") {
+      histo = el("svg", { viewBox: "0 0 360 110", "class": "atelier-histo", role: "img", "aria-label": T.histo });
+      var gh = groupe(T.histo); gh.appendChild(histo);
+    }
+
+    function dessiner() {
+      var b = seuils(valeurs, etat.classes, etat.methode), couleurs = gamme(etat.palette, etat.classes);
+      var effectif = new Array(etat.classes).fill(0);
+      communes.forEach(function (c, i) {
+        var k = classeDe(c[variable], b); effectif[k]++;
+        chemins[i].setAttribute("fill", couleurs[k]);
+      });
+      [bMethode, bPalette].forEach(function (ligne, n) {
+        if (!ligne) return;
+        tous("button", ligne).forEach(function (bt) {
+          bt.classList.toggle("actif", bt.dataset.valeur === (n === 0 ? etat.methode : etat.palette));
+        });
+      });
+      if (sortie) sortie.textContent = etat.classes;
+      legende.innerHTML = "";
+      for (var k = etat.classes - 1; k >= 0; k--) {
+        var ligne = document.createElement("div"); ligne.className = "atelier-ligne";
+        ligne.innerHTML = '<span class="atelier-pastille" style="background:' + couleurs[k] + '"></span>'
+          + '<span>' + nombre(b[k], dec) + " – " + nombre(b[k + 1], dec) + unite + '</span>'
+          + '<span class="atelier-effectif">' + effectif[k] + " " + T.communes + '</span>';
+        legende.appendChild(ligne);
+      }
+      if (histo) {
+        while (histo.firstChild) histo.removeChild(histo.firstChild);
+        var min = b[0], max = b[b.length - 1], nb = 40, larg = (max - min) / nb, comptes = new Array(nb).fill(0);
+        valeurs.forEach(function (v) { comptes[Math.min(nb - 1, Math.floor((v - min) / larg))]++; });
+        var cmax = Math.max.apply(null, comptes), X = function (v) { return 10 + 340 * (v - min) / (max - min); };
+        comptes.forEach(function (c, i) {
+          var x0 = X(min + i * larg), h = 80 * c / cmax, centre = min + (i + 0.5) * larg;
+          el("rect", { x: x0 + 0.5, y: 90 - h, width: 340 / nb - 1, height: h, fill: couleurs[classeDe(centre, b)],
+            stroke: "#6E6F7A", "stroke-width": 0.4 }, histo);
+        });
+        el("line", { x1: 10, y1: 90, x2: 350, y2: 90, "class": "atelier-axe" }, histo);
+        for (var s = 1; s < b.length - 1; s++) {
+          el("line", { x1: X(b[s]), y1: 4, x2: X(b[s]), y2: 92, "class": "atelier-seuil" }, histo);
+        }
+        el("text", { x: 10, y: 106, "class": "atelier-graduation" }, histo).textContent = nombre(min, dec) + unite;
+        el("text", { x: 350, y: 106, "class": "atelier-graduation", "text-anchor": "end" }, histo).textContent = nombre(max, dec) + unite;
+      }
+    }
+    dessiner();
+  });
+
+  // ------------------------------------------------------------------ flash
+  tous(".flash").forEach(function (bloc) {
+    var bouton = bloc.querySelector(".flash-bouton"), barre = bloc.querySelector(".flash-barre");
+    var duree = +(bloc.dataset.duree || 5), minuteur = null;
+    if (EN_PDF) { bloc.classList.add("montre"); return; }
+    stopper(bouton);
+    bouton.addEventListener("click", function () {
+      clearTimeout(minuteur);
+      bloc.classList.add("montre");
+      barre.style.transition = "none"; barre.style.width = "100%";
+      void barre.offsetWidth;
+      barre.style.transition = "width " + duree + "s linear"; barre.style.width = "0%";
+      minuteur = setTimeout(function () {
+        bloc.classList.remove("montre");
+        bouton.textContent = bouton.dataset.revoir + " · " + duree + " s";
+      }, duree * 1000);
+    });
+  });
+
+  // ------------------------------------------------------------------ couleur 3D
+  function hsv(h, s, v) {
+    var c = v * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = v - c, r, g, b;
+    if (h < 60) { r = c; g = x; b = 0; } else if (h < 120) { r = x; g = c; b = 0; }
+    else if (h < 180) { r = 0; g = c; b = x; } else if (h < 240) { r = 0; g = x; b = c; }
+    else if (h < 300) { r = x; g = 0; b = c; } else { r = c; g = 0; b = x; }
+    return [(r + m) * 255, (g + m) * 255, (b + m) * 255];
+  }
+  function assombrir(c, f) { return "rgb(" + c.map(function (v) { return Math.round(v * f); }).join(",") + ")"; }
+
+  tous(".couleur3d").forEach(function (bloc) {
+    var toile = bloc.querySelector(".couleur3d-toile"), ctx = toile.getContext("2d");
+    var panneau = bloc.querySelector(".couleur3d-panneau");
+    stopper(panneau); stopper(toile);
+    var NT = 24, NS_ = 6, NV = 8;
+    var etat = { h: 30, s: 80, v: 90, phi: 0.6 }, glisse = null;
+    var champs = {};
+    [["h", T.teinte, 0, 359, "°"], ["s", T.saturation, 0, 100, " %"], ["v", T.valeur, 0, 100, " %"]].forEach(function (d) {
+      var l = document.createElement("label"); l.className = "couleur3d-curseur";
+      var nom = document.createElement("span"); nom.textContent = d[1];
+      var e = document.createElement("input"); e.type = "range"; e.min = d[2]; e.max = d[3]; e.value = etat[d[0]];
+      var o = document.createElement("output");
+      e.addEventListener("input", function () { etat[d[0]] = +e.value; maj(); });
+      l.appendChild(nom); l.appendChild(e); l.appendChild(o); panneau.appendChild(l);
+      champs[d[0]] = { entree: e, sortie: o, unite: d[4] };
+    });
+    var aplat = document.createElement("div"); aplat.className = "couleur3d-aplat"; panneau.appendChild(aplat);
+    var infos = document.createElement("div"); infos.className = "couleur3d-infos"; panneau.appendChild(infos);
+    var aide = document.createElement("div"); aide.className = "couleur3d-aide"; aide.textContent = T.tourner; panneau.appendChild(aide);
+
+    function maj() {
+      ["h", "s", "v"].forEach(function (k) { champs[k].sortie.textContent = etat[k] + champs[k].unite; });
+      var c = hsv(etat.h % 360, etat.s / 100, etat.v / 100);
+      aplat.style.background = rvbHex(c);
+      var r = c[0] / 255, g = c[1] / 255, b = c[2] / 255, k = 1 - Math.max(r, g, b);
+      var cmj = k >= 1 ? [0, 0, 0] : [(1 - r - k) / (1 - k), (1 - g - k) / (1 - k), (1 - b - k) / (1 - k)];
+      infos.innerHTML = T.rvb + " : " + c.map(Math.round).join(", ") + " · " + rvbHex(c).toUpperCase()
+        + "<br>" + T.cmjn + " : " + cmj.concat([k]).map(function (v) { return Math.round(v * 100); }).join(", ") + " %";
+      dessiner();
+    }
+
+    // le solide : NT secteurs de teinte × NS anneaux de saturation × NV couches de valeur
+    var W = toile.width, H = toile.height, CX = W / 2, CY = H * 0.6, R = 230, HAUT = 230, INCL = 0.5;
+    function proj(r, a, z) {
+      var x = r * Math.cos(a + etat.phi), y = r * Math.sin(a + etat.phi);
+      return [CX + R * x, CY - HAUT * z + R * INCL * y, y];
+    }
+    function arc(r, a0, a1, z, pas) {
+      var p = [];
+      for (var i = 0; i <= pas; i++) p.push(proj(r, a0 + (a1 - a0) * i / pas, z));
+      return p;
+    }
+    function poly(pts, fond) {
+      ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+      for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+      ctx.closePath(); ctx.fillStyle = fond; ctx.fill(); ctx.stroke();
+    }
+    function voxel(it, is, iv, contour) {
+      var a0 = it / NT * 2 * Math.PI, a1 = (it + 1) / NT * 2 * Math.PI;
+      var r0 = is / NS_, r1 = (is + 1) / NS_, z0 = iv / NV, z1 = (iv + 1) / NV - 0.012;
+      var c = hsv((it + 0.5) * 360 / NT, (is + 0.5) / NS_, (iv + 0.5) / NV);
+      ctx.strokeStyle = contour || "rgba(0,0,0,0.18)"; ctx.lineWidth = contour ? 3 : 0.6;
+      var am = (a0 + a1) / 2;
+      // faces radiales, face intérieure, face extérieure, dessus
+      poly([proj(r0, a0, z0), proj(r1, a0, z0), proj(r1, a0, z1), proj(r0, a0, z1)], assombrir(c, 0.72));
+      poly([proj(r0, a1, z0), proj(r1, a1, z0), proj(r1, a1, z1), proj(r0, a1, z1)], assombrir(c, 0.72));
+      if (Math.sin(am + etat.phi) > 0) {
+        poly(arc(r1, a0, a1, z0, 3).concat(arc(r1, a1, a0, z1, 3)), assombrir(c, 0.85));
+      } else if (r0 > 0) {
+        poly(arc(r0, a0, a1, z0, 3).concat(arc(r0, a1, a0, z1, 3)), assombrir(c, 0.8));
+      }
+      var dessus = arc(r1, a0, a1, z1, 3).concat(r0 > 0 ? arc(r0, a1, a0, z1, 3) : [proj(0, 0, z1)]);
+      poly(dessus, assombrir(c, 1));
+    }
+    function dessiner() {
+      ctx.clearRect(0, 0, W, H);
+      var sel = [Math.min(NT - 1, Math.floor((etat.h % 360) / 360 * NT)), Math.min(NS_ - 1, Math.floor(etat.s / 100 * NS_)),
+                 Math.min(NV - 1, Math.floor(etat.v / 100 * NV))];
+      var liste = [];
+      for (var it = 0; it < NT; it++) {
+        var am = (it + 0.5) / NT * 2 * Math.PI + etat.phi, devant = ((am % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+        // on retire la part tournée vers nous, pour voir l'intérieur du solide
+        var coupe = Math.abs(devant - Math.PI / 2) < 0.95;
+        for (var is = 0; is < NS_; is++) for (var iv = 0; iv < NV; iv++) {
+          if (coupe && !(it === sel[0] && is === sel[1] && iv === sel[2])) continue;
+          var p = proj((is + 0.5) / NS_, (it + 0.5) / NT * 2 * Math.PI, 0);
+          liste.push([p[2] + (is === 0 ? -0.0 : 0), iv, it, is]);
+        }
+      }
+      liste.sort(function (a, b) { return a[0] - b[0] || a[1] - b[1]; });
+      liste.forEach(function (e) { voxel(e[2], e[3], e[1]); });
+      voxel(sel[0], sel[1], sel[2], "#111");
+    }
+    toile.addEventListener("pointerdown", function (e) { glisse = { x: e.clientX, phi: etat.phi }; toile.setPointerCapture(e.pointerId); });
+    toile.addEventListener("pointermove", function (e) { if (glisse) { etat.phi = glisse.phi - (e.clientX - glisse.x) / 120; dessiner(); } });
+    toile.addEventListener("pointerup", function () { glisse = null; });
+    // rotation lente quand la diapo est visible et qu'on ne touche à rien
+    var dernier = 0;
+    function tourner(t) {
+      var section = bloc.closest("section");
+      if (!EN_PDF && !glisse && section && section.classList.contains("present") && t - dernier > 40) {
+        etat.phi += 0.006; dernier = t; dessiner();
+      }
+      requestAnimationFrame(tourner);
+    }
+    maj();
+    if (!EN_PDF) requestAnimationFrame(tourner);
+  });
+})();
+</script>

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 424" role="img" aria-label="Les variables visuelles et les trois implantations">
+<defs>
+<pattern id="trame0" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="#283B89"/></pattern>
+<pattern id="hachure0" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(0)"><path d="M0 3 H6" stroke="#283B89" stroke-width="1.6"/></pattern>
+<pattern id="pois0" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="1.0" fill="#283B89"/></pattern>
+<pattern id="motif0" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="2.4" fill="#283B89"/></pattern>
+<pattern id="trame1" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="#283B89"/></pattern>
+<pattern id="hachure1" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 3 H6" stroke="#283B89" stroke-width="1.6"/></pattern>
+<pattern id="pois1" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="2.2" fill="#283B89"/></pattern>
+<pattern id="motif1" width="12" height="12" patternUnits="userSpaceOnUse"><rect x="3.5" y="3.5" width="5" height="5" fill="#283B89"/></pattern>
+<pattern id="trame2" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="#283B89"/></pattern>
+<pattern id="hachure2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(90)"><path d="M0 3 H6" stroke="#283B89" stroke-width="1.6"/></pattern>
+<pattern id="pois2" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="3.4" fill="#283B89"/></pattern>
+<pattern id="motif2" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M6 2.5 L9.5 9 H2.5 Z" fill="#283B89"/></pattern>
+<pattern id="trame3" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="#283B89"/></pattern>
+<pattern id="hachure3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(135)"><path d="M0 3 H6" stroke="#283B89" stroke-width="1.6"/></pattern>
+<pattern id="pois3" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="4.6" fill="#283B89"/></pattern>
+<pattern id="motif3" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M3 6 H9 M6 3 V9" stroke="#283B89" stroke-width="1.6"/></pattern>
+</defs>
+<text class="s-titre" x="315.0" y="26" text-anchor="middle">Point</text>
+<text class="s-titre" x="565.0" y="26" text-anchor="middle">Ligne</text>
+<text class="s-titre" x="815.0" y="26" text-anchor="middle">Surface</text>
+<rect x="0" y="40" width="940" height="64" fill="#F4F5FB"/>
+<text x="176" y="79" text-anchor="end" style="font-weight:700">Forme</text>
+<circle cx="230" cy="72.0" r="11" fill="#283B89"/>
+<rect x="268" y="62.0" width="20" height="20" fill="#283B89"/>
+<path d="M326 60.0 L338 82.0 L314 82.0 Z" fill="#283B89"/>
+<path d="M363 69.0 h22 v6 h-22 z M371 61.0 h6 v22 h-6 z" fill="#283B89"/>
+<path d="M470 54.0 H650" stroke="#283B89" stroke-width="3" stroke-dasharray="none"/>
+<path d="M470 66.0 H650" stroke="#283B89" stroke-width="3" stroke-dasharray="10 6"/>
+<path d="M470 78.0 H650" stroke="#283B89" stroke-width="3" stroke-dasharray="2 5"/>
+<path d="M470 90.0 H650" stroke="#283B89" stroke-width="3" stroke-dasharray="14 4 2 4"/>
+<rect x="712" y="54.0" width="36" height="36" fill="url(#motif0)" stroke="#283B89"/>
+<rect x="760" y="54.0" width="36" height="36" fill="url(#motif1)" stroke="#283B89"/>
+<rect x="808" y="54.0" width="36" height="36" fill="url(#motif2)" stroke="#283B89"/>
+<rect x="856" y="54.0" width="36" height="36" fill="url(#motif3)" stroke="#283B89"/>
+<rect x="0" y="104" width="940" height="64" fill="#FFFFFF"/>
+<text x="176" y="143" text-anchor="end" style="font-weight:700">Taille</text>
+<circle cx="230" cy="136.0" r="4.0" fill="#283B89"/>
+<circle cx="278" cy="136.0" r="7.5" fill="#283B89"/>
+<circle cx="326" cy="136.0" r="11.0" fill="#283B89"/>
+<circle cx="374" cy="136.0" r="14.5" fill="#283B89"/>
+<path d="M470 136.0 h38" stroke="#283B89" stroke-width="1"/>
+<path d="M518 136.0 h38" stroke="#283B89" stroke-width="4"/>
+<path d="M566 136.0 h38" stroke="#283B89" stroke-width="7"/>
+<path d="M614 136.0 h38" stroke="#283B89" stroke-width="10"/>
+<rect x="712" y="118.0" width="36" height="36" fill="url(#pois0)" stroke="#283B89"/>
+<rect x="760" y="118.0" width="36" height="36" fill="url(#pois1)" stroke="#283B89"/>
+<rect x="808" y="118.0" width="36" height="36" fill="url(#pois2)" stroke="#283B89"/>
+<rect x="856" y="118.0" width="36" height="36" fill="url(#pois3)" stroke="#283B89"/>
+<rect x="0" y="168" width="940" height="64" fill="#F4F5FB"/>
+<text x="176" y="207" text-anchor="end" style="font-weight:700">Orientation</text>
+<rect x="227" y="187.0" width="6" height="26" fill="#283B89" transform="rotate(0 230 200.0)"/>
+<rect x="275" y="187.0" width="6" height="26" fill="#283B89" transform="rotate(45 278 200.0)"/>
+<rect x="323" y="187.0" width="6" height="26" fill="#283B89" transform="rotate(90 326 200.0)"/>
+<rect x="371" y="187.0" width="6" height="26" fill="#283B89" transform="rotate(135 374 200.0)"/>
+<path d="M470 200.0 H530" stroke="#283B89" stroke-width="2"/>
+<path d="M476 192.0 v16" stroke="#283B89" stroke-width="2" transform="rotate(0 476 200.0)"/>
+<path d="M488 192.0 v16" stroke="#283B89" stroke-width="2" transform="rotate(0 488 200.0)"/>
+<path d="M500 192.0 v16" stroke="#283B89" stroke-width="2" transform="rotate(0 500 200.0)"/>
+<path d="M512 192.0 v16" stroke="#283B89" stroke-width="2" transform="rotate(0 512 200.0)"/>
+<path d="M524 192.0 v16" stroke="#283B89" stroke-width="2" transform="rotate(0 524 200.0)"/>
+<path d="M570 200.0 H630" stroke="#283B89" stroke-width="2"/>
+<path d="M576 192.0 v16" stroke="#283B89" stroke-width="2" transform="rotate(45 576 200.0)"/>
+<path d="M588 192.0 v16" stroke="#283B89" stroke-width="2" transform="rotate(45 588 200.0)"/>
+<path d="M600 192.0 v16" stroke="#283B89" stroke-width="2" transform="rotate(45 600 200.0)"/>
+<path d="M612 192.0 v16" stroke="#283B89" stroke-width="2" transform="rotate(45 612 200.0)"/>
+<path d="M624 192.0 v16" stroke="#283B89" stroke-width="2" transform="rotate(45 624 200.0)"/>
+<rect x="712" y="182.0" width="36" height="36" fill="url(#hachure0)" stroke="#283B89"/>
+<rect x="760" y="182.0" width="36" height="36" fill="url(#hachure1)" stroke="#283B89"/>
+<rect x="808" y="182.0" width="36" height="36" fill="url(#hachure2)" stroke="#283B89"/>
+<rect x="856" y="182.0" width="36" height="36" fill="url(#hachure3)" stroke="#283B89"/>
+<rect x="0" y="232" width="940" height="64" fill="#FFFFFF"/>
+<text x="176" y="271" text-anchor="end" style="font-weight:700">Couleur</text>
+<circle cx="230" cy="264.0" r="11" fill="#283B89"/>
+<circle cx="278" cy="264.0" r="11" fill="#E38226"/>
+<circle cx="326" cy="264.0" r="11" fill="#4E8A5A"/>
+<circle cx="374" cy="264.0" r="11" fill="#9655A2"/>
+<path d="M470 264.0 h38" stroke="#283B89" stroke-width="5"/>
+<path d="M518 264.0 h38" stroke="#E38226" stroke-width="5"/>
+<path d="M566 264.0 h38" stroke="#4E8A5A" stroke-width="5"/>
+<path d="M614 264.0 h38" stroke="#9655A2" stroke-width="5"/>
+<rect x="712" y="246.0" width="36" height="36" fill="#283B89" stroke="#283B89"/>
+<rect x="760" y="246.0" width="36" height="36" fill="#E38226" stroke="#283B89"/>
+<rect x="808" y="246.0" width="36" height="36" fill="#4E8A5A" stroke="#283B89"/>
+<rect x="856" y="246.0" width="36" height="36" fill="#9655A2" stroke="#283B89"/>
+<rect x="0" y="296" width="940" height="64" fill="#F4F5FB"/>
+<text x="176" y="335" text-anchor="end" style="font-weight:700">Valeur</text>
+<circle cx="230" cy="328.0" r="11" fill="#DCE1F2"/>
+<circle cx="278" cy="328.0" r="11" fill="#9CA6CF"/>
+<circle cx="326" cy="328.0" r="11" fill="#5866A8"/>
+<circle cx="374" cy="328.0" r="11" fill="#1D2A66"/>
+<path d="M470 328.0 h38" stroke="#DCE1F2" stroke-width="5"/>
+<path d="M518 328.0 h38" stroke="#9CA6CF" stroke-width="5"/>
+<path d="M566 328.0 h38" stroke="#5866A8" stroke-width="5"/>
+<path d="M614 328.0 h38" stroke="#1D2A66" stroke-width="5"/>
+<rect x="712" y="310.0" width="36" height="36" fill="#DCE1F2" stroke="#283B89"/>
+<rect x="760" y="310.0" width="36" height="36" fill="#9CA6CF" stroke="#283B89"/>
+<rect x="808" y="310.0" width="36" height="36" fill="#5866A8" stroke="#283B89"/>
+<rect x="856" y="310.0" width="36" height="36" fill="#1D2A66" stroke="#283B89"/>
+<rect x="0" y="360" width="940" height="64" fill="#FFFFFF"/>
+<text x="176" y="399" text-anchor="end" style="font-weight:700">Structure</text>
+<circle cx="230" cy="392.0" r="12" fill="url(#trame0)" stroke="#283B89" stroke-width="1"/>
+<circle cx="278" cy="392.0" r="12" fill="url(#trame1)" stroke="#283B89" stroke-width="1"/>
+<circle cx="326" cy="392.0" r="12" fill="url(#trame2)" stroke="#283B89" stroke-width="1"/>
+<circle cx="374" cy="392.0" r="12" fill="url(#trame3)" stroke="#283B89" stroke-width="1"/>
+<path d="M470 392.0 H650" stroke="#283B89" stroke-width="10" stroke-dasharray="2 3"/>
+<rect x="712" y="374.0" width="36" height="36" fill="url(#trame0)" stroke="#283B89"/>
+<rect x="760" y="374.0" width="36" height="36" fill="url(#trame1)" stroke="#283B89"/>
+<rect x="808" y="374.0" width="36" height="36" fill="url(#trame2)" stroke="#283B89"/>
+<rect x="856" y="374.0" width="36" height="36" fill="url(#trame3)" stroke="#283B89"/>
+</svg>

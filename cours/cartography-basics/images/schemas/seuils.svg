@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" role="img" aria-label="Un trait et un point, à l’épaisseur choisie">
+<rect x="0" y="0" width="900" height="220" class="s-fond"/>
+<path d="M60 70 C 250 30 420 120 620 60 S 800 50 840 80" style="fill:none;stroke:#2B2B33;stroke-width:calc(var(--x, 0.3) * 6px)"/>
+<circle cx="90" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
+<circle cx="230" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
+<circle cx="370" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
+<circle cx="510" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
+<circle cx="650" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
+<circle cx="790" cy="150" style="r: calc(var(--x, 0.3) * 6px); fill:#2B2B33"/>
+<text class="s-petit" x="60" y="112" text-anchor="start">trait</text>
+<text class="s-petit" x="60" y="195" text-anchor="start">point (diamètre double)</text>
+</svg>

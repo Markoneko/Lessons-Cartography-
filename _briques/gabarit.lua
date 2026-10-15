@@ -27,6 +27,7 @@ local TEXTES = {
     venir_gauche = "Venir sur la gauche", venir_droite = "Venir sur la droite",
     loupe = "Cliquez pour zoomer, déplacez pour explorer", effacer = "Effacer",
     reponse_notes = "Réponse : ", ordre_notes = "Ordre attendu : ",
+    flash_voir = "Voir la carte", flash_revoir = "Revoir",
   },
   en = {
     question = "Question", reponse = "Answer", plus = "Going further", fermer = "Close",
@@ -37,6 +38,7 @@ local TEXTES = {
     venir_gauche = "Come to port", venir_droite = "Come to starboard",
     loupe = "Click to zoom, move to explore", effacer = "Clear",
     reponse_notes = "Answer: ", ordre_notes = "Expected order: ",
+    flash_voir = "Show the map", flash_revoir = "Show again",
   },
 }
 local LIBELLES = {
@@ -638,6 +640,57 @@ local function brique_visees(div)
   return div
 end
 
+----------------------------------------------------------------------------
+-- Briques de cartographie : atelier, flash, couleur 3D
+-- (leur comportement est dans _briques/briques-carto.html)
+----------------------------------------------------------------------------
+
+-- ::: {.atelier donnees="donnees/territoire.json" variable="taux" unite="%"
+--      methode="egales" classes="5" palette="sequentielle" reglages="methode,classes,palette"}
+-- Une carte vivante : la discrétisation, le nombre de classes et la palette se règlent à l'écran.
+local function brique_atelier(div)
+  local chemin = attribut(div, "donnees", "")
+  local json = lire_fichier(chemin)
+  if not EN_HTML then return div end
+  if not json then
+    return pandoc.Para(pandoc.Str("Données introuvables : " .. chemin))
+  end
+  local a = function(n, d) return echappe(attribut(div, n, d)) end
+  local h = '<div class="atelier-zone" data-variable="' .. a("variable", "taux")
+      .. '" data-unite="' .. a("unite", "") .. '" data-methode="' .. a("methode", "egales")
+      .. '" data-classes="' .. a("classes", "5") .. '" data-palette="' .. a("palette", "sequentielle")
+      .. '" data-reglages="' .. a("reglages", "methode,classes,palette")
+      .. '" data-palettes="' .. a("palettes", "sequentielle,arc-en-ciel,divergente")
+      .. '" data-histogramme="' .. a("histogramme", "oui") .. '">'
+      .. '<script type="application/json" class="atelier-donnees">' .. json:gsub("</", "<\\/") .. '</script>'
+      .. '<div class="atelier-carte"></div><div class="atelier-panneau"></div></div>'
+  local sortie = pandoc.List({ pandoc.RawBlock("html", h) })
+  sortie:extend(div.content)
+  div.content = sortie
+  return div
+end
+
+-- ::: {.flash duree="5"}  ![](images/carte.png) :::
+-- L'image n'apparaît qu'au clic, pendant quelques secondes. Dans le PDF, elle est visible.
+local function brique_flash(div)
+  if not EN_HTML then return div end
+  local duree = attribut(div, "duree", "5")
+  div.attributes["duree"] = nil
+  div.attributes["data-duree"] = duree
+  div.content:insert(pandoc.RawBlock("html", '<button type="button" class="flash-bouton" data-voir="'
+      .. echappe(t("flash_voir")) .. '" data-revoir="' .. echappe(t("flash_revoir")) .. '">'
+      .. echappe(t("flash_voir")) .. ' · ' .. duree .. ' s</button><div class="flash-barre"></div>'))
+  return div
+end
+
+-- ::: {.couleur3d} :::  le solide des couleurs (teinte, saturation, valeur), qui tourne, et trois curseurs
+local function brique_couleur3d(div)
+  if not EN_HTML then return div end
+  div.content:insert(1, pandoc.RawBlock("html", '<canvas class="couleur3d-toile" width="560" height="460"></canvas>'
+      .. '<div class="couleur3d-panneau"></div>'))
+  return div
+end
+
 local function briques(div)
   if div.classes:includes("question") then return brique_question(div) end
   if div.classes:includes("reponse") then return brique_reponse(div) end
@@ -655,6 +708,9 @@ local function briques(div)
   if div.classes:includes("classer") then return brique_classer(div) end
   if div.classes:includes("cap") then return brique_cap(div) end
   if div.classes:includes("visees") then return brique_visees(div) end
+  if div.classes:includes("atelier") then return brique_atelier(div) end
+  if div.classes:includes("flash") then return brique_flash(div) end
+  if div.classes:includes("couleur3d") then return brique_couleur3d(div) end
   return nil
 end
 
