@@ -2,7 +2,7 @@
 title: "Cartography : Basics"
 subtitle: "Sémiologie graphique et mise en page : les conséquences des choix"
 author: "Marc Poupée · Géodata Paris"
-date: "2026-10-15"
+date: "2026-10-16"
 date-format: "D MMMM YYYY"
 footer: "Cartography : Basics"
 title-slide-attributes:
@@ -10,9 +10,10 @@ title-slide-attributes:
 ---
 
 ::: {.fiche n="0.1" etat="a-realiser"}
-Intention : Couverture. Une carte forte en image de fond, plutôt une carte de Marc ou d'étudiant. [PPT 1, 2] [carte de Marc ?]
+Intention : Couverture. Une carte forte en image de fond, plutôt une carte de Marc ou d'étudiant. [PPT 1, 2] [Utlisation de la Carte MAP-CLC]
 Expérience : aucune
 Demande :
+Note : C'est une carte dont je suis l'auteur et qui est devenu assez iconique dans les visuels IGN.
 :::
 
 ## Comment lire ce support
@@ -20,7 +21,7 @@ Demande :
 ::: {.fiche n="0.2" etat="a-realiser"}
 Intention : Le mode d'emploi commun (niveaux, exercices, bonus), sans le système de révision. Ici, presque chaque diapo demande d'essayer avant de lire. [nouvelle]
 Expérience : aucune
-Demande :
+Demande : Rajouter un remerciement pour tous les étudiants du M2 Geopolitique qui ont participé à produire ces cartes, fruits d'une semaine d'enseignement de carto seulement.
 :::
 
 ## Ce que vous saurez faire
@@ -52,7 +53,7 @@ Demande :
 ::: {.fiche n="1.1" etat="a-realiser"}
 Intention : Ouverture par l'expérience : on montre une carte cinq secondes, puis on la cache ; qu'en a-t-on retenu ? Une bonne carte passe ce test, une mauvaise non. [nouvelle] [carte de Marc ou d'étudiant : une réussie, une ratée]
 Expérience : l'image s'efface d'elle-même après 5 s (brique « flash », nouvelle) ; question : quel était le message ?
-Demande :
+Demande : On peut utiliser ici LA carte MAP-NOEL, assez explicite normalement (I hope, j'en suis l'auteur) Et prendre une carte de travail : MAP-Gaza.
 :::
 
 ## Rédiger, mettre en page {.socle}
@@ -188,7 +189,7 @@ Demande :
 ::: {.fiche n="4.1" etat="a-realiser"}
 Intention : Synthèse additive (RVB, l'écran) et soustractive (CMJN, l'impression) ; une conversion change les couleurs. Le modèle TSL ou TSV : teinte, saturation, valeur. [PPT 23, 24, 25, 26]
 Expérience : trois curseurs (teinte, saturation, valeur) sur un même aplat (brique « couleur », nouvelle) ; question : pourquoi la carte imprimée paraît-elle plus terne qu'à l'écran ?
-Demande :
+Demande : Dans l'idéal il faudrait conserver la vue 3D, de l'image s26_9d1ec19a.jpg ou celle plus simple de L2VQa.png. Ce serait top de réussir à faire une animation ^mega baleze sur ce coup, je peux d'aider à finaliser.
 :::
 
 ## Des codes à respecter {.socle}
@@ -236,7 +237,7 @@ Demande :
 ::: {.fiche n="5.3" etat="a-realiser"}
 Intention : La discrétisation : le choix de la méthode (amplitudes égales, effectifs égaux, seuils naturels) et du nombre de classes change le message de la carte. L'activité centrale du cours. [nouvelle]
 Expérience : carte vivante (brique « atelier », nouvelle) : l'étudiant change la méthode, le nombre de classes et la palette ; la carte se recolore et l'histogramme montre les seuils. Données : à décider (réelles fournies par Marc, ou territoire fictif annoncé comme tel).
-Demande :
+Demande : Commençons par une carte elaborées par toi. Le vecteur, c'est ton rayon (c,)
 :::
 
 ## Faire mentir une carte {.appui}
@@ -244,15 +245,15 @@ Demande :
 ::: {.fiche n="5.4" etat="a-realiser"}
 Intention : En déplaçant un seul seuil, on fait apparaître ou disparaître un problème. Mark Monmonier, *How to Lie with Maps*. Le cartographe est responsable du message. [nouvelle]
 Expérience : défi dans l'atelier : obtenir une carte qui paraît alarmante, puis une carte rassurante, avec les mêmes données ; question : quel réglage choisiriez-vous, et pourquoi ?
-Demande :
+Demande : On peut faire une carte ou seul la classification change. On voit l'impact.
 :::
 
 ## Le projet cartographique {.appui}
 
 ::: {.fiche n="5.5" etat="a-realiser"}
 Intention : Structurer le message : une lecture globale, puis une lecture fine ; cartes topographiques, thématiques ; d'inventaire, de traitement, de synthèse. [PPT 44]
-Expérience : classer quatre cartes de Marc ou d'étudiants par type [cartes de Marc ?]
-Demande :
+Expérience : classer quatre cartes de Marc ou d'étudiants par type
+Demande : Pour ces slides, j'ai MAP-HongKong qui irait bien en carte topographique + thématique. Pour une carte de synthèse : MAP-Force-Indopacifique. Pour une carte de traitement, MAP-Saintes, pour une carte de synthèse MAP-ExpPac Pour une lecture Globale, il suffit de repdnre celle du titre MAC-CLC.
 :::
 
 ## La mise en page {.intercalaire}
@@ -268,7 +269,7 @@ Demande :
 ::: {.fiche n="6.1" etat="a-realiser"}
 Intention : Titre, légende, échelle, source et date, auteur ; l'orientation quand elle n'est pas évidente pour tous ; des éléments facultatifs (quadrillage, déclinaison…). [PPT 50, 51, 52, 56]
 Expérience : zones à cliquer sur une carte de Marc ou d'étudiant : trouver chaque élément, et celui qui manque [carte de Marc ?]
-Demande :
+Demande : On pourrait prendre la carte MAP-JO pour cet exercice.
 :::
 
 ## Hiérarchiser et regrouper {.appui}
