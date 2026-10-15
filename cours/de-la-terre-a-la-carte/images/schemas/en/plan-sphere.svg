@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 220" style="overflow:hidden" role="img" aria-label="The gap between the tangent plane and the sphere grows with distance">
+  <path class="s-eau" d="M40 220 A1500 1500 0 0 1 1060 220 Z"/>
+  <path class="s-trait" d="M40 220 A1500 1500 0 0 1 1060 220"/>
+  <path class="s-trait" d="M60 130 H1060"/>
+  <circle class="s-plein" cx="550" cy="130" r="7"/>
+  <text class="s-titre" x="550" y="112" text-anchor="middle">here, the plane touches the Earth</text>
+  <path class="s-accent" d="M1000 134 V186"/>
+  <path class="s-plein-accent" d="M1000 198 l-7 -14 h14 z"/>
+  <text class="s-orange" x="986" y="170" text-anchor="end">gap</text>
+  <path class="s-fin" d="M550 60 H1000 M550 54 v12 M1000 54 v12"/>
+  <text x="775" y="50" text-anchor="middle">distance d</text>
+  <text x="60" y="40">gap ≈ d² ÷ (2 × Earth's radius)</text>
+  <text class="s-petit" x="60" y="62">An approximation, valid while d stays small compared with the radius.</text>
+</svg>

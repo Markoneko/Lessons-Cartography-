@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 200" role="img" aria-label="Quatre marches qui montent : plan, sphère, ellipsoïde, géoïde">
+  <path class="s-trait" d="M10 180 H150 V140 H300 V100 H450 V60 H610"/>
+  <text class="s-titre" x="80" y="168" text-anchor="middle">plan</text>
+  <text class="s-titre" x="225" y="128" text-anchor="middle">sphère</text>
+  <text class="s-titre" x="375" y="88" text-anchor="middle">ellipsoïde</text>
+  <text class="s-titre" x="530" y="48" text-anchor="middle">géoïde</text>
+  <path class="s-accent" d="M40 120 L300 30"/><path class="s-plein-accent" d="M314 25 l-16 -2 l5 14 z"/>
+</svg>

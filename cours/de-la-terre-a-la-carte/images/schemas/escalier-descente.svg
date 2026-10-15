@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 200" role="img" aria-label="Trois marches qui descendent : géoïde, ellipsoïde, plan">
+  <path class="s-trait" d="M10 60 H200 V110 H410 V160 H610"/>
+  <text class="s-titre" x="105" y="48" text-anchor="middle">géoïde</text>
+  <text class="s-titre" x="305" y="98" text-anchor="middle">ellipsoïde</text>
+  <text class="s-titre" x="510" y="148" text-anchor="middle">plan</text>
+  <path class="s-accent" d="M330 30 L560 96"/><path class="s-plein-accent" d="M574 100 l-11 -12 l-4 14 z"/>
+</svg>

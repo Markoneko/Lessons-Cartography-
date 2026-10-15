@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" role="img" aria-label="D'où viennent les données : les produire ou les récupérer">
+  <text class="s-titre" x="170" y="34" text-anchor="middle">Produire</text>
+  <text class="s-titre" x="830" y="34" text-anchor="middle">Récupérer</text>
+  <g>
+    <rect class="s-fond" x="40" y="55" width="260" height="52" rx="8"/><text x="170" y="87" text-anchor="middle">Levé de terrain, GNSS</text>
+    <rect class="s-fond" x="40" y="125" width="260" height="52" rx="8"/><text x="170" y="157" text-anchor="middle">Photo aérienne, satellite</text>
+    <rect class="s-fond" x="40" y="195" width="260" height="52" rx="8"/><text x="170" y="227" text-anchor="middle">Lidar</text>
+    <rect class="s-fond" x="40" y="265" width="260" height="52" rx="8"/><text x="170" y="297" text-anchor="middle">Numériser un plan papier</text>
+  </g>
+  <g>
+    <rect class="s-fond" x="700" y="80" width="260" height="52" rx="8"/><text x="830" y="112" text-anchor="middle">Bases existantes</text>
+    <text class="s-petit" x="830" y="150" text-anchor="middle">BD TOPO, BD Forêt, cadastre, OSM</text>
+    <rect class="s-fond" x="700" y="170" width="260" height="52" rx="8"/><text x="830" y="202" text-anchor="middle">Flux web WMS, WMTS, WFS</text>
+    <text class="s-petit" x="830" y="240" text-anchor="middle">la Géoplateforme</text>
+    <rect class="s-fond" x="700" y="260" width="260" height="52" rx="8"/><text x="830" y="292" text-anchor="middle">Un SIG existant</text>
+  </g>
+  <path class="s-accent" d="M305 81 L420 170 M305 151 L420 178 M305 221 L420 186 M305 291 L420 194 M695 106 L580 172 M695 196 L580 182 M695 286 L580 192"/>
+  <rect class="s-blanc" x="420" y="140" width="160" height="80" rx="12"/>
+  <text class="s-titre" x="500" y="188" text-anchor="middle" style="font-size:26px">SIG</text>
+  <text class="s-petit" x="500" y="248" text-anchor="middle">toujours : qui, quand,</text>
+  <text class="s-petit" x="500" y="266" text-anchor="middle">quelle précision ?</text>
+</svg>

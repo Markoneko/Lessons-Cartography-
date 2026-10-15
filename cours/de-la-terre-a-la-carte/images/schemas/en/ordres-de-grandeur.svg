@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 250" role="img" aria-label="Three orders of magnitude: a 6,371 km radius, 21 km of flattening, 100 m of geoid undulation">
+  <rect class="s-fond" x="20" y="40" width="290" height="150" rx="12"/>
+  <text class="s-titre" x="165" y="78" text-anchor="middle">The sphere</text>
+  <text x="165" y="130" text-anchor="middle" style="font-family: var(--police-titre); font-weight: 700; font-size: 44px; fill: var(--bleu)">6,371 km</text>
+  <text class="s-petit" x="165" y="166" text-anchor="middle">its radius</text>
+
+  <path class="s-accent" d="M322 115 H388"/><path class="s-plein-accent" d="M400 115 l-14 -7 v14 z"/>
+  <text class="s-orange" x="360" y="96" text-anchor="middle">÷ 300</text>
+
+  <rect class="s-fond" x="410" y="40" width="290" height="150" rx="12"/>
+  <text class="s-titre" x="555" y="78" text-anchor="middle">The ellipsoid</text>
+  <text x="555" y="130" text-anchor="middle" style="font-family: var(--police-titre); font-weight: 700; font-size: 44px; fill: var(--bleu)">21 km</text>
+  <text class="s-petit" x="555" y="166" text-anchor="middle">its flattening at the poles</text>
+
+  <path class="s-accent" d="M712 115 H778"/><path class="s-plein-accent" d="M790 115 l-14 -7 v14 z"/>
+  <text class="s-orange" x="750" y="96" text-anchor="middle">÷ 200</text>
+
+  <rect class="s-fond" x="800" y="40" width="290" height="150" rx="12"/>
+  <text class="s-titre" x="945" y="78" text-anchor="middle">The geoid</text>
+  <text x="945" y="130" text-anchor="middle" style="font-family: var(--police-titre); font-weight: 700; font-size: 44px; fill: var(--bleu)">± 100 m</text>
+  <text class="s-petit" x="945" y="166" text-anchor="middle">its undulations around the ellipsoid</text>
+</svg>
