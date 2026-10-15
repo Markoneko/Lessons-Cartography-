@@ -2,6 +2,78 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-14 — « GIS : Geoprocessing », retours de Marc sur la V0
+
+Numéros de diapo de la V0 française ; chaque correction est reportée dans la version anglaise.
+
+**Appliqué**
+
+- Partie 4 (traitements raster) : toutes les diapos passent en appui, le cours portant d'abord sur le vecteur.
+- Couverture datée du 14 octobre ; la mention du support d'origine est retirée, de la couverture comme des sources : Marc refait ces contenus lui-même.
+- 2 (0.2) : plus d'allusion au système de révision (`?niveau=socle`), qui n'est pas prêt.
+- 14 (2.2) : un seul schéma, `jointure.svg`. La colonne « essence » apparaît à droite de la table au moment de la réponse, avec une flèche venue des peuplements. Le schéma passe en pleine largeur, la question et la réponse côte à côte dessous.
+- 16 (3.1) : trois panneaux séparés. Le chemin passe par les points d'origine, et ne se mêle plus à l'enveloppe convexe.
+- 24 (4.3) : le curseur du NDVI est retiré. On donne le seuil d'environ 0,3 entre végétation et absence de végétation.
+- 27 (4.6) : la maison est posée sur le sol. Le MNS est désormais calculé à partir du MNT : il le rejoint exactement là où il n'y a ni arbre ni bâtiment.
+
+**Ajouté au gabarit**
+
+- Dans un schéma, la classe `s-apparait` cache un élément jusqu'à l'ouverture de la réponse de la diapo. L'élément figure dans le PDF corrigé, pas dans la version vierge. Documenté dans le README.
+
+**Vérifié**
+
+- 40 diapos par langue, aucun débordement ; colonne cachée avant la réponse, visible après, présente dans le PDF.
+
+**Remarque**
+
+- « GIS : Basics » mentionne encore `?niveau=socle` dans sa diapo « Comment lire ce support » : à retirer aussi si le système de révision n'est pas prêt.
+
+## 2026-10-13 (nuit) — « GIS : Geoprocessing », V0 en français et en anglais
+
+**Décidé par Marc**
+
+- Titre : « GIS : Geoprocessing » (« GIS: Geoprocessing » en anglais). Deux versions. Le cours est présenté avant le TP, puis relu seul.
+
+**Réalisé**
+
+- `index.qmd` et `index-en.qmd` : les 40 diapos du plan, mêmes numéros de fiche, toutes « à revoir ».
+- 24 schémas dessinés (et doublés en anglais), produits par `outils/schemas-geotraitements.py`. Les réponses des exercices y sont calculées, pas recopiées : jointure (placettes 1 et 3 dans P1), fusion (3 zones), condition (7 pixels à 1), moyenne 3 × 3 (5), zone B (6), placette 3 (412 m). Pour changer un schéma ou une valeur : modifier le script et le relancer.
+- 13 images reprises du support d'origine.
+- Vérifié : aucun débordement, réponses affichées comprises, dans les deux langues ; PDF de 40 pages.
+
+**Écarts par rapport au plan**
+
+- 1.2 : la requête est écrite en liste, plus lisible qu'un bloc de code.
+- 3.2 : la question ne montre que les trois tampons ; le schéma séparés / fusionnés / multiples passe en bonus, sinon il donnait la réponse.
+- 4.1 : cinq traitements à classer au lieu de quatre.
+- 5.2 : MAUP illustré par les deux cartes européennes du support d'origine.
+
+**À vérifier par Marc**
+
+- MNE (ancien support) devient MNS, le terme de l'IGN.
+- Stan Openshaw, 1984, pour le MAUP : de mémoire, non vérifié en ligne.
+- Les images reprises sont petites (230 à 680 pixels de large) ; plusieurs crédits restent « à compléter ».
+- Les noms d'outils QGIS ne sont cités qu'une fois (Sélectionner par expression) : à compléter si le TP en a besoin.
+
+## 2026-10-13 (soir) — Nouveau cours : « Géotraitements », le plan
+
+**Demande de Marc**
+
+- Troisième cours sur le même principe, assez court, d'après le PPT « DDMEG-04 Géotraitements » (44 diapos, dont 28 masquées sur le raster ; support d'origine de Malika Madelin).
+- Les 16 premières diapos, puis un résumé de tous les traitements raster avec de petits schémas, puis les traitements à cheval entre raster et vecteur.
+
+**Réalisé : le plan seul, en attente de validation**
+
+- `cours/geotraitements/index.qmd` : 40 fiches, toutes `a-realiser`, cinq parties : interroger, enrichir les attributs, créer des objets, les traitements raster (résumé en neuf diapos), entre raster et vecteur.
+- La diapo 11 d'origine (rasterisation, vectorisation, MAUP) passe dans la dernière partie, avec la diapo 41.
+- Exemples forestiers prévus partout : peuplements, placettes d'inventaire, pistes, pentes non mécanisables, hauteur de canopée (MNS − MNT), NDVI.
+- PPT d'origine dans `sources/Reference-Geotraitements.ppt`, 58 images extraites dans `images/originaux/`.
+
+**À trancher par Marc**
+
+- Les deux versions FR et EN, et le support consulté seul (comme « GIS : Basics ») : supposés, à confirmer.
+- La diapo finale renvoie au TP géotraitements en préparation.
+
 ## 2026-10-13 (fin) — « GIS : Basics », retours de Marc sur la V0
 
 Numéros de diapo de la V0 française. Chaque correction est reportée dans la version anglaise.
