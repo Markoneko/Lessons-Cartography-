@@ -2,6 +2,39 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-15 — Nouveau cours : « Cartography : Basics », le plan
+
+**Demande de Marc**
+
+- Quatrième refonte, d'après le PPT « DDMEG-03 Sémiologie » (58 diapos, presque toutes du texte). Synthétiser fortement, éviter les diapos de texte.
+- Travailler beaucoup plus les interactions : des activités qui font éprouver les conséquences des choix cartographiques.
+- Mettre en valeur des cartes de Marc et de ses étudiants ; le choix se fera ensemble.
+
+**Réalisé : le plan seul, en attente de validation**
+
+- `cours/cartography-basics/index.qmd` : 38 fiches, toutes `a-realiser`, six parties : une carte est un message, ce que l'œil peut voir, les variables visuelles, la couleur, les conséquences des choix, la mise en page.
+- Les emplacements prévus pour les cartes de Marc portent la mention « [carte de Marc ?] » dans la fiche.
+- PPT d'origine dans `sources/Reference-Semiologie.ppt`, 29 images dans `images/originaux/`.
+
+**Ajouts par rapport au support d'origine**
+
+- Une partie « Les conséquences des choix », absente de l'ancien support : variable selon la donnée, stock ou taux, discrétisation, faire mentir une carte.
+- Le piège du rayon des symboles proportionnels, le daltonisme, le test des cinq secondes.
+
+**Briques nouvelles nécessaires**
+
+- « atelier » : une carte vivante, recolorée selon la méthode de discrétisation, le nombre de classes et la palette, avec l'histogramme et ses seuils. C'est la brique principale du cours.
+- « flash » : une image qui s'efface au bout de quelques secondes.
+- « couleur » : trois curseurs teinte, saturation, valeur sur un aplat.
+- Le reste se fait avec les briques existantes : curseur qui pilote un schéma, QCM qui modifie le schéma, comparer, classer, ordre, zones.
+
+**À trancher par Marc**
+
+- Les cartes à exploiter, et leur emplacement.
+- Les données de l'atelier : réelles (fournies par Marc) ou un territoire fictif annoncé comme tel.
+- Deux versions FR et EN, comme pour les deux autres cours : supposées.
+- L'ancien support cite « Blind & Bord » : il s'agit sans doute d'Élisabeth Blin et Jean-Paul Bord, *Initiation géo-graphique* ; à confirmer.
+
 ## 2026-10-14 — « GIS : Geoprocessing », retours de Marc sur la V0
 
 Numéros de diapo de la V0 française ; chaque correction est reportée dans la version anglaise.

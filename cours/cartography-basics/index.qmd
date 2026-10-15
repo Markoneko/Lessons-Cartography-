@@ -1,0 +1,320 @@
+---
+title: "Cartography : Basics"
+subtitle: "Sémiologie graphique et mise en page : les conséquences des choix"
+author: "Marc Poupée · Géodata Paris"
+date: "2026-10-15"
+date-format: "D MMMM YYYY"
+footer: "Cartography : Basics"
+title-slide-attributes:
+  data-state: plein
+---
+
+::: {.fiche n="0.1" etat="a-realiser"}
+Intention : Couverture. Une carte forte en image de fond, plutôt une carte de Marc ou d'étudiant. [PPT 1, 2] [carte de Marc ?]
+Expérience : aucune
+Demande :
+:::
+
+## Comment lire ce support
+
+::: {.fiche n="0.2" etat="a-realiser"}
+Intention : Le mode d'emploi commun (niveaux, exercices, bonus), sans le système de révision. Ici, presque chaque diapo demande d'essayer avant de lire. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+## Ce que vous saurez faire
+
+::: {.fiche n="0.3" etat="a-realiser"}
+Intention : Choisir la bonne variable visuelle pour une donnée ; anticiper ce qu'un choix (classes, couleurs, tailles) fait dire à la carte ; mettre en page une carte lisible. [PPT 3]
+Expérience : aucune
+Demande :
+:::
+
+## Carte du cours
+
+::: {.fiche n="0.4" etat="a-realiser"}
+Intention : Les six parties et la légende S / A / V.
+Expérience : liens vers chaque diapo
+Demande :
+:::
+
+## Une carte est un message {.intercalaire}
+
+::: {.fiche n="1.0" etat="a-realiser"}
+Intention : Rédiger la carte, puis la mettre en page. [PPT 3, 4]
+Expérience : aucune
+Demande :
+:::
+
+## Cinq secondes
+
+::: {.fiche n="1.1" etat="a-realiser"}
+Intention : Ouverture par l'expérience : on montre une carte cinq secondes, puis on la cache ; qu'en a-t-on retenu ? Une bonne carte passe ce test, une mauvaise non. [nouvelle] [carte de Marc ou d'étudiant : une réussie, une ratée]
+Expérience : l'image s'efface d'elle-même après 5 s (brique « flash », nouvelle) ; question : quel était le message ?
+Demande :
+:::
+
+## Rédiger, mettre en page {.socle}
+
+::: {.fiche n="1.2" etat="a-realiser"}
+Intention : La rédaction cartographique (représenter l'information elle-même) et la mise en page (organiser les blocs autour : titre, légende, échelle…). [PPT 3]
+Expérience : classer huit décisions en « rédaction » ou « mise en page »
+Demande :
+:::
+
+## Voir, puis comprendre {.socle}
+
+::: {.fiche n="1.3" etat="a-realiser"}
+Intention : La sémiologie, « ensemble des règles qui permettent l'utilisation d'un système graphique de signes pour la transmission d'une information » (Béguin et Pumain). Compréhension graphique (voir, le signifiant) et compréhension mentale (regarder, le signifié). Les quatre diapos de texte d'origine tiennent en une. [PPT 9, 10, 11, 12]
+Expérience : question sur une carte détournée : ce que l'on voit, ce que l'on comprend
+Demande :
+:::
+
+## Ce que l'œil peut voir {.intercalaire}
+
+::: {.fiche n="2.0" etat="a-realiser"}
+Intention : Les contraintes de l'utilisateur et du support. [PPT 5]
+Expérience : aucune
+Demande :
+:::
+
+## Les seuils de perception {.appui}
+
+::: {.fiche n="2.1" etat="a-realiser"}
+Intention : À 30 cm, l'œil discrimine environ 0,1 mm ; un point doit faire au moins 0,2 mm, un trait 0,1 mm ; séparer deux traits, différencier deux tailles. Les quatre diapos de chiffres deviennent une expérience. [PPT 6, 7, 8]
+Expérience : curseur : on affine un trait et un point jusqu'à ce qu'ils disparaissent à l'écran ; on lit leur taille équivalente sur papier
+Demande :
+:::
+
+## La taille est relative {.appui}
+
+::: {.fiche n="2.2" etat="a-realiser"}
+Intention : L'illusion d'Ebbinghaus : un même cercle paraît plus petit entouré de grands cercles. Conséquence : sur une carte en symboles proportionnels, le voisinage trompe l'œil. [PPT 19]
+Expérience : curseur : régler le cercle de droite pour qu'il paraisse égal à celui de gauche, puis la réponse révèle l'écart
+Demande :
+:::
+
+## Une couleur ne vit pas seule {.appui}
+
+::: {.fiche n="2.3" etat="a-realiser"}
+Intention : L'échiquier d'Adelson : deux cases de même gris paraissent différentes. Le contraste simultané : une couleur change avec son voisinage. Conséquence : un aplat ne se lit pas pareil sur toute la carte. [PPT 29, 27, 28]
+Expérience : question (A et B sont-elles du même gris ?), puis la réponse relie les deux cases par une bande ; l'ancien exercice « Un mot » devient : changer le fond, observer le mot avancer, reculer, vibrer
+Demande :
+:::
+
+## Les variables visuelles {.intercalaire}
+
+::: {.fiche n="3.0" etat="a-realiser"}
+Intention : Le vocabulaire de Bertin : sept variables, trois implantations. [PPT 12, 14]
+Expérience : aucune
+Demande :
+:::
+
+## Point, ligne, surface {.socle}
+
+::: {.fiche n="3.1" etat="a-realiser"}
+Intention : Les trois implantations : le point (seul son centre localise), la ligne (limite ou réseau, continue ou non), la surface. Lien avec les primitives de « GIS : Basics ». [PPT 13]
+Expérience : aucune
+Demande :
+:::
+
+## Sept variables {.socle}
+
+::: {.fiche n="3.2" etat="a-realiser"}
+Intention : Forme, taille, orientation, couleur, valeur, structure (grain, trame), dynamisme ; un tableau dessiné croisant variables et implantations, à la place des diapos de texte. [PPT 14, 16, 17, 18, 20, 21, 36]
+Expérience : schéma : chaque case du tableau montre la variable dans son implantation
+Demande :
+:::
+
+## Ce que chaque variable sait dire {.socle}
+
+::: {.fiche n="3.3" etat="a-realiser"}
+Intention : Différencier, ordonner, quantifier, associer : le tableau des propriétés de l'ancien support. La taille est la seule à quantifier ; la valeur ordonne ; la couleur et la forme différencient. [PPT 15, 37]
+Expérience : QCM successifs : quelle variable pour ordonner ? pour quantifier ? pour différencier ?
+Demande :
+:::
+
+## Quantifier : le piège du rayon {.socle}
+
+::: {.fiche n="3.4" etat="a-realiser"}
+Intention : Un symbole proportionnel est proportionnel par sa surface, pas par son rayon : si le rayon double, la surface quadruple. Exemple : la population de quatre villes. [nouvelle]
+Expérience : deux cartes côte à côte, rayon proportionnel et surface proportionnelle ; question : laquelle exagère les grandes villes ? Valeurs calculées.
+Demande :
+:::
+
+## Trop petits, trop grands {.appui}
+
+::: {.fiche n="3.5" etat="a-realiser"}
+Intention : L'échelle des symboles : trop petits, on ne voit rien ; trop grands, ils se recouvrent et masquent le fond. Il y a un bon réglage. [PPT 38]
+Expérience : curseur : on fait varier le facteur d'échelle des cercles sur une carte, du trop petit au trop grand
+Demande :
+:::
+
+## Ordonner : combien de paliers ? {.socle}
+
+::: {.fiche n="3.6" etat="a-realiser"}
+Intention : La valeur (du clair au foncé) ordonne, mais l'œil ne distingue qu'un nombre limité de paliers : environ 2 en jaune, 3 en vert, 4 en bleu ou orangé, 5 en rouge ou violet, 6 en gris (notes de l'ancien support). [PPT 15, notes]
+Expérience : curseur : augmenter le nombre de paliers d'une gamme, jusqu'à ne plus les distinguer ; question : combien en tenez-vous ?
+Demande :
+:::
+
+## Différencier n'est pas ordonner {.socle}
+
+::: {.fiche n="3.7" etat="a-realiser"}
+Intention : La couleur (la teinte) différencie, elle n'ordonne pas : une palette arc-en-ciel sur une donnée ordonnée brouille la lecture. La même carte en arc-en-ciel et en dégradé de valeur. [PPT 22, 37]
+Expérience : comparer : curseur entre les deux versions ; question : dans l'arc-en-ciel, le vert est-il plus ou moins que le jaune ?
+Demande :
+:::
+
+## Orientation, structure, dynamisme {.veille}
+
+::: {.fiche n="3.8" etat="a-realiser"}
+Intention : Trois variables d'usage plus rare : l'orientation (3 ou 4 paliers pour un point), la structure (trames, poncifs), le dynamisme (clignotement, mutation, déplacement, sur écran, avec parcimonie). [PPT 20, 21, 34, 35, 36]
+Expérience : défiler trois exemples, dont la carte animée des élections américaines de 1960 ; bonus : les trois exemples de trame (à éviter, bon, le plus efficace)
+Demande :
+:::
+
+## La couleur {.intercalaire}
+
+::: {.fiche n="4.0" etat="a-realiser"}
+Intention : Une sensation, des modes de fabrication, des codes. [PPT 22]
+Expérience : aucune
+Demande :
+:::
+
+## Écran et papier {.appui}
+
+::: {.fiche n="4.1" etat="a-realiser"}
+Intention : Synthèse additive (RVB, l'écran) et soustractive (CMJN, l'impression) ; une conversion change les couleurs. Le modèle TSL ou TSV : teinte, saturation, valeur. [PPT 23, 24, 25, 26]
+Expérience : trois curseurs (teinte, saturation, valeur) sur un même aplat (brique « couleur », nouvelle) ; question : pourquoi la carte imprimée paraît-elle plus terne qu'à l'écran ?
+Demande :
+:::
+
+## Des codes à respecter {.socle}
+
+::: {.fiche n="4.2" etat="a-realiser"}
+Intention : Couleurs chaudes et froides ; codes conventionnels (l'eau en bleu, la forêt en vert, le rouge pour le danger) ; codes qui changent selon les cultures et les métiers ; harmonie et contraste. [PPT 30, 31, 32, 33]
+Expérience : classer des couleurs dans les thèmes qu'elles évoquent ; question : une carte de la forêt en rouge, qu'est-ce que le lecteur comprend ?
+Demande :
+:::
+
+## Une carte pour tous les yeux {.appui}
+
+::: {.fiche n="4.3" etat="a-realiser"}
+Intention : Une part notable des hommes ne distingue pas bien le rouge du vert : une palette rouge-vert perd son message. Choisir des palettes qui tiennent. [nouvelle, chiffre à vérifier]
+Expérience : comparer : la même carte vue normalement et vue par un œil daltonien (filtre simulé)
+Demande :
+:::
+
+## Les conséquences des choix {.intercalaire}
+
+::: {.fiche n="5.0" etat="a-realiser"}
+Intention : La même donnée peut dire des choses différentes : le cœur du cours. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+## Quelle variable pour quelle donnée ? {.socle}
+
+::: {.fiche n="5.1" etat="a-realiser"}
+Intention : La donnée commande la variable : qualitative (différencier : forme, couleur), ordonnée (valeur), quantitative de stock (taille), de taux (valeur, en classes). Les quatre cartes d'exemple de l'ancien support servent ici. [PPT 39 à 43]
+Expérience : classer six jeux de données forestiers (essence, classe d'âge, volume sur pied, taux de boisement, piste, incendie) dans leur variable ; puis les cartes d'exemple en défilé, chacune avec sa question « qu'aurait-on pu choisir d'autre ? »
+Demande :
+:::
+
+## Stock ou taux ? {.socle}
+
+::: {.fiche n="5.2" etat="a-realiser"}
+Intention : L'erreur la plus fréquente : un stock (une population, un volume de bois) en aplat de couleur. Les grandes communes paraissent les plus fortes parce qu'elles sont grandes. Un stock se représente en symboles proportionnels, un taux en aplats. [nouvelle]
+Expérience : la même donnée en aplats et en cercles ; QCM : laquelle est juste ?
+Demande :
+:::
+
+## Une donnée, plusieurs cartes {.socle}
+
+::: {.fiche n="5.3" etat="a-realiser"}
+Intention : La discrétisation : le choix de la méthode (amplitudes égales, effectifs égaux, seuils naturels) et du nombre de classes change le message de la carte. L'activité centrale du cours. [nouvelle]
+Expérience : carte vivante (brique « atelier », nouvelle) : l'étudiant change la méthode, le nombre de classes et la palette ; la carte se recolore et l'histogramme montre les seuils. Données : à décider (réelles fournies par Marc, ou territoire fictif annoncé comme tel).
+Demande :
+:::
+
+## Faire mentir une carte {.appui}
+
+::: {.fiche n="5.4" etat="a-realiser"}
+Intention : En déplaçant un seul seuil, on fait apparaître ou disparaître un problème. Mark Monmonier, *How to Lie with Maps*. Le cartographe est responsable du message. [nouvelle]
+Expérience : défi dans l'atelier : obtenir une carte qui paraît alarmante, puis une carte rassurante, avec les mêmes données ; question : quel réglage choisiriez-vous, et pourquoi ?
+Demande :
+:::
+
+## Le projet cartographique {.appui}
+
+::: {.fiche n="5.5" etat="a-realiser"}
+Intention : Structurer le message : une lecture globale, puis une lecture fine ; cartes topographiques, thématiques ; d'inventaire, de traitement, de synthèse. [PPT 44]
+Expérience : classer quatre cartes de Marc ou d'étudiants par type [cartes de Marc ?]
+Demande :
+:::
+
+## La mise en page {.intercalaire}
+
+::: {.fiche n="6.0" etat="a-realiser"}
+Intention : Organiser ce qui entoure la carte. [PPT 45]
+Expérience : aucune
+Demande :
+:::
+
+## Ce que porte une carte {.socle}
+
+::: {.fiche n="6.1" etat="a-realiser"}
+Intention : Titre, légende, échelle, source et date, auteur ; l'orientation quand elle n'est pas évidente pour tous ; des éléments facultatifs (quadrillage, déclinaison…). [PPT 50, 51, 52, 56]
+Expérience : zones à cliquer sur une carte de Marc ou d'étudiant : trouver chaque élément, et celui qui manque [carte de Marc ?]
+Demande :
+:::
+
+## Hiérarchiser et regrouper {.appui}
+
+::: {.fiche n="6.2" etat="a-realiser"}
+Intention : Faire l'inventaire des éléments, les classer par importance, regrouper en pavés, en limiter le nombre ; équilibre, alignement, symétrie, nombre d'or. [PPT 46, 47, 48, 49]
+Expérience : remise en ordre des éléments par importance ; puis QCM sur cinq mises en page dessinées (laquelle est équilibrée ?), le schéma suivant la réponse choisie
+Demande :
+:::
+
+## La légende {.socle}
+
+::: {.fiche n="6.3" etat="a-realiser"}
+Intention : Regrouper par thème, préciser l'unité, même taille de symboles que sur la carte, lecture continue du maximum au minimum ; une légende par implantation. [PPT 53, 54, 55]
+Expérience : remise en ordre d'une légende de classes en désordre
+Demande :
+:::
+
+## Avant, après
+
+::: {.fiche n="6.4" etat="a-realiser"}
+Intention : Une carte d'étudiant, première version et version corrigée : tout le cours appliqué. Sans étiquette de niveau. [cartes d'étudiant de Marc : une paire avant / après]
+Expérience : comparer : curseur entre les deux versions ; question : relevez trois corrections
+Demande :
+:::
+
+## À retenir
+
+::: {.fiche n="7.1" etat="a-realiser"}
+Intention : Les diapos du socle, en une liste ; et la phrase de l'ancien support : ne pas fatiguer le lecteur, chercher des effets visuels qui aident à la lecture. [PPT 57]
+Expérience : liens vers chaque diapo
+Demande :
+:::
+
+## À vous {.fin}
+
+::: {.fiche n="7.2" etat="a-realiser"}
+Intention : Le pont vers le TP de cartographie : mettre en page sa carte dans QGIS.
+Expérience : aucune
+Demande :
+:::
+
+## Sources et crédits {.petit}
+
+::: {.fiche n="7.3" etat="a-realiser"}
+Intention : Bertin, Béguin et Pumain, Blin et Bord, Monmonier ; les cartes de Marc et des étudiants, avec leur accord. [nouvelle]
+Expérience : aucune
+Demande :
+:::

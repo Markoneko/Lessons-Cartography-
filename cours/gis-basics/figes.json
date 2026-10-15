@@ -1,1 +1,222 @@
-{}
+{
+ "0.1": {
+  "empreinte": "af0d94b260abe1fe",
+  "titre": "Couverture"
+ },
+ "0.2": {
+  "empreinte": "811f6d2a13d5fd6c",
+  "titre": "Comment lire ce support"
+ },
+ "0.3": {
+  "empreinte": "d7280ea65b8d8430",
+  "titre": "Ce que vous saurez faire"
+ },
+ "0.4": {
+  "empreinte": "1006be3a0bb2f6f9",
+  "titre": "Carte du cours"
+ },
+ "1.0": {
+  "empreinte": "ae2d2e99a72d6b0c",
+  "titre": "D'où vient le SIG ?"
+ },
+ "1.1": {
+  "empreinte": "03d80a153cce326a",
+  "titre": "Dessiner ou stocker ?"
+ },
+ "1.2": {
+  "empreinte": "f84cb1856f531746",
+  "titre": "La fusion"
+ },
+ "1.3": {
+  "empreinte": "397509f360003f9f",
+  "titre": "Ce que la fusion permet"
+ },
+ "1.4": {
+  "empreinte": "a8bd5d4864c8d252",
+  "titre": "Une brève histoire"
+ },
+ "2.0": {
+  "empreinte": "b9afabe18d01b417",
+  "titre": "Qu'est-ce qu'un SIG ?"
+ },
+ "2.1": {
+  "empreinte": "da321cb477d386d7",
+  "titre": "Avant tout un système"
+ },
+ "2.2": {
+  "empreinte": "aaa9af2121b1f24e",
+  "titre": "Les composantes d'un SIG"
+ },
+ "2.3": {
+  "empreinte": "8057a8628043c365",
+  "titre": "Le vocabulaire en un schéma"
+ },
+ "3.0": {
+  "empreinte": "3d773976a132e271",
+  "titre": "Les données géographiques"
+ },
+ "3.1": {
+  "empreinte": "96fa816134269c1d",
+  "titre": "Où, et quoi"
+ },
+ "3.10": {
+  "empreinte": "8f2ebd2c28ac810f",
+  "titre": "D'où viennent les données ?"
+ },
+ "3.11": {
+  "empreinte": "36d3f9bfc4b60636",
+  "titre": "La topologie"
+ },
+ "3.12": {
+  "empreinte": "ee5d3367bc881946",
+  "titre": "Et la troisième dimension ?"
+ },
+ "3.13": {
+  "empreinte": "42ed89d0ae9d78d7",
+  "titre": "Décrire un objet géographique"
+ },
+ "3.2": {
+  "empreinte": "e89e15043b38ce54",
+  "titre": "Le raster : une grille"
+ },
+ "3.3": {
+  "empreinte": "c71b9ae3d5bcbfe2",
+  "titre": "Un raster d'altitudes : le MNT"
+ },
+ "3.4": {
+  "empreinte": "a9d019e81085bf3c",
+  "titre": "Le vecteur : point, ligne, surface"
+ },
+ "3.5": {
+  "empreinte": "6f80d46043e110aa",
+  "titre": "Des vecteurs particuliers : TIN et réseaux"
+ },
+ "3.6": {
+  "empreinte": "1f0230e9b10fc280",
+  "titre": "Raster ou vecteur ?"
+ },
+ "3.7": {
+  "empreinte": "b7cc616e2e875dc2",
+  "titre": "Les attributs"
+ },
+ "3.8": {
+  "empreinte": "8c9ea34d7579ac7f",
+  "titre": "Des types de valeurs"
+ },
+ "3.9": {
+  "empreinte": "f74ca52ee280592c",
+  "titre": "Une couche par nature d'objet"
+ },
+ "4.0": {
+  "empreinte": "a7e8b8c709fbdc16",
+  "titre": "Les fonctions de base"
+ },
+ "4.1": {
+  "empreinte": "801d45a1cf780a3d",
+  "titre": "Cinq verbes"
+ },
+ "4.2": {
+  "empreinte": "c874559e45e10433",
+  "titre": "Consulter"
+ },
+ "4.3": {
+  "empreinte": "ddd0c97fe3c61027",
+  "titre": "Sélectionner"
+ },
+ "4.4": {
+  "empreinte": "2b9332559b612193",
+  "titre": "Représenter"
+ },
+ "4.5": {
+  "empreinte": "ae8adf50cbc78227",
+  "titre": "Mettre en page"
+ },
+ "4.6": {
+  "empreinte": "0ad29a948ad4375e",
+  "titre": "Modifier"
+ },
+ "4.7": {
+  "empreinte": "01bf524b782338c0",
+  "titre": "Analyser"
+ },
+ "4.8": {
+  "empreinte": "83ccdafd199f0696",
+  "titre": "Quel SIG pour quel usage ?"
+ },
+ "5.0": {
+  "empreinte": "061ec362de7f6cf7",
+  "titre": "À quoi sert un SIG ?"
+ },
+ "5.1": {
+  "empreinte": "db8b7d3ded0ab8a5",
+  "titre": "Communiquer, analyser, simuler"
+ },
+ "5.2": {
+  "empreinte": "4996720b07b10683",
+  "titre": "Quel usage ?"
+ },
+ "5.3": {
+  "empreinte": "d23b4cf28bb9e481",
+  "titre": "Des métiers, des secteurs"
+ },
+ "6.0": {
+  "empreinte": "68e9d22dc0639b91",
+  "titre": "Concevoir un SIG"
+ },
+ "6.1": {
+  "empreinte": "59267d6ee7f89a5c",
+  "titre": "D'abord les besoins"
+ },
+ "6.2": {
+  "empreinte": "271cc9dfaa277414",
+  "titre": "Avec quels moyens ?"
+ },
+ "6.3": {
+  "empreinte": "fc1a7142817d4c75",
+  "titre": "Spécifier"
+ },
+ "6.4": {
+  "empreinte": "a27477518f6bd40f",
+  "titre": "Le terrain nominal"
+ },
+ "6.5": {
+  "empreinte": "f26650f43825eec8",
+  "titre": "Un rond-point, trois modèles"
+ },
+ "6.6": {
+  "empreinte": "b813cd6c0c2630da",
+  "titre": "Nomenclature et règles de sélection"
+ },
+ "6.7": {
+  "empreinte": "da14f18a5c2ec905",
+  "titre": "Le dictionnaire des données"
+ },
+ "6.8": {
+  "empreinte": "a2d23f1ea4b3f17d",
+  "titre": "Exemple : un réseau autoroutier"
+ },
+ "6.8b": {
+  "empreinte": "c5a8fcc06f608f1d",
+  "titre": "Qu'est-ce qu'un modèle de données ?"
+ },
+ "6.9": {
+  "empreinte": "66e4e6d472bff58d",
+  "titre": "De la spécification au modèle"
+ },
+ "7.1": {
+  "empreinte": "c3c01c197909a84a",
+  "titre": "À retenir"
+ },
+ "7.2": {
+  "empreinte": "9daf19b96d1896a4",
+  "titre": "Glossaire"
+ },
+ "7.3": {
+  "empreinte": "14e0bfa2939d538d",
+  "titre": "À vous"
+ },
+ "7.4": {
+  "empreinte": "068fae4d872439f9",
+  "titre": "Sources et crédits"
+ }
+}
