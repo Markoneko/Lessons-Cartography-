@@ -31,6 +31,9 @@ Ce support accompagne la présentation du cours, puis se relit seul, avant et pe
 
 [Prérequis : raster, vecteur, attributs et couches, vus dans « GIS : Basics ».]{.a-retenir}
 
+::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
 ## Ce que vous saurez faire
 
 ::: {.fiche n="0.3" etat="a-revoir"}

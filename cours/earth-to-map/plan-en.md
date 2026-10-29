@@ -7,6 +7,7 @@
 |----|-------|--------|------|-----------|------------|---------|
 | 0.1 | Couverture |  | à revoir | Two girls bent over a map: reading a map already means looking at the world together. | none |  |
 | 0.2 | What are they looking at? |  | à revoir | A map is not the world: it is a representation we question, and a sketch of reality. | question: what can we know about a place without having been there? |  |
+| 0.2b | How to use this handout |  | à revoir | The shared user guide (levels, exercises, bonuses) and the AI transparency statement (Marc’s request, for every course). [new] | none |  |
 | 0.3 | Course map |  | à revoir | The two movements, and the key to the three levels. | links to every slide |  |
 | 0.4 | To represent is to choose | Core | à revoir | An environment, a subject who looks, an object that is shown: every map makes a choice. | none |  |
 | 0.5 | What is a map for? | Core | à revoir | Locating, orienting, moving, controlling, thinking. | multiple-answer quiz on the 1:25,000 map of Nancy |  |
@@ -62,5 +63,5 @@
 
 ## Où en est-on
 
-- 54 diapos, dont 0 figées, 54 à revoir, 0 à réaliser.
+- 55 diapos, dont 0 figées, 55 à revoir, 0 à réaliser.
 - Aucune demande en attente.

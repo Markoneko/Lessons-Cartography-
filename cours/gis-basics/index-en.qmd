@@ -33,6 +33,9 @@ This handout is meant to be read on your own, at your own pace. Use the arrow ke
 
 [Coordinates and projections are covered in the course "From the Earth to the Map": they are not repeated here.]{.a-retenir}
 
+::: {.transparence-ia profil="✒️ The equipped Author" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
 ## What you will be able to do
 
 ::: {.fiche n="0.3" etat="fige"}

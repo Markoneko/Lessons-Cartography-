@@ -48,6 +48,21 @@ la revue de Paul Durand-Ruel. Une artiste qui a un pied dans chaque monde, deux 
 qui examinent une carte de géographie.
 :::
 
+## Comment lire ce support
+
+::: {.fiche n="0.2b" etat="a-revoir"}
+Intention : Le mode d'emploi commun (niveaux, exercices, bonus) et la déclaration de transparence IA (demande de Marc, pour tous les cours). [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+- Le **pictogramme** devant chaque titre donne le niveau : **socle**, à maîtriser ; **appui**, pour consolider ; **veille**, pour aller plus loin. Une diapo sans pictogramme est un exemple.
+- Les **exercices** : répondez d'abord, puis cliquez.
+- Le bouton **+** en haut à droite ouvre un bonus « Pour aller plus loin ».
+
+::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
 ## Carte du cours
 
 ::: {.fiche n="0.3" etat="fige"}

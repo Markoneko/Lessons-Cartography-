@@ -32,6 +32,9 @@ Ce support se lit seul, à votre rythme. Avancez avec les flèches du clavier.
 
 [Les coordonnées et les projections sont traitées dans le cours « De la Terre à la carte » : on ne les répète pas ici.]{.a-retenir}
 
+::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
 ## Ce que vous saurez faire
 
 ::: {.fiche n="0.3" etat="fige"}

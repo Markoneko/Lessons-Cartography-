@@ -36,6 +36,9 @@ This course is practised more than read: almost every slide asks you to **try be
 
 [Thanks to the M2 Geopolitics students: several maps in this course are theirs, made after a single week of cartography teaching.]{.a-retenir}
 
+::: {.transparence-ia profil="✒️ The equipped Author" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
 ## What you will be able to do
 
 ::: {.fiche n="0.3" etat="a-revoir"}

@@ -35,6 +35,9 @@ Ce cours se pratique plus qu'il ne se lit : presque chaque diapo vous demande d'
 
 [Merci aux étudiants du M2 Géopolitique : plusieurs cartes de ce cours sont les leurs, réalisées après une seule semaine d'enseignement de la cartographie.]{.a-retenir}
 
+::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
 ## Ce que vous saurez faire
 
 ::: {.fiche n="0.3" etat="a-revoir"}

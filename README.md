@@ -385,6 +385,15 @@ Figurés : `titre`, `sous-titre`, `aplat COULEUR`, `ligne COULEUR ÉPAISSEUR [EN
 
 Les schémas du cours (cartes en symboles, palettes, illusions) sont produits par `python3 cours/cartography-basics/outils/schemas.py`, en français et en anglais. Les valeurs données dans les réponses sont calculées par ce script, pas recopiées à la main.
 
+**Déclaration de transparence IA** — le bloc de la Boussole IA de Géodata Paris, dans la langue du cours. Il se place sur la diapo « Comment lire ce support » de chaque cours. Un texte écrit dans la brique remplace la phrase type.
+
+```markdown
+::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+```
+
+En anglais : `profil="✒️ The equipped Author"`.
+
 ### Réglages utiles
 
 | Écriture | Effet |

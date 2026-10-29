@@ -495,3 +495,8 @@ html.sans-reponses .reveal .reponse,
 html.sans-reponses .reveal .retour-ici .zones-retour,
 html.sans-reponses .reveal .pivot-retour,
 html.sans-reponses .reveal .visee-retour { visibility: hidden; }
+
+/* --- Déclaration de transparence IA (Boussole IA) ------------------------- */
+.reveal .transparence-ia { margin-top: 18px; padding: 8px 0 2px 0; border-top: 1.5px solid var(--filet); font-size: 15px; line-height: 1.35; color: var(--encre); }
+.reveal .transparence-titre { font-family: var(--police-mono); font-size: 13px; letter-spacing: 0.04em; color: var(--bleu); margin-bottom: 4px; }
+.reveal .transparence-ia p { margin: 2px 0; }

@@ -32,6 +32,9 @@ This handout goes with the presentation of the course, then is read again on you
 
 [Prerequisites: raster, vector, attributes and layers, covered in "GIS: Basics".]{.a-retenir}
 
+::: {.transparence-ia profil="✒️ The equipped Author" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
 ## What you will be able to do
 
 ::: {.fiche n="0.3" etat="a-revoir"}

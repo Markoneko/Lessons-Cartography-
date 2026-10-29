@@ -48,6 +48,21 @@ In November 1890 this drypoint was on the front page of the first issue of L'Art
 Paul Durand-Ruel's review. An artist with a foot in each world, two girls examining a map.
 :::
 
+## How to use this handout
+
+::: {.fiche n="0.2b" etat="a-revoir"}
+Intention : The shared user guide (levels, exercises, bonuses) and the AI transparency statement (Marc's request, for every course). [new]
+Experience : none
+Request :
+:::
+
+- The **icon** in front of each title gives the level: **core**, to master; **support**, to consolidate; **further**, to go beyond. A slide without an icon is an example.
+- **Exercises**: answer first, then click.
+- The **+** button at the top right opens a "Going further" bonus.
+
+::: {.transparence-ia profil="✒️ The equipped Author" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
 ## Course map
 
 ::: {.fiche n="0.3" etat="a-revoir"}

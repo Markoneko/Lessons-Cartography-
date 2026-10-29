@@ -28,6 +28,9 @@ local TEXTES = {
     loupe = "Cliquez pour zoomer, déplacez pour explorer", effacer = "Effacer",
     reponse_notes = "Réponse : ", ordre_notes = "Ordre attendu : ",
     flash_voir = "Voir la carte", flash_revoir = "Revoir", pieces = "Les pièces",
+    ia_titre = "DÉCLARATION DE TRANSPARENCE IA", ia_boussole = "Boussole IA · Géodata Paris",
+    ia_profil = "Profil :", ia_coordonnees = "coordonnées",
+    ia_texte = "Certaines illustrations et certains passages ont été réalisés par %s. La conception, les sources et le texte dans son ensemble sont de l’auteur.",
   },
   en = {
     question = "Question", reponse = "Answer", plus = "Going further", fermer = "Close",
@@ -39,6 +42,9 @@ local TEXTES = {
     loupe = "Click to zoom, move to explore", effacer = "Clear",
     reponse_notes = "Answer: ", ordre_notes = "Expected order: ",
     flash_voir = "Show the map", flash_revoir = "Show again", pieces = "The pieces",
+    ia_titre = "AI TRANSPARENCY STATEMENT", ia_boussole = "AI Compass · Géodata Paris",
+    ia_profil = "Profile:", ia_coordonnees = "coordinates",
+    ia_texte = "Some illustrations and passages were created by %s. The design, sources, and text as a whole were created by the author.",
   },
 }
 local LIBELLES = {
@@ -684,6 +690,27 @@ local function brique_flash(div)
 end
 
 -- ::: {.couleur3d} :::  le solide des couleurs (teinte, saturation, valeur), qui tourne, et trois curseurs
+-- ::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"} :::
+-- La déclaration de transparence IA (Boussole IA de Géodata Paris), dans la langue du cours.
+-- Un texte écrit dans la brique remplace la phrase type.
+local function brique_transparence_ia(div)
+  local profil = attribut(div, "profil", "")
+  local coord = attribut(div, "coordonnees", "")
+  local outil = attribut(div, "outil", "Claude")
+  local h = '<div class="transparence-titre">─── ' .. echappe(t("ia_titre")) .. ' ─── ' .. echappe(t("ia_boussole")) .. ' ───</div>'
+      .. '<p class="transparence-profil"><strong>' .. echappe(t("ia_profil")) .. '</strong> ' .. echappe(profil)
+      .. (coord ~= "" and (' — ' .. echappe(t("ia_coordonnees")) .. ' ' .. echappe(coord)) or '') .. '</p>'
+  local sortie = pandoc.List({ pandoc.RawBlock("html", h) })
+  if #div.content > 0 then
+    sortie:extend(div.content)
+  else
+    sortie:insert(pandoc.RawBlock("html", '<p class="transparence-texte">' .. echappe(string.format(t("ia_texte"), outil)) .. '</p>'))
+  end
+  div.content = sortie
+  for _, k in ipairs({ "profil", "coordonnees", "outil" }) do div.attributes[k] = nil end
+  return div
+end
+
 -- ::: {.puzzle-legende carte="images/schemas/legende-carte.svg" alt="…"}
 --   Consigne (paragraphes avant les listes).
 --   1. titre | Coupes rases             liste numérotée : les pièces justes, dans l'ordre de lecture
@@ -797,6 +824,7 @@ local function briques(div)
   if div.classes:includes("couleur3d") then return brique_couleur3d(div) end
   if div.classes:includes("synthese") then return brique_synthese(div) end
   if div.classes:includes("puzzle-legende") then return brique_puzzle_legende(div) end
+  if div.classes:includes("transparence-ia") then return brique_transparence_ia(div) end
   return nil
 end
 

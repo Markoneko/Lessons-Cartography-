@@ -2,6 +2,14 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-29 — Déclaration de transparence IA dans chaque cours
+
+- Demande de Marc : sur la diapo de mode d'emploi de chaque cours, en français et en anglais, la déclaration de la Boussole IA (profil « ✒️ L'Auteur outillé », coordonnées F2 · R0 · S0, illustrations et passages réalisés par Claude 5). Ses ajouts précédents n'avaient jamais été poussés sur GitHub.
+- Nouvelle brique `transparence-ia` : le texte est le même partout, traduit selon la langue du cours. La version anglaise reprend mot pour mot celle de Marc ; la française en est la traduction.
+- « GIS : Basics » : la diapo figée 0.2 reçoit le bloc, à la demande de Marc ; son nouvel état est enregistré dans `figes.json` et `figes-en.json`.
+- « De la Terre à la carte » n'avait pas de mode d'emploi : nouvelle diapo 0.2b « Comment lire ce support », après « Que regardent-elles ? » (55 diapos).
+- Vérifié : huit supports, aucun débordement, aucune erreur ; aucune autre diapo figée modifiée.
+
 ## 2026-10-29 — Arborescence rationalisée
 
 **Demande de Marc**

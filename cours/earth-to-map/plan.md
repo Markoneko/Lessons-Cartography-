@@ -7,6 +7,7 @@
 |----|-------|--------|------|-----------|------------|---------|
 | 0.1 | Couverture |  | à revoir | Deux jeunes filles penchées sur une carte : lire une carte, c’est déjà regarder le monde à plusieurs. | aucune |  |
 | 0.2 | Que regardent-elles ? |  | à revoir | Une carte n’est pas le monde : c’est une représentation que l’on interroge et une exquisse du réel. | question : que peut-on savoir d’un lieu sans y être allé ? |  |
+| 0.2b | Comment lire ce support |  | à revoir | Le mode d’emploi commun (niveaux, exercices, bonus) et la déclaration de transparence IA (demande de Marc, pour tous les cours). [nouvelle] | aucune |  |
 | 0.3 | Carte du cours |  | figé | Les deux mouvements, et la légende S / A / V. | liens vers chaque diapo |  |
 | 0.4 | Représenter, c’est choisir | Socle | à revoir | Un milieu, un sujet qui regarde, un objet que l’on montre : toute carte tranche. | aucune |  |
 | 0.5 | À quoi sert une carte ? | Socle | à revoir | Se repérer, s’orienter, se déplacer, contrôler, penser. | QCM à réponses multiples, sur la carte de Nancy au 1:25 000 |  |
@@ -62,5 +63,5 @@
 
 ## Où en est-on
 
-- 54 diapos, dont 27 figées, 27 à revoir, 0 à réaliser.
+- 55 diapos, dont 27 figées, 28 à revoir, 0 à réaliser.
 - Aucune demande en attente.
