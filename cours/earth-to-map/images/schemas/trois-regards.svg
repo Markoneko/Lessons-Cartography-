@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 300" role="img" aria-label="Trois regards : vers le ciel, vers l'horizon, depuis le ciel">
+  <!-- 1. lever les yeux -->
+  <path class="s-eau" d="M30 230 Q180 170 330 230 Z"/>
+  <path class="s-trait" d="M30 230 Q180 170 330 230"/>
+  <circle class="s-blanc" cx="180" cy="172" r="9"/><path class="s-trait" d="M180 181 v20"/>
+  <path class="s-accent" d="M186 162 L232 62"/><path class="s-plein-accent" d="M236 52 l-12 10 l12 6 z"/>
+  <path class="s-plein-accent" d="M250 26 l4 9 l10 1 l-8 7 l3 10 l-9 -6 l-9 6 l3 -10 l-8 -7 l10 -1 z"/>
+  <path class="s-plein-accent" d="M110 46 l3 6 l7 1 l-5 5 l2 7 l-7 -4 l-7 4 l2 -7 l-5 -5 l7 -1 z" opacity="0.6"/>
+  <text class="s-titre" x="180" y="266" text-anchor="middle">Lever les yeux</text>
+  <text class="s-petit" x="180" y="288" text-anchor="middle">se situer dans le cosmos</text>
+  <!-- 2. regarder l'horizon -->
+  <path class="s-eau" d="M410 230 Q560 170 710 230 Z"/>
+  <path class="s-trait" d="M410 230 Q560 170 710 230"/>
+  <circle class="s-blanc" cx="520" cy="176" r="9"/><path class="s-trait" d="M520 185 v19"/>
+  <path class="s-accent" d="M532 176 L668 176"/><path class="s-plein-accent" d="M680 176 l-14 -7 v14 z"/>
+  <text class="s-titre" x="560" y="266" text-anchor="middle">Regarder l'horizon</text>
+  <text class="s-petit" x="560" y="288" text-anchor="middle">parcourir, mesurer, contrôler</text>
+  <!-- 3. regarder d'en haut -->
+  <path class="s-eau" d="M790 230 Q940 170 1090 230 Z"/>
+  <path class="s-trait" d="M790 230 Q940 170 1090 230"/>
+  <path class="s-blanc" d="M926 34 h28 v18 h-28 z"/>
+  <path class="s-trait" d="M926 43 h-22 M954 43 h22 M898 34 v18 M982 34 v18"/>
+  <path class="s-accent" d="M940 58 L940 176"/><path class="s-plein-accent" d="M940 190 l-7 -14 h14 z"/>
+  <path class="s-tirets" d="M934 56 L880 196 M946 56 L1000 196"/>
+  <text class="s-titre" x="940" y="266" text-anchor="middle">Regarder d'en haut</text>
+  <text class="s-petit" x="940" y="288" text-anchor="middle">le regard se centre sur la Terre</text>
+</svg>

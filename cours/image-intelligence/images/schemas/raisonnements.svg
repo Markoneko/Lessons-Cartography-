@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 370" role="img" aria-label="Induction, déduction, abduction">
+<defs><marker id="fleche" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#E38226"/></marker></defs>
+<rect x="10" y="10" width="236" height="200" rx="12" class="s-fond"/>
+<text class="s-titre" x="128" y="44" text-anchor="middle" style="font-size:22px">Induction</text>
+<text x="128" y="76" text-anchor="middle" style="font-size:16px;fill:#2B2B33">des cas observés</text>
+<text x="128" y="98" text-anchor="middle" style="font-size:16px;fill:#283B89;font-weight:700">→ une règle</text>
+<path d="M40 120 H216" stroke="#D8DAEC" stroke-width="1.5"/>
+<text class="s-petit" x="128" y="150" text-anchor="middle" style="font-size:14px;font-style:italic">Chaque dôme vu jusqu’ici</text>
+<text class="s-petit" x="128" y="172" text-anchor="middle" style="font-size:14px;font-style:italic">abritait un réacteur.</text>
+<rect x="260" y="10" width="236" height="200" rx="12" class="s-fond"/>
+<text class="s-titre" x="378" y="44" text-anchor="middle" style="font-size:22px">Déduction</text>
+<text x="378" y="76" text-anchor="middle" style="font-size:16px;fill:#2B2B33">une règle + un cas</text>
+<text x="378" y="98" text-anchor="middle" style="font-size:16px;fill:#283B89;font-weight:700">→ une conséquence</text>
+<path d="M290 120 H466" stroke="#D8DAEC" stroke-width="1.5"/>
+<text class="s-petit" x="378" y="150" text-anchor="middle" style="font-size:14px;font-style:italic">Un réacteur rejette de la chaleur :</text>
+<text class="s-petit" x="378" y="172" text-anchor="middle" style="font-size:14px;font-style:italic">il lui faut de l’eau froide.</text>
+<rect x="510" y="10" width="236" height="200" rx="12" class="s-fond"/>
+<text class="s-titre" x="628" y="44" text-anchor="middle" style="font-size:22px">Abduction</text>
+<text x="628" y="76" text-anchor="middle" style="font-size:16px;fill:#2B2B33">un indice surprenant</text>
+<text x="628" y="98" text-anchor="middle" style="font-size:16px;fill:#283B89;font-weight:700">→ la meilleure explication</text>
+<path d="M540 120 H716" stroke="#D8DAEC" stroke-width="1.5"/>
+<text class="s-petit" x="628" y="150" text-anchor="middle" style="font-size:14px;font-style:italic">Des remous en mer, loin du bord :</text>
+<text class="s-petit" x="628" y="172" text-anchor="middle" style="font-size:14px;font-style:italic">sans doute un rejet d’eau.</text>
+<text class="s-titre" x="380" y="252" text-anchor="middle">Le faisceau d’indices</text>
+<path d="M90 290 Q 206.0 300 380 304" fill="none" stroke="#E38226" stroke-width="3" marker-end="url(#fleche)"/>
+<circle cx="90" cy="285" r="5" fill="#E38226"/>
+<text class="s-petit" x="90" y="278" text-anchor="middle" style="font-size:14px">forme</text>
+<path d="M280 290 Q 320.0 300 380 304" fill="none" stroke="#E38226" stroke-width="3" marker-end="url(#fleche)"/>
+<circle cx="280" cy="285" r="5" fill="#E38226"/>
+<text class="s-petit" x="280" y="278" text-anchor="middle" style="font-size:14px">site</text>
+<path d="M470 290 Q 434.0 300 380 304" fill="none" stroke="#E38226" stroke-width="3" marker-end="url(#fleche)"/>
+<circle cx="470" cy="285" r="5" fill="#E38226"/>
+<text class="s-petit" x="470" y="278" text-anchor="middle" style="font-size:14px">association</text>
+<path d="M660 290 Q 548.0 300 380 304" fill="none" stroke="#E38226" stroke-width="3" marker-end="url(#fleche)"/>
+<circle cx="660" cy="285" r="5" fill="#E38226"/>
+<text class="s-petit" x="660" y="278" text-anchor="middle" style="font-size:14px">temps</text>
+<rect x="300" y="306" width="160" height="44" rx="22" fill="#283B89"/>
+<text x="380" y="335" text-anchor="middle" style="font-size:18px;font-weight:700;fill:#FFFFFF">hypothèse</text>
+</svg>

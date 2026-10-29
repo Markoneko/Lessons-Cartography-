@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 330" role="img" aria-label="Seven value steps in five hues">
+<text x="80" y="46" text-anchor="end" style="font-weight:700">Yellow</text>
+<rect x="100" y="10" width="100" height="52" style="fill:hsl(52,95%,92%)"/>
+<rect x="200" y="10" width="100" height="52" style="fill:hsl(52,95%,81%)"/>
+<rect x="300" y="10" width="100" height="52" style="fill:hsl(52,95%,70%)"/>
+<rect x="400" y="10" width="100" height="52" style="fill:hsl(52,95%,59%)"/>
+<rect x="500" y="10" width="100" height="52" style="fill:hsl(52,95%,48%)"/>
+<rect x="600" y="10" width="100" height="52" style="fill:hsl(52,95%,37%)"/>
+<rect x="700" y="10" width="100" height="52" style="fill:hsl(52,95%,26%)"/>
+<text x="80" y="110" text-anchor="end" style="font-weight:700">Green</text>
+<rect x="100" y="74" width="100" height="52" style="fill:hsl(120,55%,92%)"/>
+<rect x="200" y="74" width="100" height="52" style="fill:hsl(120,55%,81%)"/>
+<rect x="300" y="74" width="100" height="52" style="fill:hsl(120,55%,70%)"/>
+<rect x="400" y="74" width="100" height="52" style="fill:hsl(120,55%,59%)"/>
+<rect x="500" y="74" width="100" height="52" style="fill:hsl(120,55%,48%)"/>
+<rect x="600" y="74" width="100" height="52" style="fill:hsl(120,55%,37%)"/>
+<rect x="700" y="74" width="100" height="52" style="fill:hsl(120,55%,26%)"/>
+<text x="80" y="174" text-anchor="end" style="font-weight:700">Blue</text>
+<rect x="100" y="138" width="100" height="52" style="fill:hsl(215,70%,92%)"/>
+<rect x="200" y="138" width="100" height="52" style="fill:hsl(215,70%,81%)"/>
+<rect x="300" y="138" width="100" height="52" style="fill:hsl(215,70%,70%)"/>
+<rect x="400" y="138" width="100" height="52" style="fill:hsl(215,70%,59%)"/>
+<rect x="500" y="138" width="100" height="52" style="fill:hsl(215,70%,48%)"/>
+<rect x="600" y="138" width="100" height="52" style="fill:hsl(215,70%,37%)"/>
+<rect x="700" y="138" width="100" height="52" style="fill:hsl(215,70%,26%)"/>
+<text x="80" y="238" text-anchor="end" style="font-weight:700">Red</text>
+<rect x="100" y="202" width="100" height="52" style="fill:hsl(0,75%,92%)"/>
+<rect x="200" y="202" width="100" height="52" style="fill:hsl(0,75%,81%)"/>
+<rect x="300" y="202" width="100" height="52" style="fill:hsl(0,75%,70%)"/>
+<rect x="400" y="202" width="100" height="52" style="fill:hsl(0,75%,59%)"/>
+<rect x="500" y="202" width="100" height="52" style="fill:hsl(0,75%,48%)"/>
+<rect x="600" y="202" width="100" height="52" style="fill:hsl(0,75%,37%)"/>
+<rect x="700" y="202" width="100" height="52" style="fill:hsl(0,75%,26%)"/>
+<text x="80" y="302" text-anchor="end" style="font-weight:700">Grey</text>
+<rect x="100" y="266" width="100" height="52" style="fill:hsl(0,0%,92%)"/>
+<rect x="200" y="266" width="100" height="52" style="fill:hsl(0,0%,81%)"/>
+<rect x="300" y="266" width="100" height="52" style="fill:hsl(0,0%,70%)"/>
+<rect x="400" y="266" width="100" height="52" style="fill:hsl(0,0%,59%)"/>
+<rect x="500" y="266" width="100" height="52" style="fill:hsl(0,0%,48%)"/>
+<rect x="600" y="266" width="100" height="52" style="fill:hsl(0,0%,37%)"/>
+<rect x="700" y="266" width="100" height="52" style="fill:hsl(0,0%,26%)"/>
+</svg>

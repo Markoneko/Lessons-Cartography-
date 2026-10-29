@@ -1,0 +1,222 @@
+{
+ "0.1": {
+  "empreinte": "fb146176e3c3b7b6",
+  "titre": "Couverture"
+ },
+ "0.2": {
+  "empreinte": "be5dd3f3aca22b04",
+  "titre": "How to use this handout"
+ },
+ "0.3": {
+  "empreinte": "f2264d878dbe4ab8",
+  "titre": "What you will be able to do"
+ },
+ "0.4": {
+  "empreinte": "d0d9076951b4dd1e",
+  "titre": "Course map"
+ },
+ "1.0": {
+  "empreinte": "cdd5052616df0cd0",
+  "titre": "Where does GIS come from?"
+ },
+ "1.1": {
+  "empreinte": "87b6089a1c805306",
+  "titre": "Drawing or storing?"
+ },
+ "1.2": {
+  "empreinte": "89db822eeada4555",
+  "titre": "The merger"
+ },
+ "1.3": {
+  "empreinte": "73b42454d8bc33da",
+  "titre": "What the merger makes possible"
+ },
+ "1.4": {
+  "empreinte": "349f0a63899825e0",
+  "titre": "A short history"
+ },
+ "2.0": {
+  "empreinte": "5425116ebf85e744",
+  "titre": "What is a GIS?"
+ },
+ "2.1": {
+  "empreinte": "a9ac1a8e96ab37da",
+  "titre": "First of all, a system"
+ },
+ "2.2": {
+  "empreinte": "ed5bc75b3ffc02f7",
+  "titre": "The components of a GIS"
+ },
+ "2.3": {
+  "empreinte": "d48852c28a276159",
+  "titre": "The vocabulary in one diagram"
+ },
+ "3.0": {
+  "empreinte": "02b424e50d480d89",
+  "titre": "Geographic data"
+ },
+ "3.1": {
+  "empreinte": "43746f0b945cd14c",
+  "titre": "Where, and what"
+ },
+ "3.10": {
+  "empreinte": "cdcac16892a7f7ba",
+  "titre": "Where do data come from?"
+ },
+ "3.11": {
+  "empreinte": "48072d4d34eca479",
+  "titre": "Topology"
+ },
+ "3.12": {
+  "empreinte": "621f54d336b03381",
+  "titre": "And the third dimension?"
+ },
+ "3.13": {
+  "empreinte": "cae0b4414553e843",
+  "titre": "Describing a geographic feature"
+ },
+ "3.2": {
+  "empreinte": "06c7271a6fabd22b",
+  "titre": "Raster: a grid"
+ },
+ "3.3": {
+  "empreinte": "404c1beacce8ca98",
+  "titre": "An elevation raster: the DTM"
+ },
+ "3.4": {
+  "empreinte": "e33002b525e070fd",
+  "titre": "Vector: point, line, polygon"
+ },
+ "3.5": {
+  "empreinte": "657c0c6fc05e6bc0",
+  "titre": "Special vectors: TINs and networks"
+ },
+ "3.6": {
+  "empreinte": "a8c862cf7762b8db",
+  "titre": "Raster or vector?"
+ },
+ "3.7": {
+  "empreinte": "96873ddd9d8c819f",
+  "titre": "Attributes"
+ },
+ "3.8": {
+  "empreinte": "a1be8279d0cbefba",
+  "titre": "Value types"
+ },
+ "3.9": {
+  "empreinte": "70e46a7b08394159",
+  "titre": "One layer per kind of feature"
+ },
+ "4.0": {
+  "empreinte": "8d5ba6a5e736fdd4",
+  "titre": "Basic functions"
+ },
+ "4.1": {
+  "empreinte": "d18fe3c18ca4a485",
+  "titre": "Five verbs"
+ },
+ "4.2": {
+  "empreinte": "beb4863c77c767ed",
+  "titre": "Look up"
+ },
+ "4.3": {
+  "empreinte": "cf8887178d48d31d",
+  "titre": "Select"
+ },
+ "4.4": {
+  "empreinte": "ff41c04117af3dd8",
+  "titre": "Display"
+ },
+ "4.5": {
+  "empreinte": "49107682c65fe738",
+  "titre": "Map layout"
+ },
+ "4.6": {
+  "empreinte": "50604ca1e3b0c63c",
+  "titre": "Edit"
+ },
+ "4.7": {
+  "empreinte": "7a77cf888dc3ea60",
+  "titre": "Analyse"
+ },
+ "4.8": {
+  "empreinte": "44b68d83e50132c8",
+  "titre": "Which GIS for which use?"
+ },
+ "5.0": {
+  "empreinte": "37e7d5ade8cfc585",
+  "titre": "What is a GIS for?"
+ },
+ "5.1": {
+  "empreinte": "7d7c493c0d740152",
+  "titre": "Communicate, analyse, simulate"
+ },
+ "5.2": {
+  "empreinte": "a2572c2258c8bead",
+  "titre": "Which use?"
+ },
+ "5.3": {
+  "empreinte": "354032c50a9dd541",
+  "titre": "Jobs and sectors"
+ },
+ "6.0": {
+  "empreinte": "dd2ae880e095bb72",
+  "titre": "Designing a GIS"
+ },
+ "6.1": {
+  "empreinte": "554949f140abd104",
+  "titre": "Needs first"
+ },
+ "6.2": {
+  "empreinte": "a57a4b6e0011259e",
+  "titre": "With what means?"
+ },
+ "6.3": {
+  "empreinte": "d33903cc62b6dc91",
+  "titre": "Specifying"
+ },
+ "6.4": {
+  "empreinte": "7b3e801ffb777bc3",
+  "titre": "The nominal ground"
+ },
+ "6.5": {
+  "empreinte": "33a4b80a0f800c3a",
+  "titre": "One roundabout, three models"
+ },
+ "6.6": {
+  "empreinte": "72189209be7e05f0",
+  "titre": "Feature catalogue and selection rules"
+ },
+ "6.7": {
+  "empreinte": "d1784d3ab38cfa07",
+  "titre": "The data dictionary"
+ },
+ "6.8": {
+  "empreinte": "6388067beec84e8a",
+  "titre": "Example: a motorway network"
+ },
+ "6.8b": {
+  "empreinte": "ab79698c05e4c936",
+  "titre": "What is a data model?"
+ },
+ "6.9": {
+  "empreinte": "b03df4ed299dec2f",
+  "titre": "From specification to model"
+ },
+ "7.1": {
+  "empreinte": "c0a123fdb0dc8f64",
+  "titre": "Key points"
+ },
+ "7.2": {
+  "empreinte": "ed8a80caedd7dba1",
+  "titre": "Glossary"
+ },
+ "7.3": {
+  "empreinte": "0bbb362b34f59830",
+  "titre": "Your turn"
+ },
+ "7.4": {
+  "empreinte": "45d283e801e2f822",
+  "titre": "Sources and credits"
+ }
+}

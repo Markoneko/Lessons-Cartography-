@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 335" role="img" aria-label="Three plots on a DTM">
+<rect x="20" y="20" width="70" height="70" style="fill:rgb(223,226,242);stroke:#D8DAEC;stroke-width:1"/>
+<text x="55.0" y="60.25" text-anchor="middle" style="font-size:15px;">380</text>
+<rect x="90" y="20" width="70" height="70" style="fill:rgb(204,205,231);stroke:#D8DAEC;stroke-width:1"/>
+<text x="125.0" y="60.25" text-anchor="middle" style="font-size:15px;">395</text>
+<rect x="160" y="20" width="70" height="70" style="fill:rgb(186,185,220);stroke:#D8DAEC;stroke-width:1"/>
+<text x="195.0" y="60.25" text-anchor="middle" style="font-size:15px;">410</text>
+<rect x="230" y="20" width="70" height="70" style="fill:rgb(167,164,208);stroke:#D8DAEC;stroke-width:1"/>
+<text x="265.0" y="60.25" text-anchor="middle" style="font-size:15px;">425</text>
+<rect x="20" y="90" width="70" height="70" style="fill:rgb(213,215,236);stroke:#D8DAEC;stroke-width:1"/>
+<text x="55.0" y="130.25" text-anchor="middle" style="font-size:15px;">388</text>
+<rect x="90" y="90" width="70" height="70" style="fill:rgb(196,196,226);stroke:#D8DAEC;stroke-width:1"/>
+<text x="125.0" y="130.25" text-anchor="middle" style="font-size:15px;">402</text>
+<rect x="160" y="90" width="70" height="70" style="fill:rgb(176,174,214);stroke:#D8DAEC;stroke-width:1"/>
+<text x="195.0" y="130.25" text-anchor="middle" style="font-size:15px;">418</text>
+<rect x="230" y="90" width="70" height="70" style="fill:rgb(159,156,204);stroke:#D8DAEC;stroke-width:1"/>
+<text x="265.0" y="130.25" text-anchor="middle" style="font-size:15px;">431</text>
+<rect x="20" y="160" width="70" height="70" style="fill:rgb(203,204,230);stroke:#D8DAEC;stroke-width:1"/>
+<text x="55.0" y="200.25" text-anchor="middle" style="font-size:15px;">396</text>
+<rect x="90" y="160" width="70" height="70" style="fill:rgb(183,182,218);stroke:#D8DAEC;stroke-width:1"/>
+<text x="125.0" y="200.25" text-anchor="middle" style="font-size:15px;">412</text>
+<rect x="160" y="160" width="70" height="70" style="fill:rgb(166,163,208);stroke:#D8DAEC;stroke-width:1"/>
+<text x="195.0" y="200.25" text-anchor="middle" style="font-size:15px;">426</text>
+<rect x="230" y="160" width="70" height="70" style="fill:rgb(148,143,197);stroke:#D8DAEC;stroke-width:1"/>
+<text x="265.0" y="200.25" text-anchor="middle" style="font-size:15px;">440</text>
+<rect x="20" y="230" width="70" height="70" style="fill:rgb(192,191,223);stroke:#D8DAEC;stroke-width:1"/>
+<text x="55.0" y="270.25" text-anchor="middle" style="font-size:15px;">405</text>
+<rect x="90" y="230" width="70" height="70" style="fill:rgb(173,171,212);stroke:#D8DAEC;stroke-width:1"/>
+<text x="125.0" y="270.25" text-anchor="middle" style="font-size:15px;">420</text>
+<rect x="160" y="230" width="70" height="70" style="fill:rgb(157,153,202);stroke:#D8DAEC;stroke-width:1"/>
+<text x="195.0" y="270.25" text-anchor="middle" style="font-size:15px;">433</text>
+<rect x="230" y="230" width="70" height="70" style="fill:rgb(138,132,191);stroke:#D8DAEC;stroke-width:1"/>
+<text x="265.0" y="270.25" text-anchor="middle" style="font-size:15px;">448</text>
+<rect class="s-trait" x="20" y="20" width="280" height="280" style="stroke-width:1.8"/>
+<circle cx="219.5" cy="34.0" r="9" style="fill:#E38226;stroke:#fff;stroke-width:2"/>
+<text x="219.5" y="39.0" text-anchor="middle" style="fill:#fff;font-weight:700;font-size:12px">1</text>
+<circle cx="289.5" cy="104.0" r="9" style="fill:#E38226;stroke:#fff;stroke-width:2"/>
+<text x="289.5" y="109.0" text-anchor="middle" style="fill:#fff;font-weight:700;font-size:12px">2</text>
+<circle cx="149.5" cy="174.0" r="9" style="fill:#E38226;stroke:#fff;stroke-width:2"/>
+<text x="149.5" y="179.0" text-anchor="middle" style="fill:#fff;font-weight:700;font-size:12px">3</text>
+<text class="s-petit" x="160" y="324" text-anchor="middle">elevation (m)</text>
+</svg>

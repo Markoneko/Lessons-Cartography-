@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990 320" role="img" aria-label="Quatre mises en page de la même carte">
+<rect x="20" y="10" width="200" height="270" fill="#FFFFFF" stroke="#283B89" stroke-width="2"/>
+<rect x="32" y="56" width="176" height="190" rx="16" fill="#C9D3B8"/>
+<rect x="32" y="24" width="176" height="22" fill="#283B89"/>
+<rect x="148" y="160" width="54" height="76" fill="#E38226"/>
+<rect x="32" y="256" width="60" height="8" fill="#6E6F7A"/>
+<rect x="130" y="266" width="78" height="6" fill="#6E6F7A"/>
+<text class="s-titre" x="120" y="310" text-anchor="middle" style="font-size:26px">A</text>
+<rect x="148" y="160" width="54" height="76" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+<rect x="270" y="10" width="200" height="270" fill="#FFFFFF" stroke="#283B89" stroke-width="2"/>
+<rect x="310" y="70" width="120" height="150" rx="16" fill="#C9D3B8"/>
+<rect x="420" y="240" width="40" height="14" fill="#283B89"/>
+<rect x="280" y="24" width="60" height="40" fill="#E38226"/>
+<rect x="282" y="130" width="30" height="8" fill="#6E6F7A"/>
+<rect x="410" y="28" width="50" height="6" fill="#6E6F7A"/>
+<text class="s-titre" x="370" y="310" text-anchor="middle" style="font-size:26px">B</text>
+<rect x="520" y="10" width="200" height="270" fill="#FFFFFF" stroke="#283B89" stroke-width="2"/>
+<rect x="560" y="90" width="120" height="120" rx="16" fill="#C9D3B8"/>
+<rect x="532" y="24" width="176" height="22" fill="#283B89"/>
+<rect x="532" y="220" width="176" height="50" fill="#E38226"/>
+<rect x="680" y="60" width="30" height="8" fill="#6E6F7A"/>
+<rect x="560" y="60" width="100" height="6" fill="#6E6F7A"/>
+<rect x="532" y="74" width="20" height="20" fill="#E38226"/>
+<rect x="686" y="170" width="24" height="30" fill="#E38226"/>
+<text class="s-titre" x="620" y="310" text-anchor="middle" style="font-size:26px">C</text>
+<rect x="770" y="10" width="200" height="270" fill="#FFFFFF" stroke="#283B89" stroke-width="2"/>
+<rect x="840" y="80" width="60" height="50" rx="16" fill="#C9D3B8"/>
+<rect x="782" y="24" width="176" height="22" fill="#283B89"/>
+<rect x="784" y="210" width="80" height="60" fill="#E38226"/>
+<rect x="890" y="240" width="68" height="8" fill="#6E6F7A"/>
+<rect x="890" y="260" width="68" height="6" fill="#6E6F7A"/>
+<text class="s-titre" x="870" y="310" text-anchor="middle" style="font-size:26px">D</text>
+</svg>

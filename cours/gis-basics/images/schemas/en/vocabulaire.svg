@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 450" role="img" aria-label="GIS vocabulary in one diagram: tables, fields, values, keys, DBMS, vector, DTM and raster layers, features, coordinate system, interface">
+<rect class="s-fond" x="10" y="10" width="1100" height="430" rx="14"/>
+<a href="#/attributs"><text class="s-titre" x="40" y="48">A table</text></a>
+<rect class="s-blanc" x="40" y="70" width="330" height="190"/>
+<rect class="s-plein" x="40" y="70" width="330" height="38" opacity="0.15"/>
+<rect class="s-plein-accent" x="40" y="108" width="330" height="38" opacity="0.3"/>
+<path class="s-fin" d="M40 108 h330 M40 146 h330 M40 184 h330 M40 222 h330 M100 70 v190 M200 70 v190 M290 70 v190"/>
+<text class="s-orange" x="70" y="96" text-anchor="middle">id</text>
+<text x="150" y="96" text-anchor="middle">species</text>
+<text x="245" y="96" text-anchor="middle">area</text>
+<text x="330" y="96" text-anchor="middle">age</text>
+<text class="s-orange" x="70" y="133" text-anchor="middle">12</text>
+<text x="150" y="133" text-anchor="middle">oak</text>
+<text x="245" y="133" text-anchor="middle">4.2</text>
+<text x="330" y="133" text-anchor="middle">85</text>
+<text class="s-orange" x="70" y="171" text-anchor="middle">13</text>
+<text x="150" y="171" text-anchor="middle">beech</text>
+<text x="245" y="171" text-anchor="middle">7.9</text>
+<text x="330" y="171" text-anchor="middle">60</text>
+<text class="s-orange" x="70" y="209" text-anchor="middle">14</text>
+<text x="150" y="209" text-anchor="middle">pine</text>
+<text x="245" y="209" text-anchor="middle">2.6</text>
+<text x="330" y="209" text-anchor="middle">35</text>
+<a href="#/types-valeurs"><text class="s-petit" x="245" y="282" text-anchor="middle">fields, values of different types</text></a>
+<a href="#/attributs"><text class="s-orange" x="70" y="250" text-anchor="middle">key</text></a>
+<path class="s-tirets" d="M205 292 v22"/>
+<ellipse class="s-blanc" cx="205" cy="330" rx="70" ry="14"/><path class="s-blanc" d="M135 330 v55 a70 14 0 0 0 140 0 v-55"/><ellipse class="s-fond" cx="205" cy="330" rx="70" ry="14"/>
+<text x="205" y="372" text-anchor="middle" class="s-titre" style="font-size:17px">DBMS</text>
+<text class="s-petit" x="205" y="420" text-anchor="middle">the system that manages the tables</text>
+<a href="#/couches"><text class="s-titre" x="640" y="48">Layers</text></a>
+<text class="s-petit" x="1095" y="48" text-anchor="end">all of it, in a software interface: QGIS</text>
+<path class="s-fond" d="M640.0 325.0 L940.0 325.0 L1000.0 275.0 L700.0 275.0 Z"/>
+<path d="M640.0 325.0 L690.0 325.0 L710.0 308.3 L660.0 308.3 Z" style="fill:rgb(211,212,211);stroke:#fff;stroke-width:1"/>
+<text x="675.0" y="320.7" text-anchor="middle" style="font-size:11px">57</text>
+<path d="M690.0 325.0 L740.0 325.0 L760.0 308.3 L710.0 308.3 Z" style="fill:rgb(210,210,208);stroke:#fff;stroke-width:1"/>
+<text x="725.0" y="320.7" text-anchor="middle" style="font-size:11px">62</text>
+<path d="M740.0 325.0 L790.0 325.0 L810.0 308.3 L760.0 308.3 Z" style="fill:rgb(209,209,206);stroke:#fff;stroke-width:1"/>
+<text x="775.0" y="320.7" text-anchor="middle" style="font-size:11px">66</text>
+<path d="M790.0 325.0 L840.0 325.0 L860.0 308.3 L810.0 308.3 Z" style="fill:rgb(196,182,156);stroke:#fff;stroke-width:1"/>
+<text x="825.0" y="320.7" text-anchor="middle" style="font-size:11px">150</text>
+<path d="M840.0 325.0 L890.0 325.0 L910.0 308.3 L860.0 308.3 Z" style="fill:rgb(189,169,131);stroke:#fff;stroke-width:1"/>
+<text x="875.0" y="320.7" text-anchor="middle" style="font-size:11px">193</text>
+<path d="M890.0 325.0 L940.0 325.0 L960.0 308.3 L910.0 308.3 Z" style="fill:rgb(187,164,121);stroke:#fff;stroke-width:1"/>
+<text x="925.0" y="320.7" text-anchor="middle" style="font-size:11px">210</text>
+<path d="M660.0 308.3 L710.0 308.3 L730.0 291.7 L680.0 291.7 Z" style="fill:rgb(214,218,223);stroke:#fff;stroke-width:1"/>
+<text x="695.0" y="304.0" text-anchor="middle" style="font-size:11px">36</text>
+<path d="M710.0 308.3 L760.0 308.3 L780.0 291.7 L730.0 291.7 Z" style="fill:rgb(210,211,209);stroke:#fff;stroke-width:1"/>
+<text x="745.0" y="304.0" text-anchor="middle" style="font-size:11px">60</text>
+<path d="M760.0 308.3 L810.0 308.3 L830.0 291.7 L780.0 291.7 Z" style="fill:rgb(209,209,207);stroke:#fff;stroke-width:1"/>
+<text x="795.0" y="304.0" text-anchor="middle" style="font-size:11px">64</text>
+<path d="M810.0 308.3 L860.0 308.3 L880.0 291.7 L830.0 291.7 Z" style="fill:rgb(197,185,161);stroke:#fff;stroke-width:1"/>
+<text x="845.0" y="304.0" text-anchor="middle" style="font-size:11px">142</text>
+<path d="M860.0 308.3 L910.0 308.3 L930.0 291.7 L880.0 291.7 Z" style="fill:rgb(189,168,130);stroke:#fff;stroke-width:1"/>
+<text x="895.0" y="304.0" text-anchor="middle" style="font-size:11px">195</text>
+<path d="M910.0 308.3 L960.0 308.3 L980.0 291.7 L930.0 291.7 Z" style="fill:rgb(188,166,125);stroke:#fff;stroke-width:1"/>
+<text x="945.0" y="304.0" text-anchor="middle" style="font-size:11px">204</text>
+<path d="M680.0 291.7 L730.0 291.7 L750.0 275.0 L700.0 275.0 Z" style="fill:rgb(214,219,225);stroke:#fff;stroke-width:1"/>
+<text x="715.0" y="287.3" text-anchor="middle" style="font-size:11px">34</text>
+<path d="M730.0 291.7 L780.0 291.7 L800.0 275.0 L750.0 275.0 Z" style="fill:rgb(210,211,210);stroke:#fff;stroke-width:1"/>
+<text x="765.0" y="287.3" text-anchor="middle" style="font-size:11px">58</text>
+<path d="M780.0 291.7 L830.0 291.7 L850.0 275.0 L800.0 275.0 Z" style="fill:rgb(210,210,209);stroke:#fff;stroke-width:1"/>
+<text x="815.0" y="287.3" text-anchor="middle" style="font-size:11px">61</text>
+<path d="M830.0 291.7 L880.0 291.7 L900.0 275.0 L850.0 275.0 Z" style="fill:rgb(201,192,174);stroke:#fff;stroke-width:1"/>
+<text x="865.0" y="287.3" text-anchor="middle" style="font-size:11px">120</text>
+<path d="M880.0 291.7 L930.0 291.7 L950.0 275.0 L900.0 275.0 Z" style="fill:rgb(190,170,133);stroke:#fff;stroke-width:1"/>
+<text x="915.0" y="287.3" text-anchor="middle" style="font-size:11px">190</text>
+<path d="M930.0 291.7 L980.0 291.7 L1000.0 275.0 L950.0 275.0 Z" style="fill:rgb(188,166,126);stroke:#fff;stroke-width:1"/>
+<text x="965.0" y="287.3" text-anchor="middle" style="font-size:11px">201</text>
+<path class="s-trait" style="stroke-width:1.5" d="M640.0 325.0 L940.0 325.0 L1000.0 275.0 L700.0 275.0 Z"/>
+<path class="s-fond" d="M640.0 240.0 L940.0 240.0 L1000.0 190.0 L700.0 190.0 Z"/>
+<path d="M640.0 240.0 L739.0 240.0 L733.0 217.5 Z" style="fill:#F4E3CF;stroke:#B5600E;stroke-width:1"/>
+<path d="M640.0 240.0 L733.0 217.5 L670.0 215.0 Z" style="fill:#EBCBA6;stroke:#B5600E;stroke-width:1"/>
+<path d="M739.0 240.0 L838.0 240.0 L826.0 210.0 Z" style="fill:#E2B482;stroke:#B5600E;stroke-width:1"/>
+<path d="M739.0 240.0 L826.0 210.0 L733.0 217.5 Z" style="fill:#D99C5E;stroke:#B5600E;stroke-width:1"/>
+<path d="M838.0 240.0 L940.0 240.0 L898.0 220.0 Z" style="fill:#F4E3CF;stroke:#B5600E;stroke-width:1"/>
+<path d="M838.0 240.0 L898.0 220.0 L826.0 210.0 Z" style="fill:#EBCBA6;stroke:#B5600E;stroke-width:1"/>
+<path d="M940.0 240.0 L970.0 215.0 L898.0 220.0 Z" style="fill:#E2B482;stroke:#B5600E;stroke-width:1"/>
+<path d="M670.0 215.0 L733.0 217.5 L808.0 190.0 Z" style="fill:#D99C5E;stroke:#B5600E;stroke-width:1"/>
+<path d="M670.0 215.0 L808.0 190.0 L700.0 190.0 Z" style="fill:#F4E3CF;stroke:#B5600E;stroke-width:1"/>
+<path d="M733.0 217.5 L826.0 210.0 L808.0 190.0 Z" style="fill:#EBCBA6;stroke:#B5600E;stroke-width:1"/>
+<path d="M826.0 210.0 L904.0 190.0 L808.0 190.0 Z" style="fill:#E2B482;stroke:#B5600E;stroke-width:1"/>
+<path d="M826.0 210.0 L898.0 220.0 L904.0 190.0 Z" style="fill:#D99C5E;stroke:#B5600E;stroke-width:1"/>
+<path d="M898.0 220.0 L1000.0 190.0 L904.0 190.0 Z" style="fill:#F4E3CF;stroke:#B5600E;stroke-width:1"/>
+<path d="M898.0 220.0 L970.0 215.0 L1000.0 190.0 Z" style="fill:#EBCBA6;stroke:#B5600E;stroke-width:1"/>
+<path class="s-trait" style="stroke-width:1.5" d="M640.0 240.0 L940.0 240.0 L1000.0 190.0 L700.0 190.0 Z"/>
+<path class="s-fond" d="M640.0 155.0 L940.0 155.0 L1000.0 105.0 L700.0 105.0 Z"/>
+<path class="s-plein-accent" opacity="0.35" d="M691.0 142.5 L755.2 144.0 L799.0 117.5 L733.0 115.0 Z"/><path class="s-trait" d="M691.0 142.5 L755.2 144.0 L799.0 117.5 L733.0 115.0 Z"/>
+<path class="s-accent" d="M808.0 140.0 Q886.0 120.0 928.0 127.5"/>
+<circle class="s-plein" cx="925.0" cy="142.5" r="6"/>
+<path class="s-accent" d="M372 127 C 520 127 600 129.8 744.5 129.8"/>
+<circle class="s-plein-accent" cx="372" cy="127" r="5"/><circle class="s-plein-accent" cx="744.5" cy="129.8" r="5"/>
+<text class="s-orange" x="430" y="112">the link, through the key</text>
+<a href="#/vecteur"><text class="s-petit" x="820" y="96" text-anchor="middle">features: polygon, line, point</text></a>
+<a href="#/vecteur"><text x="1008" y="138">vector</text></a>
+<a href="#/mnt"><text x="1008" y="223">DTM (TIN)</text></a>
+<a href="#/raster"><text x="1008" y="308">raster</text></a>
+<path class="s-trait" d="M590 400 H710 M590 400 L640 358 M590 400 V160"/>
+<path class="s-plein" d="M718 400 l-12 -6 v12 z M646 353 l-13 2 l8 9 z M590 152 l-6 12 h12 z"/>
+<text class="s-petit" x="716" y="420">X</text><text class="s-petit" x="650" y="352">Y</text><text class="s-petit" x="574" y="162">Z</text>
+<a href="#/ou-et-quoi"><rect x="735" y="372" width="200" height="40" style="fill:transparent"/><text class="s-petit" x="740" y="388">one coordinate system</text><text class="s-petit" x="740" y="406">shared by all layers</text></a>
+</svg>

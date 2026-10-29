@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 220" role="img" aria-label="Three primitives: point, line, polygon">
+  <circle class="s-plein-accent" cx="130" cy="80" r="9"/>
+  <path class="s-fin" d="M118 68 l24 24 M142 68 l-24 24"/>
+  <text class="s-titre" x="130" y="160" text-anchor="middle">The point</text>
+  <text class="s-petit" x="130" y="184" text-anchor="middle">one X, Y pair — a boundary marker</text>
+  <path class="s-accent" d="M340 110 L400 60 L470 90 L540 45 L600 75"/>
+  <circle class="s-plein" cx="340" cy="110" r="5"/><circle class="s-plein" cx="400" cy="60" r="5"/><circle class="s-plein" cx="470" cy="90" r="5"/><circle class="s-plein" cx="540" cy="45" r="5"/><circle class="s-plein" cx="600" cy="75" r="5"/>
+  <text class="s-titre" x="470" y="160" text-anchor="middle">The line</text>
+  <text class="s-petit" x="470" y="184" text-anchor="middle">a sequence of points — a road centreline</text>
+  <path class="s-plein-accent" opacity="0.3" d="M720 50 L820 30 L900 70 L880 125 L770 130 L730 100 Z"/>
+  <path class="s-trait" d="M720 50 L820 30 L900 70 L880 125 L770 130 L730 100 Z"/>
+  <text class="s-titre" x="810" y="160" text-anchor="middle">The polygon</text>
+  <text class="s-petit" x="810" y="184" text-anchor="middle">a closed line — a municipality</text>
+</svg>
