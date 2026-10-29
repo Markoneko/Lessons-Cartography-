@@ -2,6 +2,38 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-29 — Nouveau cours : « Image Intelligence », le plan
+
+**Demande de Marc**
+
+- Un cours sur l'extraction d'informations thématiques à partir d'images : la photo-interprétation. « Intelligence » pour son double sens anglais, renseignement et compréhension.
+- Introduction par la scène de « Cœurs noirs » (détection d'une base secrète), qui marche déjà bien en cours ; puis des cas d'usage autres que le renseignement (bases de données, données labellisées pour l'IA) ; puis le cours formalisé autour d'une image, avec deux familles de clés : identifier des phénomènes, interpréter des mécanismes complets.
+- Un cours plus stimulant et plus autoporteur encore, une liste de compétences en introduction, des diapos socle qui les étayent, des fonctions tirées du fil « apprendre à apprendre », et si possible un outil de révision.
+- Étape du plan seulement, sans HTML.
+
+**Réalisé**
+
+- `cours/image-intelligence/` : `index.qmd` en 42 fiches « à réaliser », six parties (voir puis savoir ; de l'image à la donnée ; clés d'identification ; clés d'interprétation ; la note d'interprétation ; réviser). Dossiers `source/` (pour les références de Marc), `images/`, `donnees/`, `outils/`.
+- Six compétences C1 à C6, écrites en tête du fichier ; chaque titre de diapo socle porte `competences="…"`, pour une future table compétences × diapos.
+- Huit briques proposées, non construites : observer, indices, confiance, etiqueter, umc, stereo, bilan, revision.
+- `plan.md` produit par une compilation dont le HTML a été supprimé.
+
+**Vérifié en ligne**
+
+- BD Forêt V2 : segmentation automatique de la BD ORTHO IRC, puis photo-interprétation et terrain ; 0,5 ha (V1 : 2,25 ha) ; 32 postes ; 2007-2018 (IGN, conférence du 19 janvier 2021).
+- FLAIR : environ 20 milliards de pixels, 19 classes ; OCS GE : première estimation par apprentissage profond depuis 2019 ; BD Forêt appelée à passer en production assistée par IA (IGN, dossier de presse IA, septembre 2024).
+- Copernicus EMS : photo-interprétation manuelle pour les dégâts du bâti ; classes détruit, endommagé, possiblement endommagé.
+- Cuba : vol U-2 de Richard Heyser le 14 octobre 1962, sites identifiés par le NPIC le 15, Kennedy informé le 16 (Smithsonian). Medmenham : Constance Babington Smith et le V-1, au stéréoscope.
+- Éléments d'interprétation : GIS&T Body of Knowledge DC-04-012 (Myint, 2024), qui cite Estes, Hajic et Tinney (1983).
+
+**À vérifier ou à trancher**
+
+- Les droits de la photo U-2 de San Cristóbal (œuvre du gouvernement américain : a priori libre) et des images IGN.
+- La scène de « Cœurs noirs » : épisode et minutage ; pas d'extrait dans le support diffusé.
+- La référence complète d'Olson (1960), du Manual of Photographic Interpretation et de Kent (1964), à confirmer sur les originaux ; l'épisode de 2003 (images présentées à l'ONU), à sourcer.
+- L'image du cours : une orthophoto IRC des Vosges (scolytes, coupes, débardage, scierie), avec une date ancienne et une date d'hiver.
+- Le titre : « Image Intelligence » (ou « Image-Intelligence », comme demandé).
+
 ## 2026-10-29 — Déclaration de transparence IA dans chaque cours
 
 - Demande de Marc : sur la diapo de mode d'emploi de chaque cours, en français et en anglais, la déclaration de la Boussole IA (profil « ✒️ L'Auteur outillé », coordonnées F2 · R0 · S0, illustrations et passages réalisés par Claude 5). Ses ajouts précédents n'avaient jamais été poussés sur GitHub.
