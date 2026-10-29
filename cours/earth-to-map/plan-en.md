@@ -1,6 +1,6 @@
 # Plan — From the Earth to the Map
 
-> Fichier généré à chaque compilation à partir des fiches de `index-en.qmd`.
+> Fichier généré à chaque compilation à partir des fiches de `From-the-Earth-to-the-Map-EN.qmd`.
 > Ne pas le modifier : pour changer le plan, modifier les fiches.
 
 | N° | Diapo | Niveau | État | Intention | Expérience | Demande |

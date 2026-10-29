@@ -4,7 +4,7 @@ Ces règles valent pour tout assistant, en ligne ou local, à qui l'on confie un
 
 ## La référence
 
-Un cours a une seule source : son `index.qmd`. Le fichier `plan.md` est généré à partir de lui ; on ne le modifie jamais.
+Un cours a une seule source : son fichier `.qmd`, qui porte le nom du cours (`GIS-Basics.qmd`, version anglaise `GIS-Basics-EN.qmd`). Le fichier `plan.md` est généré à partir de lui ; on ne le modifie jamais.
 
 Sous chaque titre de diapo, une fiche dit ce que la diapo doit faire et dans quel état elle est :
 
@@ -16,7 +16,7 @@ Demande : ce que l'enseignant veut changer.
 :::
 ```
 
-Quand un cours existe en deux langues, `index.qmd` reste la référence et `index-en.qmd` sa traduction (fiches `Intention :`, `Experience :`, `Request :`, registre `figes-en.json`). Une correction demandée dans l'un est reportée dans l'autre, et le compte rendu le dit.
+Quand un cours existe en deux langues, le fichier français reste la référence et le fichier en `-EN.qmd` sa traduction (fiches `Intention :`, `Experience :`, `Request :`, registre `figes-en.json`). Une correction demandée dans l'un est reportée dans l'autre, et le compte rendu le dit.
 
 ## Ce que l'on a le droit de toucher
 
@@ -35,10 +35,10 @@ Quand un cours existe en deux langues, `index.qmd` reste la référence et `inde
 ## Le déroulé d'un passage
 
 1. Récupérer la dernière version du dépôt.
-2. Lancer `python3 outils/figer.py verifier cours/<cours>/index.qmd` : il montre ce que l'enseignant a dégelé ou modifié depuis le dernier passage.
-3. Lancer `python3 outils/figer.py enregistrer cours/<cours>/index.qmd` : l'état reçu devient la référence.
+2. Lancer `python3 outils/figer.py verifier cours/<cours>/<Nom-du-cours>.qmd` : il montre ce que l'enseignant a dégelé ou modifié depuis le dernier passage.
+3. Lancer `python3 outils/figer.py enregistrer cours/<cours>/<Nom-du-cours>.qmd` : l'état reçu devient la référence.
 4. Traiter les diapos `a-revoir` et `a-realiser`. Une fois la demande appliquée, vider la ligne « Demande » et laisser l'état tel quel : c'est l'enseignant qui fige.
-5. Compiler avec `quarto render cours/<cours>/index.qmd` (et `index-en.qmd`), puis vérifier le rendu : `python3 outils/controle.py cours/<cours>/_sortie/<Titre>.html` doit répondre « 0 débordement(s) », sans erreur JavaScript.
+5. Compiler avec `quarto render cours/<cours>/<Nom-du-cours>.qmd` (et sa version `-EN.qmd`), puis vérifier le rendu : `python3 outils/controle.py cours/<cours>/_sortie/<Titre>.html` doit répondre « 0 débordement(s) », sans erreur JavaScript.
 6. Relancer `verifier` : il doit répondre « Aucune diapo figée n'a été modifiée ».
 7. Noter le passage dans `JOURNAL.md`, puis envoyer.
 

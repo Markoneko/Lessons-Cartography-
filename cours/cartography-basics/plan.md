@@ -1,6 +1,6 @@
 # Plan — Cartography : Basics
 
-> Fichier généré à chaque compilation à partir des fiches de `index.qmd`.
+> Fichier généré à chaque compilation à partir des fiches de `Cartography-Basics.qmd`.
 > Ne pas le modifier : pour changer le plan, modifier les fiches.
 
 | N° | Diapo | Niveau | État | Intention | Expérience | Demande |

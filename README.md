@@ -1,6 +1,6 @@
 # Supports de cours — Géodata Paris / FIRS
 
-Un cours = un fichier texte (`index.qmd`) et un dossier d'images.
+Un cours = un fichier texte, qui porte le nom du cours (`GIS-Basics.qmd`), et un dossier d'images.
 La mise en page, la charte et les exercices sont fournis par le gabarit : on ne s'occupe que du contenu.
 
 Aucune IA n'est nécessaire pour écrire, modifier ou produire un support.
@@ -16,7 +16,7 @@ Aucune IA n'est nécessaire pour écrire, modifier ou produire un support.
 Dans un terminal, depuis ce dossier :
 
 ```
-quarto render cours/mon-cours/index.qmd
+quarto render cours/mon-cours/Mon-Cours.qmd
 ```
 
 Le résultat arrive dans le dossier `_sortie/` du cours, sous le nom de son titre (`outils/sorties.py` s'en charge après chaque rendu) :
@@ -24,7 +24,7 @@ Le résultat arrive dans le dossier `_sortie/` du cours, sous le nom de son titr
 - `cours/gis-basics/_sortie/GIS-Basics.html` et `GIS-Basics-EN.html` : un seul fichier par langue, qui fonctionne sans réseau. Il sert à projeter et à faire manipuler les étudiants. Touche `F` : plein écran. Touche `S` : vue orateur avec les notes.
 - `GIS-Basics.pdf` et `GIS-Basics-EN.pdf` : le support de cours, avec le corrigé des exercices, imprimé tout seul si Playwright est installé.
 
-`quarto render`, sans nom de fichier, produit tous les cours. Pour un rendu rapide sans PDF : `SANS_PDF=1 quarto render cours/mon-cours/index.qmd`.
+`quarto render`, sans nom de fichier, produit tous les cours. Pour un rendu rapide sans PDF : `SANS_PDF=1 quarto render cours/mon-cours/Mon-Cours.qmd`.
 
 Le PDF sans les réponses : `python3 outils/pdf.py cours/gis-basics/_sortie/GIS-Basics.html --vierge`. À la main, on obtient les mêmes en ouvrant le HTML dans Chrome, avec `?print-pdf` (ou `?print-pdf&reponses=non`) au bout de l'adresse, puis Imprimer → Enregistrer au format PDF (marges : aucune, graphiques d'arrière-plan : cochés).
 
@@ -37,7 +37,7 @@ python3 outils/controle.py cours/gis-basics/_sortie/GIS-Basics.html --images /tm
 Pour travailler avec un aperçu qui se met à jour à chaque enregistrement :
 
 ```
-quarto preview cours/mon-cours/index.qmd
+quarto preview cours/mon-cours/Mon-Cours.qmd
 ```
 
 Pendant l'aperçu, le fichier reste à côté du cours (c'est lui que l'aperçu affiche) et une copie va dans `_sortie/` ; pas de PDF.
@@ -72,7 +72,7 @@ Demande :
 Un script garantit que les diapos figées ne bougent pas :
 
 ```
-python3 outils/figer.py verifier cours/earth-to-map/index.qmd
+python3 outils/figer.py verifier cours/earth-to-map/De-la-Terre-a-la-carte.qmd
 ```
 
 Les règles que doit suivre un assistant sont dans `CONSIGNES-IA.md`.
@@ -80,13 +80,13 @@ Les règles que doit suivre un assistant sont dans `CONSIGNES-IA.md`.
 ## Créer un nouveau cours
 
 1. Copier le dossier `cours/earth-to-map` et le renommer d'après le titre du cours, en anglais, en minuscules et avec des tirets (`gis-basics`, `cartography-basics`…).
-2. Remplacer le contenu de `index.qmd` et les images ; ranger le support d'origine dans `source/`, et vider `_sortie/`.
+2. Renommer le fichier du nom du nouveau cours (`Mon-Cours.qmd`, et `Mon-Cours-EN.qmd` pour l'anglais), remplacer son contenu et les images ; ranger le support d'origine dans `source/`, et vider `_sortie/`.
 
 Un cours contient tout ce qui le concerne :
 
 | Dans le dossier du cours | Contenu |
 |---|---|
-| `index.qmd`, `index-en.qmd` | le cours, en français et en anglais |
+| `Nom-du-cours.qmd`, `Nom-du-cours-EN.qmd` | le cours, en français et en anglais ; le fichier porte le nom du cours |
 | `plan.md`, `plan-en.md`, `figes.json`, `figes-en.json` | produits par la compilation et par `figer.py` |
 | `images/` | les images légères, `originaux/` et `schemas/` |
 | `donnees/` | les données des exercices, s'il y en a |
@@ -216,7 +216,7 @@ Quel est le système légal ?
 
 ## Les expériences
 
-Chaque brique s'écrit en quelques lignes. Le cours `cours/earth-to-map/index.qmd` en contient un exemple de chacune, à copier.
+Chaque brique s'écrit en quelques lignes. Le cours `cours/earth-to-map/De-la-Terre-a-la-carte.qmd` en contient un exemple de chacune, à copier.
 
 **Pour aller plus loin** — un bouton en haut à droite ouvre un panneau de bonus : texte, image, lien.
 
@@ -394,6 +394,92 @@ Les schémas du cours (cartes en symboles, palettes, illusions) sont produits pa
 
 En anglais : `profil="✒️ The equipped Author"`.
 
+### Les briques d'enquête
+
+Elles vivent dans `_briques/briques-enquete.html` et `_briques/briques-enquete.css`. Le cours `cours/image-intelligence` en contient un exemple de chacune. Ce que l'étudiant écrit ou choisit est gardé dans son navigateur seulement ; le PDF corrigé montre la réponse attendue.
+
+**Coupe topographique** — un marcheur va de A à B sur une image ; à chaque pas, l'étudiant le fait monter ou descendre avec les flèches ↑ ↓ (→ ou espace pour avancer). À l'arrivée, son profil est comparé au profil de référence, et le bloc `.apres-jeu` s'affiche. `depart` et `arrivee` sont en % de l'image ; le profil est un JSON `{"points": [[t, z], …]}`, t et z entre 0 et 1.
+
+```markdown
+::: {.coupe image="images/fast-2016.jpg" alt="Description" depart="2,49" arrivee="98,49" pas="24" profil="donnees/fast-profil.json" style="--hauteur-coupe: 320px"}
+::: {.apres-jeu}
+Le commentaire, après le jeu.
+:::
+:::
+```
+
+**Arbre de déduction** — une question par étape ; chaque réponse mène à une autre étape ou à une conclusion. Le chemin suivi reste affiché, comme un faisceau d'indices. `### id | question` ouvre une étape, `### id ! titre` une conclusion ; chaque choix s'écrit `- texte → id`. La première étape est la première écrite.
+
+```markdown
+::: {.arbre image="images/rade-de-brest.jpg" alt="Description" style="--hauteur-arbre: 390px"}
+### depart | Quelle taille ont les points blancs ?
+- Quelques mètres → petits
+- Plusieurs dizaines de mètres → grands
+
+### petits ! Hypothèse : un mouillage
+Le commentaire de la conclusion.
+:::
+```
+
+**Observer** — une zone d'écriture, puis un bouton qui montre la lecture de l'expert (le texte écrit dans la brique). `cle` nomme ce qui est écrit ; `rappel="une-autre-cle"` réaffiche au-dessus ce que l'étudiant a écrit ailleurs dans le cours.
+
+```markdown
+::: {.observer cle="note-image" rappel="description-image" invite="J'observe…"}
+La lecture de l'expert.
+:::
+```
+
+**Indices** — une énigme : les indices viennent un à un, chacun peut encadrer une partie de l'image (`x,y,largeur,hauteur :` en %, devant l'indice). Avec `confiance="oui"`, l'étudiant dit sa certitude à chaque indice. Le texte placé après la liste est la solution.
+
+```markdown
+::: {.indices image="images/fast-2016.jpg" alt="Description" confiance="oui"}
+- 30,28,29,42 : Le premier indice, encadré sur l'image.
+- Un indice sans cadre.
+
+La solution.
+:::
+```
+
+**Barre de certitude** — autour d'un QCM : l'étudiant doit dire s'il est sûr avant de répondre. Ses réponses nourrissent la brique `calibration`.
+
+```markdown
+::: {.confiance}
+::: {.qcm .serre}
+…
+:::
+:::
+```
+
+**Vrai ou généré** — des images une à une ; l'étudiant dit sa certitude, puis « vraie » ou « générée par IA ». Chaque image porte `[vrai]` ou `[ia]` (en anglais, `[real]` ou `[ai]`), puis l'explication. Le score s'affiche à la fin.
+
+```markdown
+::: {.vrai-ia style="--hauteur-vraiia: 420px"}
+- ![Une île, janvier 2022](images/ia-2022-ile.jpg) [ia] : Ce qui la trahit.
+- ![Rade de Brest, orthophotographie](images/rade-de-brest.jpg) [vrai] : Ce qui la rend crédible.
+:::
+```
+
+**Bilan** — les compétences du cours, à placer sur trois niveaux. `moment="debut"` au début, `moment="fin"` à la fin : la version de fin montre l'écart, et renvoie vers les diapos socle qui portent la compétence (`competences="C1 C3"` dans l'en-tête de la diapo).
+
+```markdown
+::: {.bilan moment="debut"}
+- C1 | Décrire avant d'interpréter
+- C2 | Identifier un objet avec les clés d'identification
+:::
+```
+
+**Calibration** — un tableau : quand l'étudiant se disait sûr, avait-il raison ? Il se remplit avec les barres de certitude du cours.
+
+**Révision** — toutes les questions et tous les QCM du cours deviennent des cartes, mélangées. Une carte sue revient dans un jour, puis une semaine, puis un mois ; une carte ratée revient tout de suite. L'adresse du support suivie de `?revision` ouvre directement cette diapo.
+
+```markdown
+::: {.calibration}
+:::
+
+::: {.revision}
+:::
+```
+
 ### Réglages utiles
 
 | Écriture | Effet |
@@ -436,7 +522,7 @@ masquer-optionnels: true
 
 ## Une version dans une autre langue
 
-La version anglaise d'un cours est un second fichier à côté du premier : `index-en.qmd`, avec `lang: en` dans son en-tête. Cette ligne suffit pour que tout ce que le gabarit écrit lui-même passe en anglais : noms des niveaux (Core, Support, Further), « Question », « Answer », « Going further », messages des exercices, format des nombres. La typographie française (espaces avant `:`, `;`, `?`) n'est appliquée qu'en français.
+La version anglaise d'un cours est un second fichier à côté du premier, au même nom suivi de `-EN` (`GIS-Basics-EN.qmd`), avec `lang: en` dans son en-tête. Cette ligne suffit pour que tout ce que le gabarit écrit lui-même passe en anglais : noms des niveaux (Core, Support, Further), « Question », « Answer », « Going further », messages des exercices, format des nombres. La typographie française (espaces avant `:`, `;`, `?`) n'est appliquée qu'en français.
 
 - Les fiches gardent les mêmes numéros ; leurs lignes s'écrivent `Intention :`, `Experience :`, `Request :`.
 - Les schémas qui contiennent du texte sont doublés dans `images/schemas/en/`. Les images sont partagées.

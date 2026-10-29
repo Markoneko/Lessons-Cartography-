@@ -4,8 +4,8 @@
 Chaque diapo dont la fiche porte etat="fige" reçoit une empreinte. Toute
 modification, même d'un caractère, est signalée.
 
-    python3 outils/figer.py verifier    cours/mon-cours/index.qmd
-    python3 outils/figer.py enregistrer cours/mon-cours/index.qmd
+    python3 outils/figer.py verifier    cours/mon-cours/Mon-Cours.qmd
+    python3 outils/figer.py enregistrer cours/mon-cours/Mon-Cours.qmd
 
 « verifier » compare le cours aux empreintes enregistrées ; il échoue s'il
 trouve une diapo figée modifiée ou disparue. « enregistrer » prend l'état

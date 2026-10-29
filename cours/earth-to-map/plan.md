@@ -1,6 +1,6 @@
 # Plan — De la Terre à la carte
 
-> Fichier généré à chaque compilation à partir des fiches de `index.qmd`.
+> Fichier généré à chaque compilation à partir des fiches de `De-la-Terre-a-la-carte.qmd`.
 > Ne pas le modifier : pour changer le plan, modifier les fiches.
 
 | N° | Diapo | Niveau | État | Intention | Expérience | Demande |

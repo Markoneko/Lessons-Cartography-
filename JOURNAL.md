@@ -2,6 +2,43 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-29 — « Image Intelligence », premier jet (V0)
+
+**Demande de Marc**
+
+- Public plus généraliste que FIRS : ingénieurs, étudiants en géopolitique, masters.
+- Sources : remplacer le dossier de presse IA de l'IGN par l'article FLAIR ; retirer La Libre ; ajouter la page de Ressources naturelles Canada sur la photo-interprétation ; son PDF de cours dans les références.
+- Peenemünde gardé, sans doute en image de titre ; une image de la Grande Guerre à venir ; le LiDAR d'Angkor « en lien avec l'IGN ».
+- Dossier `quizz/` : un mini-jeu de profil topographique sur FAST (flèches du clavier) ; un arbre de décision sur 07 (pointillés rouges), à reconstruire avec les réponses de ses étudiants ; un exercice sur 11 (Flamanville, l'EPR).
+- Une diapo sur induction et déduction, le faisceau d'indices de l'enquête.
+- La détection d'images générées par IA comme troisième grand volet : l'image de 2022, les erreurs physiques et topographiques, le manque d'émotion, les textures et le flou d'arrière-plan, les artefacts de haute fréquence, et une image vraie qui paraît fausse.
+- Une visite virtuelle du musée de la photographie aérienne de L'Europe vue du Ciel.
+- Règle générale : le fichier d'un cours porte le nom du cours, et non plus `index`.
+
+**Réalisé**
+
+- `IMAGE-Intelligence.qmd` et `IMAGE-Intelligence-EN.qmd` : 55 diapos chacun, sept parties (voir puis savoir ; de l'image à la donnée ; clés d'identification ; clés d'interprétation ; vraie ou générée ; la note d'interprétation ; réviser). Fiches `a-revoir`. Aucun débordement, aucune erreur JavaScript.
+- L'image du cours est Flamanville : elle réunit toutes les clés (dômes, bassin, digue, remous du rejet, chantier de l'EPR, bocage) et revient de la description libre jusqu'à la note finale.
+- La partie IA est placée après les clés, et non en troisième : on détecte une image générée avec les clés d'identification et d'interprétation. À déplacer si Marc tient au rang.
+- Huit briques nouvelles (`_briques/briques-enquete.*`) : coupe, arbre, observer, indices, confiance, vrai-ia, bilan, calibration, révision. Documentées dans le README.
+- `outils/schemas.py` du cours : le schéma des trois raisonnements, les trois images de l'unité minimale de collecte (valeurs calculées : 145 taches, puis 39, 14 et 2 ; 61 % de la surface change de classe à 25 ha) et le profil de FAST.
+- Les fichiers des autres cours renommés : `Cartography-Basics.qmd`, `GIS-Basics.qmd`, `GIS-Geoprocessing.qmd`, `De-la-Terre-a-la-carte.qmd`, avec leurs versions `-EN.qmd`. Les registres des diapos figées ne gardent pas de nom de fichier : rien n'a bougé. README, CONSIGNES-IA et CLAUDE.md mis à jour.
+
+**Vérifié en ligne**
+
+- FLAIR : Garioud, Gonthier, Landrieu, De Wit, Valette, Poupée, Giordano, Wattrelos ; NeurIPS 2023, Datasets and Benchmarks ; 817 km² ; plus de 20 milliards de pixels annotés.
+- FAST : parabole de 500 m dans la dépression karstique de Dawodang (Guizhou) ; dernier panneau posé le 3 juillet 2016.
+- Ressources naturelles Canada, « Éléments d'interprétation visuelle ».
+
+**Manque ou à valider par Marc**
+
+- Fichiers non reçus : l'image de Peenemünde (titre), l'image de la Grande Guerre, PXL_20250930_173652676~2, PXL_20261006_182859009, PXL_20261006_182903643, IMG-20261029-WA0000, une image du LiDAR d'Angkor, le PDF de cours.
+- Le lien d'Angkor avec l'IGN (seul Evans et al., PNAS 2013, est cité).
+- Le profil de référence de FAST, lu sur l'image : indicatif, à remplacer par un MNT ou à valider.
+- L'arbre de la rade de Brest : première version, conclusions « à valider », à refaire avec les réponses des étudiants.
+- Le fonctionnement du rejet de Flamanville ; les coordonnées des zones.
+- La source et les dates de l'image radar de Baltimore ; l'année de l'image générée de Tian'anmen ; l'épisode et le minutage de « Cœurs noirs » ; les droits des images.
+
 ## 2026-10-29 — Nouveau cours : « Image Intelligence », le plan
 
 **Demande de Marc**

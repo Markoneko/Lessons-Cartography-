@@ -3,8 +3,8 @@
 
 Lancé tout seul par Quarto après chaque rendu (« post-render » dans _quarto.yml) :
 
-    cours/gis-basics/index.qmd     →  cours/gis-basics/_sortie/GIS-Basics.html    (+ GIS-Basics.pdf)
-    cours/gis-basics/index-en.qmd  →  cours/gis-basics/_sortie/GIS-Basics-EN.html (+ GIS-Basics-EN.pdf)
+    cours/gis-basics/GIS-Basics.qmd     →  cours/gis-basics/_sortie/GIS-Basics.html    (+ GIS-Basics.pdf)
+    cours/gis-basics/GIS-Basics-EN.qmd  →  cours/gis-basics/_sortie/GIS-Basics-EN.html (+ GIS-Basics-EN.pdf)
 
 Le nom vient du titre du cours ; « -EN » s'ajoute à la version anglaise (lang: en).
 Le PDF est le support avec le corrigé ; il demande Playwright (voir outils/pdf.py). Sans lui, le
