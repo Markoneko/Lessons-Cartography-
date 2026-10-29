@@ -20,9 +20,11 @@ format:
       - _charte/geodata.css
       - _briques/briques.css
       - _briques/briques-carto.css
+      - _briques/briques-enquete.css
     include-after-body:
       - _briques/briques.html
       - _briques/briques-carto.html
+      - _briques/briques-enquete.html
     logo: _charte/logos/geodata.svg
     width: 1280
     height: 720

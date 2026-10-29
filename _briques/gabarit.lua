@@ -690,6 +690,202 @@ local function brique_flash(div)
 end
 
 -- ::: {.couleur3d} :::  le solide des couleurs (teinte, saturation, valeur), qui tourne, et trois curseurs
+----------------------------------------------------------------------------
+-- Briques d'enquête (cours « Image Intelligence ») : leur comportement est dans
+-- _briques/briques-enquete.html
+----------------------------------------------------------------------------
+
+local function json_texte(x) return '"' .. tostring(x):gsub('\\', '\\\\'):gsub('"', '\\"'):gsub('\n', ' ') .. '"' end
+local function html_de(blocs) return pandoc.write(pandoc.Pandoc(blocs), "html") end
+local function sans_insecables(s) return (s:gsub("\u{a0}", " "):gsub("\u{202f}", " ")) end
+
+-- ::: {.coupe image="…" alt="…" depart="8,52" arrivee="92,48" pas="24" profil="donnees/profil.json"}
+--   Consigne.
+--   ::: {.apres-jeu} Commentaire affiché quand la coupe est terminée. :::
+-- Un mini-jeu : le marcheur va de A à B ; ↑ ↓ règlent son altitude, → le fait avancer.
+local function brique_coupe(div)
+  local image, alt = attribut(div, "image", ""), attribut(div, "alt", "")
+  local profil = lire_fichier(attribut(div, "profil", "")) or "[]"
+  if not EN_HTML then
+    local sortie = pandoc.List({ pandoc.Para({ pandoc.Image({ pandoc.Str(alt) }, image) }) })
+    sortie:extend(div.content); div.content = sortie; return div
+  end
+  local h = '<div class="coupe-zone" tabindex="0" data-depart="' .. echappe(attribut(div, "depart", "5,50"))
+      .. '" data-arrivee="' .. echappe(attribut(div, "arrivee", "95,50")) .. '" data-pas="' .. echappe(attribut(div, "pas", "20"))
+      .. '" data-hauteur="' .. echappe(attribut(div, "hauteur", "300")) .. '">'
+      .. '<script type="application/json" class="coupe-profil">' .. profil:gsub("</", "<\\/") .. '</script>'
+      .. '<div class="coupe-image"><img src="' .. echappe(image) .. '" alt="' .. echappe(alt) .. '"></div>'
+      .. '<div class="coupe-jeu"></div></div>'
+  local sortie = pandoc.List({ pandoc.RawBlock("html", h) }); sortie:extend(div.content)
+  div.content = sortie
+  return div
+end
+
+-- ::: {.arbre image="…" alt="…"}
+--   Consigne.
+--   ### depart | La question posée à ce nœud ?
+--   - Une réponse → autre-noeud
+--   ### autre-noeud ! Conclusion
+--   Paragraphe d'explication de la conclusion.
+-- Un arbre de déduction : chaque choix est un indice ; le chemin parcouru reste affiché.
+local function brique_arbre(div)
+  local image, alt = attribut(div, "image", ""), attribut(div, "alt", "")
+  local consigne, noeuds, courant = pandoc.List(), {}, nil
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "Header" then
+      local texte = sans_insecables(pandoc.utils.stringify(bloc.content))
+      local id, sep, reste = texte:match("^%s*(%S+)%s*([|!])%s*(.*)$")
+      courant = { id = id or texte, fin = (sep == "!"), texte = reste or "", choix = {}, corps = pandoc.List() }
+      table.insert(noeuds, courant)
+    elseif courant and bloc.t == "BulletList" and not courant.fin then
+      for _, item in ipairs(bloc.content) do
+        local t = sans_insecables(pandoc.utils.stringify(item))
+        local libelle, cible = t:match("^(.-)%s*→%s*(%S+)%s*$")
+        if not libelle then libelle, cible = t:match("^(.-)%s*%->%s*(%S+)%s*$") end
+        table.insert(courant.choix, { libelle = libelle or t, cible = cible or "" })
+      end
+    elseif courant then courant.corps:insert(bloc)
+    else consigne:insert(bloc) end
+  end
+  local morceaux = {}
+  for _, n in ipairs(noeuds) do
+    local ch = {}
+    for _, c in ipairs(n.choix) do table.insert(ch, '{"t":' .. json_texte(c.libelle) .. ',"v":' .. json_texte(c.cible) .. '}') end
+    table.insert(morceaux, '{"id":' .. json_texte(n.id) .. ',"fin":' .. tostring(n.fin) .. ',"q":' .. json_texte(n.texte)
+      .. ',"corps":' .. json_texte(html_de(n.corps)) .. ',"choix":[' .. table.concat(ch, ",") .. ']}')
+  end
+  local sortie = pandoc.List()
+  sortie:extend(consigne)
+  if not EN_HTML then
+    if image ~= "" then sortie:insert(pandoc.Para({ pandoc.Image({ pandoc.Str(alt) }, image) })) end
+    for _, n in ipairs(noeuds) do sortie:insert(pandoc.Para({ pandoc.Strong(pandoc.Str(n.texte)) })); sortie:extend(n.corps) end
+    div.content = sortie; return div
+  end
+  local h = '<div class="arbre-zone"><script type="application/json" class="arbre-donnees">[' .. table.concat(morceaux, ","):gsub("</", "<\\/") .. ']</script>'
+      .. (image ~= "" and ('<div class="arbre-image"><img src="' .. echappe(image) .. '" alt="' .. echappe(alt) .. '"></div>') or '')
+      .. '<div class="arbre-cote"><div class="arbre-chemin"></div><div class="arbre-noeud"></div></div></div>'
+  sortie:insert(pandoc.RawBlock("html", h))
+  div.content = sortie
+  return div
+end
+
+-- ::: {.observer cle="description-image"}   la lecture experte, cachée jusqu'à la comparaison :::
+-- ::: {.observer cle="note-image" rappel="description-image"}   rappelle ce que l'étudiant avait écrit
+local function brique_observer(div)
+  local cle, rappel = attribut(div, "cle", ""), attribut(div, "rappel", "")
+  local invite = attribut(div, "invite", "")
+  if not EN_HTML then return div end
+  local h = '<div class="observer-zone" data-cle="' .. echappe(cle) .. '" data-rappel="' .. echappe(rappel)
+      .. '" data-invite="' .. echappe(invite) .. '"></div>'
+  local expert = pandoc.Div(div.content, pandoc.Attr("", { "observer-expert" }))
+  div.content = pandoc.List({ pandoc.RawBlock("html", h), expert })
+  return div
+end
+
+-- ::: {.indices image="…" alt="…" confiance="oui"}
+--   - 20,30,15,10 : Premier indice (la zone, en % de l'image, s'encadre sur l'image)
+--   - Deuxième indice, sans zone
+--   Paragraphes après la liste : la conclusion.
+local function brique_indices(div)
+  local image, alt = attribut(div, "image", ""), attribut(div, "alt", "")
+  local confiance = attribut(div, "confiance", "non")
+  local avant, apres, liste, vu = pandoc.List(), pandoc.List(), {}, false
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "BulletList" and not vu then
+      vu = true
+      for _, item in ipairs(bloc.content) do
+        local t = sans_insecables(pandoc.utils.stringify(item))
+        local x, y, l, hh, texte = t:match("^%s*([%d%.]+)%s*,%s*([%d%.]+)%s*,%s*([%d%.]+)%s*,%s*([%d%.]+)%s*:%s*(.*)$")
+        local zone = x and ('[' .. x .. ',' .. y .. ',' .. l .. ',' .. hh .. ']') or 'null'
+        table.insert(liste, '{"z":' .. zone .. ',"t":' .. json_texte(texte or t) .. '}')
+      end
+    elseif vu then apres:insert(bloc) else avant:insert(bloc) end
+  end
+  if not EN_HTML then
+    local s = pandoc.List(); s:extend(avant)
+    s:insert(pandoc.Para({ pandoc.Image({ pandoc.Str(alt) }, image) }))
+    s:extend(apres); div.content = s; return div
+  end
+  local h = '<div class="indices-zone" data-confiance="' .. echappe(confiance) .. '">'
+      .. '<script type="application/json" class="indices-donnees">[' .. table.concat(liste, ","):gsub("</", "<\\/") .. ']</script>'
+      .. '<div class="indices-image"><img src="' .. echappe(image) .. '" alt="' .. echappe(alt) .. '"></div>'
+      .. '<div class="indices-cote"><ol class="indices-liste"></ol><div class="indices-commandes"></div></div></div>'
+  local s = pandoc.List(); s:extend(avant); s:insert(pandoc.RawBlock("html", h))
+  s:insert(pandoc.Div(apres, pandoc.Attr("", { "indices-conclusion" })))
+  div.content = s
+  return div
+end
+
+-- ::: {.confiance}  un QCM ou une question dans la brique : on dit d'abord sa certitude :::
+local function brique_confiance(div)
+  if not EN_HTML then return div end
+  div.content:insert(1, pandoc.RawBlock("html", '<div class="confiance-barre"></div>'))
+  return div
+end
+
+-- ::: {.vrai-ia}
+--   - ![Légende, année](images/a.jpg) [ia] : Ce qui la trahit.
+--   - ![Légende](images/b.jpg) [vrai] : Pourquoi elle est réelle.
+local function brique_vrai_ia(div)
+  local cartes = {}
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "BulletList" then
+      for _, item in ipairs(bloc.content) do
+        local src, legende, reste = "", "", {}
+        pandoc.walk_block(pandoc.Div(item), { Image = function(im)
+          src = im.src; legende = pandoc.utils.stringify(im.caption); return {} end })
+        local t = sans_insecables(pandoc.utils.stringify(item))
+        local verdict = t:match("%[(%a+)%]") or ""
+        verdict = verdict:lower()
+        local nature = (verdict == "ia" or verdict == "ai") and "ia" or "vrai"
+        local explication = t:match("%]%s*:%s*(.*)$") or ""
+        table.insert(cartes, '{"src":' .. json_texte(src) .. ',"legende":' .. json_texte(legende)
+          .. ',"nature":"' .. nature .. '","e":' .. json_texte(explication) .. '}')
+      end
+    end
+  end
+  if not EN_HTML then return div end
+  local imgs = ""
+  for k, c in ipairs(cartes) do
+    local src = c:match('^{"src":"(.-)","legende"') or ""
+    imgs = imgs .. '<img class="vraiia-source" data-i="' .. (k - 1) .. '" src="' .. src .. '" alt="" hidden>'
+  end
+  local h = '<div class="vraiia-zone"><script type="application/json" class="vraiia-donnees">['
+      .. table.concat(cartes, ","):gsub("</", "<\\/") .. ']</script>' .. imgs .. '</div>'
+  local garde = pandoc.List()
+  for _, bloc in ipairs(div.content) do if bloc.t ~= "BulletList" then garde:insert(bloc) end end
+  garde:insert(pandoc.RawBlock("html", h))
+  div.content = garde
+  return div
+end
+
+-- ::: {.bilan moment="debut"}  - C1 | Décrire avant d'interpréter  … :::   (moment="fin" : la comparaison)
+local function brique_bilan(div)
+  local moment = attribut(div, "moment", "debut")
+  local comps = {}
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "BulletList" then
+      for _, item in ipairs(bloc.content) do
+        local t = sans_insecables(pandoc.utils.stringify(item))
+        local code, texte = t:match("^%s*(%S+)%s*|%s*(.*)$")
+        table.insert(comps, '{"c":' .. json_texte(code or t) .. ',"t":' .. json_texte(texte or t) .. '}')
+      end
+    end
+  end
+  if not EN_HTML then return div end
+  div.content = pandoc.List({ pandoc.RawBlock("html", '<div class="bilan-zone" data-moment="' .. echappe(moment)
+    .. '"><script type="application/json" class="bilan-donnees">[' .. table.concat(comps, ",") .. ']</script></div>') })
+  return div
+end
+
+-- ::: {.revision} :::   le mode révision : toutes les questions du cours, en cartes à répéter
+-- ::: {.calibration} :::   la certitude déclarée, comparée à la réussite
+local function brique_simple(div, classe)
+  if not EN_HTML then return div end
+  div.content = pandoc.List({ pandoc.RawBlock("html", '<div class="' .. classe .. '"></div>') })
+  return div
+end
+
 -- ::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"} :::
 -- La déclaration de transparence IA (Boussole IA de Géodata Paris), dans la langue du cours.
 -- Un texte écrit dans la brique remplace la phrase type.
@@ -825,6 +1021,15 @@ local function briques(div)
   if div.classes:includes("synthese") then return brique_synthese(div) end
   if div.classes:includes("puzzle-legende") then return brique_puzzle_legende(div) end
   if div.classes:includes("transparence-ia") then return brique_transparence_ia(div) end
+  if div.classes:includes("coupe") then return brique_coupe(div) end
+  if div.classes:includes("arbre") then return brique_arbre(div) end
+  if div.classes:includes("observer") then return brique_observer(div) end
+  if div.classes:includes("indices") then return brique_indices(div) end
+  if div.classes:includes("confiance") then return brique_confiance(div) end
+  if div.classes:includes("vrai-ia") then return brique_vrai_ia(div) end
+  if div.classes:includes("bilan") then return brique_bilan(div) end
+  if div.classes:includes("revision") then return brique_simple(div, "revision-zone") end
+  if div.classes:includes("calibration") then return brique_simple(div, "calibration-zone") end
   return nil
 end
 
@@ -929,13 +1134,14 @@ local function ecrire_plan(fiches, titre_cours)
   if #fiches == 0 then return end
   local entree = (quarto and quarto.doc and quarto.doc.input_file)
       or (PANDOC_STATE and PANDOC_STATE.input_files[1]) or ""
-  -- index.qmd donne plan.md ; index-en.qmd donne plan-en.md
-  local suffixe = pandoc.path.filename(entree):match("^index(.-)%.qmd$") or ""
+  -- le fichier du cours donne plan.md ; sa version anglaise (nom en « -en.qmd ») donne plan-en.md
+  local nom_source = pandoc.path.filename(entree)
+  local suffixe = nom_source:lower():match("%-en%.qmd$") and "-en" or ""
   local chemin = pandoc.path.join({ pandoc.path.directory(entree), "plan" .. suffixe .. ".md" })
   local comptes, demandes = {}, {}
   local l = {
     "# Plan — " .. titre_cours, "",
-    "> Fichier généré à chaque compilation à partir des fiches de `index" .. suffixe .. ".qmd`.",
+    "> Fichier généré à chaque compilation à partir des fiches de `" .. nom_source .. "`.",
     "> Ne pas le modifier : pour changer le plan, modifier les fiches.", "",
     "| N° | Diapo | Niveau | État | Intention | Expérience | Demande |",
     "|----|-------|--------|------|-----------|------------|---------|",

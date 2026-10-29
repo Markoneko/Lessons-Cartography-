@@ -50,8 +50,8 @@ def main():
         print(__doc__)
         return 2
     commande, cours = sys.argv[1], sys.argv[2]
-    # index.qmd donne figes.json ; index-en.qmd donne figes-en.json
-    suffixe = os.path.basename(cours)[len("index"):-len(".qmd")] if os.path.basename(cours).startswith("index") else ""
+    # le fichier du cours donne figes.json ; sa version anglaise (nom en « -en.qmd ») donne figes-en.json
+    suffixe = "-en" if os.path.basename(cours).lower().endswith("-en.qmd") else ""
     registre = os.path.join(os.path.dirname(cours), "figes" + suffixe + ".json")
     with open(cours, encoding="utf-8") as f:
         actuelles = diapos(f.read())

@@ -1,0 +1,140 @@
+/* Briques d'enquête : coupe, arbre, observer, indices, confiance, vrai ou IA, bilan, révision */
+
+.reveal .enquete-bouton {
+  font: inherit; font-size: 15px; line-height: 1.2; padding: 6px 12px; border-radius: 7px; cursor: pointer;
+  border: 1.5px solid var(--filet); background: var(--blanc); color: var(--encre);
+}
+.reveal .enquete-bouton:hover { border-color: var(--bleu); }
+.reveal .enquete-bouton.principal { background: var(--bleu); border-color: var(--bleu); color: var(--blanc); }
+.reveal .enquete-bouton.discret { border-color: transparent; color: var(--gris); text-decoration: underline; padding-left: 4px; padding-right: 4px; }
+.reveal .enquete-bouton.actif { background: var(--orange); border-color: var(--orange); color: var(--blanc); }
+
+/* --- Certitude (mots de probabilité estimative) --------------------------- */
+.reveal .certitude-barre { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 6px 0; }
+.reveal .certitude-titre { font-size: 13px; font-weight: 700; color: var(--gris); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 4px; }
+.reveal .certitude-choix { font-size: 13px; padding: 3px 9px; }
+.reveal .certitude-avant { font-size: 15px; color: var(--bleu); font-weight: 700; }
+.reveal .certitude-alerte { font-size: 14px; color: #B3261E; min-height: 1.1em; }
+.reveal .confiance-barre { margin-bottom: 6px; }
+
+/* --- Coupe : le mini-jeu de profil ----------------------------------------- */
+.reveal .coupe-zone { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; outline: none; }
+.reveal .coupe-zone:focus .coupe-graphe { box-shadow: 0 0 0 2px var(--orange); }
+.reveal .coupe-image { position: relative; line-height: 0; }
+.reveal .coupe-image img { display: block; height: var(--hauteur-coupe, 300px); width: auto; max-width: 100%; margin: 0; }
+.reveal .coupe-trace { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.reveal .coupe-ligne { stroke: var(--orange); stroke-width: 0.6; stroke-dasharray: 1.5 1; vector-effect: non-scaling-stroke; }
+.reveal .coupe-trace .coupe-ligne { stroke-width: 3; }
+.reveal .coupe-extremite, .reveal .coupe-repere { position: absolute; transform: translate(-50%, -50%); line-height: 1; }
+.reveal .coupe-extremite { font: 700 15px var(--police-titre); color: var(--blanc); background: var(--bleu); border-radius: 50%; width: 24px; height: 24px; display: grid; place-items: center; }
+.reveal .coupe-repere { width: 14px; height: 14px; border-radius: 50%; background: var(--orange); border: 2px solid var(--blanc); }
+.reveal .coupe-graphe { width: 100%; height: auto; display: block; background: var(--fond-doux); border-radius: 8px; }
+.reveal .coupe-grille { stroke: #D8DAEC; stroke-width: 1; }
+.reveal .coupe-grille.forte { stroke: #B9BEDC; }
+.reveal .coupe-lettre { font: 700 16px var(--police-titre); fill: var(--bleu); }
+.reveal .coupe-vous { fill: none; stroke: var(--orange); stroke-width: 3.5; stroke-linejoin: round; }
+.reveal .coupe-reelle { fill: none; stroke: var(--bleu); stroke-width: 3; stroke-dasharray: 8 5; }
+.reveal .coupe-marcheur circle { fill: var(--bleu); }
+.reveal .coupe-marcheur path { fill: none; stroke: var(--bleu); stroke-width: 3; stroke-linecap: round; }
+.reveal .coupe-zone.termine .coupe-marcheur { opacity: 0.35; }
+.reveal .coupe-pied { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.reveal .coupe-aide { font-size: 13px; color: var(--gris); }
+.reveal .coupe-commandes { display: flex; gap: 6px; flex-wrap: wrap; }
+.reveal .coupe-message { font-size: 16px; color: var(--bleu); font-weight: 700; margin-top: 6px; min-height: 1.2em; }
+.reveal .apres-jeu { display: none; }
+.reveal .apres-jeu.visible { display: block; }
+html.reveal-print .reveal .apres-jeu { display: block; }
+html.reveal-print .reveal .coupe-pied { display: none; }
+
+/* --- Arbre de déduction ---------------------------------------------------- */
+.reveal .arbre-zone { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: start; }
+.reveal .arbre-image img { display: block; height: var(--hauteur-arbre, 380px); width: auto; max-width: 100%; margin: 0; }
+.reveal .arbre-titre { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris); margin-bottom: 4px; }
+.reveal .arbre-chemin ol { margin: 0 0 10px 1.2em; padding: 0; font-size: 14px; line-height: 1.35; }
+.reveal .arbre-chemin .arbre-q { color: var(--gris); }
+.reveal .arbre-noeud { border: 1.5px solid var(--filet); border-radius: 10px; padding: 12px 14px; background: var(--blanc); }
+.reveal .arbre-noeud.conclusion { border-color: var(--bleu); background: var(--fond-doux); }
+.reveal .arbre-question { font-size: 19px; font-weight: 700; color: var(--bleu); margin: 0 0 10px 0; }
+.reveal .arbre-choix { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
+.reveal .arbre-choix .enquete-bouton { text-align: left; }
+.reveal .arbre-corps { font-size: 16px; }
+.reveal .arbre-corps p { margin: 4px 0; }
+.reveal .arbre-pied { margin-top: 8px; display: flex; gap: 6px; }
+.reveal .arbre-imprime { font-size: 13px; margin-bottom: 4px; }
+.reveal .arbre-imprime ul { margin: 0 0 0 1.2em; }
+.reveal .arbre-manquant { color: var(--gris); font-style: italic; }
+
+/* --- Observer : écrire, puis comparer -------------------------------------- */
+.reveal .observer-champ { width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; line-height: 1.35; padding: 8px 10px;
+  border: 1.5px solid var(--filet); border-radius: 8px; resize: vertical; margin-bottom: 6px; background: var(--blanc); }
+.reveal .observer-champ:focus { outline: none; border-color: var(--bleu); }
+.reveal .observer-rappel { background: var(--fond-doux); border-radius: 8px; padding: 6px 10px; margin-bottom: 6px; font-size: 15px; }
+.reveal .observer-titre { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris); }
+.reveal .observer-rappel p { margin: 2px 0; white-space: pre-wrap; }
+.reveal .observer-vide { color: var(--gris); font-style: italic; }
+.reveal .observer-expert { display: none; border-left: 4px solid var(--bleu); padding: 2px 0 2px 12px; margin-top: 8px; font-size: 16px; }
+.reveal .observer.montre .observer-expert { display: block; }
+html.reveal-print .reveal .observer-champ, html.reveal-print .reveal .observer-zone .enquete-bouton { display: none; }
+
+/* --- Indices : l'image se dévoile ------------------------------------------ */
+.reveal .indices-zone { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: start; }
+.reveal .indices-image { position: relative; line-height: 0; }
+.reveal .indices-image img { display: block; height: var(--hauteur-indices, 380px); width: auto; max-width: 100%; margin: 0; }
+.reveal .indices-cadre { position: absolute; border: 3px solid var(--orange); border-radius: 4px; box-shadow: 0 0 0 2px rgba(255,255,255,0.6); }
+.reveal .indices-cadre span { position: absolute; left: -3px; top: -24px; background: var(--orange); color: var(--blanc); font: 700 13px var(--police-titre); padding: 2px 7px; border-radius: 4px; line-height: 1.3; }
+.reveal .indices-liste { margin: 0 0 8px 1.2em; padding: 0; font-size: 16px; line-height: 1.35; }
+.reveal .indices-liste li { margin-bottom: 4px; }
+.reveal .indices-commandes { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.reveal .indices-resume { font-size: 14px; color: var(--bleu); }
+.reveal .indices-conclusion { display: none; }
+.reveal .indices-conclusion.visible { display: block; }
+html.reveal-print .reveal .indices-conclusion { display: block; }
+
+/* --- Vrai ou IA ------------------------------------------------------------ */
+.reveal .vraiia-scene { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: start; }
+.reveal .vraiia-image img { display: block; height: var(--hauteur-vraiia, 400px); width: auto; max-width: 640px; object-fit: contain; margin: 0; border-radius: 4px; }
+.reveal .vraiia-compte { font-size: 13px; color: var(--gris); margin-bottom: 4px; }
+.reveal .vraiia-choix { display: flex; gap: 8px; margin: 8px 0; }
+.reveal .vraiia-verdict { margin: 8px 0; font-size: 16px; }
+.reveal .vraiia-verdict.juste strong { color: #2E7D32; }
+.reveal .vraiia-verdict.faux strong { color: #B3261E; }
+.reveal .vraiia-verdict p { margin: 4px 0 8px 0; }
+.reveal .vraiia-legende { font-size: 13px; color: var(--gris); }
+.reveal .vraiia-score { font-size: 20px; font-weight: 700; color: var(--bleu); }
+.reveal .vraiia-grille { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.reveal .vraiia-vignette { margin: 0; font-size: 10px; line-height: 1.25; }
+.reveal .vraiia-vignette img { width: 100%; height: 120px; object-fit: cover; margin: 0; }
+
+/* --- Calibration ----------------------------------------------------------- */
+.reveal .calibration-table { border-collapse: collapse; font-size: 15px; margin: 6px 0; }
+.reveal .calibration-table th, .reveal .calibration-table td { padding: 4px 12px; border-bottom: 1px solid var(--filet); text-align: left; }
+.reveal .calibration-table td:last-child { width: 220px; position: relative; }
+.reveal .calibration-barre { display: inline-block; height: 12px; background: var(--orange); border-radius: 3px; vertical-align: middle; max-width: 150px; }
+.reveal .calibration-pc { margin-left: 8px; font-weight: 700; color: var(--bleu); }
+.reveal .calibration-vide, .reveal .calibration-lecture { font-size: 14px; color: var(--gris); }
+
+/* --- Bilan des compétences ------------------------------------------------- */
+.reveal .bilan-table { border-collapse: collapse; width: 100%; font-size: 15px; }
+.reveal .bilan-table th { text-align: left; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gris); padding: 2px 6px; }
+.reveal .bilan-table td { padding: 4px 6px; border-bottom: 1px solid var(--filet); vertical-align: middle; }
+.reveal .bilan-nom strong { color: var(--bleu); }
+.reveal .bilan-avant { color: var(--gris); font-size: 13px; white-space: nowrap; }
+.reveal .bilan-cases { white-space: nowrap; }
+.reveal .bilan-choix { font-size: 12px; padding: 3px 7px; margin-left: 3px; }
+.reveal .bilan-reprendre { margin-top: 8px; font-size: 15px; }
+.reveal .bilan-titre { font-weight: 700; color: var(--bleu); }
+.reveal .bilan-ligne { margin: 3px 0; }
+.reveal .bilan-lien { margin-right: 10px; color: var(--bleu); font-size: 14px; }
+
+/* --- Mode révision --------------------------------------------------------- */
+.reveal .revision-zone { border: 1.5px solid var(--bleu); border-radius: 12px; padding: 14px 18px; background: var(--blanc); min-height: 120px; }
+.reveal .revision-tete { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; color: var(--gris); margin-bottom: 6px; }
+.reveal .revision-aller { color: var(--bleu); }
+.reveal .revision-compte { font-size: 15px; }
+.reveal .revision-question { font-size: 18px; }
+.reveal .revision-question p, .reveal .revision-reponse p { margin: 4px 0; }
+.reveal .revision-reponse { display: none; border-left: 4px solid var(--orange); padding-left: 12px; margin: 8px 0; font-size: 16px; }
+.reveal .revision-reponse.visible { display: block; }
+.reveal .revision-boutons { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.reveal .revision-fini { font-size: 17px; color: var(--bleu); font-weight: 700; }
+.reveal .arbre-options { color: var(--gris); margin: 1px 0 4px 0; }
