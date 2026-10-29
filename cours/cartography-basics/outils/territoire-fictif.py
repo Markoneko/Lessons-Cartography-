@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Un territoire fictif pour le cours « Cartography : Basics ».
 
-    python3 outils/territoire-fictif.py cours/cartography-basics/donnees/territoire.json
+    python3 cours/cartography-basics/outils/territoire-fictif.py
 
 Une centaine de communes inventées (diagramme de Voronoï découpé par un contour),
 avec pour chacune une surface forestière et une surface en coupes rases.
@@ -96,8 +96,8 @@ sortie = {
     'contour': 'M' + ' L'.join(f'{x:.1f} {y:.1f}' for x, y in list(contour.exterior.coords)[:-1]) + ' Z',
     'communes': donnees,
 }
-chemin = sys.argv[1]
 import os
+chemin = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'donnees', 'territoire.json')
 os.makedirs(os.path.dirname(chemin), exist_ok=True)
 json.dump(sortie, open(chemin, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 t = sorted(c['taux'] for c in donnees)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Générateur des schémas du cours « Cartography : Basics », en français et en anglais.
 
-    python3 outils/schemas-cartography.py cours/cartography-basics
+    python3 cours/cartography-basics/outils/schemas.py
 
 Lit donnees/territoire.json (outils/territoire-fictif.py) et écrit images/schemas/ (fr)
 et images/schemas/en/ (en). Les valeurs citées dans le cours sont calculées ici.
@@ -11,7 +11,7 @@ import math
 import os
 import sys
 
-COURS = sys.argv[1]
+COURS = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(COURS, 'images', 'schemas')
 os.makedirs(os.path.join(OUT, 'en'), exist_ok=True)
 TERR = json.load(open(os.path.join(COURS, 'donnees', 'territoire.json'), encoding='utf-8'))

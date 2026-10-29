@@ -1,4 +1,4 @@
-_sortie/
+**/_sortie/
 .quarto/
 *_files/
 
@@ -9,3 +9,7 @@ _sortie/
 # Fichiers produits, déposés à côté du cours : ils se régénèrent, on ne les envoie pas
 cours/**/*.html
 cours/**/*.pdf
+bac-a-sable/**/*.html
+bac-a-sable/**/*.pdf
+
+__pycache__/

@@ -1,7 +1,8 @@
 # Réglages communs à tous les cours. On n'y touche presque jamais.
 project:
   type: default
-  output-dir: _sortie
+  # Pas de dossier de sortie commun : outils/sorties.py range chaque support dans le _sortie/ de son cours
+  post-render: python3 outils/sorties.py
   render:
     - "cours/**/*.qmd"
     - "bac-a-sable/**/*.qmd"

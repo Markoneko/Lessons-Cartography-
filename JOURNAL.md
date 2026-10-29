@@ -2,6 +2,41 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-29 — Arborescence rationalisée
+
+**Demande de Marc**
+
+- Mettre les fichiers produits dans chaque cours, harmoniser les noms des cours, sans casser de liens.
+- Les supports d'origine et les sorties dans chaque cours ; PDF automatiques ; pas de numéro d'ordre ; pas encore de fusion dans `main` ; pas de skill.
+
+**Renommé**
+
+| Avant | Après |
+|---|---|
+| `cours/de-la-terre-a-la-carte/` | `cours/earth-to-map/` |
+| `cours/geotraitements/` | `cours/gis-geoprocessing/` |
+| `sources/Reference-*.ppt` | `cours/<cours>/source/` (Géodésie et Histoire de la cartographie : `earth-to-map`) |
+| `sources/ModelPPT-GeodataParis_2026.pptx` | `_charte/` |
+| `outils/schemas-cartography.py`, `outils/territoire-fictif.py` | `cours/cartography-basics/outils/schemas.py`, `…/territoire-fictif.py` |
+| `outils/schemas-geotraitements.py` | `cours/gis-geoprocessing/outils/schemas.py` |
+| `_sortie/cours/<cours>/index.html` | `cours/<cours>/_sortie/<Titre>.html`, `<Titre>-EN.html`, et leurs PDF |
+
+`gis-basics` et `cartography-basics` gardent leur nom. Les déplacements sont faits avec `git mv` : l'historique de chaque fichier suit (`git log --follow`).
+
+**Ajouté**
+
+- `outils/sorties.py`, lancé par Quarto après chaque rendu : il range le HTML dans le `_sortie/` du cours, sous le nom du titre (« -EN » pour l'anglais), et imprime le PDF corrigé. Le nom vient du titre : les en-têtes des cours, donc les couvertures figées, n'ont pas à changer. Pendant un aperçu, il copie au lieu de déplacer, et n'imprime pas. `SANS_PDF=1` pour un rendu rapide.
+- `outils/pdf.py` : l'impression seule, avec `--vierge` pour la version sans réponses.
+- `outils/controle.py` : débordements réponses ouvertes, erreurs JavaScript, captures et planches. Ces outils n'existaient jusqu'ici que dans l'espace de travail des sessions.
+- Les générateurs de schémas trouvent seuls leur cours : plus d'argument à donner.
+
+**Vérifié**
+
+- Les liens internes des cours sont tous relatifs à leur dossier ; le registre des diapos figées ne contient aucun chemin. Rien n'a cassé.
+- `quarto render` produit les huit supports et leurs huit PDF (41, 54, 55, 40 pages par langue) ; aucun débordement, aucune erreur ; les générateurs relancés redonnent des fichiers identiques ; aucune diapo figée modifiée.
+- `plan.md` de « GIS : Basics » est régénéré sans les caractères abîmés (« � ») qu'il portait.
+- Les noms anciens restent dans les entrées précédentes de ce journal : c'est l'historique.
+
 ## 2026-10-15 — « Cartography : Basics », retours de Marc sur la V0
 
 Numéros de diapo de la V0 (39 diapos) ; la V1 en compte 41. Chaque correction est reportée dans la version anglaise.

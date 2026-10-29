@@ -5,7 +5,6 @@ author: "Marc Poupée · Géodata Paris"
 date: "2026-10-16"
 date-format: "D MMMM YYYY"
 footer: "Cartography: Basics"
-output-file: Cartography-Basics-EN.html
 lang: en
 title-slide-attributes:
   data-state: plein

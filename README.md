@@ -9,6 +9,7 @@ Aucune IA n'est nécessaire pour écrire, modifier ou produire un support.
 
 - [Quarto](https://quarto.org/docs/get-started/) — le programme qui transforme le texte en diapos.
 - Un éditeur de texte. [VS Code](https://code.visualstudio.com/) avec l'extension Quarto donne un aperçu en direct, mais le Bloc-notes suffit.
+- Pour les PDF automatiques et le contrôle des supports, Python 3 et Playwright : `pip install playwright`, puis `playwright install chromium`. Sans eux, le HTML se produit quand même.
 
 ## Produire un support
 
@@ -18,20 +19,28 @@ Dans un terminal, depuis ce dossier :
 quarto render cours/mon-cours/index.qmd
 ```
 
-Le résultat arrive dans `_sortie/cours/mon-cours/` :
+Le résultat arrive dans le dossier `_sortie/` du cours, sous le nom de son titre (`outils/sorties.py` s'en charge après chaque rendu) :
 
-`index.html` (ou le nom donné par `output-file:` dans l'en-tête du cours, par exemple `Cartography-Basics.html`) : un seul fichier, qui fonctionne sans réseau. Il sert à projeter et à faire manipuler les étudiants. Touche `F` : plein écran. Touche `S` : vue orateur avec les notes.
+- `cours/gis-basics/_sortie/GIS-Basics.html` et `GIS-Basics-EN.html` : un seul fichier par langue, qui fonctionne sans réseau. Il sert à projeter et à faire manipuler les étudiants. Touche `F` : plein écran. Touche `S` : vue orateur avec les notes.
+- `GIS-Basics.pdf` et `GIS-Basics-EN.pdf` : le support de cours, avec le corrigé des exercices, imprimé tout seul si Playwright est installé.
 
-Pour le **PDF**, qui sert de support de cours : ouvrir `index.html` dans Chrome ou Edge, ajouter `?print-pdf` à la fin de l'adresse, puis Imprimer → Enregistrer au format PDF (marges : aucune, graphiques d'arrière-plan : cochés).
+`quarto render`, sans nom de fichier, produit tous les cours. Pour un rendu rapide sans PDF : `SANS_PDF=1 quarto render cours/mon-cours/index.qmd`.
 
-- `index.html?print-pdf` — le support avec le corrigé des exercices ;
-- `index.html?print-pdf&reponses=non` — le même, sans les réponses.
+Le PDF sans les réponses : `python3 outils/pdf.py cours/gis-basics/_sortie/GIS-Basics.html --vierge`. À la main, on obtient les mêmes en ouvrant le HTML dans Chrome, avec `?print-pdf` (ou `?print-pdf&reponses=non`) au bout de l'adresse, puis Imprimer → Enregistrer au format PDF (marges : aucune, graphiques d'arrière-plan : cochés).
+
+Pour contrôler un support (débordements, réponses ouvertes, erreurs JavaScript), et en tirer des planches de captures :
+
+```
+python3 outils/controle.py cours/gis-basics/_sortie/GIS-Basics.html --images /tmp/captures
+```
 
 Pour travailler avec un aperçu qui se met à jour à chaque enregistrement :
 
 ```
 quarto preview cours/mon-cours/index.qmd
 ```
+
+Pendant l'aperçu, le fichier reste à côté du cours (c'est lui que l'aperçu affiche) et une copie va dans `_sortie/` ; pas de PDF.
 
 ## Le plan et le cours : un seul fichier
 
@@ -63,15 +72,27 @@ Demande :
 Un script garantit que les diapos figées ne bougent pas :
 
 ```
-python3 outils/figer.py verifier cours/de-la-terre-a-la-carte/index.qmd
+python3 outils/figer.py verifier cours/earth-to-map/index.qmd
 ```
 
 Les règles que doit suivre un assistant sont dans `CONSIGNES-IA.md`.
 
 ## Créer un nouveau cours
 
-1. Copier le dossier `cours/de-la-terre-a-la-carte` et le renommer.
-2. Remplacer le contenu de `index.qmd` et les images.
+1. Copier le dossier `cours/earth-to-map` et le renommer d'après le titre du cours, en anglais, en minuscules et avec des tirets (`gis-basics`, `cartography-basics`…).
+2. Remplacer le contenu de `index.qmd` et les images ; ranger le support d'origine dans `source/`, et vider `_sortie/`.
+
+Un cours contient tout ce qui le concerne :
+
+| Dans le dossier du cours | Contenu |
+|---|---|
+| `index.qmd`, `index-en.qmd` | le cours, en français et en anglais |
+| `plan.md`, `plan-en.md`, `figes.json`, `figes-en.json` | produits par la compilation et par `figer.py` |
+| `images/` | les images légères, `originaux/` et `schemas/` |
+| `donnees/` | les données des exercices, s'il y en a |
+| `source/` | le support d'origine (PPT), jamais modifié |
+| `outils/` | les générateurs propres au cours (schémas, données) |
+| `_sortie/` | les fichiers produits, non versionnés |
 
 ## Écrire une diapo
 
@@ -195,7 +216,7 @@ Quel est le système légal ?
 
 ## Les expériences
 
-Chaque brique s'écrit en quelques lignes. Le cours `cours/de-la-terre-a-la-carte/index.qmd` en contient un exemple de chacune, à copier.
+Chaque brique s'écrit en quelques lignes. Le cours `cours/earth-to-map/index.qmd` en contient un exemple de chacune, à copier.
 
 **Pour aller plus loin** — un bouton en haut à droite ouvre un panneau de bonus : texte, image, lien.
 
@@ -362,7 +383,7 @@ Légende complète : …
 
 Figurés : `titre`, `sous-titre`, `aplat COULEUR`, `ligne COULEUR ÉPAISSEUR [ENCADREMENT ÉPAISSEUR]`, `point COULEUR [CONTOUR] [TAILLE]`, `cercles [COULEUR] R1 R2 R3` (rayons dans les unités de la carte, ramenés à sa taille d'affichage).
 
-Les schémas du cours (cartes en symboles, palettes, illusions) sont produits par `python3 outils/schemas-cartography.py cours/cartography-basics`, en français et en anglais. Les valeurs données dans les réponses sont calculées par ce script, pas recopiées à la main.
+Les schémas du cours (cartes en symboles, palettes, illusions) sont produits par `python3 cours/cartography-basics/outils/schemas.py`, en français et en anglais. Les valeurs données dans les réponses sont calculées par ce script, pas recopiées à la main.
 
 ### Réglages utiles
 
@@ -378,7 +399,7 @@ Les schémas du cours (cartes en symboles, palettes, illusions) sont produits pa
 
 Un schéma peut réagir au QCM de sa diapo : voir `images/schemas/aplatissement.svg` dans le cours.
 
-Dans un schéma, les éléments marqués `class="s-apparait"` restent cachés jusqu'à l'ouverture de la réponse de la diapo, et figurent dans le PDF corrigé : voir `images/schemas/jointure.svg` dans le cours `geotraitements`.
+Dans un schéma, les éléments marqués `class="s-apparait"` restent cachés jusqu'à l'ouverture de la réponse de la diapo, et figurent dans le PDF corrigé : voir `images/schemas/jointure.svg` dans le cours `gis-geoprocessing`.
 
 ## Les images d'un cours
 
@@ -393,9 +414,9 @@ Pour ajouter une image : la déposer dans `images/` avec un nom simple. Si elle 
 
 Sans recompiler, en ajoutant à l'adresse de la page :
 
-- `index.html?niveau=socle` — ne garde que le socle (fiche de révision) ;
-- `index.html?niveau=socle,appui` — deux niveaux ;
-- `index.html?optionnels=non` — retire les diapos `.optionnel`.
+- `GIS-Basics.html?niveau=socle` — ne garde que le socle (fiche de révision) ;
+- `GIS-Basics.html?niveau=socle,appui` — deux niveaux ;
+- `GIS-Basics.html?optionnels=non` — retire les diapos `.optionnel`.
 
 Pour graver ce tri dans le fichier produit, ajouter dans l'en-tête du cours (entre les `---`) puis recompiler :
 
@@ -410,7 +431,7 @@ La version anglaise d'un cours est un second fichier à côté du premier : `ind
 
 - Les fiches gardent les mêmes numéros ; leurs lignes s'écrivent `Intention :`, `Experience :`, `Request :`.
 - Les schémas qui contiennent du texte sont doublés dans `images/schemas/en/`. Les images sont partagées.
-- La compilation produit `index-en.html` et `plan-en.md` ; le script de gel tient un registre séparé, `figes-en.json`.
+- La compilation produit la version anglaise (`…-EN.html`, `…-EN.pdf`) et `plan-en.md` ; le script de gel tient un registre séparé, `figes-en.json`.
 - Les deux fichiers sont indépendants : une correction faite dans l'un est à reporter dans l'autre.
 
 Pour une autre langue, ajouter un jeu de textes en tête de `_briques/gabarit.lua` et de `_briques/briques.html`.
@@ -419,12 +440,11 @@ Pour une autre langue, ajouter un jeu de textes en tête de `_briques/gabarit.lu
 
 | Dossier | Contenu | On y touche ? |
 |---------|---------|---------------|
-| `cours/` | les cours, un dossier chacun | oui, tout le temps |
-| `bac-a-sable/` | brouillons jetables | oui |
-| `sources/` | les supports d'origine (PPT) | jamais |
-| `_charte/` | couleurs, polices, logos Géodata | seulement si la charte change |
+| `cours/` | les cours, un dossier chacun, qui contient tout (voir « Créer un nouveau cours ») | oui, tout le temps |
+| `bac-a-sable/` | brouillons jetables ; chacun reçoit aussi son `_sortie/` | oui |
+| `_charte/` | couleurs, polices, logos Géodata, modèle PPT de l'école | seulement si la charte change |
 | `_briques/` | le moteur : niveaux et exercices | rarement |
-| `_sortie/` | les fichiers produits (non versionnés) | non |
+| `outils/` | les outils communs : `figer.py`, `sorties.py`, `pdf.py`, `controle.py` | rarement |
 
 Changer une couleur ou une police : tout est en tête de `_charte/geodata.css`.
 

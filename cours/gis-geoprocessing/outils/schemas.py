@@ -1,6 +1,6 @@
-"""Générateur des schémas de cours/geotraitements.
+"""Générateur des schémas du cours « GIS : Geoprocessing » (cours/gis-geoprocessing).
 
-    python3 outils/schemas-geotraitements.py cours/geotraitements/images/schemas
+    python3 cours/gis-geoprocessing/outils/schemas.py
 
 Schémas du cours GIS : Geoprocessing, en français et en anglais.
 Écrit chaque schéma dans <dossier>/ (fr) et <dossier>/en/ (en).
@@ -8,7 +8,7 @@ Les valeurs des exercices sont calculées ici, pas recopiées à la main.
 """
 import os, sys
 
-OUT = sys.argv[1]
+OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'images', 'schemas')
 os.makedirs(os.path.join(OUT, 'en'), exist_ok=True)
 
 def svg(vb, aria, body, extra=''):
