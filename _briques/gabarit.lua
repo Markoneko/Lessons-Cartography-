@@ -30,6 +30,7 @@ local TEXTES = {
     flash_voir = "Voir la carte", flash_revoir = "Revoir", pieces = "Les pièces",
     ia_titre = "DÉCLARATION DE TRANSPARENCE IA", ia_boussole = "Boussole IA · Géodata Paris",
     ia_profil = "Profil :", ia_coordonnees = "coordonnées",
+    dossier_ouvrir = "Ouvrir le dossier", dossier_tampon = "TOP SECRET",
     ia_texte = "Certaines illustrations et certains passages ont été réalisés par %s. La conception, les sources et le texte dans son ensemble sont de l’auteur.",
   },
   en = {
@@ -44,6 +45,7 @@ local TEXTES = {
     flash_voir = "Show the map", flash_revoir = "Show again", pieces = "The pieces",
     ia_titre = "AI TRANSPARENCY STATEMENT", ia_boussole = "AI Compass · Géodata Paris",
     ia_profil = "Profile:", ia_coordonnees = "coordinates",
+    dossier_ouvrir = "Open the file", dossier_tampon = "TOP SECRET",
     ia_texte = "Some illustrations and passages were created by %s. The design, sources, and text as a whole were created by the author.",
   },
 }
@@ -859,6 +861,101 @@ local function brique_vrai_ia(div)
   return div
 end
 
+-- ::: {.dossier titre="Renseignement, 1858-2020" tampon="TOP SECRET"}
+--   ![Légende](images/frise.png)
+-- :::
+-- Une chemise cartonnée, tamponnée ; un clic l'ouvre et montre son contenu en plein écran.
+local function brique_dossier(div)
+  local titre = attribut(div, "titre", "")
+  local tampon = attribut(div, "tampon", t("dossier_tampon"))
+  if not EN_HTML then return div end
+  local h = '<button type="button" class="dossier-couverture" aria-label="' .. echappe(t("dossier_ouvrir") .. " : " .. titre) .. '">'
+      .. '<span class="dossier-onglet"></span><span class="dossier-tampon">' .. echappe(tampon) .. '</span>'
+      .. '<span class="dossier-titre">' .. echappe(titre) .. '</span>'
+      .. '<span class="dossier-ouvrir">' .. echappe(t("dossier_ouvrir")) .. ' →</span></button>'
+  div.content = pandoc.List({ pandoc.RawBlock("html", h), pandoc.Div(div.content, pandoc.Attr("", { "dossier-contenu" })) })
+  return div
+end
+
+-- ::: {.phrases}
+--   Consigne.
+--   - Il est {presque certain|=probable|possible|peu probable} qu'il y ait des ouvriers : commentaire.
+-- :::
+-- Des phrases à compléter par un menu ; « = » marque le ou les mots attendus ; après « : », le commentaire.
+local function brique_phrases(div)
+  local garde, items = pandoc.List(), {}
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "BulletList" then
+      for _, item in ipairs(bloc.content) do
+        local t_ = sans_insecables(pandoc.utils.stringify(item))
+        local avant, choix, apres = t_:match("^(.-){(.-)}(.*)$")
+        if avant then
+          local fin, com = apres:match("^(.-)%s+:%s+(.*)$")
+          fin = fin or apres; com = com or ""
+          local opts, justes = {}, {}
+          local k = 0
+          for o in (choix .. "|"):gmatch("(.-)|") do
+            o = o:gsub("^%s+", ""):gsub("%s+$", "")
+            if o:sub(1, 1) == "=" then o = o:sub(2):gsub("^%s+", ""); table.insert(justes, tostring(k)) end
+            table.insert(opts, json_texte(o)); k = k + 1
+          end
+          table.insert(items, '{"a":' .. json_texte(avant) .. ',"o":[' .. table.concat(opts, ",") .. '],"j":['
+            .. table.concat(justes, ",") .. '],"p":' .. json_texte(fin) .. ',"c":' .. json_texte(com) .. '}')
+        end
+      end
+    else garde:insert(bloc) end
+  end
+  if not EN_HTML then return div end
+  garde:insert(pandoc.RawBlock("html", '<div class="phrases-zone"><script type="application/json" class="phrases-donnees">['
+    .. table.concat(items, ","):gsub("</", "<\\/") .. ']</script></div>'))
+  div.content = garde
+  return div
+end
+
+-- ::: {.combiner}
+--   Consigne.
+--   ### Surface minimale
+--   - 0,5 ha [fao, kyoto]        (entre crochets : les définitions qui admettent ce choix)
+--   ### Hauteur des arbres
+--   - …
+--   #### fao | FAO, Évaluation des ressources forestières
+--   Ce que dit la définition.
+--   #### * | Aucune définition connue
+--   Ce qu'on affiche quand aucune définition ne réunit les choix.
+-- :::
+local function brique_combiner(div)
+  local consigne, series, defs, cour_def = pandoc.List(), {}, {}, nil
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "Header" and bloc.level == 3 then
+      table.insert(series, { titre = sans_insecables(pandoc.utils.stringify(bloc.content)), options = {} }); cour_def = nil
+    elseif bloc.t == "Header" then
+      local texte = sans_insecables(pandoc.utils.stringify(bloc.content))
+      local id, titre = texte:match("^%s*(%S+)%s*|%s*(.*)$")
+      cour_def = { id = id or texte, titre = titre or "", corps = pandoc.List() }
+      table.insert(defs, cour_def)
+    elseif bloc.t == "BulletList" and #series > 0 and not cour_def then
+      for _, item in ipairs(bloc.content) do
+        local t_ = sans_insecables(pandoc.utils.stringify(item))
+        local libelle, tags = t_:match("^(.-)%s*%[(.-)%]%s*$")
+        local ts = {}
+        for m in (tags or ""):gmatch("[^,%s]+") do table.insert(ts, json_texte(m)) end
+        table.insert(series[#series].options, '{"t":' .. json_texte(libelle or t_) .. ',"tags":[' .. table.concat(ts, ",") .. ']}')
+      end
+    elseif cour_def then cour_def.corps:insert(bloc)
+    else consigne:insert(bloc) end
+  end
+  if not EN_HTML then return div end
+  local js, jd = {}, {}
+  for _, s_ in ipairs(series) do table.insert(js, '{"titre":' .. json_texte(s_.titre) .. ',"options":[' .. table.concat(s_.options, ",") .. ']}') end
+  for _, d in ipairs(defs) do
+    table.insert(jd, '{"id":' .. json_texte(d.id) .. ',"titre":' .. json_texte(d.titre) .. ',"corps":' .. json_texte(html_de(d.corps)) .. '}')
+  end
+  consigne:insert(pandoc.RawBlock("html", '<div class="combiner-zone"><script type="application/json" class="combiner-donnees">{"series":['
+    .. table.concat(js, ","):gsub("</", "<\\/") .. '],"defs":[' .. table.concat(jd, ","):gsub("</", "<\\/") .. ']}</script></div>'))
+  div.content = consigne
+  return div
+end
+
 -- ::: {.bilan moment="debut"}  - C1 | Décrire avant d'interpréter  … :::   (moment="fin" : la comparaison)
 local function brique_bilan(div)
   local moment = attribut(div, "moment", "debut")
@@ -1029,6 +1126,9 @@ local function briques(div)
   if div.classes:includes("vrai-ia") then return brique_vrai_ia(div) end
   if div.classes:includes("bilan") then return brique_bilan(div) end
   if div.classes:includes("revision") then return brique_simple(div, "revision-zone") end
+  if div.classes:includes("dossier") then return brique_dossier(div) end
+  if div.classes:includes("phrases") then return brique_phrases(div) end
+  if div.classes:includes("combiner") then return brique_combiner(div) end
   if div.classes:includes("calibration") then return brique_simple(div, "calibration-zone") end
   return nil
 end
@@ -1063,11 +1163,16 @@ local function carte_du_cours(inventaire, parties, seulement)
     end
     h = h .. '</p>'
   end
+  -- un niveau de plus de 16 diapos s'étale sur deux colonnes (sinon il déborde de la diapo)
+  local LONGUE, nb_colonnes = 16, 0
+  for _, n in ipairs(liste) do nb_colonnes = nb_colonnes + ((#liste > 1 and #inventaire[n] > LONGUE) and 2 or 1) end
   h = h .. '<div class="carte-du-cours' .. (plus_longue > 8 and ' dense' or '')
-      .. (#liste == 1 and ' un-niveau' or '') .. '">'
+      .. (#liste == 1 and ' un-niveau' or '') .. '"'
+      .. (#liste > 1 and (' style="grid-template-columns: repeat(' .. nb_colonnes .. ', 1fr)"') or '') .. '>'
   for _, n in ipairs(liste) do
     local nb = #inventaire[n]
-    h = h .. '<div class="carte-colonne niveau-' .. n .. '"><div class="carte-tete">' .. glyphe(n, 54)
+    local large = (#liste > 1 and nb > LONGUE) and ' large' or ''
+    h = h .. '<div class="carte-colonne niveau-' .. n .. large .. '"><div class="carte-tete">' .. glyphe(n, 54)
         .. '<div><div class="niveau-mot">' .. LIBELLE[n] .. '</div><div class="carte-compte">'
         .. nb .. ' ' .. (nb > 1 and t("diapos") or t("diapo")) .. '</div></div></div><ul>'
     for _, d in ipairs(inventaire[n]) do

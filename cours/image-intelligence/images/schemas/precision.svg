@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 246" role="img" aria-label="Précision de la production d’information géographique">
+<g class="s-apparait">
+<path d="M270 14 V214" stroke="#E4E5EE" stroke-width="1"/>
+<text class="s-petit" x="270.0" y="236" text-anchor="middle" style="font-size:13px">50 %</text>
+<path d="M356 14 V214" stroke="#E4E5EE" stroke-width="1"/>
+<text class="s-petit" x="356.0" y="236" text-anchor="middle" style="font-size:13px">60 %</text>
+<path d="M442 14 V214" stroke="#E4E5EE" stroke-width="1"/>
+<text class="s-petit" x="442.0" y="236" text-anchor="middle" style="font-size:13px">70 %</text>
+<path d="M528 14 V214" stroke="#E4E5EE" stroke-width="1"/>
+<text class="s-petit" x="528.0" y="236" text-anchor="middle" style="font-size:13px">80 %</text>
+<path d="M614 14 V214" stroke="#E4E5EE" stroke-width="1"/>
+<text class="s-petit" x="614.0" y="236" text-anchor="middle" style="font-size:13px">90 %</text>
+<path d="M700 14 V214" stroke="#E4E5EE" stroke-width="1"/>
+<text class="s-petit" x="700.0" y="236" text-anchor="middle" style="font-size:13px">100 %</text>
+<defs><pattern id="precision-hachure" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#E7E9F5"/><path d="M0 0 V8" stroke="#283B89" stroke-width="2" opacity="0.45"/></pattern></defs>
+<text x="256" y="43" text-anchor="end" style="font-size:16px;fill:#2B2B33">Photo-interprète expert</text>
+<rect x="270" y="26" width="387" height="26" rx="4" fill="#283B89"/>
+<text x="667.0" y="44" text-anchor="start" style="font-size:15px;fill:#2B2B33;font-weight:700">95 %</text>
+<text x="256" y="93" text-anchor="end" style="font-size:16px;fill:#2B2B33">Classification experte</text>
+<rect x="313" y="76" width="318" height="26" rx="4" fill="url(#precision-hachure)"/>
+<text x="641.2" y="94" text-anchor="start" style="font-size:15px;fill:#2B2B33;font-style:italic">très variable</text>
+<text x="256" y="143" text-anchor="end" style="font-size:16px;fill:#2B2B33">Apprentissage machine</text>
+<rect x="270" y="126" width="258" height="26" rx="4" fill="#283B89"/>
+<rect x="530" y="126" width="41" height="26" rx="4" fill="#283B89" opacity="0.35"/>
+<text x="581.0" y="144" text-anchor="start" style="font-size:15px;fill:#2B2B33;font-weight:700">80 à 85 %</text>
+<text x="256" y="193" text-anchor="end" style="font-size:16px;fill:#2B2B33">Réseau de neurones</text>
+<rect x="270" y="176" width="361" height="26" rx="4" fill="#283B89"/>
+<text x="641.2" y="194" text-anchor="start" style="font-size:15px;fill:#2B2B33;font-weight:700">92 %</text>
+</g>
+</svg>
