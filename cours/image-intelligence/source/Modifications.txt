@@ -1,0 +1,95 @@
+Alors suite à notre première interraction, voilà une première salve d'adaptations. Comme d'hab, il faut compiler tout cela dans notre fichier d esuivi et le plan. Que l'on garde une trace.
+
+Pour le titre, je te propose de mettre le Plan_Pennemunde
+
+Slide 4, il va falloir adapter le socle qui dépasse.le mettre sur 2 colonnes?
+
+Slide 5, la Scène, il y a une séquence de video de correction, pas besoin d emettre la comparaison avec la lecture experte.
+
+Slide 7. les réponses sont déja dans les questions, cela tue la déduction, il faut reprendre.
+
+Slide 8, Pour induction, précisez : 
+Induction / On observe des faits répétés dont on dégager une règle. Elle propose une forte probabilité mais pas de certitude abolue.
+
+Déduction / Des règles ou des prémisses permettent d'avoir une conclusion. Si les prémisses sont vrais, la certitude est certaine.
+
+Abduction / Face à un fait observé, on déduit plusieurs hypothèses. Elle n'apporte aucune certitude, mais suggère des pistres particulièrement intéressant quand ils sont surprenants.
+
+Ne pas mettre les exemples dans les cases mais en dessous dans les faisceau d'indice à la place de forme/site/ association/temps
+
+Enfin -il possible de rééquilibrer la slide pour éviter les 3 longues barres de réponses? Enfin, proposer une autre question, (là il suffit de lire) préférer "
+
+
+slide 9, pour aller plus loin, faire le lien avec une autre série uchronique, la série Star City
+=> je t'ai ajouté une image dans images/oruiginaux / star-city.png
+
+slide un métier né de la guerre. Pour pouvoir donner les réponses, il faut déjà que les étudiants aient une donnée => Je t'ai mis dans originaux toujours une "frise". On peut reposer les memes question mes en ouvrant un dossier type top secret qui affiche l'image en plein ecran. Cette mage est : Frise-Intelligence.png.
+
+Slide 10. Cela ne va pas, il faut garder le radiotelescope sute pour la coupe topographique, sinon cela casse l'exercice qui demande de comprendre les relief et déduire la forme de la coupole.
+=> proposer un autre exemple.
+
+Autre point la réponse apparait en meme temps que l'item 5, ce qui fait que l'on a la réponse avant de voter, a modifier.
+
+Slide 11 : Les probabilités évoquées me rapellent celle du Giec, Il faut faire un lien vers l'usage similaire des termes utilisés dans les rapports du GIEC (cf En outre, le GIEC utilise une échelle de probabilité pour évaluer la probabilité d'un événement ou d'un résultat, avec les termes suivants : presque certain (99 à 100 %), très probable (90 à 100 %), probable (66 à 100 %), plus probable qu'improbable (plus de 50 %), aussi probable qu'improbable (33 à 66 %), improbable (0 à 33 %), très improbable (0 à 10 %), exceptionnellement improbable (0 à 1 %). Ces évaluations de probabilité sont également indiquées en italique (par exemple, "très probable"). Cette terminologie a été appliquée de manière cohérente dans les cinquième (AR5) et sixième (AR6) rapports d'évaluation.) de https://climat.be/changements-climatiques/changements-observes/rapports-du-giec 
+
+Autre chose, l'exercice est très stimulant, mais mélange 2 niveaux de probabilité, celui dans la démarche étuciante et l'autre dans l'énoncé. Je pense qu'il serait plus pertinent de les associés. Les phrases pourraient etre inscrites commes Il est ..... qu'il y a des ouvriers sur le site (menu déroulant avec les 4 certitudes) phrase 2 il est .... qu'un chantier soit en cours
+
+3 Il est .... que nous soyons aux Etats-unis.
+4 Il est ... que cette image soit issue d'une IA.
+
+Cela ne fonctionne que si on a retiré la solution donnée avant. Encore une fois il faut le faire pour garder le suspens et l'intéret de l'exercice de la courbe topo.
+
+Slide 12, il faut une image d'archive là. Précisez aussi qu'elles sont présentées par Colin Powel (j'ai ajouté sa photo, issu de https://fr.wikipedia.org/wiki/Colin_Powell à préciser dans les sources)
+
+Slide 15, on part d'une bonne idée, mais 1 il te faut des données réelles et complexifier la question.
+=> te mettre à disposition des données réelles. Tu trouveras Isle-Adam-CLC et isla-adam-BDForetV2 qui sont des données réelles.
+
+Slide 16, je ne comprends pas. Partons sur la définition des forêts... Je te propose l'activité suivante :  on met 3 série d'éléments de définition. L'étudiants les associe et on découvre si une définition de ce type existe :
+
+
+Slide 17 : 
+Alors cette slide est une de mes slides sur la précisions des experts. Il faut commencer par une question. Quelle est votre niveua de certitude avec vous même? Cette phrase fonctionne très bien. On les fait voter avec une barre glissantes . il devrait s'approcher de 95% En effet en fonction de son age, de sa progression dans un domaine, de son "tat de fatiguer ou d'ebriété, on est pas toujours d'accord avec soit meme. (je rajouterai ses points à l'oral) Introduire ensuite le fait que les experts sont considérés comme tels à 95% en effet. On laisse la question sur les désaccords. On introduit ensuite 4 catégori de précisions en production d'information geographique. Photointerprête expert 95% classification experte : très variable Apprentissage machine 80/85% Reseau de neurone 92%
+
+Ajouter un Pour aller plus loin sur les relations possibles entre les applications thématiques, par exemple entre les pohotointerprètes forestiers et militaires ; https://academic.oup.com/jof/article/50/4/271/4684240
+
+
+Slide 18 : attention, l'IA n'apprendra pas les hésitations mais juste les erreurs. Je veux bien que tu me contredises mais l'IA integre des données etisuetées, pas en train d'etre etiquetées, le processus de decision n'est pas connu. Ce pourrait etre une info intéressante d'ailleurs... intégrer la marge de certitude dans la données d'apprentissage. Passons. (cest une reflexion personnelle, on peut garder trace dans le plan, âs les slides. Si tu veux commenter, tu es le bienvceu)
+
+J'ai ajouté 2 images pour voir les données sources ortho et etiqueté (Flair1...) Les mettre l'une à coté de l'autre.
+
+Slide 19 : j'ai ajouté 2 illustrations intitulée Unet... pour illustrer le propos. une ortho et un résultat Unet un peu ancien (ce sont des travaux de 2019, le préciser)
+
+Sldie 21 : Je t'ai ajouté une image lidar d'angkorVat, la source est https://www.wired.com/2013/06/angkor-wat/
+
+Slide 22 : Suivi et controle ressemble à Vérificationn qui est assez vague et par sur le meme registre thématique que le reste. Je garderai ces exemples mais en reprenant 4 catégories :
+Gestion de crise.
+Suivi de l'occupation du sol
+Controle qualité
+Géopolitique
+
+
+Slide 24, il faut reprendre pour decomposer la lecture experte. ex : Des surfaces de tailles importantes, a priori planes de couleurs variant du brun au vert => très probablement des champs.
+
+
+Slide 26. Pour garder la tension, ne pas donner la réponse du reacteur. Pas enncore.
+
+
+Slide 28, c'est super, exactement ce que j'esperais, par contre il faut faire le départ au milieu des ordonnées, et vu les lacets presents, je pense que la premiere pente monte fort avec un crete et on redescned ensuite vers le centre . il faudrait trouver un mouyen de lisser la courbve en direct que l'on comprenne que c'est possible, trouver en somme un moyen de différencier les cretes qui casse, des fonds arrondis. Ensuite, il manque une étape de déduction de la forme de la parabole. 1 savoir pou est le soleil 2 rouver un cadran soliare (par exemple la tour en bas à droite) en déduire les ombres et la forme, car le reflet à gauche du zénith signifie que la parabole est concave.
+
+Slide 29, il faut un rappel avec des images, je vais en intégrer une nouvelle. Faire un lien "pour aller plus loin" vers l'OSINT et la chronolocation
+
+Slide 32. Préciser que l'éloignement de la population est important (presquile du cotentin, plus la falaise protectrice, et sans doute (supposition de ma part) la proximité de la Hague. Mettre une carte simple avec Flamanville, et un cercle de 100 km autour. en font une carte de la mer et de la terre sur laquelle on voit une estimation de la population humaine.
+
+Slide 33, la question est ambigu et la réponse plus encore. Je te propose de rajouter une question. Le texte reste pour l'association mais quand on pass la slide la question apparait. Quelles associations nous permettent de déduire la nature de ce lieu (je t'ajoute l'image d'un centre equestre adamois : Centre_equestre.jpg
+
+
+Slides 34 : La question est trop simple. Il faut que j'ajoute dans ce cas un gif animé. J'en ai sur la crise ukrainienne, ou l'on voit des bases russes qui grossissent. CEla te parait approprié? 
+
+Il faut ajouter une slide après le temps. Elle s'intitule : Les connaissances personnelles et des réflexes.
+On montre l'image Cambrai-1917.jpg la plkus visible possible et l'on pose la question : Que voyez vous?
+Quelles questions se poser? Quel lieu : réponse Cambrai. Quelle date ? : réponse 1917 Quel signal ? réponse : du panchromatique. Quel référence cinématographique ? (A l'est rien de nouveau ou wonderwoman au choix  (c: )
+
+Slides 39 : L'image est trop petite. Il faut la recadrer pour ne plus voir les référence IA, juste la partie utile et l'agrandir. C'est le cas pour toutes les images suivantes.
+
+Idem Slide 40, il faut de façon général maximiser les visuelsn, c'est ce qui compte le plus.
+
