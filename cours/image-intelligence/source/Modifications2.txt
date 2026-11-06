@@ -1,0 +1,163 @@
+On apporte une seconde série de modification.
+
+Les slides sur lesquels je ne reviens pas peuvent être mise en figé.
+Comme d'hab, il faut compiler tout cela dans notre fichier de suivi et le plan, reporter les modificaitons sur la version anglaise.
+
+Titre, ok figé
+
+Slide 2 figé
+Slide3
+
+On reprend :
+
+C1 Décrire avant d’interpréter : séparer ce que je vois de ce que j’en déduis, l'identification de l'interprétation.
+C2 Connaitre les réflexes de lecture d'image. Etre capable en particulier d'identifier la nature du signal.
+C2 Identifier un objet avec les clés d’identification : ton, taille, forme, texture, structure, ombre, date.
+C3 Interpréter une scène en croisant les indices en dégageant un degré de certitude
+
+C4 Choisir l’image/signal adaptée à une question, et connaître ses limites
+C5 Transformer une interprétation en donnée : nomenclature, unité minimale, contrôle	
+C6 Distinguer une image réelle d’une image générée
+
+
+Slide4, 5, 6, figées
+Slides 7. J'aimerais que l'on fasse un glisser déposer si c'est possible pour ce type d'exercice.
+Rajouter aussi la possibilité de zoomer dans l'image.
+
+Slide 8, c'est très bien, on peut aérer la partie de Gauche en equilibrant sur la verticale.
+et remplacer la partie que les questions par l'image TourRosny.
+
+On crée une nouvelle Slides, nommées 8bis ou l'on garde lle schema de cours et on place la question avec les 3 raisonnements.
+Faire en sorte aussi, une fois que tous les 3 raisonnements sont affectés, que les case remonte pour éviter de déborder en bas.
+
+Slide 9, baisser le dossier Top secret pour aérer.
+
+Le aller plus loin, il faut mettre plus en valeur l'image que j'ai créé de STAR city. Je propose de créer une Slide à la fin avant les sources, qui seraient "Le coin des fictions". On la met en valeur là là en gros plan puis cela tourne avec coeur noir / le bureau des légendes / GoldenEye (JamesBond) / A l'ouest rien de nouveau / Wonderwoman . J'ai ajouté les images permettant cette slide.
+
+On ne garde que la visite du musée à cet endroit.
+
+
+Slide 10. Je propose une base de lancement satellite BASE 27 chinoise. PAs besoin de mettre la réponse.
+Image ajoutée aux ressources.
+
+Mettre un pour aller plus loin  avec les quizz de la DRM sur linkedin : https://www.linkedin.com/search/results/all/?keywords=%23yeuxdor&origin=GLOBAL_SEARCH_HEADER
+J'ai mis une illustration YEUXDOR pour illustrer
+
+Slide 11. Il faut pouvoir zoomer sur l'image.
+
+Slide 12 : Proposer de visiter le site suivant : https://www.cbsnews.com/pictures/powells-photos/
+
+Slide 13/14 ok
+
+Slide 15 réduire le slide sous l'image à la largeur de l'image.
+
+Slide 16, les définitions dépassent une fois ouverte, trouver une solution (en les mettant sur 2 colonnes?)
+
+Slide 17/18/19/20 ok
+
+Slide 21
+Changer la ref de l'image Lidar par Diam Evans / PNAS,
+rajouter un "pour aller plus loin" : une video sur le sujet. https://www.youtube.com/watch?v=o6Kq4XF1zKU
+on garde https://www.wired.com/2013/06/angkor-wat/ pour les sources à la fin.
+
+Changer la réponse aussi pour : Elle ne permet de visualiser que la radiométrie de la canopée. Les derniers échos lidar mettent en valeur les ir/régularités du sol et les aménagements anciens associés.
+
+22/23 OK !
+
+Slide 24, l'image est déformée, la rendre identique à la slide suivante.
+
+Slide 25
+J'ai ajouté la meme image prise en 2015 en IRC (infrarouge couleur) pour pouvoir illustrer la variation de signal. A ajouter en slide de superposition.
+
+Slide 26 idem, l'image est déformée Ne pas changer le rapport hauteur largeur en général. La rendre identique aux slides précédentes en terme d'emprise.
+
+Slide 27 : OK
+
+Slide 28, les questions sont assez simples, je propose de complexifier, on enlève D, on ajoute un objet qui fait écho à la tour de communication, cela ressemble au chateai d'eau, mais il ya a des elements sur le toits qui différencienbt. Ajouter 2 especes d'arbres aussi. enfin une tour de communication militaire qui ressemble au pylone electrique, mais avec un caisson d'antenne. Enfin, un pylon simple qui sans contexte devient difficile à identifier. (couleur militaire? antenne? etc???
+
+Simplifier aussi l'animation en faisant un lien avec des lignes à connecter.
+
+Slide 29/30 ok
+
+
+Slide 31 On reprend l'image de la tour de Rosny. On pose la question. Est-il possible de connaitre précisément l'heure de prise de vue? Comment s'y prendre? Quelle précaution? (cf. question de la pente)
+
+Slide 32 : RAjouter quelle clé principale dans la question 1.
+Il faudrait 3 questions Sur 3 colonnes. rajouter "Pour estimer un type de culture?" (reponse structure) "Pour identifier un avion" (réponse la forme)
+
+Slide 37 J'ai rajouté 2 gif que l'on peut mettre en // Novoozernoye et Soleti, 2 bases russes.
+On change la question. "Quelles sont les changements observées. Quelle dynamique traduisent-ils? En s'appuyant sur les dates, pourriez-vous en déduire le type et la nationalité des sites observés."
+
+Il sagit des bases russes qui gonflent avant l'attaque sur l'Ukraine.
+
+
+Slide 38 (des les réponses que que voyez-vous, des redoutes, 2 tranchés reliées.
+
+Slide 39 on garde le schéma phytographique.
+Pour le sciographique, on reprend l'image plutot C:\Users\mpoupee\Documents\GitHub\Lessons-Cartography-\cours\image-intelligence\images\originaux\MottefeodaleRely-sciographie.png
+
+Sans doute la mettre en dessous.
+
+On change aussi la question : Quelle donnée géographique permet de modéliser et reproduire une vision sciographique ? 'un MNT produit par Lidar'
+
+
+Slide 40
+
+C'est chouette, mais les codes sont dans l'ordre, cela facilite totalement les réponses, il faudrait mélanger, mieux styliser le lotissement pour qu'on voit qu'il est en construiction. Sinon c'est super.
+
+rajouter un pour aller plus loin avec "les Mississippi Meanders",carte à afficher (mississippi_meanders_etm_1999265.jpg) et lien https://science.nasa.gov/earth/earth-observatory/mississippi-meanders-6887/
+
+Slide 41, rajouter en petit l'image de la centrale à droite de cette slide.
+Slide 42, les pièges, il faut déboucher en conclusion aussi sur des exemples de pièges types. Les déformations geométriques ex ombres allongées par la pente. les déformations radiométriques, peintures, ombres, humidité, etc... l'erreur sur la nature du signal ex : une compostition colorée par prévue. je te laisse en ajouter sur le meme principe.
+
+
+Slide 46, il faut donner plus de place aux images. Maximiser poru la visibilité.
+
+Slide 48, ajouter l'outil de zoom.
+
+
+Slide 49 : ajouter les styles graphiques redondant et les biais récurrents.
+
+Slide 50, agrandir l'image.
+
+Slide 51, idem mieux proportionné les images (sans les déformer) pour prendre plus de place.
+
+Slide 52 : rajouter en 1 : Nature : D’où vient-elle ? Quel est le signal? Qui l’a publiée, quand, avec quelles métadonnées ?
+Source : A-t-elle déjà circulé ? (recherche d’image inversée)
+Cohérence spatio temporelle : Le lieu et la date sont-ils cohérents ? (d’autres images, le soleil, la saison)
+Cohérence physique : Les clés d’identification et d’interprétation tiennent-elles ? (formes, textures, ombres, etc...)
+Certification : Conclure avec un degré de certitude
+
+
+Remplacer "Aucun indice ne prouve seul : un faisceau, et une certitude dite." Par "Un indice unique est généralement fragile. C'est le croisement de faisceaux qui réduit l'incertitude."
+
+Slide 54, dans la correction adapter :
+Observations. Une côte rocheuse, une digue qui ferme un bassin, pas d'embarcation ni la place pour, deux dômes d’environ 50 m et un troisième en chantier, de longs bâtiments, des remous au large, des lignes électriques, le tout au pied d'une falaise.
+
+Interprétations. Une centrale nucléaire en bord de mer, refroidie par l’eau de mer (prise d’eau dans le bassin, rejet au large), avec un troisième réacteur en construction.
+
+Certitude. Presque certain pour la centrale (faisceau d’indices) ; probable pour le circuit de l’eau (les galeries ne se voient pas).
+
+Sources et limites. Une orthophotographie, une seule date ; le rejet est déduit, pas vu.
+
+
+Slides 55 :
+Observations. Des quais, des bassins, une ville en damier ; du gris presque partout ; des taches de couleur sur l’eau et sur les terre-pleins.
+
+Interprétations. Les couleurs marquent ce qui a changé entre les dates : des navires arrivés ou partis, des conteneurs déplacés. Le gris, l’immuable.
+
+Certitude. Probable : il faudrait savoir quelle couleur correspond à quelle date.
+
+Sources et limites. Une image radar multi dates, dont la source et les dates sont à préciser.
+
+Slide 58 : adpater par rapport aux modifications de la slide 3
+
+Slide 59, le principe est parfait. Par contre les questions restent trop collée à celles du cours, ce sont les mêmes.
+Là il faudrait reprendre les avancées pédagogiques sur la révision. 
+Tu dois poser des questions comme un tuteur exigeant (ce que tu es déjà pour moi)
+Question interface, on retrouve en petit toutes les competences socles. Celle interrogée est en surbrillance.
+Quand l'étudiant repond juste elle se grise, il a ainsi la motivation de tout résoudre.
+Il faut mélanger les flashs cards, refaites spécifiquement pour ce travail de rappel.
+Il faut aussi motiver des identifications sur les images du cours, des rappels de notion en langage libre, en gros motivé tous les types de mémoire mémoriels. Voilou, gros taff.
+
+Merci
