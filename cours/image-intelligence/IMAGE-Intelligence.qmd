@@ -1,0 +1,1902 @@
+---
+title: "Image Intelligence"
+subtitle: "Photo-interprétation : de l'image à l'information"
+author: "Marc Poupée · Géodata Paris"
+date: "2026-11-01"
+date-format: "D MMMM YYYY"
+footer: "Image Intelligence"
+title-slide-attributes:
+  data-state: plein
+  data-background-image: images/peenemunde-plan.jpg
+  data-background-size: auto 78%
+  data-background-position: 95% 55%
+---
+
+::: {.fiche n="0.1" etat="fige"}
+Intention : Couverture, sur le plan de Peenemünde, au cœur du jeu sérieux de Marc. [Retour V0 : le plan de Peenemünde en image de titre.]
+Expérience : aucune
+Demande :
+:::
+
+## Comment lire ce support
+
+::: {.fiche n="0.2" etat="fige"}
+Intention : Le mode d'emploi commun, plus ce qui est propre à ce cours : l'enquête, l'écriture avant la réponse, la barre de certitude, le mode révision. Déclaration de transparence IA. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+Ce cours est une **enquête**. Presque chaque diapo vous demande de regarder, d'écrire ou de choisir **avant** de lire la réponse.
+
+- Le **pictogramme** devant chaque titre donne le niveau : **socle**, à maîtriser ; **appui**, pour consolider ; **veille**, pour aller plus loin. Une diapo sans pictogramme est un exemple.
+- Les **zones d'écriture** gardent ce que vous écrivez, dans votre navigateur seulement : vous le retrouverez plus loin.
+- La **barre de certitude** vous demande, avant de répondre, si vous êtes sûr de vous. À la fin, le cours compare votre certitude et vos réussites.
+- La dernière partie contient un **mode révision**, à rouvrir dans un jour, une semaine, un mois.
+
+::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
+## Ce que vous saurez faire
+
+::: {.fiche n="0.3" etat="a-revoir"}
+Intention : Les sept compétences, reprises de Marc ; un bilan d'entrée, repris à la fin. [Retour V1 : nouvelle liste de Marc ; une compétence de plus, les réflexes de lecture et la nature du signal, en C2 ; les suivantes sont renumérotées sur toutes les diapos.]
+Expérience : bilan d'entrée : je ne sais pas / je crois savoir / je sais (brique « bilan »)
+Demande :
+:::
+
+Situez-vous avant de commencer. La même grille revient à la fin.
+
+::: {.bilan moment="debut"}
+- C1 | Décrire avant d'interpréter : séparer ce que je vois de ce que j'en déduis, l'identification de l'interprétation
+- C2 | Connaître les réflexes de lecture d'image, et en particulier identifier la nature du signal
+- C3 | Identifier un objet avec les clés d'identification : ton, taille, forme, texture, structure, ombre, date
+- C4 | Interpréter une scène en croisant les indices, en dégageant un degré de certitude
+- C5 | Choisir l'image ou le signal adapté à une question, et connaître ses limites
+- C6 | Transformer une interprétation en donnée : nomenclature, unité minimale, contrôle
+- C7 | Distinguer une image réelle d'une image générée
+:::
+
+## Carte du cours
+
+::: {.fiche n="0.4" etat="fige"}
+Intention : Les sept parties et la légende S / A / V. [Retour V0 : le socle dépassait de la diapo ; un niveau de plus de 16 diapos passe désormais sur deux colonnes, pour tous les cours.]
+Expérience : liens vers chaque diapo
+Demande :
+:::
+
+::: {.carte-du-cours}
+:::
+
+## Voir, puis savoir {.intercalaire}
+
+::: {.fiche n="1.0" etat="fige"}
+Intention : L'intelligence d'une image : un mot, deux sens, le renseignement et la compréhension. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+*Intelligence* : en anglais, le renseignement ; en français, la compréhension. Ce cours parle des deux.
+
+## La scène {competences="C1"}
+
+::: {.fiche n="1.1" etat="fige"}
+Intention : L'ouverture par la scène de la série « Cœurs noirs » (Prime Video, 2023), vue en cours : la détection d'une base secrète sur une image. Le support n'en contient ni extrait ni photogramme ; seulement le renvoi et deux zones d'écriture. Épisode et minutage à donner par Marc. Exemple, sans niveau. [Retour V0 : une séquence vidéo de correction est montrée en cours ; plus de comparaison avec une lecture experte.]
+Expérience : deux zones d'écriture : qu'a-t-on vu ? qu'en a-t-on déduit, avec quelle certitude ? (brique « observer », sans lecture experte) ; la correction est la séquence vidéo
+Demande :
+:::
+
+La scène est montrée en cours : série *Cœurs noirs*, saison 1 (Prime Video, 2023), épisode et minutage à préciser. Une équipe repère une base secrète sur une image. La correction suit, en vidéo.
+
+:::: {.columns}
+::: {.column width="50%"}
+**Qu'a-t-on vu sur l'image ?**
+
+::: {.observer cle="scene-vu" invite="Des formes, des couleurs, des objets…"}
+:::
+:::
+::: {.column width="50%"}
+**Qu'en a-t-on déduit, et avec quelle certitude ?**
+
+::: {.observer cle="scene-deduit" invite="Une hypothèse, et ce qui la soutient…"}
+:::
+:::
+::::
+
+## Ce que l'on voit, ce que l'on déduit {.socle competences="C1"}
+
+::: {.fiche n="1.2" etat="a-revoir"}
+Intention : La distinction fondatrice : l'observation (ce qui est sur l'image) et l'inférence (ce que l'on en conclut). Sur l'image du cours, sans rien dire de sa nature : elle sera découverte plus loin, clé après clé. Lien avec la compréhension graphique et mentale de « Cartography : Basics ». [Retour V0 : les énoncés donnaient la réponse (« une centrale nucléaire ») et tuaient la déduction ; les nouveaux ne disent pas ce qu'est le site.] [Retour V1 : glisser-déposer les étiquettes (pour toutes les briques « classer ») ; la loupe sur l'image.]
+Expérience : classer six énoncés en « je vois » ou « j'en déduis », au glisser-déposer ; loupe
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="42%"}
+::: {.loupe zoom="3"}
+![](images/flamanville.jpg){height="360" fig-alt="Orthophotographie d'un site industriel en bord de mer"}
+:::
+:::
+::: {.column width="58%"}
+Glissez chaque énoncé dans sa case : est-il **sur** l'image, ou **tiré** de l'image ?
+
+::: {.classer}
+### Je vois
+
+- Deux disques gris
+- Des taches blanches au large
+- De longues formes fines autour d'un disque
+
+### J'en déduis
+
+- Ce sont des dômes
+- L'eau est agitée au large
+- Un chantier est en cours
+:::
+
+[Voir, c'est décrire. Déduire, c'est déjà interpréter : cela demande des preuves.]{.a-retenir}
+:::
+::::
+
+## Induction, déduction, abduction {.socle competences="C4"}
+
+::: {.fiche n="1.3" etat="a-revoir"}
+Intention : Le processus cognitif de l'enquête. Définitions de Marc : l'induction dégage une règle de faits répétés (forte probabilité, pas de certitude absolue) ; la déduction tire une conclusion de règles ou de prémisses (certaine si elles sont vraies) ; l'abduction propose des hypothèses face à un fait observé (aucune certitude, des pistes, surtout quand le fait surprend). La « déduction » de Sherlock Holmes est surtout une abduction. [Retour V0 : définitions de Marc ; les exemples forment le faisceau d'indices.] [Retour V1 : la partie gauche aérée et centrée sur la hauteur ; l'exercice passe à la diapo suivante, remplacé ici par l'image de la tour de Rosny, qui illustre le faisceau.]
+Expérience : schéma ; image
+Demande :
+:::
+
+:::: {.columns}
+::: {.column .centre-v width="60%"}
+::: {.schema fichier="images/schemas/raisonnements.svg" hauteur="440"}
+:::
+:::
+::: {.column width="40%"}
+![](images/tour-rosny.jpg){height="470" fig-alt="Vue verticale d'une haute tour : son ombre, très longue, traverse les bâtiments voisins"}
+
+[La tour de Rosny-sous-Bois et son ombre.]{.legende}
+:::
+::::
+
+## À vous : quel raisonnement ? {.socle competences="C4"}
+
+::: {.fiche n="1.4" etat="a-revoir"}
+Intention : L'exercice sur les trois raisonnements, à côté du schéma : trois raisonnements courts sur un même champ de colza. Une fois les trois rangés, la réserve s'efface et les cases remontent. [Retour V1 : nouvelle diapo, « 8 bis » de Marc.]
+Expérience : schéma ; classer trois raisonnements, au glisser-déposer
+Demande :
+:::
+
+:::: {.columns}
+::: {.column .centre-v width="56%"}
+::: {.schema fichier="images/schemas/raisonnements.svg" hauteur="420"}
+:::
+:::
+::: {.column width="44%"}
+Trois raisonnements sur un même champ. Lequel est lequel ?
+
+::: {.classer}
+### Induction
+
+- Les cent champs de colza vus en avril étaient jaunes : le colza fleurit en avril.
+
+### Déduction
+
+- Le colza fleurit en avril ; l'image est d'avril : ses champs de colza sont jaunes.
+
+### Abduction
+
+- Un champ jaune vif, au printemps : peut-être du colza en fleur.
+:::
+:::
+::::
+
+## Un métier né de la guerre {.appui competences="C1"}
+
+::: {.fiche n="1.5" etat="a-revoir"}
+Intention : Les débuts : la photographie aérienne née des ballons, des cerfs-volants et des pigeons, essor en 1914-1918, renseignement en 1939-1945 (Constance Babington Smith repère le V-1 sur une photo de Peenemünde, 1943), satellites espions de la guerre froide (Corona). Les étudiants ouvrent un dossier « top secret » qui montre la frise de Marc en plein écran, puis remettent les étapes en ordre. Bonus : la visite du musée de la photographie aérienne. [Retour V0 : la frise dans un dossier qui s'ouvre en plein écran.] [Retour V1 : le dossier descend, pour aérer ; Star City part dans « Le coin des fictions », en fin de cours ; seule la visite du musée reste en bonus.]
+Expérience : ouvrir le dossier (brique « dossier ») ; remettre en ordre six étapes ; bonus : visite virtuelle (défiler)
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="30%"}
+Un dossier vient d'arriver. Ouvrez-le, puis remettez l'histoire en ordre.
+
+::: {.dossier titre="Le renseignement vu du ciel, 1858-2020" style="margin-top: 70px"}
+![](images/frise-intelligence.png){fig-alt="Frise chronologique de la photographie aérienne et satellitaire, de 1858 à 2020"}
+:::
+:::
+::: {.column width="70%"}
+::: {.ordre}
+1. Première photo aérienne, en ballon
+2. L'observation aérienne explose (1914-1918)
+3. Le renseignement : Peenemünde, faux chars
+4. Spoutnik, puis les satellites espions Corona
+5. Landsat 1, premier satellite civil
+6. Pléiades : des images à 70 cm
+:::
+:::
+::::
+
+::: {.plus titre="Visite du musée de la photographie aérienne"}
+::: {.defiler commande="haut"}
+- ![Les cerfs-volants, premiers porte-appareils](images/musee-1-cerfs-volants.jpg)
+- ![Les pigeons photographes de Julius Neubronner](images/musee-2-pigeons.jpg)
+- ![La première école de photographie aérienne (1918)](images/musee-3-premiere-ecole.jpg)
+- ![Instruction sur une caméra aérienne](images/musee-4-instruction.jpg)
+- ![Photographes à bord des biplans](images/musee-5-biplans.jpg)
+- ![Une caméra aérienne](images/musee-6-camera.jpg)
+- ![« Recent Progress in Aerial Photography », Scientific American, 1919](images/musee-7-scientific-american.jpg)
+- ![Discoverer 13 : récupérer en vol le film d'un satellite espion (1960)](images/musee-8-discoverer.jpg)
+:::
+
+[Musée de la photographie aérienne de l'entreprise L'Europe vue du Ciel. Photos : Marc Poupée.]{.legende}
+:::
+
+## À vous : qu'est-ce que c'est ? {.appui competences="C1 C3 C4"}
+
+::: {.fiche n="1.6" etat="a-revoir"}
+Intention : Rejouer la scène sur une vraie image, révélée indice par indice, avec la certitude à chaque indice. L'image de Marc : la base 27, le centre de lancement de satellites de Xichang (Sichuan, Chine). Pas de réponse écrite (demande de Marc) : elle est donnée en cours. [Retour V0 : FAST réservé à la coupe topographique.] [Retour V1 : la base 27 chinoise ; bonus : le défi #YEUXDOR de la Direction du renseignement militaire, sur LinkedIn.]
+Expérience : énigme à indices progressifs, avec la certitude à chaque indice (brique « indices »), sans conclusion ; bonus
+Demande :
+:::
+
+::: {.indices image="images/base-27.jpg" alt="Image satellite d'une vallée boisée : deux grandes aires de béton, des tours, des routes et des bâtiments" confiance="oui" style="--hauteur-indices: 410px"}
+- 46,8,20,26 : Une grande aire de béton nu, isolée dans une vallée boisée, et une autre plus bas, reliées par des routes larges.
+- 48,68,8,11 : Au centre de l'aire du bas, une structure très haute : son ombre, longue, en dit la hauteur.
+- 43,63,16,29 : Autour, trois ou quatre tours en treillis, fines et hautes : sans doute des paratonnerres, qui protègent quelque chose de précieux.
+- 53,12,6,14 : En haut, une autre tour, plaquée contre un bâtiment : la même fonction, sur la seconde aire ?
+- 90,25,8,5 : Des toits bleus, des routes en lacets dans la forêt, loin de toute ville.
+:::
+
+::: {.plus titre="Le défi #YEUXDOR"}
+![](images/yeux-dor.jpg){height="220" fig-alt="#YEUXDOR, le défi de la DRM : 52 images satellite à (re)découvrir"}
+
+La Direction du renseignement militaire (DRM) publie sur LinkedIn ses énigmes d'images satellite, sous le mot-clé **#YEUXDOR** : saurez-vous identifier ce qui s'y cache ? [Les quiz #YEUXDOR sur LinkedIn](https://www.linkedin.com/search/results/all/?keywords=%23yeuxdor&origin=GLOBAL_SEARCH_HEADER)
+:::
+
+## Dire son degré de certitude {.socle competences="C4"}
+
+::: {.fiche n="1.7" etat="a-revoir"}
+Intention : Une interprétation sans degré de confiance est une opinion. Les « mots de probabilité estimative » de Sherman Kent (CIA, 1964) ; le GIEC fait de même dans ses rapports. Chaque phrase se complète avec un mot de certitude, sur l'image du radiotélescope, encore anonyme. [Retour V0 : lien avec le GIEC ; une seule certitude, dans les phrases.] [Retour V1 : la loupe sur l'image.]
+Expérience : phrases à compléter par un mot de certitude (brique « phrases ») ; loupe ; bonus : l'échelle du GIEC
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="38%"}
+En 1964, Sherman Kent, analyste de la CIA, propose d'accorder les mots et les chances :
+
+| Mot | Chances |
+|---|---|
+| Presque certain | 9 sur 10 environ |
+| Probable | 3 sur 4 environ |
+| Possible | 1 sur 2 environ |
+| Peu probable | 1 sur 3 environ |
+
+[Un mot de certitude engage : il dit au lecteur quel risque il prend en vous croyant.]{.a-retenir}
+:::
+::: {.column width="62%"}
+::: {.loupe zoom="3"}
+![](images/fast-2016.jpg){height="235" fig-alt="Image satellite d'un grand disque argenté au fond d'une cuvette boisée, avec des bâtiments aux toits bleus"}
+:::
+
+::: {.phrases}
+- Il est {presque certain|=probable|possible|peu probable} qu'il y ait des ouvriers sur le site : on ne voit personne, mais la base vie aux toits bleus est là.
+- Il est {=presque certain|=probable|possible|peu probable} qu'un chantier soit en cours : remblais nus, pistes neuves, base vie : les indices convergent.
+- Il est {presque certain|probable|possible|=peu probable} que nous soyons aux États-Unis : ces collines en pains de sucre et ces toits bleus disent plutôt le sud de la Chine.
+- Il est {presque certain|probable|possible|=peu probable} que cette image soit issue d'une IA : les routes mènent quelque part, les ombres sont cohérentes.
+:::
+:::
+::::
+
+::: {.plus titre="Le GIEC, lui aussi"}
+Les rapports du GIEC qualifient la probabilité d'un résultat par des termes fixes, en italique dans le texte : *presque certain* (99 à 100 %), *très probable* (90 à 100 %), *probable* (66 à 100 %), *plus probable qu'improbable* (plus de 50 %), *aussi probable qu'improbable* (33 à 66 %), *improbable* (0 à 33 %), *très improbable* (0 à 10 %), *exceptionnellement improbable* (0 à 1 %). Cette terminologie est appliquée de façon cohérente depuis le cinquième rapport (AR5).
+
+[Source : SPF Santé publique, climat.be, « Rapports du GIEC ».](https://climat.be/changements-climatiques/changements-observes/rapports-du-giec)
+:::
+
+## Quand l'image trompe {.veille competences="C4"}
+
+::: {.fiche n="1.8" etat="a-revoir"}
+Intention : Le contre-exemple : le 5 février 2003, au Conseil de sécurité de l'ONU, Colin Powell, secrétaire d'État américain, présente des images satellite comme preuves d'armes chimiques en Irak ; elles ne seront jamais trouvées. Le biais de confirmation : on voit ce que l'on cherche. [Retour V0 : le portrait de Colin Powell (Wikipédia).] [Retour V1 : à la place de l'image d'archive, le lien vers les photos présentées ce jour-là, sur CBS News.]
+Expérience : visiter le site ; question : quelle étape de la méthode a manqué ?
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="24%"}
+![](images/colin-powell.jpg){height="250" fig-alt="Portrait officiel de Colin Powell, secrétaire d'État"}
+
+[Colin Powell, secrétaire d'État des États-Unis (portrait officiel).]{.legende}
+:::
+::: {.column width="76%"}
+Le 5 février 2003, au Conseil de sécurité de l'ONU, **Colin Powell** présente des images satellite comme la preuve d'armes chimiques en Irak. Ces armes ne seront jamais trouvées.
+
+**À voir :** [les photos présentées ce jour-là, sur le site de CBS News](https://www.cbsnews.com/pictures/powells-photos/).
+
+::: {.question}
+**Quelle étape de la méthode a manqué ?**
+:::
+
+::: {.reponse}
+Chercher l'indice qui **contredit**, et dire la **certitude** réelle. Un camion près d'un bunker peut avoir bien des explications ; on choisit celle que l'on attendait. C'est le **biais de confirmation**.
+:::
+:::
+::::
+
+## De l'image à la donnée {.intercalaire}
+
+::: {.fiche n="2.0" etat="fige"}
+Intention : L'interprétation ne sert pas qu'au renseignement : elle fabrique la plupart des données géographiques. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+L'interprétation ne sert pas qu'au renseignement : elle fabrique la plupart des cartes.
+
+## Interpréter pour bâtir une base {.socle competences="C6"}
+
+::: {.fiche n="2.1" etat="fige"}
+Intention : Des bases nationales nées de l'interprétation d'images : la BD TOPO (restitution photogrammétrique), la BD Forêt V2 (orthophotos infrarouge couleur, 0,5 ha, 32 postes, 2007-2018, segmentation automatique puis contrôle par photo-interprètes), CORINE Land Cover en Europe (25 ha). [nouvelle]
+Expérience : question : pourquoi trois bases ne disent-elles pas la même chose du même lieu ?
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="55%"}
+- La **BD TOPO** : bâtiments, routes, rivières, restitués à partir de photos aériennes en relief.
+- La **BD Forêt V2** (IGN, 2007-2018) : les forêts interprétées sur des photos infrarouge couleur, 32 types, aucune tache de moins de **0,5 ha**.
+- **CORINE Land Cover** : l'occupation du sol de l'Europe, aucune tache de moins de **25 ha**.
+:::
+::: {.column width="45%"}
+::: {.question}
+**Pourquoi trois bases ne disent-elles pas la même chose d'un même lieu ?**
+:::
+
+::: {.reponse}
+Elles n'ont ni la même question, ni la même nomenclature, ni la même **unité minimale**. Une base est une interprétation, faite selon des règles.
+:::
+:::
+::::
+
+## L'unité minimale de collecte {.socle competences="C6"}
+
+::: {.fiche n="2.2" etat="a-revoir"}
+Intention : Toute base fixe une surface en dessous de laquelle on ne saisit pas. Sur des données réelles fournies par Marc, autour de la forêt de L'Isle-Adam (8,5 × 7,9 km) : CORINE Land Cover (25 ha) et la BD Forêt V2 (0,5 ha). Calculé sur les deux captures : 50 % et 52 % de forêt, mais 12 % de la zone en désaccord (320 ha de forêt pour CLC seule, 510 ha pour la BD Forêt seule) ; 7 taches de forêt contre 139. [Retour V0 : des données réelles, et une question plus complexe.] [Retour V1 : le curseur sous l'image prend la largeur de l'image (correction de la brique « comparer », pour tous les cours).]
+Expérience : comparer les deux cartes (curseur) ; question en deux temps
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.comparer}
+- ![CORINE Land Cover](images/isle-adam-clc.png)
+- ![BD Forêt V2](images/isle-adam-bdforet.png)
+:::
+:::
+::: {.column width="50%"}
+Forêt de L'Isle-Adam : **CORINE Land Cover** (25 ha minimum ; forêt en vert clair) et **BD Forêt V2** (0,5 ha ; forêts en verts).
+
+::: {.question}
+**50 % de forêt pour l'une, 52 % pour l'autre : d'accord ? Laquelle pour une commune, laquelle pour comparer l'Europe ?**
+:::
+
+::: {.reponse}
+D'accord sur le total, pas sur les lieux : elles divergent sur **12 %** de la zone (830 ha). CORINE dessine 7 taches de forêt, la BD Forêt **139**. Commune : BD Forêt ; Europe : CORINE, mêmes règles partout. [Calculé sur les captures.]{.legende}
+:::
+:::
+::::
+
+## Qu'est-ce qu'une forêt ? {.appui competences="C6"}
+
+::: {.fiche n="2.3" etat="a-revoir"}
+Intention : Une nomenclature commence par des définitions. L'étudiant compose une définition de la forêt avec trois critères (surface minimale, hauteur des arbres, couvert), puis découvre si une définition de ce type existe : FAO, CCNUCC (Kyoto), BD Forêt V2, CORINE Land Cover, COMIFAC. Seuils vérifiés : FAO 0,5 ha, 5 m, 10 % ; CCNUCC, chaque pays choisit entre 0,05 et 1 ha, 2 et 5 m, 10 et 30 % ; BD Forêt V2 0,5 ha, 5 m, 20 m de large, alignée sur la FAO ; CORINE 25 ha, plus de 5 m, au moins 30 % ; COMIFAC (Ernst et al., 2010) 5 ha, 5 m, 70 %. [Retour V0 : la nomenclature de l'image du cours devient la définition de la forêt, proposée par Marc : trois séries d'éléments à associer.] [Retour V1 : les définitions dépassaient une fois ouvertes ; elles passent sur deux colonnes.]
+Expérience : composer une définition, puis la confronter aux définitions officielles (brique « combiner »)
+Demande :
+:::
+
+Composez **votre** définition de la forêt : un choix par ligne. Puis voyez si elle existe.
+
+::: {.combiner}
+### Surface minimale
+
+- 0,05 ha [kyoto]
+- 0,5 ha [fao, kyoto, bdforet]
+- 5 ha [comifac]
+- 25 ha [clc]
+
+### Hauteur des arbres
+
+- 2 m [kyoto]
+- 5 m [fao, kyoto, bdforet, clc, comifac]
+- 15 m []
+
+### Couvert des arbres
+
+- 10 % [fao, kyoto, bdforet]
+- 30 % [kyoto, clc]
+- 70 % [comifac]
+
+#### fao | La FAO (statistiques mondiales)
+
+Plus de 0,5 ha, des arbres de plus de 5 m, un couvert de plus de 10 %.
+
+#### kyoto | Le climat (CCNUCC, protocole de Kyoto)
+
+Chaque pays choisit ses seuils dans des fourchettes : 0,05 à 1 ha, 2 à 5 m, 10 à 30 % de couvert.
+
+#### bdforet | La BD Forêt V2 (IGN)
+
+0,5 ha, des arbres de plus de 5 m, 20 m de large au moins ; alignée sur la FAO.
+
+#### clc | CORINE Land Cover
+
+Une unité minimale de 25 ha ; une forêt a des arbres de plus de 5 m et un couvert d'au moins 30 %.
+
+#### comifac | Les forêts d'Afrique centrale (COMIFAC)
+
+Au moins 70 % de couvert, des arbres de 5 m au moins, une unité minimale de 5 ha.
+
+#### * | Aucune définition connue
+
+Aucune des définitions retenues ici ne réunit ces trois choix. Il en existe pourtant des centaines : chaque pays, chaque base, chaque convention fixe ses seuils. Une carte de « la » forêt dit toujours **quelle** forêt.
+:::
+
+## La précision des experts {.appui competences="C6 C7"}
+
+::: {.fiche n="2.4" etat="fige"}
+Intention : Une diapo de Marc sur la précision des experts. On commence par « Quel est votre niveau de certitude avec vous-même ? », voté au curseur : la réponse attendue approche 95 % (selon l'âge, la progression dans un domaine, la fatigue, on n'est pas toujours d'accord avec soi-même : points développés à l'oral). Un expert est considéré comme tel à 95 %. Puis quatre catégories de précision en production d'information géographique, ordres de grandeur donnés par Marc : photo-interprète expert 95 %, classification experte très variable, apprentissage machine 80 à 85 %, réseau de neurones 92 %. La question sur les désaccords entre interprètes reste. [Retour V0 : remplace « Deux interprètes, deux cartes » ; bonus : Colwell, 1952, sur les liens entre photo-interprétation militaire et forestière.]
+Expérience : voter au curseur ; réponse, et le graphique apparaît ; question sur les désaccords ; bonus
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="44%"}
+::: {.question}
+**Quel est votre niveau de certitude avec vous-même ?** Si vous interprétiez deux fois la même image, à un mois d'écart, sur combien de points seriez-vous d'accord ?
+:::
+
+::: {.curseur min="50" max="100" pas="1" valeur="75" unite="%" etiquette="Mon accord avec moi-même"}
+:::
+
+::: {.reponse}
+Environ **95 %** : âge, pratique, fatigue… on n'est pas toujours d'accord avec soi-même. C'est le seuil d'un expert.
+:::
+:::
+::: {.column width="56%"}
+::: {.schema fichier="images/schemas/precision.svg" hauteur="250"}
+:::
+
+[Ordres de grandeur de la production d'information géographique (Marc Poupée).]{.legende}
+
+::: {.question}
+**Deux interprètes : où sont, le plus souvent, leurs désaccords ?**
+:::
+
+::: {.reponse}
+Aux **limites**, sur les **petits objets**, sur les **cas que les règles n'ont pas prévus**.
+:::
+:::
+::::
+
+::: {.plus titre="Militaires et forestiers"}
+Les photo-interprètes militaires et forestiers ont beaucoup échangé : mêmes clés, mêmes méthodes. R. N. Colwell (US Naval Photographic Interpretation Center), « Relationships Between Military and Forest Photo Interpretation », *Journal of Forestry*, 50 (4), 1952, p. 271-276. [L'article](https://academic.oup.com/jof/article/50/4/271/4684240)
+:::
+
+## Des données pour apprendre aux machines {.appui competences="C7"}
+
+::: {.fiche n="2.5" etat="fige"}
+Intention : L'IA apprend sur des images étiquetées par des humains. FLAIR (Garioud, Gonthier, Landrieu, De Wit, Valette, Poupée, Giordano, Wattrelos, NeurIPS 2023) : plus de 20 milliards de pixels étiquetés, 817 km² d'images aériennes à 20 cm, avec des séries temporelles satellitaires. L'interprète devient annotateur. Réflexion de Marc, gardée ici et non dans la diapo : l'IA intègre des données étiquetées, pas en train de l'être ; le processus de décision de l'interprète n'est pas connu. Intégrer la marge de certitude dans les données d'apprentissage serait une piste intéressante. [Retour V0 : l'IA apprend les erreurs, pas les hésitations ; l'orthophoto et ses étiquettes côte à côte.]
+Expérience : regarder l'image et ses étiquettes ; question ; bonus : l'article
+Demande :
+:::
+
+![](images/flair-ortho.png){height="215" fig-alt="Orthophotographie d'un bourg entouré de champs"} ![](images/flair-etiquettes.png){height="215" fig-alt="La même zone, chaque pixel coloré selon son occupation du sol"}
+
+[L'image, et ses étiquettes pixel par pixel. Le jeu de données **FLAIR** (IGN, 2023) : plus de 20 milliards de pixels étiquetés, sur 817 km² d'images à 20 cm.]{.legende}
+
+::: {.question}
+**Qui fabrique ces étiquettes, et que la machine en apprend-elle ?**
+:::
+
+::: {.reponse}
+Des interprètes, pixel par pixel, selon des règles. La machine apprend leurs décisions finales, **erreurs comprises** ; leurs hésitations, elle ne les voit pas.
+:::
+
+::: {.plus titre="L'article FLAIR"}
+A. Garioud, N. Gonthier, L. Landrieu, A. De Wit, M. Valette, M. Poupée, S. Giordano, B. Wattrelos, « FLAIR : a Country-Scale Land Cover Semantic Segmentation Dataset From Multi-Source Optical Imagery », *NeurIPS 2023, Datasets and Benchmarks*. [L'article](https://arxiv.org/abs/2310.13336) · [les données](https://ignf.github.io/FLAIR/)
+:::
+
+## L'interprète contrôle la machine {.appui competences="C7"}
+
+::: {.fiche n="2.6" etat="fige"}
+Intention : La validation d'un résultat automatique repose sur un échantillon interprété à la main : on compte bonnes et mauvaises classifications (la matrice de confusion, en mots simples). Illustration : une détection du bâti par un réseau U-Net, travaux de 2019. [Retour V0 : les deux illustrations U-Net de Marc, datées de 2019.]
+Expérience : regarder la détection ; QCM avec barre de certitude
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+![](images/unet-reference.png){height="230" fig-alt="Orthophotographie d'un quartier pavillonnaire, les bâtiments cernés de rouge"} ![](images/unet-prediction.png){height="230" fig-alt="La détection du bâti par le réseau : des taches claires sur fond noir, les contours de référence en rouge"}
+
+[À gauche, le bâti de référence (en rouge) ; à droite, ce que détecte un réseau U-Net : plus c'est clair, plus il est sûr. Travaux de 2019.]{.legende}
+:::
+::: {.column width="54%"}
+Une IA cartographie les bâtiments. Sur 100 points tirés au hasard, un interprète vérifie : **90 sont justes**.
+
+::: {.confiance}
+::: {.qcm .serre}
+Que peut-on en conclure ?
+
+- [ ] La carte est juste à 90 %, partout
+    - Non : l'erreur peut se concentrer quelque part (les toits sombres, les zones denses).
+- [x] Sur ce territoire, environ 9 points sur 10 sont justes ; il faut regarder où sont les erreurs
+    - Oui : le chiffre global ne suffit pas, il faut la répartition des erreurs, classe par classe.
+- [ ] L'interprète n'est plus nécessaire
+    - Non : c'est lui qui a produit la vérification.
+:::
+:::
+:::
+::::
+
+## Suivre les changements {.appui competences="C2 C5"}
+
+::: {.fiche n="2.7" etat="fige"}
+Intention : Le suivi des changements, ici par radar (Baltimore) : une composition colorée de plusieurs dates. Le radar voit de nuit et à travers les nuages, mais ne se lit pas comme une photo. Source et dates de l'image à préciser par Marc. [nouvelle]
+Expérience : question
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+![](images/baltimore-radar.jpg){height="430" fig-alt="Image radar du port de Baltimore, en gris avec des taches de couleur"}
+
+[Port de Baltimore, image radar, plusieurs dates. Source à préciser.]{.legende}
+:::
+::: {.column width="48%"}
+Cette image superpose plusieurs dates radar, chacune dans une couleur.
+
+::: {.question}
+**Que signifient le gris et les couleurs ?**
+:::
+
+::: {.reponse}
+Le **gris**, ce qui n'a pas changé entre les dates. Les **couleurs**, ce qui a bougé : navires, conteneurs, véhicules. Le radar voit de nuit et à travers les nuages, mais il faut apprendre à le lire.
+:::
+:::
+::::
+
+## L'archéologie sous la forêt {.appui competences="C5"}
+
+::: {.fiche n="2.8" etat="a-revoir"}
+Intention : Le LiDAR aéroporté révèle sous la forêt les villes khmères autour d'Angkor (campagne de 2012 ; Evans et al., PNAS, 2013). Le lien avec l'IGN reste à préciser par Marc. [Retour V0 : l'image du LiDAR d'Angkor.] [Retour V1 : l'image créditée à Damian Evans, PNAS ; Wired gardé pour les sources ; bonus vidéo ; réponse de Marc.]
+Expérience : question ; bonus : une vidéo
+Demande : préciser le lien avec l'IGN
+:::
+
+:::: {.columns}
+::: {.column width="58%"}
+![](images/angkor-lidar.png){width="100%" fig-alt="Modèle en relief du sol autour d'Angkor, avec un réseau de lignes rouges droites"}
+
+[Le relief du sol autour d'Angkor, révélé par le LiDAR ; en rouge, les tracés anciens. Image : Damian Evans, PNAS (2013).]{.legende}
+:::
+::: {.column width="42%"}
+En 2012, un **LiDAR** aéroporté survole Angkor. Ses impulsions laser passent entre les feuilles et touchent le sol : sous la forêt apparaissent des rues, des bassins, des quartiers entiers.
+
+::: {.question}
+**Pourquoi une photo aérienne ne suffisait-elle pas ?**
+:::
+
+::: {.reponse}
+Elle ne permet de visualiser que la radiométrie de la canopée. Les derniers échos LiDAR mettent en valeur les ir/régularités du sol et les aménagements anciens associés.
+:::
+:::
+::::
+
+::: {.plus titre="En vidéo"}
+Une vidéo sur la découverte des villes khmères au LiDAR : [à voir sur YouTube](https://www.youtube.com/watch?v=o6Kq4XF1zKU).
+:::
+
+## Bien d'autres usages {.appui competences="C5"}
+
+::: {.fiche n="2.9" etat="fige"}
+Intention : La galerie des usages, pour un public large, en quatre catégories de même registre : gestion de crise, suivi de l'occupation du sol, contrôle qualité, géopolitique. [Retour V0 : « suivi et contrôle » et « vérification » étaient vagues et pas du même registre ; les exemples sont gardés, rangés dans les quatre catégories de Marc.]
+Expérience : classer huit questions selon l'usage
+Demande :
+:::
+
+Rangez chaque question selon l'usage de l'interprétation.
+
+::: {.classer}
+### Gestion de crise
+
+- Quels bâtiments l'inondation a-t-elle détruits ?
+- Jusqu'où le feu est-il allé ?
+
+### Suivi de l'occupation du sol
+
+- Combien de champs ont été artificialisés en dix ans ?
+- Où la forêt a-t-elle été coupée cette année ?
+
+### Contrôle qualité
+
+- Cette photo a-t-elle vraiment été prise ici, ce jour-là ?
+- Cette carte produite par une IA est-elle juste ?
+
+### Géopolitique
+
+- Un camp de réfugiés s'étend-il ?
+- Une base militaire s'agrandit-elle ?
+:::
+
+## Les clés d'identification {.intercalaire}
+
+::: {.fiche n="3.0" etat="fige"}
+Intention : Ce qu'est l'objet. L'image du cours : la centrale de Flamanville (Manche), pendant la construction de l'EPR, une image qui réunit toutes les clés. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+Ce qu'est l'objet.
+
+## L'image du cours
+
+::: {.fiche n="3.1" etat="a-revoir"}
+Intention : L'image entière, explorée librement avant toute clé. L'étudiant décrit, puis propose pour chaque élément une interprétation prudente, avec un mot de certitude. La lecture experte est décomposée de la même façon, sans dire ce qu'est le site. Description reprise dans la note finale. Exemple, sans niveau. [Retour V0 : décomposer la lecture experte.] [Retour V1 : l'image était déformée : même emprise qu'à la diapo suivante ; plus généralement, les images ne sont plus jamais déformées (correction de la feuille de style, pour tous les cours).]
+Expérience : loupe ; zone d'écriture (brique « observer »)
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {.loupe zoom="3"}
+![](images/flamanville.jpg){height="380" fig-alt="Orthophotographie d'un site industriel au bord de la mer"}
+:::
+:::
+::: {.column width="55%"}
+Explorez l'image à la loupe. **Décrivez** ce que vous voyez : formes, couleurs, tailles, positions. Puis, pour chaque élément, ce que c'est **sans doute**, avec un mot de certitude. Vous retrouverez ce texte à la fin.
+
+::: {.observer cle="description-image" invite="Je vois… ⇒ c'est probablement…"}
+- De grandes surfaces, a priori planes, du brun au vert, bordées de lignes sombres ⇒ **très probablement** des champs entourés de haies.
+- Une ligne de gros blocs clairs qui ferme un plan d'eau turquoise ⇒ **très probablement** une digue et un bassin.
+- Des taches blanches filamenteuses en mer, loin du bord ⇒ **probablement** de l'eau agitée.
+- Deux disques gris d'une cinquantaine de mètres, un troisième cuivré, entouré de longues formes fines ⇒ **probablement** des dômes, dont un en chantier, entouré de grues.
+- De longs volumes rectangulaires, alignés à angle droit ⇒ **très probablement** des bâtiments industriels.
+- Des rangées de petits rectangles colorés sur du gris ⇒ **presque certainement** des voitures sur des parkings.
+:::
+:::
+::::
+
+## Ton et couleur {.socle competences="C2 C3 C5"}
+
+::: {.fiche n="3.2" etat="a-revoir"}
+Intention : La première clé, la plus simple : le ton (clair, sombre) et la couleur. L'eau turquoise du bassin, les remous blancs, le dôme cuivré du chantier. En superposition, la même emprise en infrarouge couleur (BD Ortho, 2015, image de Marc, recalée sur l'image du cours) : la variation du signal. La végétation vivante devient rouge. [Retour V1 : l'image IRC de 2015, en superposition.]
+Expérience : superposition au curseur (brique « comparer ») ; QCM : que trahit le blanc des remous ?
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {.comparer style="--hauteur-comparer: 370px"}
+- ![Couleurs naturelles](images/flamanville.jpg)
+- ![Infrarouge couleur, 2015](images/flamanville-irc-2015.jpg)
+:::
+:::
+::: {.column width="55%"}
+Le **ton** (clair ou sombre) et la **couleur** sont les premières clés que l'œil lit, et elles dépendent du **signal**. Glissez le curseur : en **infrarouge couleur**, la végétation vivante devient rouge, l'eau sombre.
+
+::: {.qcm .serre}
+En mer, à gauche, deux grandes taches blanches. Que dit leur blancheur ?
+
+- [x] De l'eau agitée, chargée de bulles : de la turbulence
+    - Oui : l'écume renvoie la lumière. Reste à savoir ce qui agite l'eau.
+- [ ] Du sable sous l'eau
+    - Non : le sable donnerait une teinte claire et unie, sans ces filaments.
+- [ ] Des nuages
+    - Non : ils auraient leur ombre portée sur l'eau.
+:::
+:::
+::::
+
+## Taille et forme {.socle competences="C3"}
+
+::: {.fiche n="3.3" etat="a-revoir"}
+Intention : La taille se lit avec l'échelle (200 m ≈ 130 pixels sur l'image : environ 1,5 m par pixel, mesuré) ; la forme distingue le naturel de l'humain. Un dôme mesure environ 50 m (mesuré). [Retour V0 : la réponse ne dit pas encore « réacteur ».] [Retour V1 : l'image était déformée ; même emprise qu'aux diapos précédentes.]
+Expérience : question de mesure ; loupe
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {.loupe zoom="3"}
+![](images/flamanville.jpg){height="380" fig-alt="L'image du cours, avec son échelle"}
+:::
+:::
+::: {.column width="55%"}
+La **taille** se lit avec l'échelle ; la **forme** sépare le naturel (contours irréguliers) de l'humain (géométrie). Une coupole parfaite de cette taille n'a pas beaucoup d'explications.
+
+::: {.question}
+L'échelle en bas à gauche fait 200 m. **Quel diamètre ont les dômes ?**
+:::
+
+::: {.reponse}
+Environ **50 m** : un quart de l'échelle. Une coupole de cette taille, au bord de la mer… Gardez votre hypothèse pour vous : les clés d'interprétation vont la mettre à l'épreuve.
+:::
+:::
+::::
+
+## Texture et structure {.socle competences="C3"}
+
+::: {.fiche n="3.4" etat="fige"}
+Intention : La texture (le grain) et la structure (l'arrangement répété). La digue de gros blocs, rugueuse ; le bocage en mailles ; les parkings en lignes. [nouvelle]
+Expérience : classer six détails selon la clé qui les révèle
+Demande :
+:::
+
+La **texture**, c'est le grain d'une surface ; la **structure**, l'arrangement d'éléments qui se répètent.
+
+::: {.classer}
+### La texture
+
+- La digue, rugueuse comme du gravier
+- La mer, lisse au large et filamenteuse près des remous
+- Le chantier, granuleux
+
+### La structure
+
+- Les champs en mailles, bordés de haies
+- Les voitures en rangées sur les parkings
+- Les bâtiments alignés, à angle droit
+:::
+
+## L'ombre dit la forme {.socle competences="C3"}
+
+::: {.fiche n="3.5" etat="a-revoir"}
+Intention : Les ombres portées : vu d'avion, un objet haut et fin n'est qu'un point ; son ombre en dessine la silhouette. Huit schémas faits pour le cours, ombres allongées par un soleil bas au sud-est : une éolienne, une tour de télécommunication (qui rappelle le château d'eau, mais porte des antennes sur le toit), un conifère, un pylône électrique, un château d'eau, un simple mât (sans contexte, ambigu), un feuillu, une tour militaire (qui rappelle le pylône, mais porte un caisson d'antenne). La sciographie, la lecture des ombres. [Retour V0 : schémas refaits ex nihilo.] [Retour V1 : plus difficile : la grue retirée ; une tour de télécommunication, deux arbres, une tour militaire, un simple mât ajoutés ; l'exercice se fait en reliant par des lignes (nouvelle brique « relier »).]
+Expérience : relier chaque ombre à son objet (brique « relier ») ; les noms apparaissent sur le schéma avec la correction
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+::: {.schema fichier="images/schemas/ombres-portees.svg" hauteur="470"}
+:::
+:::
+::: {.column width="44%"}
+D'avion, un objet haut et fin n'est qu'un point ; son **ombre portée** dessine sa silhouette (la **sciographie**). Reliez chaque ombre à son objet.
+
+::: {.relier}
+- Ombre A -> Une éolienne
+- Ombre B -> Une tour de télécom, antennes au toit
+- Ombre C -> Un conifère
+- Ombre D -> Un pylône électrique
+- Ombre E -> Un château d'eau
+- Ombre F -> Un simple mât : ambigu sans contexte
+- Ombre G -> Un feuillu
+- Ombre H -> Une tour militaire à caisson
+:::
+:::
+::::
+
+## Ombre et relief {.socle competences="C3 C5"}
+
+::: {.fiche n="3.6" etat="fige"}
+Intention : L'ombre et la lumière donnent le relief. Mini-jeu (demande de Marc) : sur l'image du radiotélescope, encore anonyme, un marcheur va de A à B en passant par le centre ; l'étudiant le fait monter ou descendre avec les flèches du clavier, et marque les crêtes vives (touche C) : la courbe s'arrondit d'elle-même ailleurs. Il compare ensuite à la coupe de référence. Le profil de référence est indicatif, à valider (ou à tirer d'un MNT). [Retour V0 : départ au milieu des ordonnées ; d'après les lacets, la première pente monte fort jusqu'à une crête, puis l'on redescend vers le centre ; courbe lissée en direct, crêtes qui cassent et fonds arrondis distingués ; la déduction de la forme de la parabole suit, diapo suivante.]
+Expérience : mini-jeu de coupe topographique (brique « coupe »)
+Demande :
+:::
+
+Tracez la coupe de **A** à **B** : à chaque pas, faites monter ou descendre le marcheur d'après l'image ; marquez les **crêtes vives** (touche C) : ailleurs, la courbe s'arrondit. Les lacets, les ombres et les éclats de lumière disent où sont les pentes.
+
+::: {.coupe image="images/fast-2016.jpg" alt="Un grand disque argenté au fond d'une cuvette boisée, entre des collines" depart="2,49" arrivee="98,49" pas="24" profil="donnees/fast-profil.json" style="--hauteur-coupe: 320px"}
+::: {.apres-jeu}
+En tirets, le profil de référence : une pente forte jusqu'à une crête, puis la descente vers le disque. **Au centre, un creux ou une bosse ?** Prouvez-le, diapo suivante. [Profil indicatif, lu sur l'image.]{.legende}
+:::
+:::
+
+## Creux ou bosse ? {.socle competences="C3 C4"}
+
+::: {.fiche n="3.7" etat="fige"}
+Intention : L'étape de déduction de la forme de la parabole (demande de Marc) : 1. savoir où est le soleil ; 2. trouver un cadran solaire (la tour en bas à droite du disque et son ombre) ; 3. en déduire la forme : le reflet du soleil est du côté opposé au soleil, donc la parabole est concave. Sur un dôme, le reflet serait du côté du soleil. L'objet est enfin nommé : le radiotélescope FAST. [Retour V0 : étape de déduction qui manquait après la coupe.]
+Expérience : énigme à indices, avec la certitude à chaque indice (brique « indices »)
+Demande :
+:::
+
+::: {.indices image="images/fast-2016.jpg" alt="Le grand disque argenté, sa tour et son reflet" confiance="oui" style="--hauteur-indices: 420px"}
+- 46,59,13,8 : Un cadran solaire : la tour en bas à droite du disque, et son ombre fine qui file vers la gauche, sur le disque.
+- Le soleil est donc à droite de l'image, un peu en bas : à l'opposé de l'ombre.
+- 34,38,9,11 : Le reflet du soleil sur le disque est en haut à gauche du centre : du côté opposé au soleil.
+- Sur une bosse, le reflet serait du côté du soleil ; dans un creux, il est du côté opposé.
+
+Le disque est **concave** : un creux de 500 m de diamètre, posé au fond d'une dépression karstique. C'est le **radiotélescope FAST** (Guizhou, Chine), la plus grande antenne unique au monde, saisi par Pléiades le 2 mars 2016, en fin de chantier.
+:::
+
+## La date compte {.appui competences="C3 C5"}
+
+::: {.fiche n="3.8" etat="a-revoir"}
+Intention : La date d'une image fixe ce que l'on peut y voir : un chantier, la saison, la marée, l'heure (la longueur et le sens des ombres). Sur l'image de la tour de Rosny : peut-on connaître précisément l'heure de la prise de vue ? Comment s'y prendre ? Quelle précaution (la pente) ? Bonus : l'OSINT et la chronolocation. [Retour V1 : l'image de la tour de Rosny et les questions de Marc, à la place du QCM.]
+Expérience : question, puis réponse ; bonus
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="40%"}
+![](images/tour-rosny.jpg){height="430" fig-alt="Vue verticale d'une haute tour et de sa longue ombre portée"}
+:::
+::: {.column width="60%"}
+La date dit l'**état** d'un lieu : un chantier, une saison, une heure.
+
+::: {.question}
+**Peut-on connaître précisément l'heure de la prise de vue ? Comment s'y prendre ? Quelle précaution prendre ?**
+:::
+
+::: {.reponse}
+Oui, à quelques minutes près : le **sens** de l'ombre donne l'azimut du soleil, sa **longueur** rapportée à la hauteur de la tour, sa hauteur ; avec le lieu et la date, SunCalc donne l'heure. Précautions : la hauteur réelle de la tour ; un **sol plat** (une pente allonge ou raccourcit l'ombre) ; le nord et la date de l'image.
+:::
+:::
+::::
+
+::: {.plus titre="OSINT et chronolocation"}
+L'**OSINT** (*open source intelligence*) est le renseignement tiré de sources ouvertes : images publiées, vidéos, cartes. La **chronolocation** en est une branche : dater une image par ses indices, la longueur et le sens des ombres en premier. Des outils comme [SunCalc](https://www.suncalc.org) donnent la position du soleil pour un lieu, un jour, une heure ; le collectif [Bellingcat](https://www.bellingcat.com) publie ses enquêtes et ses méthodes.
+:::
+
+## Quelle clé pour quelle question ? {.socle competences="C3"}
+
+::: {.fiche n="3.9" etat="a-revoir"}
+Intention : Le récapitulatif des clés d'identification, mélangées (pratique entrelacée) : trois questions, trois clés principales (l'ombre, la structure, la forme). [Retour V1 : « quelle clé principale » ; trois questions sur trois colonnes, dont celles de Marc : un type de culture (la structure), un avion (la forme).]
+Expérience : trois QCM
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="33%"}
+::: {.qcm .serre}
+Une cheminée plus haute que l'immeuble voisin ? **Quelle clé principale ?**
+
+- [ ] Le ton
+    - Non : il dit la matière ou l'éclairage.
+- [ ] La forme
+    - Non : vue d'en haut, une cheminée n'est qu'un disque.
+- [x] L'ombre
+    - Oui : à la même heure, l'ombre la plus longue appartient à l'objet le plus haut.
+- [ ] La structure
+    - Non : elle concerne des éléments répétés.
+:::
+:::
+::: {.column width="33%"}
+::: {.qcm .serre}
+Pour estimer un **type de culture** ?
+
+- [ ] Le ton
+    - Il aide, mais il change avec la saison.
+- [ ] La forme
+    - Une parcelle a souvent la même forme, quelle que soit la culture.
+- [ ] L'ombre
+    - Non : une culture est basse.
+- [x] La structure
+    - Oui : des rangs de vigne, des arbres en quinconce, des sillons serrés : l'arrangement dit la culture.
+:::
+:::
+::: {.column width="33%"}
+::: {.qcm .serre}
+Pour **identifier un avion** ?
+
+- [ ] Le ton
+    - Non : la peinture varie d'un avion à l'autre.
+- [x] La forme
+    - Oui : l'envergure, la flèche des ailes, l'empennage : la silhouette dit le modèle.
+- [ ] L'ombre
+    - Elle aide pour un avion en vol, mais la forme vient d'abord.
+- [ ] La structure
+    - Non : un avion est seul, ou rangé avec d'autres.
+:::
+:::
+::::
+
+[Ton et couleur, taille, forme, texture, structure, ombre, date : sept clés pour dire **ce qu'est** un objet.]{.a-retenir}
+
+## Les clés d'interprétation {.intercalaire}
+
+::: {.fiche n="4.0" etat="fige"}
+Intention : Ce qui se passe. Des objets reconnus aux mécanismes qui les relient. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+Ce qui se passe.
+
+## L'association {.socle competences="C4"}
+
+::: {.fiche n="4.1" etat="fige"}
+Intention : Des objets qui vont ensemble : dômes, salles des machines, prise d'eau, rejet en mer, chantier. Un objet seul est ambigu, une association ne l'est presque plus. C'est ici que la nature du site est révélée. Coordonnées des zones à vérifier. [Retour V0 : question et réponse étaient ambiguës ; l'association passe avant le site, pour que la révélation vienne de l'association ; la question sur un nouveau lieu suit, diapo suivante.]
+Expérience : zones à cliquer : retrouver ce qui va avec les dômes ; question : que forment-ils ?
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+Une **association**, ce sont des objets qui vont ensemble. Un dôme seul peut être un planétarium, un silo, un radôme… Cherchez sur l'image ce qui va avec les dômes : par où l'eau entre, par où elle sort, ce qui se construit.
+
+::: {.question}
+**Ensemble, que forment ces objets ?**
+:::
+
+::: {.reponse}
+Une **centrale nucléaire** en bord de mer : Flamanville (Manche), avec son troisième réacteur, l'EPR, en chantier. Aucun objet seul ne le prouvait ; leur association, presque.
+:::
+:::
+::: {.column width="50%"}
+::: {.zones image="images/flamanville.jpg" alt="L'image du cours" hauteur="440"}
+- [x] 53,46,7,17 : Les deux dômes : des bâtiments réacteurs.
+- [x] 47,43,6,18 : Les longs bâtiments à côté : les salles des machines, turbines et condenseurs.
+- [x] 42,23,7,46 : Le bassin fermé par la digue : la prise d'eau de mer.
+- [x] 1,22,22,52 : Les remous au large : le rejet de l'eau de refroidissement.
+- [x] 56,31,8,10 : Le troisième dôme, en chantier : un réacteur de plus, l'EPR.
+- [ ] 84,26,14,22 : Le bocage : il était là avant le site.
+:::
+:::
+::::
+
+## À vous : quel est ce lieu ? {.appui competences="C4"}
+
+::: {.fiche n="4.2" etat="fige"}
+Intention : Transférer la clé d'association sur un autre lieu : un centre équestre adamois (image de Marc). Question de Marc : « Quelles associations nous permettent de déduire la nature de ce lieu ? » [Retour V0 : la question ajoutée après l'association, sur l'image Centre_equestre de Marc. Choix : une diapo à part plutôt qu'une question qui apparaît sur la même diapo, pour garder l'image en grand et le PDF lisible.]
+Expérience : question, puis réponse
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+![](images/centre-equestre.jpg){width="100%" fig-alt="Vue aérienne : deux grandes surfaces de sable clair, de longs bâtiments autour d'une cour, un parking"}
+:::
+::: {.column width="44%"}
+::: {.question}
+**Quelles associations nous permettent de déduire la nature de ce lieu ?**
+:::
+
+::: {.reponse}
+Des pistes de sable semées de **barres d'obstacles** ; de petites silhouettes (**des cavaliers ?**) ; des bâtiments autour d'une cour (**des boxes ?**) ; de longs véhicules garés (**des vans ?**). Ensemble : un **centre équestre**.
+:::
+:::
+::::
+
+## Le site {.socle competences="C4"}
+
+::: {.fiche n="4.3" etat="fige"}
+Intention : La position d'un objet dans son milieu explique ce qui lui arrive. Pourquoi une centrale ici ? L'eau de mer ; un sol rocheux ; et l'éloignement de la population : la presqu'île du Cotentin, la falaise protectrice, et sans doute (supposition de Marc) la proximité de la Hague. Carte faite pour le cours : Flamanville, un cercle de 100 km, la population des communes (INSEE, via Etalab) et des îles Anglo-Normandes (ordres de grandeur). Calculé : environ 730 000 habitants à moins de 100 km, dont près d'un quart dans les îles ; le cercle est aux quatre cinquièmes en mer. [Retour V0 : préciser l'éloignement de la population, avec une carte simple et un cercle de 100 km ; le site passe après l'association, qui révèle la nature du lieu.]
+Expérience : carte ; question
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+Le **site** : la place d'un objet dans son milieu.
+
+::: {.question}
+**Pourquoi construire une centrale ici ?**
+:::
+
+::: {.reponse}
+- L'**eau de mer**, abondante et froide ;
+- un sol **rocheux**, sous une **falaise** qui protège ;
+- l'**éloignement de la population** : le cercle de 100 km est aux 4/5 en mer (environ 730 000 habitants) ;
+- sans doute la **Hague**, à 15 km : une région déjà nucléaire (hypothèse).
+:::
+:::
+::: {.column width="52%"}
+![](images/carte-flamanville.png){height="430" fig-alt="Carte du Cotentin et des îles Anglo-Normandes : un cercle de 100 km autour de Flamanville, des cercles proportionnels à la population des communes"}
+
+[Population : INSEE, via Etalab ; îles : ordres de grandeur ; terres : Natural Earth.]{.legende}
+:::
+::::
+
+## Le temps {.socle competences="C4 C5"}
+
+::: {.fiche n="4.4" etat="a-revoir"}
+Intention : Le temps : une image fixe un instant d'un processus ; plusieurs dates d'un même lieu révèlent une dynamique. Deux animations de Marc, côte à côte : Novoozerne (Crimée) et Soloti (région de Belgorod), des bases russes qui gonflent avant l'attaque contre l'Ukraine (le DFRLab, 2021, y signale des camps et des véhicules en hausse). Question de Marc. [Retour V1 : les deux GIF de Marc ; la nouvelle question.] Les fichiers reçus ne contiennent qu'une image chacune (nuageuse) : à exporter de nouveau.
+Expérience : regarder les deux animations ; question
+Demande : fournir de nouveau les deux GIF animés (« CampSoleti » : le lieu s'écrit Soloti)
+:::
+
+:::: {.columns}
+::: {.column width="58%"}
+::: {.cote-a-cote}
+![](images/novoozernoye.gif){height="300" fig-alt="Animation satellite : un terrain qui se couvre de véhicules et de tentes, date après date"}
+
+![](images/soloti.gif){height="300" fig-alt="Animation satellite : un camp militaire qui s'étend, date après date"}
+:::
+
+[À gauche, Novoozerne (Crimée) ; à droite, Soloti (région de Belgorod).]{.legende}
+:::
+::: {.column width="42%"}
+::: {.question}
+**Quels sont les changements observés ? Quelle dynamique traduisent-ils ? En vous appuyant sur les dates, pourriez-vous en déduire le type et la nationalité des sites observés ?**
+:::
+
+::: {.reponse}
+Véhicules, tentes, sols nus se multiplient : une **montée en puissance militaire**. Les dates (fin 2021) désignent des **bases russes** qui gonflent avant l'attaque contre l'Ukraine (24 février 2022).
+:::
+:::
+::::
+
+## Les connaissances personnelles et les réflexes {.appui competences="C1 C2 C5"}
+
+::: {.fiche n="4.5" etat="a-revoir"}
+Intention : Ce que l'interprète apporte de lui-même : ses connaissances et ses réflexes. L'image Cambrai-1917, la plus visible possible ; « Que voyez-vous ? », puis « Quelles questions se poser ? » : quel lieu, quelle date, quel signal, quelle référence cinématographique ? [Retour V0 : nouvelle diapo de Marc.] [Retour V1 : dans la réponse, des redoutes et deux tranchées reliées.]
+Expérience : deux questions, chacune suivie de sa réponse
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+::: {.loupe zoom="2.5"}
+![](images/cambrai-1917.jpg){height="285" fig-alt="Photographie aérienne ancienne en noir et blanc : des lignes crénelées en zigzag sur un sol criblé de trous"}
+:::
+
+::: {.question}
+**Que voyez-vous ?**
+:::
+
+::: {.reponse}
+Des **redoutes**, deux **tranchées reliées** par des boyaux, des **trous d'obus**, de larges bandes sombres : **sans doute des barbelés**.
+:::
+:::
+::: {.column width="44%"}
+::: {.question}
+**Quelles questions se poser ?**
+:::
+
+::: {.reponse}
+- **Quel lieu ?** Cambrai.
+- **Quelle date ?** 1917.
+- **Quel signal ?** Du panchromatique.
+- **Quel film ?** *À l'Ouest, rien de nouveau* ou *Wonder Woman*, au choix.
+:::
+:::
+::::
+
+## Ce que la végétation et la lumière rasante révèlent {.socle competences="C3 C4"}
+
+::: {.fiche n="4.6" etat="a-revoir"}
+Intention : Les indices indirects de l'archéologie aérienne : phytographiques (la culture pousse mieux sur un fossé comblé, mal sur un mur enfoui, surtout en été sec), schéma fait pour le cours ; sciographiques, sur une photo de Marc : la motte féodale de Rely en lumière rasante. Question de Marc : quelle donnée géographique permet de modéliser et de reproduire une vision sciographique ? Un MNT produit par LiDAR. [Retour V1 : le schéma phytographique gardé ; la photo de la motte de Rely pour le sciographique, en dessous ; la nouvelle question.]
+Expérience : schéma ; photo ; QCM ; question
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.schema fichier="images/schemas/indices-phyto.svg" hauteur="210"}
+:::
+
+::: {.qcm .serre}
+Été sec, champ de blé : un cercle plus vert et plus haut se dessine. Qu'y a-t-il dessous ?
+
+- [x] Un fossé comblé, qui garde l'humidité
+    - Oui : un indice phytographique positif ; un ancien enclos, peut-être.
+- [ ] Un mur enfoui
+    - Non : sur un mur, la culture pousse mal et jaunit.
+- [ ] Rien : un arrosage
+    - Peu probable : un arrosage ne dessine pas un cercle fin et régulier.
+:::
+:::
+::: {.column width="50%"}
+![Indice sciographique : la motte féodale de Rely, en lumière rasante.](images/motte-rely.jpg){height="160" fig-alt="Vue aérienne oblique d'une prairie : un tertre et son fossé circulaire soulignés par les ombres"}
+
+::: {.question}
+**Quelle donnée géographique permet de modéliser et de reproduire une vision sciographique ?**
+:::
+
+::: {.reponse}
+Un **MNT produit par LiDAR**, sous une lumière rasante virtuelle.
+:::
+:::
+::::
+
+## La chronologie des phénomènes {.socle competences="C4"}
+
+::: {.fiche n="4.7" etat="a-revoir"}
+Intention : Lire la chronologie relative sur une seule image : ce qui recoupe est plus récent que ce qui est recoupé ; ce qui s'aligne sur un tracé lui est postérieur. Paysage inventé, schéma fait pour le cours. Bonus : les méandres du Mississippi (carte de Harold Fisk, 1944, et image Landsat 7 du 22 septembre 1999, NASA Earth Observatory). [Retour V1 : les lettres sont mélangées (elles suivaient l'ordre des réponses) ; le lotissement dessiné en chantier (terre décapée, voies non revêtues, parcelles piquetées, fondations, grue) ; bonus Mississippi.]
+Expérience : schéma ; remettre six tracés dans l'ordre ; bonus
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+::: {.schema fichier="images/schemas/chronologie.svg" hauteur="340"}
+:::
+
+[**Ce qui recoupe est plus récent** que ce qui est recoupé ; ce qui s'aligne sur un tracé lui est postérieur.]{.a-retenir}
+:::
+::: {.column width="44%"}
+::: {.ordre}
+Du plus ancien au plus récent :
+
+1. C, le méandre comblé
+2. E, la voie droite
+3. A, les parcelles en lanières
+4. F, la voie ferrée
+5. B, l'autoroute
+6. D, le lotissement en chantier
+:::
+:::
+::::
+
+::: {.plus titre="Les méandres du Mississippi"}
+:::: {.columns}
+::: {.column width="40%"}
+![](images/mississippi-meandres.jpg){height="380" fig-alt="En haut, une carte ancienne des tracés successifs du Mississippi, en couleurs ; en bas, l'image satellite du même lieu"}
+:::
+::: {.column width="60%"}
+En 1944, Harold Fisk cartographie les anciens tracés du Mississippi, chacun dans sa couleur : une chronologie des méandres. L'image Landsat 7 du 22 septembre 1999 montre, au même endroit, leurs traces dans le paysage.
+
+[NASA Earth Observatory, « Mississippi Meanders »](https://science.nasa.gov/earth/earth-observatory/mississippi-meanders-6887/)
+:::
+::::
+:::
+
+## Reconstituer un mécanisme {.socle competences="C4"}
+
+::: {.fiche n="4.8" etat="a-revoir"}
+Intention : La convergence des indices raconte un mécanisme complet : le circuit de l'eau de refroidissement, de la prise d'eau au rejet, et l'électricité qui part. Chaque étape est reliée à un indice de l'image. Fonctionnement du rejet de Flamanville à valider par Marc. [Retour V1 : l'image de la centrale, en petit, à droite.]
+Expérience : remettre en ordre les étapes
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="64%"}
+::: {.ordre}
+Remettez le mécanisme de la centrale dans l'ordre. Chaque étape a son indice sur l'image du cours.
+
+1. L'eau de mer entre dans le bassin fermé par la digue
+2. Des pompes l'envoient vers les salles des machines
+3. Elle refroidit la vapeur qui a fait tourner les turbines
+4. Réchauffée, elle repart en mer par des galeries
+5. Elle remonte au large : les remous blancs
+6. L'électricité part par les lignes à haute tension
+:::
+:::
+::: {.column width="36%"}
+::: {.loupe zoom="3"}
+![](images/flamanville.jpg){height="300" fig-alt="La centrale de Flamanville"}
+:::
+:::
+::::
+
+## Raisonner pas à pas {.socle competences="C1 C4"}
+
+::: {.fiche n="4.9" etat="fige"}
+Intention : Un arbre de déduction sur la rade de Brest : que se passe-t-il dans les tirets rouges ? Chaque choix est un indice ; le chemin parcouru reste affiché, comme un faisceau. Première version : l'arbre sera reconstruit avec les réponses des étudiants de Marc, et ses conclusions validées par lui. [nouvelle]
+Expérience : arbre de déduction (brique « arbre »)
+Demande :
+:::
+
+Que se passe-t-il dans les **tirets rouges** ? Répondez pas à pas : chaque réponse est un indice.
+
+::: {.arbre image="images/rade-de-brest.jpg" alt="Orthophotographie de la rade de Brest, une zone en tirets rouges sur l'eau" style="--hauteur-arbre: 390px"}
+### depart | Quelle taille font les petits points blancs ? (l'échelle : 200 m)
+- Quelques mètres → petits
+- Plusieurs dizaines de mètres → grands
+
+### grands ! Mesurez de nouveau
+Avec l'échelle, 200 m valent environ 126 pixels : un point de 3 ou 4 pixels mesure quelques mètres. Revenez d'un pas.
+
+### petits | Comment sont-ils répartis ?
+- Dispersés, assez régulièrement espacés → espaces
+- Alignés en rangées droites → rangees
+- Serrés en groupe, tous dans le même sens → groupe
+
+### espaces | Sont-ils tous orientés de la même façon ?
+- Oui, tous dans le même sens → mouillage
+- Non, au hasard → flottants
+
+### mouillage ! Hypothèse : une zone de mouillage
+Des bateaux sur leurs corps-morts, tous tournés par le même courant ou le même vent, près de la côte. À confirmer : une cale, un club, un port à proximité ? Conclusion à valider.
+
+### rangees ! Hypothèse : des cultures marines
+Des bouées alignées en filières. À confirmer : des parcs à terre, des chemins d'accès ? Conclusion à valider.
+
+### groupe ! Hypothèse : une régate
+Des voiliers en mouvement, en flotte. À confirmer : des sillages, une bouée de parcours ? Conclusion à valider.
+
+### flottants ! Hypothèse : des objets flottants
+Des bouées, des débris ou des oiseaux. À confirmer avec une seconde date. Conclusion à valider.
+:::
+
+## Les pièges {.appui competences="C2 C4"}
+
+::: {.fiche n="4.10" etat="a-revoir"}
+Intention : Les faux amis (une ombre prise pour de l'eau) et le biais de confirmation ; la parade : chercher l'indice qui contredit. En conclusion, les pièges types : géométriques (l'ombre allongée par la pente…), radiométriques (peintures, ombres, humidité…), l'erreur sur la nature du signal (une composition colorée imprévue…), et d'autres sur le même principe. [Retour V1 : la conclusion sur les pièges types, avec les exemples de Marc, complétés.]
+Expérience : QCM avec barre de certitude ; liste des pièges types
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+::: {.confiance}
+::: {.qcm .serre}
+Une large tache sombre, au pied d'un grand bâtiment, sur une image prise en fin d'après-midi. Qu'est-ce que c'est ?
+
+- [ ] Un bassin, sans aucun doute
+    - Trop vite : une ombre portée est aussi sombre, et elle a la forme du bâtiment.
+- [x] Probablement son ombre : il faut vérifier sa forme et son sens
+    - Oui : si la tache prolonge le bâtiment dans le sens des autres ombres, c'est une ombre.
+- [ ] Un parking
+    - Rien ne l'indique : pas de voitures, pas de marquage.
+:::
+:::
+
+[La parade au biais de confirmation : chercher l'indice qui **contredit** votre hypothèse.]{.a-retenir}
+:::
+::: {.column width="54%"}
+**Les pièges types**
+
+- **Géométriques** : une ombre allongée par la pente ; un bâtiment haut qui « se couche » ; une mosaïque d'heures différentes.
+- **Radiométriques** : peintures, ombres, humidité, reflets du soleil, nuages.
+- **De signal** : une composition colorée imprévue (l'infrarouge qui rougit la végétation) ; un radar lu comme une photo.
+- **D'échelle et de date** : un objet mal mesuré ; une saison qui change tout.
+- **De raisonnement** : un indice unique pris pour une preuve.
+:::
+::::
+
+## Vraie ou générée ? {.intercalaire}
+
+::: {.fiche n="5.0" etat="fige"}
+Intention : La détection des images générées par IA : les clés de l'interprète s'y appliquent. Troisième grand volet du cours (demande de Marc) ; placé après les clés, qui servent à détecter. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+Les clés de l'interprète servent aussi à démasquer les images générées.
+
+## Il y a quatre ans {competences="C7"}
+
+::: {.fiche n="5.1" etat="fige"}
+Intention : En janvier 2022, une « vue aérienne » générée par Wombo Dream : les étudiants de Marc y voyaient un paysage asiatique, parce qu'il était impensable qu'une image soit fabriquée. On ne détecte pas ce que l'on n'imagine pas. Exemple, sans niveau. [Retour V0 : image recadrée sans les mentions de l'application, et agrandie ; de façon générale, maximiser les visuels.]
+Expérience : question avant la réponse
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="40%"}
+![](images/ia-2022-vue-aerienne.jpg){height="540" fig-alt="Une vue aérienne de village aux toits rouges"}
+:::
+::: {.column width="60%"}
+::: {.question}
+**Où a été prise cette vue aérienne ?**
+:::
+
+::: {.reponse}
+Nulle part : elle a été générée en janvier 2022 par une application, à partir des seuls mots *aerial view*. À l'époque, les étudiants y voyaient un paysage asiatique : il était impensable qu'une image soit fabriquée.
+:::
+
+[On ne détecte pas ce que l'on n'imagine pas possible.]{.a-retenir}
+:::
+::::
+
+## Les erreurs physiques {.socle competences="C7 C4"}
+
+::: {.fiche n="5.2" etat="a-revoir"}
+Intention : Les incohérences physiques et topographiques, que les clés d'interprétation révèlent : des rivières qui franchissent des crêtes, un éclairage contradictoire, des reliefs froissés comme du papier (DALL·E, 2024). [Retour V0 : images agrandies.] [Retour V1 : plus de place encore pour les images.]
+Expérience : défiler ; question
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="64%"}
+::: {.defiler commande="haut" style="--hauteur-image: 480px"}
+- ![Relief et vallée, DALL·E, janvier 2024](images/ia-2024-relief-1.jpg)
+- ![Une autre vue, même jour](images/ia-2024-relief-2.jpg)
+- ![Un atoll impossible](images/ia-atoll.jpg)
+:::
+:::
+::: {.column width="36%"}
+::: {.question}
+Ces vues d'en haut ont été générées. **Qu'est-ce qui les trahit ?**
+:::
+
+::: {.reponse}
+- Des **rivières** qui franchissent les crêtes.
+- Un **éclairage** venu de plusieurs côtés.
+- Des **reliefs** froissés, sans érosion.
+- Des **routes** qui ne mènent nulle part.
+:::
+:::
+::::
+
+## L'invraisemblable {.appui competences="C7"}
+
+::: {.fiche n="5.3" etat="fige"}
+Intention : Une image « historique » fabriquée : la place Tian'anmen vue d'un drone. Anachronisme (pas de drone grand public en 1989), chars aux formes incohérentes. Les clés du temps et de la forme. Date de génération à préciser. [Retour V0 : image agrandie.]
+Expérience : question
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+![](images/ia-tiananmen.jpg){height="520" fig-alt="Des chars sur une grande place, vus d'en haut"}
+:::
+::: {.column width="48%"}
+::: {.question}
+Une image légendée « Tian'anmen, 1989, vue d'un drone ». **Combien d'indices la contredisent ?**
+:::
+
+::: {.reponse}
+- La **date** : en 1989, aucun drone ne filme ainsi une manifestation.
+- Les **formes** : des chars aux tourelles et aux chenilles incohérentes.
+- Les **personnes** : des silhouettes sans ombre juste.
+
+Trois incohérences qui convergent : l'image est fausse.
+:::
+:::
+::::
+
+## Le manque d'émotion {.appui competences="C7"}
+
+::: {.fiche n="5.4" etat="a-revoir"}
+Intention : Le manque d'émotion dans les visages et les scènes générées : les affiches d'un kiosque photographiées par Marc (PXL_20250930_173652676~2). [Retour V0 : l'image de Marc, en grand.] [Retour V1 : la loupe.]
+Expérience : loupe ; question
+Demande : confirmer quelles affiches sont générées
+:::
+
+:::: {.columns}
+::: {.column width="66%"}
+::: {.loupe zoom="3"}
+![](images/ia-emotion.jpg){width="100%" fig-alt="Un kiosque couvert d'affiches publicitaires, devant un manège"}
+:::
+:::
+::: {.column width="34%"}
+::: {.question}
+**Regardez les visages des affiches, à la loupe. Que leur manque-t-il pour paraître vrais ?**
+:::
+
+::: {.reponse}
+L'**émotion** : des visages lisses et figés, un regard qui ne répond à rien. Un indice faible seul, mais fréquent dans les images générées.
+:::
+:::
+::::
+
+## Ce qui trahit encore l'IA {.socle competences="C7 C3"}
+
+::: {.fiche n="5.5" etat="a-revoir"}
+Intention : Ce qui reste aujourd'hui : les textures difficiles (fourrures, rides), les arrière-plans flous incohérents, les structures simplifiées des hautes fréquences spatiales, propres aux réseaux convolutifs ; les styles graphiques redondants et les biais récurrents. Images de Marc : PXL_20261006_182859009 et PXL_20261006_182903643. [Retour V1 : les styles graphiques redondants et les biais récurrents.]
+Expérience : regarder les deux images ; liste des points faibles
+Demande :
+:::
+
+![](images/ia-textures-1.jpg){height="205" fig-alt="Un chien lèche la joue d'un garçon"} ![](images/ia-textures-2.jpg){height="205" fig-alt="Un garçon rit, les yeux plissés"}
+
+Les points faibles qui restent, à chercher à la loupe :
+
+- les **textures** fines : fourrures, cheveux, rides ;
+- les **arrière-plans flous**, dont le flou ne suit pas la distance ;
+- les **détails fins** (hautes fréquences), en motifs trop réguliers : la signature des réseaux convolutifs ;
+- les **styles redondants** : lumière dorée, peau lisse, rendu « cinéma » ;
+- les **biais récurrents** : mêmes visages types, mêmes poses, compositions centrées.
+
+## Le réel qui paraît faux {competences="C7"}
+
+::: {.fiche n="5.6" etat="a-revoir"}
+Intention : Le clin d'œil : une image insolite, réelle, qui paraît maintenant générée (IMG-20261029-WA0000, image de Marc). Le doute s'étend aux vraies images. Exemple, sans niveau. [Retour V1 : l'image agrandie.]
+Expérience : question
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="40%"}
+![](images/reel-etrange.jpg){height="575" fig-alt="Une terrasse en bois, des guirlandes lumineuses et des gratte-ciel au loin"}
+:::
+::: {.column .centre-v width="60%"}
+::: {.question}
+**Générée, ou réelle ?**
+:::
+
+::: {.reponse}
+Réelle. Désormais, une image insolite paraît fausse : le doute s'étend aux vraies images. La seule réponse est la méthode : la source, la date, les indices qui convergent.
+:::
+:::
+::::
+
+## À vous : vraie ou générée ? {.appui competences="C7"}
+
+::: {.fiche n="5.7" etat="a-revoir"}
+Intention : Le test : des images réelles (Pléiades, orthophotos, radar) et générées (2022 à 2024), une par une, avec la certitude à chaque fois. [Retour V1 : des images plus grandes, jamais déformées.]
+Expérience : brique « vrai-ia », avec barre de certitude et score
+Demande :
+:::
+
+Pour chaque image : réelle, ou générée ? Dites d'abord votre certitude.
+
+::: {.vrai-ia style="--hauteur-vraiia: 490px"}
+- ![Une île, janvier 2022](images/ia-2022-ile.jpg) [ia] : Des rives en dentelle sans logique, des bâtiments fondus dans la végétation, aucune route.
+- ![Radiotélescope FAST, Pléiades, 2 mars 2016](images/fast-2016.jpg) [vrai] : Une image Pléiades : les routes mènent quelque part, les ombres sont cohérentes, le chantier a une logique.
+- ![Un atoll](images/ia-atoll.jpg) [ia] : Un lagon blanc et plat, sans fond ni passe, une végétation en boule : physiquement improbable.
+- ![Rade de Brest, orthophotographie](images/rade-de-brest.jpg) [vrai] : Une orthophotographie : réseau routier continu, ombres alignées, détails irréguliers.
+- ![Relief, DALL·E, janvier 2024](images/ia-2024-relief-1.jpg) [ia] : Des rivières qui franchissent les crêtes et un relief sans érosion.
+- ![Port de Baltimore, radar](images/baltimore-radar.jpg) [vrai] : Une image radar multi-dates : ses défauts sont ceux du capteur, pas d'un générateur.
+:::
+
+## La méthode {.socle competences="C7 C2 C4"}
+
+::: {.fiche n="5.8" etat="a-revoir"}
+Intention : La méthode de vérification en cinq temps, reprise de Marc : nature, source, cohérence spatio-temporelle, cohérence physique, certification. [Retour V1 : les cinq étapes et la phrase de conclusion de Marc.]
+Expérience : remettre en ordre les étapes
+Demande :
+:::
+
+::: {.ordre}
+Remettez la vérification d'une image dans l'ordre.
+
+1. Nature : quel signal ? qui l'a publiée, quand, avec quelles métadonnées ?
+2. Source : a-t-elle déjà circulé ? (recherche inversée)
+3. Cohérence spatio-temporelle : le lieu, la date, le soleil, la saison
+4. Cohérence physique : les clés tiennent-elles ? (formes, textures, ombres)
+5. Certification : conclure avec un degré de certitude
+:::
+
+[Un indice unique est généralement fragile. C'est le croisement de faisceaux qui réduit l'incertitude.]{.a-retenir}
+
+## La note d'interprétation {.intercalaire}
+
+::: {.fiche n="6.0" etat="fige"}
+Intention : Mettre l'enquête au propre. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+Mettre l'enquête au propre.
+
+## Rédiger une note {.socle competences="C1 C4"}
+
+::: {.fiche n="6.1" etat="a-revoir"}
+Intention : La note en quatre rubriques (observations, interprétations, certitude, sources et limites), sur l'image du cours. La description écrite en 3.1 revient. Lien avec « Cartography : Basics » : clairement, honnêtement. [Retour V1 : la correction de Marc.]
+Expérience : la description revient ; l'étudiant écrit sa note, puis la compare à celle de l'expert (brique « observer »)
+Demande :
+:::
+
+Une note d'interprétation a **quatre rubriques** : ce que je vois ; ce que j'en déduis ; avec quelle certitude ; sur quelles sources, avec quelles limites.
+
+::: {.observer cle="note-image" rappel="description-image" invite="Observations… Interprétations… Certitude… Sources et limites…"}
+**Observations.** Une côte rocheuse, une digue qui ferme un bassin, pas d'embarcation ni la place pour, deux dômes d'environ 50 m et un troisième en chantier, de longs bâtiments, des remous au large, des lignes électriques, le tout au pied d'une falaise.
+
+**Interprétations.** Une centrale nucléaire en bord de mer, refroidie par l'eau de mer (prise d'eau dans le bassin, rejet au large), avec un troisième réacteur en construction.
+
+**Certitude.** Presque certain pour la centrale (faisceau d'indices) ; probable pour le circuit de l'eau (les galeries ne se voient pas).
+
+**Sources et limites.** Une orthophotographie, une seule date ; le rejet est déduit, pas vu.
+:::
+
+## À vous : une nouvelle image {.appui competences="C1 C2 C3 C4 C5"}
+
+::: {.fiche n="6.2" etat="a-revoir"}
+Intention : Le transfert sur une image d'un autre capteur : le port de Baltimore en radar. Note d'interprétation sans guide, puis lecture experte. [Retour V1 : la correction de Marc.]
+Expérience : zone d'écriture, puis lecture experte (brique « observer »)
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="45%"}
+![](images/baltimore-radar.jpg){height="430" fig-alt="Image radar multi-dates du port de Baltimore"}
+:::
+::: {.column width="55%"}
+Écrivez votre note sur cette image radar, avec ses quatre rubriques.
+
+::: {.observer cle="note-baltimore" invite="Observations… Interprétations… Certitude… Sources et limites…"}
+**Observations.** Des quais, des bassins, une ville en damier ; du gris presque partout ; des taches de couleur sur l'eau et sur les terre-pleins.
+
+**Interprétations.** Les couleurs marquent ce qui a changé entre les dates : des navires arrivés ou partis, des conteneurs déplacés. Le gris, l'immuable.
+
+**Certitude.** Probable : il faudrait savoir quelle couleur correspond à quelle date.
+
+**Sources et limites.** Une image radar multi-dates, dont la source et les dates sont à préciser.
+:::
+:::
+::::
+
+## Réviser {.intercalaire}
+
+::: {.fiche n="7.0" etat="fige"}
+Intention : Ce qui reste, et comment le faire durer. [nouvelle]
+Expérience : aucune
+Demande :
+:::
+
+Ce qui reste, et comment le faire durer.
+
+## À retenir
+
+::: {.fiche n="7.1" etat="fige"}
+Intention : Les diapos du socle, en une liste.
+Expérience : liens vers chaque diapo
+Demande :
+:::
+
+::: {.carte-du-cours niveaux="socle"}
+:::
+
+[Voir, puis déduire ; croiser les indices ; dire sa certitude.]{.a-retenir}
+
+## Votre bilan
+
+::: {.fiche n="7.2" etat="a-revoir"}
+Intention : La grille d'entrée revient : l'étudiant se situe de nouveau, voit l'écart, et les diapos à reprendre ; sa calibration (certitude et réussite). [Retour V1 : les sept compétences de la diapo 3.]
+Expérience : bilan de fin (brique « bilan ») ; tableau de calibration (brique « calibration »)
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="62%"}
+::: {.bilan moment="fin"}
+- C1 | Décrire avant d'interpréter
+- C2 | Connaître les réflexes de lecture et la nature du signal
+- C3 | Identifier avec les clés d'identification
+- C4 | Interpréter en croisant les indices, avec sa certitude
+- C5 | Choisir l'image ou le signal adapté
+- C6 | Transformer une interprétation en donnée
+- C7 | Distinguer une image réelle d'une image générée
+:::
+:::
+::: {.column width="38%"}
+**Votre calibration**
+
+::: {.calibration}
+:::
+:::
+::::
+
+## Le programme de révision
+
+::: {.fiche n="7.3" etat="a-revoir"}
+Intention : Le mode révision, refait : 32 cartes écrites pour le rappel, différentes des questions du cours, posées comme par un tuteur exigeant. Elles sollicitent plusieurs mémoires : rappel libre (écrire de mémoire, puis comparer), reconnaissance (QCM), identification sur les images du cours (un cadre désigne l'objet), explication (« pourquoi ? »), transfert (un cas nouveau), correction d'une phrase fautive, procédure (remettre une méthode en ordre). Les cartes sont mélangées et entrelacées (jamais deux de la même compétence de suite) ; une carte sue s'espace (un jour, une semaine, un mois), une carte manquée revient dans la séance. En tête, les sept compétences : celle qui est interrogée s'allume ; celle dont toutes les cartes sont sues se grise. [Retour V1 : refonte demandée par Marc.]
+Expérience : brique « revision », avec ses cartes ; l'adresse ?revision ouvre directement cette diapo
+Demande :
+:::
+
+Rouvrez ce support demain, puis dans une semaine (`?revision` à la fin de l'adresse vous amène ici). Écrivez **avant** de regarder la réponse : c'est l'effort de rappel qui fixe le souvenir.
+
+::: {.revision}
+- C1 | Décrire avant d'interpréter
+- C2 | Réflexes de lecture et nature du signal
+- C3 | Identifier avec les clés
+- C4 | Interpréter en croisant les indices, avec sa certitude
+- C5 | Choisir l'image ou le signal adapté
+- C6 | Transformer une interprétation en donnée
+- C7 | Distinguer le réel du généré
+
+### C1 libre
+
+Un camarade écrit : « Le site est une centrale nucléaire. » Réécrivez sa phrase en séparant ce qu'il voit de ce qu'il en déduit.
+
+---
+
+« Je vois deux dômes d'environ 50 m, un bassin fermé par une digue, des remous au large. J'en déduis, presque certainement, une centrale nucléaire refroidie par l'eau de mer. » L'observation d'abord ; la déduction ensuite, avec son mot de certitude.
+
+### C1 image | images/cambrai-1917.jpg
+
+Sans rien interpréter : trois observations sur cette image. Puis une seule déduction, avec son mot de certitude.
+
+---
+
+Observations : des lignes crénelées en zigzag ; un sol criblé de petits trous ronds ; de larges bandes sombres parallèles aux lignes. Déduction : très probablement des tranchées de la Grande Guerre, sous des trous d'obus.
+
+### C1 qcm
+
+Lequel de ces énoncés est une observation, et non une déduction ?
+
+- [x] Des taches blanches filamenteuses au large : c'est bien ce que l'on voit, sans rien en conclure.
+- [ ] L'eau est agitée par un rejet : « rejet » est déjà une explication.
+- [ ] Un chantier est en cours : on le déduit des grues et de la terre nue.
+
+### C1 image | images/centre-equestre.jpg
+
+Décrivez cette image en cinq éléments, sans jamais nommer le lieu ni l'activité.
+
+---
+
+Deux grandes surfaces de sable clair ; sur l'une, des barres disposées en lignes ; de longs bâtiments autour d'une cour ; un parking avec de longs véhicules ; de petites silhouettes allongées sur le sable. Si vous avez écrit « chevaux », vous avez déjà interprété.
+
+### C2 libre
+
+Devant une image inconnue, quelles questions vous posez-vous **avant** toute interprétation ? Au moins quatre.
+
+---
+
+Quel lieu ? Quelle date (et quelle saison, quelle heure) ? Quel signal : visible, infrarouge couleur, radar, panchromatique, LiDAR ? Quelle échelle et quelle résolution ? Quelle source, et est-elle fiable ?
+
+### C2 qcm
+
+Sur une image, les champs et les haies sont rouge vif, l'eau est presque noire. Que concluez-vous **d'abord** ?
+
+- [x] C'est une composition en infrarouge couleur : la végétation vivante réfléchit fortement le proche infrarouge.
+- [ ] La végétation est malade : au contraire, une végétation malade rougit moins.
+- [ ] L'image est générée : rien ne le dit, le signal suffit à l'expliquer.
+
+### C2 image | images/baltimore-radar.jpg
+
+Quel est le signal de cette image ? Qu'est-ce qui vous l'apprend, et quel piège tend-il ?
+
+---
+
+Du radar, multi-dates : un grain particulier, du gris partout, des couleurs seulement là où quelque chose a changé. Le piège : le lire comme une photographie, et chercher des « couleurs » qui n'en sont pas.
+
+### C2 image | images/flamanville-irc-2015.jpg
+
+Pourquoi les champs sont-ils rouges sur cette image ? Que risque celui qui ne s'en aperçoit pas ?
+
+---
+
+C'est de l'infrarouge couleur : le proche infrarouge, très renvoyé par la végétation vivante, est affiché en rouge. Celui qui ne le voit pas prend le signal pour une couleur réelle, et conclut à tort (des champs de fleurs, une pollution…).
+
+### C3 image | images/flamanville.jpg | 53,46,7,17
+
+Quels sont ces objets encadrés ? Quelles clés vous ont permis de le dire, et laquelle a manqué pour être sûr ?
+
+---
+
+Deux dômes d'une cinquantaine de mètres : la taille (l'échelle) et la forme (un cercle parfait, donc humain). Seuls, ils restent ambigus : il a fallu l'association (prise d'eau, rejet, salles des machines) pour conclure à des bâtiments réacteurs.
+
+### C3 libre
+
+Citez les sept clés d'identification. Pour trois d'entre elles, donnez un objet qu'elle seule permet presque de reconnaître.
+
+---
+
+Ton et couleur, taille, forme, texture, structure, ombre, date. Par exemple : l'ombre pour un pylône ou une éolienne ; la structure pour une vigne ou un verger ; la forme pour un avion.
+
+### C3 qcm
+
+Un conifère et un feuillu, sur une photo verticale de fin d'après-midi. Quelle clé les sépare le mieux ?
+
+- [x] L'ombre : triangulaire pour le conifère, ronde pour le feuillu.
+- [ ] La taille : deux arbres peuvent avoir la même hauteur.
+- [ ] Le ton : il varie avec la saison et l'éclairage.
+
+### C3 image | images/fast-2016.jpg | 34,38,9,11
+
+Ce reflet encadré : que prouve-t-il sur la forme du disque, et pourquoi ?
+
+---
+
+Le soleil est à droite (l'ombre de la tour file vers la gauche) ; le reflet est à l'opposé. Sur une bosse, il serait du côté du soleil : le disque est donc concave, un creux.
+
+### C3 libre
+
+Expliquez à un camarade, en trois phrases, pourquoi l'ombre portée est souvent plus utile que l'objet lui-même sur une image verticale.
+
+---
+
+Vu d'en haut, un objet haut et fin se réduit à un point. Son ombre, projetée par un soleil bas, en dessine la silhouette de profil. Sa longueur dit la hauteur, son sens dit la position du soleil, donc l'heure.
+
+### C3 image | images/tour-rosny.jpg
+
+D'où vient le soleil sur cette image ? Comment le savez-vous ?
+
+---
+
+À l'opposé de l'ombre de la tour : l'ombre file d'un côté, le soleil est de l'autre. Toutes les autres ombres de l'image doivent pointer dans le même sens ; si l'une ne le fait pas, méfiez-vous.
+
+### C4 libre
+
+Induction, déduction, abduction : une phrase pour chacune, et un exemple tiré d'une image.
+
+---
+
+L'induction tire une règle de cas répétés (les dômes vus jusqu'ici abritaient des réacteurs). La déduction applique une règle à un cas (l'image est d'avril, le colza y sera jaune). L'abduction propose la meilleure explication d'un fait (une tache sombre au pied d'une tour : sans doute son ombre).
+
+### C4 qcm
+
+« Un champ jaune vif au printemps : peut-être du colza. » Quel raisonnement ?
+
+- [ ] Une induction : aucune règle n'est tirée de cas répétés.
+- [ ] Une déduction : la conclusion n'est pas certaine.
+- [x] Une abduction : la meilleure hypothèse pour un fait observé.
+
+### C4 qcm
+
+Dans l'échelle de Sherman Kent, « probable » veut dire…
+
+- [ ] 9 chances sur 10 : c'est « presque certain ».
+- [x] 3 chances sur 4 environ.
+- [ ] 1 chance sur 2 : c'est « possible ».
+
+### C4 libre
+
+Pourquoi un indice unique est-il fragile ? Donnez un objet ambigu, et ce qui lève l'ambiguïté.
+
+---
+
+Un indice seul a souvent plusieurs explications. Un dôme peut être un planétarium, un silo, un radôme : c'est l'association avec une prise d'eau, un rejet et des lignes à haute tension qui en fait un réacteur. Le croisement des faisceaux réduit l'incertitude.
+
+### C4 image | images/schemas/chronologie.svg
+
+Sur ce schéma, quel tracé est le plus récent ? Quelle règle vous l'apprend ?
+
+---
+
+D, le lotissement en chantier : il vient se brancher sur l'autoroute, qui coupe elle-même la voie ferrée. Ce qui recoupe est plus récent que ce qui est recoupé.
+
+### C4 libre
+
+Le centre équestre : quelles associations vous ont permis de l'identifier ? Pourquoi aucune ne suffisait-elle seule ?
+
+---
+
+Des pistes de sable avec des barres d'obstacles, des bâtiments autour d'une cour (des boxes), de longs véhicules (des vans), des silhouettes sur le sable (des cavaliers). Chacun seul a d'autres explications (une carrière de sable, un entrepôt, un parking) ; ensemble, une seule.
+
+### C5 qcm
+
+Pour voir des vestiges sous la forêt d'Angkor, quelle donnée choisir ?
+
+- [x] Un LiDAR aéroporté : ses derniers échos atteignent le sol, sous la canopée.
+- [ ] Une orthophotographie couleur : elle ne voit que le toit de la forêt.
+- [ ] Une image radar : elle traverse les nuages, pas la forêt dense.
+
+### C5 libre
+
+Une inondation, sous un ciel couvert depuis trois jours : quel capteur choisissez-vous ? Quelle limite acceptez-vous ?
+
+---
+
+Le radar : il voit à travers les nuages, de jour comme de nuit, et l'eau calme y apparaît sombre. La limite : pas de couleurs, une lecture difficile, des confusions possibles (routes, ombres radar).
+
+### C5 qcm
+
+Pour photographier un talus arasé de 30 cm, quand faut-il voler ?
+
+- [x] En lumière rasante, tôt le matin ou tard le soir : le moindre relief fait une ombre.
+- [ ] À midi, en plein soleil : les ombres sont alors les plus courtes.
+- [ ] Par temps couvert : sans soleil, aucune ombre.
+
+### C5 libre
+
+Pourquoi la date d'une image est-elle une limite autant qu'une information ?
+
+---
+
+Elle dit l'état du lieu à un instant : un chantier, une saison, une marée. Mais l'image ne montre que cet instant : ce qui s'est passé avant ou après échappe, et une seule date ne montre pas une dynamique.
+
+### C6 qcm
+
+CORINE Land Cover (25 ha) et la BD Forêt V2 (0,5 ha) donnent presque le même total de forêt sur une zone. Qu'en concluez-vous ?
+
+- [ ] Qu'elles sont d'accord : le total ne dit rien des lieux.
+- [x] Rien encore : il faut regarder où elles divergent, souvent sur les petites taches et les limites.
+- [ ] Que la plus fine est fausse : chacune répond à sa question.
+
+### C6 libre
+
+Qu'est-ce qu'une unité minimale de collecte ? Que devient un bosquet de 2 ha dans CORINE Land Cover, et dans la BD Forêt V2 ?
+
+---
+
+La surface en dessous de laquelle on ne saisit pas un objet. Dans CORINE (25 ha), le bosquet disparaît, fondu dans la classe voisine ; dans la BD Forêt V2 (0,5 ha), il est saisi.
+
+### C6 libre
+
+Pourquoi deux pays peuvent-ils compter différemment la même forêt ?
+
+---
+
+Parce qu'ils ne la définissent pas pareil : surface minimale, hauteur des arbres, couvert. Sous le protocole de Kyoto, chacun choisit ses seuils (0,05 à 1 ha, 2 à 5 m, 10 à 30 %). Une carte de « la » forêt dit toujours quelle forêt.
+
+### C6 qcm
+
+Une IA annonce 90 % de bonnes réponses sur une carte du bâti. Que demandez-vous ?
+
+- [ ] Rien : 90 %, c'est le niveau d'un bon interprète.
+- [x] Où sont les erreurs, classe par classe et zone par zone.
+- [ ] Le nom du modèle : il ne dit rien de la carte.
+
+### C7 libre
+
+Citez cinq indices qui trahissent encore une image générée.
+
+---
+
+Des textures fines ratées (fourrures, rides), des arrière-plans flous incohérents, des détails fins trop réguliers, une physique impossible (rivières qui franchissent les crêtes, éclairage multiple), un manque d'émotion, des styles graphiques et des biais qui reviennent.
+
+### C7 image | images/ia-2024-relief-1.jpg
+
+Qu'est-ce qui trahit cette image ? Nommez la clé qui vous l'apprend.
+
+---
+
+Des rivières qui ne suivent pas les vallées et un relief froissé, sans logique d'érosion : la cohérence physique, la clé du relief et du site.
+
+### C7 libre
+
+Les cinq étapes de la vérification d'une image, dans l'ordre, avec un mot pour chacune.
+
+---
+
+Nature (le signal, la publication, les métadonnées) ; source (a-t-elle déjà circulé ?) ; cohérence spatio-temporelle (le lieu, la date, le soleil) ; cohérence physique (les clés tiennent-elles ?) ; certification (conclure avec un degré de certitude).
+
+### C7 qcm
+
+Une image insolite circule sur les réseaux. Votre premier réflexe ?
+
+- [x] Chercher sa source et sa date : d'où vient-elle, a-t-elle déjà circulé ?
+- [ ] Chercher des artefacts : utile, mais après la source.
+- [ ] Conclure qu'elle est générée : une image insolite peut être réelle.
+:::
+
+## À vous {.fin}
+
+::: {.fiche n="7.4" etat="fige"}
+Intention : Le pont vers le TP de photo-interprétation.
+Expérience : aucune
+Demande :
+:::
+
+Une image ne parle pas seule : on la **regarde**, on la **questionne**, on **croise** ses indices, et l'on **dit** ce que l'on sait, avec sa certitude.
+
+## Le coin des fictions
+
+::: {.fiche n="7.5" etat="a-revoir"}
+Intention : Les fictions qui mettent en scène l'interprétation d'images et le renseignement : en grand d'abord, le montage de Marc sur *Star City*, puis le défilement des autres : *Cœurs noirs*, *Le Bureau des légendes*, *GoldenEye*, *À l'Ouest, rien de nouveau*, *Wonder Woman*. Exemple, sans niveau. [Retour V1 : nouvelle diapo, avant les sources ; Star City quitte la diapo « Un métier né de la guerre ».]
+Expérience : défilement automatique (brique « defiler », auto)
+Demande :
+:::
+
+::: {.defiler auto="5" style="--hauteur-image: 500px"}
+- ![Star City (Apple TV+, 2026), dérivée de l'uchronie For All Mankind : montage de Marc Poupée](images/star-city.jpg)
+- ![Cœurs noirs (Prime Video, 2023) : les forces spéciales et le renseignement](images/fiction-coeurs-noirs.jpg)
+- ![Le Bureau des légendes (Canal+, 2015-2020) : la DGSE et ses analystes](images/fiction-bureau-des-legendes.jpg)
+- ![GoldenEye (Martin Campbell, 1995) : James Bond et les satellites](images/fiction-goldeneye.jpg)
+- ![À l'Ouest, rien de nouveau (Erich Maria Remarque, 1929) : les tranchées de la Grande Guerre](images/fiction-a-l-ouest.jpg)
+- ![Wonder Woman (Patty Jenkins, 2017) : le front de 1918](images/fiction-wonder-woman.jpg)
+:::
+
+## Sources et crédits {.petit}
+
+::: {.fiche n="7.6" etat="a-revoir"}
+Intention : Les références : FLAIR (l'article de Marc), Ressources naturelles Canada, le GIS&T Body of Knowledge, les manuels, Kent, le GIEC, Colwell, l'histoire, Angkor, les définitions de la forêt, l'archéologie aérienne, les fictions, les images et leurs droits. Le PDF de cours de Marc à ajouter (non reçu). [Retour V1 : CBS News, Damian Evans, la vidéo d'Angkor, Wired gardé, NASA (Mississippi), la DRM (#YEUXDOR), les nouvelles images.]
+Expérience : aucune
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+| Document | Origine |
+|---|---|
+| Interprétation | Ressources naturelles Canada ; S. Myint, GIS&T BoK, 2024 ; Lillesand *et al.*, 2015 |
+| FLAIR | Garioud *et al.*, NeurIPS 2023 ; images FLAIR, IGN |
+| Certitude | S. Kent, 1964 ; GIEC, d'après climat.be |
+| Experts | R. N. Colwell, *Journal of Forestry*, 1952 ; M. Poupée |
+| Histoire | Babington Smith ; frise : M. Poupée ; Powell : Wikipédia, CBS |
+| Angkor | D. Evans *et al.*, PNAS, 2013 ; Wired, juin 2013 ; vidéo YouTube |
+| Forêt | FAO ; CCNUCC ; IGN ; Copernicus ; COMIFAC (ATIBT) |
+| Archéologie | R. Agache ; NASA, *Mississippi Meanders* |
+| Bases russes | DFRLab, décembre 2021 ; Sentinel Hub, EO Browser |
+:::
+::: {.column width="50%"}
+| Document | Origine |
+|---|---|
+| Flamanville (2015 en IRC), rade de Brest, centre équestre | Géoportail, IGN |
+| L'Isle-Adam | CORINE Land Cover ; BD Forêt V2, IGN |
+| FAST | image Pléiades, 2 mars 2016 (droits à préciser) |
+| Base 27, tour de Rosny, motte de Rely, Cambrai | sources à préciser |
+| Baltimore | image radar, source à préciser |
+| U-Net | travaux de 2019 |
+| Images générées | Wombo Dream (2022), DALL·E (2024) ; photos de M. Poupée |
+| #YEUXDOR | Direction du renseignement militaire, LinkedIn |
+| Musée, fictions | L'Europe vue du Ciel ; affiches ; *Star City* : M. Poupée |
+| Carte des 100 km | INSEE via Etalab ; Natural Earth |
+| Cours de M. Poupée | PDF à ajouter |
+:::
+::::
+
+<!--
+V0. Public : ingénieurs, étudiants en géopolitique, masters ; pas seulement FIRS.
+
+Compétences (diapo 0.3). Le titre de chaque diapo socle porte les compétences qu'elle étaye.
+  C1  Décrire avant d'interpréter : séparer ce que l'on voit de ce que l'on en déduit.
+  C2  Identifier un objet ou un phénomène avec les clés d'identification.
+  C3  Reconstituer un mécanisme en croisant les clés d'interprétation, et dire son degré de certitude.
+  C4  Choisir l'image qui répond à la question, et en connaître les limites.
+  C5  Transformer une interprétation en donnée.
+  C6  Distinguer une image réelle d'une image générée, et situer l'interprète face à l'IA.
+
+Images attendues de Marc : la photo de Peenemünde (couverture), l'image de 14-18, les images
+PXL_20250930_173652676~2, PXL_20261006_182859009, PXL_20261006_182903643, IMG-20261029-WA0000,
+une image d'Angkor (LiDAR), le PDF de cours dans source/.
+-->

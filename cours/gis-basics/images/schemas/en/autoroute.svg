@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 330" role="img" aria-label="A motorway section and the features its GIS manages, grouped by theme">
+<rect x="0" y="0" width="1150" height="330" style="fill:#EEF2E6"/>
+<path class="s-tirets" style="stroke:var(--violet);stroke-width:2.5" d="M895 0 V330"/>
+<path d="M720 0 V330" style="stroke:#B9B9B9;stroke-width:16"/>
+<path d="M720 70 C 720 120 680 128 600 130 M720 260 C 720 200 760 172 840 170" style="fill:none;stroke:#B9B9B9;stroke-width:10"/>
+<path d="M0 135 H1150 M0 165 H1150" style="stroke:#8C8C8C;stroke-width:22"/>
+<path d="M0 150 H1150" style="stroke:#7FA86A;stroke-width:6"/>
+<path class="s-accent" d="M0 135 H1150 M0 165 H1150" style="stroke-width:2.5"/>
+<rect x="704" y="118" width="32" height="64" style="fill:#C8C8C8;stroke:#6E6F7A;stroke-width:2.5"/>
+<path d="M720 112 V188" style="stroke:#fff;stroke-width:1.5;stroke-dasharray:6 6"/>
+<text x="40" y="128" class="s-titre" style="font-size:20px">A6</text>
+<path d="M190 112 V188" style="stroke:#2B2B33;stroke-width:3"/><rect x="170" y="98" width="70" height="20" rx="2" style="fill:#2B2B33"/><path d="M178 108 h54" style="stroke:#F2AE6D;stroke-width:3;stroke-dasharray:4 3"/>
+<path class="s-fin" d="M205 98 L205 62"/>
+<text x="150" y="40" text-anchor="start" style="font-size:15px;font-weight:700;fill:var(--encre)">Variable message sign</text><text class="s-petit" x="150" y="57" text-anchor="start">dynamic equipment</text>
+<path d="M400 182 V200" style="stroke:#2B2B33;stroke-width:3"/><rect x="390" y="174" width="22" height="12" rx="2" style="fill:#2B2B33"/>
+<path class="s-fin" d="M400 200 L400 232"/>
+<text x="340" y="250" text-anchor="start" style="font-size:15px;font-weight:700;fill:var(--encre)">Camera</text><text class="s-petit" x="340" y="267" text-anchor="start">dynamic equipment</text>
+<rect x="540" y="158" width="18" height="14" class="s-plein-accent"/>
+<path class="s-fin" d="M549 172 L560 232"/>
+<text x="525" y="250" text-anchor="start" style="font-size:15px;font-weight:700;fill:var(--encre)">Counting point</text><text class="s-petit" x="525" y="267" text-anchor="start">dynamic equipment</text>
+<path d="M300 182 Q300 230 270 262" class="s-tirets" style="stroke:#4A7CC2"/>
+<rect x="200" y="262" width="110" height="44" rx="14" style="fill:#9CC3E6;stroke:#4A7CC2;stroke-width:2"/>
+<text x="40" y="283" text-anchor="start" style="font-size:15px;font-weight:700;fill:var(--encre)">Retention basin</text><text class="s-petit" x="40" y="300" text-anchor="start">drainage</text>
+<path class="s-fin" d="M736 120 L760 72"/>
+<text x="742" y="52" text-anchor="start" style="font-size:15px;font-weight:700;fill:var(--encre)">Bridge</text><text class="s-petit" x="742" y="69" text-anchor="start">engineering structure</text>
+<path class="s-fin" d="M640 128 L600 82"/>
+<text x="560" y="52" text-anchor="start" style="font-size:15px;font-weight:700;fill:var(--encre)">Interchange</text><text class="s-petit" x="560" y="69" text-anchor="start">infrastructure</text>
+<path d="M1085 182 V250" style="stroke:#B9B9B9;stroke-width:8"/><rect x="1057" y="250" width="56" height="34" style="fill:#F3E2C7;stroke:#6E6F7A;stroke-width:2"/>
+<text x="1045" y="198" text-anchor="end" style="font-size:15px;font-weight:700;fill:var(--encre)">Service access</text><text class="s-petit" x="1045" y="215" text-anchor="end">infrastructure</text>
+<text x="1045" y="240" text-anchor="end" style="font-size:15px;font-weight:700;fill:var(--encre)">Maintenance centre</text><text class="s-petit" x="1045" y="257" text-anchor="end">building</text>
+<path d="M1060 112 h50 v-10 h-50 z" style="fill:#8C8C8C"/>
+<path class="s-fin" d="M1085 100 L1085 70"/>
+<text x="1030" y="52" text-anchor="start" style="font-size:15px;font-weight:700;fill:var(--encre)">Refuge</text><text class="s-petit" x="1030" y="69" text-anchor="start">infrastructure</text>
+<path d="M470 112 V96" style="stroke:#2B2B33;stroke-width:3"/><rect x="452" y="80" width="40" height="18" style="fill:#4A7CC2"/>
+<text x="390" y="52" text-anchor="start" style="font-size:15px;font-weight:700;fill:var(--encre)">Direction sign</text><text class="s-petit" x="390" y="69" text-anchor="start">signage</text>
+<text x="905" y="300" text-anchor="start" style="font-size:15px;font-weight:700;fill:var(--encre)">Municipal boundary</text><text class="s-petit" x="905" y="317" text-anchor="start">administrative zone</text>
+</svg>

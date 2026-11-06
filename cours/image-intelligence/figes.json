@@ -1,0 +1,114 @@
+{
+ "0.1": {
+  "empreinte": "9544c4e1874cae18",
+  "titre": "Couverture"
+ },
+ "0.2": {
+  "empreinte": "fa4440b68f73d407",
+  "titre": "Comment lire ce support"
+ },
+ "0.4": {
+  "empreinte": "9acf4be6e9fb8043",
+  "titre": "Carte du cours"
+ },
+ "1.0": {
+  "empreinte": "f84317a5cec9967a",
+  "titre": "Voir, puis savoir"
+ },
+ "1.1": {
+  "empreinte": "ca0732b89dd9fc2f",
+  "titre": "La scène"
+ },
+ "2.0": {
+  "empreinte": "9b4300e2c618852b",
+  "titre": "De l'image à la donnée"
+ },
+ "2.1": {
+  "empreinte": "e6283d8c469b883c",
+  "titre": "Interpréter pour bâtir une base"
+ },
+ "2.4": {
+  "empreinte": "316223f21dbe9950",
+  "titre": "La précision des experts"
+ },
+ "2.5": {
+  "empreinte": "c274fd20e9fbb1bd",
+  "titre": "Des données pour apprendre aux machines"
+ },
+ "2.6": {
+  "empreinte": "0750274869591151",
+  "titre": "L'interprète contrôle la machine"
+ },
+ "2.7": {
+  "empreinte": "bbb4b82214b7c8fa",
+  "titre": "Suivre les changements"
+ },
+ "2.9": {
+  "empreinte": "7dcb3a40c24cb927",
+  "titre": "Bien d'autres usages"
+ },
+ "3.0": {
+  "empreinte": "f71eb264ac187246",
+  "titre": "Les clés d'identification"
+ },
+ "3.4": {
+  "empreinte": "e0ef7cd0f1fedbe0",
+  "titre": "Texture et structure"
+ },
+ "3.6": {
+  "empreinte": "5cee44d6eaf3839d",
+  "titre": "Ombre et relief"
+ },
+ "3.7": {
+  "empreinte": "3f3cdb57c99d1c07",
+  "titre": "Creux ou bosse ?"
+ },
+ "4.0": {
+  "empreinte": "9ef00eb032905828",
+  "titre": "Les clés d'interprétation"
+ },
+ "4.1": {
+  "empreinte": "d7dc60beb431ff94",
+  "titre": "L'association"
+ },
+ "4.2": {
+  "empreinte": "1b57254cdace6027",
+  "titre": "À vous : quel est ce lieu ?"
+ },
+ "4.3": {
+  "empreinte": "ed92d035fab95526",
+  "titre": "Le site"
+ },
+ "4.9": {
+  "empreinte": "da4b85cf891a7a9e",
+  "titre": "Raisonner pas à pas"
+ },
+ "5.0": {
+  "empreinte": "c07d4a71bcb22dc1",
+  "titre": "Vraie ou générée ?"
+ },
+ "5.1": {
+  "empreinte": "11ded3d916e7bcf0",
+  "titre": "Il y a quatre ans"
+ },
+ "5.3": {
+  "empreinte": "85052be52256b645",
+  "titre": "L'invraisemblable"
+ },
+ "6.0": {
+  "empreinte": "6262a6a57e1236f7",
+  "titre": "La note d'interprétation"
+ },
+ "7.0": {
+  "empreinte": "d84e17471f243cf8",
+  "titre": "Réviser"
+ },
+ "7.1": {
+  "empreinte": "c31a3d30e3f282f7",
+  "titre": "À retenir"
+ },
+ "7.4": {
+  "empreinte": "a494c55bf15795c8",
+  "titre": "À vous"
+ }
+}

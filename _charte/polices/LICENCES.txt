@@ -1,0 +1,7 @@
+Polices embarquées pour que les supports fonctionnent sans réseau.
+
+- Raleway : SIL Open Font License 1.1
+- Roboto : Apache License 2.0 (versions récentes : SIL Open Font License 1.1)
+- IBM Plex Mono : SIL Open Font License 1.1
+
+Fichiers issus du projet Fontsource (https://fontsource.org).

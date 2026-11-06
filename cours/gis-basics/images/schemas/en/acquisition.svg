@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" role="img" aria-label="Where data come from: produce it or reuse it">
+  <text class="s-titre" x="170" y="34" text-anchor="middle">Produce</text>
+  <text class="s-titre" x="830" y="34" text-anchor="middle">Reuse</text>
+  <g>
+    <rect class="s-fond" x="40" y="55" width="260" height="52" rx="8"/><text x="170" y="87" text-anchor="middle">Field survey, GNSS</text>
+    <rect class="s-fond" x="40" y="125" width="260" height="52" rx="8"/><text x="170" y="157" text-anchor="middle">Aerial photo, satellite</text>
+    <rect class="s-fond" x="40" y="195" width="260" height="52" rx="8"/><text x="170" y="227" text-anchor="middle">Lidar</text>
+    <rect class="s-fond" x="40" y="265" width="260" height="52" rx="8"/><text x="170" y="297" text-anchor="middle">Digitise a paper map</text>
+  </g>
+  <g>
+    <rect class="s-fond" x="700" y="80" width="260" height="52" rx="8"/><text x="830" y="112" text-anchor="middle">Existing databases</text>
+    <text class="s-petit" x="830" y="150" text-anchor="middle">BD TOPO, BD Forêt, cadastre, OSM</text>
+    <rect class="s-fond" x="700" y="170" width="260" height="52" rx="8"/><text x="830" y="202" text-anchor="middle">Web services: WMS, WMTS, WFS</text>
+    <text class="s-petit" x="830" y="240" text-anchor="middle">the Géoplateforme</text>
+    <rect class="s-fond" x="700" y="260" width="260" height="52" rx="8"/><text x="830" y="292" text-anchor="middle">An existing GIS</text>
+  </g>
+  <path class="s-accent" d="M305 81 L420 170 M305 151 L420 178 M305 221 L420 186 M305 291 L420 194 M695 106 L580 172 M695 196 L580 182 M695 286 L580 192"/>
+  <rect class="s-blanc" x="420" y="140" width="160" height="80" rx="12"/>
+  <text class="s-titre" x="500" y="188" text-anchor="middle" style="font-size:26px">GIS</text>
+  <text class="s-petit" x="500" y="248" text-anchor="middle">always: who, when,</text>
+  <text class="s-petit" x="500" y="266" text-anchor="middle">how accurate?</text>
+</svg>

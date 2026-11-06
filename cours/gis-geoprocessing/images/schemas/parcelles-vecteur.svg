@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 450" role="img" aria-label="Les parcelles en vecteur" width="660" height="450">
+<rect width="660" height="450" fill="#FFFFFF"/>
+<path d="M40 40 L330 30 L360 230 L60 250 Z" fill="#F2D2B0" stroke="#283B89" stroke-width="2.5"/>
+<path d="M330 30 L620 60 L600 260 L360 230 Z" fill="#C9D3B8" stroke="#283B89" stroke-width="2.5"/>
+<path d="M60 250 L360 230 L380 420 L50 410 Z" fill="#DCE6F5" stroke="#283B89" stroke-width="2.5"/>
+<path d="M360 230 L600 260 L620 420 L380 420 Z" fill="#E4D3E8" stroke="#283B89" stroke-width="2.5"/>
+</svg>

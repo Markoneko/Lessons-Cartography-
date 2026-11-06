@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 305" role="img" aria-label="Six parcelles et leur zone">
+<rect x="30" y="30" width="110" height="110" style="fill:#F2D2B0;stroke:var(--bleu);stroke-width:1.5"/>
+<text x="85.0" y="91.0" text-anchor="middle" style="font-weight:700">1 · X</text>
+<rect x="140" y="30" width="110" height="110" style="fill:#F2D2B0;stroke:var(--bleu);stroke-width:1.5"/>
+<text x="195.0" y="91.0" text-anchor="middle" style="font-weight:700">3 · X</text>
+<rect x="250" y="30" width="110" height="110" style="fill:#DCE6F5;stroke:var(--bleu);stroke-width:1.5"/>
+<text x="305.0" y="91.0" text-anchor="middle" style="font-weight:700">2 · Y</text>
+<rect x="30" y="140" width="110" height="110" style="fill:#E4D3E8;stroke:var(--bleu);stroke-width:1.5"/>
+<text x="85.0" y="201.0" text-anchor="middle" style="font-weight:700">4 · Z</text>
+<rect x="140" y="140" width="110" height="110" style="fill:#E4D3E8;stroke:var(--bleu);stroke-width:1.5"/>
+<text x="195.0" y="201.0" text-anchor="middle" style="font-weight:700">5 · Z</text>
+<rect x="250" y="140" width="110" height="110" style="fill:#DCE6F5;stroke:var(--bleu);stroke-width:1.5"/>
+<text x="305.0" y="201.0" text-anchor="middle" style="font-weight:700">6 · Y</text>
+<text class="s-titre" x="195" y="290" text-anchor="middle">Six parcelles et leur zone</text>
+</svg>

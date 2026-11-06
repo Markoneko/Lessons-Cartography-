@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 362" role="img" aria-label="Induction, déduction, abduction">
+<defs><marker id="fleche-raison" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#E38226"/></marker></defs>
+<rect x="10" y="6" width="236" height="164" rx="12" class="s-fond"/>
+<text class="s-titre" x="128" y="38" text-anchor="middle" style="font-size:22px">Induction</text>
+<text x="128" y="68" text-anchor="middle" style="font-size:15.5px;fill:#2B2B33">On observe des faits répétés</text>
+<text x="128" y="89" text-anchor="middle" style="font-size:15.5px;fill:#2B2B33">et l’on en dégage une règle.</text>
+<path d="M40 106 H216" stroke="#D8DAEC" stroke-width="1.5"/>
+<text x="128" y="132" text-anchor="middle" style="font-size:15px;fill:#283B89;font-weight:700">Forte probabilité,</text>
+<text x="128" y="153" text-anchor="middle" style="font-size:15px;fill:#283B89;font-weight:700">pas de certitude absolue.</text>
+<rect x="260" y="6" width="236" height="164" rx="12" class="s-fond"/>
+<text class="s-titre" x="378" y="38" text-anchor="middle" style="font-size:22px">Déduction</text>
+<text x="378" y="68" text-anchor="middle" style="font-size:15.5px;fill:#2B2B33">Des règles ou des prémisses</text>
+<text x="378" y="89" text-anchor="middle" style="font-size:15.5px;fill:#2B2B33">mènent à une conclusion.</text>
+<path d="M290 106 H466" stroke="#D8DAEC" stroke-width="1.5"/>
+<text x="378" y="132" text-anchor="middle" style="font-size:15px;fill:#283B89;font-weight:700">Si les prémisses sont vraies,</text>
+<text x="378" y="153" text-anchor="middle" style="font-size:15px;fill:#283B89;font-weight:700">la conclusion est certaine.</text>
+<rect x="510" y="6" width="236" height="164" rx="12" class="s-fond"/>
+<text class="s-titre" x="628" y="38" text-anchor="middle" style="font-size:22px">Abduction</text>
+<text x="628" y="68" text-anchor="middle" style="font-size:15.5px;fill:#2B2B33">Face à un fait observé,</text>
+<text x="628" y="89" text-anchor="middle" style="font-size:15.5px;fill:#2B2B33">on propose des hypothèses.</text>
+<path d="M540 106 H716" stroke="#D8DAEC" stroke-width="1.5"/>
+<text x="628" y="132" text-anchor="middle" style="font-size:15px;fill:#283B89;font-weight:700">Aucune certitude : des pistes,</text>
+<text x="628" y="153" text-anchor="middle" style="font-size:15px;fill:#283B89;font-weight:700">surtout quand le fait surprend.</text>
+<text class="s-titre" x="380" y="204" text-anchor="middle">Le faisceau d’indices</text>
+<text class="s-petit" x="128" y="232" text-anchor="middle" style="font-size:14.5px;font-style:italic">Toutes les ombres déjà vues</text>
+<text class="s-petit" x="128" y="251" text-anchor="middle" style="font-size:14.5px;font-style:italic">pointent au nord-ouest.</text>
+<circle cx="128" cy="266" r="5" fill="#E38226"/>
+<path d="M128 270 Q 203.6 292 334.64 304" fill="none" stroke="#E38226" stroke-width="3" marker-end="url(#fleche-raison)"/>
+<text class="s-petit" x="378" y="232" text-anchor="middle" style="font-size:14.5px;font-style:italic">Le soleil est au sud-est : les</text>
+<text class="s-petit" x="378" y="251" text-anchor="middle" style="font-size:14.5px;font-style:italic">ombres tombent au nord-ouest.</text>
+<circle cx="378" cy="266" r="5" fill="#E38226"/>
+<path d="M378 270 Q 378.6 292 379.64 304" fill="none" stroke="#E38226" stroke-width="3" marker-end="url(#fleche-raison)"/>
+<text class="s-petit" x="628" y="232" text-anchor="middle" style="font-size:14.5px;font-style:italic">Une tache sombre, allongée,</text>
+<text class="s-petit" x="628" y="251" text-anchor="middle" style="font-size:14.5px;font-style:italic">au pied d’une tour…</text>
+<circle cx="628" cy="266" r="5" fill="#E38226"/>
+<path d="M628 270 Q 553.6 292 424.64 304" fill="none" stroke="#E38226" stroke-width="3" marker-end="url(#fleche-raison)"/>
+<rect x="220" y="306" width="320" height="44" rx="22" fill="#283B89"/>
+<text x="380" y="335" text-anchor="middle" style="font-size:17px;font-weight:700;fill:#FFFFFF">hypothèse : c’est l’ombre de la tour</text>
+</svg>
