@@ -13,7 +13,7 @@ title-slide-attributes:
   data-background-position: 95% 55%
 ---
 
-::: {.fiche n="0.1" etat="a-revoir"}
+::: {.fiche n="0.1" etat="fige"}
 Intention : Cover, on the map of Peenemünde, at the heart of Marc's serious game. [V0 feedback: the Peenemünde map as title image.]
 Experience : none
 Request :
@@ -21,7 +21,7 @@ Request :
 
 ## How to use this handout
 
-::: {.fiche n="0.2" etat="a-revoir"}
+::: {.fiche n="0.2" etat="fige"}
 Intention : The shared user guide, plus what is specific to this course: the investigation, writing before the answer, the certainty bar, the revision mode. AI transparency statement. [new]
 Experience : none
 Request :
@@ -40,7 +40,7 @@ This course is an **investigation**. Almost every slide asks you to look, write 
 ## What you will be able to do
 
 ::: {.fiche n="0.3" etat="a-revoir"}
-Intention : The six skills, each with an action verb; a starting self-assessment, taken up again at the end. [new]
+Intention : The seven skills, from Marc; a starting self-assessment, taken up again at the end. [V1 feedback: Marc's new list; one more skill, reading reflexes and the nature of the signal, as C2; the following ones are renumbered on every slide.]
 Experience : starting self-assessment: I don't know / I think I know / I know ("bilan" brick)
 Request :
 :::
@@ -48,17 +48,18 @@ Request :
 Place yourself before you start. The same grid comes back at the end.
 
 ::: {.bilan moment="debut"}
-- C1 | Describe before interpreting: separate what I see from what I infer
-- C2 | Identify an object with the identification keys: tone, size, shape, texture, pattern, shadow, date
-- C3 | Reconstruct a mechanism by cross-checking clues, and state my degree of certainty
-- C4 | Choose the image that answers a question, and know its limits
-- C5 | Turn an interpretation into data: nomenclature, minimum mapping unit, checks
-- C6 | Tell a real image from a generated one, and place the interpreter alongside AI
+- C1 | Describe before interpreting: separate what I see from what I infer, identification from interpretation
+- C2 | Know the reflexes of image reading, and in particular identify the nature of the signal
+- C3 | Identify an object with the identification keys: tone, size, shape, texture, pattern, shadow, date
+- C4 | Interpret a scene by cross-checking clues, and state a degree of certainty
+- C5 | Choose the image or signal suited to a question, and know its limits
+- C6 | Turn an interpretation into data: nomenclature, minimum mapping unit, checks
+- C7 | Tell a real image from a generated one
 :::
 
 ## Course map
 
-::: {.fiche n="0.4" etat="a-revoir"}
+::: {.fiche n="0.4" etat="fige"}
 Intention : The seven parts and the key to the three levels. [V0 feedback: the core list ran off the slide; a level with more than 16 slides now spreads over two columns, in every course.]
 Experience : links to each slide
 Request :
@@ -69,7 +70,7 @@ Request :
 
 ## Seeing, then knowing {.intercalaire}
 
-::: {.fiche n="1.0" etat="a-revoir"}
+::: {.fiche n="1.0" etat="fige"}
 Intention : The intelligence of an image: one word, two meanings, gathering information and understanding. [new]
 Experience : none
 Request :
@@ -79,7 +80,7 @@ Request :
 
 ## The scene {competences="C1"}
 
-::: {.fiche n="1.1" etat="a-revoir"}
+::: {.fiche n="1.1" etat="fige"}
 Intention : The opening with the scene from the series "Cœurs noirs" (Prime Video, 2023), shown in class: a secret base is detected on an image. The handout holds no excerpt or still; only the reference and two writing boxes. Episode and timecode to be given by Marc. Example, no level. [V0 feedback: a video sequence gives the correction in class; no more comparison with an expert reading.]
 Experience : two writing boxes: what did we see? what did we infer, and how sure? ("observer" brick, no expert reading); the correction is the video sequence
 Request :
@@ -105,17 +106,19 @@ The scene is shown in class: the series *Cœurs noirs*, season 1 (Prime Video, 2
 ## What we see, what we infer {.socle competences="C1"}
 
 ::: {.fiche n="1.2" etat="a-revoir"}
-Intention : The founding distinction: observation (what is on the image) and inference (what we conclude from it). On the course image, without saying what it is: it will be discovered later, key after key. Link with graphic and mental understanding in "Cartography: Basics". [V0 feedback: the statements gave the answer away ("a nuclear power plant") and killed the deduction; the new ones do not say what the site is.]
-Experience : sort six statements into "I see" or "I infer"
+Intention : The founding distinction: observation (what is on the image) and inference (what we conclude from it). On the course image, without saying what it is: it will be discovered later, key after key. Link with graphic and mental understanding in "Cartography: Basics". [V0 feedback: the statements gave the answer away; the new ones do not say what the site is.] [V1 feedback: drag and drop the labels (for every "classer" brick); the magnifier on the image.]
+Experience : sort six statements into "I see" or "I infer", by drag and drop; magnifier
 Request :
 :::
 
 :::: {.columns}
 ::: {.column width="42%"}
+::: {.loupe zoom="3"}
 ![](images/flamanville.jpg){height="360" fig-alt="Orthophoto of an industrial site by the sea"}
 :::
+:::
 ::: {.column width="58%"}
-Sort each statement: is it **on** the image, or **drawn from** the image?
+Drag each statement into its box: is it **on** the image, or **drawn from** the image?
 
 ::: {.classer}
 ### I see
@@ -135,20 +138,40 @@ Sort each statement: is it **on** the image, or **drawn from** the image?
 :::
 ::::
 
-## Induction, deduction, abduction {.socle competences="C3"}
+## Induction, deduction, abduction {.socle competences="C4"}
 
 ::: {.fiche n="1.3" etat="a-revoir"}
-Intention : The cognitive process of the investigation. Marc's definitions: induction draws a rule from repeated facts (highly probable, never absolutely certain); deduction draws a conclusion from rules or premises (certain if they are true); abduction puts forward hypotheses to explain an observed fact (no certainty, leads, above all when the fact surprises). Sherlock Holmes's "deduction" is mostly abduction. [V0 feedback: Marc's definitions; the examples leave the boxes and form the bundle of clues, instead of shape / site / association / time; the multiple choice, which could be answered by reading, becomes a sort of three short reasonings on one example.]
-Experience : diagram; sort three reasonings on one example
+Intention : The cognitive process of the investigation. Marc's definitions: induction draws a rule from repeated facts (highly probable, never absolutely certain); deduction draws a conclusion from rules or premises (certain if they are true); abduction puts forward hypotheses to explain an observed fact (no certainty, leads, above all when the fact surprises). Sherlock Holmes's "deduction" is mostly abduction. [V0 feedback: Marc's definitions; the examples form the bundle of clues.] [V1 feedback: the left part given more room and centred vertically; the exercise moves to the next slide, replaced here by the image of the Rosny tower, which illustrates the bundle.]
+Experience : diagram; image
 Request :
 :::
 
 :::: {.columns}
-::: {.column width="60%"}
+::: {.column .centre-v width="60%"}
 ::: {.schema fichier="images/schemas/en/raisonnements.svg" hauteur="440"}
 :::
 :::
 ::: {.column width="40%"}
+![](images/tour-rosny.jpg){height="470" fig-alt="Vertical view of a tall tower: its very long shadow runs across the nearby buildings"}
+
+[The Rosny-sous-Bois tower and its shadow.]{.legende}
+:::
+::::
+
+## Your turn: which reasoning? {.socle competences="C4"}
+
+::: {.fiche n="1.4" etat="a-revoir"}
+Intention : The exercise on the three reasonings, next to the diagram: three short reasonings about one rapeseed field. Once all three are placed, the pool disappears and the boxes move up. [V1 feedback: new slide, Marc's "8 bis".]
+Experience : diagram; sort three reasonings, by drag and drop
+Request :
+:::
+
+:::: {.columns}
+::: {.column .centre-v width="56%"}
+::: {.schema fichier="images/schemas/en/raisonnements.svg" hauteur="420"}
+:::
+:::
+::: {.column width="44%"}
 Three reasonings about one field. Which is which?
 
 ::: {.classer}
@@ -169,9 +192,9 @@ Three reasonings about one field. Which is which?
 
 ## A trade born of war {.appui competences="C1"}
 
-::: {.fiche n="1.4" etat="a-revoir"}
-Intention : The beginnings: aerial photography born of balloons, kites and pigeons, booming in 1914-1918, intelligence in 1939-1945 (Constance Babington Smith spots the V-1 on a Peenemünde photograph, 1943), Cold War spy satellites (Corona). Students open a "top secret" file showing Marc's timeline full screen, then put the steps in order. Bonus: the alternate-history series "Star City" and the tour of the aerial photography museum. [V0 feedback: to answer, students need data: Marc's timeline, in a file that opens full screen; link with "Star City". The timeline is in French.]
-Experience : open the file ("dossier" brick); put six steps in order; bonus: Star City, virtual tour (scroll)
+::: {.fiche n="1.5" etat="a-revoir"}
+Intention : The beginnings: aerial photography born of balloons, kites and pigeons, booming in 1914-1918, intelligence in 1939-1945 (Constance Babington Smith spots the V-1 on a Peenemünde photograph, 1943), Cold War spy satellites (Corona). Students open a "top secret" file showing Marc's timeline full screen, then put the steps in order. Bonus: the tour of the aerial photography museum. [V0 feedback: the timeline in a file that opens full screen.] [V1 feedback: the file moves down, to give room; Star City moves to "Fiction corner", at the end of the course; only the museum tour stays as a bonus.]
+Experience : open the file ("dossier" brick); put six steps in order; bonus: virtual tour (scroll)
 Request :
 :::
 
@@ -179,7 +202,7 @@ Request :
 ::: {.column width="30%"}
 A file has just arrived. Open it, then put the story in order.
 
-::: {.dossier titre="Intelligence from the sky, 1858-2020"}
+::: {.dossier titre="Intelligence from the sky, 1858-2020" style="margin-top: 70px"}
 ![](images/frise-intelligence.png){fig-alt="Timeline of aerial and satellite photography, from 1858 to 2020 (in French)"}
 :::
 :::
@@ -195,13 +218,7 @@ A file has just arrived. Open it, then put the story in order.
 :::
 ::::
 
-::: {.plus titre="Going further"}
-**Another series, alternate history: *Star City*.** The Soviet space programme, a spin-off of the alternate history *For All Mankind* (Apple TV+, 2026): images seen from space are interpreted there too.
-
-![](images/star-city.jpg){height="190" fig-alt="A space station in orbit and satellite images of a base, in the series Star City"}
-
-**A tour of the aerial photography museum**
-
+::: {.plus titre="A tour of the aerial photography museum"}
 ::: {.defiler commande="haut"}
 - ![Kites, the first camera carriers](images/musee-1-cerfs-volants.jpg)
 - ![Julius Neubronner's pigeon photographers](images/musee-2-pigeons.jpg)
@@ -216,23 +233,33 @@ A file has just arrived. Open it, then put the story in order.
 [Aerial photography museum of the company L'Europe vue du Ciel. Photos: Marc Poupée. Panels in French.]{.legende}
 :::
 
-## Your turn: what is it? {.appui competences="C1 C2 C3"}
-
-::: {.fiche n="1.5" etat="a-revoir"}
-Intention : Replaying the scene on a real image, revealed clue by clue; the object is named only at the end. The conclusion no longer appears with the last clue, but at the next click, after the certainty. [V0 feedback: the FAST radio telescope is kept for the topographic profile (it would break its suspense); another example is to be chosen. Suggestions: an RAF photograph of Peenemünde (if it does not give the serious game away), the aircraft-carrier mock-ups in the Taklamakan desert (Maxar, 2021), an Area 51 site.]
-Experience : riddle with progressive clues, with certainty at each clue ("indices" brick)
-Request : choose the image for the riddle
-:::
-
-[Riddle to come: the image is still to be chosen (the radio telescope is kept for the topographic profile).]{.legende}
-
-The principle: an image, clues that come one by one, and your certainty at each clue. The object is named only at the end.
-
-## Stating your certainty {.socle competences="C3"}
+## Your turn: what is it? {.appui competences="C1 C3 C4"}
 
 ::: {.fiche n="1.6" etat="a-revoir"}
-Intention : An interpretation without a degree of confidence is an opinion. Sherman Kent's "words of estimative probability" (CIA, 1964); the IPCC does the same in its reports. The exercise merges the student's certainty with the statement's: each sentence is completed with a word of certainty, on the image of the radio telescope, still unnamed. [V0 feedback: link with the IPCC scale; a single certainty, in the sentences, instead of two; four sentences suggested by Marc.]
-Experience : sentences to complete with a word of certainty ("phrases" brick); bonus: the IPCC scale
+Intention : Replaying the scene on a real image, revealed clue by clue, with certainty at each clue. Marc's image: Base 27, the Xichang Satellite Launch Center (Sichuan, China). No written answer (Marc's request): it is given in class. [V0 feedback: FAST kept for the topographic profile.] [V1 feedback: the Chinese Base 27; bonus: the #YEUXDOR challenge of the French Directorate of Military Intelligence, on LinkedIn.]
+Experience : riddle with progressive clues, with certainty at each clue ("indices" brick), without a conclusion; bonus
+Request :
+:::
+
+::: {.indices image="images/base-27.jpg" alt="Satellite image of a wooded valley: two large concrete areas, towers, roads and buildings" confiance="oui" style="--hauteur-indices: 410px"}
+- 46,8,20,26 : A large area of bare concrete, isolated in a wooded valley, and another one lower down, linked by wide roads.
+- 48,68,8,11 : In the middle of the lower area, a very tall structure: its long shadow tells its height.
+- 43,63,16,29 : Around it, three or four tall, thin lattice towers: probably lightning rods, protecting something precious.
+- 53,12,6,14 : At the top, another tower, set against a building: the same function, on the second area?
+- 90,25,8,5 : Blue roofs, winding roads in the forest, far from any town.
+:::
+
+::: {.plus titre="The #YEUXDOR challenge"}
+![](images/yeux-dor.jpg){height="220" fig-alt="#YEUXDOR, the DRM challenge: 52 satellite images to (re)discover (in French)"}
+
+The French Directorate of Military Intelligence (DRM) posts satellite image riddles on LinkedIn, under the tag **#YEUXDOR** ("golden eyes"): can you tell what is hidden there? [The #YEUXDOR quizzes on LinkedIn](https://www.linkedin.com/search/results/all/?keywords=%23yeuxdor&origin=GLOBAL_SEARCH_HEADER)
+:::
+
+## Stating your certainty {.socle competences="C4"}
+
+::: {.fiche n="1.7" etat="a-revoir"}
+Intention : An interpretation without a degree of confidence is an opinion. Sherman Kent's "words of estimative probability" (CIA, 1964); the IPCC does the same in its reports. Each sentence is completed with a word of certainty, on the image of the radio telescope, still unnamed. [V0 feedback: link with the IPCC; a single certainty, in the sentences.] [V1 feedback: the magnifier on the image.]
+Experience : sentences to complete with a word of certainty ("phrases" brick); magnifier; bonus: the IPCC scale
 Request :
 :::
 
@@ -250,7 +277,9 @@ In 1964, Sherman Kent, a CIA analyst, proposed matching words and odds:
 [A word of certainty commits you: it tells the reader what risk they take in believing you.]{.a-retenir}
 :::
 ::: {.column width="62%"}
+::: {.loupe zoom="3"}
 ![](images/fast-2016.jpg){height="235" fig-alt="Satellite image of a large silver disc at the bottom of a wooded hollow, with blue-roofed buildings"}
+:::
 
 ::: {.phrases}
 - It is {almost certain|=probable|possible|unlikely} that there are workers on the site : nobody can be seen, but the blue-roofed workers' camp is there.
@@ -267,12 +296,12 @@ IPCC reports describe the likelihood of an outcome with fixed terms, in italics 
 [Source: Belgian federal climate portal, climat.be, "Rapports du GIEC" (in French).](https://climat.be/changements-climatiques/changements-observes/rapports-du-giec)
 :::
 
-## When the image deceives {.veille competences="C3"}
+## When the image deceives {.veille competences="C4"}
 
-::: {.fiche n="1.7" etat="a-revoir"}
-Intention : The counter-example: on 5 February 2003, at the UN Security Council, Colin Powell, US Secretary of State, presents satellite images as proof of chemical weapons in Iraq; they will never be found. Confirmation bias: we see what we are looking for. [V0 feedback: an archive image (one of the satellite slides shown that day, to be supplied: it cannot be downloaded from this environment); Colin Powell's portrait (Wikipedia).]
-Experience : question: which step of the method was missing?
-Request : supply an archive image of the 5 February 2003 presentation
+::: {.fiche n="1.8" etat="a-revoir"}
+Intention : The counter-example: on 5 February 2003, at the UN Security Council, Colin Powell, US Secretary of State, presents satellite images as proof of chemical weapons in Iraq; they will never be found. Confirmation bias: we see what we are looking for. [V0 feedback: Colin Powell's portrait (Wikipedia).] [V1 feedback: instead of the archive image, the link to the photos shown that day, on CBS News.]
+Experience : visit the site; question: which step of the method was missing?
+Request :
 :::
 
 :::: {.columns}
@@ -284,7 +313,7 @@ Request : supply an archive image of the 5 February 2003 presentation
 ::: {.column width="76%"}
 On 5 February 2003, at the UN Security Council, **Colin Powell** presents satellite images as proof of chemical weapons in Iraq. The weapons will never be found.
 
-[Archive image to come: one of the satellite slides shown that day.]{.legende}
+**See:** [the photos shown that day, on the CBS News website](https://www.cbsnews.com/pictures/powells-photos/).
 
 ::: {.question}
 **Which step of the method was missing?**
@@ -298,7 +327,7 @@ Looking for the clue that **contradicts**, and stating the real **certainty**. A
 
 ## From image to data {.intercalaire}
 
-::: {.fiche n="2.0" etat="a-revoir"}
+::: {.fiche n="2.0" etat="fige"}
 Intention : Interpretation is not only for intelligence: it produces most geographic data. [new]
 Experience : none
 Request :
@@ -306,9 +335,9 @@ Request :
 
 Interpretation is not only for intelligence: it makes most maps.
 
-## Interpreting to build a database {.socle competences="C5"}
+## Interpreting to build a database {.socle competences="C6"}
 
-::: {.fiche n="2.1" etat="a-revoir"}
+::: {.fiche n="2.1" etat="fige"}
 Intention : National databases born of image interpretation: BD TOPO (photogrammetric plotting), BD Forêt V2 (colour-infrared orthophotos, 0.5 ha, 32 classes, 2007-2018, automatic segmentation then checks by photo interpreters), CORINE Land Cover in Europe (25 ha). [new]
 Experience : question: why do three databases not say the same thing about the same place?
 Request :
@@ -331,10 +360,10 @@ They do not share the same question, the same nomenclature, or the same **minimu
 :::
 ::::
 
-## The minimum mapping unit {.socle competences="C5"}
+## The minimum mapping unit {.socle competences="C6"}
 
 ::: {.fiche n="2.2" etat="a-revoir"}
-Intention : Every database sets an area below which nothing is mapped. On real data supplied by Marc, around the forest of L'Isle-Adam (8.5 × 7.9 km): CORINE Land Cover (25 ha) and BD Forêt V2 (0.5 ha). Computed on the two screenshots: 50% and 52% forest, but 12% of the area in disagreement (320 ha of forest for CLC only, 510 ha for BD Forêt only); 7 forest patches against 139. [V0 feedback: real data, and a more complex question.]
+Intention : Every database sets an area below which nothing is mapped. On real data supplied by Marc, around the forest of L'Isle-Adam (8.5 × 7.9 km): CORINE Land Cover (25 ha) and BD Forêt V2 (0.5 ha). Computed on the two screenshots: 50% and 52% forest, but 12% of the area in disagreement (320 ha of forest for CLC only, 510 ha for BD Forêt only); 7 forest patches against 139. [V0 feedback: real data, and a more complex question.] [V1 feedback: the slider under the image takes the image's width (fix to the "comparer" brick, for every course).]
 Experience : compare the two maps (slider); two-part question
 Request :
 :::
@@ -359,10 +388,10 @@ They agree on the total, not on the places: they differ on **12%** of the area (
 :::
 ::::
 
-## What is a forest? {.appui competences="C5"}
+## What is a forest? {.appui competences="C6"}
 
 ::: {.fiche n="2.3" etat="a-revoir"}
-Intention : A nomenclature starts with definitions. Students build a definition of forest from three criteria (minimum area, tree height, cover), then find out whether such a definition exists: FAO, UNFCCC (Kyoto), BD Forêt V2, CORINE Land Cover, COMIFAC. Checked thresholds: FAO 0.5 ha, 5 m, 10%; UNFCCC, each country chooses between 0.05 and 1 ha, 2 and 5 m, 10 and 30%; BD Forêt V2 0.5 ha, 5 m, 20 m wide, aligned with FAO; CORINE 25 ha, over 5 m, at least 30%; COMIFAC (Ernst et al., 2010) 5 ha, 5 m, 70%. [V0 feedback: the nomenclature of the course image becomes the definition of forest, suggested by Marc: three series of items to combine.]
+Intention : A nomenclature starts with definitions. Students build a definition of forest from three criteria (minimum area, tree height, cover), then find out whether such a definition exists: FAO, UNFCCC (Kyoto), BD Forêt V2, CORINE Land Cover, COMIFAC. Checked thresholds: FAO 0.5 ha, 5 m, 10%; UNFCCC, each country chooses between 0.05 and 1 ha, 2 and 5 m, 10 and 30%; BD Forêt V2 0.5 ha, 5 m, 20 m wide, aligned with FAO; CORINE 25 ha, over 5 m, at least 30%; COMIFAC (Ernst et al., 2010) 5 ha, 5 m, 70%. [V0 feedback: the nomenclature of the course image becomes the definition of forest, suggested by Marc: three series of items to combine.] [V1 feedback: the definitions ran off the slide once opened; they now sit in two columns.]
 Experience : build a definition, then compare it with official definitions ("combiner" brick)
 Request :
 :::
@@ -414,9 +443,9 @@ At least 70% cover, trees of at least 5 m, a minimum mapping unit of 5 ha.
 None of the definitions kept here combines these three choices. Yet there are hundreds: every country, every database, every convention sets its own thresholds. A map of "the" forest always says **which** forest.
 :::
 
-## How accurate are experts? {.appui competences="C5 C6"}
+## How accurate are experts? {.appui competences="C6 C7"}
 
-::: {.fiche n="2.4" etat="a-revoir"}
+::: {.fiche n="2.4" etat="fige"}
 Intention : One of Marc's slides on expert accuracy. It starts with "How certain are you of yourself?", voted with a slider: the expected answer is close to 95% (depending on age, progress in a field, tiredness, we do not always agree with ourselves: points developed orally). An expert is considered as such at 95%. Then four categories of accuracy in geographic information production, orders of magnitude given by Marc: expert photo interpreter 95%, expert classification highly variable, machine learning 80 to 85%, neural network 92%. The question on disagreements between interpreters stays. [V0 feedback: replaces "Two interpreters, two maps"; bonus: Colwell, 1952, on the links between military and forest photo interpretation.]
 Experience : vote with the slider; answer, and the chart appears; question on disagreements; bonus
 Request :
@@ -455,9 +484,9 @@ At **boundaries**, on **small objects**, on **cases the rules did not foresee**.
 Military and forest photo interpreters have shared a lot: same keys, same methods. R. N. Colwell (US Naval Photographic Interpretation Center), "Relationships Between Military and Forest Photo Interpretation", *Journal of Forestry*, 50 (4), 1952, pp. 271-276. [The paper](https://academic.oup.com/jof/article/50/4/271/4684240)
 :::
 
-## Data to teach machines {.appui competences="C6"}
+## Data to teach machines {.appui competences="C7"}
 
-::: {.fiche n="2.5" etat="a-revoir"}
+::: {.fiche n="2.5" etat="fige"}
 Intention : AI learns from images labelled by people. FLAIR (Garioud, Gonthier, Landrieu, De Wit, Valette, Poupée, Giordano, Wattrelos, NeurIPS 2023): over 20 billion labelled pixels, 817 km² of 20 cm aerial imagery, with satellite time series. The interpreter becomes an annotator. Marc's reflection, kept here and not on the slide: AI takes in labelled data, not data being labelled; the interpreter's decision process is unknown. Including the margin of certainty in training data would be an interesting lead. [V0 feedback: AI learns the errors, not the hesitations; the orthophoto and its labels side by side.]
 Experience : look at the image and its labels; question; bonus: the paper
 Request :
@@ -479,9 +508,9 @@ Interpreters, pixel by pixel, following rules. The machine learns their final de
 A. Garioud, N. Gonthier, L. Landrieu, A. De Wit, M. Valette, M. Poupée, S. Giordano, B. Wattrelos, "FLAIR: a Country-Scale Land Cover Semantic Segmentation Dataset From Multi-Source Optical Imagery", *NeurIPS 2023, Datasets and Benchmarks*. [The paper](https://arxiv.org/abs/2310.13336) · [the data](https://ignf.github.io/FLAIR/)
 :::
 
-## The interpreter checks the machine {.appui competences="C6"}
+## The interpreter checks the machine {.appui competences="C7"}
 
-::: {.fiche n="2.6" etat="a-revoir"}
+::: {.fiche n="2.6" etat="fige"}
 Intention : Validating an automatic result relies on a sample interpreted by hand: right and wrong classifications are counted (the confusion matrix, in plain words). Illustration: building detection by a U-Net network, work from 2019. [V0 feedback: Marc's two U-Net illustrations, dated 2019.]
 Experience : look at the detection; multiple choice with a certainty bar
 Request :
@@ -511,9 +540,9 @@ What can be concluded?
 :::
 ::::
 
-## Tracking change {.appui competences="C4"}
+## Tracking change {.appui competences="C2 C5"}
 
-::: {.fiche n="2.7" etat="a-revoir"}
+::: {.fiche n="2.7" etat="fige"}
 Intention : Tracking change, here with radar (Baltimore): a colour composite of several dates. Radar sees at night and through clouds, but does not read like a photograph. Source and dates of the image to be given by Marc. [new]
 Experience : question
 Request :
@@ -538,11 +567,11 @@ This image stacks several radar dates, each in one colour.
 :::
 ::::
 
-## Archaeology under the forest {.appui competences="C4"}
+## Archaeology under the forest {.appui competences="C5"}
 
 ::: {.fiche n="2.8" etat="a-revoir"}
-Intention : Airborne LiDAR reveals the Khmer cities around Angkor under the forest (2012 campaign; Evans et al., PNAS, 2013). Marc's image, source Wired (June 2013). The link with IGN is still to be specified by Marc. [V0 feedback: the Angkor LiDAR image.]
-Experience : question
+Intention : Airborne LiDAR reveals the Khmer cities around Angkor under the forest (2012 campaign; Evans et al., PNAS, 2013). The link with IGN is still to be specified by Marc. [V0 feedback: the Angkor LiDAR image.] [V1 feedback: image credited to Damian Evans, PNAS; Wired kept in the sources; video bonus; Marc's answer.]
+Experience : question; bonus: a video
 Request : specify the link with IGN
 :::
 
@@ -550,7 +579,7 @@ Request : specify the link with IGN
 ::: {.column width="58%"}
 ![](images/angkor-lidar.png){width="100%" fig-alt="Relief model of the ground around Angkor, with a network of straight red lines"}
 
-[The ground relief around Angkor, revealed by LiDAR; in red, the ancient features. Source: Wired, June 2013.]{.legende}
+[The ground relief around Angkor, revealed by LiDAR; in red, the ancient features. Image: Damian Evans, PNAS (2013).]{.legende}
 :::
 ::: {.column width="42%"}
 In 2012, an airborne **LiDAR** flies over Angkor. Its laser pulses pass between the leaves and reach the ground: under the forest, streets, ponds and whole districts appear.
@@ -560,14 +589,18 @@ In 2012, an airborne **LiDAR** flies over Angkor. Its laser pulses pass between 
 :::
 
 ::: {.reponse}
-It only shows the forest canopy. LiDAR also measures what lies beneath: the ground relief, and the traces of ancient works.
+It only shows the radiometry of the canopy. The last LiDAR returns bring out the ir/regularities of the ground and the ancient works that go with them.
 :::
 :::
 ::::
 
-## Many other uses {.appui competences="C4"}
+::: {.plus titre="On video"}
+A video on the discovery of the Khmer cities with LiDAR: [watch on YouTube](https://www.youtube.com/watch?v=o6Kq4XF1zKU).
+:::
 
-::: {.fiche n="2.9" etat="a-revoir"}
+## Many other uses {.appui competences="C5"}
+
+::: {.fiche n="2.9" etat="fige"}
 Intention : The gallery of uses, for a wide audience, in four categories of the same register: crisis management, land cover monitoring, quality control, geopolitics. [V0 feedback: "monitoring and control" and "verification" were vague and not in the same register; the examples are kept, sorted into Marc's four categories.]
 Experience : sort eight questions by use
 Request :
@@ -599,7 +632,7 @@ Sort each question by the use of interpretation.
 
 ## The identification keys {.intercalaire}
 
-::: {.fiche n="3.0" etat="a-revoir"}
+::: {.fiche n="3.0" etat="fige"}
 Intention : What the object is. The course image: the Flamanville power plant (Manche, France), during construction of the EPR, an image that brings all the keys together. [new]
 Experience : none
 Request :
@@ -610,18 +643,18 @@ What the object is.
 ## The course image
 
 ::: {.fiche n="3.1" etat="a-revoir"}
-Intention : The whole image, explored freely before any key. Students describe, then suggest for each element a cautious interpretation, with a word of certainty. The expert reading is broken down the same way, without saying what the site is. Description taken up in the final note. Example, no level. [V0 feedback: break down the expert reading: an observation ⇒ an interpretation and its certainty, on Marc's model ("large surfaces, apparently flat, with colours from brown to green ⇒ very probably fields").]
+Intention : The whole image, explored freely before any key. Students describe, then suggest for each element a cautious interpretation, with a word of certainty. The expert reading is broken down the same way, without saying what the site is. Description taken up in the final note. Example, no level. [V0 feedback: break down the expert reading.] [V1 feedback: the image was distorted: same footprint as on the next slide; more generally, images are never distorted any more (style sheet fix, for every course).]
 Experience : magnifier; writing box ("observer" brick)
 Request :
 :::
 
 :::: {.columns}
-::: {.column width="46%"}
+::: {.column width="45%"}
 ::: {.loupe zoom="3"}
-![](images/flamanville.jpg){height="460" fig-alt="Orthophoto of an industrial site by the sea"}
+![](images/flamanville.jpg){height="380" fig-alt="Orthophoto of an industrial site by the sea"}
 :::
 :::
-::: {.column width="54%"}
+::: {.column width="55%"}
 Explore the image with the magnifier. **Describe** what you see: shapes, colours, sizes, positions. Then, for each element, what it **probably** is, with a word of certainty. You will find this text again at the end.
 
 ::: {.observer cle="description-image" invite="I see… ⇒ it is probably…"}
@@ -635,20 +668,23 @@ Explore the image with the magnifier. **Describe** what you see: shapes, colours
 :::
 ::::
 
-## Tone and colour {.socle competences="C2 C4"}
+## Tone and colour {.socle competences="C2 C3 C5"}
 
 ::: {.fiche n="3.2" etat="a-revoir"}
-Intention : The first and simplest key: tone (light, dark) and colour. The turquoise water of the basin, the white boils, the copper dome of the construction site. In colour infrared, living vegetation turns red. [new]
-Experience : multiple choice: what does the whiteness of the boils reveal?
+Intention : The first and simplest key: tone (light, dark) and colour. The turquoise water of the basin, the white boils, the copper dome of the construction site. As an overlay, the same footprint in colour infrared (BD Ortho, 2015, Marc's image, registered on the course image): the signal changes. Living vegetation turns red. [V1 feedback: the 2015 colour-infrared image, as an overlay.]
+Experience : overlay with a slider ("comparer" brick); multiple choice: what does the whiteness of the boils reveal?
 Request :
 :::
 
 :::: {.columns}
 ::: {.column width="45%"}
-![](images/flamanville.jpg){height="380" fig-alt="The course image"}
+::: {.comparer style="--hauteur-comparer: 370px"}
+- ![Natural colours](images/flamanville.jpg)
+- ![Colour infrared, 2015](images/flamanville-irc-2015.jpg)
+:::
 :::
 ::: {.column width="55%"}
-**Tone** (light or dark) and **colour** are the first keys the eye reads. In **colour infrared**, living vegetation turns red: diseased plants show up.
+**Tone** (light or dark) and **colour** are the first keys the eye reads, and they depend on the **signal**. Move the slider: in **colour infrared**, living vegetation turns red, water dark.
 
 ::: {.qcm .serre}
 At sea, on the left, two large white patches. What does their whiteness say?
@@ -663,18 +699,18 @@ At sea, on the left, two large white patches. What does their whiteness say?
 :::
 ::::
 
-## Size and shape {.socle competences="C2"}
+## Size and shape {.socle competences="C3"}
 
 ::: {.fiche n="3.3" etat="a-revoir"}
-Intention : Size is read with the scale (200 m ≈ 130 pixels on the image: about 1.5 m per pixel, measured); shape separates the natural from the human-made. A dome is about 50 m across (measured). [V0 feedback: to keep the suspense, the answer does not yet say it is a reactor.]
-Experience : measuring question
+Intention : Size is read with the scale (200 m ≈ 130 pixels on the image: about 1.5 m per pixel, measured); shape separates the natural from the human-made. A dome is about 50 m across (measured). [V0 feedback: the answer does not yet say "reactor".] [V1 feedback: the image was distorted; same footprint as on the previous slides.]
+Experience : measuring question; magnifier
 Request :
 :::
 
 :::: {.columns}
 ::: {.column width="45%"}
 ::: {.loupe zoom="3"}
-![](images/flamanville.jpg){height="400" fig-alt="The course image, with its scale bar"}
+![](images/flamanville.jpg){height="380" fig-alt="The course image, with its scale bar"}
 :::
 :::
 ::: {.column width="55%"}
@@ -690,9 +726,9 @@ About **50 m**: a quarter of the scale bar. A dome of this size, by the sea… K
 :::
 ::::
 
-## Texture and pattern {.socle competences="C2"}
+## Texture and pattern {.socle competences="C3"}
 
-::: {.fiche n="3.4" etat="a-revoir"}
+::: {.fiche n="3.4" etat="fige"}
 Intention : Texture (the grain) and pattern (the repeated arrangement). The rough breakwater of large blocks; the hedged fields in a mesh; car parks in rows. [new]
 Experience : sort six details by the key that reveals them
 Request :
@@ -714,40 +750,38 @@ Request :
 - Buildings aligned at right angles
 :::
 
-## The shadow tells the shape {.socle competences="C2"}
+## The shadow tells the shape {.socle competences="C3"}
 
 ::: {.fiche n="3.5" etat="a-revoir"}
-Intention : Cast shadows: from the air, a tall thin object is just a dot; its shadow draws its silhouette. Diagrams made for the course: a wind turbine, a water tower, a power pylon, a crane, shadows stretched by a low sun in the south-east; the object must be inferred from its shadow. Reading shadows has a name in French photo interpretation: "sciographie" (shadow marks, used again in archaeology). [V0 feedback: an important part of Marc's handout that had disappeared; diagrams redrawn from scratch.]
-Experience : match each shadow to its object (sort); names appear on the diagram with the correction
+Intention : Cast shadows: from the air, a tall thin object is just a dot; its shadow draws its silhouette. Eight diagrams made for the course, shadows stretched by a low sun in the south-east: a wind turbine, a telecom tower (like the water tower, but with antennas on its roof), a conifer, a power pylon, a water tower, a plain mast (ambiguous without context), a broadleaf tree, a military tower (like the pylon, but with an antenna box). [V0 feedback: diagrams redrawn from scratch.] [V1 feedback: harder: the crane removed; a telecom tower, two trees, a military tower, a plain mast added; the exercise is done by drawing lines (new "relier" brick).]
+Experience : link each shadow to its object ("relier" brick); names appear on the diagram with the correction
 Request :
 :::
 
-From the air, a tall thin object is just a dot. Its **cast shadow**, however, draws its silhouette: reading shadows is a key of its own.
-
-::: {.schema fichier="images/schemas/en/ombres-portees.svg" hauteur="225"}
+:::: {.columns}
+::: {.column width="56%"}
+::: {.schema fichier="images/schemas/en/ombres-portees.svg" hauteur="470"}
 :::
-
-::: {.classer}
-### Shadow A
-
-- A wind turbine
-
-### Shadow B
-
-- A water tower
-
-### Shadow C
-
-- A power pylon
-
-### Shadow D
-
-- A crane
 :::
+::: {.column width="44%"}
+From the air, a tall thin object is just a dot; its **cast shadow** draws its silhouette. Link each shadow to its object.
 
-## Shadow and relief {.socle competences="C2 C4"}
+::: {.relier}
+- Shadow A -> A wind turbine
+- Shadow B -> A telecom tower, antennas on top
+- Shadow C -> A conifer
+- Shadow D -> A power pylon
+- Shadow E -> A water tower
+- Shadow F -> A plain mast: ambiguous without context
+- Shadow G -> A broadleaf tree
+- Shadow H -> A military tower with an antenna box
+:::
+:::
+::::
 
-::: {.fiche n="3.6" etat="a-revoir"}
+## Shadow and relief {.socle competences="C3 C5"}
+
+::: {.fiche n="3.6" etat="fige"}
 Intention : Shadow and light give relief. Mini-game (Marc's request): on the image of the radio telescope, still unnamed, a walker goes from A to B through the centre; students make him climb or descend with the keyboard arrows, and mark sharp ridges (C key): elsewhere the curve rounds itself. They then compare with the reference profile. The reference profile is indicative, to be validated (or taken from a DEM). [V0 feedback: start in the middle of the vertical axis; judging by the switchbacks, the first slope climbs steeply to a ridge, then goes down towards the centre; curve smoothed live, breaking ridges and rounded bottoms told apart; the deduction of the dish's shape follows, next slide.]
 Experience : topographic profile mini-game ("coupe" brick)
 Request :
@@ -761,9 +795,9 @@ Dashed, the reference profile: a steep slope up to a ridge, then down towards th
 :::
 :::
 
-## Hollow or bump? {.socle competences="C2 C3"}
+## Hollow or bump? {.socle competences="C3 C4"}
 
-::: {.fiche n="3.7" etat="a-revoir"}
+::: {.fiche n="3.7" etat="fige"}
 Intention : The step that deduces the dish's shape (Marc's request): 1. find where the sun is; 2. find a sundial (the tower at the bottom right of the disc and its shadow); 3. deduce the shape: the sun's reflection is on the side opposite the sun, so the dish is concave. On a dome, the reflection would be on the sun's side. The object is finally named: the FAST radio telescope. [V0 feedback: deduction step that was missing after the profile.]
 Experience : riddle with clues, with certainty at each clue ("indices" brick)
 Request :
@@ -778,49 +812,50 @@ Request :
 The disc is **concave**: a hollow 500 m across, set at the bottom of a karst depression. It is the **FAST radio telescope** (Guizhou, China), the largest single-dish antenna in the world, caught by Pléiades on 2 March 2016, at the end of construction.
 :::
 
-## The date matters {.appui competences="C2 C4"}
+## The date matters {.appui competences="C3 C5"}
 
 ::: {.fiche n="3.8" etat="a-revoir"}
-Intention : The date of an image sets what can be seen on it: construction under way, the season, the tide, the time of day (length and direction of shadows). A reminder with images is planned (Marc's image to come). Bonus: OSINT and chronolocation. [V0 feedback: a reminder with images; link to OSINT and chronolocation; the image is no longer named.]
-Experience : multiple choice with a certainty bar; bonus
-Request : supply the image for the reminder
+Intention : The date of an image sets what can be seen on it: construction, the season, the tide, the time of day (length and direction of shadows). On the image of the Rosny tower: can the exact time of the shot be known? How? What precaution (the slope)? Bonus: OSINT and chronolocation. [V1 feedback: the Rosny tower image and Marc's questions, instead of the multiple choice.]
+Experience : question, then answer; bonus
+Request :
 :::
 
-The date tells the **state** of a place: a construction site, a season, a tide, a time of day.
+:::: {.columns}
+::: {.column width="40%"}
+![](images/tour-rosny.jpg){height="430" fig-alt="Vertical view of a tall tower and its long cast shadow"}
+:::
+::: {.column width="60%"}
+The date tells the **state** of a place: a construction site, a season, a time of day.
 
-[Reminder with images to come (Marc's image).]{.legende}
+::: {.question}
+**Can the exact time of the shot be known? How would you go about it? What precaution should you take?**
+:::
 
-::: {.confiance}
-::: {.qcm .serre}
-On the course image, the shadows of the buildings fall to the right (east). What do you make of it?
-
-- [ ] The photo was taken in the morning
-    - No: in the morning the sun is in the east and shadows fall to the west.
-- [x] The photo was taken in the afternoon
-    - Yes: the sun is in the west or south-west, shadows point east.
-- [ ] Nothing can be said about the time
-    - Yes it can: the direction of shadows gives the position of the sun.
+::: {.reponse}
+Yes, to within a few minutes: the shadow's **direction** gives the sun's azimuth, its **length** compared with the tower's height gives the sun's elevation; with the place and the date, SunCalc gives the time. Precautions: the real height of the tower; **flat ground** (a slope lengthens or shortens the shadow); the image's north and date.
 :::
 :::
+::::
 
 ::: {.plus titre="OSINT and chronolocation"}
 **OSINT** (*open source intelligence*) is intelligence drawn from open sources: published images, videos, maps. **Chronolocation** is one of its branches: dating an image from its clues, the length and direction of shadows first. Tools such as [SunCalc](https://www.suncalc.org) give the sun's position for a place, a day, a time; the [Bellingcat](https://www.bellingcat.com) collective publishes its investigations and methods.
 :::
 
-## Which key for which question? {.socle competences="C2"}
+## Which key for which question? {.socle competences="C3"}
 
 ::: {.fiche n="3.9" etat="a-revoir"}
-Intention : A recap of the identification keys, mixed (interleaved practice). [new]
-Experience : multiple choice with a certainty bar
+Intention : A recap of the identification keys, mixed (interleaved practice): three questions, three main keys (shadow, pattern, shape). [V1 feedback: "which main key"; three questions in three columns, including Marc's: a crop type (pattern), an aircraft (shape).]
+Experience : three multiple-choice questions
 Request :
 :::
 
-::: {.confiance}
+:::: {.columns}
+::: {.column width="33%"}
 ::: {.qcm .serre}
-To tell whether a tall chimney is higher than a nearby block of flats, on a single vertical photograph, which key?
+A chimney taller than the next block of flats? **Which main key?**
 
 - [ ] Tone
-    - No: it tells the material or the lighting, not the height.
+    - No: it tells the material or the lighting.
 - [ ] Shape
     - No: seen from above, a chimney is just a disc.
 - [x] Shadow
@@ -829,12 +864,41 @@ To tell whether a tall chimney is higher than a nearby block of flats, on a sing
     - No: it concerns repeated elements.
 :::
 :::
+::: {.column width="33%"}
+::: {.qcm .serre}
+To estimate a **crop type**?
+
+- [ ] Tone
+    - It helps, but it changes with the season.
+- [ ] Shape
+    - A field often has the same shape, whatever the crop.
+- [ ] Shadow
+    - No: a crop is low.
+- [x] Pattern
+    - Yes: rows of vines, trees in staggered rows, tight furrows: the arrangement tells the crop.
+:::
+:::
+::: {.column width="33%"}
+::: {.qcm .serre}
+To **identify an aircraft**?
+
+- [ ] Tone
+    - No: paint varies from one aircraft to another.
+- [x] Shape
+    - Yes: wingspan, wing sweep, tail: the silhouette tells the model.
+- [ ] Shadow
+    - It helps for an aircraft in flight, but shape comes first.
+- [ ] Pattern
+    - No: an aircraft stands alone, or lined up with others.
+:::
+:::
+::::
 
 [Tone and colour, size, shape, texture, pattern, shadow, date: seven keys to say **what** an object is.]{.a-retenir}
 
 ## The interpretation keys {.intercalaire}
 
-::: {.fiche n="4.0" etat="a-revoir"}
+::: {.fiche n="4.0" etat="fige"}
 Intention : What is going on. From recognised objects to the mechanisms that link them. [new]
 Experience : none
 Request :
@@ -842,9 +906,9 @@ Request :
 
 What is going on.
 
-## Association {.socle competences="C3"}
+## Association {.socle competences="C4"}
 
-::: {.fiche n="4.1" etat="a-revoir"}
+::: {.fiche n="4.1" etat="fige"}
 Intention : Objects that go together: domes, turbine halls, water intake, outfall at sea, construction site. One object alone is ambiguous; an association hardly is. This is where the nature of the site is revealed. Zone coordinates to be checked. [V0 feedback: question and answer were ambiguous; association now comes before site, so that the reveal comes from the association; the question on a new place follows, next slide.]
 Experience : clickable zones: find what goes with the domes; question: what do they form?
 Request :
@@ -874,9 +938,9 @@ A **nuclear power plant** by the sea: Flamanville (Manche, France), with its thi
 :::
 ::::
 
-## Your turn: what is this place? {.appui competences="C3"}
+## Your turn: what is this place? {.appui competences="C4"}
 
-::: {.fiche n="4.2" etat="a-revoir"}
+::: {.fiche n="4.2" etat="fige"}
 Intention : Transferring the association key to another place: a riding centre in L'Isle-Adam (Marc's image). Marc's question: "Which associations let us infer the nature of this place?" [V0 feedback: question added after association, on Marc's Centre_equestre image. Choice: a separate slide rather than a question appearing on the same slide, to keep the image large and the PDF readable.]
 Experience : question, then answer
 Request :
@@ -897,9 +961,9 @@ Sand arenas dotted with **jump poles**; small figures (**riders?**); buildings a
 :::
 ::::
 
-## Site {.socle competences="C3"}
+## Site {.socle competences="C4"}
 
-::: {.fiche n="4.3" etat="a-revoir"}
+::: {.fiche n="4.3" etat="fige"}
 Intention : The position of an object in its surroundings explains what happens to it. Why a power plant here? Sea water; rocky ground; and distance from the population: the Cotentin peninsula, the sheltering cliff, and probably (Marc's assumption) the nearby La Hague site. Map made for the course: Flamanville, a 100 km circle, the population of municipalities (INSEE, via Etalab) and of the Channel Islands (orders of magnitude). Computed: about 730,000 inhabitants within 100 km, nearly a quarter of them on the islands; four fifths of the circle are at sea. [V0 feedback: spell out the distance from the population, with a simple map and a 100 km circle; site now comes after association, which reveals the nature of the place.]
 Experience : map; question
 Request :
@@ -927,30 +991,39 @@ Request :
 :::
 ::::
 
-## Time {.socle competences="C3 C4"}
+## Time {.socle competences="C4 C5"}
 
 ::: {.fiche n="4.4" etat="a-revoir"}
-Intention : Time: an image freezes one moment of a process; comparing several dates of the same place reveals a dynamic. Marc suggests an animated GIF from the Ukrainian crisis, where Russian bases grow: the question will be about what changes, and in what order. [V0 feedback: the question was too simple; Marc's GIF to come.]
-Experience : watch the animation; question
-Request : supply the GIF of the Russian bases
+Intention : Time: an image freezes one moment of a process; several dates of the same place reveal a dynamic. Two animations by Marc, side by side: Novoozerne (Crimea) and Soloti (Belgorod region), Russian bases swelling before the attack on Ukraine (the DFRLab, 2021, reports new camps and rising vehicle density there). Marc's question. [V1 feedback: Marc's two GIFs; the new question.] The files received hold only one (cloudy) image each: to be exported again.
+Experience : watch the two animations; question
+Request : supply the two animated GIFs again ("CampSoleti": the place is spelt Soloti)
 :::
 
-An image freezes a **moment**. To understand a mechanism, look for what tells the before and the after: a construction site, a flood, a felling, regrowth. Several dates of the same place reveal a **dynamic**.
+:::: {.columns}
+::: {.column width="58%"}
+::: {.cote-a-cote}
+![](images/novoozernoye.gif){height="300" fig-alt="Satellite animation: an area filling with vehicles and tents, date after date"}
 
-[Animation to come: Russian bases growing, before the invasion of Ukraine (Marc's GIF).]{.legende}
+![](images/soloti.gif){height="300" fig-alt="Satellite animation: a military camp spreading, date after date"}
+:::
 
+[Left, Novoozerne (Crimea); right, Soloti (Belgorod region).]{.legende}
+:::
+::: {.column width="42%"}
 ::: {.question}
-**What changes from one image to the next, and in what order?**
+**What changes do you observe? What dynamic do they reflect? Using the dates, could you infer the type and nationality of the sites observed?**
 :::
 
 ::: {.reponse}
-Answer to be written with the animation.
+Vehicles, tents, bare ground multiply: a **military build-up**. The dates (late 2021) point to **Russian bases** swelling before the attack on Ukraine (24 February 2022).
 :::
+:::
+::::
 
-## Personal knowledge and reflexes {.appui competences="C1 C4"}
+## Personal knowledge and reflexes {.appui competences="C1 C2 C5"}
 
 ::: {.fiche n="4.5" etat="a-revoir"}
-Intention : What interpreters bring themselves: their knowledge and their reflexes. The Cambrai-1917 image, as visible as possible; "What do you see?", then "Which questions should you ask?": which place (Cambrai)? which date (1917)? which signal (panchromatic)? which film reference ("All Quiet on the Western Front" or "Wonder Woman", take your pick)? [V0 feedback: new slide requested by Marc, after time.]
+Intention : What interpreters bring themselves: their knowledge and their reflexes. The Cambrai-1917 image, as visible as possible; "What do you see?", then "Which questions should you ask?": which place, which date, which signal, which film reference? [V0 feedback: new slide by Marc.] [V1 feedback: in the answer, redoubts and two linked trenches.]
 Experience : two questions, each followed by its answer
 Request :
 :::
@@ -966,7 +1039,7 @@ Request :
 :::
 
 ::: {.reponse}
-Crenellated **trenches**, **shell holes**, wide dark bands: **probably barbed wire**.
+**Redoubts**, two **trenches linked** by communication trenches, **shell holes**, wide dark bands: **probably barbed wire**.
 :::
 :::
 ::: {.column width="44%"}
@@ -983,20 +1056,19 @@ Crenellated **trenches**, **shell holes**, wide dark bands: **probably barbed wi
 :::
 ::::
 
-## What vegetation and grazing light reveal {.socle competences="C2 C3"}
+## What vegetation and grazing light reveal {.socle competences="C3 C4"}
 
 ::: {.fiche n="4.6" etat="a-revoir"}
-Intention : The indirect clues of aerial archaeology: crop marks (the crop grows better over a filled-in ditch, taller and greener; poorly over a buried wall, shorter and yellowing early, above all in a dry summer) and shadow marks (a levelled bank casts a shadow in grazing light, early morning or late evening). There are others: soil marks (colour of ploughed fields, in winter), damp marks. Diagram made for the course. [V0 feedback: important parts of Marc's handout that had disappeared (in French: "indices phytographiques" and "sciographiques").]
-Experience : diagram; multiple choice; question
+Intention : The indirect clues of aerial archaeology: crop marks (the crop grows better over a filled-in ditch, poorly over a buried wall, above all in a dry summer), diagram made for the course; shadow marks, on a photograph by Marc: the motte of Rely in grazing light. Marc's question: which geographic data can model and reproduce a "shadow-mark" view? A DEM produced by LiDAR. [V1 feedback: the crop-mark diagram kept; the Rely motte photograph for shadow marks; the new question.]
+Experience : diagram; photograph; multiple choice; question
 Request :
 :::
 
 :::: {.columns}
-::: {.column width="52%"}
-::: {.schema fichier="images/schemas/en/indices-archeo.svg" hauteur="300"}
+::: {.column width="50%"}
+::: {.schema fichier="images/schemas/en/indices-phyto.svg" hauteur="210"}
 :::
-:::
-::: {.column width="48%"}
+
 ::: {.qcm .serre}
 Dry summer, wheat field: a greener, taller circle appears. What lies beneath?
 
@@ -1007,22 +1079,25 @@ Dry summer, wheat field: a greener, taller circle appears. What lies beneath?
 - [ ] Nothing: irrigation
     - Unlikely: irrigation does not draw a thin, regular circle.
 :::
+:::
+::: {.column width="50%"}
+![Shadow mark: the medieval motte of Rely, in grazing light.](images/motte-rely.jpg){height="160" fig-alt="Oblique aerial view of a meadow: a mound and its circular ditch picked out by shadows"}
 
 ::: {.question}
-**When should you photograph a bank levelled to 30 cm?**
+**Which geographic data can model and reproduce a "shadow-mark" view?**
 :::
 
 ::: {.reponse}
-In **grazing light**, early morning or late evening: the slightest relief casts a shadow. It is a **shadow mark**.
+A **DEM produced by LiDAR**, under a virtual grazing light.
 :::
 :::
 ::::
 
-## The chronology of features {.socle competences="C3"}
+## The chronology of features {.socle competences="C4"}
 
 ::: {.fiche n="4.7" etat="a-revoir"}
-Intention : Reading relative chronology on a single image: what cuts across is younger than what it cuts; what lines up on a feature came after it. Invented landscape, diagram made for the course: a filled-in meander, a straight road, strip fields aligned on the road, a railway cutting across the strips, a motorway crossing it on a bridge, a housing estate under construction. [V0 feedback: an important part of Marc's handout that had disappeared.]
-Experience : diagram; put six features in order
+Intention : Reading relative chronology on a single image: what cuts across is younger than what it cuts; what lines up on a feature came after it. Invented landscape, diagram made for the course. Bonus: the Mississippi meanders (Harold Fisk's 1944 map and the Landsat 7 image of 22 September 1999, NASA Earth Observatory). [V1 feedback: the letters are shuffled (they followed the order of the answers); the housing estate drawn under construction (stripped soil, unsurfaced roads, staked plots, foundations, crane); Mississippi bonus.]
+Experience : diagram; put six features in order; bonus
 Request :
 :::
 
@@ -1037,24 +1112,39 @@ Request :
 ::: {.ordre}
 From oldest to most recent:
 
-1. A, the filled-in meander
-2. B, the straight road
-3. C, the strip fields
-4. D, the railway
-5. E, the motorway
-6. F, the housing estate under construction
+1. C, the filled-in meander
+2. E, the straight road
+3. A, the strip fields
+4. F, the railway
+5. B, the motorway
+6. D, the housing estate under construction
 :::
 :::
 ::::
 
-## Reconstructing a mechanism {.socle competences="C3"}
+::: {.plus titre="The Mississippi meanders"}
+:::: {.columns}
+::: {.column width="40%"}
+![](images/mississippi-meandres.jpg){height="380" fig-alt="Top, an old map of the successive courses of the Mississippi, in colours; bottom, the satellite image of the same place"}
+:::
+::: {.column width="60%"}
+In 1944, Harold Fisk mapped the former courses of the Mississippi, each in its own colour: a chronology of meanders. The Landsat 7 image of 22 September 1999 shows, in the same place, their traces in the landscape.
+
+[NASA Earth Observatory, "Mississippi Meanders"](https://science.nasa.gov/earth/earth-observatory/mississippi-meanders-6887/)
+:::
+::::
+:::
+
+## Reconstructing a mechanism {.socle competences="C4"}
 
 ::: {.fiche n="4.8" etat="a-revoir"}
-Intention : Converging clues tell a complete mechanism: the cooling water circuit, from intake to outfall, and the electricity leaving. Each step is linked to a clue in the image. How the Flamanville outfall works to be validated by Marc. [new]
+Intention : Converging clues tell a complete mechanism: the cooling water circuit, from intake to outfall, and the electricity leaving. Each step is linked to a clue in the image. How the Flamanville outfall works to be validated by Marc. [V1 feedback: the image of the plant, small, on the right.]
 Experience : put the steps in order
 Request :
 :::
 
+:::: {.columns}
+::: {.column width="64%"}
 ::: {.ordre}
 Put the mechanism of the power plant in order. Each step has its clue in the course image.
 
@@ -1065,10 +1155,17 @@ Put the mechanism of the power plant in order. Each step has its clue in the cou
 5. It rises offshore: the white boils
 6. The electricity leaves through the high-voltage lines
 :::
+:::
+::: {.column width="36%"}
+::: {.loupe zoom="3"}
+![](images/flamanville.jpg){height="300" fig-alt="The Flamanville power plant"}
+:::
+:::
+::::
 
-## Reasoning step by step {.socle competences="C1 C3"}
+## Reasoning step by step {.socle competences="C1 C4"}
 
-::: {.fiche n="4.9" etat="a-revoir"}
+::: {.fiche n="4.9" etat="fige"}
 Intention : A deduction tree on the Brest roadstead: what is happening inside the red dashes? Each choice is a clue; the path taken stays on screen, like a bundle. First version: the tree will be rebuilt from the answers of Marc's students, and its conclusions validated by him. [new]
 Experience : deduction tree ("arbre" brick)
 Request :
@@ -1106,14 +1203,16 @@ Sailing boats moving as a fleet. To confirm: wakes, a course mark? Conclusion to
 Buoys, debris or birds. To confirm with a second date. Conclusion to be validated.
 :::
 
-## Traps {.appui competences="C3"}
+## Traps {.appui competences="C2 C4"}
 
 ::: {.fiche n="4.10" etat="a-revoir"}
-Intention : False friends (a shadow taken for water, a meadow for a construction site) and confirmation bias. The counter: look for the clue that contradicts. [new]
-Experience : multiple choice with a certainty bar; the calibration at the end shows whether you are over-confident
+Intention : False friends (a shadow taken for water) and confirmation bias; the counter: look for the clue that contradicts. In conclusion, typical traps: geometric (a shadow stretched by a slope…), radiometric (paint, shadows, moisture…), the wrong nature of the signal (an unexpected colour composite…), and others on the same principle. [V1 feedback: the conclusion on typical traps, with Marc's examples, completed.]
+Experience : multiple choice with a certainty bar; list of typical traps
 Request :
 :::
 
+:::: {.columns}
+::: {.column width="46%"}
 ::: {.confiance}
 ::: {.qcm .serre}
 A large dark patch at the foot of a tall building, on an image taken late in the afternoon. What is it?
@@ -1121,17 +1220,28 @@ A large dark patch at the foot of a tall building, on an image taken late in the
 - [ ] A pond, no doubt
     - Too quick: a cast shadow is just as dark, and it has the shape of the building.
 - [x] Probably its shadow: check its shape and direction
-    - Yes: at that time shadows are long; if the patch extends the building in the direction of the other shadows, it is a shadow.
+    - Yes: if the patch extends the building in the direction of the other shadows, it is a shadow.
 - [ ] A car park
     - Nothing suggests it: no cars, no markings.
 :::
 :::
 
 [The counter to confirmation bias: look for the clue that **contradicts** your hypothesis.]{.a-retenir}
+:::
+::: {.column width="54%"}
+**Typical traps**
+
+- **Geometric**: a shadow stretched by a slope; a tall building that "leans over"; a mosaic of different times.
+- **Radiometric**: paint, shadows, moisture, sun glint, clouds.
+- **Signal**: an unexpected colour composite (infrared turning vegetation red); radar read as a photograph.
+- **Scale and date**: a badly measured object; a season that changes everything.
+- **Reasoning**: a single clue taken as proof.
+:::
+::::
 
 ## Real or generated? {.intercalaire}
 
-::: {.fiche n="5.0" etat="a-revoir"}
+::: {.fiche n="5.0" etat="fige"}
 Intention : Detecting AI-generated images: the interpreter's keys apply. The third major strand of the course (Marc's request); placed after the keys, which are used to detect. [new]
 Experience : none
 Request :
@@ -1139,9 +1249,9 @@ Request :
 
 The interpreter's keys also unmask generated images.
 
-## Four years ago {competences="C6"}
+## Four years ago {competences="C7"}
 
-::: {.fiche n="5.1" etat="a-revoir"}
+::: {.fiche n="5.1" etat="fige"}
 Intention : In January 2022, an "aerial view" generated by Wombo Dream: Marc's students saw an Asian landscape in it, because it was unthinkable that an image could be made up. We do not detect what we do not imagine. Example, no level. [V0 feedback: image cropped without the app's mentions, and enlarged; generally, make visuals as large as possible.]
 Experience : question before the answer
 Request :
@@ -1164,39 +1274,39 @@ Nowhere: it was generated in January 2022 by an app, from the words *aerial view
 :::
 ::::
 
-## Physical errors {.socle competences="C6 C3"}
+## Physical errors {.socle competences="C7 C4"}
 
 ::: {.fiche n="5.2" etat="a-revoir"}
-Intention : Physical and topographic inconsistencies, revealed by the interpretation keys: rivers crossing ridges, contradictory lighting, relief crumpled like paper (DALL·E, 2024). [V0 feedback: larger images.]
+Intention : Physical and topographic inconsistencies, revealed by the interpretation keys: rivers crossing ridges, contradictory lighting, relief crumpled like paper (DALL·E, 2024). [V0 feedback: larger images.] [V1 feedback: even more room for the images.]
 Experience : scroll; question
 Request :
 :::
 
 :::: {.columns}
-::: {.column width="54%"}
-::: {.defiler commande="haut" style="--hauteur-image: 420px"}
+::: {.column width="64%"}
+::: {.defiler commande="haut" style="--hauteur-image: 480px"}
 - ![Relief and valley, DALL·E, January 2024](images/ia-2024-relief-1.jpg)
 - ![Another view, same day](images/ia-2024-relief-2.jpg)
 - ![An impossible atoll](images/ia-atoll.jpg)
 :::
 :::
-::: {.column width="46%"}
+::: {.column width="36%"}
 ::: {.question}
 These views from above were generated. **What gives them away?**
 :::
 
 ::: {.reponse}
-- **Rivers** that do not follow valleys, or cross ridges.
-- **Lighting** coming from several sides at once.
-- **Relief** with no erosion logic, crumpled like paper.
-- A **town** with no network: roads lead nowhere.
+- **Rivers** crossing ridges.
+- **Lighting** from several sides.
+- **Relief** crumpled, with no erosion.
+- **Roads** that lead nowhere.
 :::
 :::
 ::::
 
-## The implausible {.appui competences="C6"}
+## The implausible {.appui competences="C7"}
 
-::: {.fiche n="5.3" etat="a-revoir"}
+::: {.fiche n="5.3" etat="fige"}
 Intention : A fabricated "historical" image: Tiananmen Square seen from a drone. Anachronism (no consumer drones in 1989), tanks with inconsistent shapes. The keys of time and shape. Generation date to be specified. [V0 feedback: larger image.]
 Experience : question
 Request :
@@ -1221,21 +1331,23 @@ Three converging inconsistencies: the image is fake.
 :::
 ::::
 
-## The missing emotion {.appui competences="C6"}
+## The missing emotion {.appui competences="C7"}
 
 ::: {.fiche n="5.4" etat="a-revoir"}
-Intention : The lack of emotion in generated faces and scenes: the posters on a kiosk photographed by Marc (PXL_20250930_173652676~2). [V0 feedback: Marc's image, large.]
-Experience : question
+Intention : The lack of emotion in generated faces and scenes: the posters on a kiosk photographed by Marc (PXL_20250930_173652676~2). [V0 feedback: Marc's image, large.] [V1 feedback: the magnifier.]
+Experience : magnifier; question
 Request : confirm which posters are generated
 :::
 
 :::: {.columns}
 ::: {.column width="66%"}
+::: {.loupe zoom="3"}
 ![](images/ia-emotion.jpg){width="100%" fig-alt="A kiosk covered in advertising posters, in front of a carousel"}
+:::
 :::
 ::: {.column width="34%"}
 ::: {.question}
-**Look at the faces on the posters. What do they lack to look real?**
+**Look at the faces on the posters, with the magnifier. What do they lack to look real?**
 :::
 
 ::: {.reponse}
@@ -1244,35 +1356,37 @@ Request : confirm which posters are generated
 :::
 ::::
 
-## What still gives AI away {.socle competences="C6 C2"}
+## What still gives AI away {.socle competences="C7 C3"}
 
 ::: {.fiche n="5.5" etat="a-revoir"}
-Intention : What remains today: difficult textures (fur, wrinkles), inconsistent blurred backgrounds, simplified high-spatial-frequency structures typical of convolutional networks. Marc's images: PXL_20261006_182859009 and PXL_20261006_182903643. [V0 feedback: Marc's two images, large.]
+Intention : What remains today: difficult textures (fur, wrinkles), inconsistent blurred backgrounds, simplified high-spatial-frequency structures typical of convolutional networks; repetitive graphic styles and recurring biases. Marc's images: PXL_20261006_182859009 and PXL_20261006_182903643. [V1 feedback: repetitive graphic styles and recurring biases.]
 Experience : look at the two images; list of weak points
 Request :
 :::
 
-![](images/ia-textures-1.jpg){height="290" fig-alt="A dog licks a boy's cheek"} ![](images/ia-textures-2.jpg){height="290" fig-alt="A boy laughs, eyes screwed up"}
+![](images/ia-textures-1.jpg){height="205" fig-alt="A dog licks a boy's cheek"} ![](images/ia-textures-2.jpg){height="205" fig-alt="A boy laughs, eyes screwed up"}
 
 The weak points that remain, to look for with a magnifier:
 
-- fine, disordered **textures**: fur, hair, wrinkles;
+- fine **textures**: fur, hair, wrinkles;
 - **blurred backgrounds** whose blur does not follow distance;
-- **fine details** (high frequencies), simplified into over-regular motifs: the signature of convolutional networks.
+- **fine details** (high frequencies), in over-regular motifs: the signature of convolutional networks;
+- **repetitive styles**: golden light, smooth skin, a "cinematic" look;
+- **recurring biases**: the same typical faces, the same poses, centred compositions.
 
-## The real that looks fake {competences="C6"}
+## The real that looks fake {competences="C7"}
 
 ::: {.fiche n="5.6" etat="a-revoir"}
-Intention : The wink: an unusual real image that now looks generated (IMG-20261029-WA0000, Marc's image). Doubt spreads to real images. Example, no level. [V0 feedback: Marc's image, large.]
+Intention : The wink: an unusual real image that now looks generated (IMG-20261029-WA0000, Marc's image). Doubt spreads to real images. Example, no level. [V1 feedback: the image enlarged.]
 Experience : question
 Request :
 :::
 
 :::: {.columns}
-::: {.column width="36%"}
-![](images/reel-etrange.jpg){height="540" fig-alt="A wooden terrace, string lights and skyscrapers in the distance"}
+::: {.column width="40%"}
+![](images/reel-etrange.jpg){height="575" fig-alt="A wooden terrace, string lights and skyscrapers in the distance"}
 :::
-::: {.column width="64%"}
+::: {.column .centre-v width="60%"}
 ::: {.question}
 **Generated, or real?**
 :::
@@ -1283,17 +1397,17 @@ Real. Now an unusual image looks fake: doubt spreads to real images. The only an
 :::
 ::::
 
-## Your turn: real or generated? {.appui competences="C6"}
+## Your turn: real or generated? {.appui competences="C7"}
 
 ::: {.fiche n="5.7" etat="a-revoir"}
-Intention : The test: real images (Pléiades, orthophotos, radar) and generated ones (2022 to 2024), one at a time, with certainty each time. To be enriched with Marc's 2025 and 2026 images. [new]
+Intention : The test: real images (Pléiades, orthophotos, radar) and generated ones (2022 to 2024), one at a time, with certainty each time. [V1 feedback: larger images, never distorted.]
 Experience : "vrai-ia" brick, with certainty bar and score
 Request :
 :::
 
 For each image: real, or generated? State your certainty first.
 
-::: {.vrai-ia style="--hauteur-vraiia: 420px"}
+::: {.vrai-ia style="--hauteur-vraiia: 490px"}
 - ![An island, January 2022](images/ia-2022-ile.jpg) [ai] : Lace-like shores with no logic, buildings melted into the vegetation, no road.
 - ![FAST radio telescope, Pléiades, 2 March 2016](images/fast-2016.jpg) [real] : A Pléiades image: roads lead somewhere, shadows are consistent, the construction site makes sense.
 - ![An atoll](images/ia-atoll.jpg) [ai] : A flat white lagoon, with no depth or pass, ball-shaped vegetation: physically unlikely.
@@ -1302,10 +1416,10 @@ For each image: real, or generated? State your certainty first.
 - ![Port of Baltimore, radar](images/baltimore-radar.jpg) [real] : A multi-date radar image: its flaws are those of the sensor, not of a generator.
 :::
 
-## The method {.socle competences="C6 C3"}
+## The method {.socle competences="C7 C2 C4"}
 
 ::: {.fiche n="5.8" etat="a-revoir"}
-Intention : The verification method: source and provenance (metadata, content credentials), reverse image search, consistency with other images of the same place and day, converging clues. Never a single clue. [new]
+Intention : The verification method in five steps, from Marc: nature, source, spatio-temporal consistency, physical consistency, certification. [V1 feedback: Marc's five steps and closing sentence.]
 Experience : put the steps in order
 Request :
 :::
@@ -1313,18 +1427,18 @@ Request :
 ::: {.ordre}
 Put the verification of an image in order.
 
-1. Where does it come from? Who published it, when, with what metadata?
-2. Has it circulated before? (reverse image search)
-3. Are the place and date consistent? (other images, the sun, the season)
-4. Do the identification and interpretation keys hold? (shapes, textures, shadows, physics)
-5. Conclude with a degree of certainty
+1. Nature: which signal? who published it, when, with what metadata?
+2. Source: has it circulated before? (reverse image search)
+3. Spatio-temporal consistency: the place, the date, the sun, the season
+4. Physical consistency: do the keys hold? (shapes, textures, shadows)
+5. Certification: conclude with a degree of certainty
 :::
 
-[No clue proves anything alone: a bundle, and a stated certainty.]{.a-retenir}
+[A single clue is generally fragile. Crossing bundles of clues is what reduces uncertainty.]{.a-retenir}
 
 ## The interpretation note {.intercalaire}
 
-::: {.fiche n="6.0" etat="a-revoir"}
+::: {.fiche n="6.0" etat="fige"}
 Intention : Writing up the investigation. [new]
 Experience : none
 Request :
@@ -1332,10 +1446,10 @@ Request :
 
 Writing up the investigation.
 
-## Writing a note {.socle competences="C1 C3"}
+## Writing a note {.socle competences="C1 C4"}
 
 ::: {.fiche n="6.1" etat="a-revoir"}
-Intention : The note in four headings (observations, interpretations, certainty, sources and limits), on the course image. The description written in 3.1 comes back. Link with "Cartography: Basics": clearly, honestly. [new]
+Intention : The note in four headings (observations, interpretations, certainty, sources and limits), on the course image. The description written in 3.1 comes back. Link with "Cartography: Basics": clearly, honestly. [V1 feedback: Marc's correction.]
 Experience : the description comes back; the student writes the note, then compares it with the expert's ("observer" brick)
 Request :
 :::
@@ -1343,7 +1457,7 @@ Request :
 An interpretation note has **four headings**: what I see; what I infer; how sure I am; on what sources, with what limits.
 
 ::: {.observer cle="note-image" rappel="description-image" invite="Observations… Interpretations… Certainty… Sources and limits…"}
-**Observations.** A rocky coast, a breakwater enclosing a basin, two domes about 50 m across and a third under construction, long buildings, boils offshore, power lines.
+**Observations.** A rocky coast, a breakwater enclosing a basin, no boats nor room for any, two domes about 50 m across and a third under construction, long buildings, boils offshore, power lines, all at the foot of a cliff.
 
 **Interpretations.** A nuclear power plant by the sea, cooled by sea water (intake in the basin, outfall offshore), with a third reactor under construction.
 
@@ -1352,10 +1466,10 @@ An interpretation note has **four headings**: what I see; what I infer; how sure
 **Sources and limits.** One orthophoto, one date; the outfall is inferred, not seen.
 :::
 
-## Your turn: a new image {.appui competences="C1 C2 C3 C4"}
+## Your turn: a new image {.appui competences="C1 C2 C3 C4 C5"}
 
 ::: {.fiche n="6.2" etat="a-revoir"}
-Intention : Transfer to an image from another sensor: the port of Baltimore in radar. An interpretation note without guidance, then the expert reading. Reading to be completed by Marc. [new]
+Intention : Transfer to an image from another sensor: the port of Baltimore in radar. An interpretation note without guidance, then the expert reading. [V1 feedback: Marc's correction.]
 Experience : writing box, then expert reading ("observer" brick)
 Request :
 :::
@@ -1374,14 +1488,14 @@ Write your note on this radar image, with its four headings.
 
 **Certainty.** Probable: we would need to know which colour matches which date.
 
-**Sources and limits.** A radar image, whose source and dates are to be added.
+**Sources and limits.** A multi-date radar image, whose source and dates are to be added.
 :::
 :::
 ::::
 
 ## Revising {.intercalaire}
 
-::: {.fiche n="7.0" etat="a-revoir"}
+::: {.fiche n="7.0" etat="fige"}
 Intention : What remains, and how to make it last. [new]
 Experience : none
 Request :
@@ -1391,7 +1505,7 @@ What remains, and how to make it last.
 
 ## Key points
 
-::: {.fiche n="7.1" etat="a-revoir"}
+::: {.fiche n="7.1" etat="fige"}
 Intention : The core slides, in one list.
 Experience : links to each slide
 Request :
@@ -1405,7 +1519,7 @@ Request :
 ## Your self-assessment
 
 ::: {.fiche n="7.2" etat="a-revoir"}
-Intention : The starting grid comes back: the student places themselves again, sees the gap, and the slides to work on again; their calibration (certainty and success). [new]
+Intention : The starting grid comes back: the student places themselves again, sees the gap, and the slides to work on again; their calibration (certainty and success). [V1 feedback: the seven skills of slide 3.]
 Experience : final self-assessment ("bilan" brick); calibration table ("calibration" brick)
 Request :
 :::
@@ -1414,11 +1528,12 @@ Request :
 ::: {.column width="62%"}
 ::: {.bilan moment="fin"}
 - C1 | Describe before interpreting
-- C2 | Identify with the identification keys
-- C3 | Reconstruct a mechanism and state its certainty
-- C4 | Choose the image that answers the question
-- C5 | Turn an interpretation into data
-- C6 | Tell a real image from a generated one
+- C2 | Know reading reflexes and the nature of the signal
+- C3 | Identify with the identification keys
+- C4 | Interpret by cross-checking clues, with certainty
+- C5 | Choose the suitable image or signal
+- C6 | Turn an interpretation into data
+- C7 | Tell a real image from a generated one
 :::
 :::
 ::: {.column width="38%"}
@@ -1432,29 +1547,282 @@ Request :
 ## The revision programme
 
 ::: {.fiche n="7.3" etat="a-revoir"}
-Intention : The revision mode: all the questions in the course, mixed; a known card is spaced out (a day, a week, a month), a missed card comes back. Principle: retrieve from memory, space out, interleave, judge yourself. [new]
-Experience : "revision" brick; the ?revision address opens this slide directly
+Intention : The revision mode, rebuilt: 32 cards written for recall, different from the course questions, asked as a demanding tutor would. They call on several kinds of memory: free recall (write from memory, then compare), recognition (multiple choice), identification on the course images (a frame points at the object), explanation ("why?"), transfer (a new case), correcting a faulty sentence, procedure (putting a method in order). Cards are mixed and interleaved (never two of the same skill in a row); a known card is spaced out (a day, a week, a month), a missed card comes back in the session. At the top, the seven skills: the one being tested lights up; one whose cards are all known turns grey. [V1 feedback: rebuild requested by Marc.]
+Experience : "revision" brick, with its cards; the ?revision address opens this slide directly
 Request :
 :::
 
-:::: {.columns}
-::: {.column width="40%"}
-All the questions in the course become **cards**, mixed.
+Reopen this handout tomorrow, then in a week (`?revision` at the end of the address brings you here). Write **before** you look at the answer: the effort of recall is what fixes the memory.
 
-- You knew it: it comes back in **a day**, then **a week**, then **a month**.
-- You had forgotten it: it comes back straight away.
-
-Reopen this handout tomorrow, then in a week. Add `?revision` to its address to land here directly.
-:::
-::: {.column width="60%"}
 ::: {.revision}
+- C1 | Describe before interpreting
+- C2 | Reading reflexes and the nature of the signal
+- C3 | Identify with the keys
+- C4 | Interpret by cross-checking clues, with certainty
+- C5 | Choose the suitable image or signal
+- C6 | Turn an interpretation into data
+- C7 | Tell the real from the generated
+
+### C1 libre
+
+A classmate writes: "The site is a nuclear power plant." Rewrite the sentence, separating what is seen from what is inferred.
+
+---
+
+"I see two domes about 50 m across, a basin closed by a breakwater, boils offshore. I infer, almost certainly, a nuclear power plant cooled by sea water." Observation first; the inference after, with its word of certainty.
+
+### C1 image | images/cambrai-1917.jpg
+
+Without interpreting anything: three observations about this image. Then a single inference, with its word of certainty.
+
+---
+
+Observations: crenellated zigzag lines; ground riddled with small round holes; wide dark bands parallel to the lines. Inference: very probably Great War trenches, under shell holes.
+
+### C1 qcm
+
+Which of these statements is an observation, not an inference?
+
+- [x] Stringy white patches offshore : that is exactly what is seen, with no conclusion drawn.
+- [ ] The water is stirred by an outfall : "outfall" is already an explanation.
+- [ ] Construction is under way : it is inferred from the cranes and bare earth.
+
+### C1 image | images/centre-equestre.jpg
+
+Describe this image in five elements, without ever naming the place or the activity.
+
+---
+
+Two large areas of pale sand; on one, poles set out in lines; long buildings around a courtyard; a car park with long vehicles; small elongated figures on the sand. If you wrote "horses", you have already interpreted.
+
+### C2 libre
+
+Faced with an unknown image, which questions do you ask **before** any interpretation? At least four.
+
+---
+
+Which place? Which date (and season, time of day)? Which signal: visible, colour infrared, radar, panchromatic, LiDAR? Which scale and resolution? Which source, and is it reliable?
+
+### C2 qcm
+
+On an image, fields and hedges are bright red, water almost black. What do you conclude **first**?
+
+- [x] It is a colour-infrared composite : living vegetation strongly reflects near infrared.
+- [ ] The vegetation is diseased : on the contrary, diseased vegetation turns less red.
+- [ ] The image is generated : nothing says so, the signal is enough to explain it.
+
+### C2 image | images/baltimore-radar.jpg
+
+What is the signal of this image? What tells you so, and what trap does it set?
+
+---
+
+Radar, multi-date: a particular grain, grey everywhere, colour only where something changed. The trap: reading it as a photograph, and looking for "colours" that are not colours.
+
+### C2 image | images/flamanville-irc-2015.jpg
+
+Why are the fields red on this image? What does someone who fails to notice risk?
+
+---
+
+It is colour infrared: near infrared, strongly reflected by living vegetation, is displayed in red. Someone who misses it takes the signal for a real colour, and concludes wrongly (fields of flowers, pollution…).
+
+### C3 image | images/flamanville.jpg | 53,46,7,17
+
+What are these framed objects? Which keys let you say so, and which one was missing to be sure?
+
+---
+
+Two domes about fifty metres across: size (the scale) and shape (a perfect circle, so human-made). Alone, they remain ambiguous: association (intake, outfall, turbine halls) was needed to conclude they are reactor buildings.
+
+### C3 libre
+
+Name the seven identification keys. For three of them, give an object that key alone almost lets you recognise.
+
+---
+
+Tone and colour, size, shape, texture, pattern, shadow, date. For example: shadow for a pylon or a wind turbine; pattern for a vineyard or an orchard; shape for an aircraft.
+
+### C3 qcm
+
+A conifer and a broadleaf tree, on a vertical photo taken late in the afternoon. Which key tells them apart best?
+
+- [x] Shadow : triangular for the conifer, round for the broadleaf.
+- [ ] Size : two trees can be the same height.
+- [ ] Tone : it varies with the season and the lighting.
+
+### C3 image | images/fast-2016.jpg | 34,38,9,11
+
+This framed reflection: what does it prove about the disc's shape, and why?
+
+---
+
+The sun is on the right (the tower's shadow runs left); the reflection is on the opposite side. On a bump, it would be on the sun's side: so the disc is concave, a hollow.
+
+### C3 libre
+
+Explain to a classmate, in three sentences, why the cast shadow is often more useful than the object itself on a vertical image.
+
+---
+
+Seen from above, a tall thin object shrinks to a dot. Its shadow, cast by a low sun, draws its side silhouette. Its length gives the height, its direction the position of the sun, hence the time.
+
+### C3 image | images/tour-rosny.jpg
+
+Where does the sun come from on this image? How do you know?
+
+---
+
+Opposite the tower's shadow: the shadow runs one way, the sun is on the other side. Every other shadow in the image must point the same way; if one does not, be wary.
+
+### C4 libre
+
+Induction, deduction, abduction: one sentence for each, and an example taken from an image.
+
+---
+
+Induction draws a rule from repeated cases (the domes seen so far housed reactors). Deduction applies a rule to a case (the image is from April, the rapeseed will be yellow). Abduction offers the best explanation of a fact (a dark patch at the foot of a tower: probably its shadow).
+
+### C4 qcm
+
+"A bright yellow field in spring: perhaps rapeseed." Which reasoning?
+
+- [ ] Induction : no rule is drawn from repeated cases.
+- [ ] Deduction : the conclusion is not certain.
+- [x] Abduction : the best hypothesis for an observed fact.
+
+### C4 qcm
+
+On Sherman Kent's scale, "probable" means…
+
+- [ ] 9 chances in 10 : that is "almost certain".
+- [x] About 3 chances in 4.
+- [ ] 1 chance in 2 : that is "possible".
+
+### C4 libre
+
+Why is a single clue fragile? Give an ambiguous object, and what removes the ambiguity.
+
+---
+
+A single clue often has several explanations. A dome can be a planetarium, a silo, a radome: its association with an intake, an outfall and high-voltage lines makes it a reactor. Crossing bundles of clues reduces uncertainty.
+
+### C4 image | images/schemas/en/chronologie.svg
+
+On this diagram, which feature is the most recent? Which rule tells you so?
+
+---
+
+D, the housing estate under construction: it plugs into the motorway, which itself cuts across the railway. What cuts across is younger than what it cuts.
+
+### C4 libre
+
+The riding centre: which associations let you identify it? Why was none of them enough on its own?
+
+---
+
+Sand arenas with jump poles, buildings around a courtyard (stables), long vehicles (horseboxes), figures on the sand (riders). Each alone has other explanations (a sand quarry, a warehouse, a car park); together, only one.
+
+### C5 qcm
+
+To see remains under the forest of Angkor, which data do you choose?
+
+- [x] Airborne LiDAR : its last returns reach the ground, under the canopy.
+- [ ] A colour orthophoto : it only sees the forest roof.
+- [ ] A radar image : it goes through clouds, not through dense forest.
+
+### C5 libre
+
+A flood, under an overcast sky for three days: which sensor do you choose? Which limit do you accept?
+
+---
+
+Radar: it sees through clouds, day and night, and calm water appears dark. The limit: no colours, a hard reading, possible confusion (roads, radar shadows).
+
+### C5 qcm
+
+To photograph a bank levelled to 30 cm, when should you fly?
+
+- [x] In grazing light, early morning or late evening : the slightest relief casts a shadow.
+- [ ] At noon, in full sun : shadows are then at their shortest.
+- [ ] Under an overcast sky : with no sun, no shadow.
+
+### C5 libre
+
+Why is the date of an image a limit as much as a piece of information?
+
+---
+
+It tells the state of the place at one moment: a construction site, a season, a tide. But the image only shows that moment: what happened before or after escapes it, and a single date shows no dynamic.
+
+### C6 qcm
+
+CORINE Land Cover (25 ha) and BD Forêt V2 (0.5 ha) give almost the same total forest area. What do you conclude?
+
+- [ ] That they agree : the total says nothing about places.
+- [x] Nothing yet : look at where they differ, often on small patches and boundaries.
+- [ ] That the finer one is wrong : each answers its own question.
+
+### C6 libre
+
+What is a minimum mapping unit? What happens to a 2 ha copse in CORINE Land Cover, and in BD Forêt V2?
+
+---
+
+The area below which an object is not mapped. In CORINE (25 ha), the copse disappears, merged into the neighbouring class; in BD Forêt V2 (0.5 ha), it is mapped.
+
+### C6 libre
+
+Why can two countries count the same forest differently?
+
+---
+
+Because they do not define it the same way: minimum area, tree height, cover. Under the Kyoto Protocol, each chooses its thresholds (0.05 to 1 ha, 2 to 5 m, 10 to 30%). A map of "the" forest always says which forest.
+
+### C6 qcm
+
+An AI claims 90% right answers on a building map. What do you ask?
+
+- [ ] Nothing : 90% is a good interpreter's level.
+- [x] Where the errors are, class by class and area by area.
+- [ ] The model's name : it says nothing about the map.
+
+### C7 libre
+
+Name five clues that still give a generated image away.
+
+---
+
+Failed fine textures (fur, wrinkles), inconsistent blurred backgrounds, over-regular fine details, impossible physics (rivers crossing ridges, multiple lighting), missing emotion, graphic styles and biases that keep coming back.
+
+### C7 image | images/ia-2024-relief-1.jpg
+
+What gives this image away? Name the key that tells you so.
+
+---
+
+Rivers that do not follow valleys and a crumpled relief, with no erosion logic: physical consistency, the key of relief and site.
+
+### C7 libre
+
+The five steps of verifying an image, in order, with a word for each.
+
+---
+
+Nature (the signal, the publication, the metadata); source (has it circulated before?); spatio-temporal consistency (the place, the date, the sun); physical consistency (do the keys hold?); certification (conclude with a degree of certainty).
+
+### C7 qcm
+
+An unusual image is circulating on social media. Your first reflex?
+
+- [x] Look for its source and date : where does it come from, has it circulated before?
+- [ ] Look for artefacts : useful, but after the source.
+- [ ] Conclude it is generated : an unusual image can be real.
 :::
-:::
-::::
 
 ## Your turn {.fin}
 
-::: {.fiche n="7.4" etat="a-revoir"}
+::: {.fiche n="7.4" etat="fige"}
 Intention : The bridge to the photo interpretation practical.
 Experience : none
 Request :
@@ -1462,10 +1830,27 @@ Request :
 
 An image does not speak for itself: you **look** at it, **question** it, **cross-check** its clues, and **say** what you know, with your certainty.
 
-## Sources and credits {.petit}
+## Fiction corner
 
 ::: {.fiche n="7.5" etat="a-revoir"}
-Intention : References: FLAIR (Marc's paper), Natural Resources Canada, the GIS&T Body of Knowledge, textbooks, Kent, the IPCC, Colwell, history (Babington Smith, Cuba), Angkor, forest definitions, aerial archaeology, the images and their rights. Marc's course PDF to be added (not received). [V0 feedback: Wikipedia for Colin Powell's portrait, Wired for Angkor, climat.be for the IPCC, Colwell (1952), the new images.]
+Intention : Fiction that stages image interpretation and intelligence: first, large, Marc's montage on *Star City*, then the others scroll by: *Cœurs noirs*, *Le Bureau des légendes*, *GoldenEye*, *All Quiet on the Western Front*, *Wonder Woman*. Example, no level. [V1 feedback: new slide, before the sources; Star City leaves the slide "A trade born of war".]
+Experience : automatic scrolling ("defiler" brick, auto)
+Request :
+:::
+
+::: {.defiler auto="5" style="--hauteur-image: 500px"}
+- ![Star City (Apple TV+, 2026), a spin-off of the alternate history For All Mankind: montage by Marc Poupée](images/star-city.jpg)
+- ![Cœurs noirs (Prime Video, 2023): special forces and intelligence](images/fiction-coeurs-noirs.jpg)
+- ![Le Bureau des légendes (The Bureau, Canal+, 2015-2020): the DGSE and its analysts](images/fiction-bureau-des-legendes.jpg)
+- ![GoldenEye (Martin Campbell, 1995): James Bond and satellites](images/fiction-goldeneye.jpg)
+- ![All Quiet on the Western Front (Erich Maria Remarque, 1929): the trenches of the Great War](images/fiction-a-l-ouest.jpg)
+- ![Wonder Woman (Patty Jenkins, 2017): the 1918 front](images/fiction-wonder-woman.jpg)
+:::
+
+## Sources and credits {.petit}
+
+::: {.fiche n="7.6" etat="a-revoir"}
+Intention : References: FLAIR (Marc's paper), Natural Resources Canada, the GIS&T Body of Knowledge, textbooks, Kent, the IPCC, Colwell, history, Angkor, forest definitions, aerial archaeology, fiction, the images and their rights. Marc's course PDF to be added (not received). [V1 feedback: CBS News, Damian Evans, the Angkor video, Wired kept, NASA (Mississippi), the DRM (#YEUXDOR), the new images.]
 Experience : none
 Request :
 :::
@@ -1474,27 +1859,28 @@ Request :
 ::: {.column width="50%"}
 | Document | Origin |
 |---|---|
-| Interpretation elements | Natural Resources Canada, *Elements of visual interpretation*; S. Myint, GIS&T BoK, DC-04-012, 2024; Lillesand, Kiefer and Chipman, 2015 |
+| Interpretation | Natural Resources Canada; S. Myint, GIS&T BoK, 2024; Lillesand *et al.*, 2015 |
 | FLAIR | Garioud *et al.*, NeurIPS 2023; FLAIR images, IGN |
 | Certainty | S. Kent, 1964; IPCC, after climat.be |
-| Experts | R. N. Colwell, *Journal of Forestry*, 1952; orders of magnitude: M. Poupée |
-| History | C. Babington Smith; Smithsonian; timeline: M. Poupée |
-| Angkor | D. Evans *et al.*, PNAS, 2013; image: Wired, June 2013 |
-| Forest | FAO; UNFCCC; IGN, BD Forêt V2 (online conference, 19 January 2021); Copernicus, CLC; COMIFAC, after ATIBT, 2018 |
-| Aerial archaeology | R. Agache; crop marks and shadow marks |
+| Experts | R. N. Colwell, *Journal of Forestry*, 1952; M. Poupée |
+| History | Babington Smith; timeline: M. Poupée; Powell: Wikipedia, CBS |
+| Angkor | D. Evans *et al.*, PNAS, 2013; Wired, June 2013; YouTube video |
+| Forest | FAO; UNFCCC; IGN; Copernicus; COMIFAC (ATIBT) |
+| Archaeology | R. Agache; NASA, *Mississippi Meanders* |
+| Russian bases | DFRLab, December 2021; Sentinel Hub, EO Browser |
 :::
 ::: {.column width="50%"}
 | Document | Origin |
 |---|---|
-| Flamanville, Brest roadstead, riding centre | Géoportail, IGN |
+| Flamanville (2015 in CIR), Brest roadstead, riding centre | Géoportail, IGN |
 | L'Isle-Adam | CORINE Land Cover; BD Forêt V2, IGN |
 | FAST | Pléiades image, 2 March 2016 (rights to be specified) |
+| Base 27, Rosny tower, Rely motte, Cambrai | sources to be specified |
 | Baltimore | radar image, source to be specified |
-| Colin Powell | official portrait, Wikipedia |
-| Cambrai, 1917 | aerial photograph, source to be specified |
 | U-Net | work from 2019 |
 | Generated images | Wombo Dream (2022), DALL·E (2024); photos by M. Poupée |
-| Museum, Star City | L'Europe vue du Ciel; *Star City*, Apple TV+ |
+| #YEUXDOR | French Directorate of Military Intelligence, LinkedIn |
+| Museum, fiction | L'Europe vue du Ciel; posters; *Star City*: M. Poupée |
 | 100 km map | INSEE via Etalab; Natural Earth |
 | M. Poupée's course | PDF to be added |
 :::

@@ -8,6 +8,7 @@ images/correspondance.csv (original ; version web ; largeur ; hauteur). Les orig
 """
 import csv
 import os
+import shutil
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -93,6 +94,23 @@ TRAVAUX = [
     ('originaux/PXL_20261006_182859009.jpg', 'ia-textures-1.jpg', lambda im: reduire(im.convert('RGB'))),
     ('originaux/PXL_20261006_182903643.jpg', 'ia-textures-2.jpg', lambda im: reduire(im.convert('RGB'))),
     ('originaux/IMG-20261029-WA0000.jpg', 'reel-etrange.jpg', lambda im: reduire(im.convert('RGB'), 1400)),
+    # deuxième salve
+    ('originaux/TourRosny.png', 'tour-rosny.jpg', lambda im: reduire(im.convert('RGB'))),
+    ('quizz/Base27.jfif', 'base-27.jpg', lambda im: reduire(im.convert('RGB'))),
+    ('originaux/YEUXDOR.jfif', 'yeux-dor.jpg', lambda im: reduire(im.convert('RGB'), 1000)),
+    # la même emprise que flamanville.jpg (images/quizz/11.JPG), en infrarouge couleur, 2015 : on la cale sur sa taille
+    ('quizz/BDotho2015-Flamanville.png', 'flamanville-irc-2015.jpg',
+     lambda im: im.convert('RGB').resize(Image.open(os.path.join(IMG, 'flamanville.jpg')).size, Image.LANCZOS)),
+    ('originaux/MottefeodaleRely-sciographie.png', 'motte-rely.jpg', lambda im: im.convert('RGB')),
+    ('originaux/mississippi_meanders_etm_1999265.jpg', 'mississippi-meandres.jpg', lambda im: im.convert('RGB')),
+    ('originaux/CoerusNoirs.png', 'fiction-coeurs-noirs.jpg', lambda im: reduire(im.convert('RGB'), 900)),
+    ('originaux/Bureaudeslegendes.png', 'fiction-bureau-des-legendes.jpg', lambda im: reduire(im.convert('RGB'), 1100)),
+    ('originaux/GoldenEye.jpg', 'fiction-goldeneye.jpg', lambda im: reduire(im.convert('RGB'), 900)),
+    ('originaux/Al_ouestriendenouveaux.jpg', 'fiction-a-l-ouest.jpg', lambda im: reduire(im.convert('RGB'), 900)),
+    ('originaux/Wonder_Woman._2017.png', 'fiction-wonder-woman.jpg', lambda im: reduire(im.convert('RGB'), 1100)),
+    # les animations sont copiées telles quelles (Pillow ne garderait qu'une image)
+    ('originaux/Novoozernoye.gif', 'novoozernoye.gif', None),
+    ('originaux/CampSoleti.gif', 'soloti.gif', None),
     # images de la V0, recadrées sur la partie utile (sans le cadre ni les mentions de l'application)
     ('quizz/IA-progressandlimits/1641941583914.jpg', 'ia-2022-vue-aerienne.jpg',
      lambda im: reduire(im.convert('RGB').crop((88, 205, 1000, 1640)), 1400)),
@@ -107,6 +125,12 @@ def main():
                 if r and r[0] != 'originale':
                     lignes[r[1]] = r
     for source, cible, traitement in TRAVAUX:
+        if traitement is None:
+            shutil.copyfile(os.path.join(IMG, source), os.path.join(IMG, cible))
+            im = Image.open(os.path.join(IMG, cible))
+            lignes[cible] = [source, cible, str(im.width), str(im.height)]
+            print(f'{cible:28s} {im.width} × {im.height} (copie, {getattr(im, "n_frames", 1)} image(s))')
+            continue
         im = traitement(Image.open(os.path.join(IMG, source)))
         chemin = os.path.join(IMG, cible)
         if cible.endswith('.jpg'):

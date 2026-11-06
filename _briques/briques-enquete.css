@@ -220,3 +220,63 @@ html.reveal-print .reveal .dossier-contenu img { max-height: 300px; }
 .reveal .combiner-def-titre { font-size: 16px; }
 .reveal .combiner-def-corps p { font-size: 15px; }
 .reveal .combiner-message { font-size: 16px; }
+
+/* --- relier ------------------------------------------------------------------------ */
+.reveal .relier-grille { position: relative; display: grid; grid-template-columns: 1fr 70px 1fr; gap: 0; align-items: start; }
+.reveal .relier-colonne { display: flex; flex-direction: column; gap: 6px; }
+.reveal .relier-colonne.gauche { grid-column: 1; }
+.reveal .relier-colonne.droite { grid-column: 3; }
+.reveal .relier-lignes { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
+.reveal .relier-item { font: inherit; font-size: 15px; text-align: left; padding: 5px 10px; border: 1.5px solid var(--filet);
+  border-radius: 7px; background: var(--blanc); color: var(--encre); cursor: pointer; line-height: 1.2; }
+.reveal .relier-colonne.droite .relier-item { text-align: left; }
+.reveal .relier-item:hover { border-color: var(--bleu); }
+.reveal .relier-item.choisi { border-color: var(--orange); background: #FDF1E3; }
+.reveal .relier-item.relie { border-color: var(--bleu); }
+.reveal .relier-ligne { fill: none; stroke: var(--bleu); stroke-width: 2.5; }
+.reveal circle.relier-ligne { fill: var(--bleu); }
+.reveal .relier-ligne.juste { stroke: #2E7D32; } .reveal circle.relier-ligne.juste { fill: #2E7D32; }
+.reveal .relier-ligne.faux { stroke: #B3261E; stroke-dasharray: 5 4; } .reveal circle.relier-ligne.faux { fill: #B3261E; }
+.reveal .relier-pied { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.reveal .relier-message { font-size: 13px; color: var(--gris); margin: 0; flex: 1 1 100%; }
+
+/* --- combiner : les définitions sur deux colonnes ---------------------------------------- */
+.reveal .combiner-resultat { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; align-items: start; }
+.reveal .combiner-resultat > .combiner-message, .reveal .combiner-resultat > .combiner-autres { grid-column: 1 / -1; }
+.reveal .combiner-autres[open] { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; }
+.reveal .combiner-autres summary { grid-column: 1 / -1; }
+
+/* --- vraie ou générée : des images plus grandes, jamais déformées -------------------------- */
+.reveal .vraiia-image img { max-width: 760px; }
+
+/* --- révision ------------------------------------------------------------------------------ */
+.reveal .revision-competences { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin: 0 0 8px 0; }
+.reveal .revision-puce { position: relative; overflow: hidden; display: inline-block; min-width: 38px; text-align: center;
+  padding: 3px 8px; border-radius: 12px; border: 1.5px solid var(--bleu); color: var(--bleu); font-size: 13px; font-weight: 700;
+  background: var(--blanc); cursor: help; transition: all 0.25s; }
+.reveal .revision-jauge { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--orange); }
+.reveal .revision-puce.courante { background: var(--orange); border-color: var(--orange); color: #fff; transform: scale(1.12);
+  box-shadow: 0 0 0 4px rgba(227, 130, 38, 0.22); }
+.reveal .revision-puce.acquise { background: #E4E5EB; border-color: #C5C7D2; color: #8A8C99; }
+.reveal .revision-puce.acquise.courante { background: #C5C7D2; color: #fff; }
+.reveal .revision-acquises { font-size: 12px; color: var(--gris); margin-left: 6px; }
+.reveal .revision-aide { font-size: 13px; color: var(--gris); margin: 0 0 6px 0; }
+.reveal .revision-corps.avec-image { display: grid; grid-template-columns: 44% 1fr; gap: 16px; align-items: start; }
+.reveal .revision-image { position: relative; line-height: 0; }
+.reveal .revision-image img { width: 100%; height: auto; max-height: 300px; object-fit: contain; margin: 0; }
+.reveal .revision-cadre { position: absolute; border: 3px solid var(--orange); box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7); border-radius: 3px; }
+.reveal .revision-ecrit { width: 100%; box-sizing: border-box; font: inherit; font-size: 15px; padding: 6px 8px; margin-top: 6px;
+  border: 1.5px solid var(--filet); border-radius: 8px; resize: vertical; }
+.reveal .revision-options { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.reveal .revision-option { text-align: left; font-size: 15px; }
+.reveal .revision-option.juste { border-color: #2E7D32; background: #E8F3E9; }
+.reveal .revision-option.faux { border-color: #B3261E; background: #FBE9E7; }
+.reveal .revision-retour { font-size: 15px; margin-top: 6px; }
+.reveal .revision-retour p { margin: 2px 0; }
+.reveal .relier-colonne { gap: 4px; }
+.reveal .relier-item { font-size: 14px; padding: 3px 9px; }
+
+/* Indices : la colonne des indices ne dépasse pas la hauteur de l'image ; au-delà, elle défile */
+.reveal .indices-zone > :last-child { max-height: var(--hauteur-indices, 380px); overflow-y: auto; padding-right: 4px; }
+.reveal .indices-liste { font-size: 14.5px; }
+html.reveal-print .reveal .indices-zone > :last-child { max-height: none; overflow: visible; }

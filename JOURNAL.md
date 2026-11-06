@@ -2,6 +2,49 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-06 — « Image Intelligence », deuxième salve de retours (V2)
+
+Demande de Marc dans `cours/image-intelligence/source/Modifications2.txt` (l'ancien `Modifications.txt` devient `Modifications1.txt`). Numéros de diapo de la V1 (61 diapos) ; la V2 en compte 63. Chaque correction est reportée dans la version anglaise ; chaque fiche garde la demande entre crochets « [Retour V1 : …] ».
+
+**Diapos figées** (demande de Marc : celles qu'il approuve ou sur lesquelles il ne revient pas) : titre, 2, 4, 5, 6, 13, 14, 17 à 20, 22, 23, 27, 29, 30, 33 à 36, 42 (« Raisonner pas à pas »), 44, 45, 47, 53, 56, 57, 60. 28 diapos par langue, enregistrées dans `figes.json` et `figes-en.json`. À noter : l'arbre de la rade de Brest (42) est figé alors qu'il attend les réponses des étudiants ; il faudra le défiger pour le refaire.
+
+**Appliqué**
+
+- 3 : la liste des compétences de Marc, sept au lieu de six ; la nouvelle C2 (réflexes de lecture, nature du signal) décale les suivantes. Les compétences sont renumérotées sur toutes les diapos ; C2 est ajoutée aux diapos où le signal compte (ton et couleur, suivre les changements, Cambrai, les pièges, la méthode, Baltimore). Le bilan de fin (58) suit.
+- 7 : glisser-déposer dans la brique `classer` (pour tous les cours) ; loupe sur l'image.
+- 8 : la partie gauche centrée sur la hauteur ; l'image de la tour de Rosny à droite. Nouvelle diapo « À vous : quel raisonnement ? » (le « 8 bis ») : le schéma et le classement des trois raisonnements ; une fois tout rangé, la réserve s'efface et les cases remontent (pour tous les cours).
+- 9 : le dossier descend ; Star City part dans une nouvelle diapo, « Le coin des fictions », avant les sources : Star City en grand, puis *Cœurs noirs*, *Le Bureau des légendes*, *GoldenEye*, *À l'Ouest, rien de nouveau*, *Wonder Woman* qui défilent seuls (`defiler auto="5"`). Seule la visite du musée reste en bonus.
+- 10 : l'énigme sur la base 27 (le centre de lancement de Xichang, d'après GlobalSecurity), sans réponse écrite ; bonus #YEUXDOR (DRM, LinkedIn). La brique `indices` accepte une énigme sans conclusion ; la colonne des indices défile au-delà de la hauteur de l'image.
+- 11 : loupe sur l'image.
+- 12 : lien vers les photos de Colin Powell sur CBS News, à la place de l'image d'archive.
+- 15 : le curseur sous l'image prend la largeur de l'image (brique `comparer`, pour tous les cours).
+- 16 : les définitions ouvertes passent sur deux colonnes.
+- 21 : image créditée à Damian Evans, PNAS ; bonus vidéo YouTube ; réponse de Marc ; Wired reste dans les sources.
+- 24 et 26 : les images n'étaient pas déformées par leur fichier, mais par la feuille de style (une hauteur imposée et une largeur bridée par la colonne) ; corrigé pour tous les cours (`object-fit: contain`). Même emprise qu'à la diapo 25.
+- 25 : l'image IRC de 2015 en superposition (curseur) ; recalée sur l'image du cours, à 2 pixels près (mesuré).
+- 28 : huit ombres au lieu de quatre (la grue retirée ; une tour de télécommunication, un conifère, un feuillu, une tour militaire à caisson, un simple mât ajoutés) ; l'exercice se fait en reliant par des lignes (nouvelle brique `relier`).
+- 31 : la tour de Rosny et les questions de Marc sur l'heure de la prise de vue (la précaution de la pente).
+- 32 : « quelle clé principale » ; trois questions sur trois colonnes (cheminée : l'ombre ; culture : la structure ; avion : la forme).
+- 37 : les deux GIF côte à côte et la question de Marc. **Les deux fichiers reçus ne contiennent qu'une image chacun, nuageuse : à exporter de nouveau.** Le camp s'écrit Soloti (région de Belgorod) ; Novoozerne est en Crimée (DFRLab, décembre 2021).
+- 38 : des redoutes et deux tranchées reliées dans la réponse.
+- 39 : le schéma phytographique seul ; la photo de la motte de Rely pour le sciographique ; la question de Marc (un MNT produit par LiDAR).
+- 40 : les lettres mélangées ; le lotissement dessiné en chantier ; bonus Mississippi (NASA Earth Observatory).
+- 41 : l'image de la centrale, en petit, à droite.
+- 43 (Marc a écrit « 42 ») : les pièges types en conclusion : géométriques, radiométriques, de signal, d'échelle et de date, de raisonnement.
+- 46, 48, 50, 51 : images agrandies, sans déformation ; loupe sur 48.
+- 49 : les styles graphiques redondants et les biais récurrents.
+- 52 : les cinq étapes de Marc (nature, source, cohérence spatio-temporelle, cohérence physique, certification) et sa phrase de conclusion.
+- 54 et 55 : les corrections de Marc.
+- 59 : mode révision refait. 32 cartes écrites pour le rappel, qui ne recopient pas les questions du cours, plusieurs types de mémoire (rappel libre écrit, reconnaissance, identification sur les images du cours avec un cadre, explication, transfert, correction d'une phrase fautive, procédure) ; les sept compétences en tête, celle qui est interrogée en surbrillance, grisée quand toutes ses cartes sont sues ; cartes entrelacées ; boîtes de Leitner gardées.
+- 63 (sources) : CBS News, la vidéo d'Angkor, NASA, DRM, DFRLab, les nouvelles images.
+- Outils : `images.py` (nouvelles images, les GIF copiés tels quels), `schemas.py` (huit ombres, schéma phytographique seul, chronologie mélangée et chantier).
+
+**Manque ou à valider**
+
+- Les deux GIF animés, à exporter de nouveau.
+- Les sources de la base 27, de la tour de Rosny, de la motte de Rely et de Cambrai ; les droits des affiches de « Le coin des fictions ».
+- Le profil de FAST, toujours lu sur l'image ; les affiches générées de « Le manque d'émotion » ; le lien d'Angkor avec l'IGN ; le PDF de cours.
+
 ## 2026-10-31 — « Image Intelligence », première salve de retours (V1)
 
 Demande de Marc dans `cours/image-intelligence/source/Modifications.txt`, plus trois éléments de son support disparus de la V0 : la chronologie des phénomènes, les ombres portées, les indices phytographiques et sciographiques. Numéros de diapo de la V0 (55 diapos) ; la V1 en compte 61. Chaque correction est reportée dans la version anglaise ; chaque fiche garde la demande entre crochets « [Retour V0 : …] », que reprend `plan.md`.

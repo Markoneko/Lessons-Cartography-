@@ -956,6 +956,99 @@ local function brique_combiner(div)
   return div
 end
 
+-- ::: {.relier}
+--   - Ombre A -> Une éolienne          (gauche -> droite ; la colonne de droite est mélangée)
+-- :::
+local function brique_relier(div)
+  local garde, paires = pandoc.List(), {}
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "BulletList" then
+      for _, item in ipairs(bloc.content) do
+        local t_ = sans_insecables(pandoc.utils.stringify(item))
+        local g, d = t_:match("^(.-)%s*%->%s*(.-)%s*$")
+        if not g then g, d = t_:match("^(.-)%s*→%s*(.-)%s*$") end
+        if g then table.insert(paires, '{"g":' .. json_texte(g) .. ',"d":' .. json_texte(d) .. '}') end
+      end
+    else garde:insert(bloc) end
+  end
+  if not EN_HTML then return div end
+  garde:insert(pandoc.RawBlock("html", '<div class="relier-zone"><script type="application/json" class="relier-donnees">['
+    .. table.concat(paires, ","):gsub("</", "<\\/") .. ']</script></div>'))
+  div.content = garde
+  return div
+end
+
+-- ::: {.revision}
+--   - C1 | Décrire avant d'interpréter          (la liste des compétences, en tête)
+--   ### C1 libre                                 (une carte : sa compétence, son type)
+--   La question.
+--   ---
+--   La réponse attendue.
+--   ### C3 image | images/x.jpg | 53,46,7,17      (une image du cours, et un cadre en % : x,y,largeur,hauteur)
+--   ### C4 qcm                                   (puis une liste « - [x] choix : retour » / « - [ ] choix : retour »)
+-- :::
+-- Sans contenu, la brique reprend toutes les questions du cours.
+local function brique_revision(div)
+  if #div.content == 0 then
+    if not EN_HTML then return div end
+    div.content = pandoc.List({ pandoc.RawBlock("html", '<div class="revision-zone"></div>') })
+    return div
+  end
+  local comps, cartes, cour = {}, {}, nil
+  local images, nb_images = "", 0
+  local function finir()
+    if not cour then return end
+    local q, r, opts, apres = pandoc.List(), pandoc.List(), {}, false
+    for _, b in ipairs(cour.blocs) do
+      if b.t == "HorizontalRule" then apres = true
+      elseif b.t == "BulletList" and cour.type == "qcm" then
+        for _, item in ipairs(b.content) do
+          local t_ = sans_insecables(pandoc.utils.stringify(item))
+          local juste = t_:find("^☒") ~= nil or t_:find("^%[x%]") ~= nil
+          t_ = t_:gsub("^☒%s*", ""):gsub("^☐%s*", ""):gsub("^%[[ x]%]%s*", "")
+          local txt, fb = t_:match("^(.-)%s+:%s+(.*)$")
+          table.insert(opts, '{"t":' .. json_texte(txt or t_) .. ',"juste":' .. (juste and "true" or "false")
+            .. ',"fb":' .. json_texte(fb or "") .. '}')
+        end
+      elseif apres then r:insert(b) else q:insert(b) end
+    end
+    local img = -1
+    if cour.image and cour.image ~= "" then
+      images = images .. '<img class="revision-source" data-i="' .. nb_images .. '" src="' .. cour.image .. '" alt="" hidden>'
+      img = nb_images; nb_images = nb_images + 1
+    end
+    table.insert(cartes, '{"c":' .. json_texte(cour.c) .. ',"type":' .. json_texte(cour.type)
+      .. ',"q":' .. json_texte(html_de(q)) .. ',"r":' .. json_texte(html_de(r))
+      .. ',"img":' .. img .. ',"cadre":' .. json_texte(cour.cadre or "")
+      .. ',"options":[' .. table.concat(opts, ",") .. ']}')
+    cour = nil
+  end
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "Header" then
+      finir()
+      local texte = sans_insecables(pandoc.utils.stringify(bloc.content))
+      local parts = {}
+      for morceau in (texte .. "|"):gmatch("(.-)|") do table.insert(parts, (morceau:gsub("^%s+", ""):gsub("%s+$", ""))) end
+      local c, type_ = (parts[1] or ""):match("^(%S+)%s+(%S+)")
+      cour = { c = c or parts[1], type = type_ or "libre", image = parts[2], cadre = parts[3], blocs = pandoc.List() }
+    elseif cour then cour.blocs:insert(bloc)
+    elseif bloc.t == "BulletList" then
+      for _, item in ipairs(bloc.content) do
+        local t_ = sans_insecables(pandoc.utils.stringify(item))
+        local c, l = t_:match("^%s*(%S+)%s*|%s*(.*)$")
+        if c then table.insert(comps, '{"c":' .. json_texte(c) .. ',"l":' .. json_texte(l) .. '}') end
+      end
+    end
+  end
+  finir()
+  if not EN_HTML then div.content = pandoc.List(); return div end
+  local h = '<div class="revision-zone"><script type="application/json" class="revision-donnees">{"competences":['
+      .. table.concat(comps, ","):gsub("</", "<\\/") .. '],"cartes":[' .. table.concat(cartes, ","):gsub("</", "<\\/")
+      .. ']}</script>' .. images .. '</div>'
+  div.content = pandoc.List({ pandoc.RawBlock("html", h) })
+  return div
+end
+
 -- ::: {.bilan moment="debut"}  - C1 | Décrire avant d'interpréter  … :::   (moment="fin" : la comparaison)
 local function brique_bilan(div)
   local moment = attribut(div, "moment", "debut")
@@ -1125,7 +1218,8 @@ local function briques(div)
   if div.classes:includes("confiance") then return brique_confiance(div) end
   if div.classes:includes("vrai-ia") then return brique_vrai_ia(div) end
   if div.classes:includes("bilan") then return brique_bilan(div) end
-  if div.classes:includes("revision") then return brique_simple(div, "revision-zone") end
+  if div.classes:includes("revision") then return brique_revision(div) end
+  if div.classes:includes("relier") then return brique_relier(div) end
   if div.classes:includes("dossier") then return brique_dossier(div) end
   if div.classes:includes("phrases") then return brique_phrases(div) end
   if div.classes:includes("combiner") then return brique_combiner(div) end

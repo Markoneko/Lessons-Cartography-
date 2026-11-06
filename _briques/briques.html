@@ -218,6 +218,13 @@
       activer(e, function () { curseur.value = e.dataset.rang; appliquer(); });
     });
     appliquer();
+    // la commande (curseur et étiquettes) prend la largeur de l'image, pas celle de la colonne
+    var pile = bloc.querySelector(".comparer-pile"), commande = bloc.querySelector(".comparer-commande");
+    function ajuster() { if (pile && commande && pile.offsetWidth && !CORRIGE) commande.style.width = pile.offsetWidth + "px"; }
+    tous("img", bloc).forEach(function (i) { i.addEventListener("load", ajuster); });
+    window.addEventListener("resize", ajuster);
+    if (window.Reveal) { Reveal.on("slidechanged", ajuster); Reveal.on("ready", ajuster); }
+    ajuster();
   });
 
   // --- Loupe : un clic agrandit l'image, le pointeur (ou le doigt) choisit ce que l'on regarde
@@ -253,13 +260,26 @@
       vues.forEach(function (v, i) { v.classList.toggle("visible", i === rang); });
       legende.textContent = (rang + 1) + " / " + vues.length + " — " + vues[rang].dataset.nom;
     }
+    var minuterie = null;
+    function arreter() { if (minuterie) { clearInterval(minuterie); minuterie = null; } }
     tous(".defiler-bouton", bloc).forEach(function (b) {
-      activer(b, function () { rang = (rang + +b.dataset.pas + vues.length) % vues.length; montrer(); });
+      activer(b, function () { arreter(); rang = (rang + +b.dataset.pas + vues.length) % vues.length; montrer(); });
     });
     tous(".defiler-vue", bloc).forEach(function (v) {
-      activer(v, function () { rang = (rang + 1) % vues.length; montrer(); });
+      activer(v, function () { arreter(); rang = (rang + 1) % vues.length; montrer(); });
     });
     if (vues.length) montrer();
+    var periode = +bloc.dataset.auto;
+    if (periode > 0 && !CORRIGE && window.Reveal && vues.length > 1) {
+      var diapo = bloc.closest("section");
+      window.Reveal.on("slidechanged", function (e) {
+        arreter();
+        if (e.currentSlide === diapo) {
+          rang = 0; montrer();
+          minuterie = setInterval(function () { rang = (rang + 1) % vues.length; montrer(); }, periode * 1000);
+        }
+      });
+    }
   });
 
   // --- Curseur : une valeur pilote un schéma (variable --x) et des résultats calculés
@@ -309,6 +329,7 @@
     }
     function bilan() {
       var reste = tous(".classer-etiquette", reserve).length;
+      reserve.classList.toggle("vide", reste === 0);
       etat.textContent = reste
         ? (choisie ? T.choisir_case : T.choisir_etiquette)
         : T.tout_range + (erreurs ? " — " + erreurs + T.hesitation + (erreurs > 1 ? "s" : "") + "." : T.sans_faute);
@@ -328,17 +349,60 @@
         bilan();
       });
     });
-    cases.forEach(function (c) {
-      activer(c, function () {
-        if (!choisie) { bilan(); return; }
-        if (choisie.dataset.case === c.dataset.case) { ranger(choisie); choisie = null; }
-        else {
-          erreurs++;
-          choisie.classList.remove("refus"); void choisie.offsetWidth; choisie.classList.add("refus");
-        }
-        bilan();
+    function deposer(c) {
+      if (!choisie) { bilan(); return; }
+      if (choisie.dataset.case === c.dataset.case) { ranger(choisie); choisie = null; }
+      else {
+        erreurs++;
+        choisie.classList.remove("refus"); void choisie.offsetWidth; choisie.classList.add("refus");
+      }
+      bilan();
+    }
+    cases.forEach(function (c) { activer(c, function () { deposer(c); }); });
+    // glisser-déposer : une étiquette se prend au pointeur (souris ou doigt) et se lâche dans une case
+    var glisse = null, ignorerClic = false;
+    etiquettes.forEach(function (e) {
+      e.addEventListener("pointerdown", function (ev) {
+        if (e.classList.contains("rangee") || ev.button > 0) return;
+        ev.stopPropagation();
+        glisse = { e: e, x: ev.clientX, y: ev.clientY, fantome: null, id: ev.pointerId };
       });
     });
+    document.addEventListener("pointermove", function (ev) {
+      if (!glisse || ev.pointerId !== glisse.id) return;
+      if (!glisse.fantome) {
+        if (Math.abs(ev.clientX - glisse.x) + Math.abs(ev.clientY - glisse.y) < 6) return;
+        var r = glisse.e.getBoundingClientRect();
+        glisse.fantome = glisse.e.cloneNode(true);
+        glisse.fantome.className = "classer-etiquette classer-fantome";
+        glisse.fantome.style.width = r.width + "px";
+        glisse.dx = glisse.x - r.left; glisse.dy = glisse.y - r.top;
+        document.body.appendChild(glisse.fantome);
+        if (choisie) choisie.classList.remove("choisie");
+        choisie = glisse.e; choisie.classList.add("choisie", "en-glisse");
+      }
+      ev.preventDefault();
+      glisse.fantome.style.left = (ev.clientX - glisse.dx) + "px";
+      glisse.fantome.style.top = (ev.clientY - glisse.dy) + "px";
+      cases.forEach(function (c) { c.classList.remove("survol"); });
+      var sous = document.elementFromPoint(ev.clientX, ev.clientY);
+      var c = sous && sous.closest(".classer-case");
+      if (c && bloc.contains(c)) c.classList.add("survol");
+    }, { passive: false });
+    document.addEventListener("pointerup", function (ev) {
+      if (!glisse || ev.pointerId !== glisse.id) return;
+      var g = glisse; glisse = null;
+      if (!g.fantome) return;                                  // pas de mouvement : c'est un clic
+      g.fantome.remove(); g.e.classList.remove("en-glisse");
+      cases.forEach(function (c) { c.classList.remove("survol"); });
+      ignorerClic = true; setTimeout(function () { ignorerClic = false; }, 60);
+      var sous = document.elementFromPoint(ev.clientX, ev.clientY);
+      var c = sous && sous.closest(".classer-case");
+      if (c && bloc.contains(c)) deposer(c);
+      else bilan();
+    });
+    bloc.addEventListener("click", function (ev) { if (ignorerClic) { ev.stopPropagation(); ev.preventDefault(); } }, true);
+    bloc.addEventListener("touchstart", function (ev) { ev.stopPropagation(); }, { passive: true });
     bilan();
   });
 

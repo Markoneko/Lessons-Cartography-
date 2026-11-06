@@ -120,6 +120,26 @@ def silhouette(nom):
                  '<path d="M-14 0 L-3 -132 M14 0 L3 -132 M-3 -132 L3 -132"/>'
                  '<path d="M-13 -12 L11 -36 M13 -12 L-11 -36 M-11 -36 L9 -62 M11 -36 L-9 -62 M-9 -62 L7 -88 M9 -62 L-7 -88"/>'
                  '<path d="M-38 -96 L38 -96 M-28 -116 L28 -116 M-38 -96 L-5 -108 M38 -96 L5 -108"/></g>')
+    elif nom == 'telecom':
+        # une tour de télécommunication : fût de béton, tête cylindrique, antennes sur le toit
+        s.append('<path d="M-6 0 L-5 -86 L-22 -92 L-22 -116 L22 -116 L22 -92 L5 -86 L6 0 Z"/>')
+        s.append('<path d="M-16 -116 L-16 -124 L16 -124 L16 -116 Z"/>')
+        for x, h in ((-10, 150), (0, 158), (11, 146)):
+            s.append(f'<path d="M{x - 1.2} -124 L{x - 1.2} -{h} L{x + 1.2} -{h} L{x + 1.2} -124 Z"/>')
+        s.append('<rect x="22" y="-110" width="9" height="12" rx="2"/><rect x="-31" y="-106" width="9" height="12" rx="2"/>')
+    elif nom == 'conifere':
+        s.append('<path d="M-2 0 L-2 -18 L-17 -18 L0 -124 L17 -18 L2 -18 L2 0 Z"/>')
+    elif nom == 'feuillu':
+        s.append('<path d="M-3 0 L-3 -52 L3 -52 L3 0 Z"/><ellipse cx="0" cy="-86" rx="34" ry="37"/>')
+    elif nom == 'militaire':
+        # une tour en treillis, sans bras, avec un caisson d'antenne et une parabole
+        s.append('<g fill="none" stroke="currentColor" stroke-width="2.4">'
+                 '<path d="M-9 0 L-3 -140 M9 0 L3 -140 M-3 -140 L3 -140"/>'
+                 '<path d="M-8 -14 L7 -40 M8 -14 L-7 -40 M-7 -40 L6 -68 M7 -40 L-6 -68 M-6 -68 L5 -96 M6 -68 L-5 -96"/></g>')
+        s.append('<rect x="-4" y="-124" width="26" height="18" rx="2"/>')
+        s.append('<path d="M-6 -82 L-20 -76 A11 11 0 0 1 -20 -98 Z"/>')
+    elif nom == 'mat':
+        s.append('<path d="M-1.6 0 L-1.2 -132 L1.2 -132 L1.6 0 Z"/><circle cx="0" cy="-134" r="3"/>')
     elif nom == 'grue':
         s.append('<path d="M-3 0 L-3 -122 L3 -122 L3 0 Z"/>')
         s.append('<path d="M-30 -118 L92 -118 L92 -124 L-30 -124 Z"/>')
@@ -136,32 +156,47 @@ def trace_haut(nom):
             'chateau': '<circle r="30" fill="#C9CAD3" stroke="#8A8B95" stroke-width="1.5"/>',
             'pylone': '<rect x="-12" y="-12" width="24" height="24" fill="none" stroke="#8A8B95" stroke-width="2"/>'
                       '<path d="M-12 -12 L12 12 M12 -12 L-12 12 M-36 0 L36 0" stroke="#8A8B95" stroke-width="2"/>',
-            'grue': '<path d="M-30 0 L92 0" stroke="#8A8B95" stroke-width="4"/><rect x="-5" y="-5" width="10" height="10" fill="#8A8B95"/>'}[nom]
+            'grue': '<path d="M-30 0 L92 0" stroke="#8A8B95" stroke-width="4"/><rect x="-5" y="-5" width="10" height="10" fill="#8A8B95"/>',
+            'telecom': '<circle r="22" fill="#C9CAD3" stroke="#8A8B95" stroke-width="1.5"/><circle r="9" fill="none" stroke="#8A8B95" stroke-width="1.5"/>',
+            'conifere': '<circle r="16" fill="#4E7A3A" stroke="#3B5E2C" stroke-width="1.5"/>',
+            'feuillu': '<circle r="33" fill="#6E9A4E" stroke="#4E7A3A" stroke-width="1.5"/>',
+            'militaire': '<rect x="-8" y="-8" width="16" height="16" fill="none" stroke="#8A8B95" stroke-width="2"/><rect x="-4" y="-14" width="22" height="6" fill="#8A8B95"/>',
+            'mat': '<circle r="3.5" fill="#8A8B95"/>'}[nom]
+
+
+OMBRES = ['eolienne', 'telecom', 'conifere', 'pylone', 'chateau', 'mat', 'feuillu', 'militaire']
+NOMS_OMBRES = {
+    'fr': {'eolienne': 'Une éolienne', 'telecom': 'Une tour de télécommunication', 'conifere': 'Un conifère',
+           'pylone': 'Un pylône électrique', 'chateau': 'Un château d’eau', 'mat': 'Un simple mât : sans contexte, ambigu',
+           'feuillu': 'Un feuillu', 'militaire': 'Une tour militaire, à caisson d’antenne'},
+    'en': {'eolienne': 'A wind turbine', 'telecom': 'A telecom tower', 'conifere': 'A conifer',
+           'pylone': 'A power pylon', 'chateau': 'A water tower', 'mat': 'A plain mast: ambiguous without context',
+           'feuillu': 'A broadleaf tree', 'militaire': 'A military tower, with an antenna box'}}
 
 
 def ombres(lg):
-    noms = {'fr': ['Une éolienne', 'Un château d’eau', 'Un pylône électrique', 'Une grue'],
-            'en': ['A wind turbine', 'A water tower', 'A power pylon', 'A crane']}[lg]
-    titre = {'fr': 'Quatre ombres portées, vues d’avion', 'en': 'Four cast shadows, seen from the air'}[lg]
+    titre = {'fr': 'Huit ombres portées, vues d’avion', 'en': 'Eight cast shadows, seen from the air'}[lg]
+    courts = {'fr': {'mat': 'Un simple mât', 'militaire': 'Une tour militaire', 'telecom': 'Une tour de télécom'},
+              'en': {'mat': 'A plain mast', 'militaire': 'A military tower', 'telecom': 'A telecom tower'}}[lg]
     o = []
-    for k, nom in enumerate(['eolienne', 'chateau', 'pylone', 'grue']):
-        x = 6 + k * 189
-        o.append(f'<rect x="{x}" y="6" width="181" height="262" rx="10" fill="#E8ECDB" stroke="#D8DAEC" stroke-width="1.5"/>')
-        o.append(T(x + 20, 34, 'ABCD'[k], 's-titre', style='font-size:24px'))
-        bx, by = x + 128, 236
+    for k, nom in enumerate(OMBRES):
+        x, y = 6 + (k % 4) * 189, 6 + (k // 4) * 290
+        o.append(f'<rect x="{x}" y="{y}" width="181" height="262" rx="10" fill="#E8ECDB" stroke="#D8DAEC" stroke-width="1.5"/>')
+        o.append(T(x + 20, y + 30, 'ABCDEFGH'[k], 's-titre', style='font-size:24px'))
+        bx, by = x + 128, y + 238
         o.append(f'<g transform="translate({bx} {by}) rotate(-50)" fill="{OMBRE}" color="{OMBRE}" opacity="0.88">{silhouette(nom)}</g>')
         o.append(f'<g transform="translate({bx} {by})">{trace_haut(nom)}</g>')
-        o.append(f'<g class="s-apparait">{T(x + 90, 292, noms[k], "s-orange", style="font-size:17px")}</g>')
-    # le soleil, en bas à droite (sud-est)
-    o.append(f'<circle cx="752" cy="290" r="8" fill="{ORANGE}"/>')
-    return svg('0 0 760 304', titre, o)
+        nom_court = courts.get(nom, NOMS_OMBRES[lg][nom])
+        o.append(f'<g class="s-apparait">{T(x + 90, y + 283, nom_court, "s-orange", style="font-size:15px")}</g>')
+    o.append(f'<circle cx="752" cy="578" r="8" fill="{ORANGE}"/>')
+    return svg('0 0 760 588', titre, o)
 
 
 ecrire('ombres-portees.svg', ombres('fr'), ombres('en'))
 
 
 # ------------------------------------------------------------------ indices de l'archéologie aérienne
-def archeo(lg):
+def archeo(lg, avec_scio=True):
     t = {'fr': ['Indices phytographiques et sciographiques', 'Indices phytographiques : la culture, en été sec',
                 'fossé comblé : elle pousse mieux,', 'plus haute et plus verte',
                 'mur enfoui : elle pousse mal,', 'plus basse, elle jaunit tôt',
@@ -201,6 +236,8 @@ def archeo(lg):
     o.append(f'<rect x="104" y="{y0}" width="72" height="34" fill="#3F7A2E"/>')
     o.append(f'<rect x="306" y="{y0}" width="70" height="34" fill="#D9C66C"/>')
     o.append(T(250, y0 + 54, t[6], 's-petit', style='font-size:13px;font-style:italic'))
+    if not avec_scio:
+        return svg('0 0 500 360', t[1], o)
     # indice sciographique
     xs = 520
     o.append(f'<rect x="{xs}" y="6" width="234" height="368" rx="10" class="s-fond"/>')
@@ -217,6 +254,7 @@ def archeo(lg):
 
 
 ecrire('indices-archeo.svg', archeo('fr'), archeo('en'))
+ecrire('indices-phyto.svg', archeo('fr', False), archeo('en', False))
 
 
 # ------------------------------------------------------------------ chronologie relative
@@ -251,14 +289,26 @@ def chronologie(lg):
     o.append('<path d="M470 340 C 520 230, 560 140, 640 -10" fill="none" stroke="#9A9BA6" stroke-width="20"/>')
     o.append('<path d="M470 340 C 520 230, 560 140, 640 -10" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="10 10"/>')
     o.append('<path d="M512 268 L540 270 M500 290 L530 296" stroke="#2B2B33" stroke-width="2.5"/>')
-    # F : le lotissement en chantier, branché sur l'autoroute (terre nue, voies en boucle, quelques maisons)
-    o.append('<path d="M640 120 L740 120 L740 200 L640 200 Z" fill="#E2D3B5"/>')
-    o.append('<path d="M600 155 L655 160 C 700 125, 735 150, 715 175 C 690 200, 655 180, 655 160" fill="none" stroke="#C8B48E" stroke-width="7"/>')
-    for (hx, hy) in [(668, 132), (690, 128), (712, 140), (722, 182), (676, 188)]:
-        o.append(f'<rect x="{hx}" y="{hy}" width="11" height="9" fill="#C0504D"/>')
+    # le lotissement en chantier, branché sur l'autoroute : terre nue décapée, voies non revêtues en boucle,
+    # parcelles piquetées, fondations, deux maisons finies, des tas de terre, une grue et son ombre
+    o.append('<path d="M632 112 L748 106 L752 206 L636 210 Z" fill="#D9C39A"/>')
+    o.append('<path d="M632 112 L748 106 L752 206 L636 210 Z" fill="none" stroke="#B89B74" stroke-width="1.5" stroke-dasharray="4 3"/>')
+    o.append('<path d="M598 156 L652 160 C 694 122, 738 148, 716 176 C 692 202, 652 184, 652 160" fill="none" stroke="#B4996E" stroke-width="8"/>')
+    o.append('<path d="M598 156 L652 160 C 694 122, 738 148, 716 176 C 692 202, 652 184, 652 160" fill="none" stroke="#E6D6B4" stroke-width="1.5" stroke-dasharray="6 6"/>')
+    for (hx, hy) in [(664, 124), (686, 118), (708, 124), (726, 150), (722, 184), (690, 192), (666, 186)]:
+        o.append(f'<rect x="{hx}" y="{hy}" width="14" height="11" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-dasharray="2 2"/>')
+    for (hx, hy) in [(667, 127), (689, 121)]:
+        o.append(f'<rect x="{hx}" y="{hy}" width="9" height="7" fill="#C0504D"/>')
+    for (hx, hy) in [(711, 127), (729, 153), (725, 187)]:
+        o.append(f'<rect x="{hx}" y="{hy}" width="9" height="7" fill="#A8A9B3"/>')
+    for (mx, my) in [(684, 160), (700, 168), (744, 126)]:
+        o.append(f'<ellipse cx="{mx}" cy="{my}" rx="7" ry="4" fill="#B08D5E"/>')
+    o.append('<path d="M700 150 L700 144 M676 144 L730 144" stroke="#E38226" stroke-width="2.2"/>')
+    o.append('<path d="M700 150 L684 162 M676 144 L660 156 M730 144 L714 156" stroke="#3B3C47" stroke-width="1.6" opacity="0.5"/>')
     o.append('</g>')
     o.append(f'<rect x="4" y="4" width="752" height="332" rx="10" fill="none" stroke="#D8DAEC" stroke-width="1.5"/>')
-    for lettre, (lx, ly) in zip('ABCDEF', [(160, 66), (318, 202), (188, 300), (88, 186), (596, 72), (740, 104)]):
+    # lettres mélangées : leur ordre ne trahit pas la chronologie
+    for lettre, (lx, ly) in zip('CEAFBD', [(160, 66), (318, 202), (188, 300), (88, 186), (596, 72), (742, 94)]):
         o.append(f'<circle cx="{lx}" cy="{ly}" r="14" fill="{BLEU}"/>')
         o.append(T(lx, ly + 6, lettre, style='font-size:16px;font-weight:700;fill:#FFFFFF'))
     return svg('0 0 760 340', t, o)

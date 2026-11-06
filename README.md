@@ -234,7 +234,7 @@ Le sud était en haut.
 :::
 ```
 
-**Comparer des images** — un curseur fond les images l'une dans l'autre. Le texte entre crochets sert d'étiquette. Les images doivent couvrir la même emprise.
+**Comparer des images** — un curseur fond les images l'une dans l'autre. Le texte entre crochets sert d'étiquette. Les images doivent couvrir la même emprise. Le curseur prend la largeur de l'image ; `style="--hauteur-comparer: 370px"` règle la hauteur maximale (390 px par défaut).
 
 ```markdown
 ::: {.comparer}
@@ -243,7 +243,7 @@ Le sud était en haut.
 :::
 ```
 
-**Défiler des images** — une seule à la fois, en grand, avec deux flèches. Le texte entre crochets sert de légende.
+**Défiler des images** — une seule à la fois, en grand, avec deux flèches. Le texte entre crochets sert de légende. `auto="5"` fait tourner les images toutes les 5 secondes quand la diapo s'affiche ; un clic sur une flèche arrête la rotation.
 
 ```markdown
 ::: {.defiler}
@@ -270,7 +270,7 @@ Le sud était en haut.
 
 Avec `schema="images/schemas/mon-dessin.svg"`, le dessin suit le curseur s'il a été prévu pour.
 
-**Classer** — un titre `###` par case, puis ce qui doit y aller. Laisser une ligne vide avant chaque titre.
+**Classer** — un titre `###` par case, puis ce qui doit y aller. Laisser une ligne vide avant chaque titre. L'étudiant glisse une étiquette dans sa case (souris ou doigt), ou la clique puis clique la case. Quand tout est rangé, la réserve s'efface et les cases remontent.
 
 ```markdown
 ::: {.classer}
@@ -509,17 +509,65 @@ Le texte affiché sinon.
 
 **Calibration** — un tableau : quand l'étudiant se disait sûr, avait-il raison ? Il se remplit avec les barres de certitude du cours.
 
-**Révision** — toutes les questions et tous les QCM du cours deviennent des cartes, mélangées. Une carte sue revient dans un jour, puis une semaine, puis un mois ; une carte ratée revient tout de suite. L'adresse du support suivie de `?revision` ouvre directement cette diapo.
+**Révision** — des cartes de rappel, mélangées et entrelacées (jamais deux cartes de la même compétence à la suite). Une carte sue revient dans un jour, puis une semaine, puis un mois ; une carte ratée revient dans la séance. En tête, les compétences : celle qui est interrogée s'allume, celle dont toutes les cartes sont sues se grise. L'adresse du support suivie de `?revision` ouvre directement cette diapo.
+
+Les cartes s'écrivent dans la brique, pour le rappel (pas les questions du cours recopiées) : d'abord la liste des compétences, puis une carte par titre `###`, avec sa compétence et son type :
+
+- `libre` : l'étudiant écrit de mémoire, puis voit la réponse et se juge ; la question, puis `---`, puis la réponse ;
+- `image` : la même chose sur une image du cours, avec en option un cadre `x,y,largeur,hauteur` en % ;
+- `qcm` : des choix `- [x]` (juste) ou `- [ ]`, chacun suivi de son retour après « : ».
+
+```markdown
+::: {.revision}
+- C1 | Décrire avant d'interpréter
+- C3 | Identifier avec les clés
+
+### C1 libre
+
+Réécrivez « Le site est une centrale nucléaire » en séparant ce que l'on voit de ce que l'on déduit.
+
+---
+
+La réponse attendue.
+
+### C3 image | images/flamanville.jpg | 53,46,7,17
+
+Quels sont ces objets encadrés ? Quelles clés vous l'ont dit ?
+
+---
+
+La réponse attendue.
+
+### C3 qcm
+
+La question.
+
+- [x] Le bon choix : pourquoi.
+- [ ] Un autre choix : pourquoi pas.
+:::
+```
+
+Sans contenu (`::: {.revision}` puis `:::`), la brique reprend toutes les questions et tous les QCM du cours, comme avant.
+
+**Relier** — deux colonnes ; l'étudiant relie chaque élément de gauche à son correspondant de droite (la colonne de droite est mélangée), puis vérifie : les lignes justes passent au vert, les fausses au rouge.
+
+```markdown
+::: {.relier}
+- Ombre A -> Une éolienne
+- Ombre B -> Un château d'eau
+:::
+```
+
+Une énigme **Indices** sans texte après la liste n'a pas de conclusion : le bouton disparaît après le dernier indice. La colonne des indices ne dépasse jamais la hauteur de l'image : au-delà, elle défile.
 
 ```markdown
 ::: {.calibration}
 :::
-
-::: {.revision}
-:::
 ```
 
 La **carte du cours** passe un niveau sur deux colonnes dès qu'il compte plus de 16 diapos, pour qu'il ne déborde pas de la diapo.
+
+Deux classes de mise en page : `::: {.column .centre-v width="60%"}` centre une colonne sur la hauteur ; `::: {.cote-a-cote}` place des images côte à côte, sans colonnes imbriquées (une image par paragraphe). Les images ne sont jamais déformées : une hauteur imposée et une largeur bridée par la colonne gardent le rapport hauteur-largeur.
 
 ### Réglages utiles
 

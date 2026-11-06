@@ -65,7 +65,13 @@
     cretes: function (a, b) { return "Sharp ridges: you marked " + a + ", the real profile has " + b + "."; },
     voirConclusion: "Show the conclusion", choisir: "choose…", fermer: "Close",
     combinerVoir: "Does such a definition exist?", combinerAvant: "Pick one item in each row.",
-    combinerOui: "Yes: your combination matches", combinerToutes: "The definitions:"
+    combinerOui: "Yes: your combination matches", combinerToutes: "The definitions:",
+    relierAide: "Click an item on the left, then its match on the right. Click a line's end again to undo it.",
+    relierVerifier: "Check", relierBravo: "All correct.", relierCompte: function (j, n) { return j + " / " + n + " correct links."; },
+    revCompetences: "The skills: lit up, the one being tested; greyed out, the ones you have mastered.",
+    revEcrire: "Your answer, from memory, before looking…", revAcquises: function (a, n) { return a + " / " + n + " cards mastered"; },
+    revToutAcquis: "Every card is mastered. Come back tomorrow: the spaced ones will return.",
+    revJuste: "Right.", revFaux: "Not quite.", revSuivante: "Next card"
   } : {
     certitudes: ["Presque certain", "Probable", "Possible", "Peu probable"],
     certitudeAvant: "Avant de répondre, quelle est votre certitude ?", certitudeDabord: "Dites d'abord votre certitude.",
@@ -92,7 +98,13 @@
     cretes: function (a, b) { return "Crêtes vives : vous en avez marqué " + a + ", le profil réel en a " + b + "."; },
     voirConclusion: "Voir la conclusion", choisir: "choisir…", fermer: "Fermer",
     combinerVoir: "Une telle définition existe-t-elle ?", combinerAvant: "Choisissez un élément dans chaque ligne.",
-    combinerOui: "Oui : votre combinaison correspond à", combinerToutes: "Les définitions :"
+    combinerOui: "Oui : votre combinaison correspond à", combinerToutes: "Les définitions :",
+    relierAide: "Cliquez un élément à gauche, puis son correspondant à droite. Recliquez un bout de ligne pour la défaire.",
+    relierVerifier: "Vérifier", relierBravo: "Tout est juste.", relierCompte: function (j, n) { return j + " / " + n + " liens justes."; },
+    revCompetences: "Les compétences : en surbrillance, celle qui est interrogée ; grisées, celles que vous maîtrisez.",
+    revEcrire: "Votre réponse, de mémoire, avant de regarder…", revAcquises: function (a, n) { return a + " / " + n + " cartes acquises"; },
+    revToutAcquis: "Toutes les cartes sont acquises. Revenez demain : les cartes espacées reviendront.",
+    revJuste: "Juste.", revFaux: "Pas tout à fait.", revSuivante: "Carte suivante"
   };
 
   // --- Ce que l'on retient, dans le navigateur seulement (rien n'est envoyé) ----------------
@@ -375,7 +387,8 @@
     }
     function maj() {
       if (k < liste.length) suite.textContent = T.indiceSuivant(k + 1, liste.length);
-      else { suite.textContent = T.voirConclusion; majResume(); }
+      else if (conclusion) { suite.textContent = T.voirConclusion; majResume(); }
+      else { suite.style.display = "none"; majResume(); }
     }
     function conclure() {
       if (avecCertitude && !CORRIGE && trajectoire[liste.length - 1] === undefined) { resume.textContent = T.certitudeDabord; return; }
@@ -572,6 +585,77 @@
     bouton(T.combinerVoir, "principal", pied, verifier);
   });
 
+  // ------------------------------------------------------------------ relier : des lignes entre deux colonnes
+  tous(".relier-zone").forEach(function (zone) {
+    stopper(zone);
+    var paires = [];
+    try { paires = JSON.parse(zone.querySelector(".relier-donnees").textContent); } catch (e) { paires = []; }
+    var grille = el("div", "relier-grille", zone);
+    var colG = el("div", "relier-colonne gauche", grille);
+    var dessin = sv("svg", { "class": "relier-lignes" }, grille);
+    var colD = el("div", "relier-colonne droite", grille);
+    var ordreD = paires.map(function (p, i) { return i; });
+    if (!CORRIGE) ordreD = melanger(ordreD);
+    var gauches = paires.map(function (p, i) { var b = el("button", "relier-item", colG, p.g); b.type = "button"; b.dataset.i = i; return b; });
+    var droites = [];
+    ordreD.forEach(function (i) { var b = el("button", "relier-item", colD, paires[i].d); b.type = "button"; b.dataset.i = i; droites[i] = b; });
+    var liens = {};          // gauche -> droite
+    var choisi = null;
+    var pied = el("div", "relier-pied", zone);
+    var message = el("p", "relier-message", pied, CORRIGE ? "" : T.relierAide);
+    function centre(b, cote) {
+      var g = grille.getBoundingClientRect(), r = b.getBoundingClientRect();
+      var echelle = g.width / grille.offsetWidth || 1;
+      return [((cote === "g" ? r.right : r.left) - g.left) / echelle, ((r.top + r.bottom) / 2 - g.top) / echelle];
+    }
+    function tracer(verifie) {
+      dessin.innerHTML = "";
+      dessin.setAttribute("width", grille.offsetWidth); dessin.setAttribute("height", grille.offsetHeight);
+      Object.keys(liens).forEach(function (gi) {
+        var a = centre(gauches[gi], "g"), b = centre(droites[liens[gi]], "d");
+        var cls = "relier-ligne" + (verifie ? (+gi === +liens[gi] ? " juste" : " faux") : "");
+        sv("path", { d: "M" + a[0] + " " + a[1] + " C" + (a[0] + 40) + " " + a[1] + " " + (b[0] - 40) + " " + b[1] + " " + b[0] + " " + b[1], "class": cls }, dessin);
+        sv("circle", { cx: a[0], cy: a[1], r: 4.5, "class": cls }, dessin);
+        sv("circle", { cx: b[0], cy: b[1], r: 4.5, "class": cls }, dessin);
+      });
+      gauches.forEach(function (b, i) { b.classList.toggle("relie", liens[i] !== undefined); });
+      droites.forEach(function (b, i) {
+        b.classList.toggle("relie", Object.keys(liens).some(function (g) { return +liens[g] === i; }));
+      });
+    }
+    function delier(cote, i) {
+      if (cote === "g") delete liens[i];
+      else Object.keys(liens).forEach(function (g) { if (+liens[g] === i) delete liens[g]; });
+    }
+    function choisir(cote, i) {
+      var b = cote === "g" ? gauches[i] : droites[i];
+      if (choisi && choisi.cote !== cote) {
+        var gi = cote === "g" ? i : choisi.i, di = cote === "g" ? choisi.i : i;
+        delier("g", gi); delier("d", di); liens[gi] = di;
+        choisi.b.classList.remove("choisi"); choisi = null; tracer(false); message.textContent = T.relierAide; return;
+      }
+      if (choisi) choisi.b.classList.remove("choisi");
+      if (b.classList.contains("relie") && (!choisi || choisi.b !== b)) { delier(cote, i); choisi = null; tracer(false); return; }
+      choisi = (choisi && choisi.b === b) ? null : { cote: cote, i: i, b: b };
+      if (choisi) b.classList.add("choisi");
+    }
+    if (CORRIGE) {
+      paires.forEach(function (p, i) { liens[i] = i; });
+      setTimeout(function () { tracer(true); }, 50);
+      return;
+    }
+    gauches.forEach(function (b, i) { b.addEventListener("click", function (e) { e.stopPropagation(); choisir("g", i); }); });
+    droites.forEach(function (b, i) { if (b) b.addEventListener("click", function (e) { e.stopPropagation(); choisir("d", i); }); });
+    bouton(T.relierVerifier, "principal", pied, function () {
+      var justes = Object.keys(liens).filter(function (g) { return +liens[g] === +g; }).length;
+      tracer(true);
+      message.textContent = justes === paires.length ? T.relierBravo : T.relierCompte(justes, paires.length);
+    });
+    bouton(T.recommencer, "discret", pied, function () { liens = {}; tracer(false); message.textContent = T.relierAide; });
+    if (window.Reveal) window.Reveal.on("slidechanged", function (e) { if (e.currentSlide.contains(zone)) tracer(false); });
+    window.addEventListener("resize", function () { tracer(false); });
+  });
+
   // ------------------------------------------------------------------ calibration
   function tableCalibration(zone) {
     zone.innerHTML = "";
@@ -672,50 +756,148 @@
     tous(".etiquette", c).forEach(function (e) { e.remove(); });
     return c.innerHTML;
   }
+  function empreinte(texte) {
+    var h = 0;
+    for (var i = 0; i < texte.length; i++) { h = (h * 31 + texte.charCodeAt(i)) | 0; }
+    return "c" + (h >>> 0).toString(36);
+  }
+  // mélange, puis écarte deux cartes de la même compétence qui se suivraient (révision entrelacée)
+  function entrelacer(liste) {
+    liste = melanger(liste.slice());
+    for (var i = 1; i < liste.length; i++) {
+      if (liste[i].c && liste[i].c === liste[i - 1].c) {
+        for (var j = i + 1; j < liste.length; j++) {
+          if (liste[j].c !== liste[i - 1].c) { var t = liste[i]; liste[i] = liste[j]; liste[j] = t; break; }
+        }
+      }
+    }
+    return liste;
+  }
   tous(".revision-zone").forEach(function (zone) {
     stopper(zone);
     if (EN_PDF) { el("p", "revision-pdf", zone, T.interactif); return; }
+    var donnees = null;
+    var noeud = zone.querySelector(".revision-donnees");
+    if (noeud) { try { donnees = JSON.parse(noeud.textContent); } catch (e) { donnees = null; } }
+    var sources = tous(".revision-source", zone);
+    var competences = donnees ? donnees.competences || [] : [];
     var toutes = null;
+    function charger() {
+      if (toutes) return;
+      if (donnees && donnees.cartes && donnees.cartes.length) {
+        toutes = donnees.cartes.map(function (c) { c.id = empreinte(c.c + "|" + c.q); return c; });
+      } else {
+        toutes = cartesDuCours().map(function (c) { c.type = "libre"; return c; });
+      }
+    }
     function etat() { return lire("leitner", {}); }
+    function acquise(c, e) { var x = (e || etat())[c.id]; return !!x && x.boite >= 1; }
     function dues() {
       var e = etat(), maintenant = Date.now();
       return toutes.filter(function (c) { var x = e[c.id]; return !x || x.prochaine <= maintenant; });
     }
+    var bandeau = null;
+    function competencesBandeau(courante) {
+      if (!competences.length) return;
+      if (!bandeau || !zone.contains(bandeau)) bandeau = el("div", "revision-competences", zone);
+      bandeau.innerHTML = "";
+      var e = etat();
+      competences.forEach(function (k) {
+        var siennes = toutes.filter(function (c) { return c.c === k.c; });
+        var faites = siennes.filter(function (c) { return acquise(c, e); }).length;
+        var puce = el("span", "revision-puce", bandeau, k.c);
+        puce.title = k.c + " · " + k.l + " (" + faites + " / " + siennes.length + ")";
+        if (siennes.length && faites === siennes.length) puce.classList.add("acquise");
+        if (courante === k.c) puce.classList.add("courante");
+        var jauge = el("span", "revision-jauge", puce);
+        jauge.style.width = (siennes.length ? 100 * faites / siennes.length : 0) + "%";
+      });
+      var nb = toutes.filter(function (c) { return acquise(c, e); }).length;
+      el("span", "revision-acquises", bandeau, T.revAcquises(nb, toutes.length));
+    }
     function accueil() {
-      if (!toutes) toutes = cartesDuCours();
-      zone.innerHTML = "";
+      charger();
+      zone.innerHTML = ""; bandeau = null;
+      competencesBandeau(null);
+      if (competences.length) el("p", "revision-aide", zone, T.revCompetences);
       var d = dues();
       el("p", "revision-compte", zone, T.aRevoir(d.length, toutes.length));
       var b = el("div", "revision-boutons", zone);
-      if (d.length) bouton(T.commencer, "principal", b, function () { serie(melanger(d.slice())); });
-      bouton(T.toutReviser, "", b, function () { serie(melanger(toutes.slice()), true); });
+      if (d.length) bouton(T.commencer, "principal", b, function () { serie(entrelacer(d)); });
+      bouton(T.toutReviser, "", b, function () { serie(entrelacer(toutes), true); });
+    }
+    function libelle(code) {
+      var k = competences.filter(function (x) { return x.c === code; })[0];
+      return k ? k.c + " · " + k.l : "";
     }
     function serie(liste, entrainement) {
       var k = 0;
       function carte() {
-        zone.innerHTML = "";
-        if (k >= liste.length) { el("p", "revision-fini", zone, T.fini); bouton(T.recommencer, "discret", zone, accueil); return; }
+        zone.innerHTML = ""; bandeau = null;
+        if (k >= liste.length) {
+          competencesBandeau(null);
+          var e = etat();
+          el("p", "revision-fini", zone, toutes.every(function (c) { return acquise(c, e); }) ? T.revToutAcquis : T.fini);
+          bouton(T.recommencer, "discret", zone, accueil); return;
+        }
         var c = liste[k];
+        competencesBandeau(c.c);
         var tete = el("div", "revision-tete", zone);
-        el("span", "revision-compte", tete, (k + 1) + " / " + liste.length + " · " + c.titre);
-        var aller = el("a", "revision-aller", tete, T.allerDiapo); aller.href = "#";
-        aller.addEventListener("click", function (e) { e.preventDefault(); allerA(c.rang); });
-        var q = el("div", "revision-question", zone); q.innerHTML = c.q;
-        var r = el("div", "revision-reponse", zone); r.innerHTML = c.r;
-        var b = el("div", "revision-boutons", zone);
-        bouton(T.voirReponse, "principal", b, function () {
-          r.classList.add("visible"); b.innerHTML = "";
-          bouton(T.jeSavais, "principal", b, function () { noter(c, true); });
-          bouton(T.aRevoirCarte, "", b, function () { noter(c, false); });
-        });
+        el("span", "revision-compte", tete, (k + 1) + " / " + liste.length + (c.c ? " · " + libelle(c.c) : (c.titre ? " · " + c.titre : "")));
+        if (c.rang !== undefined) {
+          var aller = el("a", "revision-aller", tete, T.allerDiapo); aller.href = "#";
+          aller.addEventListener("click", function (ev) { ev.preventDefault(); allerA(c.rang); });
+        }
+        var corps = el("div", "revision-corps" + (c.img >= 0 && sources[c.img] ? " avec-image" : ""), zone);
+        if (c.img >= 0 && sources[c.img]) {
+          var cadreImg = el("div", "revision-image", corps);
+          var im = sources[c.img].cloneNode(); im.className = ""; im.style.display = ""; im.removeAttribute("hidden");
+          cadreImg.appendChild(im);
+          if (c.cadre) {
+            var v = c.cadre.split(",").map(Number);
+            var f = el("div", "revision-cadre", cadreImg);
+            f.style.left = v[0] + "%"; f.style.top = v[1] + "%"; f.style.width = v[2] + "%"; f.style.height = v[3] + "%";
+          }
+        }
+        var texte = el("div", "revision-texte", corps);
+        var q = el("div", "revision-question", texte); q.innerHTML = c.q;
+        var b;
+        if (c.type === "qcm" && c.options && c.options.length) {
+          var opts = el("div", "revision-options", texte);
+          var retour = el("div", "revision-retour", texte);
+          b = el("div", "revision-boutons", texte);
+          melanger(c.options.slice()).forEach(function (o) {
+            bouton(o.t, "revision-option", opts, function () {
+              if (opts.classList.contains("repondu")) return;
+              opts.classList.add("repondu");
+              tous(".revision-option", opts).forEach(function (x) {
+                var oo = c.options.filter(function (y) { return y.t === x.textContent; })[0];
+                if (oo && oo.juste) x.classList.add("juste");
+              });
+              var cible = tous(".revision-option", opts).filter(function (x) { return x.textContent === o.t; })[0];
+              if (cible && !o.juste) cible.classList.add("faux");
+              retour.innerHTML = "<strong>" + (o.juste ? T.revJuste : T.revFaux) + "</strong> " + (o.fb || "") + (c.r ? " " + c.r : "");
+              bouton(T.revSuivante, "principal", b, function () { noter(c, !!o.juste); });
+            });
+          });
+        } else {
+          var ecrit = el("textarea", "revision-ecrit", texte);
+          ecrit.rows = 3; ecrit.placeholder = T.revEcrire;
+          ["keydown", "keyup", "keypress"].forEach(function (n) { ecrit.addEventListener(n, function (ev) { ev.stopPropagation(); }); });
+          var r = el("div", "revision-reponse", texte); r.innerHTML = c.r;
+          b = el("div", "revision-boutons", texte);
+          bouton(T.voirReponse, "principal", b, function () {
+            r.classList.add("visible"); b.innerHTML = "";
+            bouton(T.jeSavais, "principal", b, function () { noter(c, true); });
+            bouton(T.aRevoirCarte, "", b, function () { noter(c, false); });
+          });
+        }
       }
       function noter(c, su) {
-        if (!entrainement || true) {
-          var e = etat(), x = e[c.id] || { boite: 0 };
-          x.boite = su ? Math.min(3, x.boite + 1) : 0;
-          x.prochaine = Date.now() + DELAIS[x.boite];
-          e[c.id] = x; ecrire("leitner", e);
-        }
+        var e = etat(), x = e[c.id] || { boite: 0 };
+        x.boite = su ? Math.min(3, x.boite + 1) : 0;
+        x.prochaine = Date.now() + DELAIS[x.boite];
+        e[c.id] = x; ecrire("leitner", e);
         if (!su && !entrainement) liste.push(c);       // une carte manquée revient dans la même séance
         k += 1; carte();
       }
