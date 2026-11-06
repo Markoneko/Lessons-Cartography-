@@ -42,7 +42,7 @@
   var T = EN ? {
     certitudes: ["Almost certain", "Probable", "Possible", "Unlikely"],
     certitudeAvant: "Before answering, how sure are you?", certitudeDabord: "First say how sure you are.",
-    monter: "Up", descendre: "Down", avancer: "Step forward", recommencer: "Start again", jouer: "Click here, then use ↑ ↓ to climb or descend and → to step forward.",
+    monter: "Up", descendre: "Down", avancer: "Step forward", recommencer: "Start again", jouer: "Click here, then ↑ ↓ to climb or descend, C for a sharp ridge, → to step forward.",
     ecart: function (v) { return "Average gap from the real profile: " + v + " level" + (v === "1.0" ? "" : "s") + "."; },
     bravo: "Very close to the real profile.", proche: "The overall shape is there.", loin: "Look again at the shadows and the slopes.",
     reel: "Real profile", vous: "Your profile",
@@ -60,11 +60,16 @@
     aRevoir: function (a, n) { return a + " card" + (a > 1 ? "s" : "") + " to review today, out of " + n + "."; },
     commencer: "Start the review", toutReviser: "Practise all the cards", voirReponse: "Show the answer",
     jeSavais: "I knew it", aRevoirCarte: "Review again", fini: "Review done for today. Come back tomorrow, then in a week, then in a month.",
-    allerDiapo: "Go to the slide", interactif: "Interactive in the HTML version."
+    allerDiapo: "Go to the slide", interactif: "Interactive in the HTML version.",
+    crete: "Sharp ridge", creteAide: "C: sharp ridge (otherwise the curve is rounded)",
+    cretes: function (a, b) { return "Sharp ridges: you marked " + a + ", the real profile has " + b + "."; },
+    voirConclusion: "Show the conclusion", choisir: "choose…", fermer: "Close",
+    combinerVoir: "Does such a definition exist?", combinerAvant: "Pick one item in each row.",
+    combinerOui: "Yes: your combination matches", combinerToutes: "The definitions:"
   } : {
     certitudes: ["Presque certain", "Probable", "Possible", "Peu probable"],
     certitudeAvant: "Avant de répondre, quelle est votre certitude ?", certitudeDabord: "Dites d'abord votre certitude.",
-    monter: "Monter", descendre: "Descendre", avancer: "Avancer", recommencer: "Recommencer", jouer: "Cliquez ici, puis ↑ ↓ pour monter ou descendre, et → pour avancer.",
+    monter: "Monter", descendre: "Descendre", avancer: "Avancer", recommencer: "Recommencer", jouer: "Cliquez ici, puis ↑ ↓ pour monter ou descendre, C pour une crête vive, → pour avancer.",
     ecart: function (v) { return "Écart moyen au profil réel : " + v.replace(".", ",") + " niveau" + (parseFloat(v) >= 2 ? "x" : "") + "."; },
     bravo: "Très proche du profil réel.", proche: "L'allure générale y est.", loin: "Regardez de nouveau les ombres et les pentes.",
     reel: "Profil réel", vous: "Votre profil",
@@ -82,7 +87,12 @@
     aRevoir: function (a, n) { return a + " carte" + (a > 1 ? "s" : "") + " à revoir aujourd'hui, sur " + n + "."; },
     commencer: "Commencer la révision", toutReviser: "S'entraîner sur toutes les cartes", voirReponse: "Voir la réponse",
     jeSavais: "Je savais", aRevoirCarte: "À revoir", fini: "Révision terminée pour aujourd'hui. Revenez demain, puis dans une semaine, puis dans un mois.",
-    allerDiapo: "Aller à la diapo", interactif: "Interactif dans la version HTML."
+    allerDiapo: "Aller à la diapo", interactif: "Interactif dans la version HTML.",
+    crete: "Crête vive", creteAide: "C : crête vive (sinon la courbe s'arrondit)",
+    cretes: function (a, b) { return "Crêtes vives : vous en avez marqué " + a + ", le profil réel en a " + b + "."; },
+    voirConclusion: "Voir la conclusion", choisir: "choisir…", fermer: "Fermer",
+    combinerVoir: "Une telle définition existe-t-elle ?", combinerAvant: "Choisissez un élément dans chaque ligne.",
+    combinerOui: "Oui : votre combinaison correspond à", combinerToutes: "Les définitions :"
   };
 
   // --- Ce que l'on retient, dans le navigateur seulement (rien n'est envoyé) ----------------
@@ -131,6 +141,7 @@
     var donnees = {};
     try { donnees = JSON.parse(zone.querySelector(".coupe-profil").textContent); } catch (e) { donnees = {}; }
     var points = donnees.points || [[0, 0.5], [1, 0.5]];
+    var nbCretes = points.filter(function (p) { return p[2] === "v"; }).length;
     var NIV = 10, pas = parseInt(zone.dataset.pas, 10) || 20;
     var A = zone.dataset.depart.split(",").map(parseFloat), B = zone.dataset.arrivee.split(",").map(parseFloat);
     function reel(t) {          // altitude relative (0 à 1) du profil réel, par interpolation
@@ -159,7 +170,8 @@
     var texteA = sv("text", { x: G - 14, y: H - 6, "class": "coupe-lettre" }, graphe); texteA.textContent = "A";
     var texteB = sv("text", { x: W - G + 4, y: H - 6, "class": "coupe-lettre" }, graphe); texteB.textContent = "B";
     var courbeReelle = sv("path", { "class": "coupe-reelle" }, graphe);
-    var chemin = sv("polyline", { "class": "coupe-vous" }, graphe);
+    var chemin = sv("path", { "class": "coupe-vous" }, graphe);
+    var pas_ = sv("g", { "class": "coupe-pas" }, graphe);
     var marcheur = sv("g", { "class": "coupe-marcheur" }, graphe);
     sv("circle", { cx: 0, cy: -26, r: 7 }, marcheur);
     sv("path", { d: "M0 -19 V-6 M0 -6 L-7 6 M0 -6 L7 6 M-8 -14 L8 -14" }, marcheur);
@@ -168,20 +180,36 @@
     var commandes = el("div", "coupe-commandes", pied);
     var message = el("div", "coupe-message", jeu);
     var apres = tous(".apres-jeu", zone.parentNode);
-    var niveaux, k, niveau;
+    var niveaux, vives, k, niveau, viveIci;
+    // une courbe lissée (Catmull-Rom) qui garde ses angles aux crêtes vives
+    function lisse(pts) {
+      if (!pts.length) return "";
+      var d = "M" + pts[0][0].toFixed(1) + " " + pts[0][1].toFixed(1);
+      for (var i = 0; i < pts.length - 1; i++) {
+        var p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
+        var c1 = p1[2] ? p1 : [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+        var c2 = p2[2] ? p2 : [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+        d += " C" + c1[0].toFixed(1) + " " + c1[1].toFixed(1) + " " + c2[0].toFixed(1) + " " + c2[1].toFixed(1) + " " + p2[0].toFixed(1) + " " + p2[1].toFixed(1);
+      }
+      return d;
+    }
     function dessiner() {
-      var pts = niveaux.map(function (v, i) { return X(i) + "," + Y(v); });
-      if (k <= pas) pts.push(X(k) + "," + Y(niveau));
-      chemin.setAttribute("points", pts.join(" "));
+      var pts = niveaux.map(function (v, i) { return [X(i), Y(v), vives[i]]; });
+      if (k <= pas) pts.push([X(k), Y(niveau), viveIci]);
+      chemin.setAttribute("d", lisse(pts));
+      pas_.innerHTML = "";
+      pts.forEach(function (p) {
+        if (p[2]) sv("path", { d: "M" + (p[0] - 7) + " " + (p[1] + 9) + " L" + p[0] + " " + (p[1] - 3) + " L" + (p[0] + 7) + " " + (p[1] + 9), "class": "coupe-crete" }, pas_);
+        else sv("circle", { cx: p[0], cy: p[1], r: 2.6, "class": "coupe-point" }, pas_);
+      });
+      boutonCrete.classList.toggle("actif", !!viveIci);
       marcheur.setAttribute("transform", "translate(" + X(Math.min(k, pas)) + "," + Y(niveau) + ")");
       var t = Math.min(k, pas) / pas;
       repere.style.left = (A[0] + (B[0] - A[0]) * t) + "%";
       repere.style.top = (A[1] + (B[1] - A[1]) * t) + "%";
     }
     function montrerReel() {
-      var d = "";
-      for (var i = 0; i <= 100; i++) d += (i ? " L" : "M") + (G + (W - 2 * G) * i / 100).toFixed(1) + " " + Y(reel(i / 100) * NIV).toFixed(1);
-      courbeReelle.setAttribute("d", d);
+      courbeReelle.setAttribute("d", lisse(points.map(function (p) { return [G + (W - 2 * G) * p[0], Y(p[1] * NIV), p[2] === "v"]; })));
       zone.classList.add("termine");
       apres.forEach(function (a) { a.classList.add("visible"); });
     }
@@ -190,16 +218,19 @@
       var somme = 0;
       niveaux.forEach(function (v, i) { somme += Math.abs(v - reel(i / pas) * NIV); });
       var e = somme / niveaux.length;
-      message.textContent = T.ecart(e.toFixed(1)) + " " + (e < 1.2 ? T.bravo : e < 2.5 ? T.proche : T.loin);
+      var marquees = vives.filter(Boolean).length;
+      message.textContent = T.ecart(e.toFixed(1)) + " " + (e < 1.2 ? T.bravo : e < 2.5 ? T.proche : T.loin)
+        + (nbCretes ? " " + T.cretes(marquees, nbCretes) : "");
     }
     function avancer() {
       if (k > pas) return;
-      niveaux.push(niveau); k += 1;
+      niveaux.push(niveau); vives.push(viveIci); viveIci = false; k += 1;
       if (k > pas) { dessiner(); terminer(); } else dessiner();
     }
     function bouger(d) { if (k <= pas) { niveau = Math.max(0, Math.min(NIV, niveau + d)); dessiner(); } }
+    function crete() { if (k <= pas) { viveIci = !viveIci; dessiner(); } }
     function depart() {
-      niveaux = []; k = 0; niveau = Math.round(reel(0) * NIV);
+      niveaux = []; vives = []; viveIci = false; k = 0; niveau = NIV / 2;      // départ au milieu des ordonnées
       courbeReelle.setAttribute("d", ""); message.textContent = "";
       zone.classList.remove("termine");
       apres.forEach(function (a) { a.classList.remove("visible"); });
@@ -207,6 +238,8 @@
     }
     bouton("↑ " + T.monter, "", commandes, function () { bouger(1); zone.focus(); });
     bouton("↓ " + T.descendre, "", commandes, function () { bouger(-1); zone.focus(); });
+    var boutonCrete = bouton("∧ " + T.crete, "", commandes, function () { crete(); zone.focus(); });
+    boutonCrete.title = T.creteAide;
     bouton("→ " + T.avancer, "principal", commandes, function () { avancer(); zone.focus(); });
     bouton(T.recommencer, "discret", commandes, function () { depart(); zone.focus(); });
     zone.addEventListener("keydown", function (e) {
@@ -214,12 +247,13 @@
       if (e.key === "ArrowUp") bouger(1);
       else if (e.key === "ArrowDown") bouger(-1);
       else if (e.key === "ArrowRight" || e.key === " ") avancer();
+      else if (e.key === "c" || e.key === "C") crete();
       else fait = false;
       if (fait) e.preventDefault();
     });
     zone.addEventListener("click", function () { zone.focus(); });
     depart();
-    if (CORRIGE) { niveaux = []; k = pas + 1; dessiner(); montrerReel(); chemin.setAttribute("points", ""); }
+    if (CORRIGE) { niveaux = []; vives = []; k = pas + 1; dessiner(); montrerReel(); chemin.setAttribute("d", ""); pas_.innerHTML = ""; }
   });
 
   // ------------------------------------------------------------------ arbre de déduction
@@ -315,7 +349,7 @@
     var conclusion = zone.parentNode.querySelector(".indices-conclusion");
     var avecCertitude = zone.dataset.confiance === "oui";
     var k = 0, trajectoire = [];
-    var suite = bouton("", "principal", commandes, montrer);
+    var suite = bouton("", "principal", commandes);
     var resume = el("div", "indices-resume", commandes);
     function cadre(z, n) {
       var c = el("div", "indices-cadre", image);
@@ -341,10 +375,17 @@
     }
     function maj() {
       if (k < liste.length) suite.textContent = T.indiceSuivant(k + 1, liste.length);
-      else { suite.style.display = "none"; if (conclusion) conclusion.classList.add("visible"); majResume(); }
+      else { suite.textContent = T.voirConclusion; majResume(); }
     }
+    function conclure() {
+      if (avecCertitude && !CORRIGE && trajectoire[liste.length - 1] === undefined) { resume.textContent = T.certitudeDabord; return; }
+      suite.style.display = "none"; majResume();
+      if (conclusion) conclusion.classList.add("visible");
+    }
+    suite.removeEventListener("click", montrer);
+    suite.addEventListener("click", function () { if (k < liste.length) montrer(); else conclure(); });
     maj();
-    if (CORRIGE) while (k < liste.length) montrer();
+    if (CORRIGE) { while (k < liste.length) montrer(); conclure(); }
   });
 
   // ------------------------------------------------------------------ confiance : la certitude avant le choix
@@ -421,6 +462,114 @@
       bouton(T.generee, "", choix, function () { repondre("ia"); });
     }
     afficher();
+  });
+
+  // ------------------------------------------------------------------ dossier : une chemise qui s'ouvre en plein écran
+  tous(".dossier").forEach(function (bloc) {
+    var couverture = bloc.querySelector(".dossier-couverture"), contenu = bloc.querySelector(".dossier-contenu");
+    if (!couverture || !contenu) return;
+    stopper(bloc);
+    couverture.addEventListener("click", function () {
+      var voile = el("div", "dossier-plein", document.body);
+      var page = el("div", "dossier-page", voile);
+      page.innerHTML = contenu.innerHTML;
+      var fermer = bouton("×", "dossier-fermer", voile);
+      fermer.setAttribute("aria-label", T.fermer);
+      function clore() { voile.remove(); document.removeEventListener("keydown", touche, true); couverture.focus(); }
+      function touche(e) { if (e.key === "Escape") { e.stopPropagation(); e.preventDefault(); clore(); } }
+      ["pointerdown", "click", "wheel", "keydown"].forEach(function (n) { voile.addEventListener(n, function (e) { e.stopPropagation(); }); });
+      voile.addEventListener("click", function (e) { if (e.target === voile || e.target === fermer) clore(); });
+      document.addEventListener("keydown", touche, true);
+      requestAnimationFrame(function () { voile.classList.add("ouvert"); });
+      fermer.focus();
+    });
+  });
+
+  // ------------------------------------------------------------------ phrases à compléter : le mot de certitude juste
+  tous(".phrases-zone").forEach(function (zone) {
+    stopper(zone);
+    var items = [];
+    try { items = JSON.parse(zone.querySelector(".phrases-donnees").textContent); } catch (e) { items = []; }
+    var ol = el("ol", "phrases-liste", zone);
+    items.forEach(function (it, n) {
+      var li = el("li", "", ol);
+      var p = el("p", "phrases-phrase", li);
+      p.appendChild(document.createTextNode(it.a));
+      if (CORRIGE) {
+        el("strong", "phrases-juste", p, it.j.map(function (j) { return it.o[j]; }).join(" / "));
+      } else {
+        var menu = el("select", "phrases-menu", p);
+        el("option", "", menu, T.choisir).value = "";
+        it.o.forEach(function (o, k) { var opt = el("option", "", menu, o); opt.value = String(k); });
+      }
+      p.appendChild(document.createTextNode(it.p));
+      var retour = el("p", "phrases-retour", li);
+      if (CORRIGE) { retour.textContent = it.c ? it.c.charAt(0).toUpperCase() + it.c.slice(1) : ""; li.classList.add("repondu"); return; }
+      menu.addEventListener("change", function () {
+        if (menu.value === "") { retour.textContent = ""; li.className = ""; return; }
+        var juste = it.j.indexOf(+menu.value) >= 0;
+        li.className = "repondu " + (juste ? "juste" : "faux");
+        var c = it.c ? it.c.charAt(0).toUpperCase() + it.c.slice(1) : "";
+        retour.textContent = (juste ? T.juste : T.faux) + " " + c;
+      });
+    });
+  });
+
+  // ------------------------------------------------------------------ combiner : composer une définition, puis la confronter
+  tous(".combiner-zone").forEach(function (zone) {
+    stopper(zone);
+    var d = {};
+    try { d = JSON.parse(zone.querySelector(".combiner-donnees").textContent); } catch (e) { d = {}; }
+    var series = d.series || [], defs = d.defs || [];
+    var choix = [];
+    var grille = el("div", "combiner-grille", zone);
+    series.forEach(function (s, i) {
+      var ligne = el("div", "combiner-ligne", grille);
+      el("div", "combiner-titre", ligne, s.titre);
+      var bs = el("div", "combiner-options", ligne);
+      var boutons = s.options.map(function (o, k) {
+        return bouton(o.t, "combiner-option", bs, function () {
+          boutons.forEach(function (b) { b.classList.remove("actif"); });
+          boutons[k].classList.add("actif"); choix[i] = k; resultat.innerHTML = ""; zone.classList.remove("revele");
+        });
+      });
+    });
+    var pied = el("div", "combiner-pied", zone);
+    var resultat = el("div", "combiner-resultat", zone);
+    function carte(df, parent, mise) {
+      var c = el("div", "combiner-def" + (mise ? " retenue" : ""), parent);
+      el("div", "combiner-def-titre", c, df.titre);
+      var corps = el("div", "combiner-def-corps", c); corps.innerHTML = df.corps;
+    }
+    function verifier() {
+      resultat.innerHTML = "";
+      if (choix.filter(function (x) { return x !== undefined; }).length < series.length) { el("p", "combiner-message", resultat, T.combinerAvant); return; }
+      var communs = null;
+      series.forEach(function (s, i) {
+        var tags = s.options[choix[i]].tags;
+        communs = communs === null ? tags.slice() : communs.filter(function (t) { return tags.indexOf(t) >= 0; });
+      });
+      var trouvees = defs.filter(function (df) { return df.id !== "*" && communs.indexOf(df.id) >= 0; });
+      zone.classList.add("revele");
+      if (trouvees.length) {
+        el("p", "combiner-message juste", resultat, T.combinerOui + " " + trouvees.map(function (df) { return df.titre; }).join(", ") + ".");
+        trouvees.forEach(function (df) { carte(df, resultat, true); });
+      } else {
+        var aucune = defs.filter(function (df) { return df.id === "*"; })[0];
+        if (aucune) carte(aucune, resultat, true);
+      }
+      var autres = defs.filter(function (df) { return df.id !== "*" && trouvees.indexOf(df) < 0; });
+      if (autres.length) {
+        var details = el("details", "combiner-autres", resultat);
+        el("summary", "", details, T.combinerToutes);
+        autres.forEach(function (df) { carte(df, details, false); });
+      }
+    }
+    if (CORRIGE) {
+      defs.filter(function (df) { return df.id !== "*"; }).forEach(function (df) { carte(df, resultat, false); });
+      return;
+    }
+    bouton(T.combinerVoir, "principal", pied, verifier);
   });
 
   // ------------------------------------------------------------------ calibration

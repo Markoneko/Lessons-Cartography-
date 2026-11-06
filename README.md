@@ -398,7 +398,7 @@ En anglais : `profil="✒️ The equipped Author"`.
 
 Elles vivent dans `_briques/briques-enquete.html` et `_briques/briques-enquete.css`. Le cours `cours/image-intelligence` en contient un exemple de chacune. Ce que l'étudiant écrit ou choisit est gardé dans son navigateur seulement ; le PDF corrigé montre la réponse attendue.
 
-**Coupe topographique** — un marcheur va de A à B sur une image ; à chaque pas, l'étudiant le fait monter ou descendre avec les flèches ↑ ↓ (→ ou espace pour avancer). À l'arrivée, son profil est comparé au profil de référence, et le bloc `.apres-jeu` s'affiche. `depart` et `arrivee` sont en % de l'image ; le profil est un JSON `{"points": [[t, z], …]}`, t et z entre 0 et 1.
+**Coupe topographique** — un marcheur va de A à B sur une image, en partant du milieu des ordonnées ; à chaque pas, l'étudiant le fait monter ou descendre avec les flèches ↑ ↓ (→ ou espace pour avancer) et marque une **crête vive** avec la touche C. La courbe se dessine lissée, sauf aux crêtes vives, qui gardent leur angle : on distingue les crêtes qui cassent des fonds arrondis. À l'arrivée, son profil est comparé au profil de référence (écart moyen, et nombre de crêtes vives), et le bloc `.apres-jeu` s'affiche. `depart` et `arrivee` sont en % de l'image ; le profil est un JSON `{"points": [[t, z], …]}`, t et z entre 0 et 1 ; un troisième terme `"v"` marque une crête vive : `[0.17, 0.88, "v"]`.
 
 ```markdown
 ::: {.coupe image="images/fast-2016.jpg" alt="Description" depart="2,49" arrivee="98,49" pas="24" profil="donnees/fast-profil.json" style="--hauteur-coupe: 320px"}
@@ -429,7 +429,7 @@ La lecture de l'expert.
 :::
 ```
 
-**Indices** — une énigme : les indices viennent un à un, chacun peut encadrer une partie de l'image (`x,y,largeur,hauteur :` en %, devant l'indice). Avec `confiance="oui"`, l'étudiant dit sa certitude à chaque indice. Le texte placé après la liste est la solution.
+**Indices** — une énigme : les indices viennent un à un, chacun peut encadrer une partie de l'image (`x,y,largeur,hauteur :` en %, devant l'indice). Avec `confiance="oui"`, l'étudiant dit sa certitude à chaque indice. Le texte placé après la liste est la solution : elle n'apparaît qu'au clic qui suit le dernier indice (et, avec `confiance="oui"`, une fois la certitude de ce dernier indice donnée).
 
 ```markdown
 ::: {.indices image="images/fast-2016.jpg" alt="Description" confiance="oui"}
@@ -468,6 +468,45 @@ La solution.
 :::
 ```
 
+**Dossier** — une chemise cartonnée, tamponnée « TOP SECRET » ; un clic l'ouvre, et son contenu (une image, en général) s'affiche en plein écran. Échap ou un clic à côté la referme. Le PDF montre le contenu à plat. `tampon="…"` change le tampon.
+
+```markdown
+::: {.dossier titre="Le renseignement vu du ciel, 1858-2020"}
+![](images/frise-intelligence.png){fig-alt="Description"}
+:::
+```
+
+**Phrases à compléter** — chaque phrase porte un menu, entre accolades ; `=` marque le ou les choix justes. Après « : », le commentaire, affiché une fois le choix fait. Le PDF donne les mots attendus.
+
+```markdown
+::: {.phrases}
+- Il est {presque certain|=probable|possible|peu probable} qu'il y ait des ouvriers sur le site : on ne voit personne, mais la base vie est là.
+:::
+```
+
+**Combiner** — l'étudiant compose une réponse, un choix par ligne (`###` : une ligne de choix), puis découvre si elle existe. Chaque choix porte entre crochets les réponses qui l'admettent ; les réponses s'écrivent en `#### code | Titre`, suivies de leur texte ; `#### * | …` est le texte affiché quand aucune réponse ne réunit les choix. Le PDF donne toutes les réponses.
+
+```markdown
+::: {.combiner}
+### Surface minimale
+
+- 0,5 ha [fao, kyoto]
+- 25 ha [clc]
+
+### Hauteur des arbres
+
+- 5 m [fao, kyoto, clc]
+
+#### fao | La FAO
+
+Plus de 0,5 ha, des arbres de plus de 5 m, un couvert de plus de 10 %.
+
+#### * | Aucune définition connue
+
+Le texte affiché sinon.
+:::
+```
+
 **Calibration** — un tableau : quand l'étudiant se disait sûr, avait-il raison ? Il se remplit avec les barres de certitude du cours.
 
 **Révision** — toutes les questions et tous les QCM du cours deviennent des cartes, mélangées. Une carte sue revient dans un jour, puis une semaine, puis un mois ; une carte ratée revient tout de suite. L'adresse du support suivie de `?revision` ouvre directement cette diapo.
@@ -479,6 +518,8 @@ La solution.
 ::: {.revision}
 :::
 ```
+
+La **carte du cours** passe un niveau sur deux colonnes dès qu'il compte plus de 16 diapos, pour qu'il ne déborde pas de la diapo.
 
 ### Réglages utiles
 

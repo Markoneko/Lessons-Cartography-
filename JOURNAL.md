@@ -2,6 +2,54 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-10-31 — « Image Intelligence », première salve de retours (V1)
+
+Demande de Marc dans `cours/image-intelligence/source/Modifications.txt`, plus trois éléments de son support disparus de la V0 : la chronologie des phénomènes, les ombres portées, les indices phytographiques et sciographiques. Numéros de diapo de la V0 (55 diapos) ; la V1 en compte 61. Chaque correction est reportée dans la version anglaise ; chaque fiche garde la demande entre crochets « [Retour V0 : …] », que reprend `plan.md`.
+
+**Appliqué**
+
+- 1 : le plan de Peenemünde en image de titre.
+- 4 : la carte du cours passe un niveau de plus de 16 diapos sur deux colonnes (`_briques/gabarit.lua`, pour tous les cours).
+- 6 (scène) : plus de lecture experte, la correction est la vidéo montrée en cours.
+- 7 : les énoncés ne disent plus ce qu'est le site (« une centrale nucléaire » tuait la déduction).
+- 8 : définitions de Marc pour l'induction, la déduction, l'abduction ; les exemples forment le faisceau d'indices ; le QCM devient un classement de trois raisonnements sur un même champ de colza.
+- 9 : la frise de Marc s'ouvre en plein écran dans un dossier « TOP SECRET » (nouvelle brique `dossier`), puis six étapes à remettre en ordre ; bonus *Star City* (Apple TV+, 2026) et musée.
+- 10 : le radiotélescope est réservé à la coupe ; l'énigme attend une autre image (propositions dans la fiche). La brique `indices` ne montre plus la conclusion avec le dernier indice, mais au clic suivant.
+- 11 : lien vers l'échelle du GIEC (bonus) ; une seule certitude, dans quatre phrases à compléter (nouvelle brique `phrases`), sur l'image du radiotélescope encore anonyme.
+- 12 : Colin Powell nommé, avec son portrait (Wikipédia) ; image d'archive à fournir.
+- 15 : données réelles de Marc, CORINE Land Cover et BD Forêt V2 autour de la forêt de L'Isle-Adam (curseurs de souris effacés des captures) ; question en deux temps. Calculé : 50 % et 52 % de forêt, 12 % de la zone en désaccord (320 ha et 510 ha), 7 taches de forêt contre 139.
+- 16 : « Qu'est-ce qu'une forêt ? » : trois séries d'éléments à combiner, confrontées à cinq définitions (nouvelle brique `combiner`). Seuils vérifiés : FAO, CCNUCC, BD Forêt V2 (IGN), CORINE Land Cover (Copernicus), COMIFAC (d'après l'ATIBT).
+- 17 : « La précision des experts » : vote au curseur sur l'accord avec soi-même (≈ 95 %), puis le graphique des quatre catégories de Marc ; la question sur les désaccords reste ; bonus Colwell (1952).
+- 18 : l'IA apprend les erreurs, pas les hésitations ; orthophoto et étiquettes FLAIR côte à côte. La réflexion de Marc sur la marge de certitude dans les données d'apprentissage est gardée dans la fiche. Mon avis : il a raison pour un jeu comme FLAIR, qui ne garde qu'une étiquette par pixel ; certains jeux gardent pourtant le désaccord entre plusieurs annotateurs (étiquettes « souples »), et un modèle entraîné sur eux apprend à hésiter là où les humains hésitaient. Ce serait une piste à creuser pour FLAIR.
+- 19 : les deux illustrations U-Net (2019).
+- 21 : l'image du LiDAR d'Angkor (source Wired, juin 2013).
+- 22 : quatre catégories : gestion de crise, suivi de l'occupation du sol, contrôle qualité, géopolitique.
+- 24 : lecture experte décomposée, « observation ⇒ interprétation et certitude ».
+- 26 : la réponse ne dit plus « réacteur ».
+- Nouvelle « L'ombre dit la forme » : quatre ombres portées (éolienne, château d'eau, pylône, grue), schéma fait pour le cours.
+- 28 (coupe) : départ au milieu ; nouveau profil de référence (pente forte jusqu'à une crête, puis descente) ; courbe lissée en direct, crêtes vives marquées à la touche C.
+- Nouvelle « Creux ou bosse ? » : la tour sert de cadran solaire, le reflet opposé au soleil prouve que la parabole est concave ; le radiotélescope FAST est alors nommé.
+- 29 : bonus OSINT et chronolocation (SunCalc, Bellingcat) ; rappel en images à venir.
+- 32 et 33 inversées : l'association (où la centrale est révélée) passe avant le site. Nouvelle « À vous : quel est ce lieu ? » sur le centre équestre, avec la question de Marc, en diapo à part pour garder l'image en grand.
+- 32 (site) : carte faite pour le cours, cercle de 100 km autour de Flamanville, population des communes (INSEE via le jeu « découpage administratif » d'Etalab ; îles Anglo-Normandes en ordres de grandeur ; terres Natural Earth). Calculé : environ 730 000 habitants à moins de 100 km, dont près d'un quart dans les îles ; le cercle est aux quatre cinquièmes en mer. La Hague : hypothèse de Marc, présentée comme telle.
+- 34 (temps) : question remplacée, en attendant le GIF de Marc.
+- Nouvelle « Les connaissances personnelles et les réflexes » : Cambrai, 1917.
+- Nouvelles « Ce que la végétation et la lumière rasante révèlent » (indices phytographiques et sciographiques) et « La chronologie des phénomènes » : schémas faits pour le cours.
+- 39 à 44 : images recadrées et agrandies ; les quatre images de Marc intégrées (émotion, textures, réel qui paraît faux).
+- Sources : Wikipédia, Wired, climat.be, Colwell, définitions de la forêt, nouvelles images.
+- Outils : `cours/image-intelligence/outils/images.py` fabrique les versions web à partir des originaux ; `schemas.py` fabrique les nouveaux schémas, la carte des 100 km, le profil de FAST et les chiffres de L'Isle-Adam.
+
+**Choix à confirmer par Marc**
+
+- Diapo 10 : quelle image pour l'énigme ?
+- Titre « Les connaissances personnelles et les réflexes » (Marc avait écrit « … et des réflexes ») ; « À l'est rien de nouveau » corrigé en « À l'Ouest, rien de nouveau ».
+- L'association avant le site ; le centre équestre en diapo à part.
+
+**Manque ou à valider**
+
+- Fichiers : une image d'archive de la présentation de Colin Powell (téléchargement impossible depuis l'environnement de travail), le GIF des bases russes, l'image du rappel sur la date, le PDF de cours.
+- Le profil de référence de FAST, toujours lu sur l'image ; les affiches générées de la diapo « Le manque d'émotion » ; la source de l'image de Cambrai ; le lien d'Angkor avec l'IGN.
+
 ## 2026-10-29 — « Image Intelligence », premier jet (V0)
 
 **Demande de Marc**
