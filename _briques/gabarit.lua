@@ -1188,7 +1188,112 @@ local function brique_couleur3d(div)
   return div
 end
 
+----------------------------------------------------------------------------
+-- Briques d'application (cours « Image Application ») : leur comportement est dans
+-- _briques/briques-application.html
+----------------------------------------------------------------------------
+
+-- Le fichier de l'atelier n'est embarqué qu'une fois par support ; les autres briques le retrouvent par son nom.
+local atelier_embarque = {}
+local function donnees_atelier(chemin)
+  if atelier_embarque[chemin] then return "" end
+  local json = lire_fichier(chemin)
+  if not json then return '<p class="hx-manque">Données introuvables : ' .. echappe(chemin) .. '</p>' end
+  atelier_embarque[chemin] = true
+  local sur = json:gsub("</", "<\\/")
+  return '<script type="application/json" class="hx-donnees" data-source="' .. echappe(chemin) .. '">' .. sur .. '</script>'
+end
+
+-- ::: {.vote question="Peut-on le faire depuis le ciel ?"}
+--   - [vrai] Énoncé : explication.        ([faux] ; [?] pour un sondage, sans bonne réponse)
+-- :::
+local function brique_vote(div)
+  local items, garde = {}, pandoc.List()
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "BulletList" then
+      for _, item in ipairs(bloc.content) do
+        local t_ = sans_insecables(pandoc.utils.stringify(item))
+        local verdict, reste = t_:match("^%s*%[([^%]]*)%]%s*(.*)$")
+        verdict = (verdict or "?"):lower()
+        reste = reste or t_
+        local nature = "sondage"
+        if verdict == "vrai" or verdict == "true" then nature = "vrai" end
+        if verdict == "faux" or verdict == "false" then nature = "faux" end
+        local enonce, expl = reste:match("^(.-)%s+:%s+(.*)$")
+        if not enonce then enonce, expl = reste, "" end
+        table.insert(items, '{"n":"' .. nature .. '","t":' .. json_texte(enonce) .. ',"e":' .. json_texte(expl) .. '}')
+      end
+    else garde:insert(bloc) end
+  end
+  local question = attribut(div, "question", "")
+  if not EN_HTML then return div end
+  garde:insert(pandoc.RawBlock("html", '<div class="vote-zone" data-question="' .. echappe(question)
+    .. '"><script type="application/json" class="vote-donnees">[' .. table.concat(items, ","):gsub("</", "<\\/") .. ']</script></div>'))
+  div.content = garde
+  return div
+end
+
+-- ::: {.compromis}
+--   ### Suivre chaque jour un phénomène | temporelle >= 2      (un objectif et sa condition ; plusieurs : « , »)
+--   - Météosat | -3, 3, 0, 0 | une note        (spatiale, temporelle, spectrale, radiométrique)
+-- :::
+local function brique_compromis(div)
+  local objectifs, capteurs, garde = {}, {}, pandoc.List()
+  for _, bloc in ipairs(div.content) do
+    if bloc.t == "Header" and bloc.level == 3 then
+      local t_ = sans_insecables(pandoc.utils.stringify(bloc.content))
+      local nom, cond = t_:match("^(.-)%s*|%s*(.*)$")
+      if not nom then nom, cond = t_, "" end
+      table.insert(objectifs, '{"t":' .. json_texte(nom) .. ',"c":' .. json_texte(cond) .. '}')
+    elseif bloc.t == "BulletList" then
+      for _, item in ipairs(bloc.content) do
+        local t_ = sans_insecables(pandoc.utils.stringify(item))
+        local morceaux = {}
+        for m in (t_ .. "|"):gmatch("(.-)|") do table.insert(morceaux, (m:gsub("^%s+", ""):gsub("%s+$", ""))) end
+        local v = {}
+        for n in (morceaux[2] or ""):gmatch("%-?%d+") do table.insert(v, n) end
+        table.insert(capteurs, '{"t":' .. json_texte(morceaux[1] or "") .. ',"v":[' .. table.concat(v, ",")
+          .. '],"e":' .. json_texte(morceaux[3] or "") .. '}')
+      end
+    else garde:insert(bloc) end
+  end
+  if not EN_HTML then return div end
+  garde:insert(1, pandoc.RawBlock("html", '<div class="compromis-zone"><script type="application/json" class="compromis-donnees">{"objectifs":['
+    .. table.concat(objectifs, ","):gsub("</", "<\\/") .. '],"capteurs":[' .. table.concat(capteurs, ","):gsub("</", "<\\/") .. ']}</script></div>'))
+  div.content = garde
+  return div
+end
+
+-- ::: {.atelier-commandes donnees="donnees/atelier.json" envoi="https://script.google.com/…"}
+-- Le jeu sérieux : hexagones, personnages, correction, fiche du cas réel, envoi vers une feuille de calcul.
+local function brique_atelier_commandes(div)
+  local chemin = attribut(div, "donnees", "donnees/atelier.json")
+  local envoi = attribut(div, "envoi", "")
+  if not EN_HTML then return div end
+  div.content:insert(1, pandoc.RawBlock("html", donnees_atelier(chemin) .. '<div class="hx-atelier" data-source="'
+    .. echappe(chemin) .. '" data-envoi="' .. echappe(envoi) .. '"></div>'))
+  return div
+end
+
+-- ::: {.chaine donnees="donnees/atelier.json" commande="lidar"} :::  la chaîne de référence d'une commande
+-- ::: {.pepites donnees="donnees/atelier.json"} :::                  les pépites des personnages
+-- ::: {.envoi donnees="donnees/atelier.json"} :::                    renvoyer tout ce qui a été fait
+local function brique_hx(div, classe)
+  local chemin = attribut(div, "donnees", "donnees/atelier.json")
+  local commande = attribut(div, "commande", "")
+  if not EN_HTML then return div end
+  div.content:insert(1, pandoc.RawBlock("html", donnees_atelier(chemin) .. '<div class="' .. classe .. '" data-source="'
+    .. echappe(chemin) .. '" data-commande="' .. echappe(commande) .. '"></div>'))
+  return div
+end
+
 local function briques(div)
+  if div.classes:includes("vote") then return brique_vote(div) end
+  if div.classes:includes("compromis") then return brique_compromis(div) end
+  if div.classes:includes("atelier-commandes") then return brique_atelier_commandes(div) end
+  if div.classes:includes("chaine") then return brique_hx(div, "hx-chaine") end
+  if div.classes:includes("pepites") then return brique_hx(div, "hx-pepites") end
+  if div.classes:includes("envoi") then return brique_hx(div, "hx-envoi") end
   if div.classes:includes("question") then return brique_question(div) end
   if div.classes:includes("reponse") then return brique_reponse(div) end
   if div.classes:includes("qcm") then return brique_qcm(div) end

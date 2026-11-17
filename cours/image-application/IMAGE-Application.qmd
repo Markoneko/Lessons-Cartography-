@@ -1,0 +1,799 @@
+---
+title: "Image Application"
+subtitle: "Télédétection : de la commande au résultat"
+author: "Marc Poupée · Géodata Paris"
+date: "2026-11-17"
+date-format: "D MMMM YYYY"
+footer: "Image Application"
+title-slide-attributes:
+  data-state: plein
+  data-background-image: images/schemas/couverture.svg
+  data-background-size: auto 92%
+  data-background-position: 100% 50%
+---
+
+::: {.fiche n="0.1" etat="a-revoir"}
+Intention : Couverture, sur une mosaïque d'hexagones aux couleurs des familles de l'atelier : le jeu se devine dès le titre. Image de Marc possible à la place.
+Expérience : aucune
+Demande :
+:::
+
+## Comment lire ce support
+
+::: {.fiche n="0.2" etat="a-revoir"}
+Intention : Le mode d'emploi : un atelier de deux heures, par groupes de trois (60 étudiants, 20 groupes) ; ce que l'on fait sur son écran ; ce qui est gardé, ce qui est envoyé. Déclaration de transparence IA.
+Expérience : aucune
+Demande :
+:::
+
+Ce cours est un **atelier**. Vous travaillez par **groupes de trois**, sur un seul écran par groupe.
+
+- Vous **votez**, vous **réglez**, vous **construisez** avant de lire la réponse.
+- Au cœur du cours, une **commande** à honorer : vous assemblez la chaîne de traitement qui y répond, en interrogeant quatre spécialistes.
+- Ce que vous faites reste dans votre navigateur. À la fin de l'atelier, vous **envoyez** votre travail à la feuille du cours : c'est la trace commune de la séance.
+- Le **pictogramme** devant chaque titre donne le niveau : **socle**, **appui**, **veille**. Une diapo sans pictogramme est un exemple ou une activité.
+
+::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
+## Carte du cours
+
+::: {.fiche n="0.3" etat="a-revoir"}
+Intention : Les sept parties et la légende S / A / V. Durées indicatives : vote 10 min ; voir 15 min ; faire 15 min ; atelier 45 min ; solutions en support ; expérience 10 min ; projection 5 min.
+Expérience : liens vers chaque diapo
+Demande :
+:::
+
+::: {.carte-du-cours}
+:::
+
+## Que peut-on voir d'en haut ? {.intercalaire}
+
+::: {.fiche n="1.0" etat="a-revoir"}
+Intention : L'accroche, environ 10 minutes. Le vote remplace la liste des étudiants de la première version (décision de Marc).
+Expérience : aucune
+Demande :
+:::
+
+Vous savez lire le visible. Aujourd'hui, on en sort.
+
+## Possible, ou pas ?
+
+::: {.fiche n="1.1" etat="a-revoir"}
+Intention : Le vote d'accroche : des usages vrais, dont certains déjà vus en photo-interprétation (les bases russes, Angkor : l'expérience commence à se constituer) et d'autres inattendus (le vent sur Mars, la gravité des nappes), et des faux. Aucun des huit cas de l'atelier n'y figure, pour ne pas le déflorer. Chaque étudiant vote sur son écran ; Marc peut faire voter à main levée sur la projection. Explications vérifiées pour l'essentiel ; le vent martien est à sourcer.
+Expérience : voter oui / non / pas sûr, puis lire l'explication (brique « vote ») ; bilan final
+Demande :
+:::
+
+::: {.vote question="Peut-on le faire depuis le ciel ?"}
+- [vrai] Estimer la vitesse du vent à la surface de Mars : En suivant, d'une image à l'autre, le déplacement des tourbillons de poussière et des nuages photographiés depuis l'orbite.
+- [faux] Lire la plaque d'immatriculation d'une voiture sur une image satellite du commerce : Les meilleurs satellites commerciaux ont des pixels d'environ 30 cm ; une plaque demande quelques centimètres.
+- [vrai] Voir une inondation à travers les nuages : Le radar envoie sa propre onde et traverse les nuages ; l'eau calme y apparaît sombre.
+- [vrai] Peser l'eau des nappes souterraines : Les satellites GRACE mesurent d'infimes variations de la gravité, qui suivent la masse d'eau stockée dans le sol.
+- [vrai] Repérer les bateaux de pêche qui coupent leur balise : Le radar voit les navires, balise ou pas ; on croise ensuite avec les positions qu'ils déclarent.
+- [faux] Voir à travers le toit d'un hangar : Ni l'optique ni le radar ne traversent un toit ; seule l'activité autour (véhicules, chaleur, ombres) trahit ce qu'il abrite.
+- [vrai] Suivre l'activité d'un pays la nuit : Les lumières nocturnes suivent l'éclairage, l'électrification, et même les coupures de courant.
+- [vrai] Voir l'arrêt des usines chinoises au début du Covid : Le dioxyde d'azote, gaz des moteurs et des usines, a fortement baissé au-dessus de la Chine en février 2020, mesuré par satellite.
+- [faux] Filmer la même rue toute la journée depuis un satellite en orbite basse : Un satellite en orbite basse survole un lieu en quelques minutes ; on n'en tire que de courts films. Un satellite géostationnaire voit toute la journée, mais en pixels kilométriques.
+- [vrai] Repérer la montée en puissance de bases militaires : Une série d'images montre les véhicules et les camps qui s'ajoutent. Vous l'avez fait en photo-interprétation.
+- [vrai] Révéler des villes cachées sous la forêt : Le LiDAR atteint le sol entre les feuilles : les villes khmères autour d'Angkor, déjà vues.
+- [vrai] Suivre les bancs de sargasses qui arrivent sur les Antilles : Les algues flottantes ont une signature nette dans le proche infrarouge ; on les suit presque chaque jour.
+- [faux] Mesurer directement la température de l'eau à 100 m de profondeur : Le thermique ne voit que la pellicule de surface ; en profondeur, il faut des bouées et des modèles.
+- [vrai] Mesurer la biomasse des forêts de toute la planète : C'est l'objectif de la mission BIOMASS de l'ESA, un radar à grande longueur d'onde lancé en 2025.
+:::
+
+## Sortir du visible {.socle}
+
+::: {.fiche n="1.2" etat="a-revoir"}
+Intention : Le pont avec la photo-interprétation : l'œil ne voit qu'une étroite bande du spectre ; la télédétection exploite trois origines du signal (ce que la surface renvoie du soleil, ce qu'elle émet, ce qu'un instrument envoie et reçoit). Ce sont les hexagones « Signal » de l'atelier. Schéma fait pour le cours.
+Expérience : schéma du spectre ; QCM
+Demande :
+:::
+
+::: {.schema fichier="images/schemas/spectre.svg" hauteur="250"}
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+Chaque signal dit autre chose : la **couleur**, la **vie** des plantes, l'**eau**, la **chaleur**, la **rugosité**, la **hauteur**, le **déplacement**. Choisir un signal, c'est choisir ce que l'on pourra voir.
+:::
+::: {.column width="50%"}
+::: {.qcm .serre}
+Voir une inondation sous un ciel couvert : quel signal ?
+
+- [ ] Le visible
+    - Les nuages l'arrêtent.
+- [ ] L'infrarouge thermique
+    - Les nuages l'arrêtent aussi.
+- [x] Le radar
+    - Oui : l'instrument envoie sa propre onde, qui traverse les nuages.
+:::
+:::
+::::
+
+## Qu'est-ce que voir ? {.intercalaire}
+
+::: {.fiche n="2.0" etat="a-revoir"}
+Intention : Environ 15 minutes. Les facteurs qui limitent la donnée source, puis le traitement.
+Expérience : aucune
+Demande :
+:::
+
+Une image n'est pas une photo : c'est une mesure, avec ses limites.
+
+## Les quatre résolutions {.socle}
+
+::: {.fiche n="2.1" etat="a-revoir"}
+Intention : Les quatre résolutions, définies par l'étudiant lui-même en rangeant huit énoncés : une définition et un exemple pour chacune.
+Expérience : classer huit énoncés en quatre cases, au glisser-déposer
+Demande :
+:::
+
+Rangez chaque énoncé sous la résolution qu'il décrit.
+
+::: {.classer}
+### Spatiale
+
+- La taille du plus petit détail visible
+- Des pixels de 10 m
+
+### Temporelle
+
+- Le temps entre deux images du même lieu
+- Une image tous les cinq jours
+
+### Spectrale
+
+- Le nombre et la largeur des bandes
+- Treize bandes, du visible à l'infrarouge moyen
+
+### Radiométrique
+
+- La finesse des nuances d'intensité
+- Des valeurs codées sur 12 bits, soit 4 096 niveaux
+:::
+
+## Le jeu des compromis {.socle}
+
+::: {.fiche n="2.2" etat="a-revoir"}
+Intention : Proposition de Marc : quatre curseurs centrés sur 0 et un objectif. Monter un curseur en fait baisser un autre, et le cours dit pourquoi (fauchée, lumière reçue, volume de données). Le profil obtenu est rapproché d'un capteur réel. Le dernier objectif est impossible : un seul capteur ne peut pas tout avoir. Profils des capteurs indicatifs, relatifs à Sentinel-2 (0 partout), à valider par Marc.
+Expérience : choisir un objectif, régler les quatre curseurs (brique « compromis »)
+Demande :
+:::
+
+::: {.compromis}
+### Suivre chaque jour l'évolution d'un phénomène | temporelle >= 2
+### Compter les voitures sur un parking | spatiale >= 3
+### Reconnaître des minéraux à leur signature | spectrale >= 2
+### Distinguer d'infimes nuances dans la couleur de l'eau | radiometrique >= 1
+### Tout voir, tout le temps, dans toutes les couleurs | spatiale >= 2, temporelle >= 2, spectrale >= 2
+
+- Météosat (géostationnaire) | -3, 3, 0, 0 | une image toutes les 10 à 15 minutes, des pixels de l'ordre du kilomètre
+- Sentinel-3 | -2, 1, 0, 1 | presque chaque jour, des pixels de 300 m, une grande sensibilité pour la couleur de l'eau
+- Sentinel-2 | 0, 0, 0, 0 | 10 à 60 m, tous les cinq jours environ, 13 bandes
+- Landsat 8 et 9 | 0, -1, 0, 1 | 30 m, tous les huit jours à deux satellites, une sensibilité fine
+- PlanetScope (constellation) | 1, 3, -2, -2 | 3 m, chaque jour, 4 à 8 bandes, une sensibilité moindre
+- Pléiades Neo | 3, -1, -1, -1 | 30 cm, sur commande, 6 bandes
+- PRISMA, EnMAP (hyperspectral) | -1, -2, 3, 0 | 30 m, sur commande, plus de 200 bandes
+:::
+
+## Pourquoi on ne peut pas tout avoir {.socle}
+
+::: {.fiche n="2.3" etat="a-revoir"}
+Intention : Les trois raisons physiques derrière les compromis : la lumière reçue par pixel et par bande, la géométrie de l'orbite (fauchée et revisite), le volume de données à descendre au sol. Puis la parade : combiner les capteurs.
+Expérience : question, puis réponse
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="55%"}
+Trois limites, et elles se tiennent entre elles :
+
+- **La lumière.** Un pixel plus petit, une bande plus étroite reçoivent moins de lumière : le signal se noie dans le bruit.
+- **L'orbite.** Voir fin, c'est voir étroit : le satellite met plus longtemps à revenir au même endroit.
+- **Les données.** Chaque pixel, chaque bande, chaque passage s'enregistre puis descend au sol : le débit a une limite.
+:::
+::: {.column width="45%"}
+::: {.question etiquette="À vous"}
+Alors, quand un client veut voir fin, souvent, et dans beaucoup de bandes, que fait-on ?
+:::
+
+::: {.reponse}
+On **combine** : une constellation pour revenir plus souvent ; une image fine en noir et blanc fusionnée avec une image en couleurs plus grossière ; un capteur grossier pour chercher, un fin pour regarder. Et l'on choisit d'après la **commande** : quelle résolution compte vraiment ?
+:::
+:::
+::::
+
+## Ce qui limite, après le capteur {.appui}
+
+::: {.fiche n="2.4" etat="a-revoir"}
+Intention : La question de Marc : « Quels sont les facteurs limitant la donnée source ? Et le traitement ? » Trois familles de limites : la scène, le capteur, le traitement.
+Expérience : classer neuf limites en trois cases, au glisser-déposer
+Demande :
+:::
+
+D'où vient chaque limite ?
+
+::: {.classer}
+### La scène
+
+- Les nuages
+- Le relief et ses ombres
+- La saison
+
+### Le capteur
+
+- La taille du pixel
+- L'heure de passage, imposée par l'orbite
+- Le bruit de l'instrument
+
+### Le traitement
+
+- Deux dates mal superposées
+- Trop peu d'exemples pour l'apprentissage
+- Un seuil mal choisi
+:::
+
+[Une erreur de traitement ressemble souvent à un vrai phénomène : c'est la plus dangereuse.]{.a-retenir style="font-size: 24px"}
+
+## Qu'en faire ? {.intercalaire}
+
+::: {.fiche n="3.0" etat="a-revoir"}
+Intention : Environ 15 minutes. Relier les verbes de la commande aux étapes du traitement : la grammaire de l'atelier.
+Expérience : aucune
+Demande :
+:::
+
+Un client ne demande jamais une image. Il demande une réponse.
+
+## Six verbes {.socle}
+
+::: {.fiche n="3.1" etat="a-revoir"}
+Intention : Les verbes de la commande, rangés par niveau d'inférence (contradiction validée par Marc) : mesurer, détecter, classer, suivre, estimer, modéliser. Cartographier n'est pas un verbe de plus, c'est la forme de presque tous les résultats.
+Expérience : remettre les six verbes en ordre, du plus direct au plus déduit ; réponse
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="45%"}
+Remettez les verbes en ordre, de la mesure la plus **directe** à la réponse la plus **déduite**.
+
+::: {.ordre}
+1. Mesurer
+2. Détecter
+3. Classer
+4. Suivre
+5. Estimer
+6. Modéliser
+:::
+
+[Mesurer une grandeur ; détecter un objet ; classer chaque lieu ; suivre ce qui change ; estimer l'invisible ; modéliser ce qui va se passer.]{.legende}
+:::
+::: {.column width="55%"}
+::: {.question}
+Et « cartographier » ? Pourquoi n'est-il pas dans la liste ?
+:::
+
+::: {.reponse}
+Parce que presque tous les résultats finissent en carte. Cartographier n'est pas un verbe de plus : c'est la **forme** du résultat. Dans l'atelier, la carte est un hexagone « Résultat ».
+
+Plus on monte dans la liste, plus la chaîne s'allonge, et plus il faut de **données extérieures** à l'image : un terrain, un modèle, un registre.
+:::
+:::
+::::
+
+## Une chaîne, des étapes {.socle}
+
+::: {.fiche n="3.2" etat="a-revoir"}
+Intention : La grammaire des hexagones : la chaîne type, de la commande au résultat ; Acquérir et Dériver peuvent manquer, Valider jamais. Puis ranger des opérations dans leur étape : la granularité de base que les étudiants retrouveront dans l'atelier.
+Expérience : schéma ; classer huit opérations en quatre étapes
+Demande :
+:::
+
+::: {.schema fichier="images/schemas/chaine.svg" hauteur="140"}
+:::
+
+::: {.classer}
+### Préparer
+
+- Corriger l'atmosphère
+- Masquer les nuages
+
+### Dériver
+
+- Calculer un indice de végétation
+- Soustraire deux dates
+
+### Analyser
+
+- Classer les pixels d'après des exemples
+- Croiser avec le cadastre
+
+### Valider
+
+- Comparer à des relevés de terrain
+- Faire contrôler les détections par un expert
+:::
+
+## Lire une chaîne : des manchots vus de l'espace {.appui}
+
+::: {.fiche n="3.3" etat="a-revoir"}
+Intention : Un cas résolu, hors de l'atelier, pour s'exercer à lire une chaîne avant d'en construire une : en 2020, le British Antarctic Survey annonce onze nouvelles colonies de manchots empereurs, repérées sur des images Sentinel-2 grâce aux taches de guano sur la glace. Le détail de la validation (images très haute résolution) est à vérifier.
+Expérience : remettre la chaîne en ordre
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="40%"}
+En 2020, une équipe britannique annonce **onze nouvelles colonies** de manchots empereurs en Antarctique. Personne n'y est allé : les colonies ont été trouvées sur des images satellite.
+
+[Indice : le guano tache la glace en brun.]{.legende}
+:::
+::: {.column width="60%"}
+Remettez la chaîne en ordre.
+
+::: {.ordre}
+1. Détecter des colonies
+2. Le visible et le proche infrarouge
+3. Sentinel-2, toute la côte
+4. Écarter les nuages
+5. Repérer les taches brunes
+6. Vérifier sur une image très fine
+7. La carte des colonies
+:::
+:::
+::::
+
+## L'atelier des commandes {.intercalaire}
+
+::: {.fiche n="4.0" etat="a-revoir"}
+Intention : Environ 45 minutes : 20 min de construction, 5 min de correction, 15 min de cas réel, 5 min d'envoi.
+Expérience : aucune
+Demande :
+:::
+
+À vous d'honorer une commande.
+
+## Les règles du jeu
+
+::: {.fiche n="4.1" etat="a-revoir"}
+Intention : Les règles : un groupe, une commande (numéro de groupe → commande, huit commandes pour vingt groupes, donc deux ou trois groupes par commande, comparables entre eux) ; la grammaire (chaque hexagone touche une étape antérieure ; le verbe ouvre la chaîne ; Valider obligatoire) ; les quatre temps et leur durée.
+Expérience : aucune
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+1. **Votre commande.** Votre numéro de groupe vous attribue une commande ; d'autres groupes ont la même.
+2. **La chaîne, 20 min.** Posez les hexagones, du verbe au résultat. Interrogez les spécialistes.
+3. **La correction, 5 min.** Validez : bons et mauvais choix s'allument. Corrigez.
+4. **Le cas réel, 15 min.** Trouvez un cas réel proche, remplissez sa fiche.
+5. **L'envoi, 5 min.** Vers la feuille du cours.
+:::
+::: {.column width="48%"}
+**La grammaire**
+
+- Chaque hexagone doit **toucher** un hexagone d'une étape antérieure.
+- Le **verbe** ouvre la chaîne.
+- Plusieurs branches peuvent se rejoindre : deux données, par exemple.
+- *Acquérir* et *Dériver* peuvent manquer. *Valider*, jamais.
+
+::: {.schema fichier="images/schemas/chaine.svg" hauteur="70"}
+:::
+:::
+::::
+
+## Quatre spécialistes à interroger
+
+::: {.fiche n="4.2" etat="a-revoir"}
+Intention : Les quatre personnages, précâblés pour chaque commande (dialogues scénarisés, sans IA) : le signal, les données, les traitements, et la contradictrice qui remplace le débat de la première version (décision de Marc). Leurs réponses débloquent des hexagones fins (la granularité à deux niveaux) et contiennent des pépites, reprises en partie 6. Prénoms à valider par Marc.
+Expérience : aucune
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="25%"}
+### Héloïse
+**Le signal.** Ce que chaque capteur reçoit vraiment, et ce qu'il ne verra jamais.
+:::
+::: {.column width="25%"}
+### Bastien
+**Les données.** Les catalogues, les résolutions, les coûts, les délais. Ce qui existe déjà.
+:::
+::: {.column width="25%"}
+### Inès
+**Les traitements.** Comment une image devient un résultat, et comment ce résultat se trompe.
+:::
+::: {.column width="25%"}
+### Rose
+**La contradictrice.** Juriste, ancienne journaliste. Votre résultat tiendrait-il face à quelqu'un qui le conteste ?
+:::
+::::
+
+[Leurs réponses débloquent des hexagones plus fins. Certaines sont des **pépites** : notez-les, on y revient à la fin.]{.a-retenir style="font-size: 24px"}
+
+## L'atelier {.atelier-plein}
+
+::: {.fiche n="4.3" etat="a-revoir"}
+Intention : Le jeu sérieux : la commande toujours visible ; la réserve d'hexagones par famille (51 de base, 24 fins débloqués par les personnages) ; le plateau ; les quatre personnages ; la correction dynamique (indispensables en vert, acceptables en bleu, pièges en rouge, hors sujet en gris, hexagones isolés signalés, ce qui manque listé) ; la chaîne de référence et le lien vers la solution ; la fiche du cas réel ; l'envoi vers la feuille Google. Contenu dans donnees/atelier.json. L'adresse d'envoi est à régler (voir outils/feuille-google.gs).
+Expérience : atelier complet (brique « atelier-commandes »)
+Demande :
+:::
+
+::: {.atelier-commandes donnees="donnees/atelier.json" envoi=""}
+:::
+
+## Huit commandes, huit solutions {.intercalaire}
+
+::: {.fiche n="5.0" etat="a-revoir"}
+Intention : Les solutions des huit cas, avec un visuel réel : elles servent de support de cours. Montrées en fin d'atelier, ou laissées à la lecture.
+Expérience : aucune
+Demande :
+:::
+
+Chaque chaîne de référence, et le cas réel qui l'a inspirée.
+
+## Le volume de bois d'un massif {#sol-lidar .appui}
+
+::: {.fiche n="5.1" etat="a-revoir"}
+Intention : Solution de la commande LiDAR. Cas réel : la chaîne LiDAR de l'ONF, calée sur des placettes mesurées sur le terrain (journée CRIG Occitanie, 16 novembre 2023) ; le modèle numérique de hauteur du LiDAR HD de l'IGN. Visuel réel à fournir par Marc (un MNH du LiDAR HD, ou une carte de volume de l'ONF).
+Expérience : chaîne de référence (brique « chaine »)
+Demande :
+:::
+
+**Gestionnaire forestier.** Quel volume de bois sur pied, parcelle par parcelle ?
+
+::: {.chaine commande="lidar"}
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+- Le LiDAR mesure une **hauteur** ; le volume, on l'**estime**.
+- Sans **placettes de terrain**, aucun modèle ne passe de l'une à l'autre.
+- Piège : Sentinel-2 voit le dessus de la canopée, pas sa hauteur.
+
+[Cas réel : la chaîne LiDAR de l'ONF, calée sur des placettes de terrain ; le LiDAR HD de l'IGN.]{.legende}
+:::
+::: {.column width="44%"}
+::: {.visuel-a-fournir}
+Visuel à fournir : un modèle numérique de hauteur du LiDAR HD sur un massif, ou une carte de volume.
+:::
+:::
+::::
+
+## Les piscines non déclarées {#sol-piscines .appui}
+
+::: {.fiche n="5.2" etat="a-revoir"}
+Intention : Solution de la commande optique très haute résolution. Cas réel : le « Foncier innovant » de la DGFiP (avec Capgemini et Google) : expérimenté dans neuf départements, 20 000 piscines détectées en 2022, généralisé en 2023, 140 000 piscines au total ; étendu aux autres constructions. Visuel réel à fournir (une orthophoto avec des piscines, Géoportail).
+Expérience : chaîne de référence
+Demande :
+:::
+
+**Administration fiscale.** Quelles piscines n'ont pas été déclarées ?
+
+::: {.chaine commande="piscines"}
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+- L'image ne dit pas ce qui est **déclaré** : c'est le **croisement** avec le cadastre qui crée l'information.
+- Le réseau de neurones apprend sur des piscines **étiquetées à la main**.
+- La détection est une présomption ; un **agent** contrôle.
+
+[Cas réel : le « Foncier innovant » de la DGFiP, généralisé en 2023 ; 140 000 piscines détectées.]{.legende}
+:::
+::: {.column width="44%"}
+::: {.visuel-a-fournir}
+Visuel à fournir : une orthophoto de lotissement avec des piscines (Géoportail, IGN).
+:::
+:::
+::::
+
+## Après le grand feu {#sol-feux .appui}
+
+::: {.fiche n="5.3" etat="a-revoir"}
+Intention : Solution de la commande SWIR. Cas réel à choisir et à vérifier : une cartographie rapide Copernicus EMS ou EFFIS d'un grand feu. Visuel réel à fournir (avant / après en infrarouge, ou une carte de sévérité).
+Expérience : chaîne de référence
+Demande :
+:::
+
+**Préfecture et assureurs.** Quelle surface a brûlé, et avec quelle sévérité ?
+
+::: {.chaine commande="feux"}
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+- Le **proche infrarouge** baisse, l'**infrarouge moyen** monte : l'indice de brûlis joue sur cet écart.
+- C'est la **différence entre deux dates** qui donne la sévérité.
+- Les **seuils** se calent sur le terrain.
+
+[Cas réel à préciser : une cartographie rapide de Copernicus EMS ou d'EFFIS.]{.legende}
+:::
+::: {.column width="44%"}
+::: {.visuel-a-fournir}
+Visuel à fournir : une image Sentinel-2 avant et après un grand feu, ou une carte de sévérité.
+:::
+:::
+::::
+
+## Les îlots de chaleur {#sol-chaleur .appui}
+
+::: {.fiche n="5.4" etat="a-revoir"}
+Intention : Solution de la commande thermique, la commande piège : la température de surface n'est pas celle de l'air ; le satellite passe de jour ; à 100 m, on voit des quartiers, pas des rues. Cas réels : la carte de l'Atelier parisien d'urbanisme (températures de l'air, nuit du 25 au 26 juillet 2019) ; l'étude de la canicule de 2003 à Paris (images NOAA-AVHRR, Santé publique France) ; le LNE juge la thermographie satellite insuffisante pour les îlots de chaleur. Visuel réel à fournir.
+Expérience : chaîne de référence
+Demande :
+:::
+
+**Le maire.** Où sont les îlots de chaleur, rue par rue ?
+
+::: {.chaine commande="chaleur"}
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+- Le satellite mesure la **surface**, pas l'air que l'on respire.
+- Il passe **de jour** ; l'îlot qui pèse sur la santé est **nocturne**.
+- À 100 m, on voit des **quartiers**, pas des rues : il faut des mesures au sol, ou un modèle.
+
+[Cas réels : la carte nocturne de l'Atelier parisien d'urbanisme, juillet 2019 ; Santé publique France, canicule de 2003.]{.legende}
+:::
+::: {.column width="44%"}
+::: {.visuel-a-fournir}
+Visuel à fournir : une température de surface Landsat sur Paris en été, à côté d'une carte des températures de l'air la nuit.
+:::
+:::
+::::
+
+## Les icebergs sur la route {#sol-icebergs .appui}
+
+::: {.fiche n="5.5" etat="a-revoir"}
+Intention : Solution de la commande radar. Cas réel : CLS, filiale du CNES, fournisseur officiel des données de glace du Vendée Globe depuis 2008 ; radar Sentinel-1 en large fauchée (400 km, 50 m) et altimétrie ; zone d'exclusion Antarctique ; en 2020, une vingtaine d'icebergs douteux près de Crozet et Kerguelen font remonter la zone de 5° ; en janvier 2025, des icebergs confirmés hors de la zone. Visuel réel à fournir (CNES, ESA).
+Expérience : chaîne de référence
+Demande :
+:::
+
+**Direction de course.** Où sont les icebergs, et où seront-ils ?
+
+::: {.chaine commande="icebergs"}
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+- Le radar voit **à travers les nuages**, de jour comme de nuit.
+- On préfère **couvrir grand** (400 km) plutôt que voir fin (50 m).
+- Les **altimètres**, faits pour la hauteur de la mer, repèrent aussi les gros icebergs.
+
+[Cas réel : CLS (filiale du CNES) et la zone d'exclusion Antarctique du Vendée Globe.]{.legende}
+:::
+::: {.column width="44%"}
+::: {.visuel-a-fournir}
+Visuel à fournir : une image Sentinel-1 avec des icebergs détectés, ou la zone d'exclusion Antarctique.
+:::
+:::
+::::
+
+## Les maisons qui se fissurent {#sol-argiles .appui}
+
+::: {.fiche n="5.6" etat="a-revoir"}
+Intention : Solution de la commande interférométrie. Cas réel : le service européen EGMS (Copernicus), mouvements du sol au millimètre d'après Sentinel-1, avec une série temporelle par point, relative à un point de référence. Un projet assurantiel sur les argiles reste à choisir et à vérifier. Visuel réel à fournir (une vue de l'explorateur EGMS).
+Expérience : chaîne de référence
+Demande :
+:::
+
+**Assureur.** Les maisons fissurées bougent-elles à cause des argiles ?
+
+::: {.chaine commande="argiles"}
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+- La **phase** radar mesure des déplacements de quelques millimètres.
+- Le service **EGMS** a déjà fait la mesure : cherchez le produit avant de le fabriquer.
+- Les argiles ont un **calendrier** : gonflement l'hiver, retrait l'été.
+
+[Cas réel : le service européen EGMS (Copernicus), d'après Sentinel-1.]{.legende}
+:::
+::: {.column width="44%"}
+::: {.visuel-a-fournir}
+Visuel à fournir : une vue de l'explorateur EGMS sur un secteur argileux, avec une série de déplacement.
+:::
+:::
+::::
+
+## Les panaches de méthane {#sol-methane .appui}
+
+::: {.fiche n="5.7" etat="a-revoir"}
+Intention : Solution de la commande atmosphère. Cas réel : MARS, le système d'alerte du PNUE (IMEO) : Sentinel-5P pour détecter les très gros panaches, des satellites plus fins (PRISMA, Sentinel-2) pour attribuer la source ; notification aux gouvernements et aux entreprises ; données publiques 45 à 75 jours après la détection. Visuel réel à fournir.
+Expérience : chaîne de référence
+Demande :
+:::
+
+**ONG et journaliste.** Quelles installations relâchent d'énormes panaches de méthane ?
+
+::: {.chaine commande="methane"}
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+- On voit un gaz invisible à **ce qu'il absorbe**.
+- Un capteur **grossier** pour chercher, un capteur **fin** pour désigner.
+- Sans **le vent**, pas de débit.
+
+[Cas réel : MARS, le système d'alerte méthane du PNUE.]{.legende}
+:::
+::: {.column width="44%"}
+::: {.visuel-a-fournir}
+Visuel à fournir : un panache de méthane détecté par satellite au-dessus d'un site pétrolier ou gazier.
+:::
+:::
+::::
+
+## Les cultures déclarées {#sol-pac .appui}
+
+::: {.fiche n="5.8" etat="a-revoir"}
+Intention : Solution de la huitième commande, la fusion de données : le contrôle des aides de la politique agricole commune par suivi satellite (séries Sentinel-2 et Sentinel-1 confrontées aux parcelles déclarées). Cas réel à vérifier : le système de suivi des surfaces de la PAC et sa mise en œuvre en France. Visuel réel à fournir.
+Expérience : chaîne de référence
+Demande :
+:::
+
+**Organisme payeur.** Les cultures déclarées sont-elles celles qui poussent ?
+
+::: {.chaine commande="pac"}
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+- Une culture se reconnaît à son **calendrier** : la série temporelle est sa signature.
+- Le **radar** prend le relais quand les nuages bouchent le printemps.
+- L'algorithme **signale**, l'humain **décide**.
+
+[Cas réel à préciser : le suivi des surfaces de la PAC.]{.legende}
+:::
+::: {.column width="44%"}
+::: {.visuel-a-fournir}
+Visuel à fournir : les courbes d'indice de végétation de quelques cultures sur une saison, ou une carte des parcelles en désaccord.
+:::
+:::
+::::
+
+## Le plus dur : l'expérience {.intercalaire}
+
+::: {.fiche n="6.0" etat="a-revoir"}
+Intention : Environ 10 minutes. Montrer que construire ces chaînes demande de l'expérience, et ce qui permet de monter vite en compétence : la véritable correction des deux heures.
+Expérience : aucune
+Demande :
+:::
+
+Ce que les spécialistes vous ont dit, sans en avoir l'air.
+
+## Les pépites {.socle}
+
+::: {.fiche n="6.1" etat="a-revoir"}
+Intention : Les pépites des personnages, rassemblées : celles que le groupe a entendues pendant l'atelier s'allument. Ce sont les réflexes d'un professionnel ; la vraie correction de la séance.
+Expérience : liste des pépites, entendues ou non (brique « pepites »)
+Demande :
+:::
+
+::: {.pepites}
+:::
+
+## Monter vite en compétence {.appui}
+
+::: {.fiche n="6.2" etat="a-revoir"}
+Intention : Les gestes qui font gagner des années, tirés des pépites : partir de la grandeur physique ; chercher le produit existant ; lire la validation avant le résultat ; refaire une chaîne publiée ; garder un carnet de chaînes. Proposition à compléter par Marc, avec ses propres réflexes.
+Expérience : question, puis réponse
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+- **Partir de la grandeur physique.** Que mesure vraiment le capteur ? Puis seulement : que veut le client ?
+- **Chercher avant de fabriquer.** Un produit, un service, une chaîne publiée existent souvent déjà.
+- **Lire la validation avant le résultat.** Une jolie carte non validée ne prouve rien.
+- **Refaire une chaîne publiée.** Rien n'apprend plus vite que reproduire un cas réel.
+- **Garder un carnet de chaînes.** Chaque cas lu enrichit votre réserve.
+:::
+::: {.column width="50%"}
+::: {.question etiquette="À vous"}
+Laquelle de ces habitudes vous a manqué pendant l'atelier ?
+:::
+
+::: {.reponse}
+Le plus souvent : partir de la donnée que l'on connaît au lieu de la question posée, et oublier la validation. Les spécialistes l'ont dit à demi-mot ; les professionnels le font sans y penser.
+:::
+:::
+::::
+
+## Ouvrir sa veille {.veille}
+
+::: {.fiche n="6.3" etat="a-revoir"}
+Intention : Des canaux de veille sur l'observation de la Terre, pour continuer après le cours. Liste proposée, à compléter par Marc ; adresses à vérifier avant diffusion.
+Expérience : aucune
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+**Pour voir des cas, chaque semaine**
+
+- [NASA Earth Observatory](https://earthobservatory.nasa.gov) : une image, une histoire.
+- [ESA, Observing the Earth](https://www.esa.int/Applications/Observing_the_Earth) : les missions Sentinel et leurs usages.
+- [Copernicus EMS](https://emergency.copernicus.eu) : les cartes des crises, en direct.
+- [Bellingcat](https://www.bellingcat.com) : l'enquête en sources ouvertes.
+:::
+::: {.column width="50%"}
+**Pour regarder soi-même**
+
+- [Copernicus Browser](https://browser.dataspace.copernicus.eu) : toutes les images Sentinel, gratuites.
+- [Global Fishing Watch](https://globalfishingwatch.org) : la pêche vue du ciel.
+- [EGMS](https://egms.land.copernicus.eu) : les mouvements du sol en Europe.
+- [Géoportail](https://www.geoportail.gouv.fr) : les orthophotos et le LiDAR HD de l'IGN.
+:::
+::::
+
+## Un projet un peu fou
+
+::: {.fiche n="7.1" etat="a-revoir"}
+Intention : La projective, environ 5 minutes : un projet un peu fou que la télédétection rendrait possible, et « savez-vous comment y arriver ? » (oui / non / pas sûr). Puis l'envoi final, qui ajoute la projection à la trace du groupe.
+Expérience : zone d'écriture (brique « observer ») ; sondage (brique « vote ») ; envoi (brique « envoi »)
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+**Si vous deviez proposer un projet un peu fou, quel serait-il ?**
+
+::: {.observer cle="projective" invite="Avec la télédétection, je voudrais…"}
+:::
+
+::: {.vote question="Et maintenant"}
+- [?] Savez-vous comment y arriver ?
+:::
+:::
+::: {.column width="50%"}
+::: {.envoi}
+:::
+:::
+::::
+
+## Sources et crédits {.petit}
+
+::: {.fiche n="7.2" etat="a-revoir"}
+Intention : Les références des cas de l'atelier et des solutions, vérifiées en ligne le 17 novembre 2026 ; les cas marqués « à préciser » restent à sourcer. Les visuels réels, à fournir, porteront leurs crédits.
+Expérience : aucune
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+| Cas | Origine |
+|---|---|
+| LiDAR et forêt | ONF, journée CRIG Occitanie, 2023 ; IGN, MNH LiDAR HD |
+| Piscines | DGFiP, « Foncier innovant », 2022-2023 |
+| Feux | Copernicus EMS, EFFIS (à préciser) |
+| Îlots de chaleur | APUR, 2019 ; Santé publique France ; LNE |
+| Icebergs | CNES, janvier 2025 ; ESA, 2020 |
+:::
+::: {.column width="50%"}
+| Cas | Origine |
+|---|---|
+| Argiles | Copernicus, EGMS |
+| Méthane | PNUE, IMEO, MARS |
+| PAC | suivi des surfaces de la PAC (à préciser) |
+| Manchots | British Antarctic Survey, 2020 |
+| Vote | sources à préciser par usage |
+:::
+::::
+
+<!--
+V0 du 17 novembre 2026, d'après source/StrucutreEnseignementApplicationsdeTélédétection.txt
+et la discussion du même jour (décisions de Marc) :
+  - granularité à deux niveaux : hexagones de base, et hexagones fins débloqués par les personnages ;
+  - le vote vrai / faux remplace la liste de l'accroche ;
+  - correction dynamique sur la proposition des étudiants, puis les solutions des huit cas avec un visuel réel ;
+  - 60 étudiants par groupes de 3 : 20 groupes, plusieurs groupes par commande ;
+  - les cas déjà vus en photo-interprétation sont exclus des commandes, mais présents dans le vote.
+Le contenu de l'atelier (familles, hexagones, personnages, commandes, corrections) est dans donnees/atelier.json.
+L'envoi vers la feuille Google : voir outils/feuille-google.gs, puis renseigner envoi="…" sur la diapo 4.3.
+-->

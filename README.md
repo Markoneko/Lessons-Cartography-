@@ -565,6 +565,53 @@ Une énigme **Indices** sans texte après la liste n'a pas de conclusion : le bo
 :::
 ```
 
+### Les briques d'application
+
+Elles vivent dans `_briques/briques-application.html` et `_briques/briques-application.css`. Le cours `cours/image-application` en contient un exemple de chacune. Ce qui est fait est gardé dans le navigateur ; seul l'atelier peut l'envoyer, volontairement, vers une feuille de calcul.
+
+**Vote** — des énoncés un à un ; l'étudiant répond oui, non ou pas sûr, puis lit l'explication. `[vrai]` ou `[faux]` en tête de l'énoncé ; `[?]` pour un simple sondage, sans bonne réponse. Le texte après « : » est l'explication. Un bilan termine la série.
+
+```markdown
+::: {.vote question="Peut-on le faire depuis le ciel ?"}
+- [vrai] Voir une inondation à travers les nuages : Le radar traverse les nuages.
+- [faux] Lire une plaque d'immatriculation : Il faudrait des pixels de quelques centimètres.
+:::
+```
+
+**Compromis** — quatre curseurs centrés sur zéro (résolutions spatiale, temporelle, spectrale, radiométrique). Monter l'un en fait baisser un autre, et la brique dit pourquoi. Un titre `###` par objectif, suivi de sa condition après « | » (`temporelle >= 2`, plusieurs séparées par des virgules) ; un objectif impossible est reconnu comme tel. La liste donne les capteurs de référence : nom | quatre valeurs de -3 à 3 | une note. Le profil réglé est rapproché du capteur le plus proche.
+
+```markdown
+::: {.compromis}
+### Suivre chaque jour un phénomène | temporelle >= 2
+- Météosat | -3, 3, 0, 0 | une image toutes les 10 à 15 minutes
+- Sentinel-2 | 0, 0, 0, 0 | 10 à 60 m, tous les cinq jours
+:::
+```
+
+**Atelier des commandes** — le jeu sérieux : une commande, une réserve d'hexagones par famille, un plateau, quatre personnages à interroger (leurs réponses débloquent des hexagones « fins » et contiennent des pépites), la correction sur la proposition des étudiants, la fiche d'un cas réel, l'envoi. Tout le contenu est dans un fichier JSON du cours (`donnees/atelier.json`), qui se modifie sans toucher au moteur. `envoi="…"` donne l'adresse de la feuille Google qui reçoit les travaux (mise en place : `cours/image-application/outils/feuille-google.gs`) ; vide, l'envoi est remplacé par un téléchargement. La diapo prend la classe `{.atelier-plein}` pour gagner de la hauteur.
+
+```markdown
+## L'atelier {.atelier-plein}
+
+::: {.atelier-commandes donnees="donnees/atelier.json" envoi=""}
+:::
+```
+
+Les règles de l'atelier : chaque hexagone doit toucher un hexagone d'une étape antérieure, le verbe ouvre la chaîne, *Valider* n'est jamais facultatif. Dans le fichier, une entrée de correction `"ids": ["a", "b"]` se lit « a ou b ».
+
+**Chaîne de référence**, **pépites**, **envoi** — trois briques qui relisent le même fichier : la chaîne de référence d'une commande, en hexagones ; la liste des pépites, celles que le groupe a entendues étant allumées ; le panneau d'envoi, pour une diapo de fin.
+
+```markdown
+::: {.chaine commande="lidar"}
+:::
+
+::: {.pepites}
+:::
+
+::: {.envoi}
+:::
+```
+
 La **carte du cours** passe un niveau sur deux colonnes dès qu'il compte plus de 16 diapos, pour qu'il ne déborde pas de la diapo.
 
 Deux classes de mise en page : `::: {.column .centre-v width="60%"}` centre une colonne sur la hauteur ; `::: {.cote-a-cote}` place des images côte à côte, sans colonnes imbriquées (une image par paragraphe). Les images ne sont jamais déformées : une hauteur imposée et une largeur bridée par la colonne gardent le rapport hauteur-largeur.
@@ -637,6 +684,6 @@ Changer une couleur ou une police : tout est en tête de `_charte/geodata.css`.
 - Les exercices et les expériences ne sont interactifs qu'en HTML. Le PDF en montre l'énoncé et, par défaut, le corrigé.
 - Les bonus « Pour aller plus loin » ne figurent pas dans le PDF.
 - Les liens de la carte du cours ne fonctionnent pas dans le PDF.
-- Les réponses des étudiants ne sont pas enregistrées.
+- Les réponses des étudiants ne sont pas enregistrées, sauf l'envoi volontaire de l'atelier des commandes vers une feuille Google.
 - Dans la version anglaise, les images qui contiennent du texte français (profil du géoïde, zones Lambert, schéma SPOT…) ne sont pas traduites.
 - Les formules mathématiques s'affichent sans réseau, mais avec un rendu plus simple que LaTeX.

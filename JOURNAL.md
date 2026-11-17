@@ -2,6 +2,47 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-17 — Nouveau cours : « Image Application », premier jet (V0)
+
+Source : `cours/image-application/source/StrucutreEnseignementApplicationsdeTélédétection.txt`, et la discussion du jour. Deux heures pour les Ing1 de Géodata Paris, après le cours de photo-interprétation : un aperçu des applications de la télédétection, sans passage en revue de cas d'école, en pédagogie active.
+
+**Décidé par Marc**
+
+- Le débat « qui a le droit de regarder ? » disparaît comme bloc : il devient un quatrième personnage, la contradictrice.
+- Les verbes de la commande se rangent par niveau d'inférence : mesurer, détecter, classer, suivre, estimer, modéliser. Cartographier n'est pas un verbe : c'est la forme du résultat.
+- « Qu'est-ce que voir ? » : quatre curseurs centrés sur 0 et un objectif ; monter un curseur en fait baisser un autre.
+- Le vote vrai / faux sur des cas d'usage remplace la liste de l'accroche. Les cas déjà vus en photo-interprétation y figurent (l'expérience se constitue), mais pas dans les commandes.
+- Granularité à deux niveaux : des hexagones de base, et des hexagones fins débloqués par les personnages.
+- Correction dynamique sur la proposition des étudiants, puis les solutions des huit cas, avec un visuel réel, qui servent de support de cours.
+- 60 étudiants par groupes de trois : 20 groupes, plusieurs groupes par commande.
+- Personnages en dialogues scénarisés, sans IA. Trace écrite : envoi vers une feuille Google.
+
+**Réalisé**
+
+- `IMAGE-Application.qmd` : 34 diapos, sept parties (que peut-on voir d'en haut ; qu'est-ce que voir ; qu'en faire ; l'atelier ; huit solutions ; l'expérience ; la projection). Fiches `a-revoir`. Français seulement : l'anglais viendra après validation.
+- `donnees/atelier.json` : 9 familles, 75 hexagones (51 de base, 24 fins), 4 personnages, 14 pépites, 8 commandes (LiDAR, optique très haute résolution, infrarouge moyen, thermique, radar, interférométrie, atmosphère, et la fusion optique-radar de la PAC), chacune avec ses dialogues, sa correction (indispensables, acceptables, pièges) et sa chaîne de référence. Cohérence vérifiée par script : tout hexagone fin exigé par une correction est déblocable dans sa commande.
+- Six briques nouvelles (`_briques/briques-application.*`) : vote, compromis, atelier des commandes, chaîne, pépites, envoi. Documentées dans le README.
+- `outils/schemas.py` du cours : couverture en hexagones, spectre des signaux, chaîne type. `outils/feuille-google.gs` : le script de la feuille qui reçoit les envois, avec sa mise en place.
+- Vérifié : aucun débordement, aucune erreur JavaScript ; l'atelier joué de bout en bout dans un navigateur (groupe, pose, dialogue, déblocage, correction, cas réel, envoi) ; PDF de 34 pages. Les autres cours se compilent sans changement.
+
+**Vérifié en ligne**
+
+- Vendée Globe : CLS, fournisseur officiel des données de glace depuis 2008 ; Sentinel-1 en large fauchée et altimétrie ; zone d'exclusion remontée de 5° en 2020 ; icebergs confirmés hors zone en janvier 2025 (CNES, ESA).
+- Foncier innovant : neuf départements, 20 000 piscines en 2022, généralisation en 2023, 140 000 piscines.
+- ONF et LiDAR HD : chaîne calée sur placettes (CRIG Occitanie, 2023) ; MNH LiDAR HD de l'IGN.
+- EGMS : Copernicus, Sentinel-1, séries par point, mesures relatives à un point de référence.
+- MARS (PNUE) : Sentinel-5P pour détecter, PRISMA et Sentinel-2 pour attribuer ; données publiques 45 à 75 jours après.
+- Îlots de chaleur : carte nocturne de l'APUR (juillet 2019) ; canicule de 2003 (Santé publique France) ; le LNE juge la thermographie satellite insuffisante.
+
+**Manque ou à valider par Marc**
+
+- L'adresse de la feuille Google (`envoi="…"`, diapo 4.3), après déploiement du script.
+- Les huit visuels réels des solutions (emplacements marqués « Visuel à fournir »).
+- Les cas réels du feu (Copernicus EMS ou EFFIS), des argiles (projet assurantiel) et de la PAC (suivi des surfaces), à choisir et sourcer.
+- Les sources du vote, une par énoncé ; le vent martien en particulier.
+- Les profils des capteurs du jeu des compromis, indicatifs, relatifs à Sentinel-2.
+- Les prénoms des personnages ; le contenu des dialogues et des corrections (`donnees/atelier.json`), à relire en priorité.
+
 ## 2026-11-06 — « Image Intelligence », deuxième salve de retours (V2)
 
 Demande de Marc dans `cours/image-intelligence/source/Modifications2.txt` (l'ancien `Modifications.txt` devient `Modifications1.txt`). Numéros de diapo de la V1 (61 diapos) ; la V2 en compte 63. Chaque correction est reportée dans la version anglaise ; chaque fiche garde la demande entre crochets « [Retour V1 : …] ».
