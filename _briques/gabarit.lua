@@ -1206,13 +1206,28 @@ end
 
 -- ::: {.vote question="Peut-on le faire depuis le ciel ?"}
 --   - [vrai] Énoncé : explication.        ([faux] ; [?] pour un sondage, sans bonne réponse)
+--       - image : images/mon-image.jpg     (montrée avec la réponse ; facultatif)
+--       - fondu : images/autre-image.jpg   (seconde image, fondue dans la première par un curseur)
+--       - video : https://www.youtube.com/watch?v=…
+--       - legende : le descriptif et le crédit de l'image
+--       - lien : https://… (la source)
 -- :::
 local function brique_vote(div)
-  local items, garde = {}, pandoc.List()
+  local items, imgs, garde = {}, {}, pandoc.List()
   for _, bloc in ipairs(div.content) do
     if bloc.t == "BulletList" then
-      for _, item in ipairs(bloc.content) do
-        local t_ = sans_insecables(pandoc.utils.stringify(item))
+      for k, item in ipairs(bloc.content) do
+        local tete, extra = pandoc.List(), {}
+        for _, b in ipairs(item) do
+          if b.t == "BulletList" then
+            for _, sous in ipairs(b.content) do
+              local t_ = sans_insecables(pandoc.utils.stringify(sous))
+              local cle, val = t_:match("^%s*(%a+)%s*:%s*(.-)%s*$")
+              if cle then extra[cle:lower()] = val end
+            end
+          else tete:insert(b) end
+        end
+        local t_ = sans_insecables(pandoc.utils.stringify(tete))
         local verdict, reste = t_:match("^%s*%[([^%]]*)%]%s*(.*)$")
         verdict = (verdict or "?"):lower()
         reste = reste or t_
@@ -1221,14 +1236,20 @@ local function brique_vote(div)
         if verdict == "faux" or verdict == "false" then nature = "faux" end
         local enonce, expl = reste:match("^(.-)%s+:%s+(.*)$")
         if not enonce then enonce, expl = reste, "" end
-        table.insert(items, '{"n":"' .. nature .. '","t":' .. json_texte(enonce) .. ',"e":' .. json_texte(expl) .. '}')
+        table.insert(items, '{"n":"' .. nature .. '","t":' .. json_texte(enonce) .. ',"e":' .. json_texte(expl)
+          .. ',"video":' .. json_texte(extra.video or "") .. ',"legende":' .. json_texte(extra.legende or "")
+          .. ',"lien":' .. json_texte(extra.lien or "") .. '}')
+        -- les images restent de vraies balises, pour être embarquées dans le HTML
+        if extra.image then table.insert(imgs, '<img class="vote-source" data-k="' .. (k - 1) .. '" data-role="image" src="' .. echappe(extra.image) .. '" alt="" hidden>') end
+        if extra.fondu then table.insert(imgs, '<img class="vote-source" data-k="' .. (k - 1) .. '" data-role="fondu" src="' .. echappe(extra.fondu) .. '" alt="" hidden>') end
       end
     else garde:insert(bloc) end
   end
   local question = attribut(div, "question", "")
   if not EN_HTML then return div end
   garde:insert(pandoc.RawBlock("html", '<div class="vote-zone" data-question="' .. echappe(question)
-    .. '"><script type="application/json" class="vote-donnees">[' .. table.concat(items, ","):gsub("</", "<\\/") .. ']</script></div>'))
+    .. '"><script type="application/json" class="vote-donnees">[' .. table.concat(items, ","):gsub("</", "<\\/") .. ']</script>'
+    .. table.concat(imgs, "") .. '</div>'))
   div.content = garde
   return div
 end

@@ -187,13 +187,47 @@
       if (r === "pas-sur") return "doute";
       return ((r === "oui") === (it.n === "vrai")) ? "juste" : "rate";
     }
+    // les images de chaque énoncé : de vraies balises embarquées, rangées par numéro d'énoncé
+    var sources = {};
+    tous(".vote-source", zone).forEach(function (im) {
+      var k = im.dataset.k; sources[k] = sources[k] || {}; sources[k][im.dataset.role] = im.getAttribute("src");
+    });
+    function idVideo(url) {
+      var m = (url || "").match(/(?:v=|youtu\.be\/|embed\/)([\w-]{6,})/);
+      return m ? m[1] : "";
+    }
+    function media(k, parent) {
+      var it = items[k], src = sources[k] || {};
+      if (!src.image && !it.video) return false;
+      var boite = el("figure", "vote-media", parent);
+      if (it.video && idVideo(it.video)) {
+        var f = el("iframe", "vote-video", boite);
+        f.src = "https://www.youtube-nocookie.com/embed/" + idVideo(it.video);
+        f.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
+        f.setAttribute("allowfullscreen", "");
+        f.title = it.legende || it.t;
+      } else if (src.fondu) {
+        var cadre = el("div", "vote-fondu", boite);
+        var a = el("img", "", cadre); a.src = src.image; a.alt = "";
+        var b = el("img", "dessus", cadre); b.src = src.fondu; b.alt = ""; b.style.opacity = 0.5;
+        var r = el("input", "vote-fondu-curseur", boite); r.type = "range"; r.min = 0; r.max = 100; r.value = 50;
+        r.addEventListener("input", function () { b.style.opacity = r.value / 100; });
+      } else {
+        var im = el("img", "", boite); im.src = src.image; im.alt = "";
+      }
+      var leg = el("figcaption", "", boite);
+      if (it.legende) el("span", "", leg, ty(it.legende) + " ");
+      if (it.lien) { var l = el("a", "", leg, EN ? "Source" : "Source"); l.href = it.lien; l.target = "_blank"; l.rel = "noopener"; }
+      return true;
+    }
     function afficher() {
       carte.innerHTML = ""; pied.innerHTML = "";
       if (i >= items.length) { bilan(); return; }
       compte.textContent = (i + 1) + " / " + items.length;
       var it = items[i];
-      el("p", "vote-enonce", carte, ty(it.t));
-      var choix = el("div", "vote-choix", carte);
+      var gauche = el("div", "vote-gauche", carte);
+      el("p", "vote-enonce", gauche, ty(it.t));
+      var choix = el("div", "vote-choix", gauche);
       [["oui", T.oui], ["non", T.non], ["pas-sur", T.pasSur]].forEach(function (c) {
         var b = bouton(c[1], "vote-bouton " + c[0] + (rep[i] === c[0] ? " actif" : ""), choix, function () {
           rep[i] = c[0]; ecrire(cle, rep); afficher();
@@ -201,16 +235,18 @@
         if (i in rep) b.disabled = true;
       });
       if (i in rep) {
-        var v = verdict(i), retour = el("div", "vote-retour " + (v || "sondage"), carte);
+        var v = verdict(i), retour = el("div", "vote-retour " + (v || "sondage"), gauche);
         if (it.n === "sondage") el("strong", "", retour, T.sondage);
         else {
           el("strong", "", retour, (v === "juste" ? T.juste : v === "rate" ? T.rate : T.doute) + " · " + (it.n === "vrai" ? T.possible : T.impossible) + " ");
           if (it.e) el("span", "", retour, ty(it.e));
         }
+        if (media(i, carte)) carte.classList.add("avec-media"); else carte.classList.remove("avec-media");
         bouton(T.suivant + " →", "principal", pied, function () { i += 1; afficher(); });
-      }
+      } else carte.classList.remove("avec-media");
     }
     function bilan() {
+      carte.classList.remove("avec-media");
       compte.textContent = items.length + " / " + items.length;
       var j = 0, f = 0, d_ = 0, n = 0;
       items.forEach(function (it, k) {

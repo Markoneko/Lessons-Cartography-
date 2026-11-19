@@ -2,6 +2,20 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-19 — « Image & Application », images de la première partie
+
+Marc a renommé le cours « Image & Application » (le fichier reste `IMAGE-Application.qmd`, la sortie `Image-Application.html`), daté la séance du 25 novembre, revu les diapos 0.2, 1.0, 1.1 et 1.2 et versé ses images.
+
+- Images : les originaux de Marc rangés dans `images/originaux/` ; versions web (1 600 px au plus, JPEG pour les photographies) écrites par `outils/images.py`, avec `images/correspondance.csv`, comme pour « Image Intelligence ». L'image Sentinel-1 de la Manche passe de 8,9 Mo à 180 ko. `soloti.gif` (11 Mo) est gardé tel quel. Non utilisées pour l'instant : `Biomass.jpg`, `Biomass-Sudan-Nile-Crater.avif`, `novoozernoye.gif`.
+- 1.1 : chaque réponse du vote montre l'image fournie, son descriptif et sa source ; un curseur de fondu pour le Sahara (RVB / BIOMASS) et la Bolivie (Sentinel-2 / BIOMASS) ; la vidéo de Skybox intégrée (YouTube, en ligne seulement). La brique `vote` accepte désormais une sous-liste `image`, `fondu`, `video`, `legende`, `lien` (README).
+- 1.1, retouches de texte : la marée noire (« l'eau libre, ridée par le vent, renvoie le signal ; la nappe, visqueuse, lisse la surface ») ; les rivières sous le Sahara (« grâce à sa grande longueur d'onde (bande P) ») ; les villes sous la forêt citent les structures mayas de l'image en plus d'Angkor.
+- 1.2 : le spectre de xkcd annoté par Marc remplace le schéma, à gauche, crédité « xkcd n° 273, Randall Munroe, CC BY-NC 2.5 » ; texte et QCM à droite, en 21 px. Dans le texte de Marc, la hauteur est rattachée au radar et au LiDAR, pas aux seules ondes radio.
+- Coquilles corrigées : « expérimental », « photo-interpréter », « rendu possible par l'IA ».
+- Vérifié : 34 diapos, aucun débordement, aucune erreur JavaScript ; les quinze réponses du vote jouées dans un navigateur.
+
+**Version anglaise.** Pas faite en V0, par choix et non par oubli de commande : la V0 du 17 novembre l'annonçait « après validation », sur le modèle de « De la Terre à la carte ». Les quatre derniers cours, eux, ont eu leur V0 en deux langues : la règle n'était écrite nulle part, d'où l'écart.
+
+
 ## 2026-11-17 — Nouveau cours : « Image Application », premier jet (V0)
 
 Source : `cours/image-application/source/StrucutreEnseignementApplicationsdeTélédétection.txt`, et la discussion du jour. Deux heures pour les Ing1 de Géodata Paris, après le cours de photo-interprétation : un aperçu des applications de la télédétection, sans passage en revue de cas d'école, en pédagogie active.
@@ -39,7 +53,6 @@ Source : `cours/image-application/source/StrucutreEnseignementApplicationsdeTél
 - L'adresse de la feuille Google (`envoi="…"`, diapo 4.3), après déploiement du script.
 - Les huit visuels réels des solutions (emplacements marqués « Visuel à fournir »).
 - Les cas réels du feu (Copernicus EMS ou EFFIS), des argiles (projet assurantiel) et de la PAC (suivi des surfaces), à choisir et sourcer.
-- Les sources du vote, une par énoncé ; le vent martien en particulier.
 - Les profils des capteurs du jeu des compromis, indicatifs, relatifs à Sentinel-2.
 - Les prénoms des personnages ; le contenu des dialogues et des corrections (`donnees/atelier.json`), à relire en priorité.
 
