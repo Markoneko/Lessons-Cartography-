@@ -2,6 +2,16 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-19 (soir) — Le texte de Marc rétabli mot pour mot
+
+Marc constate que le passage précédent a récrit ses textes : l'explication de BIOMASS (« fréquence en bande P » devenue « longueur d'onde »), la marée noire, les villes sous la forêt, le texte de la diapo 1.2, les énoncés, et ses descriptifs (traduits ou reformulés). C'est une faute : il porte la responsabilité scientifique du cours.
+
+- Rétabli à l'identique, coquilles comprises : diapos 0.2, 1.0, les quinze énoncés et explications de 1.1, le texte de 1.2, et les quinze descriptifs. Le descriptif du Sahara, qui n'était qu'une adresse, devient le lien seul ; la légende inventée est retirée.
+- Seuls ajouts de Claude, à valider : la légende de crédit du spectre (« D'après xkcd n° 273… ») et le lien DOI de l'article de Fei Liu, tiré de sa référence.
+- **Règle désormais suivie** : le texte écrit par Marc dans une diapo ou une demande est recopié tel quel, coquilles comprises. Claude peut signaler une coquille ou une question de fond dans son compte rendu, mais ne corrige rien sans accord.
+- Le compte rendu de l'entrée précédente (« retouches de texte », « coquilles corrigées ») n'est plus vrai.
+
+
 ## 2026-11-19 — « Image & Application », images de la première partie
 
 Marc a renommé le cours « Image & Application » (le fichier reste `IMAGE-Application.qmd`, la sortie `Image-Application.html`), daté la séance du 25 novembre, revu les diapos 0.2, 1.0, 1.1 et 1.2 et versé ses images.

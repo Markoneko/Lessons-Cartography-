@@ -29,7 +29,7 @@ Demande :
 Ce cours est un **atelier**. Vous travaillez par **petits groupes**, sur un seul écran par groupe.
 
 - Vous **votez**, vous **réglez**, vous **construisez** avant de lire la réponse.
-- Au cœur du cours, je tente un exercice expérimental, rendu possible par l'IA : une **commande** à honorer. Vous assemblez la chaîne de traitement qui y répond, en interrogeant quatre spécialistes.
+- Au cœur du cours, je tente un exercice expériemental, rendu possible grâce à l'IA : une **commande** à honorer : vous assemblez la chaîne de traitement qui y répond, en interrogeant quatre spécialistes.
 - Ce que vous faites reste dans votre navigateur. À la fin de l'atelier, vous **envoyez** votre travail à la feuille du cours : c'est la trace commune de la séance.
 - Le **pictogramme** devant chaque titre donne le niveau : **socle**, **appui**, **veille**. Une diapo sans pictogramme est un exemple ou une activité.
 
@@ -55,78 +55,77 @@ Expérience : aucune
 Demande :
 :::
 
-Vous savez photo-interpréter le visible. Aujourd'hui, on découvre d'autres applications.
+Vous savez photo-interprêter le visible. Aujourd'hui, on découvre d'autres applications.
 
 ## Possible, ou pas ?
 
 ::: {.fiche n="1.1" etat="a-revoir"}
-Intention : Le vote d'accroche : des usages vrais, dont certains déjà vus en photo-interprétation (les bases russes, les villes sous la forêt : l'expérience commence à se constituer) et d'autres inattendus (le vent sur Mars, la gravité des nappes, les rivières sous le Sahara), et des faux. Aucun des huit cas de l'atelier n'y figure, pour ne pas le déflorer. Chaque étudiant vote sur son écran ; Marc peut faire voter à main levée sur la projection. Avec la réponse apparaissent une image, son descriptif et sa source. [Retour V0 : une image ou une figure et un descriptif pour chaque réponse, fournis par Marc ; un curseur de fondu pour le Sahara et pour la Bolivie ; la vidéo de Skybox pour le film depuis l'orbite.]
+Intention : Le vote d'accroche : des usages vrais, dont certains déjà vus en photo-interprétation (les bases russes, Angkor : l'expérience commence à se constituer) et d'autres inattendus (le vent sur Mars, la gravité des nappes, les rivières sous le Sahara), et des faux. Aucun des huit cas de l'atelier n'y figure, pour ne pas le déflorer. Chaque étudiant vote sur son écran ; Marc peut faire voter à main levée sur la projection. Avec la réponse apparaissent une image, son descriptif et sa source. [Retour V0 : une image ou une figure et un descriptif pour chaque réponse, fournis par Marc et recopiés tels quels ; un curseur de fondu pour le Sahara et pour la Bolivie ; la vidéo de Skybox. Le texte des énoncés et des explications est celui de Marc.]
 Expérience : voter oui / non / pas sûr, puis lire l'explication et voir l'image (brique « vote ») ; bilan final
 Demande :
 :::
 
 ::: {.vote question="Peut-on le faire depuis le ciel ou l'espace ?"}
-- [vrai] Estimer la vitesse du vent à la surface de Mars : En suivant, d'une image à l'autre, le déplacement des crêtes des dunes, et en en déduisant un modèle physique.
+- [vrai] Estimer la vitesse du vent à la surface de Mars : En suivant, d'une image à l'autre, le déplacement des crêtes des dunes en en déduire un modèle physique.
     - image : images/mars-dunes.jpg
-    - legende : An (almost) automated process to track the Martian dunes. Arthur Coque, 2017.
-- [faux] Lire la plaque d'immatriculation d'une voiture sur une image satellite du commerce : Les meilleurs satellites commerciaux ont des pixels d'environ 15 cm ; lire une plaque demande moins du centimètre, sans parler de l'angle d'observation.
+    - legende : An (almost) automated process to track the Martians dunes. Arthur Coque 2017
+- [faux] Lire la plaque d'immatriculation d'une voiture sur une image satellite du commerce : Les meilleurs satellites commerciaux ont des pixels d'environ 15 cm ; une plaque demande moins du centimètre, sans parler de l'angle d'observation.
     - image : images/pleiades-neo-arcachon.jpg
-    - legende : © Airbus DS, Pléiades Neo, octobre 2021, canal panchromatique.
-- [vrai] Voir et mesurer l'étendue d'une marée noire à travers les nuages : Le radar envoie sa propre onde et traverse les nuages. L'eau libre, ridée par le vent, renvoie le signal ; la nappe, visqueuse, lisse la surface, qui se comporte comme un miroir et paraît sombre.
+    - legende : © Airbus DS, Pleiades Neo Octobre 2021, Canal panchromatique.
+- [vrai] Voir et mesurer l'étendue d'une marée noire à travers les nuages : Le radar envoie sa propre onde et traverse les nuages ; l'eau libre renvoie le signe, pas l'eau visqueuse qui se comporte comme un mirroir et paraît sombre.
     - image : images/maree-noire-radar.jpg
-    - legende : Détection de nappes de pétrole dans le golfe Persique, projet DDMEG.
+    - legende : Detection de nappe de pétrole dans le golfe persique, projet DDEMG.
 - [vrai] Peser l'eau des nappes souterraines : Les satellites GRACE mesurent d'infimes variations de la gravité, qui suivent la masse d'eau stockée dans le sol.
     - image : images/grace.jpg
-    - legende : Le couple de satellites GRACE.
+    - legende : Couple des satellites Grace.
     - lien : https://www.space4water.org/fr/news/penuries-deau-en-milieu-urbain-comment-les-donnees-de-la-mission-grace-fo-de-la-nasa-peuvent
 - [vrai] Repérer les bateaux de pêche qui coupent leur balise : Le radar voit les navires, balise ou pas ; on croise ensuite avec les positions qu'ils déclarent.
     - image : images/manche-sentinel-1.jpg
-    - legende : Le trafic maritime dans le rail de la Manche, Sentinel-1 (IW), septembre 2026, composition colorée en rapport de polarisations.
+    - legende : traffic martime dans le rail de la Manche,  S1-IW septembre 2026, RGB Ratio
 - [faux] Voir à travers le toit d'un hangar : Ni l'optique ni le radar ne traversent un toit ; seule l'activité autour (véhicules, chaleur, ombres) trahit ce qu'il abrite.
     - image : images/forcalquier-ortho.jpg
-    - legende : © IGN, orthophotographie de Forcalquier, juillet 2024, RVB.
+    - legende : © IGN, Orthophotographie juillet 2024, RVB
 - [vrai] Suivre l'activité d'un pays la nuit : Les lumières nocturnes suivent l'éclairage, l'électrification, et même les coupures de courant.
     - image : images/denver-nuit.jpg
-    - legende : Denver (Colorado, États-Unis) la nuit, avec le quadrillage des rues typique des grandes villes du sud-ouest américain.
+    - legende : Denver, Colorado, USA, exhibiting the street grid typical of large cities in the southwestern USA.
 - [vrai] Voir l'arrêt des usines chinoises au début du Covid : Le dioxyde d'azote, gaz des moteurs et des usines, a fortement baissé au-dessus de la Chine en février 2020, mesuré par satellite.
     - image : images/chine-no2-covid.jpg
-    - legende : Colonnes troposphériques moyennes de NO₂ (OMI) au-dessus de la Chine en 2020 : (A) de 20 à 1 jours avant le Nouvel An lunaire, (B) de 0 à 19 jours après, (C) de 20 à 39 jours après. Fei Liu et al., Science Advances 6, eabc2992 (2020), DOI 10.1126/sciadv.abc2992.
+    - legende : Average OMI tropospheric NO2 vertical column densities (TVCDs) over China in 2020. (A) −20 to −1, (B) 0 to 19, and (C) 20 to 39 days relative to the 2020 LNY. Fei Liu et al. ,Abrupt decline in tropospheric nitrogen dioxide over China after the outbreak of COVID-19.Sci. Adv.6,eabc2992(2020).DOI:10.1126/sciadv.abc2992
     - lien : https://doi.org/10.1126/sciadv.abc2992
-- [vrai] Repérer des rivières anciennes dissimulées sous plusieurs mètres de sable : Le radar de la mission BIOMASS pénètre le sable sec, grâce à sa grande longueur d'onde (bande P).
+- [vrai] Repérer des canaux anciens dissimulés sous plusieurs mètres de sable : Le satellite de la Mission BIOMASS peut pénétrer ces espaces secs grâce à fréquence en bande P.
     - image : images/sahara-rvb.jpg
     - fondu : images/sahara-biomass.jpg
-    - legende : Le même secteur du Sahara en couleurs naturelles, puis vu par BIOMASS : faites glisser le curseur.
     - lien : https://www.futura-sciences.com/planete/actualites/desert-ils-ont-reussi-voir-sous-sable-sahara-premieres-images-revelent-monde-disparu-rivieres-lacs-138417/
 - [faux] Filmer la même rue toute la journée depuis un satellite en orbite basse : Un satellite en orbite basse survole un lieu en quelques minutes ; on n'en tire que de courts films. Un satellite géostationnaire voit toute la journée, mais en pixels kilométriques.
     - video : https://www.youtube.com/watch?v=fCrB1t8MncY
-    - legende : Skybox Imaging, la première vidéo haute définition de la Terre filmée depuis l'espace.
+    - legende : Skybox Imaging Captures World's First High-Resolution, HD Video of Earth from Space-1080p HD
     - lien : https://www.youtube.com/watch?v=fCrB1t8MncY
 - [vrai] Repérer la montée en puissance de bases militaires : Une série d'images montre les véhicules et les camps qui s'ajoutent.
     - image : images/soloti.gif
-    - legende : La base russe de Soloti, Sentinel-2 (MSI), animation de 2017 à 2021.
-- [vrai] Révéler des villes cachées sous la forêt : Le LiDAR atteint le sol entre les feuilles : les villes khmères autour d'Angkor, et plus de 60 000 structures mayas au Guatemala.
+    - legende : Base russe de Soloti, Sentinel2-MSI animation de 2017 à 2021
+- [vrai] Révéler des villes cachées sous la forêt : Le LiDAR atteint le sol entre les feuilles : les villes khmères autour d'Angkor.
     - image : images/cite-maya-lidar.jpg
-    - legende : Le LiDAR a révélé plus de 60 000 structures mayas sous la jungle du nord du Guatemala. PACUNAM / Canuto et Auld-Thomas.
+    - legende : Advanced laser techniques have revealed more than 60,000 ancient Mayan structures beneath the jungles of northern Guatemala. PACUNAM/Canuto & Auld-Thomas
     - lien : https://edition.cnn.com/style/article/ancient-mayan-structures-discovered
 - [vrai] Suivre les bancs de sargasses qui arrivent sur les Antilles : Les algues flottantes ont une signature nette dans le proche infrarouge ; on les suit presque chaque jour.
     - image : images/sargasses.jpg
-    - legende : Les sargasses dans l'Atlantique, moyenne de 7 jours de détection par Sentinel-3 (OLCI) et Aqua (MODIS) ; contient des données Copernicus Sentinel-2 modifiées (2019). CLS.
+    - legende : Vue d’ensemble de la situation des sargasses dans l’océan Atlantique, basé sur une moyenne de 7 jours de détection par le satellite européen Sentinel-3 (OLCI) et le satellite américain NOAA Aqua (MODIS). L’image ci-dessus contient des données modifiées du satellite Sentinel-2 de Copernicus (2019).
     - lien : https://www.cls.fr/service-operationnel-de-surveillance-des-sargasses-cls-ouvert-aux-utilisateurs/
 - [faux] Mesurer directement la température de l'eau à 100 m de profondeur : Le thermique ne voit que la pellicule de surface ; en profondeur, il faut des bouées et des modèles.
     - image : images/flotteur-argo.jpg
-    - legende : Les flotteurs Argo mesurent la température et la salinité ; des flotteurs Bio-Argo, munis d'autres capteurs, sont testés par le CSIRO. © CSIRO.
+    - legende : Argo floats measure temperature and salinity. Bio-Argo floats with other sensors are also being tested by CSIRO. CSIRO
     - lien : https://theconversation.com/ocean-depths-heating-steadily-despite-global-warming-pause-37047
 - [vrai] Mesurer la biomasse des forêts de toute la planète : C'est l'objectif de la mission BIOMASS de l'ESA, un radar à grande longueur d'onde lancé en 2025.
     - image : images/bolivie-sentinel-2.jpg
     - fondu : images/bolivie-biomass.jpg
-    - legende : La même zone de Bolivie vue par Sentinel-2 (Copernicus), puis par BIOMASS : faites glisser le curseur. Crédit ESA.
+    - legende : Image de la même zone de la Bolivie par le satellite Sentinel-2 du programme Copernicus et par Biomass (crédit ESA)
     - lien : https://reves-d-espace.com/le-satellite-biomass-devoile-ses-premieres-images-des-forets-de-la-planete/
 :::
 
 ## Sortir du visible {.socle}
 
 ::: {.fiche n="1.2" etat="a-revoir"}
-Intention : Le pont avec la photo-interprétation : l'œil ne voit qu'une étroite bande du spectre ; la télédétection exploite trois origines du signal (ce que la surface renvoie du soleil, ce qu'elle émet, ce qu'un instrument envoie et reçoit). Ce sont les hexagones « Signal » de l'atelier. [Retour V0 : le spectre de xkcd annoté par Marc (radar, optique, LiDAR) remplace le schéma, à gauche ; le texte, revu par Marc, et la question à droite.]
+Intention : Le pont avec la photo-interprétation : l'œil ne voit qu'une étroite bande du spectre ; la télédétection exploite trois origines du signal (ce que la surface renvoie du soleil, ce qu'elle émet, ce qu'un instrument envoie et reçoit). Ce sont les hexagones « Signal » de l'atelier. [Retour V0 : le spectre de xkcd annoté par Marc (radar, optique, LiDAR) remplace le schéma, à gauche ; le texte de Marc, tel quel, et la question à droite.]
 Expérience : spectre annoté ; QCM
 Demande :
 :::
@@ -137,7 +136,7 @@ Demande :
 :::
 ::: {.column width="48%"}
 ::: {style="font-size: 21px; line-height: 1.35"}
-Chaque signal est sensible à des phénomènes différents : le **visible** et le **proche infrarouge** sont les canaux de la **vie** des plantes et de l'eau ; l'**infrarouge thermique**, celui de l'**émission des corps autour de 300 K** ; la **rugosité** et le **déplacement** se mesurent avec les ondes radio actives (le radar), la **hauteur** avec le radar ou le laser (le LiDAR). Choisir un signal, c'est choisir ce que l'on pourra voir.
+Chaque signal est sensible à des phénomènes différents : le **visible, et le proche infrarouge** sont dit les canaux de la **vie** des plantes, de l'eau, L'**infrarouge thermique**, les canaux d'**émission des corps autour de 300K**, la **rugosité** se mesure avec les ondes radio actives, la **hauteur**, le **déplacement**. Choisir un signal, c'est choisir ce que l'on pourra voir.
 :::
 
 ::: {.qcm .serre}

@@ -29,6 +29,7 @@ Quand un cours existe en deux langues, le fichier français reste la référence
 - Ne jamais réécrire le fichier en entier. On travaille diapo par diapo.
 - Une diapo figée dont la ligne « Demande » est remplie : ne pas y toucher, le signaler à l'enseignant.
 - Ce que l'enseignant écrit entre guillemets « » est recopié mot pour mot.
+- Le texte que l'enseignant écrit lui-même dans une diapo ou dans une demande (énoncés, explications, descriptifs, légendes) est recopié tel quel, coquilles comprises, et jamais reformulé ni traduit. Une coquille ou un doute de fond se signale dans le compte rendu ; on ne corrige qu'avec son accord.
 - Ne pas inventer de brique : n'utiliser que celles du `README.md`.
 - Ne pas affirmer un fait non vérifié. En cas de doute, le dire dans le compte rendu.
 
