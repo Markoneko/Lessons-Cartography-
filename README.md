@@ -581,7 +581,7 @@ Elles vivent dans `_briques/briques-application.html` et `_briques/briques-appli
 :::
 ```
 
-Sous chaque énoncé, une sous-liste facultative montre, avec la réponse, une `image`, un `fondu` (seconde image fondue dans la première par un curseur ; les deux de même emprise) ou une `video` (adresse YouTube), avec sa `legende` et son `lien`. Dans le PDF, seuls les énoncés et les explications sont imprimés.
+Sous chaque énoncé, une sous-liste facultative montre, avec la réponse, une `image` (avec `zoom : 4`, un clic l'agrandit dans son cadre et la souris la parcourt, comme la loupe), un `fondu` (seconde image fondue dans la première par un curseur ; les deux de même emprise) ou une `video` (adresse YouTube), avec sa `legende` et son `lien`. Dans le PDF, seuls les énoncés et les explications sont imprimés.
 
 **Compromis** — quatre curseurs centrés sur zéro (résolutions spatiale, temporelle, spectrale, radiométrique). Monter l'un en fait baisser un autre, et la brique dit pourquoi. Un titre `###` par objectif, suivi de sa condition après « | » (`temporelle >= 2`, plusieurs séparées par des virgules) ; un objectif impossible est reconnu comme tel. La liste donne les capteurs de référence : nom | quatre valeurs de -3 à 3 | une note. Le profil réglé est rapproché du capteur le plus proche.
 

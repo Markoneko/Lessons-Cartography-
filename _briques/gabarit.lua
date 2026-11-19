@@ -1211,6 +1211,7 @@ end
 --       - video : https://www.youtube.com/watch?v=…
 --       - legende : le descriptif et le crédit de l'image
 --       - lien : https://… (la source)
+--       - zoom : 4                         (un clic agrandit l'image, la souris la parcourt ; facultatif)
 -- :::
 local function brique_vote(div)
   local items, imgs, garde = {}, {}, pandoc.List()
@@ -1238,7 +1239,7 @@ local function brique_vote(div)
         if not enonce then enonce, expl = reste, "" end
         table.insert(items, '{"n":"' .. nature .. '","t":' .. json_texte(enonce) .. ',"e":' .. json_texte(expl)
           .. ',"video":' .. json_texte(extra.video or "") .. ',"legende":' .. json_texte(extra.legende or "")
-          .. ',"lien":' .. json_texte(extra.lien or "") .. '}')
+          .. ',"lien":' .. json_texte(extra.lien or "") .. ',"zoom":' .. json_texte(extra.zoom or "") .. '}')
         -- les images restent de vraies balises, pour être embarquées dans le HTML
         if extra.image then table.insert(imgs, '<img class="vote-source" data-k="' .. (k - 1) .. '" data-role="image" src="' .. echappe(extra.image) .. '" alt="" hidden>') end
         if extra.fondu then table.insert(imgs, '<img class="vote-source" data-k="' .. (k - 1) .. '" data-role="fondu" src="' .. echappe(extra.fondu) .. '" alt="" hidden>') end

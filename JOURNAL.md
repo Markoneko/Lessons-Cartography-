@@ -2,6 +2,18 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-19 (fin d'après-midi) — Partie 2 : schémas des résolutions et des limites
+
+Demandes de Marc dans les fiches ; son texte (0.2, 1.1, 1.2, 2.0, 2.4) repris tel quel.
+
+- 1.1 : l'image radar de la Manche se zoome (`zoom : 4` dans la brique vote ; version web gardée à 4 000 px). Les illustrations du vote prennent les deux tiers de la largeur et 390 px de haut ; « Suivant » passe dans la colonne de texte.
+- Images de Bolivie : Marc les a recadrées à la même emprise directement dans `images/` ; elles deviennent des originaux (`S2-Bolivie-recadre.jpg`, `Biomass-Bolivie-recadre.jpg`) pour que `outils/images.py` ne les écrase pas.
+- Nouvelle diapo 2.2, « Les quatre résolutions, en images » : un schéma par résolution, en deux réglages, et l'avertissement sur la résolution spatiale et la résolution terrain (texte de Claude, à valider). Les fiches suivantes de la partie 2 sont renumérotées (2.3 à 2.5).
+- 2.3 : changer d'objectif remet les curseurs à zéro.
+- 2.4 : schéma animé des trois limites (lumière, orbite, données) et de leur effet sur l'image ; les trois se succèdent dans un même cadre, 4 s chacune ; dans le PDF, côte à côte.
+- Vérifié : 35 diapos, aucun débordement, aucune erreur JavaScript ; zoom, remise à zéro et animation testés dans un navigateur ; PDF contrôlé.
+
+
 ## 2026-11-19 (soir) — Le texte de Marc rétabli mot pour mot
 
 Marc constate que le passage précédent a récrit ses textes : l'explication de BIOMASS (« fréquence en bande P » devenue « longueur d'onde »), la marée noire, les villes sous la forêt, le texte de la diapo 1.2, les énoncés, et ses descriptifs (traduits ou reformulés). C'est une faute : il porte la responsabilité scientifique du cours.

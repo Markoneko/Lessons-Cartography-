@@ -212,6 +212,24 @@
         var b = el("img", "dessus", cadre); b.src = src.fondu; b.alt = ""; b.style.opacity = 0.5;
         var r = el("input", "vote-fondu-curseur", boite); r.type = "range"; r.min = 0; r.max = 100; r.value = 50;
         r.addEventListener("input", function () { b.style.opacity = r.value / 100; });
+      } else if (parseFloat(it.zoom) > 1) {
+        // comme la brique « loupe » : un clic agrandit dans le cadre, la souris parcourt, un second clic revient
+        var z = parseFloat(it.zoom);
+        var cadreZ = el("div", "vote-loupe", boite);
+        var imz = el("img", "", cadreZ); imz.src = src.image; imz.alt = "";
+        el("span", "vote-loupe-aide", cadreZ, EN ? "Click to zoom" : "Cliquez pour zoomer");
+        function viser(e) {
+          var r = cadreZ.getBoundingClientRect();
+          var px = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1), py = Math.min(Math.max((e.clientY - r.top) / r.height, 0), 1);
+          imz.style.transformOrigin = (px * 100) + "% " + (py * 100) + "%";
+        }
+        cadreZ.addEventListener("click", function (e) {
+          var actif = cadreZ.classList.toggle("zoome");
+          imz.style.transform = actif ? "scale(" + z + ")" : "";
+          viser(e);
+        });
+        cadreZ.addEventListener("mousemove", function (e) { if (cadreZ.classList.contains("zoome")) viser(e); });
+        cadreZ.addEventListener("touchmove", function (e) { if (cadreZ.classList.contains("zoome")) { viser(e.touches[0]); e.preventDefault(); } }, { passive: false });
       } else {
         var im = el("img", "", boite); im.src = src.image; im.alt = "";
       }
@@ -241,8 +259,10 @@
           el("strong", "", retour, (v === "juste" ? T.juste : v === "rate" ? T.rate : T.doute) + " · " + (it.n === "vrai" ? T.possible : T.impossible) + " ");
           if (it.e) el("span", "", retour, ty(it.e));
         }
-        if (media(i, carte)) carte.classList.add("avec-media"); else carte.classList.remove("avec-media");
-        bouton(T.suivant + " →", "principal", pied, function () { i += 1; afficher(); });
+        var avec = media(i, carte);
+        carte.classList.toggle("avec-media", avec);
+        // avec une illustration, « Suivant » passe dans la colonne de texte, pour laisser la hauteur à l'image
+        var suivant = bouton(T.suivant + " →", "principal", avec ? el("div", "vote-suivant", gauche) : pied, function () { i += 1; afficher(); });
       } else carte.classList.remove("avec-media");
     }
     function bilan() {
@@ -337,7 +357,11 @@
     var gauche = el("div", "compromis-objectifs", zone);
     el("div", "compromis-titre", gauche, T.objectif);
     var boutonsObj = objectifs.map(function (o, k) {
-      return bouton(ty(o.t), "compromis-obj", gauche, function () { etat.o = k; sauver(); dessiner(); });
+      // changer d'objectif remet les curseurs à zéro : chaque objectif part du même capteur de référence
+      return bouton(ty(o.t), "compromis-obj", gauche, function () {
+        if (etat.o !== k) { etat.v = [0, 0, 0, 0]; raison.textContent = ""; raison.className = "compromis-raison"; }
+        etat.o = k; sauver(); dessiner();
+      });
     });
     var droite = el("div", "compromis-reglages", zone);
     var lignes = T.axes.map(function (nom, a) {

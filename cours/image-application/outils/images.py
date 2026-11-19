@@ -19,14 +19,14 @@ ORIG = os.path.join(IMG, 'originaux')
 CSV = os.path.join(IMG, 'correspondance.csv')
 LARGEUR_MAX = 1600
 
-# (original, version web) ; une version .jpg est recompressée, un .png gardé sans perte, un .gif copié tel quel
+# (original, version web[, plus grand côté]) ; une version .jpg est recompressée, un .png gardé sans perte, un .gif copié tel quel
 TRAVAUX = [
     ('EMwithRadarLidar.png', 'spectre-xkcd.png'),
     ('MartianDune.png', 'mars-dunes.jpg'),
     ('PleiadesNeo-Arcachon-Octobre2021.png', 'pleiades-neo-arcachon.jpg'),
     ('OilSpillDetection.png', 'maree-noire-radar.jpg'),
     ('Grace.jpeg', 'grace.jpg'),
-    ('2026-09-01-Sentinel-1_IW_RGB_Ratio.jpg', 'manche-sentinel-1.jpg'),
+    ('2026-09-01-Sentinel-1_IW_RGB_Ratio.jpg', 'manche-sentinel-1.jpg', 4000),   # gardée grande : elle se zoome
     ('IGN-FrocalquierCenter.png', 'forcalquier-ortho.jpg'),
     ('NightAcquisition.jpg', 'denver-nuit.jpg'),
     ('abc2992-f1.jpeg', 'chine-no2-covid.jpg'),
@@ -36,8 +36,8 @@ TRAVAUX = [
     ('soloti.gif', 'soloti.gif'),
     ('sargasses-overview-screenshot.jpg', 'sargasses.jpg'),
     ('ArgoSensor.png', 'flotteur-argo.jpg'),
-    ('S2-Bresil.png', 'bolivie-sentinel-2.jpg'),
-    ('S2-Biomass.png', 'bolivie-biomass.jpg'),
+    ('S2-Bolivie-recadre.jpg', 'bolivie-sentinel-2.jpg'),       # recadrées par Marc à la même emprise
+    ('Biomass-Bolivie-recadre.jpg', 'bolivie-biomass.jpg'),
 ]
 
 
@@ -52,13 +52,15 @@ def main():
     with open(CSV, 'w', encoding='utf-8', newline='') as f:
         w = csv.writer(f, delimiter=';')
         w.writerow(['originale', 'version_web', 'largeur', 'hauteur'])
-        for source, cible in TRAVAUX:
+        for travail in TRAVAUX:
+            source, cible = travail[0], travail[1]
+            cote = travail[2] if len(travail) > 2 else LARGEUR_MAX
             src, dst = os.path.join(ORIG, source), os.path.join(IMG, cible)
             if cible.endswith('.gif'):
                 shutil.copyfile(src, dst)
                 im = Image.open(dst)
             else:
-                im = reduire(Image.open(src))
+                im = reduire(Image.open(src), cote)
                 if cible.endswith('.jpg'):
                     im.convert('RGB').save(dst, quality=86, optimize=True)
                 else:

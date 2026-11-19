@@ -222,16 +222,26 @@
   display: grid; place-items: center; text-align: center; padding: 20px; font-size: 16px; color: var(--orange-texte); }
 .reveal .visuel-a-fournir p { margin: 0; }
 
-/* Vote : l'image, la vidéo ou le fondu montrés avec la réponse */
-.reveal .vote-carte.avec-media { display: grid; grid-template-columns: 1fr 1.1fr; gap: 22px; align-items: start; }
-.reveal .vote-carte.avec-media .vote-enonce { font-size: 27px; }
-.reveal .vote-carte.avec-media .vote-retour { font-size: 17px; }
+/* Vote : l'image, la vidéo ou le fondu montrés avec la réponse ; l'illustration prend la plus grande place */
+.reveal .vote-zone:has(.avec-media) { padding: 10px 16px; }
+.reveal .vote-carte.avec-media { display: grid; grid-template-columns: 0.72fr 1.5fr; gap: 18px; align-items: start; }
+.reveal .vote-carte.avec-media .vote-enonce { font-size: 23px; margin: 4px 0 12px 0; }
+.reveal .vote-carte.avec-media .vote-bouton { font-size: 16px; padding: 6px 14px; }
+.reveal .vote-carte.avec-media .vote-retour { font-size: 16px; }
 .reveal .vote-media { margin: 0; }
-.reveal .vote-media img { display: block; max-width: 100%; max-height: 330px; margin: 0 auto; border-radius: 6px; box-shadow: none; }
-.reveal .vote-media figcaption { font-size: 12.5px; line-height: 1.3; color: var(--gris); margin-top: 5px; max-height: 64px; overflow-y: auto; }
+.reveal .vote-media img { display: block; max-width: 100%; max-height: 390px; margin: 0 auto; border-radius: 6px; box-shadow: none; }
+.reveal .vote-media figcaption { font-size: 12.5px; line-height: 1.3; color: var(--gris); margin-top: 4px; max-height: 50px; overflow-y: auto; }
 .reveal .vote-media figcaption a { color: var(--bleu); font-weight: 700; }
+.reveal .vote-loupe { position: relative; overflow: hidden; border-radius: 6px; cursor: zoom-in; width: fit-content; max-width: 100%; margin: 0 auto; }
+.reveal .vote-loupe img { transition: transform 0.15s ease-out; }
+.reveal .vote-loupe.zoome { cursor: zoom-out; }
+.reveal .vote-loupe-aide { position: absolute; right: 8px; bottom: 8px; font-size: 12px; font-weight: 700; color: var(--blanc);
+  background: rgba(29, 42, 102, 0.75); border-radius: 12px; padding: 2px 9px; pointer-events: none; }
+.reveal .vote-loupe.zoome .vote-loupe-aide { display: none; }
 .reveal .vote-video { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 6px; }
 .reveal .vote-fondu { position: relative; width: fit-content; max-width: 100%; margin: 0 auto; }
-.reveal .vote-fondu img { max-height: 300px; }
+.reveal .vote-fondu img { max-height: 370px; }
 .reveal .vote-fondu img.dessus { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; object-fit: fill; }
 .reveal .vote-fondu-curseur { width: 100%; margin-top: 4px; accent-color: var(--orange); }
+.reveal .vote-suivant { display: flex; justify-content: flex-end; margin-top: 12px; }
+.reveal .vote-zone:has(.avec-media) .vote-pied { min-height: 0; margin: 0; }

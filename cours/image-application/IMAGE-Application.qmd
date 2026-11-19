@@ -60,10 +60,9 @@ Vous savez photo-interprêter le visible. Aujourd'hui, on découvre d'autres app
 ## Possible, ou pas ?
 
 ::: {.fiche n="1.1" etat="a-revoir"}
-Intention : Le vote d'accroche : des usages vrais, dont certains déjà vus en photo-interprétation (les bases russes, Angkor : l'expérience commence à se constituer) et d'autres inattendus (le vent sur Mars, la gravité des nappes, les rivières sous le Sahara), et des faux. Aucun des huit cas de l'atelier n'y figure, pour ne pas le déflorer. Chaque étudiant vote sur son écran ; Marc peut faire voter à main levée sur la projection. Avec la réponse apparaissent une image, son descriptif et sa source. [Retour V0 : une image ou une figure et un descriptif pour chaque réponse, fournis par Marc et recopiés tels quels ; un curseur de fondu pour le Sahara et pour la Bolivie ; la vidéo de Skybox. Le texte des énoncés et des explications est celui de Marc.]
+Intention : Le vote d'accroche : des usages vrais, dont certains déjà vus en photo-interprétation (les bases russes, Angkor : l'expérience commence à se constituer) et d'autres inattendus (le vent sur Mars, la gravité des nappes, les rivières sous le Sahara), et des faux. Aucun des huit cas de l'atelier n'y figure, pour ne pas le déflorer. Chaque étudiant vote sur son écran ; Marc peut faire voter à main levée sur la projection. Avec la réponse apparaissent une image, son descriptif et sa source. [Retour V0 : une image ou une figure et un descriptif pour chaque réponse, fournis par Marc et recopiés tels quels ; un curseur de fondu pour le Sahara et pour la Bolivie ; la vidéo de Skybox. Le texte des énoncés et des explications est celui de Marc.] [Retour du 19 novembre : l'image radar de la Manche se zoome (un clic agrandit ×4, la souris la parcourt ; version web gardée à 4 000 px) ; les illustrations prennent les deux tiers de la largeur et toute la hauteur, le bouton « Suivant » passant dans la colonne de texte ; les images de Bolivie recadrées par Marc sont reprises comme originaux.]
 Expérience : voter oui / non / pas sûr, puis lire l'explication et voir l'image (brique « vote ») ; bilan final
-Demande : Rendre l'image de la manche en radar (cas 5) zoomable
-De façon générale est-il possible de donner plus de placs aux illustrations. C'est ce qui importe le plus.
+Demande :
 :::
 
 ::: {.vote question="Peut-on le faire depuis le ciel ou l'espace ?"}
@@ -82,6 +81,7 @@ De façon générale est-il possible de donner plus de placs aux illustrations. 
     - lien : https://www.space4water.org/fr/news/penuries-deau-en-milieu-urbain-comment-les-donnees-de-la-mission-grace-fo-de-la-nasa-peuvent
 - [vrai] Repérer les bateaux de pêche qui coupent leur balise : Le radar voit les navires, balise ou pas ; on croise ensuite avec les positions qu'ils déclarent.
     - image : images/manche-sentinel-1.jpg
+    - zoom : 4
     - legende : traffic martime dans le rail de la Manche,  S1-IW septembre 2026, RGB Ratio
 - [faux] Voir à travers le toit d'un hangar : Ni l'optique ni le radar ne traversent un toit ; seule l'activité autour (véhicules, chaleur, ombres) trahit ce qu'il abrite.
     - image : images/forcalquier-ortho.jpg
@@ -169,7 +169,7 @@ Voir à la verticale, en particulier depuis l'espace, a ouvert des champs nouvea
 ::: {.fiche n="2.1" etat="a-revoir"}
 Intention : Les quatre résolutions, définies par l'étudiant lui-même en rangeant huit énoncés : une définition et un exemple pour chacune.
 Expérience : classer huit énoncés en quatre cases, au glisser-déposer
-Demande : Rajouter un slide avec un schéma pour chacune de ses résolutions. Attention, la résolution spatiale peut-être ici différencier de la résolution terrain. les deux se confonde uniquement en première approximation (comme dans ce cours) mais il faut introduire que cela va se complexifier.
+Demande :
 :::
 
 Rangez chaque énoncé sous la résolution qu'il décrit.
@@ -196,12 +196,25 @@ Rangez chaque énoncé sous la résolution qu'il décrit.
 - Des valeurs codées sur 12 bits, soit 4 096 niveaux
 :::
 
-## Le jeu des compromis {.socle}
+## Les quatre résolutions, en images {.socle}
 
 ::: {.fiche n="2.2" etat="a-revoir"}
-Intention : Proposition de Marc : quatre curseurs centrés sur 0 et un objectif. Monter un curseur en fait baisser un autre, et le cours dit pourquoi (fauchée, lumière reçue, volume de données). Le profil obtenu est rapproché d'un capteur réel. Le dernier objectif est impossible : un seul capteur ne peut pas tout avoir. Profils des capteurs indicatifs, relatifs à Sentinel-2 (0 partout), à valider par Marc.
+Intention : [Retour du 19 novembre, nouvelle diapo demandée par Marc : un schéma pour chacune des quatre résolutions, et l'avertissement que la résolution spatiale ne se confond avec la résolution terrain qu'en première approximation.] Après le classement de la diapo 2.1, la correction en images : chaque résolution en deux réglages, grossier puis fin. Schéma fait pour le cours (outils/schemas.py) ; la signature de végétation n'est qu'une allure. Texte de l'avertissement écrit par Claude, à valider par Marc.
+Expérience : schéma
+Demande :
+:::
+
+::: {.schema fichier="images/schemas/resolutions.svg" hauteur="330"}
+:::
+
+[**Attention.** Dans ce cours, la résolution spatiale se confond avec la résolution terrain, la taille du pixel au sol. Ce n'est qu'une première approximation : le plus petit détail que l'on distingue dépend aussi de l'optique, de l'angle de visée, de l'atmosphère et des traitements. La suite de vos études complexifiera ce point.]{.a-retenir style="font-size: 20px"}
+
+## Le jeu des compromis {.socle}
+
+::: {.fiche n="2.3" etat="a-revoir"}
+Intention : Proposition de Marc : quatre curseurs centrés sur 0 et un objectif. Monter un curseur en fait baisser un autre, et le cours dit pourquoi (fauchée, lumière reçue, volume de données). Le profil obtenu est rapproché d'un capteur réel. Le dernier objectif est impossible : un seul capteur ne peut pas tout avoir. Profils des capteurs indicatifs, relatifs à Sentinel-2 (0 partout), à valider par Marc. [Retour du 19 novembre : changer d'objectif remet les curseurs à zéro.]
 Expérience : choisir un objectif, régler les quatre curseurs (brique « compromis »)
-Demande : Faire en sorte que les curseurs se remettent à zéro quand on change les objectifs.
+Demande :
 :::
 
 ::: {.compromis}
@@ -222,21 +235,24 @@ Demande : Faire en sorte que les curseurs se remettent à zéro quand on change 
 
 ## Pourquoi on ne peut pas tout avoir {.socle}
 
-::: {.fiche n="2.3" etat="a-revoir"}
-Intention : Les trois raisons physiques derrière les compromis : la lumière reçue par pixel et par bande, la géométrie de l'orbite (fauchée et revisite), le volume de données à descendre au sol. Puis la parade : combiner les capteurs.
-Expérience : question, puis réponse
-Demande : Faire un schéma qui montre physiquement ces 3 phénomènes avec la relation sur une image. On tourne entre les 3 mécanismes. Je pense qu'il serait chouette de faire même une petite animation ou on met le focus sur chacun de ces 3 problèmes successivement.
+::: {.fiche n="2.4" etat="a-revoir"}
+Intention : Les trois raisons physiques derrière les compromis : la lumière reçue par pixel et par bande, la géométrie de l'orbite (fauchée et revisite), le volume de données à descendre au sol. Puis la parade : combiner les capteurs. [Retour du 19 novembre : un schéma animé montre les trois mécanismes et leur effet sur l'image (bruit, fauchée, volume de données) ; les trois se succèdent dans le même cadre, 4 secondes chacun ; dans le PDF, ils sont côte à côte, en petit.]
+Expérience : schéma animé ; question, puis réponse
+Demande :
 :::
 
-:::: {.columns}
-::: {.column width="55%"}
+:::: {.columns style="font-size: 18px; line-height: 1.3"}
+::: {.column width="40%"}
+::: {.schema fichier="images/schemas/limites.svg" hauteur="400"}
+:::
+:::
+::: {.column width="60%"}
 Trois limites, et elles se tiennent entre elles :
 
 - **La lumière ou le REM** Un pixel plus petit ou une bande plus étroite reçoivent moins de lumière : le signal se perd dans le bruit, le rapport des deux devient insuffisant pour une mesure signifiante.
 - **L'orbite.** Voir fin, c'est voir proche, c'est donc voir étroit : le satellite met plus longtemps à revenir au même endroit.
 - **Les données.** Chaque pixel, chaque bande, chaque passage s'enregistre puis descend au sol : le débit a une limite.
-:::
-::: {.column width="45%"}
+
 ::: {.question etiquette="À vous"}
 Alors, quand un client veut voir fin, souvent, et dans beaucoup de bandes, que fait-on ?
 :::
@@ -249,7 +265,7 @@ On **combine** : une constellation pour revenir plus souvent ; une image fine en
 
 ## Ce qui limite, après le capteur {.appui}
 
-::: {.fiche n="2.4" etat="a-revoir"}
+::: {.fiche n="2.5" etat="a-revoir"}
 Intention : La question de Marc : « Quels sont les facteurs limitant la donnée source ? Et le traitement ? » Trois familles de limites : la scène, le capteur, le traitement.
 Expérience : classer neuf limites en trois cases, au glisser-déposer
 Demande :
