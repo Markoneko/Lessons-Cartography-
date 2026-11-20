@@ -35,6 +35,7 @@
 
   var T = EN ? {
     oui: "Yes", non: "No", pasSur: "Not sure", suivant: "Next", recommencer: "Start again",
+    precedent: "Previous statement", prochain: "Next statement", voirVideo: "Watch on YouTube",
     possible: "Possible.", impossible: "Not possible (or not yet).", sondage: "Noted.",
     juste: "Right", rate: "Wrong", doute: "You were not sure",
     bilanVote: function (j, f, d, n) { return j + " right, " + f + " wrong, " + d + " not sure, out of " + n + "."; },
@@ -75,6 +76,7 @@
     commandesPdf: "The eight orders"
   } : {
     oui: "Oui", non: "Non", pasSur: "Pas sûr", suivant: "Suivant", recommencer: "Recommencer",
+    precedent: "Énoncé précédent", prochain: "Énoncé suivant", voirVideo: "Voir sur YouTube",
     possible: "C'est possible.", impossible: "Ce n'est pas possible (ou pas encore).", sondage: "C'est noté.",
     juste: "Juste", rate: "Raté", doute: "Vous n'étiez pas sûr",
     bilanVote: function (j, f, d, n) { return j + " juste" + (j > 1 ? "s" : "") + ", " + f + " raté" + (f > 1 ? "s" : "") + ", " + d + " « pas sûr », sur " + n + "."; },
@@ -175,8 +177,14 @@
       return;
     }
     var tete = el("div", "vote-tete", zone);
+    // deux flèches pour passer d'un énoncé à l'autre sans voter, et « Recommencer » à tout moment
+    var avant = bouton("←", "vote-fleche", tete, function () { if (i > 0) { i -= 1; afficher(); } });
     var compte = el("span", "vote-compte", tete);
+    var apres = bouton("→", "vote-fleche", tete, function () { if (i < items.length) { i += 1; afficher(); } });
+    avant.title = T.precedent; avant.setAttribute("aria-label", T.precedent);
+    apres.title = T.prochain; apres.setAttribute("aria-label", T.prochain);
     el("span", "vote-question", tete, ty(question));
+    bouton("↺ " + T.recommencer, "discret vote-raz", tete, function () { rep = {}; ecrire(cle, rep); i = 0; afficher(); });
     var carte = el("div", "vote-carte", zone);
     var pied = el("div", "vote-pied", zone);
     var i = 0;
@@ -201,11 +209,21 @@
       if (!src.image && !it.video) return false;
       var boite = el("figure", "vote-media", parent);
       if (it.video && idVideo(it.video)) {
-        var f = el("iframe", "vote-video", boite);
-        f.src = "https://www.youtube-nocookie.com/embed/" + idVideo(it.video);
-        f.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
-        f.setAttribute("allowfullscreen", "");
-        f.title = it.legende || it.t;
+        // YouTube refuse de jouer une vidéo intégrée dans une page ouverte comme fichier (file://) :
+        // il lui faut l'adresse de la page. Hors serveur, on montre donc la vignette, qui ouvre la vidéo.
+        var id = idVideo(it.video), regarder = "https://www.youtube.com/watch?v=" + id;
+        if (location.protocol === "file:") {
+          var vig = el("a", "vote-video vote-vignette", boite); vig.href = regarder; vig.target = "_blank"; vig.rel = "noopener";
+          vig.style.backgroundImage = "url(https://i.ytimg.com/vi/" + id + "/hqdefault.jpg)";
+          el("span", "vote-lecture", vig, "▶ " + T.voirVideo);
+        } else {
+          var f = el("iframe", "vote-video", boite);
+          f.src = "https://www.youtube.com/embed/" + id;
+          f.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+          f.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+          f.setAttribute("allowfullscreen", "");
+          f.title = it.legende || it.t;
+        }
       } else if (src.fondu) {
         var cadre = el("div", "vote-fondu", boite);
         var a = el("img", "", cadre); a.src = src.image; a.alt = "";
@@ -240,6 +258,7 @@
     }
     function afficher() {
       carte.innerHTML = ""; pied.innerHTML = "";
+      avant.disabled = i <= 0; apres.disabled = i >= items.length;
       if (i >= items.length) { bilan(); return; }
       compte.textContent = (i + 1) + " / " + items.length;
       var it = items[i];

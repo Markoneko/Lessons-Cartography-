@@ -2,6 +2,10 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-20 (soir, suite) — Vote : la vidéo de Skybox, des flèches, « Recommencer » partout
+
+Demande de Marc dans la fiche 1.1 d'« Image & Application ». YouTube refuse désormais de jouer une vidéo intégrée dans une page ouverte comme fichier (`file://`) : il exige l'adresse de la page. La brique « vote » intègre donc la vidéo comme dans le lien de Marc (`youtube.com/embed`, politique de référent `strict-origin-when-cross-origin`) quand le support est servi par un serveur, et montre sinon la vignette, qui ouvre la vidéo sur YouTube. Deux flèches passent d'un énoncé à l'autre sans voter ; « Recommencer » est en tête du vote, à tout moment. Testé en navigateur (sans réseau ici : la vignette elle-même n'a pas pu être vérifiée).
+
 ## 2026-11-20 (soir) — Atelier Saumos, V0 jouable
 
 À la demande de Marc, l'atelier se construit à part, dans `cours/image-application/IMAGE-AtelierSaumos.qmd` (mêmes références que le cours, fusion ensuite dans la partie 4). 25 diapos, toutes `a-revoir`.
