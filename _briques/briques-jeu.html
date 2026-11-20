@@ -157,6 +157,13 @@
       tete(h, "", b);
       b.addEventListener("click", function () { S().heros = h; tous(".jdr-heros-btn", hs).forEach(function (x) { x.classList.toggle("sel", x === b); }); changer(); });
     });
+    // un poste partagé, ou un nouvel essai : tout effacer (deux clics, sans boîte de dialogue)
+    var raz = bouton("Recommencer la partie", "discret", z);
+    raz.addEventListener("click", function () {
+      if (raz.dataset.sur) { try { localStorage.removeItem(CLE); } catch (e) { /* rien à effacer */ } location.hash = ""; location.reload(); return; }
+      raz.dataset.sur = "1"; raz.textContent = "Tout effacer ? Cliquer encore pour confirmer";
+      setTimeout(function () { delete raz.dataset.sur; raz.textContent = "Recommencer la partie"; }, 4000);
+    });
   };
 
   // Les experts ----------------------------------------------------------------------------------
