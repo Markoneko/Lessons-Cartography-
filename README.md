@@ -24,6 +24,8 @@ Le résultat arrive dans le dossier `_sortie/` du cours, sous le nom de son titr
 - `cours/gis-basics/_sortie/GIS-Basics.html` et `GIS-Basics-EN.html` : un seul fichier par langue, qui fonctionne sans réseau. Il sert à projeter et à faire manipuler les étudiants. Touche `F` : plein écran. Touche `S` : vue orateur avec les notes.
 - `GIS-Basics.pdf` et `GIS-Basics-EN.pdf` : le support de cours, avec le corrigé des exercices, imprimé tout seul si Playwright est installé.
 
+Après le rendu, le terminal dit toujours ce qu'il advient du PDF : « PDF : … » quand il est imprimé, sinon la raison (Playwright absent, `SANS_PDF`, aperçu en cours).
+
 `quarto render`, sans nom de fichier, produit tous les cours. Pour un rendu rapide sans PDF : `SANS_PDF=1 quarto render cours/mon-cours/Mon-Cours.qmd`.
 
 Le PDF sans les réponses : `python3 outils/pdf.py cours/gis-basics/_sortie/GIS-Basics.html --vierge`. À la main, on obtient les mêmes en ouvrant le HTML dans Chrome, avec `?print-pdf` (ou `?print-pdf&reponses=non`) au bout de l'adresse, puis Imprimer → Enregistrer au format PDF (marges : aucune, graphiques d'arrière-plan : cochés).

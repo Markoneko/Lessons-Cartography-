@@ -2,6 +2,15 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-20 (fin de matinée) — Le PDF ne s'imprimait pas chez Marc
+
+Marc signale que `quarto render` ne produit pas le PDF chez lui. Cause probable : sous Windows, `outils/sorties.py` cherchait à savoir s'il tournait dans un `quarto preview` avec la commande `ps`, qui n'existe pas ; dans le doute, il se croyait en aperçu : il copiait le HTML (au lieu de le déplacer) et n'imprimait pas le PDF, sans rien dire.
+
+- Sous Windows, la recherche passe par PowerShell (un seul appel) ; si elle échoue, on fait comme pour un rendu.
+- Chaque fois que le PDF n'est pas imprimé, le terminal en dit la raison (README).
+- Testé sous Linux (rendu, `SANS_PDF`) et par simulation de la branche Windows ; à confirmer sur la machine de Marc.
+
+
 ## 2026-11-20 — « Image Intelligence », troisième salve (V3) : la clé d'orientation et les demandes des fiches
 
 Marc a repris le qmd lui-même (fiches figées 0.3, 1.3 à 1.6, 2.8 ; textes de 1.1, 1.6, 1.7, 2.5, 2.6, 2.7, 2.9 ; 3.6 dégelée ; schéma des raisonnements retouché) : son état devient la référence (`figer.py enregistrer`). Ses textes sont repris tels quels.

@@ -24,15 +24,43 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import pdf as imprimante  # noqa: E402
 
 
+def processus_windows():
+    """Sous Windows (pas de « ps ») : {pid: (pid du parent, ligne de commande)}, en un seul appel à PowerShell."""
+    import json
+    commande = ("Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,CommandLine"
+                " | ConvertTo-Json -Compress")
+    sortie = subprocess.run(["powershell", "-NoProfile", "-NonInteractive", "-Command", commande],
+                            capture_output=True, text=True, timeout=30).stdout
+    liste = json.loads(sortie)
+    if isinstance(liste, dict):
+        liste = [liste]
+    return {p["ProcessId"]: (p["ParentProcessId"], p.get("CommandLine") or "") for p in liste}
+
+
 def en_apercu():
     """Vrai si l'un des processus parents est un « quarto preview »."""
     pid = os.getppid()
+    if os.name == "nt":
+        try:
+            table = processus_windows()
+        except (OSError, ValueError, subprocess.SubprocessError):
+            print("Aperçu ou rendu ? Impossible de le savoir (PowerShell) : on fait comme pour un rendu.")
+            return False
+        for _ in range(12):
+            if pid not in table:
+                return False
+            parent, commande = table[pid]
+            if re.search(r"\bpreview\b", commande):
+                return True
+            pid = parent
+        return False
     for _ in range(12):
         try:
             sortie = subprocess.run(["ps", "-o", "ppid=", "-o", "command=", "-p", str(pid)],
                                     capture_output=True, text=True, timeout=5).stdout.strip()
         except (OSError, subprocess.SubprocessError):
-            return True                     # dans le doute, on copie : rien ne se perd
+            print("Aperçu ou rendu ? Impossible de le savoir (ps) : on fait comme pour un rendu.")
+            return False
         if not sortie:
             return False
         parent, _, commande = sortie.partition(" ")
@@ -95,7 +123,13 @@ def main():
             os.replace(html, cible)
         produits.append(cible)
         print("Sortie :", os.path.relpath(cible, racine))
-    if apercu or not produits or os.environ.get("SANS_PDF"):
+    if not produits:
+        return
+    if apercu:
+        print("Aperçu (quarto preview) : PDF non imprimés.")
+        return
+    if os.environ.get("SANS_PDF"):
+        print("SANS_PDF : PDF non imprimés.")
         return
     if not imprimante.disponible():
         print("PDF non imprimés : Playwright n'est pas installé (voir outils/pdf.py).")
