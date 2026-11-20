@@ -7,9 +7,25 @@ Aucune IA n'est nécessaire pour écrire, modifier ou produire un support.
 
 ## Ce qu'il faut installer (une fois)
 
-- [Quarto](https://quarto.org/docs/get-started/) — le programme qui transforme le texte en diapos.
-- Un éditeur de texte. [VS Code](https://code.visualstudio.com/) avec l'extension Quarto donne un aperçu en direct, mais le Bloc-notes suffit.
-- Pour les PDF automatiques et le contrôle des supports, Python 3 et Playwright : `pip install playwright`, puis `playwright install chromium`. Sans eux, le HTML se produit quand même.
+> **Nota bene — reproduire la chaîne sur un autre ordinateur.** Quatre installations, puis une vérification. Les commandes sont données pour Windows (PowerShell) ; sous macOS ou Linux, remplacer `py` par `python3`. Sur un poste sans droits d'administrateur, chaque logiciel existe en version « utilisateur » ou portable, et `--user` suffit pour Python.
+
+1. **Git et le dépôt.** [GitHub Desktop](https://desktop.github.com/) (le plus simple) ou [Git](https://git-scm.com/). Cloner `Markoneko/Lessons-Cartography-`, puis se placer sur la branche de travail, `test-gabarit`.
+2. **Quarto**, version 1.8 ou plus récente : [quarto.org](https://quarto.org/docs/get-started/). Vérifier : `quarto --version`.
+3. **Un éditeur.** [VS Code](https://code.visualstudio.com/) avec l'extension Quarto ; le Bloc-notes suffit à la rigueur.
+4. **Python 3 et ses modules** — pour les PDF, le contrôle des supports et les outils des cours (images, schémas). Sans eux, le HTML se produit quand même.
+   - Python : [python.org](https://www.python.org/downloads/) ; sous Windows, cocher « Add python.exe to PATH ». Vérifier : `py --version`.
+   - Les modules, depuis la racine du dépôt : `py -m pip install --user -r requirements.txt`
+   - Le navigateur qui imprime les PDF, une fois : `py -m playwright install chromium`
+
+**Vérifier.** Depuis la racine du dépôt, dans un terminal (pas avec le bouton de VS Code, qui lance un aperçu, sans PDF) :
+
+```
+quarto render cours/gis-basics/GIS-Basics.qmd
+```
+
+Les dernières lignes doivent dire « Sortie : … » puis « PDF : … », et les deux fichiers apparaître à côté du `.qmd`. Sinon, le terminal dit pourquoi (Playwright absent, avec la commande à taper ; aperçu en cours ; `SANS_PDF`).
+
+Ce qui a coincé sous Windows, et qui est réglé dans le dépôt : `python3` n'y existe pas (Quarto lance donc `outils/sorties.py` avec le Python qu'il trouve, `py`) ; les messages accentués faisaient échouer Quarto (le script écrit en UTF-8). Si un problème de ce genre revient, voir `JOURNAL.md` (20 novembre 2026).
 
 ## Produire un support
 
@@ -685,6 +701,7 @@ Pour une autre langue, ajouter un jeu de textes en tête de `_briques/gabarit.lu
 | `_charte/` | couleurs, polices, logos Géodata, modèle PPT de l'école | seulement si la charte change |
 | `_briques/` | le moteur : niveaux et exercices | rarement |
 | `outils/` | les outils communs : `figer.py`, `sorties.py`, `pdf.py`, `controle.py` | rarement |
+| `requirements.txt` | les modules Python à installer (voir « Ce qu'il faut installer ») | rarement |
 
 Changer une couleur ou une police : tout est en tête de `_charte/geodata.css`.
 

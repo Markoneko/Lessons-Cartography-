@@ -2,6 +2,11 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-20 (après-midi) — PDF rétabli chez Marc ; installation documentée
+
+Avec `py -m pip install playwright` et `py -m playwright install chromium`, le PDF s'imprime chez Marc. À sa demande, le README a un nota bene d'installation pas à pas (Git et la branche `test-gabarit`, Quarto 1.8, VS Code, Python et ses modules, vérification), pour reproduire la chaîne sur un autre ordinateur. Nouveau fichier `requirements.txt` : Playwright et les modules des outils de cours (Pillow, NumPy, Matplotlib, SciPy, Shapely, OpenCV).
+
+
 ## 2026-11-20 (début d'après-midi) — Toujours pas de PDF chez Marc
 
 Après la mise à jour, Marc n'a toujours pas de PDF. Pistes, par ordre de probabilité : la commande `python3` du post-render, qui n'existe pas sous Windows (Python s'y appelle `python` ou `py`) ; un rendu lancé par le bouton de VS Code, qui fait un `quarto preview` (sans PDF, par construction) ; Playwright non installé.

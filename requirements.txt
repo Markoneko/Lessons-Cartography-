@@ -1,0 +1,13 @@
+# Python : ce qu'il faut pour les PDF, le contrôle des supports et les outils des cours.
+# Installation (voir README, « Ce qu'il faut installer ») :
+#   Windows :          py -m pip install --user -r requirements.txt
+#   macOS, Linux :     python3 -m pip install --user -r requirements.txt
+# puis, une fois :     py -m playwright install chromium   (ou python3 -m playwright install chromium)
+
+playwright      # impression des PDF (outils/sorties.py, outils/pdf.py) et contrôle (outils/controle.py)
+pillow          # préparation des images (cours/*/outils/images.py)
+numpy
+matplotlib      # schémas et cartes (cours/*/outils/schemas.py)
+scipy
+shapely
+opencv-python-headless   # retouches d'images (pointeur effacé, etc.)
