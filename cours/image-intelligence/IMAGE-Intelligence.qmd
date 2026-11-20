@@ -85,7 +85,7 @@ Expérience : deux zones d'écriture : qu'a-t-on vu ? qu'en a-t-on déduit, avec
 Demande :
 :::
 
-La scène est montrée en cours : série *Cœurs noirs*, saison 1 (Prime Video, 2023). L'agent Adèle (Marie Dompnier) cherche un centre d'entrainement secret sur une image. La correction qu'elle donne aux américaons suit, dans la troisième vidéo.
+La scène est montrée en cours : série *Cœurs noirs*, saison 1 (Prime Video, 2023). L'agent Adèle (Marie Dompnier) cherche un centre d'entrainement secret sur une image. La correction qu'elle donne aux américains suit, dans la troisième vidéo.
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -505,7 +505,7 @@ Demande :
 :::
 
 ::: {.reponse}
-Des interprètes, objet par objet, selon des règles. La machine apprend leurs décisions finales, **erreurs comprises** ; On peut ou pas intégrer les hésitations.
+Des interprètes, objet par objet, selon des règles. La machine apprend leurs décisions finales, **erreurs comprises** ; en prenant en compte ou pas les hésitations.
 :::
 
 ::: {.plus titre="L'article FLAIR"}
@@ -566,7 +566,7 @@ Cette image superpose plusieurs dates radar, chacune dans une couleur.
 :::
 
 ::: {.reponse}
-Le **gris**, ce qui n'a pas changé entre les dates. Les **couleurs**, ce qui a bougé : navires, conteneurs, véhicules. On remarque que le radar voit à travers les nuages, mais il faut apprendre à le lire sa géométrie et son "grain" particulier (chatoiement).
+Le **gris**, ce qui n'a pas changé entre les dates. Les **couleurs**, ce qui a bougé : navires, conteneurs, véhicules. On remarque que le radar voit à travers les nuages, mais il faut apprendre à lire sa géométrie et son "grain" particulier (chatoiement).
 :::
 :::
 ::::
