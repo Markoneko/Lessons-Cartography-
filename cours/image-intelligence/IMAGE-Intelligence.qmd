@@ -999,7 +999,7 @@ Des pistes de sable semées de **barres d'obstacles** ; de petites silhouettes (
 ::: {.fiche n="4.3" etat="fige"}
 Intention : La position d'un objet dans son milieu explique ce qui lui arrive. Pourquoi une centrale ici ? L'eau de mer ; un sol rocheux ; et l'éloignement de la population : la presqu'île du Cotentin, la falaise protectrice, et sans doute (supposition de Marc) la proximité de la Hague. Carte faite pour le cours : Flamanville, un cercle de 100 km, la population des communes (INSEE, via Etalab) et des îles Anglo-Normandes (ordres de grandeur). Calculé : environ 730 000 habitants à moins de 100 km, dont près d'un quart dans les îles ; le cercle est aux quatre cinquièmes en mer. [Retour V0 : préciser l'éloignement de la population, avec une carte simple et un cercle de 100 km ; le site passe après l'association, qui révèle la nature du lieu.]
 Expérience : carte ; question
-Demande : Refaire cette carte en n'oubliant pas les données des départements mitoyens, histoire que toutes les agglomérations soient prises en compte. Mettre les villes à l'intérieur des 100km d'une autre couleur, le même orange par exemple.
+Demande :
 :::
 
 :::: {.columns}
