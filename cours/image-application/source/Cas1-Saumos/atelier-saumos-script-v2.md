@@ -16,7 +16,7 @@ décisions ; cette v2 en tire les conséquences. Rien n'est codé avant validati
   caractère : Elikia (le signal), Bastien (les données), Inès (les orbites), Youri (les traitements),
   Rose (la contradictrice).
 - La **commande du préfet** : un outil qui donne précisément la surface brûlée à la fin du feu, et la
-  date précise du départ.
+  date précise du départ. Lui aussi a sa petite tête jrpg de préfet.
 - Deux **paris** au départ : combien de jours après la fin du feu pour la cartographie demandée ;
   combien d'ETP pour cette estimation. La réponse attendue : **cela dépend de la précision voulue et
   des moyens engagés**. Les groupes doivent finir en proposant au préfet **trois solutions datées** :
@@ -45,6 +45,8 @@ décisions ; cette v2 en tire les conséquences. Rien n'est codé avant validati
 
 > **À trancher par Marc.** Le sujet A (la date de départ) revient-il à l'analyste, comme proposé
 > ici, ou au rapporteur, pour qu'il ait lui aussi une enquête à mener ?
+
+Le rapporteur s'occupe des infos cadrantes, donc de la découverte de la date de départ (sujetA). C'est le plus rapide. l'analyste lui du sujet B
 
 Chaque étudiant choisit sa posture et sa tête au début. La posture change les réponses des experts ;
 la tête est seulement là pour le plaisir et l'engagement.
@@ -183,23 +185,42 @@ courtes, plus les accueils et les redirections.
    ajoute un couple Sentinel-1 avant / après sur Saumos (une donnée de plus à préparer), soit le radar
    reste une solution que Rose et Inès évoquent sans manipulation. Je pencherais pour la seconde en
    V1, et la première ensuite.
+
+   Je valide. On garde une trace de ce choix.
 2. **Le pari des ETP.** Il faut une réponse de référence, même en ordre de grandeur, pour le verdict.
    Je n'en ai aucune source : c'est à toi de la fixer.
+
+Pour un non Géodata Paris, quelques jours.
+Pour un Géodata Paris quelques heures.
+Un processus automatique maitrisé, pour un non Géodata Paris, impossible.
+Un processus automatique maitrisé, pour un Géodata Paris, quelques jours à quelques mois suivant l'emprise spaction temporelle.
+
 3. **Le barème sur 8** de l'échange n'est pas encore défini. Je propose huit items du rapport : la date
    de départ, la source de cette date, la surface, la date de l'image qui la donne, la résolution, les
    satellites et leurs orbites, les trois solutions au préfet, une limite juste.
+
+   Très bien, c'est flex, par 6/8 je pensais initialement à +75% de bonnes réponses. Donc si besoin de plus de points feel free.
+
 4. **La sévérité à 60 points et l'affichage des paris** demandent un état partagé entre les écrans.
    C'est faisable avec la feuille Google, dans les deux sens : les groupes écrivent, la projection relit
    la feuille toutes les quelques secondes. Cela suppose que la feuille soit en place avant la séance.
+
+On le garde en option car le cours doit être pr^t ce WE
+
 5. **Deux cadences de Meteosat** coexistent dans les documents : « toutes les 15 minutes » (Bastien,
    ta réplique) et « toutes les 10 min » (fiche A). Les deux existent selon la génération de Meteosat ;
    il faut choisir celle des images de la séance (le suivi parle de Meteosat-12, de la nouvelle
-   génération).
+   génération). On laisse l'ambiguité, cela dépend des capteurs...
+
 6. **Les têtes 8 bits** seront des dessins originaux : pas de personnages reconnaissables de jeux
-   existants.
+   existants. 
+
+   tout à fait je préfère.
 7. **Le temps.** 22 minutes d'enquête avec trois enquêtes en parallèle dans chaque groupe, c'est
    confortable. La sévérité en 5 minutes est serrée si chaque groupe pose ses trois points sur son écran
    et attend la révélation : à surveiller au premier test.
+
+   Yep, cela reste une option.
 
 ---
 
