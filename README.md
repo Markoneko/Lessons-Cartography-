@@ -641,6 +641,28 @@ La **carte du cours** passe un niveau sur deux colonnes dès qu'il compte plus d
 
 Deux classes de mise en page : `::: {.column .centre-v width="60%"}` centre une colonne sur la hauteur ; `::: {.cote-a-cote}` place des images côte à côte, sans colonnes imbriquées (une image par paragraphe). Les images ne sont jamais déformées : une hauteur imposée et une largeur bridée par la colonne gardent le rapport hauteur-largeur.
 
+### Les briques du jeu de rôle
+
+Elles vivent dans `_briques/briques-jeu.html` et `_briques/briques-jeu.css`, avec une identité propre (JRPG 8 bits aux couleurs de Géodata, police pixel *Press Start 2P*, sous licence OFL). Exemple complet : `cours/image-application/IMAGE-AtelierSaumos.qmd`. Tout le contenu du jeu (préfet, experts, postures, enquêtes, indices, pistes, rapport, barème, sévérité, phrase) est dans un fichier JSON du cours, par défaut `donnees/saumos.json` ; les têtes en pixel art dans `donnees/pixels.json`, produit par `outils/pixels.py`. Une autre partie se joue en changeant de fichier : `donnees="…"`, `pixels="…"` sur la brique.
+
+| Brique | Ce qu'elle fait |
+|---|---|
+| `{.jdr-commande}` | le préfet dit sa commande, sa tête parle |
+| `{.jdr-paris}` | les paris de départ (curseur ou choix) |
+| `{.jdr-equipe}` | groupe, prénom, posture, tête de héros |
+| `{.jdr-experts}` | les experts, leur spécialité, leur trait |
+| `{.jdr-repartition}` | une carte par enquête, qui mène à sa diapo |
+| `{.jdr-enquete enquete="A"}` | le dialogue : « Avec qui veux-tu commencer ? », réponses selon la posture, carnet d'indices, pistes, confiance du préfet |
+| `{.jdr-labo labo="a"}` | les secours intégrés (`a` Meteosat et Terra, `b` compositions et mesure Sentinel-2, `c` orbites) |
+| `{.jdr-rapport envoi=""}` | le rapport au propre, noté, téléchargé ou envoyé à la feuille Google |
+| `{.jdr-severite}` | trois pronostics, puis proche infrarouge, moyen infrarouge, dNBR |
+| `{.jdr-phrase}` | la phrase à trous de la classe, pour la projection |
+| `{.jdr-bulle qui="rose"}` | un expert dit le texte écrit dans la brique, paragraphe par paragraphe |
+
+Les diapos d'enquête et de labo prennent la classe `{.jdr-plein}` et un identifiant (`{#enquete-a .jdr-plein}`), que les pistes visent. Dans le fichier, un nœud de dialogue a un tronc commun `r` et un angle par posture (`R`, `A`, `O`) ; `requiert`, `debloque`, `cache`, `indices`, `pistes` et `cout` règlent sa place dans le graphe (voir la clé `lisez-moi` du fichier). Ce que fait le joueur reste dans son navigateur.
+
+Deux supports dans un même dossier : `suffixe-plan: "-atelier-saumos"` dans l'en-tête du second lui donne son propre `plan-atelier-saumos.md` et son propre registre `figes-atelier-saumos.json`.
+
 ### Réglages utiles
 
 | Écriture | Effet |
@@ -710,6 +732,6 @@ Changer une couleur ou une police : tout est en tête de `_charte/geodata.css`.
 - Les exercices et les expériences ne sont interactifs qu'en HTML. Le PDF en montre l'énoncé et, par défaut, le corrigé.
 - Les bonus « Pour aller plus loin » ne figurent pas dans le PDF.
 - Les liens de la carte du cours ne fonctionnent pas dans le PDF.
-- Les réponses des étudiants ne sont pas enregistrées, sauf l'envoi volontaire de l'atelier des commandes vers une feuille Google.
+- Les réponses des étudiants ne sont pas enregistrées, sauf l'envoi volontaire de l'atelier des commandes ou du rapport du jeu de rôle vers une feuille Google.
 - Dans la version anglaise, les images qui contiennent du texte français (profil du géoïde, zones Lambert, schéma SPOT…) ne sont pas traduites.
 - Les formules mathématiques s'affichent sans réseau, mais avec un rendu plus simple que LaTeX.

@@ -52,9 +52,14 @@ def main():
     commande, cours = sys.argv[1], sys.argv[2]
     # le fichier du cours donne figes.json ; sa version anglaise (nom en « -en.qmd ») donne figes-en.json
     suffixe = "-en" if os.path.basename(cours).lower().endswith("-en.qmd") else ""
-    registre = os.path.join(os.path.dirname(cours), "figes" + suffixe + ".json")
     with open(cours, encoding="utf-8") as f:
-        actuelles = diapos(f.read())
+        texte = f.read()
+    # un second support dans le même dossier déclare « suffixe-plan: -atelier » dans son en-tête
+    propre = re.search(r'^suffixe-plan:\s*"?([^"\n]+)"?\s*$', texte.split("\n---", 1)[0], re.M)
+    if propre:
+        suffixe = propre.group(1).strip() + suffixe
+    registre = os.path.join(os.path.dirname(cours), "figes" + suffixe + ".json")
+    actuelles = diapos(texte)
     figees = {d["n"]: d for d in actuelles if d["etat"] == "fige"}
 
     if commande == "enregistrer":

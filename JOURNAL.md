@@ -2,6 +2,27 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-20 (soir) — Atelier Saumos, V0 jouable
+
+À la demande de Marc, l'atelier se construit à part, dans `cours/image-application/IMAGE-AtelierSaumos.qmd` (mêmes références que le cours, fusion ensuite dans la partie 4). 25 diapos, toutes `a-revoir`.
+
+**Fait**
+
+- Moteur de jeu de rôle : `_briques/briques-jeu.html` et `.css` (onze briques, voir le README). Identité propre : JRPG 8 bits aux couleurs de la charte, boîtes de dialogue bleu nuit, police pixel *Press Start 2P* (OFL, dans `_charte/polices/`).
+- Contenu dans `donnees/saumos.json` : préfet, cinq experts, trois postures, trois enquêtes en graphe (accueils, nœuds, angles par posture, indices, pistes, confiance), rapport et barème sur 8, sévérité, phrase, références de mesure. Les textes de Marc (scripts v1 et v2, séance prépa) y sont recopiés tels quels. Graphe vérifié : tout nœud caché est débloquable, aucune référence orpheline.
+- Têtes en pixel art (dessins originaux) : `outils/pixels.py` → `donnees/pixels.json` ; la bouche s'anime quand l'expert parle.
+- Images de la séance et des sources : `outils/images-saumos.py` → `images/saumos/`. Secours intégrés : Meteosat (37 images de la séance), Terra (8 jours), Sentinel-2 (4 compositions, 21 et 26 juillet ; mesure au 26 juillet et au 4 septembre), animation d'orbites dessinée (Terre vue du pôle Nord, géostationnaire, Sentinel-2 à 10 h 30).
+- Sévérité : la classe UN-SPIDER de chaque point est lue dans l'image dNBR de la séance (couleur la plus proche de la légende).
+- Outillage : clé `suffixe-plan` (filtre Lua et `figer.py`) pour deux supports dans un même dossier.
+- Contrôle : 0 débordement, aucune erreur JavaScript ; parties jouées en navigateur (enquêtes A, B, C sous trois postures, labos, rapport 8/8, sévérité) ; PDF imprimé.
+
+**Choix faits sans Marc (à valider)**
+
+- La réplique d'une posture s'affiche à la ligne, sous le tronc commun : ainsi aucun texte de Marc n'est retouché pour raccorder les deux.
+- Le badge rouge d'un expert ne compte que ce qui s'est déjà ouvert : il ne trahit pas le bon premier interlocuteur.
+- Le radar reste évoqué (Inès, Rose, verdict), sans manipulation, comme décidé.
+- L'état partagé (60 points et paris sur la projection) reste en option ; le rapport se télécharge, et s'envoie dès que `envoi="…"` est renseigné.
+
 ## 2026-11-20 (après-midi) — PDF rétabli chez Marc ; installation documentée
 
 Avec `py -m pip install playwright` et `py -m playwright install chromium`, le PDF s'imprime chez Marc. À sa demande, le README a un nota bene d'installation pas à pas (Git et la branche `test-gabarit`, Quarto 1.8, VS Code, Python et ses modules, vérification), pour reproduire la chaîne sur un autre ordinateur. Nouveau fichier `requirements.txt` : Playwright et les modules des outils de cours (Pillow, NumPy, Matplotlib, SciPy, Shapely, OpenCV).

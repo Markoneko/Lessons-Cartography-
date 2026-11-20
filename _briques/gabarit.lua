@@ -12,6 +12,12 @@
   On n'a normalement pas besoin de modifier ce fichier pour écrire un cours.
 ]]
 
+-- Sous Windows, Pandoc démarre dans la locale du système (Windows-1252), où l'octet A0 compte
+-- parmi les espaces : les motifs %s coupaient alors le « à » (octets C3 A0) en deux, dans le plan
+-- comme dans les textes découpés par les briques. On revient à la locale C pour les classes de caractères.
+pcall(os.setlocale, "C", "ctype")
+
+
 local NIVEAUX = { "socle", "appui", "veille" }
 local LIBELLE = { socle = "Socle", appui = "Appui", veille = "Veille" }
 
@@ -1328,7 +1334,46 @@ local function brique_hx(div, classe)
   return div
 end
 
+----------------------------------------------------------------------------
+-- Briques du jeu de rôle (atelier Saumos) : leur comportement est dans _briques/briques-jeu.html.
+-- Toutes lisent le même fichier de données (répliques, indices, rapport) et les têtes en pixel art ;
+-- les images listées dans le fichier sont posées une fois, cachées, pour être embarquées dans le HTML.
+----------------------------------------------------------------------------
+local JDR = { "jdr-commande", "jdr-paris", "jdr-equipe", "jdr-experts", "jdr-repartition", "jdr-enquete",
+  "jdr-labo", "jdr-rapport", "jdr-severite", "jdr-phrase", "jdr-bulle" }
+local jdr_embarque = {}
+local function jdr_donnees(chemin, pixels)
+  if jdr_embarque[chemin] then return "" end
+  jdr_embarque[chemin] = true
+  local json = lire_fichier(chemin)
+  if not json then return '<p class="jdr-manque">Données introuvables : ' .. echappe(chemin) .. '</p>' end
+  local out = { '<script type="application/json" class="jdr-donnees">' .. json:gsub("</", "<\\/") .. '</script>' }
+  local px = lire_fichier(pixels)
+  if px then table.insert(out, '<script type="application/json" class="jdr-pixels">' .. px:gsub("</", "<\\/") .. '</script>') end
+  local ok, d = pcall(pandoc.json.decode, json, false)
+  if ok and d and d.images then
+    for cle, src in pairs(d.images) do
+      table.insert(out, '<img class="jdr-img" data-cle="' .. echappe(cle) .. '" src="' .. echappe(src) .. '" alt="" hidden>')
+    end
+  end
+  return table.concat(out, "")
+end
+
+local function brique_jdr(div, classe)
+  if not EN_HTML then return div end
+  local chemin = attribut(div, "donnees", "donnees/saumos.json")
+  local pixels = attribut(div, "pixels", "donnees/pixels.json")
+  local attrs = {}
+  for k, v in pairs(div.attributes) do table.insert(attrs, ' data-' .. k .. '="' .. echappe(v) .. '"') end
+  div.content:insert(1, pandoc.RawBlock("html", jdr_donnees(chemin, pixels) .. '<div class="jdr-zone ' .. classe
+    .. '-zone" data-brique="' .. classe .. '"' .. table.concat(attrs, "") .. '></div>'))
+  return div
+end
+
 local function briques(div)
+  for _, classe in ipairs(JDR) do
+    if div.classes:includes(classe) then return brique_jdr(div, classe) end
+  end
   if div.classes:includes("vote") then return brique_vote(div) end
   if div.classes:includes("compromis") then return brique_compromis(div) end
   if div.classes:includes("atelier-commandes") then return brique_atelier_commandes(div) end
@@ -1475,13 +1520,15 @@ local function cellule(texte)
 end
 
 -- Écrit plan.md à côté du cours : une vue d'ensemble, régénérée à chaque compilation.
-local function ecrire_plan(fiches, titre_cours)
+local function ecrire_plan(fiches, titre_cours, suffixe_meta)
   if #fiches == 0 then return end
   local entree = (quarto and quarto.doc and quarto.doc.input_file)
       or (PANDOC_STATE and PANDOC_STATE.input_files[1]) or ""
   -- le fichier du cours donne plan.md ; sa version anglaise (nom en « -en.qmd ») donne plan-en.md
   local nom_source = pandoc.path.filename(entree)
   local suffixe = nom_source:lower():match("%-en%.qmd$") and "-en" or ""
+  -- un second support dans le même dossier (ex. un atelier) déclare « suffixe-plan: -atelier » dans son en-tête
+  if suffixe_meta and suffixe_meta ~= "" then suffixe = suffixe_meta .. suffixe end
   local chemin = pandoc.path.join({ pandoc.path.directory(entree), "plan" .. suffixe .. ".md" })
   local comptes, demandes = {}, {}
   local l = {
@@ -1579,7 +1626,8 @@ function Pandoc(doc)
     if not saute then gardes:insert(bloc) end
     ::suivant::
   end
-  if EN_HTML then ecrire_plan(fiches, pandoc.utils.stringify(doc.meta.title or "")) end
+  if EN_HTML then ecrire_plan(fiches, pandoc.utils.stringify(doc.meta.title or ""),
+    pandoc.utils.stringify(doc.meta["suffixe-plan"] or "")) end
 
   -- 2e passage : habiller chaque diapo
   local sortie, partie = pandoc.List(), 0
