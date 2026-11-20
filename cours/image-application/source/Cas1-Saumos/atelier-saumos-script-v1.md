@@ -26,7 +26,7 @@ demandés par Marc.
 | Clôture | la phrase collective | la phrase collective, le verdict de Rose, la chaîne d'hexagones reconstituée |
 
 Ce qui ne change pas : la question de départ, l'EMSR899, les trois postes, la phrase collective à
-trous, la sévérité dNBR sur données réelles, le mode projection `#proj`.
+trous, la sévérité dNBR sur données réelles, le mode projection `#proj`. On garde aussi les slides dans le cours qui remplacerait la partie 
 
 ---
 
@@ -34,13 +34,45 @@ trous, la sévérité dNBR sur données réelles, le mode projection `#proj`.
 
 | Temps | Séquence | Qui | Ce qui se passe |
 |---|---|---|---|
-| 0–4′ | **La question** | tous | EMSR899, la dépêche, la question : « comment cartographie-t-on presque en direct un feu de forêt ? » Le pari : « dans combien de jours saura-t-on précisément ce qui a brûlé ? » Chaque groupe inscrit son pari. |
-| 4–6′ | **Affectation** | tous | Numéro de groupe → poste (1, 4, 7… → A ; 2, 5, 8… → B ; 3, 6, 9… → C). L'expert du poste se présente en deux lignes. |
-| 6–21′ | **L'enquête** | par poste | Questions du poste, sites externes (EUMETView, Copernicus Browser, Deimos), outil de mesure intégré pour B. L'expert répond aux questions du groupe ; les indices coûtent de la confiance (§ 4). |
-| 21–27′ | **Le rapport au propre** | par poste | Chaque groupe remplit son rapport de station (§ 5), puis l'envoie. |
-| 27–32′ | **L'échange** | plénière | Un groupe par poste lit son rapport ; la phrase collective se remplit sur la projection. Les autres groupes du même poste confirment ou contestent. |
-| 32–40′ | **La sévérité** | tous | dNBR, la même image pour tous. Chaque groupe pose trois points (sévère, moyen, épargné), annonce son pronostic, puis l'appli révèle. Les 60 points s'accumulent sur la projection. |
-| 40–45′ | **Le verdict** | plénière | Rose relit la phrase : « presque en direct », vrai pour quoi, faux pour quoi ? Retour sur les paris. La chaîne d'hexagones du feu se reconstitue à l'écran : c'est la chaîne qu'ils viennent de suivre. Clin d'œil au DM biosphère de l'an prochain. |
+| 0–4′ | **La question** | tous | EMSR899, la dépêche, on réutilise le visuel pour la slide du cours. Une commande est passé par le préfet, il faut construire un outil qui permettra de connaitre précisément la surface brulé à la fin du feu, ainsi que la date précise du départ.
+
+Questions "pari" posées. Combien de jours après la fin de l'incendie seront nécessaire pour la cartographie demandée? réponse - cela dépend de la précision désirée et des moyens engagés (il serait top que les étudiants s'en rendent compte car si argent => Commande acquisition; si ok pour une précision relative on peut utliser du radar; sinon attendre une S2 sans nuage!!!)
+Seconde question, "combien d'ETP seraient nécessaire à cette estimation?"
+
+Chaque groupe inscrit ses paris. |
+| 4–6′ | slide **Affectation** | tous | 
+Pas besoin de séparer les groupes car groupe doit se répartir les tâches.
+Il faut noter 3 postures avec pour chacune d'elle un nom. Le rapporteur, c'est lui qui compile les résultats des autres et qui livre le résultat "à la fin" qui sera versé dans le google doc. Il faut préciser qu'il prend les notes. L'orbitographe qui se charge de déceler le secret des couples vecteur/capteur, et l'analyste qui dégage les informations spatiales..
+Dans l'idéal de l'idéal, chaque étudiant peut choisir sa tete en JRPG sympa parmi une liste déroulante pour motiver l'engagement.
+
+On présente aussi les 5 experts. Il faut une tête en mode vecteur 8bit sympa, de type JRPG. sa spécialité et son trait de caractère.
+
+| 6–8′ | Slide **Répartition** | par poste |
+Là, on doit les amener à se répartir les taches en répondant aux questions
+poste A du moyen de connaitre un satellite et une donnée permettant de connaitre la date du départ de feu.
+poste B de mesurer la surface de feu demandée par le préfet
+poste C de trouver les satellites idoines et accompagner ensuite ses collègues.
+Questions du poste, sites externes (EUMETView, Copernicus Browser, Deimos)
+En cliquant sur la question à laquelle il cherche à répondre => slide enquête dédié cf ensuite.
+
+| 8–30′ | Slide **L'enquête** | par poste |
+Il y a là une slide par sujet. L'idéal serait d'engager un échange avec les experts pour trouver des réponse. Une seule question ici : Avec qui veux-tu commencer? On clique sur un expert qui change de picto (picto qui s'anime avec la réponse qui défile en dessous).
+Quand il clique sur le bon expert, en plus de l'interaction, cela ouvre des pistes sur son enquête.
+
+C'est là que va se construire le graphe du cours dont vous etes le héros !
+Je te laisse me proposer une première piste de graphe que je valide corrige
+
+Pour exemple : Si le poste A commence par interroger Elikia, elle le salue, puis il doit continuer, cela ouvre des indices. (j'ai mis des exemples dans la fiche d'Elikia) Il faut faire de même aevc tous les experts. Attention à la cohérence des échanges et des indices. Ils doivent aussi aider les étudiants à manipuler les 3 sites références.
+
+L'expert répond aux questions du groupe ; les indices coûtent de la confiance (§ 4). |
+
+| 30–35′ | **Le rapport au propre** | par poste | Chaque groupe remplit son rapport de station (§ 5), puis l'envoie. |
+
+| 35–40′ | **La sévérité** | tous | dNBR, la même image pour tous. Chaque groupe pose trois points (sévère, moyen, épargné), annonce son pronostic, puis l'appli révèle. Les 60 points s'accumulent sur la projection. |
+
+| 40–45′ | **L'échange** | plénière | Marc demande quels sont les groupe qui ont eu plus de 6/8 des points, bravo, on revient ensuite sur les difficultés des autres groupes. |
+
+| 40–45′ | **Le verdict** | plénière | Rose relit la phrase : « presque en direct », vrai pour quoi, faux pour quoi ? Retour sur les paris. La chaîne d'hexagones du feu se reconstitue à l'écran : c'est la chaîne qu'ils viennent de suivre. Clin d'œil au DM biosphère de l'an prochain. |Et surtout lien vers UN-Spider https://un-spider.org/advisory-support/recommended-practices/recommended-practice-burn-severity/in-detail/normalized-burn-ratio
 
 Si l'on déborde : l'échange se raccourcit (un rapport lu par poste, les autres s'affichent seuls),
 comme dans la séance prépa.
@@ -55,26 +87,25 @@ quelle question se poser.
 
 | Poste | Expert | Caractère (à valider par Marc) |
 |---|---|---|
-| A, thermique | **Héloïse**, le signal | Physicienne. Parle des photons comme de témoins capricieux. |
-| B, optique | **Bastien**, les données | Archiviste compulsif. Vexé quand on cherche une image sans regarder les dates. |
-| C, orbites | **Youri**, l'orbitographe (nouveau ; nom à valider) | Ne pense qu'en tours de Terre. Calcule tout en orbites, même l'heure du déjeuner. |
-| Sévérité | **Inès**, les traitements | Pince-sans-rire. Allergique aux seuils choisis « au feeling ». |
-| Verdict | **Rose**, la contradictrice | Juriste, ancienne journaliste. Toujours la question qui gêne. |
+| A, thermique | **Elikia**, le signal | Physicienne d'origine Kongolaise. Parle des photons comme de témoins capricieux. |
+| B, optique | **Bastien**, les données | Archiviste toulousain compulsif. Vexé quand on cherche une image sans regarder les dates. Fait des blagues sur les chocolatinnes|
+| C, orbites | **Inès**, l'orbitographe (nouveau ; nom à valider) | Ancienne étudiante de géodata Paris. Ne pense qu'en tours de Terre. Calcule tout en orbites, même l'heure du déjeuner. |
+| Sévérité | **Youri**, les traitements | Pince-sans-rire d'origine sibérienne. Allergique aux seuils choisis « au feeling ». |
+| Verdict | **Rose**, la contradictrice | Juriste parisienne, ancienne journaliste. Toujours la question qui gêne. |
 
 ### Exemples de répliques, pour fixer le ton (à reprendre ou rayer)
 
-**Héloïse, poste A**
-- Accueil : « Un satellite qui voit la Terre entière toutes les dix minutes, ça vous paraît trop beau ?
-  Vous avez raison. Cherchez ce qu'il sacrifie. »
-- Indice 1 : « Le feu, c'est chaud. Qu'est-ce qu'un capteur sensible à la chaleur peut voir que l'œil
-  ne voit pas ? »
-- Indice 2 : « Faites défiler les images une à une. Le premier point chaud, c'est quand ? »
+**Elikia, poste A**
+- Accueil : « Bonjour, il n'y a pas de fumée sans feu, si vous êtes là c'est que vous cherchez à détecter quelque chose dans une image, je me trompe? » (réponse drole)
+- Indice 1 : « Quels sont les phénomènes qui trahissent la présence d'un feu? Une idée des propriétés des photons qui vous intéressent? Cela vous donnera une idée des bandes spectrales qui vous intéressent »
+(réponse, la fumée dans le visible, l'emission dans l'infrarouge moyen) (cela debloque les indices sur les compositions colorées )
+- Indice 2 : « Faites défiler les images une à une. Le premier point chaud, c'est quand ? » (cela débloque un indice qui rappelle le jour du début de l'incendie)
 - Indice 3 : « Comparez la taille d'un pixel à celle d'une commune. Vous pourriez tracer un contour,
   vous, avec des pixels pareils ? »
 
 **Bastien, poste B**
 - Accueil : « J'ai des images de cette forêt tous les cinq jours depuis des années. Enfin, quand il ne
-  fait pas trop nuageux. Enfin, quand il ne fume pas. Bref, cherchez bien. »
+  fait pas trop nuageux. Enfin, quand il ne fume pas. Bref, cherchez bien. J'ai aussi des images toutes les 15 minutes, mais c'est plutôt utilisé pour la météo, pas le suivi de la végétation, cela vous intéresse? »
 - Indice 1 : « Une date avant, une date après. Commencez par l'avant : il n'y a rien à voir, et c'est
   justement pour ça qu'il compte. »
 - Indice 2 : « Si la fumée vous gêne, essayez une composition qui ne regarde pas dans le visible. »
@@ -132,6 +163,9 @@ la phrase collective sur la projection.
 
 Proposition : l'atelier Saumos **remplace** l'atelier des commandes dans la partie 4.
 
+Demande :  à adaptater en fonction de mes propsotions d'avant.
+
+
 - 4.0 Intercalaire : « Le feu de Saumos ».
 - 4.1 La question et le pari (EMSR899).
 - 4.2 Les trois postes et leurs experts.
@@ -151,6 +185,9 @@ difficiles) viendront ensuite, sur le même modèle.
 1. **Le HTML de la séance** (`saumos-seance.html`) n'est pas dans le dépôt : seuls la conception
    v3bis et le suivi y sont. Il contient les données (bandes B8A et B12, périmètre, série Meteosat).
    Il faut le pousser, avec les images « au propre » dont tu parles.
+
+
+   ré^ponse : Je n'ai pas de V4, c'est donc V3bis la dernière 
 2. **Deux chronologies à réconcilier** dans les documents :
    - la conception v3bis donne la surface mesurée au **31 juillet** (B2) et le périmètre officiel
      tracé **le 29 juillet** sur WorldView Legion (T3) ;
@@ -158,9 +195,17 @@ difficiles) viendront ensuite, sur le même modèle.
      **4 septembre** (environ 25 000 ha), et 31 386 ha pour le périmètre du 29 juillet ;
    - l'accroche parlait de 42 000 ha (retirée pour garder le suspense).
    Quelle version fait foi ? Le suivi étant le plus récent, je partirais de lui.
+
+  Réponse Il y a 3 réponse possible en fonction des moyens du préfet. Dans l'idéal les groupes d'étudiants doivent finir en proposant au préfet 3 solutions de dates (cf partie ##2 les questions "pari")
 3. **La conception v4** citée dans le suivi n'est pas dans le dépôt (seule la v3bis y est). Si elle
    existe, c'est elle qu'il faut reprendre.
+
+   On reste sur V3bis
+
+  
 4. **Sites externes avec 20 groupes** : le suivi signale le test réseau et le compte Copernicus
    comme risques. On garde les sites externes (c'est l'esprit de la séance), avec un secours intégré
-   par poste ?
+   par poste ? Oui on intègre un secours par poste, Deimos compris (animation basique avec Soleil terre et les 2 satellites.)
+
 5. **Youri** : un cinquième personnage pour les orbites, ou Bastien prend aussi le poste C ?
+On prend Youri.
