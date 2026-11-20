@@ -217,15 +217,34 @@ local function brique_qcm(div)
 end
 
 -- ::: {.ordre}  liste numérotée écrite DANS LE BON ORDRE ; elle est mélangée à l'écran
+--   2. = texte    « = » : même rang que l'étape précédente (les deux se prennent dans un ordre ou dans l'autre)
+-- Retire le « = » de tête d'une étape ; rend vrai s'il y était.
+local function rang_egal(item)
+  local premier = item[1]
+  if premier and (premier.t == "Plain" or premier.t == "Para") then
+    local c = premier.content
+    if c[1] and c[1].t == "Str" and c[1].text == "=" and c[2] and c[2].t == "Space" then
+      c:remove(1); c:remove(1)
+      return true
+    end
+  end
+  return false
+end
+
 local function brique_ordre(div)
   local sortie = pandoc.List()
   for _, bloc in ipairs(div.content) do
     if bloc.t == "OrderedList" then
+      local rangs, r = {}, 0
+      for i, item in ipairs(bloc.content) do
+        if not (i > 1 and rang_egal(item)) then r = r + 1 end
+        rangs[i] = r
+      end
       if EN_HTML then
         local etapes = pandoc.List()
-        for rang, item in ipairs(bloc.content) do
+        for i, item in ipairs(bloc.content) do
           etapes:insert(pandoc.Div(item, pandoc.Attr("", { "etape" },
-            { ["data-rang"] = tostring(rang), role = "button", tabindex = "0" })))
+            { ["data-rang"] = tostring(rangs[i]), role = "button", tabindex = "0" })))
         end
         sortie:insert(pandoc.Div(etapes, pandoc.Attr("", { "etapes" })))
         sortie:insert(pandoc.RawBlock("html",
@@ -237,7 +256,7 @@ local function brique_ordre(div)
         for i = n, 1, -1 do if i % 2 == 0 then melange:insert(bloc.content[i]) end end
         for i = 1, n do if i % 2 == 1 then melange:insert(bloc.content[i]) end end
         for i, item in ipairs(bloc.content) do
-          solution:insert(i .. ". " .. pandoc.utils.stringify(item))
+          solution:insert(rangs[i] .. ". " .. pandoc.utils.stringify(item))
         end
         sortie:insert(pandoc.BulletList(melange))
         sortie:insert(pandoc.Div(pandoc.Para(pandoc.Str(t("ordre_notes") .. table.concat(solution, " — "))),
@@ -1388,7 +1407,7 @@ local function carte_du_cours(inventaire, parties, seulement)
   local LONGUE, nb_colonnes = 16, 0
   for _, n in ipairs(liste) do nb_colonnes = nb_colonnes + ((#liste > 1 and #inventaire[n] > LONGUE) and 2 or 1) end
   h = h .. '<div class="carte-du-cours' .. (plus_longue > 8 and ' dense' or '')
-      .. (#liste == 1 and ' un-niveau' or '') .. '"'
+      .. (#liste == 1 and ' un-niveau' or '') .. ((#liste == 1 and plus_longue > 24) and ' serre' or '') .. '"'
       .. (#liste > 1 and (' style="grid-template-columns: repeat(' .. nb_colonnes .. ', 1fr)"') or '') .. '>'
   for _, n in ipairs(liste) do
     local nb = #inventaire[n]

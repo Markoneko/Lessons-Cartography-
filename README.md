@@ -205,6 +205,8 @@ Quel est le système légal ?
 :::
 ```
 
+Une étape qui commence par `= ` prend le même rang que la précédente : l'étudiant peut les placer dans un ordre ou dans l'autre (`2. = Source : …` après `1. Nature : …`).
+
 **Zones à cliquer sur une image** — chaque zone est donnée en pourcentage de l'image : gauche, haut, largeur, hauteur.
 
 ```markdown
@@ -398,7 +400,7 @@ En anglais : `profil="✒️ The equipped Author"`.
 
 Elles vivent dans `_briques/briques-enquete.html` et `_briques/briques-enquete.css`. Le cours `cours/image-intelligence` en contient un exemple de chacune. Ce que l'étudiant écrit ou choisit est gardé dans son navigateur seulement ; le PDF corrigé montre la réponse attendue.
 
-**Coupe topographique** — un marcheur va de A à B sur une image, en partant du milieu des ordonnées ; à chaque pas, l'étudiant le fait monter ou descendre avec les flèches ↑ ↓ (→ ou espace pour avancer) et marque une **crête vive** avec la touche C. La courbe se dessine lissée, sauf aux crêtes vives, qui gardent leur angle : on distingue les crêtes qui cassent des fonds arrondis. À l'arrivée, son profil est comparé au profil de référence (écart moyen, et nombre de crêtes vives), et le bloc `.apres-jeu` s'affiche. `depart` et `arrivee` sont en % de l'image ; le profil est un JSON `{"points": [[t, z], …]}`, t et z entre 0 et 1 ; un troisième terme `"v"` marque une crête vive : `[0.17, 0.88, "v"]`.
+**Coupe topographique** — un marcheur va de A à B sur une image, en partant du milieu des ordonnées ; à chaque pas, l'étudiant le fait monter ou descendre avec les flèches ↑ ↓ (→ ou espace pour avancer) et marque une **crête vive** avec la touche C. La courbe se dessine lissée, sauf aux crêtes vives, qui gardent leur angle : on distingue les crêtes qui cassent des fonds arrondis. À l'arrivée, son profil est comparé au profil de référence (écart moyen, et nombre de crêtes vives), et le bloc `.apres-jeu` s'affiche. `depart` et `arrivee` sont en % de l'image ; le profil est un JSON `{"points": [[t, z], …]}`, t et z entre 0 et 1 ; un troisième terme `"v"` marque une crête vive : `[0.17, 0.88, "v"]`. Avec `"alt": [800, 1150]` (le bas et le haut de l'échelle, en mètres), le graphique affiche les vraies altitudes sur ses lignes fortes.
 
 ```markdown
 ::: {.coupe image="images/fast-2016.jpg" alt="Description" depart="2,49" arrivee="98,49" pas="24" profil="donnees/fast-profil.json" style="--hauteur-coupe: 320px"}

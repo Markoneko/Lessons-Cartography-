@@ -202,6 +202,8 @@
 .reveal .carte-du-cours.un-niveau .carte-colonne li a { width: 100%; box-sizing: border-box; }
 .reveal .carte-du-cours.un-niveau .carte-colonne li { break-inside: avoid; }
 .reveal .carte-du-cours.un-niveau .carte-colonne li a { font-size: 21px; padding: 8px 4px; }
+/* plus de 24 diapos sur un seul niveau : les lignes se serrent pour tenir sur la diapo */
+.reveal .carte-du-cours.un-niveau.serre .carte-colonne li a { font-size: 19px; padding: 5px 4px; }
 
 /* --- Schémas dessinés ---------------------------------------------------- */
 
@@ -527,3 +529,8 @@ html.sans-reponses .reveal .visee-retour { visibility: hidden; }
 .reveal .cote-a-cote { display: flex; gap: 12px; align-items: flex-start; flex-wrap: nowrap; }
 .reveal .cote-a-cote > p { margin: 0; }
 .reveal .cote-a-cote img { display: block; margin: 0; }
+
+/* Une image remplacée par une autre au moment de la réponse (pile .r-stack, fragments « fade-out » et « fade-in ») :
+   le corrigé PDF n'imprime que l'état de la réponse ; le PDF sans réponses, que l'état de la question. */
+html.reveal-print:not(.sans-reponses) .reveal .fragment.fade-out { display: none !important; }
+html.sans-reponses .reveal .r-stack .fragment.fade-in { display: none !important; }

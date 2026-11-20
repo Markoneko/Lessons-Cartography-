@@ -179,6 +179,12 @@
     function X(k) { return G + (W - 2 * G) * k / pas; }
     function Y(n) { return H - 24 - (H - 48) * n / NIV; }
     for (var n = 0; n <= NIV; n++) sv("line", { x1: G, x2: W - G, y1: Y(n), y2: Y(n), "class": n % 5 ? "coupe-grille" : "coupe-grille forte" }, graphe);
+    if (donnees.alt) {          // altitudes réelles (« alt » : [bas, haut] en mètres) sur les lignes fortes
+      [0, 5, 10].forEach(function (n) {
+        var t = sv("text", { x: G + 4, y: Y(n) - 4, "class": "coupe-alt" }, graphe);
+        t.textContent = Math.round(donnees.alt[0] + (donnees.alt[1] - donnees.alt[0]) * n / NIV) + " m";
+      });
+    }
     var texteA = sv("text", { x: G - 14, y: H - 6, "class": "coupe-lettre" }, graphe); texteA.textContent = "A";
     var texteB = sv("text", { x: W - G + 4, y: H - 6, "class": "coupe-lettre" }, graphe); texteB.textContent = "B";
     var courbeReelle = sv("path", { "class": "coupe-reelle" }, graphe);

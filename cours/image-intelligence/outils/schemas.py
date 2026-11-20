@@ -80,17 +80,17 @@ def raisonnements(lg):
         o.append(T(x + 118, 153, portee[1], style=f'font-size:15px;fill:{BLEU};font-weight:700'))
     # le faisceau : un exemple de chaque raisonnement converge vers une hypothèse
     o.append(T(380, 204, t[2], 's-titre'))
-    cx, cy = 380, 330
+    cx, cy = 380, 380          # retouche de Marc (troisième salve) : l'hypothèse descend de 50, les flèches de 40
     for k, (l1, l2) in enumerate(t[4]):
         x0 = 128 + k * 250
         o.append(T(x0, 232, l1, 's-petit', style='font-size:14.5px;font-style:italic'))
         o.append(T(x0, 251, l2, 's-petit', style='font-size:14.5px;font-style:italic'))
         o.append(f'<circle cx="{x0}" cy="266" r="5" fill="{ORANGE}"/>')
-        o.append(f'<path d="M{x0} 270 Q {x0 + (cx - x0) * 0.3} 292 {cx + (x0 - cx) * 0.18} {cy - 26}" fill="none" '
+        o.append(f'<path d="M{x0} 268 Q {x0 + (cx - x0) * 0.3} 292 {cx + (x0 - cx) * 0.18} {cy - 36}" fill="none" '
                  f'stroke="{ORANGE}" stroke-width="3" marker-end="url(#fleche-raison)"/>')
     o.append(f'<rect x="{cx - 160}" y="{cy - 24}" width="320" height="44" rx="22" fill="{BLEU}"/>')
     o.append(T(cx, cy + 5, t[3], style='font-size:17px;font-weight:700;fill:#FFFFFF'))
-    return svg('0 0 760 362', t[0], [fleche('fleche-raison')] + o)
+    return svg('0 0 760 412', t[0], [fleche('fleche-raison')] + o)
 
 
 ecrire('raisonnements.svg', raisonnements('fr'), raisonnements('en'))
@@ -429,16 +429,37 @@ for umc, nom, c, n, pc in resultats[1:]:
 
 # ------------------------------------------------------------------ le profil du radiotélescope FAST
 # Coupe de A (ouest) à B (est) par le centre de la parabole, sur l'image Pléiades du 2 mars 2016.
-# Altitudes relatives (0 = le plus bas, 1 = le plus haut), lues sur l'image : ombres, pentes, routes.
-# Retours de Marc sur la V0 : départ au milieu ; les lacets de la piste disent une première pente forte jusqu'à une
-# crête, puis la descente vers le centre. Un troisième terme « v » marque une crête vive (anguleuse) ; les autres
-# points sont arrondis (fonds, épaules).
-# PROFIL INDICATIF, à valider par Marc ou à remplacer par une extraction d'un MNT (Copernicus DEM, par exemple).
+# Troisième salve : les vraies altitudes, relevées sur le profil de Marc (source/Profil-FAST-China.png, Copernicus
+# DEM GLO-90, 90 m), long d'environ 1,72 km (0,0172° de longitude à 25,65° N) : la largeur de A à B sur l'image
+# (le disque de 500 m y occupe 28 % de la largeur). Calage du graphique : x = 45 px pour 0°, 473 px pour 0,008° ;
+# y = 38 px pour 1 100 m, 213 px pour 900 m. Les altitudes sont ramenées entre 0 et 1 sur 800 à 1 150 m (« alt »),
+# que la brique affiche en mètres. Un troisième terme « v » marque une crête vive : les deux sommets.
+def profil_fast(n=24, bas=800, haut=1150):
+    a = np.array(Image.open(os.path.join(COURS, 'source', 'Profil-FAST-China.png')).convert('RGB')).astype(int)
+    r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    trait = (r > 140) & (r < 200) & (g > 90) & (g < 140) & (b > 70) & (b < 120)     # la courbe, brun-rouge
+    colonnes = [x for x in range(a.shape[1]) if trait[:, x].any()]
+    alt = np.array([1100 - (np.median(np.nonzero(trait[:, x])[0]) - 38) / 0.875 for x in colonnes])
+    t = np.linspace(0, 1, len(alt))
+    moitie = len(alt) // 2
+    sommets = {int(np.argmax(alt[:moitie])), moitie + int(np.argmax(alt[moitie:]))}
+    speciaux = sommets | {int(np.argmin(alt))}
+    reguliers = {int(round(k * (len(alt) - 1) / n)) for k in range(n + 1)}
+    reguliers = {i for i in reguliers if min(abs(i - j) for j in speciaux) > len(alt) / (3 * n) or i in (0, len(alt) - 1)}
+    rangs = sorted(reguliers | speciaux)
+    points = []
+    for i in rangs:
+        p = [round(float(t[i]), 3), round(float((alt[i] - bas) / (haut - bas)), 3)]
+        if i in sommets:
+            p.append("v")
+        points.append(p)
+    return points
+
+
 profil = {
-    "source": "Lecture de l'image Pléiades (2 mars 2016) ; profil indicatif, à valider",
-    "points": [[0, 0.50], [0.07, 0.62], [0.13, 0.80], [0.17, 0.88, "v"], [0.23, 0.70], [0.28, 0.58],
-               [0.31, 0.55, "v"], [0.37, 0.33], [0.443, 0.22], [0.52, 0.33], [0.585, 0.55, "v"],
-               [0.64, 0.74], [0.70, 0.90, "v"], [0.77, 0.74], [0.84, 0.58], [0.90, 0.52], [0.96, 0.57], [1, 0.62]]
+    "source": "Copernicus DEM GLO-90 (90 m), profil relevé par M. Poupée",
+    "alt": [800, 1150],
+    "points": profil_fast()
 }
 json.dump(profil, open(os.path.join(COURS, 'donnees', 'fast-profil.json'), 'w', encoding='utf-8'), ensure_ascii=False)
 
@@ -447,6 +468,10 @@ json.dump(profil, open(os.path.join(COURS, 'donnees', 'fast-profil.json'), 'w', 
 # Terres : Natural Earth 1:10 m. Population : populations légales des communes (INSEE, via le jeu
 # « découpage administratif » d'Etalab, v6), placées au point représentatif de chaque commune ; îles
 # Anglo-Normandes : ordres de grandeur arrondis (Jersey, recensement 2021 ; Guernesey, Aurigny, Sercq).
+# Troisième salve (demande de Marc) : les départements mitoyens complétés jusqu'à 170 km (Calvados, Orne,
+# Ille-et-Vilaine, et désormais Côtes-d'Armor et Mayenne : population Etalab v6, point représentatif du contour de
+# la commune, d'après france-geojson de G. David) ; aucune de ces communes n'est à moins de 100 km, le total ne
+# change pas. Les communes à moins de 100 km sont en orange, les autres en bleu.
 FLAM = (-1.8819, 49.5366)
 ILES = [('Jersey', -2.13, 49.21, 103000), ('Guernesey', -2.58, 49.46, 64000),
         ('Aurigny', -2.20, 49.71, 2000), ('Sercq', -2.36, 49.43, 500)]
@@ -494,23 +519,24 @@ def carte_flamanville():
                 xy = np.array([km(x, y) for x, y in anneau.coords])
                 ax.add_patch(PathPatch(Path(xy), facecolor='#F4F1E8' if rang == 0 else '#DCE6F5',
                                        edgecolor='#9FA3B8', linewidth=0.6, zorder=1 + (rang > 0)))
-        xs, ys, ss = [], [], []
+        xs, ys, ss, cs = [], [], [], []
         for n, lo, la, p in lieux:
             x, y = km(lo, la)
             xs.append(x); ys.append(y); ss.append(p / 160)
-        ax.scatter(xs, ys, s=ss, color=BLEU, alpha=0.55, linewidths=0, zorder=3)
+            cs.append(ORANGE if math.hypot(x, y) <= 100 else BLEU)
+        ax.scatter(xs, ys, s=ss, c=cs, alpha=0.6, linewidths=0, zorder=3)
         ax.add_patch(Circle((0, 0), 100, fill=False, edgecolor=ORANGE, linewidth=2.2, linestyle=(0, (6, 4)), zorder=4))
         ax.plot([0], [0], marker='*', markersize=17, color=ORANGE, markeredgecolor='white', zorder=5)
         noms = {'fr': {'Flamanville': 'Flamanville', 'Cherbourg-en-Cotentin': 'Cherbourg', 'Saint-Lô': 'Saint-Lô',
                        'Caen': 'Caen', 'Jersey': 'Jersey', 'Guernesey': 'Guernesey', 'Granville': 'Granville',
-                       'Coutances': 'Coutances', 'Bayeux': 'Bayeux', 'La Hague': 'La Hague'},
+                       'Coutances': 'Coutances', 'Bayeux': 'Bayeux', 'La Hague': 'La Hague', 'Saint-Malo': 'Saint-Malo'},
                 'en': {'Flamanville': 'Flamanville', 'Cherbourg-en-Cotentin': 'Cherbourg', 'Saint-Lô': 'Saint-Lô',
                        'Caen': 'Caen', 'Jersey': 'Jersey', 'Guernesey': 'Guernsey', 'Granville': 'Granville',
-                       'Coutances': 'Coutances', 'Bayeux': 'Bayeux', 'La Hague': 'La Hague'}}[lg]
+                       'Coutances': 'Coutances', 'Bayeux': 'Bayeux', 'La Hague': 'La Hague', 'Saint-Malo': 'Saint-Malo'}}[lg]
         places = {n: (lo, la) for n, lo, la, p in lieux}
         for cle, dx, dy in [('Cherbourg-en-Cotentin', 4, 6), ('Saint-Lô', 4, 4), ('Caen', -6, 6), ('Jersey', -4, -9),
                             ('Guernesey', 3, -9), ('Granville', 5, -3), ('Coutances', 5, 0), ('Bayeux', 3, 5),
-                            ('La Hague', -14, 5)]:
+                            ('La Hague', -14, 5), ('Saint-Malo', -22, 4)]:
             if cle in places:
                 x, y = km(*places[cle])
                 ax.annotate(noms[cle], (x, y), xytext=(x + dx, y + dy), fontsize=10, color='#2B2B33', zorder=6)
@@ -518,8 +544,11 @@ def carte_flamanville():
         ax.text(0, 103, '100 km', color=ORANGE, fontsize=11, fontweight='bold', ha='center', zorder=6)
         # légende des cercles
         for k, (p, txt) in enumerate([(10000, '10 000'), (50000, '50 000'), (100000, '100 000')]):
-            ax.scatter([-104], [86 - k * 11], s=p / 160, color=BLEU, alpha=0.55, linewidths=0, zorder=6)
+            ax.scatter([-104], [86 - k * 11], s=p / 160, color=ORANGE, alpha=0.6, linewidths=0, zorder=6)
             ax.text(-96, 84 - k * 11, txt + (' hab.' if lg == 'fr' else ' inhab.'), fontsize=9, color='#2B2B33', zorder=6)
+        for k, (txt, coul) in enumerate({'fr': [('en orange : à moins de 100 km', ORANGE), ('en bleu : au-delà', BLEU)],
+                                         'en': [('orange: within 100 km', ORANGE), ('blue: beyond', BLEU)]}[lg]):
+            ax.text(116, 106 - k * 7, txt, fontsize=10, color=coul, fontweight='bold', ha='right', zorder=6)
         ax.set_xlim(-118, 118); ax.set_ylim(-110, 112)
         ax.set_aspect('equal'); ax.axis('off')
         fig.subplots_adjust(0, 0, 1, 1)

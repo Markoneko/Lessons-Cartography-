@@ -257,15 +257,16 @@ La Direction du renseignement militaire (DRM) publie sur LinkedIn ses énigmes d
 ## Dire son degré de certitude {.socle competences="C4"}
 
 ::: {.fiche n="1.7" etat="a-revoir"}
-Intention : Une interprétation sans degré de confiance est une opinion. Les « mots de probabilité estimative » de Sherman Kent (CIA, 1964) ; le GIEC fait de même dans ses rapports. Chaque phrase se complète avec un mot de certitude, sur l'image du radiotélescope, encore anonyme. [Retour V0 : lien avec le GIEC ; une seule certitude, dans les phrases.] [Retour V1 : la loupe sur l'image.]
+Intention : Une interprétation sans degré de confiance est une opinion. Les « mots de probabilité estimative » de Sherman Kent (CIA, 1964) ; le GIEC fait de même dans ses rapports. Chaque phrase se complète avec un mot de certitude, sur l'image du radiotélescope, encore anonyme. [Retour V0 : lien avec le GIEC ; une seule certitude, dans les phrases.] [Retour V1 : la loupe sur l'image.] [Retour V2 : Marc rétablit l'échelle complète de Kent, de « certain » à « impossible » ; les phrases gardent les quatre mots du milieu.]
 Expérience : phrases à compléter par un mot de certitude (brique « phrases ») ; loupe ; bonus : l'échelle du GIEC
-Demande : J'ai mis par rigueur scientifique la vraie échelle de Sherman Kent. Je ne pense pas que cela ait d'impact important car on n'utilisera pas les bornes max 'certains et min improbabke et impossible.
+Demande :
 :::
 
 :::: {.columns}
 ::: {.column width="38%"}
 En 1964, Sherman Kent, analyste de la CIA, propose d'accorder les mots et les chances :
 
+::: {.petit}
 | Mot | Chances |
 |---|---|
 | Certain | 10 sur 10 environ |
@@ -275,12 +276,13 @@ En 1964, Sherman Kent, analyste de la CIA, propose d'accorder les mots et les ch
 | Peu probable | 1 sur 3 environ |
 | Improbable | 1 sur 10 environ |
 | Impossible | 0 |
+:::
 
 [Un mot génère des certitudes.]{.a-retenir}
 :::
 ::: {.column width="62%"}
 ::: {.loupe zoom="3"}
-![](images/fast-2016.jpg){height="30" fig-alt="Image satellite d'un grand disque argenté au fond d'une cuvette boisée, avec des bâtiments aux toits bleus"}
+![](images/fast-2016.jpg){height="235" fig-alt="Image satellite d'un grand disque argenté au fond d'une cuvette boisée, avec des bâtiments aux toits bleus"}
 :::
 
 ::: {.phrases}
@@ -784,16 +786,16 @@ D'avion, un objet haut et fin n'est qu'un point ; son **ombre portée** dessine 
 ## Ombre et relief {.socle competences="C3 C5"}
 
 ::: {.fiche n="3.6" etat="a-revoir"}
-Intention : L'ombre et la lumière donnent le relief. Mini-jeu (demande de Marc) : sur l'image du radiotélescope, encore anonyme, un marcheur va de A à B en passant par le centre ; l'étudiant le fait monter ou descendre avec les flèches du clavier, et marque les crêtes vives (touche C) : la courbe s'arrondit d'elle-même ailleurs. Il compare ensuite à la coupe de référence. Le profil de référence est indicatif, à valider (ou à tirer d'un MNT). [Retour V0 : départ au milieu des ordonnées ; d'après les lacets, la première pente monte fort jusqu'à une crête, puis l'on redescend vers le centre ; courbe lissée en direct, crêtes qui cassent et fonds arrondis distingués ; la déduction de la forme de la parabole suit, diapo suivante.]
+Intention : L'ombre et la lumière donnent le relief. Mini-jeu (demande de Marc) : sur l'image du radiotélescope, encore anonyme, un marcheur va de A à B en passant par le centre ; l'étudiant le fait monter ou descendre avec les flèches du clavier, et marque les crêtes vives (touche C) : la courbe s'arrondit d'elle-même ailleurs. Il compare ensuite à la coupe de référence : le vrai profil, relevé par Marc sur le Copernicus DEM (GLO-90, 90 m), avec ses altitudes. [Retour V0 : départ au milieu des ordonnées ; d'après les lacets, la première pente monte fort jusqu'à une crête, puis l'on redescend vers le centre ; courbe lissée en direct, crêtes qui cassent et fonds arrondis distingués ; la déduction de la forme de la parabole suit, diapo suivante.] [Retour V2 : le profil de Marc (source/Profil-FAST-China.png) remplace le profil lu sur l'image ; le graphique affiche les altitudes.]
 Expérience : mini-jeu de coupe topographique (brique « coupe »)
-Demande : Je t'ai mis le profil dans ./source/Profil-FAST-CHINA.png. Tu peux ainsi mettre les vraies altitudes. La source est le DTM de Copernicus, Res 90m
+Demande :
 :::
 
 Tracez la coupe de **A** à **B** : à chaque pas, faites monter ou descendre le marcheur d'après l'image ; marquez les **crêtes vives** (touche C) : ailleurs, la courbe s'arrondit. Les lacets, les ombres et les éclats de lumière disent où sont les pentes.
 
 ::: {.coupe image="images/fast-2016.jpg" alt="Un grand disque argenté au fond d'une cuvette boisée, entre des collines" depart="2,49" arrivee="98,49" pas="24" profil="donnees/fast-profil.json" style="--hauteur-coupe: 320px"}
 ::: {.apres-jeu}
-En tirets, le profil de référence : une pente forte jusqu'à une crête, puis la descente vers le disque. **Au centre, un creux ou une bosse ?** Prouvez-le, diapo suivante. [Profil indicatif, lu sur l'image.]{.legende}
+En tirets, le vrai profil : deux crêtes à plus de 1 100 m. **Au centre, un creux ou une bosse ?** Prouvez-le, diapo suivante. [Copernicus DEM GLO-90 (90 m), relevé par M. Poupée.]{.legende}
 :::
 :::
 
@@ -843,10 +845,39 @@ Oui, à quelques minutes près : le **sens** de l'ombre donne l'azimut du soleil
 L'**OSINT** (*open source intelligence*) est le renseignement tiré de sources ouvertes : images publiées, vidéos, cartes. La **chronolocation** en est une branche : dater une image par ses indices, la longueur et le sens des ombres en premier. Des outils comme [SunCalc](https://www.suncalc.org) donnent la position du soleil pour un lieu, un jour, une heure ; le collectif [Bellingcat](https://www.bellingcat.com) publie ses enquêtes et ses méthodes.
 :::
 
-## Quelle clé pour quelle question ? {.socle competences="C3"}
+## L'orientation {.socle competences="C3"}
 
 ::: {.fiche n="3.9" etat="a-revoir"}
-Intention : Le récapitulatif des clés d'identification, mélangées (pratique entrelacée) : trois questions, trois clés principales (l'ombre, la structure, la forme). [Retour V1 : « quelle clé principale » ; trois questions sur trois colonnes, dont celles de Marc : un type de culture (la structure), un avion (la forme).]
+Intention : L'orientation d'un objet, par rapport au nord ou au soleil, dit sa fonction. Images de Marc : les centrales photovoltaïques des Mées (Alpes-de-Haute-Provence), sur une image orientée, nord en haut (le pointeur de souris effacé) ; le zoom remplace l'image au moment de la réponse. Question de Marc ; la réponse est une proposition, à valider. [Retour V2 : la huitième clé, oubliée ; nouvelle diapo.]
+Expérience : question, puis réponse ; le zoom remplace l'image
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="58%"}
+::: {.r-stack}
+![](images/les-mees.jpg){.fragment .fade-out fragment-index="1" width="100%" fig-alt="Vue verticale d'un plateau boisé couvert de grandes parcelles gris-bleu aux contours irréguliers, avec une barre d'échelle de 500 m"}
+
+![](images/les-mees-zoom.jpg){.fragment .fade-in fragment-index="1" width="100%" fig-alt="Zoom sur les parcelles : des rangées de panneaux solaires, toutes parallèles, d'est en ouest"}
+:::
+:::
+::: {.column width="42%"}
+L'**orientation** d'un objet dit souvent sa fonction.
+
+::: {.question}
+Sur cette image orientée, quel paramètre permet de faire pencher la bascule entre serre et panneaux solaires ?
+:::
+
+::: {.reponse fragment-index="1"}
+L'**orientation** : quelle que soit la parcelle, toutes les rangées courent d'est en ouest, face au sud. Le soleil les place, pas le terrain : des panneaux solaires.
+:::
+:::
+::::
+
+## Quelle clé pour quelle question ? {.socle competences="C3"}
+
+::: {.fiche n="3.10" etat="a-revoir"}
+Intention : Le récapitulatif des clés d'identification, mélangées (pratique entrelacée) : trois questions, trois clés principales (l'ombre, la structure, la forme). [Retour V1 : « quelle clé principale » ; trois questions sur trois colonnes, dont celles de Marc : un type de culture (la structure), un avion (la forme).] [Retour V2 : huit clés, avec l'orientation.]
 Expérience : trois QCM
 Demande :
 :::
@@ -896,7 +927,7 @@ Pour **identifier un avion** ?
 :::
 ::::
 
-[Ton et couleur, taille, forme, texture, structure, ombre, date : sept clés pour dire **ce qu'est** un objet.]{.a-retenir}
+[Ton et couleur, taille, forme, texture, structure, ombre, date, orientation : huit clés pour dire **ce qu'est** un objet.]{.a-retenir}
 
 ## Les clés d'interprétation {.intercalaire}
 
@@ -1421,18 +1452,18 @@ Pour chaque image : réelle, ou générée ? Dites d'abord votre certitude.
 ## La méthode {.socle competences="C7 C2 C4"}
 
 ::: {.fiche n="5.8" etat="a-revoir"}
-Intention : La méthode de vérification en cinq temps, reprise de Marc : nature, source, cohérence spatio-temporelle, cohérence physique, certification. [Retour V1 : les cinq étapes et la phrase de conclusion de Marc.]
-Expérience : remettre en ordre les étapes
-Demande : Faire en sorte que Nature et Source puissent être choisies en 1 ou 2 alternativement, idem pour 3 et 4.
+Intention : La méthode de vérification en cinq temps, reprise de Marc : nature, source, cohérence spatio-temporelle, cohérence physique, certification. [Retour V1 : les cinq étapes et la phrase de conclusion de Marc.] [Retour V2 : nature et source interchangeables, de même que les deux cohérences (nouvelle possibilité de la brique « ordre » : « = »).]
+Expérience : remettre en ordre les étapes ; nature et source, puis les deux cohérences, se prennent dans un ordre ou dans l'autre
+Demande :
 :::
 
 ::: {.ordre}
 Remettez la vérification d'une image dans l'ordre.
 
 1. Nature : quel signal ? qui l'a publiée, quand, avec quelles métadonnées ?
-2. Source : a-t-elle déjà circulé ? (recherche inversée)
+2. = Source : a-t-elle déjà circulé ? (recherche inversée)
 3. Cohérence spatio-temporelle : le lieu, la date, le soleil, la saison
-4. Cohérence physique : les clés tiennent-elles ? (formes, textures, ombres)
+4. = Cohérence physique : les clés tiennent-elles ? (formes, textures, ombres)
 5. Certification : conclure avec un degré de certitude
 :::
 
@@ -1451,15 +1482,15 @@ Mettre l'enquête au propre.
 ## Rédiger une note {.socle competences="C1 C4"}
 
 ::: {.fiche n="6.1" etat="a-revoir"}
-Intention : La note en quatre rubriques (observations, interprétations, certitude, sources et limites), sur l'image du cours. La description écrite en 3.1 revient. Lien avec « Cartography : Basics » : clairement, honnêtement. [Retour V1 : la correction de Marc.]
+Intention : La note en quatre rubriques (observations, interprétations, certitude, sources et limites), sur l'image du cours. La description écrite en 3.1 revient. Lien avec « Cartography : Basics » : clairement, honnêtement. [Retour V1 : la correction de Marc.] [Retour V2 : les observations commencent par la nature du signal et l'échelle d'observation, ici et en 6.2.]
 Expérience : la description revient ; l'étudiant écrit sa note, puis la compare à celle de l'expert (brique « observer »)
-Demande : Il faut dans cette slide et la suivante, ajouter pour l'observation des éléments clefs : la nature du signal et  l'échelle d'observation.
+Demande :
 :::
 
-Une note d'interprétation a **quatre rubriques** : ce que je vois ; ce que j'en déduis ; avec quelle certitude ; sur quelles sources, avec quelles limites.
+Une note d'interprétation a **quatre rubriques** : ce que je vois ; ce que j'en déduis ; avec quelle certitude ; sur quelles sources, avec quelles limites. Les observations commencent par la **nature du signal** et l'**échelle d'observation**.
 
-::: {.observer cle="note-image" rappel="description-image" invite="Observations… Interprétations… Certitude… Sources et limites…"}
-**Observations.** Une côte rocheuse, une digue qui ferme un bassin, pas d'embarcation ni la place pour, deux dômes d'environ 50 m et un troisième en chantier, de longs bâtiments, des remous au large, des lignes électriques, le tout au pied d'une falaise.
+::: {.observer cle="note-image" rappel="description-image" invite="Observations (signal, échelle)… Interprétations… Certitude… Sources et limites…"}
+**Observations.** Le signal : une orthophotographie en couleurs naturelles. L'échelle : environ 1,5 m par pixel (la barre fait 200 m) ; un objet de quelques mètres n'est qu'un point. Une côte rocheuse, une digue qui ferme un bassin, pas d'embarcation ni la place pour, deux dômes d'environ 50 m et un troisième en chantier, de longs bâtiments, des remous au large, des lignes électriques, le tout au pied d'une falaise.
 
 **Interprétations.** Une centrale nucléaire en bord de mer, refroidie par l'eau de mer (prise d'eau dans le bassin, rejet au large), avec un troisième réacteur en construction.
 
@@ -1471,7 +1502,7 @@ Une note d'interprétation a **quatre rubriques** : ce que je vois ; ce que j'en
 ## À vous : une nouvelle image {.appui competences="C1 C2 C3 C4 C5"}
 
 ::: {.fiche n="6.2" etat="a-revoir"}
-Intention : Le transfert sur une image d'un autre capteur : le port de Baltimore en radar. Note d'interprétation sans guide, puis lecture experte. [Retour V1 : la correction de Marc.]
+Intention : Le transfert sur une image d'un autre capteur : le port de Baltimore en radar. Note d'interprétation sans guide, puis lecture experte. [Retour V1 : la correction de Marc.] [Retour V2 : la nature du signal et l'échelle d'observation en tête des observations.]
 Expérience : zone d'écriture, puis lecture experte (brique « observer »)
 Demande :
 :::
@@ -1481,10 +1512,10 @@ Demande :
 ![](images/baltimore-radar.jpg){height="430" fig-alt="Image radar multi-dates du port de Baltimore"}
 :::
 ::: {.column width="55%"}
-Écrivez votre note sur cette image radar, avec ses quatre rubriques.
+Écrivez votre note sur cette image radar, avec ses quatre rubriques, en commençant par le signal et l'échelle.
 
-::: {.observer cle="note-baltimore" invite="Observations… Interprétations… Certitude… Sources et limites…"}
-**Observations.** Des quais, des bassins, une ville en damier ; du gris presque partout ; des taches de couleur sur l'eau et sur les terre-pleins.
+::: {.observer cle="note-baltimore" invite="Observations (signal, échelle)… Interprétations… Certitude… Sources et limites…"}
+**Observations.** Le signal : une image radar, plusieurs dates superposées en couleurs, avec son grain (le chatoiement). L'échelle : un port entier, sur quelques kilomètres ; assez fin pour voir les rangées de conteneurs et les navires, pas les petits objets. Des quais, des bassins, une ville en damier ; du gris presque partout ; des taches de couleur sur l'eau et sur les terre-pleins.
 
 **Interprétations.** Les couleurs marquent ce qui a changé entre les dates : des navires arrivés ou partis, des conteneurs déplacés. Le gris, l'immuable.
 
@@ -1549,9 +1580,9 @@ Demande :
 ## Le programme de révision
 
 ::: {.fiche n="7.3" etat="a-revoir"}
-Intention : Le mode révision, refait : 32 cartes écrites pour le rappel, différentes des questions du cours, posées comme par un tuteur exigeant. Elles sollicitent plusieurs mémoires : rappel libre (écrire de mémoire, puis comparer), reconnaissance (QCM), identification sur les images du cours (un cadre désigne l'objet), explication (« pourquoi ? »), transfert (un cas nouveau), correction d'une phrase fautive, procédure (remettre une méthode en ordre). Les cartes sont mélangées et entrelacées (jamais deux de la même compétence de suite) ; une carte sue s'espace (un jour, une semaine, un mois), une carte manquée revient dans la séance. En tête, les sept compétences : celle qui est interrogée s'allume ; celle dont toutes les cartes sont sues se grise. [Retour V1 : refonte demandée par Marc.]
+Intention : Le mode révision, refait : 36 cartes écrites pour le rappel, différentes des questions du cours, posées comme par un tuteur exigeant. Elles sollicitent plusieurs mémoires : rappel libre (écrire de mémoire, puis comparer), reconnaissance (QCM), identification sur les images du cours (un cadre désigne l'objet), explication (« pourquoi ? »), transfert (un cas nouveau), correction d'une phrase fautive, procédure (remettre une méthode en ordre). Les cartes sont mélangées et entrelacées (jamais deux de la même compétence de suite) ; une carte sue s'espace (un jour, une semaine, un mois), une carte manquée revient dans la séance. En tête, les sept compétences : celle qui est interrogée s'allume ; celle dont toutes les cartes sont sues se grise. [Retour V1 : refonte demandée par Marc.] [Retour V2 : les cartes suivent cette salve : huit clés et une carte sur l'orientation (Les Mées), « improbable » dans l'échelle de Kent, le signal et l'échelle en tête de la note, les données d'apprentissage et de vérification (FLAIR), le chatoiement et la géométrie du radar, l'ordre libre dans la méthode de vérification.]
 Expérience : brique « revision », avec ses cartes ; l'adresse ?revision ouvre directement cette diapo
-Demande : S'assurer que les révisions prennent en compte les modificaitons de ce run.
+Demande :
 :::
 
 Rouvrez ce support demain, puis dans une semaine (`?revision` à la fin de l'adresse vous amène ici). Écrivez **avant** de regarder la réponse : c'est l'effort de rappel qui fixe le souvenir.
@@ -1589,6 +1620,14 @@ Lequel de ces énoncés est une observation, et non une déduction ?
 - [ ] L'eau est agitée par un rejet : « rejet » est déjà une explication.
 - [ ] Un chantier est en cours : on le déduit des grues et de la terre nue.
 
+### C1 libre
+
+Par quoi commencent les observations d'une note d'interprétation, avant même de décrire les objets ? Pourquoi ?
+
+---
+
+Par la nature du signal (visible, infrarouge couleur, radar…) et l'échelle d'observation (combien de mètres par pixel, quelle emprise). Le signal dit comment lire les tons ; l'échelle, ce que l'on peut voir ou non : un objet plus petit qu'un pixel n'est pas « absent », il est invisible.
+
 ### C1 image | images/centre-equestre.jpg
 
 Décrivez cette image en cinq éléments, sans jamais nommer le lieu ni l'activité.
@@ -1619,7 +1658,7 @@ Quel est le signal de cette image ? Qu'est-ce qui vous l'apprend, et quel piège
 
 ---
 
-Du radar, multi-dates : un grain particulier, du gris partout, des couleurs seulement là où quelque chose a changé. Le piège : le lire comme une photographie, et chercher des « couleurs » qui n'en sont pas.
+Du radar, multi-dates : un grain particulier (le chatoiement), du gris partout, des couleurs seulement là où quelque chose a changé. Le piège : le lire comme une photographie, et chercher des « couleurs » qui n'en sont pas ; sa géométrie s'apprend.
 
 ### C2 image | images/flamanville-irc-2015.jpg
 
@@ -1639,11 +1678,11 @@ Deux dômes d'une cinquantaine de mètres : la taille (l'échelle) et la forme (
 
 ### C3 libre
 
-Citez les sept clés d'identification. Pour trois d'entre elles, donnez un objet qu'elle seule permet presque de reconnaître.
+Citez les huit clés d'identification. Pour trois d'entre elles, donnez un objet qu'elle seule permet presque de reconnaître.
 
 ---
 
-Ton et couleur, taille, forme, texture, structure, ombre, date. Par exemple : l'ombre pour un pylône ou une éolienne ; la structure pour une vigne ou un verger ; la forme pour un avion.
+Ton et couleur, taille, forme, texture, structure, ombre, date, orientation. Par exemple : l'ombre pour un pylône ou une éolienne ; la structure pour une vigne ou un verger ; la forme pour un avion ; l'orientation pour une centrale solaire.
 
 ### C3 qcm
 
@@ -1668,6 +1707,14 @@ Expliquez à un camarade, en trois phrases, pourquoi l'ombre portée est souvent
 ---
 
 Vu d'en haut, un objet haut et fin se réduit à un point. Son ombre, projetée par un soleil bas, en dessine la silhouette de profil. Sa longueur dit la hauteur, son sens dit la position du soleil, donc l'heure.
+
+### C3 image | images/les-mees.jpg
+
+Sans zoomer : des serres ou des panneaux solaires ? Quelle clé tranche, et pourquoi ?
+
+---
+
+Des panneaux solaires. La clé : l'orientation. Quelle que soit la forme des parcelles, toutes les rangées courent d'est en ouest, face au sud : c'est le soleil qui les place, pas le terrain.
 
 ### C3 image | images/tour-rosny.jpg
 
@@ -1700,6 +1747,14 @@ Dans l'échelle de Sherman Kent, « probable » veut dire…
 - [ ] 9 chances sur 10 : c'est « presque certain ».
 - [x] 3 chances sur 4 environ.
 - [ ] 1 chance sur 2 : c'est « possible ».
+
+### C4 qcm
+
+Un collègue écrit qu'une hypothèse est « improbable ». Dans l'échelle de Sherman Kent, cela veut dire…
+
+- [ ] 1 chance sur 3 environ : c'est « peu probable ».
+- [x] 1 chance sur 10 environ.
+- [ ] Aucune chance : c'est « impossible ».
 
 ### C4 libre
 
@@ -1739,7 +1794,7 @@ Une inondation, sous un ciel couvert depuis trois jours : quel capteur choisisse
 
 ---
 
-Le radar : il voit à travers les nuages, de jour comme de nuit, et l'eau calme y apparaît sombre. La limite : pas de couleurs, une lecture difficile, des confusions possibles (routes, ombres radar).
+Le radar : il voit à travers les nuages, de jour comme de nuit, et l'eau calme y apparaît sombre. La limite : pas de couleurs, une géométrie et un grain (le chatoiement) qu'il faut apprendre à lire, des confusions possibles (routes, ombres radar).
 
 ### C5 qcm
 
@@ -1781,6 +1836,14 @@ Pourquoi deux pays peuvent-ils compter différemment la même forêt ?
 
 Parce qu'ils ne la définissent pas pareil : surface minimale, hauteur des arbres, couvert. Sous le protocole de Kyoto, chacun choisit ses seuils (0,05 à 1 ha, 2 à 5 m, 10 à 30 %). Une carte de « la » forêt dit toujours quelle forêt.
 
+### C6 libre
+
+Qui a produit les données qui apprennent à une IA à cartographier l'occupation du sol, et celles qui la vérifient ? Qu'apprend-elle exactement de leur travail ?
+
+---
+
+Des interprètes, objet par objet, selon des règles : ils produisent les données d'apprentissage et celles de vérification. La machine apprend leurs décisions finales, erreurs comprises ; leurs hésitations, seulement si on a choisi de les intégrer.
+
 ### C6 qcm
 
 Une IA annonce 90 % de bonnes réponses sur une carte du bâti. Que demandez-vous ?
@@ -1811,7 +1874,7 @@ Les cinq étapes de la vérification d'une image, dans l'ordre, avec un mot pour
 
 ---
 
-Nature (le signal, la publication, les métadonnées) ; source (a-t-elle déjà circulé ?) ; cohérence spatio-temporelle (le lieu, la date, le soleil) ; cohérence physique (les clés tiennent-elles ?) ; certification (conclure avec un degré de certitude).
+Nature (le signal, la publication, les métadonnées) et source (a-t-elle déjà circulé ?), dans un ordre ou dans l'autre ; puis cohérence spatio-temporelle (le lieu, la date, le soleil) et cohérence physique (les clés tiennent-elles ?), là aussi dans un ordre ou dans l'autre ; enfin la certification (conclure avec un degré de certitude).
 
 ### C7 qcm
 
@@ -1852,7 +1915,7 @@ Demande :
 ## Sources et crédits {.petit}
 
 ::: {.fiche n="7.6" etat="a-revoir"}
-Intention : Les références : FLAIR (l'article de Marc), Ressources naturelles Canada, le GIS&T Body of Knowledge, les manuels, Kent, le GIEC, Colwell, l'histoire, Angkor, les définitions de la forêt, l'archéologie aérienne, les fictions, les images et leurs droits. Le PDF de cours de Marc à ajouter (non reçu). [Retour V1 : CBS News, Damian Evans, la vidéo d'Angkor, Wired gardé, NASA (Mississippi), la DRM (#YEUXDOR), les nouvelles images.]
+Intention : Les références : FLAIR (l'article de Marc), Ressources naturelles Canada, le GIS&T Body of Knowledge, les manuels, Kent, le GIEC, Colwell, l'histoire, Angkor, les définitions de la forêt, l'archéologie aérienne, les fictions, les images et leurs droits. Le PDF de cours de Marc à ajouter (non reçu). [Retour V1 : CBS News, Damian Evans, la vidéo d'Angkor, Wired gardé, NASA (Mississippi), la DRM (#YEUXDOR), les nouvelles images.] [Retour V2 : les crédits donnés par Marc (tour de Rosny, base 27, Cambrai) ; le profil de FAST ; la carte des 100 km complétée.]
 Expérience : aucune
 Demande :
 :::
@@ -1876,14 +1939,14 @@ Demande :
 |---|---|
 | Flamanville (2015 en IRC), rade de Brest, centre équestre | Géoportail, IGN |
 | L'Isle-Adam | CORINE Land Cover ; BD Forêt V2, IGN |
-| FAST | image Pléiades, 2 mars 2016 (droits à préciser) |
-| Base 27, tour de Rosny, motte de Rely, Cambrai | sources à préciser |
-| Baltimore | image radar, source à préciser |
+| FAST | Pléiades, 2016 (droits à préciser) ; profil : Copernicus DEM |
+| Rosny ; Cambrai | ortho IGN ; archive militaire, Première Guerre mondiale |
+| Motte de Rely, Les Mées, Baltimore (radar) | sources à préciser |
 | U-Net | travaux de 2019 |
 | Images générées | Wombo Dream (2022), DALL·E (2024) ; photos de M. Poupée |
-| #YEUXDOR | Direction du renseignement militaire, LinkedIn |
+| Base 27, #YEUXDOR | Direction du renseignement militaire, défi #YEUXDOR, LinkedIn |
 | Musée, fictions | L'Europe vue du Ciel ; affiches ; *Star City* : M. Poupée |
-| Carte des 100 km | INSEE via Etalab ; Natural Earth |
+| Carte des 100 km | INSEE (Etalab) ; france-geojson ; Natural Earth |
 | Cours de M. Poupée | PDF à ajouter |
 :::
 ::::

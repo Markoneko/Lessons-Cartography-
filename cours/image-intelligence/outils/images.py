@@ -60,6 +60,20 @@ def sans_curseur(im, boite):
     return Image.fromarray(a.astype(np.uint8))
 
 
+def sans_pointeur(im, boite):
+    """Efface un pointeur de souris resté sur une photographie : dans sa boîte, les pixels presque blancs
+    ou presque noirs (le pointeur et son contour) sont repeints à partir de leur voisinage (OpenCV)."""
+    import cv2
+    a = np.array(im.convert('RGB'))
+    x0, y0, x1, y1 = boite
+    bloc = a[y0:y1, x0:x1].astype(int)
+    masque = np.zeros(a.shape[:2], np.uint8)
+    m = (bloc.min(axis=2) > 225) | (bloc.max(axis=2) < 35)
+    masque[y0:y1, x0:x1] = m.astype(np.uint8) * 255
+    masque = cv2.dilate(masque, np.ones((3, 3), np.uint8))
+    return Image.fromarray(cv2.inpaint(a, masque, 4, cv2.INPAINT_TELEA))
+
+
 def centre_equestre(im):
     """Retire les commandes de la visionneuse (zoom, vignette, échelle écrite) et redessine l'échelle :
     20 m font 130 pixels sur la capture (barre « 0 — 20 m » de la visionneuse, mesurée)."""
@@ -108,6 +122,9 @@ TRAVAUX = [
     ('originaux/GoldenEye.jpg', 'fiction-goldeneye.jpg', lambda im: reduire(im.convert('RGB'), 900)),
     ('originaux/Al_ouestriendenouveaux.jpg', 'fiction-a-l-ouest.jpg', lambda im: reduire(im.convert('RGB'), 900)),
     ('originaux/Wonder_Woman._2017.png', 'fiction-wonder-woman.jpg', lambda im: reduire(im.convert('RGB'), 1100)),
+    # troisième salve : la clé d'orientation (Les Mées, Alpes-de-Haute-Provence)
+    ('originaux/PanneauxSolairesLesMees.png', 'les-mees.jpg', lambda im: sans_pointeur(im, (586, 202, 612, 236))),
+    ('originaux/PanneauxSolairesLesMeeszoom.png', 'les-mees-zoom.jpg', lambda im: im.convert('RGB')),
     # les animations sont copiées telles quelles (Pillow ne garderait qu'une image)
     ('originaux/Novoozernoye.gif', 'novoozernoye.gif', None),
     ('originaux/CampSoleti.gif', 'soloti.gif', None),

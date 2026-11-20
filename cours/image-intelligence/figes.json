@@ -1,11 +1,15 @@
 {
  "0.1": {
-  "empreinte": "9544c4e1874cae18",
+  "empreinte": "9c05531795d77541",
   "titre": "Couverture"
  },
  "0.2": {
   "empreinte": "fa4440b68f73d407",
   "titre": "Comment lire ce support"
+ },
+ "0.3": {
+  "empreinte": "63459e90dc324093",
+  "titre": "Ce que vous saurez faire"
  },
  "0.4": {
   "empreinte": "9acf4be6e9fb8043",
@@ -16,8 +20,24 @@
   "titre": "Voir, puis savoir"
  },
  "1.1": {
-  "empreinte": "ca0732b89dd9fc2f",
+  "empreinte": "7b42ac2f50e0bfdc",
   "titre": "La scène"
+ },
+ "1.3": {
+  "empreinte": "daf84fdcf1e6badc",
+  "titre": "Induction, déduction, abduction"
+ },
+ "1.4": {
+  "empreinte": "e128f008da615ba4",
+  "titre": "À vous : quel raisonnement ?"
+ },
+ "1.5": {
+  "empreinte": "15ff531293df5e25",
+  "titre": "Un métier né de la guerre"
+ },
+ "1.6": {
+  "empreinte": "3b45cb08e91a80f4",
+  "titre": "À vous : qu'est-ce que c'est ?"
  },
  "2.0": {
   "empreinte": "9b4300e2c618852b",
@@ -32,19 +52,23 @@
   "titre": "La précision des experts"
  },
  "2.5": {
-  "empreinte": "c274fd20e9fbb1bd",
+  "empreinte": "87805bed2d68c2e4",
   "titre": "Des données pour apprendre aux machines"
  },
  "2.6": {
-  "empreinte": "0750274869591151",
+  "empreinte": "276173654bb27e25",
   "titre": "L'interprète contrôle la machine"
  },
  "2.7": {
-  "empreinte": "bbb4b82214b7c8fa",
+  "empreinte": "1df3d41fc8908624",
   "titre": "Suivre les changements"
  },
+ "2.8": {
+  "empreinte": "53e070efbc447c73",
+  "titre": "L'archéologie sous la forêt"
+ },
  "2.9": {
-  "empreinte": "7dcb3a40c24cb927",
+  "empreinte": "ac655b06edf77047",
   "titre": "Bien d'autres usages"
  },
  "3.0": {
@@ -54,10 +78,6 @@
  "3.4": {
   "empreinte": "e0ef7cd0f1fedbe0",
   "titre": "Texture et structure"
- },
- "3.6": {
-  "empreinte": "5cee44d6eaf3839d",
-  "titre": "Ombre et relief"
  },
  "3.7": {
   "empreinte": "3f3cdb57c99d1c07",
@@ -76,7 +96,7 @@
   "titre": "À vous : quel est ce lieu ?"
  },
  "4.3": {
-  "empreinte": "ed92d035fab95526",
+  "empreinte": "99bbfb288870067d",
   "titre": "Le site"
  },
  "4.9": {

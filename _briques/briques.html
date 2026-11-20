@@ -75,6 +75,8 @@
     if (!boite) return;
     var etat = bloc.querySelector(".ordre-etat");
     var etapes = tous(".etape", boite);
+    // le rang attendu à chaque place : deux étapes de même rang se prennent dans un ordre ou dans l'autre
+    var rangs = etapes.map(function (e) { return +e.dataset.rang; }).sort(function (a, b) { return a - b; });
     var attendu = 1, erreurs = 0;
 
     function melanger() {
@@ -84,7 +86,7 @@
           var j = Math.floor(Math.random() * (i + 1));
           var t = copie[i]; copie[i] = copie[j]; copie[j] = t;
         }
-      } while (copie.length > 2 && copie.every(function (e, k) { return +e.dataset.rang === k + 1; }));
+      } while (copie.length > 2 && copie.every(function (e, k) { return +e.dataset.rang === rangs[k]; }));
       copie.forEach(function (e) { e.classList.remove("placee", "refus"); boite.appendChild(e); });
       attendu = 1; erreurs = 0;
       etat.textContent = T.ordre_debut;
@@ -93,7 +95,7 @@
     etapes.forEach(function (etape) {
       activer(etape, function () {
         if (etape.classList.contains("placee")) return;
-        if (+etape.dataset.rang === attendu) {
+        if (+etape.dataset.rang === rangs[attendu - 1]) {
           etape.classList.add("placee");
           boite.insertBefore(etape, boite.children[attendu - 1] || null);
           attendu++;

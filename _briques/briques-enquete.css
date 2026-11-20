@@ -32,6 +32,7 @@
 .reveal .coupe-grille { stroke: #D8DAEC; stroke-width: 1; }
 .reveal .coupe-grille.forte { stroke: #B9BEDC; }
 .reveal .coupe-lettre { font: 700 16px var(--police-titre); fill: var(--bleu); }
+.reveal .coupe-alt { font: 600 12px var(--police-mono); fill: #8A8DA3; }
 .reveal .coupe-vous { fill: none; stroke: var(--orange); stroke-width: 3.5; stroke-linejoin: round; }
 .reveal .coupe-reelle { fill: none; stroke: var(--bleu); stroke-width: 3; stroke-dasharray: 8 5; }
 .reveal .coupe-marcheur circle { fill: var(--bleu); }

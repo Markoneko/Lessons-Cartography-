@@ -2,6 +2,25 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-20 — « Image Intelligence », troisième salve (V3) : la clé d'orientation et les demandes des fiches
+
+Marc a repris le qmd lui-même (fiches figées 0.3, 1.3 à 1.6, 2.8 ; textes de 1.1, 1.6, 1.7, 2.5, 2.6, 2.7, 2.9 ; 3.6 dégelée ; schéma des raisonnements retouché) : son état devient la référence (`figer.py enregistrer`). Ses textes sont repris tels quels.
+
+- Nouvelle diapo 3.9, « L'orientation » (la huitième clé, oubliée) : images de Marc des centrales photovoltaïques des Mées, l'image orientée puis, au moment de la réponse, le zoom à sa place (pile `.r-stack` et fragments reveal.js ; le corrigé PDF imprime le zoom, le PDF sans réponses l'image d'ensemble). Question de Marc (« mage » lu « image ») ; réponse de Claude, à valider. Le pointeur de souris est effacé de l'image (`outils/images.py`). L'ancienne 3.9 devient 3.10 ; « huit clés » dans son à retenir.
+- 1.7 : l'échelle complète de Kent de Marc, dans un tableau resserré (classe `.petit`) ; la hauteur de l'image (30 px, sans doute une coquille) remise à 235.
+- 3.6 : le vrai profil de FAST, relevé sur l'image de Marc (`source/Profil-FAST-China.png`, Copernicus DEM GLO-90, 90 m) par `outils/schemas.py` ; la brique « coupe » affiche les altitudes (`"alt": [800, 1150]` dans le JSON, README). Le profil du MNT recoupe l'image : 1,72 km de A à B, le disque de 500 m y fait 28 % de la largeur.
+- 4.3 (figée, demande de Marc dans la fiche) : seule l'image de la carte change, la diapo n'est pas touchée. Communes des Côtes-d'Armor et de la Mayenne ajoutées, et les autres départements mitoyens complétés jusqu'à 170 km (population Etalab v6, contours de france-geojson). Aucune de ces communes n'est à moins de 100 km : le total ne bouge pas (734 000 habitants). Les communes à moins de 100 km en orange. La ligne « Demande » reste à vider par Marc.
+- 5.8 : nature et source, puis les deux cohérences, se prennent dans un ordre ou dans l'autre. La brique « ordre » accepte `= ` en tête d'étape : même rang que la précédente (README) ; les étapes placées portent leur rang (1, 1, 2, 2, 3).
+- 6.1 et 6.2 : les observations commencent par la nature du signal et l'échelle d'observation (phrases de Claude, ajoutées devant le texte de Marc, à valider) ; l'invite de la zone d'écriture le rappelle.
+- 7.1 (figée) : la liste du socle passe à 25 diapos ; la carte du cours se resserre au-delà de 24 diapos sur un seul niveau (`gabarit.lua`, `briques.css`).
+- 7.3 : 36 cartes : huit clés, l'orientation, « improbable » chez Kent, le signal et l'échelle dans la note, FLAIR (données d'apprentissage et de vérification), le chatoiement et la géométrie du radar, l'ordre libre de la méthode.
+- 7.6 : crédits de Marc (tour de Rosny : ortho IGN ; base 27 : DRM, #YEUXDOR ; Cambrai : archive militaire, Première Guerre mondiale) ; profil de FAST ; sources de la carte. Restent à préciser : motte de Rely, Les Mées, Baltimore, les droits de l'image Pléiades.
+- GIF : les nouvelles animations de Marc recopiées dans `images/originaux/` pour que `outils/images.py` ne les remplace plus par les anciennes. Le HTML pèse 52 Mo, dont l'essentiel tient aux deux GIF (14 Mo à eux deux).
+- Le schéma des raisonnements retouché par Marc est reporté dans `outils/schemas.py` (et dans sa version anglaise).
+- Non fait : 0.3 est figée, sa C3 énumère encore sept clés. La version anglaise reste à la V2 (règle de Marc : elle se fait à la version finale). Le PDF du cours de Marc (`source/Photo-Interpretation-All.pdf`) n'est pas dans le dépôt.
+- Vérifié : 64 diapos, aucun débordement, aucune erreur JavaScript (et 63 en anglais, sans régression) ; échange d'images, ordre libre et coupe testés dans un navigateur ; corrigé PDF et PDF sans réponses contrôlés ; `figer.py verifier` : aucune diapo figée modifiée.
+
+
 ## 2026-11-19 (fin d'après-midi) — Partie 2 : schémas des résolutions et des limites
 
 Demandes de Marc dans les fiches ; son texte (0.2, 1.1, 1.2, 2.0, 2.4) repris tel quel.
