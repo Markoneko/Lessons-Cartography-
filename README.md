@@ -19,21 +19,21 @@ Dans un terminal, depuis ce dossier :
 quarto render cours/mon-cours/Mon-Cours.qmd
 ```
 
-Le résultat arrive dans le dossier `_sortie/` du cours, sous le nom de son titre (`outils/sorties.py` s'en charge après chaque rendu) :
+Le résultat arrive à côté du cours, sous le nom du fichier du cours (`outils/sorties.py` imprime le PDF après chaque rendu) :
 
-- `cours/gis-basics/_sortie/GIS-Basics.html` et `GIS-Basics-EN.html` : un seul fichier par langue, qui fonctionne sans réseau. Il sert à projeter et à faire manipuler les étudiants. Touche `F` : plein écran. Touche `S` : vue orateur avec les notes.
+- `cours/gis-basics/GIS-Basics.html` et `GIS-Basics-EN.html` : un seul fichier par langue, qui fonctionne sans réseau. Il sert à projeter et à faire manipuler les étudiants. Touche `F` : plein écran. Touche `S` : vue orateur avec les notes.
 - `GIS-Basics.pdf` et `GIS-Basics-EN.pdf` : le support de cours, avec le corrigé des exercices, imprimé tout seul si Playwright est installé.
 
 Après le rendu, le terminal dit toujours ce qu'il advient du PDF : « PDF : … » quand il est imprimé, sinon la raison (Playwright absent, `SANS_PDF`, aperçu en cours).
 
 `quarto render`, sans nom de fichier, produit tous les cours. Pour un rendu rapide sans PDF : `SANS_PDF=1 quarto render cours/mon-cours/Mon-Cours.qmd`.
 
-Le PDF sans les réponses : `python3 outils/pdf.py cours/gis-basics/_sortie/GIS-Basics.html --vierge`. À la main, on obtient les mêmes en ouvrant le HTML dans Chrome, avec `?print-pdf` (ou `?print-pdf&reponses=non`) au bout de l'adresse, puis Imprimer → Enregistrer au format PDF (marges : aucune, graphiques d'arrière-plan : cochés).
+Le PDF sans les réponses : `python3 outils/pdf.py cours/gis-basics/GIS-Basics.html --vierge`. À la main, on obtient les mêmes en ouvrant le HTML dans Chrome, avec `?print-pdf` (ou `?print-pdf&reponses=non`) au bout de l'adresse, puis Imprimer → Enregistrer au format PDF (marges : aucune, graphiques d'arrière-plan : cochés).
 
 Pour contrôler un support (débordements, réponses ouvertes, erreurs JavaScript), et en tirer des planches de captures :
 
 ```
-python3 outils/controle.py cours/gis-basics/_sortie/GIS-Basics.html --images /tmp/captures
+python3 outils/controle.py cours/gis-basics/GIS-Basics.html --images /tmp/captures
 ```
 
 Pour travailler avec un aperçu qui se met à jour à chaque enregistrement :
@@ -42,7 +42,7 @@ Pour travailler avec un aperçu qui se met à jour à chaque enregistrement :
 quarto preview cours/mon-cours/Mon-Cours.qmd
 ```
 
-Pendant l'aperçu, le fichier reste à côté du cours (c'est lui que l'aperçu affiche) et une copie va dans `_sortie/` ; pas de PDF.
+Pendant l'aperçu, pas de PDF.
 
 ## Le plan et le cours : un seul fichier
 
@@ -82,7 +82,7 @@ Les règles que doit suivre un assistant sont dans `CONSIGNES-IA.md`.
 ## Créer un nouveau cours
 
 1. Copier le dossier `cours/earth-to-map` et le renommer d'après le titre du cours, en anglais, en minuscules et avec des tirets (`gis-basics`, `cartography-basics`…).
-2. Renommer le fichier du nom du nouveau cours (`Mon-Cours.qmd`, et `Mon-Cours-EN.qmd` pour l'anglais), remplacer son contenu et les images ; ranger le support d'origine dans `source/`, et vider `_sortie/`.
+2. Renommer le fichier du nom du nouveau cours (`Mon-Cours.qmd`, et `Mon-Cours-EN.qmd` pour l'anglais), remplacer son contenu et les images ; ranger le support d'origine dans `source/`, et supprimer les HTML et PDF copiés avec le dossier.
 
 Un cours contient tout ce qui le concerne :
 
@@ -94,7 +94,7 @@ Un cours contient tout ce qui le concerne :
 | `donnees/` | les données des exercices, s'il y en a |
 | `source/` | le support d'origine (PPT), jamais modifié |
 | `outils/` | les générateurs propres au cours (schémas, données) |
-| `_sortie/` | les fichiers produits, non versionnés |
+| `Nom-du-cours.html`, `Nom-du-cours.pdf` | les fichiers produits, à côté du cours, non versionnés |
 
 ## Écrire une diapo
 
@@ -681,7 +681,7 @@ Pour une autre langue, ajouter un jeu de textes en tête de `_briques/gabarit.lu
 | Dossier | Contenu | On y touche ? |
 |---------|---------|---------------|
 | `cours/` | les cours, un dossier chacun, qui contient tout (voir « Créer un nouveau cours ») | oui, tout le temps |
-| `bac-a-sable/` | brouillons jetables ; chacun reçoit aussi son `_sortie/` | oui |
+| `bac-a-sable/` | brouillons jetables | oui |
 | `_charte/` | couleurs, polices, logos Géodata, modèle PPT de l'école | seulement si la charte change |
 | `_briques/` | le moteur : niveaux et exercices | rarement |
 | `outils/` | les outils communs : `figer.py`, `sorties.py`, `pdf.py`, `controle.py` | rarement |

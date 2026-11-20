@@ -39,7 +39,7 @@ Quand un cours existe en deux langues, le fichier français reste la référence
 2. Lancer `python3 outils/figer.py verifier cours/<cours>/<Nom-du-cours>.qmd` : il montre ce que l'enseignant a dégelé ou modifié depuis le dernier passage.
 3. Lancer `python3 outils/figer.py enregistrer cours/<cours>/<Nom-du-cours>.qmd` : l'état reçu devient la référence.
 4. Traiter les diapos `a-revoir` et `a-realiser`. Une fois la demande appliquée, vider la ligne « Demande » et laisser l'état tel quel : c'est l'enseignant qui fige.
-5. Compiler avec `quarto render cours/<cours>/<Nom-du-cours>.qmd` (et sa version `-EN.qmd`), puis vérifier le rendu : `python3 outils/controle.py cours/<cours>/_sortie/<Titre>.html` doit répondre « 0 débordement(s) », sans erreur JavaScript.
+5. Compiler avec `quarto render cours/<cours>/<Nom-du-cours>.qmd` (et sa version `-EN.qmd`), puis vérifier le rendu : `python3 outils/controle.py cours/<cours>/<Nom-du-cours>.html` doit répondre « 0 débordement(s) », sans erreur JavaScript.
 6. Relancer `verifier` : il doit répondre « Aucune diapo figée n'a été modifiée ».
 7. Noter le passage dans `JOURNAL.md`, puis envoyer.
 

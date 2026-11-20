@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Contrôle d'un support produit : débordements, erreurs JavaScript, planches contact.
 
-    python3 outils/controle.py cours/gis-basics/_sortie/GIS-Basics.html
-    python3 outils/controle.py cours/gis-basics/_sortie/GIS-Basics.html --images /tmp/captures
+    python3 outils/controle.py cours/gis-basics/GIS-Basics.html
+    python3 outils/controle.py cours/gis-basics/GIS-Basics.html --images /tmp/captures
 
 Chaque diapo est affichée en 1280 × 720 avec toutes ses étapes déroulées (réponses ouvertes).
 Une diapo dont le contenu sort du cadre est signalée « DÉBORDE ». Avec --images, chaque diapo est

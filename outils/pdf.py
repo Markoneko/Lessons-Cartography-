@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Imprime un support HTML en PDF, une diapo par page, comme Chrome avec ?print-pdf.
 
-    python3 outils/pdf.py cours/gis-basics/_sortie/GIS-Basics.html            # PDF corrigé
-    python3 outils/pdf.py cours/gis-basics/_sortie/GIS-Basics.html --vierge    # sans les réponses
+    python3 outils/pdf.py cours/gis-basics/GIS-Basics.html            # PDF corrigé
+    python3 outils/pdf.py cours/gis-basics/GIS-Basics.html --vierge    # sans les réponses
 
 Le PDF est écrit à côté du HTML, sous le même nom (« -vierge » ajouté pour la version sans réponses).
 Il faut Playwright et son Chromium :  pip install playwright  puis  playwright install chromium

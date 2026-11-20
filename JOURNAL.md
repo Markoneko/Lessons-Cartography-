@@ -2,6 +2,15 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-20 (midi) — Plus de dossier `_sortie/` : le HTML et le PDF à côté du cours
+
+Décision de Marc : le PDF va, comme le HTML, dans le dossier du cours, à côté du `.qmd`. Le dossier `_sortie/` disparaît, et le renommage d'après le titre avec lui : les deux fichiers prennent le nom du fichier du cours (`IMAGE-Intelligence.html`, `IMAGE-Intelligence.pdf`). Sous Windows, un renommage qui ne change que la casse (`IMAGE-` / `Image-`) aurait de toute façon visé le même fichier.
+
+- `outils/sorties.py` ne déplace plus rien : il imprime le PDF à côté du HTML et dit pourquoi quand il ne le fait pas.
+- README, CONSIGNES-IA, `controle.py`, `pdf.py`, `_quarto.yml` et `.gitignore` mis à jour.
+- Les HTML et PDF restent hors de GitHub (`.gitignore`) : ils se régénèrent, et le HTML d'« Image Intelligence » pèse 52 Mo.
+
+
 ## 2026-11-20 (fin de matinée) — Le PDF ne s'imprimait pas chez Marc
 
 Marc signale que `quarto render` ne produit pas le PDF chez lui. Cause probable : sous Windows, `outils/sorties.py` cherchait à savoir s'il tournait dans un `quarto preview` avec la commande `ps`, qui n'existe pas ; dans le doute, il se croyait en aperçu : il copiait le HTML (au lieu de le déplacer) et n'imprimait pas le PDF, sans rien dire.
