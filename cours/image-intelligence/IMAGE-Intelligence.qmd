@@ -2,7 +2,7 @@
 title: "Image Intelligence"
 subtitle: "Photo-interprétation : de l'image à l'information"
 author: "Marc Poupée · Géodata Paris"
-date: "2026-11-01"
+date: "2026-11-23"
 date-format: "D MMMM YYYY"
 footer: "Image Intelligence"
 title-slide-attributes:
@@ -38,7 +38,7 @@ Ce cours est une **enquête**. Presque chaque diapo vous demande de regarder, d'
 
 ## Ce que vous saurez faire
 
-::: {.fiche n="0.3" etat="a-revoir"}
+::: {.fiche n="0.3" etat="fige"}
 Intention : Les sept compétences, reprises de Marc ; un bilan d'entrée, repris à la fin. [Retour V1 : nouvelle liste de Marc ; une compétence de plus, les réflexes de lecture et la nature du signal, en C2 ; les suivantes sont renumérotées sur toutes les diapos.]
 Expérience : bilan d'entrée : je ne sais pas / je crois savoir / je sais (brique « bilan »)
 Demande :
@@ -85,7 +85,7 @@ Expérience : deux zones d'écriture : qu'a-t-on vu ? qu'en a-t-on déduit, avec
 Demande :
 :::
 
-La scène est montrée en cours : série *Cœurs noirs*, saison 1 (Prime Video, 2023), épisode et minutage à préciser. Une équipe repère une base secrète sur une image. La correction suit, en vidéo.
+La scène est montrée en cours : série *Cœurs noirs*, saison 1 (Prime Video, 2023). L'agent Adèle (Marie Dompnier) cherche un centre d'entrainement secret sur une image. La correction qu'elle donne aux américaons suit, dans la troisième vidéo.
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -139,7 +139,7 @@ Glissez chaque énoncé dans sa case : est-il **sur** l'image, ou **tiré** de l
 
 ## Induction, déduction, abduction {.socle competences="C4"}
 
-::: {.fiche n="1.3" etat="a-revoir"}
+::: {.fiche n="1.3" etat="fige"}
 Intention : Le processus cognitif de l'enquête. Définitions de Marc : l'induction dégage une règle de faits répétés (forte probabilité, pas de certitude absolue) ; la déduction tire une conclusion de règles ou de prémisses (certaine si elles sont vraies) ; l'abduction propose des hypothèses face à un fait observé (aucune certitude, des pistes, surtout quand le fait surprend). La « déduction » de Sherlock Holmes est surtout une abduction. [Retour V0 : définitions de Marc ; les exemples forment le faisceau d'indices.] [Retour V1 : la partie gauche aérée et centrée sur la hauteur ; l'exercice passe à la diapo suivante, remplacé ici par l'image de la tour de Rosny, qui illustre le faisceau.]
 Expérience : schéma ; image
 Demande :
@@ -159,7 +159,7 @@ Demande :
 
 ## À vous : quel raisonnement ? {.socle competences="C4"}
 
-::: {.fiche n="1.4" etat="a-revoir"}
+::: {.fiche n="1.4" etat="fige"}
 Intention : L'exercice sur les trois raisonnements, à côté du schéma : trois raisonnements courts sur un même champ de colza. Une fois les trois rangés, la réserve s'efface et les cases remontent. [Retour V1 : nouvelle diapo, « 8 bis » de Marc.]
 Expérience : schéma ; classer trois raisonnements, au glisser-déposer
 Demande :
@@ -191,7 +191,7 @@ Trois raisonnements sur un même champ. Lequel est lequel ?
 
 ## Un métier né de la guerre {.appui competences="C1"}
 
-::: {.fiche n="1.5" etat="a-revoir"}
+::: {.fiche n="1.5" etat="fige"}
 Intention : Les débuts : la photographie aérienne née des ballons, des cerfs-volants et des pigeons, essor en 1914-1918, renseignement en 1939-1945 (Constance Babington Smith repère le V-1 sur une photo de Peenemünde, 1943), satellites espions de la guerre froide (Corona). Les étudiants ouvrent un dossier « top secret » qui montre la frise de Marc en plein écran, puis remettent les étapes en ordre. Bonus : la visite du musée de la photographie aérienne. [Retour V0 : la frise dans un dossier qui s'ouvre en plein écran.] [Retour V1 : le dossier descend, pour aérer ; Star City part dans « Le coin des fictions », en fin de cours ; seule la visite du musée reste en bonus.]
 Expérience : ouvrir le dossier (brique « dossier ») ; remettre en ordre six étapes ; bonus : visite virtuelle (défiler)
 Demande :
@@ -234,7 +234,7 @@ Un dossier vient d'arriver. Ouvrez-le, puis remettez l'histoire en ordre.
 
 ## À vous : qu'est-ce que c'est ? {.appui competences="C1 C3 C4"}
 
-::: {.fiche n="1.6" etat="a-revoir"}
+::: {.fiche n="1.6" etat="fige"}
 Intention : Rejouer la scène sur une vraie image, révélée indice par indice, avec la certitude à chaque indice. L'image de Marc : la base 27, le centre de lancement de satellites de Xichang (Sichuan, Chine). Pas de réponse écrite (demande de Marc) : elle est donnée en cours. [Retour V0 : FAST réservé à la coupe topographique.] [Retour V1 : la base 27 chinoise ; bonus : le défi #YEUXDOR de la Direction du renseignement militaire, sur LinkedIn.]
 Expérience : énigme à indices progressifs, avec la certitude à chaque indice (brique « indices »), sans conclusion ; bonus
 Demande :
@@ -243,7 +243,7 @@ Demande :
 ::: {.indices image="images/base-27.jpg" alt="Image satellite d'une vallée boisée : deux grandes aires de béton, des tours, des routes et des bâtiments" confiance="oui" style="--hauteur-indices: 410px"}
 - 46,8,20,26 : Une grande aire de béton nu, isolée dans une vallée boisée, et une autre plus bas, reliées par des routes larges.
 - 48,68,8,11 : Au centre de l'aire du bas, une structure très haute : son ombre, longue, en dit la hauteur.
-- 43,63,16,29 : Autour, trois ou quatre tours en treillis, fines et hautes : sans doute des paratonnerres, qui protègent quelque chose de précieux.
+- 43,63,16,29 : Autour, trois ou quatre tours en treillis, fines et hautes : sans doute des paratonnerres ou des tours de communications, qui protègent quelque chose de précieux ou permettent de communiquer à longue et moyenne distance.
 - 53,12,6,14 : En haut, une autre tour, plaquée contre un bâtiment : la même fonction, sur la seconde aire ?
 - 90,25,8,5 : Des toits bleus, des routes en lacets dans la forêt, loin de toute ville.
 :::
@@ -259,7 +259,7 @@ La Direction du renseignement militaire (DRM) publie sur LinkedIn ses énigmes d
 ::: {.fiche n="1.7" etat="a-revoir"}
 Intention : Une interprétation sans degré de confiance est une opinion. Les « mots de probabilité estimative » de Sherman Kent (CIA, 1964) ; le GIEC fait de même dans ses rapports. Chaque phrase se complète avec un mot de certitude, sur l'image du radiotélescope, encore anonyme. [Retour V0 : lien avec le GIEC ; une seule certitude, dans les phrases.] [Retour V1 : la loupe sur l'image.]
 Expérience : phrases à compléter par un mot de certitude (brique « phrases ») ; loupe ; bonus : l'échelle du GIEC
-Demande :
+Demande : J'ai mis par rigueur scientifique la vraie échelle de Sherman Kent. Je ne pense pas que cela ait d'impact important car on n'utilisera pas les bornes max 'certains et min improbabke et impossible.
 :::
 
 :::: {.columns}
@@ -268,16 +268,19 @@ En 1964, Sherman Kent, analyste de la CIA, propose d'accorder les mots et les ch
 
 | Mot | Chances |
 |---|---|
+| Certain | 10 sur 10 environ |
 | Presque certain | 9 sur 10 environ |
 | Probable | 3 sur 4 environ |
 | Possible | 1 sur 2 environ |
 | Peu probable | 1 sur 3 environ |
+| Improbable | 1 sur 10 environ |
+| Impossible | 0 |
 
-[Un mot de certitude engage : il dit au lecteur quel risque il prend en vous croyant.]{.a-retenir}
+[Un mot génère des certitudes.]{.a-retenir}
 :::
 ::: {.column width="62%"}
 ::: {.loupe zoom="3"}
-![](images/fast-2016.jpg){height="235" fig-alt="Image satellite d'un grand disque argenté au fond d'une cuvette boisée, avec des bâtiments aux toits bleus"}
+![](images/fast-2016.jpg){height="30" fig-alt="Image satellite d'un grand disque argenté au fond d'une cuvette boisée, avec des bâtiments aux toits bleus"}
 :::
 
 ::: {.phrases}
@@ -500,7 +503,7 @@ Demande :
 :::
 
 ::: {.reponse}
-Des interprètes, pixel par pixel, selon des règles. La machine apprend leurs décisions finales, **erreurs comprises** ; leurs hésitations, elle ne les voit pas.
+Des interprètes, objet par objet, selon des règles. La machine apprend leurs décisions finales, **erreurs comprises** ; On peut ou pas intégrer les hésitations.
 :::
 
 ::: {.plus titre="L'article FLAIR"}
@@ -517,7 +520,7 @@ Demande :
 
 :::: {.columns}
 ::: {.column width="46%"}
-![](images/unet-reference.png){height="230" fig-alt="Orthophotographie d'un quartier pavillonnaire, les bâtiments cernés de rouge"} ![](images/unet-prediction.png){height="230" fig-alt="La détection du bâti par le réseau : des taches claires sur fond noir, les contours de référence en rouge"}
+![](images/unet-reference.png){height="240" fig-alt="Orthophotographie d'un quartier pavillonnaire, les bâtiments cernés de rouge"} ![](images/unet-prediction.png){height="240" fig-alt="La détection du bâti par le réseau : des taches claires sur fond noir, les contours de référence en rouge"}
 
 [À gauche, le bâti de référence (en rouge) ; à droite, ce que détecte un réseau U-Net : plus c'est clair, plus il est sûr. Travaux de 2019.]{.legende}
 :::
@@ -533,7 +536,7 @@ Que peut-on en conclure ?
 - [x] Sur ce territoire, environ 9 points sur 10 sont justes ; il faut regarder où sont les erreurs
     - Oui : le chiffre global ne suffit pas, il faut la répartition des erreurs, classe par classe.
 - [ ] L'interprète n'est plus nécessaire
-    - Non : c'est lui qui a produit la vérification.
+    - Non : c'est lui qui a produit la donnée d'apprentissage et la donnée de vérification.
 :::
 :::
 :::
@@ -561,17 +564,17 @@ Cette image superpose plusieurs dates radar, chacune dans une couleur.
 :::
 
 ::: {.reponse}
-Le **gris**, ce qui n'a pas changé entre les dates. Les **couleurs**, ce qui a bougé : navires, conteneurs, véhicules. Le radar voit de nuit et à travers les nuages, mais il faut apprendre à le lire.
+Le **gris**, ce qui n'a pas changé entre les dates. Les **couleurs**, ce qui a bougé : navires, conteneurs, véhicules. On remarque que le radar voit à travers les nuages, mais il faut apprendre à le lire sa géométrie et son "grain" particulier (chatoiement).
 :::
 :::
 ::::
 
 ## L'archéologie sous la forêt {.appui competences="C5"}
 
-::: {.fiche n="2.8" etat="a-revoir"}
+::: {.fiche n="2.8" etat="fige"}
 Intention : Le LiDAR aéroporté révèle sous la forêt les villes khmères autour d'Angkor (campagne de 2012 ; Evans et al., PNAS, 2013). Le lien avec l'IGN reste à préciser par Marc. [Retour V0 : l'image du LiDAR d'Angkor.] [Retour V1 : l'image créditée à Damian Evans, PNAS ; Wired gardé pour les sources ; bonus vidéo ; réponse de Marc.]
 Expérience : question ; bonus : une vidéo
-Demande : préciser le lien avec l'IGN
+Demande : L'IGN a participé aux relevés terrains bien avant cette campagne Lidar. Par forcément besoin de le préciser.
 :::
 
 :::: {.columns}
@@ -613,7 +616,7 @@ Rangez chaque question selon l'usage de l'interprétation.
 - Quels bâtiments l'inondation a-t-elle détruits ?
 - Jusqu'où le feu est-il allé ?
 
-### Suivi de l'occupation du sol
+### Suivi de l'OCS
 
 - Combien de champs ont été artificialisés en dix ans ?
 - Où la forêt a-t-elle été coupée cette année ?
@@ -780,10 +783,10 @@ D'avion, un objet haut et fin n'est qu'un point ; son **ombre portée** dessine 
 
 ## Ombre et relief {.socle competences="C3 C5"}
 
-::: {.fiche n="3.6" etat="fige"}
+::: {.fiche n="3.6" etat="a-revoir"}
 Intention : L'ombre et la lumière donnent le relief. Mini-jeu (demande de Marc) : sur l'image du radiotélescope, encore anonyme, un marcheur va de A à B en passant par le centre ; l'étudiant le fait monter ou descendre avec les flèches du clavier, et marque les crêtes vives (touche C) : la courbe s'arrondit d'elle-même ailleurs. Il compare ensuite à la coupe de référence. Le profil de référence est indicatif, à valider (ou à tirer d'un MNT). [Retour V0 : départ au milieu des ordonnées ; d'après les lacets, la première pente monte fort jusqu'à une crête, puis l'on redescend vers le centre ; courbe lissée en direct, crêtes qui cassent et fonds arrondis distingués ; la déduction de la forme de la parabole suit, diapo suivante.]
 Expérience : mini-jeu de coupe topographique (brique « coupe »)
-Demande :
+Demande : Je t'ai mis le profil dans ./source/Profil-FAST-CHINA.png. Tu peux ainsi mettre les vraies altitudes. La source est le DTM de Copernicus, Res 90m
 :::
 
 Tracez la coupe de **A** à **B** : à chaque pas, faites monter ou descendre le marcheur d'après l'image ; marquez les **crêtes vives** (touche C) : ailleurs, la courbe s'arrondit. Les lacets, les ombres et les éclats de lumière disent où sont les pentes.
@@ -965,7 +968,7 @@ Des pistes de sable semées de **barres d'obstacles** ; de petites silhouettes (
 ::: {.fiche n="4.3" etat="fige"}
 Intention : La position d'un objet dans son milieu explique ce qui lui arrive. Pourquoi une centrale ici ? L'eau de mer ; un sol rocheux ; et l'éloignement de la population : la presqu'île du Cotentin, la falaise protectrice, et sans doute (supposition de Marc) la proximité de la Hague. Carte faite pour le cours : Flamanville, un cercle de 100 km, la population des communes (INSEE, via Etalab) et des îles Anglo-Normandes (ordres de grandeur). Calculé : environ 730 000 habitants à moins de 100 km, dont près d'un quart dans les îles ; le cercle est aux quatre cinquièmes en mer. [Retour V0 : préciser l'éloignement de la population, avec une carte simple et un cercle de 100 km ; le site passe après l'association, qui révèle la nature du lieu.]
 Expérience : carte ; question
-Demande :
+Demande : Refaire cette carte en n'oubliant pas les données des départements mitoyens, histoire que toutes les agglomérations soient prises en compte. Mettre les villes à l'intérieur des 100km d'une autre couleur, le même orange par exemple.
 :::
 
 :::: {.columns}
@@ -995,7 +998,7 @@ Le **site** : la place d'un objet dans son milieu.
 ::: {.fiche n="4.4" etat="a-revoir"}
 Intention : Le temps : une image fixe un instant d'un processus ; plusieurs dates d'un même lieu révèlent une dynamique. Deux animations de Marc, côte à côte : Novoozerne (Crimée) et Soloti (région de Belgorod), des bases russes qui gonflent avant l'attaque contre l'Ukraine (le DFRLab, 2021, y signale des camps et des véhicules en hausse). Question de Marc. [Retour V1 : les deux GIF de Marc ; la nouvelle question.] Les fichiers reçus ne contiennent qu'une image chacune (nuageuse) : à exporter de nouveau.
 Expérience : regarder les deux animations ; question
-Demande : fournir de nouveau les deux GIF animés (« CampSoleti » : le lieu s'écrit Soloti)
+Demande : les deux gif sont corrigés et présent dans image. Normalement tu n'as rien à faire.
 :::
 
 :::: {.columns}
@@ -1065,7 +1068,7 @@ Demande :
 
 :::: {.columns}
 ::: {.column width="50%"}
-::: {.schema fichier="images/schemas/indices-phyto.svg" hauteur="210"}
+::: {.schema fichier="images/schemas/indices-phyto.svg" hauteur="250"}
 :::
 
 ::: {.qcm .serre}
@@ -1420,7 +1423,7 @@ Pour chaque image : réelle, ou générée ? Dites d'abord votre certitude.
 ::: {.fiche n="5.8" etat="a-revoir"}
 Intention : La méthode de vérification en cinq temps, reprise de Marc : nature, source, cohérence spatio-temporelle, cohérence physique, certification. [Retour V1 : les cinq étapes et la phrase de conclusion de Marc.]
 Expérience : remettre en ordre les étapes
-Demande :
+Demande : Faire en sorte que Nature et Source puissent être choisies en 1 ou 2 alternativement, idem pour 3 et 4.
 :::
 
 ::: {.ordre}
@@ -1450,7 +1453,7 @@ Mettre l'enquête au propre.
 ::: {.fiche n="6.1" etat="a-revoir"}
 Intention : La note en quatre rubriques (observations, interprétations, certitude, sources et limites), sur l'image du cours. La description écrite en 3.1 revient. Lien avec « Cartography : Basics » : clairement, honnêtement. [Retour V1 : la correction de Marc.]
 Expérience : la description revient ; l'étudiant écrit sa note, puis la compare à celle de l'expert (brique « observer »)
-Demande :
+Demande : Il faut dans cette slide et la suivante, ajouter pour l'observation des éléments clefs : la nature du signal et  l'échelle d'observation.
 :::
 
 Une note d'interprétation a **quatre rubriques** : ce que je vois ; ce que j'en déduis ; avec quelle certitude ; sur quelles sources, avec quelles limites.
@@ -1548,7 +1551,7 @@ Demande :
 ::: {.fiche n="7.3" etat="a-revoir"}
 Intention : Le mode révision, refait : 32 cartes écrites pour le rappel, différentes des questions du cours, posées comme par un tuteur exigeant. Elles sollicitent plusieurs mémoires : rappel libre (écrire de mémoire, puis comparer), reconnaissance (QCM), identification sur les images du cours (un cadre désigne l'objet), explication (« pourquoi ? »), transfert (un cas nouveau), correction d'une phrase fautive, procédure (remettre une méthode en ordre). Les cartes sont mélangées et entrelacées (jamais deux de la même compétence de suite) ; une carte sue s'espace (un jour, une semaine, un mois), une carte manquée revient dans la séance. En tête, les sept compétences : celle qui est interrogée s'allume ; celle dont toutes les cartes sont sues se grise. [Retour V1 : refonte demandée par Marc.]
 Expérience : brique « revision », avec ses cartes ; l'adresse ?revision ouvre directement cette diapo
-Demande :
+Demande : S'assurer que les révisions prennent en compte les modificaitons de ce run.
 :::
 
 Rouvrez ce support demain, puis dans une semaine (`?revision` à la fin de l'adresse vous amène ici). Écrivez **avant** de regarder la réponse : c'est l'effort de rappel qui fixe le souvenir.

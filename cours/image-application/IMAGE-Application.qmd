@@ -62,7 +62,8 @@ Vous savez photo-interprêter le visible. Aujourd'hui, on découvre d'autres app
 ::: {.fiche n="1.1" etat="a-revoir"}
 Intention : Le vote d'accroche : des usages vrais, dont certains déjà vus en photo-interprétation (les bases russes, Angkor : l'expérience commence à se constituer) et d'autres inattendus (le vent sur Mars, la gravité des nappes, les rivières sous le Sahara), et des faux. Aucun des huit cas de l'atelier n'y figure, pour ne pas le déflorer. Chaque étudiant vote sur son écran ; Marc peut faire voter à main levée sur la projection. Avec la réponse apparaissent une image, son descriptif et sa source. [Retour V0 : une image ou une figure et un descriptif pour chaque réponse, fournis par Marc et recopiés tels quels ; un curseur de fondu pour le Sahara et pour la Bolivie ; la vidéo de Skybox. Le texte des énoncés et des explications est celui de Marc.] [Retour du 19 novembre : l'image radar de la Manche se zoome (un clic agrandit ×4, la souris la parcourt ; version web gardée à 4 000 px) ; les illustrations prennent les deux tiers de la largeur et toute la hauteur, le bouton « Suivant » passant dans la colonne de texte ; les images de Bolivie recadrées par Marc sont reprises comme originaux.]
 Expérience : voter oui / non / pas sûr, puis lire l'explication et voir l'image (brique « vote ») ; bilan final
-Demande :
+Demande : Rendre la video de Skybox accessible grâce à ce lien : <iframe width="1337" height="752" src="https://www.youtube.com/embed/fCrB1t8MncY" title="Skybox Imaging Captures World&#39;s First High-Resolution, HD Video of Earth from Space (1080p HD)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+Ajouter aussi la possibilité de réinitialiser à n'importe quelle diapo, ainsi que de passer en ayant deux boutonx fleche avant, fleche suivante.
 :::
 
 ::: {.vote question="Peut-on le faire depuis le ciel ou l'espace ?"}
@@ -79,7 +80,7 @@ Demande :
     - image : images/grace.jpg
     - legende : Couple des satellites Grace.
     - lien : https://www.space4water.org/fr/news/penuries-deau-en-milieu-urbain-comment-les-donnees-de-la-mission-grace-fo-de-la-nasa-peuvent
-- [vrai] Repérer les bateaux de pêche qui coupent leur balise : Le radar voit les navires, balise ou pas ; on croise ensuite avec les positions qu'ils déclarent.
+- [vrai] Repérer les bateaux de pêche qui coupent leur balise AIS : Le radar voit les navires, balise ou pas ; on croise ensuite avec les positions qu'ils déclarent.
     - image : images/manche-sentinel-1.jpg
     - zoom : 4
     - legende : traffic martime dans le rail de la Manche,  S1-IW septembre 2026, RGB Ratio
@@ -280,7 +281,7 @@ D'où vient chaque limite ?
 - Le relief et ses ombres
 - La saison
 
-### Le capteur
+### Le couple vecteur/capteur
 
 - La taille du pixel
 - L'heure de passage, imposée par l'orbite
@@ -290,7 +291,7 @@ D'où vient chaque limite ?
 
 - Deux dates mal superposées
 - Trop peu d'exemples pour l'apprentissage
-- Un seuil mal choisi
+- Un seuil de filtrage mal choisi
 :::
 
 [Une erreur de traitement ressemble souvent à un vrai phénomène : c'est la plus dangereuse.]{.a-retenir style="font-size: 24px"}
@@ -326,7 +327,7 @@ Remettez les verbes en ordre, de la mesure la plus **directe** à la réponse la
 6. Modéliser
 :::
 
-[Mesurer une grandeur ; détecter un objet ; classer chaque lieu ; suivre ce qui change ; estimer l'invisible ; modéliser ce qui va se passer.]{.legende}
+[Il faut quantifier une information, pour transformer un signal en donnée signifiante individualisable : un phénomène. Ils sont alors différenciable les uns des autres, ce qui permet de les distinguer dans l'espace et/ou le temps. Leurs variations sont alors mesurables, voir simulables ]{.legende}
 :::
 ::: {.column width="55%"}
 ::: {.question}
