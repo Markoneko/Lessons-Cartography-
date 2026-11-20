@@ -7,6 +7,7 @@ Décisions et constats, du plus récent au plus ancien.
 Après la mise à jour, Marc n'a toujours pas de PDF. Pistes, par ordre de probabilité : la commande `python3` du post-render, qui n'existe pas sous Windows (Python s'y appelle `python` ou `py`) ; un rendu lancé par le bouton de VS Code, qui fait un `quarto preview` (sans PDF, par construction) ; Playwright non installé.
 
 - `_quarto.yml` : `post-render: outils/sorties.py`, sans `python3` devant : Quarto lance le script avec le Python qu'il a trouvé, sous Windows comme ailleurs. Testé sous Linux.
+- Retour de Marc : le script se lance désormais (avec `py`), mais Quarto échoue sur le premier « é » de son message (« Windows stdio in console mode does not support writing non-UTF-8 byte sequences ») : sous Windows, Python écrivait en cp1252. `sorties.py` écrit maintenant en UTF-8. Le message coupé était « PDF non imprimés : Playwright n'est pas installé » : il donne désormais le Python concerné et la commande d'installation (`py -m pip install playwright`, puis `py -m playwright install chromium`).
 
 
 ## 2026-11-20 (midi) — Plus de dossier `_sortie/` : le HTML et le PDF à côté du cours

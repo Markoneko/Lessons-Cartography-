@@ -18,6 +18,14 @@ import re
 import subprocess
 import sys
 
+# Quarto lit la sortie de ce script en UTF-8 ; sous Windows, Python écrirait en cp1252, et le premier « é »
+# ferait échouer le rendu (« Windows stdio in console mode does not support writing non-UTF-8 byte sequences »).
+for flux in (sys.stdout, sys.stderr):
+    try:
+        flux.reconfigure(encoding="utf-8")
+    except (AttributeError, ValueError):
+        pass
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import pdf as imprimante  # noqa: E402
 
@@ -88,7 +96,9 @@ def main():
         print("Aperçu (quarto preview) : PDF non imprimés.")
         return
     if not imprimante.disponible():
-        print("PDF non imprimés : Playwright n'est pas installé (voir outils/pdf.py).")
+        print("PDF non imprimés : Playwright n'est pas installé pour ce Python (" + sys.executable + ").")
+        print("  Pour l'installer :  " + ("py" if os.name == "nt" else "python3") + " -m pip install playwright"
+              + "  puis  " + ("py" if os.name == "nt" else "python3") + " -m playwright install chromium")
         return
     for p in imprimante.imprimer(produits):
         print("PDF :", os.path.relpath(p, racine))
