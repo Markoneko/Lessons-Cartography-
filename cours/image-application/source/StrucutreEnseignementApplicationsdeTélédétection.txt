@@ -1,0 +1,63 @@
+Attention cette activié d'enseignement suppose dans l'idéal de garder une trace écrite des résultats. Je ne sais pas si sur un html publié sur github, je puisse faire que les étudiants valident le travail pour compiler les résultats... Me dire.
+
+
+1 - Accroche, 10 min : « Qu’est-ce qu’on ne peut PAS voir depuis l’espace ? »
+
+Liste réaliser par les étudiants.
+Réfutaiton possible en direct : le méthane, une inondation sous les nuages (radar), un sol qui s’affaisse de quelques mm (InSAR), l’activité économique la nuit (VIIRS), les bateaux qui coupent leur balise. => Déstabilisation, et ça fait le lien avec ta photo-interprétation : « vous savez lire le visible, aujourd’hui on en sort ».
+
+2 - Qu'est ce que voir? (15 min) Quels sont les facteurs limitant la données source? Et le traitement?
+Construire une activité qui permettent de mettre en valeur des différents concepts liés aux résolutions.
+
+3 - Qu'est ce qu'il est possible d'en faire? (15 min) 
+
+Proposer une piste qui permettent de lier des verbes d'action avec des processus. Ex détecter, c'est identifier un element dans une donnée source. Mais cela suppose aussi de devoir créer une nouvelle données sources. Voir de mettre en place un processus de détection automatique.
+
+Il faut donc d'une part identifier tous les types de commande qu'il est possible d'y avoir en Télédétection et d'y associer des types d'actions qui peuvent être multiple.
+Activité pour faire les liens à envisager.
+
+Parmi les commandes générales je vois déja par ordre de complexité :
+COMPARER - SURVEILLER - DETECTER - EVALUER - MESURER - CLASSER - CARTOGRAPHIER - MODELISER
+
+
+Dans les types d'actions :
+Identifier un signal approprié
+Etalonner et calibrer ce signal
+Choisir un mode de représentation de ce signal
+Créer une nouvelle information dérivée par combinatoire (primitive)
+Créer une nouvelle informaiton dérivé par traitement mathématique (primitive)
+Choisir un axe pour ces primitive (temps, radiométrie, morphologie, etc...)
+to be continued
+
+
+4 - Activité : Les commandes, 45 min. 
+
+4.1 Chaque groupe tire une carte client : assureur, ONG, préfet, agriculteur, journaliste d’investigation, gestionnaire forestier, Support geographisque des armées, etc... Chaque carte porte une vraie question tirée de l'actualité.
+
+Là, idem on peut fournir une très grande liste. J'en ai beaucoup :
+Cartographie d'OCS
+Focus sur des thématiques, Déclaration de la PAC, détection des piscisnes, prévention des feux de forêts, choix d'implantation d'éolienne, pracatilibté pour engins militaires, crise phytosanitaire, détection d'iceberg (poru la course au large ou le traffic) Suivi des sargaces, Suivi de la cryosphere, estimation de la biomasse forestiere mondiale, pollution de gaz (ozone?), détection d'évenement geopolitique comme l'arret des usines en Chine au moment du Covid ou la détection de gonflements des bases russes avant l'invasion en ukraine. Le suivi d'inondation, la cartographie des feux de forets, le suivi des grands travaux, l'espionnage industriel minier, etc...
+Il faut en trouver un panel qui utilise tous les types de données (lidar, optique, SWIR, Thermique, Radar, Insar)
+
+4.2 Il choisit une de ces commandes.
+
+4.3 Il va alors voir apparaitre un ensemble d'haxagone qui représentent des données sources / les types d'actions / des résultats de Commande général. qu'il va devoir combiner ensemble pour obtenir un résultat. Derrière chaque carte il y a un desctiptif de ce que c'est, du potentiel. Mais sans exemple car c'est jsutement le but de créer des exemples.
+
+4.4 Il a accès sur le coté à des personnages qui vont lui permettre de discuter de la pertinence d'une facette de l'approche, pour lui permettre de construire lui meme la suite logique entre données + traitement + résultat. Un spécialiste du signal pour commencer, un specialiste des données ensuite, un spécialiste des traitements... to be continued.
+
+4.5 Il peut interagir avec chacun d'entre eux qui sont précablés pour répondre à la commande qu'il a choisir au début, toujours visible. Grâce à ces entretiens, il construit une suite logique en associant une ou plusieurs cartes entre elle pour arriver au résultat demandé par la commande.
+
+4.6 Ancrage dans le réel : il a la consigne de trouver un cas d'application réel reflet de sa commande ludopédagogique : Il peut ainsi ajouter ces référence au document, et remplir une liste d'information sur ce cas réel en dessous des cartes qui représente encore un processus temporaire. Il peut ainsi faire des allers retours entre son processus à lui et le cas d'applciation réel.
+il doit ainsi renseigner : Signal / Données réellement utilisées avec ses 4 résolutions	/ Type de traitements effectués / Sensibilité à des paramètres extérieur / budget ETP ou autre, à définir par exemple (solo ; petite équipe ; grosse équipe ; institution (qqs centaines) ; Plus ) c'est difficile car le budget dépend des ressources et du temps. / capacité à Estimer la précision de la commande
+
+4.7 Correction, une fois que tout est en place, il valide et voir un court corrigé avec un visuel (si on a le temps de les préparer)
+
+
+5 Débat express, 10 min : la télédétection comme preuve. OSINT, surveillance, double usage. Qui a le droit de regarder ?
+Je ne suis pas sûr de voir comment assurer ce débat et le lien avec le sujet? C'est la question de qui est en drait d'en savoir? La transparence? Peser le pour et le contre ? Pas facile de relier avec le sujet. L'IA, falsification.
+
+
+6 Le plus dur 10min : montrer que la construction de ce type de traitements demande pas mal d'expérience. Il serait génial que l'on arrive à identifier les pépites en terme d'attention à porter au savoir pour monter rapidement en compétence sur ces sujets. C'est la véritable correction des 2 heures. Proposer en fin de ce point d'ouvrir des canaux de veilles avec par exemple les site d'earth observation...
+
+6 La projective, 5 min : Si vous deviez proposer un projet un peu fou, quel serait-il ? Avez-vous une idée de comment y arriver? Oui / non / pas sûr.
+

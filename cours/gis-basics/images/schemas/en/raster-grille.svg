@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" role="img" aria-label="A raster: a grid of pixels, each carrying a value">
+  <g transform="translate(70,30)">
+    <rect x="0" y="0" width="360" height="270" style="fill:#DCE6F5"/>
+    <rect x="0" y="0" width="120" height="90" style="fill:#B9CBE8"/>
+    <rect x="180" y="135" width="180" height="135" style="fill:#F2D2B0"/>
+    <rect x="120" y="90" width="60" height="45" class="s-plein-accent" opacity="0.85"/>
+    <path class="s-fin" d="M60 0 v270 M120 0 v270 M180 0 v270 M240 0 v270 M300 0 v270 M0 45 h360 M0 90 h360 M0 135 h360 M0 180 h360 M0 225 h360"/>
+    <rect x="0" y="0" width="360" height="270" class="s-trait"/>
+    <text x="30" y="28" text-anchor="middle">31</text><text x="90" y="28" text-anchor="middle">34</text><text x="150" y="28" text-anchor="middle">58</text><text x="210" y="28" text-anchor="middle">60</text><text x="270" y="28" text-anchor="middle">61</text><text x="330" y="28" text-anchor="middle">63</text>
+    <text x="30" y="73" text-anchor="middle">33</text><text x="90" y="73" text-anchor="middle">36</text><text x="150" y="73" text-anchor="middle">59</text><text x="210" y="73" text-anchor="middle">62</text><text x="270" y="73" text-anchor="middle">64</text><text x="330" y="73" text-anchor="middle">66</text>
+    <text x="30" y="118" text-anchor="middle">57</text><text x="90" y="118" text-anchor="middle">60</text><text x="150" y="118" text-anchor="middle" style="fill:#fff;font-weight:700">142</text><text x="210" y="118" text-anchor="middle">64</text><text x="270" y="118" text-anchor="middle">65</text><text x="330" y="118" text-anchor="middle">67</text>
+    <text x="30" y="163" text-anchor="middle">60</text><text x="90" y="163" text-anchor="middle">62</text><text x="150" y="163" text-anchor="middle">63</text><text x="210" y="163" text-anchor="middle">188</text><text x="270" y="163" text-anchor="middle">190</text><text x="330" y="163" text-anchor="middle">195</text>
+    <text x="30" y="208" text-anchor="middle">61</text><text x="90" y="208" text-anchor="middle">63</text><text x="150" y="208" text-anchor="middle">65</text><text x="210" y="208" text-anchor="middle">191</text><text x="270" y="208" text-anchor="middle">201</text><text x="330" y="208" text-anchor="middle">204</text>
+    <text x="30" y="253" text-anchor="middle">62</text><text x="90" y="253" text-anchor="middle">64</text><text x="150" y="253" text-anchor="middle">66</text><text x="210" y="253" text-anchor="middle">193</text><text x="270" y="253" text-anchor="middle">205</text><text x="330" y="253" text-anchor="middle">210</text>
+  </g>
+  <text class="s-petit" x="60" y="22">column number →</text>
+  <text class="s-petit" x="52" y="300" transform="rotate(-90 52 300)">row number →</text>
+    <rect class="s-plein-accent" x="445" y="125" width="22" height="18" opacity="0.85"/>
+  <text class="s-orange" x="474" y="140">one pixel:</text>
+  <text x="474" y="162">one value</text>
+  <text class="s-petit" x="250" y="336" text-anchor="middle">on 8 bits: from 0 to 255</text>
+</svg>

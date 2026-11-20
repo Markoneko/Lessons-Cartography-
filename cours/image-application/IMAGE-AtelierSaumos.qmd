@@ -1,0 +1,350 @@
+---
+title: "Image & Application"
+subtitle: "Atelier : le feu de Saumos"
+author: "Marc Poupée · Géodata Paris"
+date: "2026-11-25"
+date-format: "D MMMM YYYY"
+footer: "Image & Application · atelier Saumos"
+suffixe-plan: "-atelier-saumos"
+title-slide-attributes:
+  data-state: plein
+  data-background-image: images/saumos/accroche.jpg
+  data-background-size: auto 62%
+  data-background-position: 94% 50%
+---
+
+::: {.fiche n="0.1" etat="a-revoir"}
+Intention : Couverture de l'atelier, sur la photo de Saumos le 22 juillet. Diapo provisoire : l'atelier sera fusionné dans IMAGE-Application (partie 4).
+Expérience : aucune
+Demande :
+:::
+
+## Comment jouer {.jdr}
+
+::: {.fiche n="0.2" etat="a-revoir"}
+Intention : Les règles du jeu en une diapo : la commande, les postures, les experts, la confiance du préfet, le rapport noté sur 8. Déclaration de transparence IA.
+Expérience : aucune
+Demande :
+:::
+
+Un **jeu de rôle** de 45 minutes, par groupes de trois : chacun sur son écran.
+
+- Le **préfet** passe une commande. Vous **pariez**, puis vous **enquêtez**.
+- Chacun prend une **posture** : rapporteur, analyste ou orbitographe. Chaque posture mène son enquête.
+- Cinq **experts** vous répondent. Ils ne donnent jamais la réponse, et ne disent pas la même chose à chacun : **parlez-vous**.
+- Un indice de trop coûte un peu de la **confiance du préfet** ; chaque réponse juste du rapport la regagne.
+- À la fin : le **rapport au propre**, noté sur 8, la **sévérité** du feu, puis la **phrase de la classe**.
+
+Ce que vous faites reste dans votre navigateur.
+
+::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
+## Le feu de Saumos {.intercalaire}
+
+::: {.fiche n="1.0" etat="a-revoir"}
+Intention : Intercalaire de la partie.
+Expérience : aucune
+Demande :
+:::
+
+## La dépêche {.jdr}
+
+::: {.fiche n="1.1" etat="a-revoir"}
+Intention : La question de départ, telle que dans la séance prépa : la photo Reuters, la dépêche du 23 juillet, puis la question « presque en direct ».
+Expérience : aucune
+Demande :
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+![Saumos, Gironde — 22 juillet 2026. Photo Reuters. Le plus grand feu de forêt français depuis 1949, dont on cherche à estimer la surface.](images/saumos/accroche.jpg)
+:::
+::: {.column width="48%"}
+::: {.jdr-depeche}
+dépêche · 23.07.2026 · 06:04
+
+Un incendie déclaré hier à Saumos, en Gironde, a parcouru plusieurs milliers d'hectares de pin maritime durant la nuit. Les évacuations se poursuivent sur la façade océane.
+:::
+
+**Comment fait-on pour cartographier presque en direct un feu de forêt ?**
+
+Cela dépend des données disponibles et donc des vecteurs en faisant l'acquisition : souvent des satellites. Vous allez pouvoir en choisir un, comprendre ce qu'il sait faire en fonction d'un paramètre important , leur orbite. À la fin, on croise.
+:::
+::::
+
+## La commande du préfet {.jdr}
+
+::: {.fiche n="1.2" etat="a-revoir"}
+Intention : Le préfet passe la commande : la date précise du départ, la surface brûlée connue précisément à la fin du feu. Sa tête parle quand on arrive sur la diapo.
+Expérience : écouter la commande (brique jdr-commande)
+Demande :
+:::
+
+::: {.jdr-commande}
+:::
+
+[Copernicus EMS a été activé : c'est la mission **EMSR899**. Pour le préfet, une seule question compte : qu'aura-t-il entre les mains, et quand ?]{.legende}
+
+## Vos paris {.jdr}
+
+::: {.fiche n="1.3" etat="a-revoir"}
+Intention : Les deux paris, avant toute enquête. La réponse attendue au verdict : cela dépend de la précision voulue et des moyens engagés.
+Expérience : parier (brique jdr-paris), un pari par groupe
+Demande :
+:::
+
+::: {.jdr-paris}
+:::
+
+## L'équipe {.intercalaire}
+
+::: {.fiche n="2.0" etat="a-revoir"}
+Intention : Intercalaire de la partie.
+Expérience : aucune
+Demande :
+:::
+
+## Votre équipe {.jdr .jdr-plein}
+
+::: {.fiche n="2.1" etat="a-revoir"}
+Intention : Chaque étudiant choisit sa posture (rapporteur, analyste, orbitographe) et sa tête de héros. Un groupe de trois : une posture chacun.
+Expérience : choisir sa posture, sa tête, son nom, son numéro de groupe (brique jdr-equipe)
+Demande :
+:::
+
+::: {.jdr-equipe}
+:::
+
+## Les experts {.jdr}
+
+::: {.fiche n="2.2" etat="a-revoir"}
+Intention : Les cinq experts, leur spécialité, leur trait de caractère. Ils ne donnent jamais la réponse.
+Expérience : aucune
+Demande :
+:::
+
+::: {.jdr-experts}
+:::
+
+::: {.jdr-bulle qui="rose"}
+Nous ne vous donnerons jamais la réponse. Mais posez-nous les bonnes questions, et nous vous dirons où regarder.
+:::
+
+## Qui enquête sur quoi {.jdr}
+
+::: {.fiche n="2.3" etat="a-revoir"}
+Intention : La répartition : une enquête par posture. Un clic sur la carte mène à l'enquête.
+Expérience : choisir son enquête (brique jdr-repartition)
+Demande :
+:::
+
+::: {.jdr-repartition}
+:::
+
+## L'enquête {.intercalaire}
+
+::: {.fiche n="3.0" etat="a-revoir"}
+Intention : Intercalaire de la partie : 22 minutes d'enquête.
+Expérience : aucune
+Demande :
+:::
+
+## Enquête A — le départ du feu {#enquete-a .jdr-plein}
+
+::: {.fiche n="3.1" etat="a-revoir"}
+Intention : L'enquête du rapporteur. Une seule question : avec qui veux-tu commencer ? Le bon expert (Elikia) ouvre les pistes ; les autres redirigent, avec humour.
+Expérience : dialoguer avec les experts (brique jdr-enquete), puis EUMETView ou le labo A
+Demande :
+:::
+
+::: {.jdr-enquete enquete="A"}
+:::
+
+## Labo A — Meteosat et Terra {#labo-a .jdr-plein}
+
+::: {.fiche n="3.2" etat="a-revoir"}
+Intention : Le secours de l'enquête A, si EUMETView ne répond pas : la séquence Meteosat de la séance (sans le départ du 22) et les anomalies thermiques de Terra, jour par jour.
+Expérience : faire défiler deux séries (brique jdr-labo)
+Demande :
+:::
+
+::: {.jdr-labo labo="a"}
+:::
+
+[Retour à l'enquête A](#/enquete-a){.jdr-retour}
+
+## Enquête B — la surface brûlée {#enquete-b .jdr-plein}
+
+::: {.fiche n="3.3" etat="a-revoir"}
+Intention : L'enquête de l'analyste. Bon premier expert : Bastien. Les pistes mènent au Copernicus Browser et à l'outil de mesure.
+Expérience : dialoguer avec les experts (brique jdr-enquete), puis le Copernicus Browser ou le labo B
+Demande :
+:::
+
+::: {.jdr-enquete enquete="B"}
+:::
+
+## Labo B — Sentinel-2 {#labo-b .jdr-plein}
+
+::: {.fiche n="3.4" etat="a-revoir"}
+Intention : Le secours de l'enquête B : les quatre compositions du 21 et du 26 juillet, puis l'outil de mesure de la séance (26 juillet et 4 septembre).
+Expérience : comparer les compositions, tracer et mesurer la surface (brique jdr-labo)
+Demande :
+:::
+
+::: {.jdr-labo labo="b"}
+:::
+
+[Retour à l'enquête B](#/enquete-b){.jdr-retour}
+
+## Enquête C — les satellites et leurs orbites {#enquete-c .jdr-plein}
+
+::: {.fiche n="3.5" etat="a-revoir"}
+Intention : L'enquête de l'orbitographe. Bonne première experte : Inès. Elle exige d'abord les noms des satellites des coéquipiers.
+Expérience : dialoguer avec les experts (brique jdr-enquete), puis Deimos ou le labo C
+Demande :
+:::
+
+::: {.jdr-enquete enquete="C"}
+:::
+
+## Labo C — deux orbites {#labo-c .jdr-plein}
+
+::: {.fiche n="3.6" etat="a-revoir"}
+Intention : Le secours de Deimos : une animation simple, le Soleil, la Terre et les deux satellites ; puis les passages de Sentinel-2 au-dessus de Saumos, jour après jour.
+Expérience : regarder deux animations (brique jdr-labo)
+Demande :
+:::
+
+::: {.jdr-labo labo="c"}
+:::
+
+[Retour à l'enquête C](#/enquete-c){.jdr-retour}
+
+## Le rapport {.intercalaire}
+
+::: {.fiche n="4.0" etat="a-revoir"}
+Intention : Intercalaire de la partie.
+Expérience : aucune
+Demande :
+:::
+
+## Le rapport au propre {#rapport .jdr-plein}
+
+::: {.fiche n="4.1" etat="a-revoir"}
+Intention : Le rapporteur compile : pour chaque enquête, la réponse, la preuve, et ce que l'on ne peut pas dire ; puis les trois solutions au préfet, chacune datée. Validation sur 8, envoi à la feuille du cours.
+Expérience : remplir, valider, envoyer (brique jdr-rapport)
+Demande :
+:::
+
+::: {.jdr-rapport envoi=""}
+:::
+
+## La sévérité {.jdr-plein}
+
+::: {.fiche n="4.2" etat="a-revoir"}
+Intention : La même image pour tous : chaque groupe pose trois pronostics (sévère, moyen, épargné), puis l'appli révèle le proche infrarouge, le moyen infrarouge et le dNBR, et lit la classe de chaque point.
+Expérience : poser trois points, puis révéler (brique jdr-severite)
+Demande :
+:::
+
+::: {.jdr-severite}
+:::
+
+## Le verdict {.intercalaire}
+
+::: {.fiche n="5.0" etat="a-revoir"}
+Intention : Intercalaire de la partie.
+Expérience : aucune
+Demande :
+:::
+
+## La phrase de la classe {.jdr}
+
+::: {.fiche n="5.1" etat="a-revoir"}
+Intention : La phrase à trous de la séance prépa, sur la projection : chaque rapporteur lit, l'enseignant remplit les blancs, puis révèle les trois dernières cases.
+Expérience : lire son rapport à voix haute (brique jdr-phrase)
+Demande :
+:::
+
+::: {.jdr-phrase}
+:::
+
+## L'échange {.jdr}
+
+::: {.fiche n="5.2" etat="a-revoir"}
+Intention : Quels groupes ont plus de 6 sur 8 ? Bravo ; puis on revient sur les difficultés des autres groupes.
+Expérience : lever la main, puis expliquer
+Demande :
+:::
+
+**Qui a plus de 6 sur 8 ?** Levez la main.
+
+Et les autres : quelle question vous a résisté ?
+
+::: {.jdr-bulle qui="rose"}
+Le préfet vous demande la surface demain matin. Vous lui donnez quel chiffre, et avec quelle marge ?
+:::
+
+## Le verdict {.jdr .jdr-verdict}
+
+::: {.fiche n="5.3" etat="a-revoir"}
+Intention : Rose relit la question « presque en direct ». Retour sur les paris : la réponse dépend de la précision désirée et des moyens engagés. Les trois solutions datées, la référence ETP de Marc, la chaîne du feu, le lien UN-SPIDER, le clin d'œil au DM biosphère.
+Expérience : aucune
+Demande :
+:::
+
+::: {.jdr-bulle qui="rose"}
+"Presque en direct", c'est ce que dira le communiqué. Vous, vous signeriez quoi ?
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+**Combien de jours ?** cela dépend de la précision désirée et des moyens engagés.
+
+- **Avec des moyens** : on commande une image à un satellite pointable. Le périmètre officiel, 31 386 ha, est tracé le 29 juillet.
+- **Pour une précision relative** : le radar, qui voit à travers la fumée et les nuages.
+- **Sans moyens** : on attend une Sentinel-2 sans nuages. La sévérité arrive six semaines plus tard.
+:::
+::: {.column width="50%"}
+**Combien d'ETP ?**
+
+- Pour un non Géodata Paris, quelques jours.
+- Pour un Géodata Paris quelques heures.
+- Un processus automatique maitrisé, pour un non Géodata Paris, impossible.
+- Un processus automatique maitrisé, pour un Géodata Paris, quelques jours à quelques mois suivant l'emprise spaction temporelle.
+:::
+::::
+
+::: {.chaine commande="feux"}
+:::
+
+[La méthode : [UN-SPIDER, Normalized Burn Ratio](https://un-spider.org/advisory-support/recommended-practices/recommended-practice-burn-severity/in-detail/normalized-burn-ratio). L'an prochain, le DM biosphère vous attend.]{.legende}
+
+## Sources et crédits {.petit}
+
+::: {.fiche n="5.4" etat="a-revoir"}
+Intention : Les sources des images et des données de l'atelier.
+Expérience : aucune
+Demande :
+:::
+
+| Donnée | Origine |
+|---|---|
+| Photo de Saumos, 22 juillet 2026 | Reuters, via le rapport de situation Copernicus EMS EMSR899 |
+| Périmètre officiel (31 386 ha, 29 juillet) | Copernicus EMS, EMSR899, délimitation sur WorldView Legion |
+| Séquence Meteosat | EUMETSAT, EUMETView |
+| Anomalies thermiques | NASA, Terra (MODIS), via Worldview |
+| Compositions et bandes Sentinel-2 L2A | Copernicus, Copernicus Browser |
+| Sévérité (NBR, dNBR) | méthode UN-SPIDER, calcul de la séance prépa |
+| Orbites | IGN, Deimos ; animation de secours dessinée pour l'atelier |
+| Têtes des personnages | dessins originaux pour l'atelier |
+
+<!--
+V0 du 20 novembre 2026, d'après source/Cas1-Saumos/ : la conception v3bis, la séance prépa
+(saumos-seance.html), les scripts v1 (annoté par Marc) et v2 (graphe, réponses de Marc).
+Tout le contenu du jeu est dans donnees/saumos.json ; les têtes dans donnees/pixels.json (outils/pixels.py).
+Atelier provisoirement séparé ; il remplacera la partie 4 de IMAGE-Application.
+L'envoi vers la feuille Google : voir outils/feuille-google.gs, puis renseigner envoi="…" sur la diapo 4.1.
+-->

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-label="A globe that changes shape with the chosen answer: stretched towards the poles or flattened at the poles">
+  <style>
+    .aplat-forme { transform-origin: 210px 150px; transition: transform 1.4s ease-in-out; }
+    section[data-choix="1"] .aplat-forme { transform: scale(0.84, 1.16); }
+    section[data-choix="2"] .aplat-forme { transform: scale(1.14, 0.80); }
+    .aplat-mot { opacity: 0; transition: opacity 0.6s 1.2s; }
+    section[data-choix] .aplat-mot { opacity: 1; }
+  </style>
+  <path class="s-tirets" d="M210 8 V292"/>
+  <text class="s-petit" x="220" y="20">polar axis</text>
+  <g class="aplat-forme">
+    <circle class="s-eau" cx="210" cy="150" r="108"/>
+    <ellipse class="s-fin" vector-effect="non-scaling-stroke" cx="210" cy="150" rx="108" ry="30"/>
+    <ellipse class="s-fin" vector-effect="non-scaling-stroke" cx="210" cy="102" rx="97" ry="22"/>
+    <ellipse class="s-fin" vector-effect="non-scaling-stroke" cx="210" cy="198" rx="97" ry="22"/>
+    <ellipse class="s-fin" vector-effect="non-scaling-stroke" cx="210" cy="150" rx="46" ry="108"/>
+    <circle class="s-trait" vector-effect="non-scaling-stroke" cx="210" cy="150" r="108"/>
+  </g>
+  <circle class="s-tirets" cx="210" cy="150" r="108"/>
+  <text class="s-petit aplat-mot" x="210" y="296" text-anchor="middle">greatly exaggerated; dashed line: the sphere</text>
+</svg>

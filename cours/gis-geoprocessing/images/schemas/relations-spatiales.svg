@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 325" role="img" aria-label="Les relations spatiales : intersecte, contient, à moins de">
+<rect class="s-fond" x="20" y="10" width="350" height="240" rx="12"/>
+<rect class="s-fond" x="400" y="10" width="350" height="240" rx="12"/>
+<rect class="s-fond" x="780" y="10" width="350" height="240" rx="12"/>
+<path class="s-plein-accent" opacity="0.3" d="M80 70 L260 60 L280 190 L90 200 Z"/><path class="s-trait" d="M80 70 L260 60 L280 190 L90 200 Z"/>
+<path class="s-accent" d="M40 220 C 120 160 200 120 340 40" style="stroke-width:5"/>
+<text class="s-titre" x="195" y="290" text-anchor="middle">intersecte</text>
+<text class="s-petit" x="195" y="312" text-anchor="middle">la piste traverse</text>
+<path class="s-plein-accent" opacity="0.3" d="M460 70 L640 60 L660 190 L470 200 Z"/><path class="s-trait" d="M460 70 L640 60 L660 190 L470 200 Z"/>
+<circle class="s-plein" cx="560" cy="130" r="9"/>
+<text class="s-titre" x="575" y="290" text-anchor="middle">contient</text>
+<text class="s-petit" x="575" y="312" text-anchor="middle">la placette est dedans</text>
+<circle cx="955" cy="130" r="80" class="s-tirets" style="stroke:var(--orange);stroke-width:2.5"/>
+<circle class="s-plein" cx="955" cy="130" r="8"/><path class="s-fin" d="M955 130 L1035 130"/>
+<text x="995" y="122" text-anchor="middle" style="font-size:18px;font-style:italic">d</text>
+<path class="s-plein-accent" opacity="0.3" d="M1010 170 L1100 160 L1110 235 L1020 240 Z"/><path class="s-trait" d="M1010 170 L1100 160 L1110 235 L1020 240 Z"/>
+<path class="s-trait" d="M810 60 L870 40 L880 90 L820 100 Z" style="stroke:var(--gris)"/>
+<text class="s-titre" x="955" y="290" text-anchor="middle">à moins de d</text>
+<text class="s-petit" x="955" y="312" text-anchor="middle">tout ce qui touche le cercle</text>
+</svg>
