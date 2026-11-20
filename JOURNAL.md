@@ -2,6 +2,13 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-20 (début d'après-midi) — Toujours pas de PDF chez Marc
+
+Après la mise à jour, Marc n'a toujours pas de PDF. Pistes, par ordre de probabilité : la commande `python3` du post-render, qui n'existe pas sous Windows (Python s'y appelle `python` ou `py`) ; un rendu lancé par le bouton de VS Code, qui fait un `quarto preview` (sans PDF, par construction) ; Playwright non installé.
+
+- `_quarto.yml` : `post-render: outils/sorties.py`, sans `python3` devant : Quarto lance le script avec le Python qu'il a trouvé, sous Windows comme ailleurs. Testé sous Linux.
+
+
 ## 2026-11-20 (midi) — Plus de dossier `_sortie/` : le HTML et le PDF à côté du cours
 
 Décision de Marc : le PDF va, comme le HTML, dans le dossier du cours, à côté du `.qmd`. Le dossier `_sortie/` disparaît, et le renommage d'après le titre avec lui : les deux fichiers prennent le nom du fichier du cours (`IMAGE-Intelligence.html`, `IMAGE-Intelligence.pdf`). Sous Windows, un renommage qui ne change que la casse (`IMAGE-` / `Image-`) aurait de toute façon visé le même fichier.

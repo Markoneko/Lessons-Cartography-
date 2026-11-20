@@ -2,7 +2,7 @@
 project:
   type: default
   # Pas de dossier de sortie commun : chaque support est produit à côté de son cours ; outils/sorties.py en imprime le PDF
-  post-render: python3 outils/sorties.py
+  post-render: outils/sorties.py
   render:
     - "cours/**/*.qmd"
     - "bac-a-sable/**/*.qmd"
