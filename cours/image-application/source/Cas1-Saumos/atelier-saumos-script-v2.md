@@ -251,3 +251,4 @@ ci-dessous vient de la conception v3bis et du suivi ; je la confirmerai sur le H
 - Pour l'animation Deimos : rien, elle sera dessinée.
 - Pour la solution radar, si on la manipule (commentaire 1) : un couple Sentinel-1 avant / après sur
   Saumos.
+  Réponse : il manque le radar à garder en lien, je pourrais pousser les images.
