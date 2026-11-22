@@ -1340,7 +1340,7 @@ end
 -- les images listées dans le fichier sont posées une fois, cachées, pour être embarquées dans le HTML.
 ----------------------------------------------------------------------------
 local JDR = { "jdr-commande", "jdr-paris", "jdr-equipe", "jdr-cadrage", "jdr-experts", "jdr-enquete",
-  "jdr-labo", "jdr-rapport", "jdr-phrase", "jdr-bulle" }
+  "jdr-labo", "jdr-rapport", "jdr-phrase", "jdr-bulle", "jdr-retour" }
 local jdr_embarque = {}
 local function jdr_donnees(chemin, pixels)
   if jdr_embarque[chemin] then return "" end

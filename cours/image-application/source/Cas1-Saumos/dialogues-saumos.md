@@ -1,7 +1,8 @@
 # Atelier Saumos — les dialogues, tels que le jeu les joue
 
 Fichier produit par `outils/dialogues.py` à partir de `donnees/saumos.json` : ne pas le modifier à la main,
-modifier le JSON puis relancer. ▶ question, ✦ aparté, ✎ réponse tapée, ◆ choix ; *effets* en italique, `conditions` en code.
+modifier le JSON puis relancer. ▶ question, ✦ aparté, ✎ réponse tapée, ◆ choix ; *effets* en italique, `conditions` en code ;
+⟪ ⟫ : terme technique cliquable (en couleur dans le jeu, il ouvre un aparté et s'ajoute au lexique du carnet).
 
 ## Enquête A — Quand le feu a-t-il démarré ?
 
@@ -27,13 +28,13 @@ Un signal, c'est la moitié du chemin. L'autre moitié, c'est la donnée : à qu
 Un satellite de la famille des Meteosat, ou Terra, peut répondre à vos besoins. Voyez avec votre orbitographe comment connaître leurs caractéristiques. Tenez : je vous passe les clefs du labo Eumetsat. — *carnet : Deux familles ; 🔑 les clefs du labo Eumetsat*
 
 **A-E4** ▶ *« Comment trouver le premier signe ? »* `si clef a`  
-Faites défiler les images une à une, en commençant la veille. La première fumée qui part de la forêt, c'est quand ? Notez l'heure inscrite sur l'image : elle est en UTC. — *carnet : L'heure*
+Faites défiler les images une à une, en commençant la veille. La première fumée qui part de la forêt, c'est quand ? Notez l'heure inscrite sur l'image : elle est en ⟪UTC⟫. — *carnet : L'heure*
 
 **A-E5** ▶ *« Et la nuit, on voit encore le sol ? »* `si entendu A-E4`  
 La nuit, plus de Soleil à renvoyer : la fumée disparaît avec lui. Faites défiler jusqu'à 22 h : que reste-t-il ? Des lumières de villes… et pas notre fumée. Les canaux infrarouges, eux, continuent de voir ce qui émet. — *carnet : La nuit*
 
 **A-E6** ▶ *« Peut-on tracer le contour du feu avec ces images ? »* `si entendu A-E4`  
-Comparez la taille d'un pixel à celle d'une commune. Vous traceriez un contour, vous, avec des pixels pareils ? — *carnet : Ce que Meteosat ne sait pas faire ; −1 confiance*
+Comparez la taille d'un ⟪pixel⟫ à celle d'une commune. Vous traceriez un contour, vous, avec des pixels pareils ? — *carnet : Ce que Meteosat ne sait pas faire ; −1 confiance*
 
 **A-E7** ▶ *« Il n'y a qu'un satellite qui voit les feux ? »* `si clef a`  
 Oh non. Il y a un second œil, en orbite basse cette fois : Terra. Il passe une à deux fois par jour, et marque en rouge les pixels anormalement chauds. Je vous l'ajoute dans le labo : comparez le 21 et le 22 juillet. Deux capteurs qui disent la même date, c'est une preuve plus solide qu'un seul. — *🔑 un second œil dans le labo Eumetsat : Terra*
@@ -43,9 +44,9 @@ Chaque jour, la NASA publie les feux actifs détectés sur toute la planète par
 
 ### Bastien (Les données et les traitements)
 
-**Accueil.** Salut ! Bastien, données et traitements. Un départ de feu, hein ? Alors, question d'archiviste : pour attraper un départ, quelle résolution faut-il privilégier dans la donnée ?
+**Accueil.** Salut ! Bastien, données et traitements. Un départ de feu, hein ? Alors, question d'archiviste : pour attraper un départ, quelle ⟪résolution⟫ faut-il privilégier dans la donnée ?
 - ◆ *« La résolution spatiale : voir fin. »* ✗ → Voir fin, c'est beau. Mais un satellite qui voit fin passe rarement : le feu aura démarré, brûlé et fait la une avant qu'il revienne. Une autre idée ?
-- ◆ *« La résolution temporelle : voir souvent. »* ✓ → Voilà ! Un départ, c'est un instant : il faut une image très souvent, quitte à voir flou. J'ai des images toutes les 15 minutes, mais c'est plutôt utilisé pour la météo, pas le suivi de la végétation. — *carnet : La bonne résolution*
+- ◆ *« La résolution temporelle : voir souvent. »* ✓ → Voilà ! Un départ, c'est un instant : il faut une image très souvent, quitte à voir flou. J'ai des images toutes les 10-15 minutes, mais c'est plutôt utilisé pour la météo, pas le suivi de la végétation. — *carnet : La bonne résolution*
 - ◆ *« La résolution spectrale : beaucoup de bandes. »* ✗ → Beaucoup de bandes, c'est précieux pour savoir ce qui brûle. Pour savoir quand ça démarre, il faut autre chose. Encore un essai ?
 
 **A-B1** ▶ *« On sait quoi chercher : la fumée, dans le visible. Et maintenant ? »* `si carnet Voir la fumée ; sauf si clef a`  
@@ -59,10 +60,12 @@ Landsat photographie la Terre depuis 1972. Cette forêt des Landes, je l'ai vue 
 
 ### Inès (Les orbites)
 
-**Accueil.** On va voir avec votre spécialiste orbito quelles sont les caractéristiques de vos couples capteur / vecteur, ceux qui vont mesurer votre signal. Pour cela, il a besoin d'infos sur les types de signaux et les résolutions auxquelles vous voulez les acquérir : trouvez-lui ces infos. Au fait, un couple capteur / vecteur, cela vous parle ? Parmi ces trois propositions, laquelle en est un ?
-- ◆ *« Une image Sentinel-2 en fausses couleurs. »* ✗ → Ça, c'est une donnée : ce qui sort du couple. Cherchez ce qui la fabrique.
-- ◆ *« Un avion avec une caméra RVB + PIR. »* ✓ → Exactement : le vecteur porte, le capteur mesure. Un satellite et son instrument, un drone et sa caméra… Notez bien les deux noms : tout le monde les confond. — *carnet : Capteur et vecteur*
-- ◆ *« Une station au sol qui reçoit les images. »* ✗ → Ça, c'est le segment sol : il écoute le couple, il n'en fait pas partie. Un autre essai ?
+**Accueil.** On va voir avec votre spécialiste orbito quelles sont les caractéristiques de vos couples capteur / vecteur, ceux qui vont mesurer votre signal. Pour cela, il a besoin d'infos sur les types de signaux et les résolutions auxquelles vous voulez les acquérir : trouvez-lui ces infos, ça l'aidera à se lancer… Au fait, un ⟪couple capteur / vecteur⟫, cela vous parle ?
+- ◆ *« Oui. »* → Parfait. Alors vous saurez donner les deux noms : celui qui porte, celui qui mesure. Rose vérifiera : elle vérifie tout. — *carnet : Capteur et vecteur*
+- ◆ *« Non, pas vraiment. »* → Pas de souci, c'est fait pour ça. Parmi ces trois propositions, laquelle est un couple capteur / vecteur ?
+  - ◆ *« Une image Sentinel-2 en fausses couleurs. »* ✗ → Ça, c'est une donnée : ce qui sort du couple. Cherchez ce qui la fabrique.
+  - ◆ *« Un avion avec une caméra RVB + PIR. »* ✓ → Exactement : le vecteur porte, le capteur mesure. Un satellite et son instrument, un drone et sa caméra… Notez bien les deux noms : tout le monde les confond. — *carnet : Capteur et vecteur*
+  - ◆ *« Une station au sol qui reçoit les images. »* ✗ → Ça, c'est le segment sol : il écoute le couple, il n'en fait pas partie. Un autre essai ?
 
 **A-I1** ▶ *« Pourquoi Meteosat voit-il tout le temps ? »* `si carnet Deux familles`  
 Parce qu'il tourne aussi vite que la Terre : très haut au-dessus de l'équateur, il reste au-dessus du même point. Le prix ? Il est si loin que ses pixels font des kilomètres. Donnez son nom à votre orbitographe : il en fera la fiche. — *carnet : Loin, donc flou*
@@ -92,7 +95,7 @@ Jouée par **l'analyste** ; labo : Labo Copernicus.
 
 ### Elikia (Le signal)
 
-**Accueil.** Rose m'a prévenue que vous vouliez mesurer l'étendue d'un feu de forêt. Cela va sans doute demander des traitements : Bastien vous en parlera. Pour cela, il faut croiser des signaux qui mesurent l'état de la végétation et son humidité : le proche infrarouge et le moyen infrarouge, le SWIR. Regardez : en vert la forêt vivante, en brun la forêt brûlée. Dans Sentinel-2, ce sont les bandes B8 et B12. — *carnet : Les deux signaux de la brûlure ; montre : reflectance*
+**Accueil.** Rose m'a prévenue que vous vouliez mesurer l'étendue d'un feu de forêt. Cela va sans doute demander des traitements : Bastien vous en parlera. Pour cela, il faut croiser des signaux qui mesurent l'état de la végétation et son humidité : le ⟪proche infrarouge⟫ et le moyen infrarouge, le ⟪SWIR⟫. Regardez ces deux ⟪signatures spectrales⟫ : en vert la forêt vivante, en brun la forêt brûlée. Dans Sentinel-2, ce sont les ⟪bandes⟫ B8 et B12. — *carnet : Les deux signaux de la brûlure ; montre : reflectance*
 
 **B-E1** ✎ *« Un satellite avec ces bandes ? Il y en a beaucoup ! »* `sauf si clef b`  
 Un satellite avec ces caractéristiques, il y en a beaucoup ! Vous pensez à un en particulier ?
@@ -110,7 +113,7 @@ Un indice, alors : il fait partie d'une famille européenne qui porte le nom d'u
 Les grandes longueurs d'onde. La fumée arrête le bleu bien plus que l'infrarouge moyen : une composition SWIR voit à travers, et le front de flammes y brille. Comparez couleurs naturelles et SWIR sur le 26 juillet : ce qui change, c'est la fumée, pas le feu. — *carnet : À travers la fumée*
 
 **B-E4** ✦ *« Pourquoi une forêt vivante brille-t-elle autant dans le proche infrarouge ? »*  
-Parce que l'intérieur d'une feuille est un labyrinthe de cellules et d'air : le proche infrarouge y rebondit et ressort. Brûlée, plus de feuilles, plus de labyrinthe : le miroir s'éteint. Et le SWIR remonte quand l'eau s'en va.
+Parce que l'intérieur d'une feuille est un labyrinthe de cellules et d'air : le proche infrarouge y rebondit et ressort. Brûlée, plus de feuilles, plus de labyrinthe : le miroir s'éteint, et la ⟪réflectance⟫ chute. Et le SWIR remonte quand l'eau s'en va.
 
 ### Bastien (Les données et les traitements)
 
@@ -118,7 +121,7 @@ Parce que l'intérieur d'une feuille est un labyrinthe de cellules et d'air : le
 
 **B-B1** ✎ *« Le satellite et les bandes ? On propose. »*  
 Je vous écoute : quel satellite, et quelles bandes ?
-- ✎ si la réponse contient `senti?nel+e?\s*-?\s*(2|ii|deux)\b|\bs\s*-?\s*2\b + \bb\s*-?\s*0?8\s*a?\b|proche\s*infra|\bpir\b|\bnir\b + \bb\s*-?\s*12\b|swir|infra\s*-?\s*rouge\s*moyen|moyen\s*infra` **(bonne réponse)** → Parfait ! Grâce à ça, on peut créer le NBR, l'indice de brûlure normalisé. Mais avant cela, on peut visualiser le phénomène en composition colorée. Je vous ouvre le labo Copernicus. — *carnet : Les compositions colorées ; 🔑 les clefs du labo Copernicus ; débloque B-E3*
+- ✎ si la réponse contient `senti?nel+e?\s*-?\s*(2|ii|deux)\b|\bs\s*-?\s*2\b + \bb\s*-?\s*0?8\s*a?\b|proche\s*infra|\bpir\b|\bnir\b + \bb\s*-?\s*12\b|swir|infra\s*-?\s*rouge\s*moyen|moyen\s*infra` **(bonne réponse)** → Parfait ! Grâce à ça, on peut créer le NBR, l'indice de brûlure normalisé. Mais avant cela, on peut visualiser le phénomène en ⟪composition colorée⟫. Je vous ouvre le labo Copernicus. — *carnet : Les compositions colorées ; 🔑 les clefs du labo Copernicus ; débloque B-E3*
 - ✎ si la réponse contient `senti?nel+e?\s*-?\s*(2|ii|deux)\b|\bs\s*-?\s*2\b` → Le satellite, oui. Et les bandes ? Une pour la végétation vivante, une pour la sécheresse : il vous les faut toutes les deux.
 - ✎ si la réponse contient `\bb\s*-?\s*0?8\s*a?\b|proche\s*infra|\bpir\b|\bnir\b + \bb\s*-?\s*12\b|swir|infra\s*-?\s*rouge\s*moyen|moyen\s*infra` → Les bandes, bravo. Et le satellite qui les porte ? Votre orbitographe doit avoir un nom.
 - ✎ si la réponse contient `\bb\s*-?\s*0?8\s*a?\b|proche\s*infra|\bpir\b|\bnir\b` → Le proche infrarouge, oui : la végétation vivante. Il en manque une : celle qui voit la sécheresse.
@@ -137,7 +140,7 @@ Si la fumée vous gêne, essayez une composition qui ne regarde pas dans le visi
 Cherchez la première image claire après le 26 juillet, et dites-moi combien de semaines il a fallu attendre. Je vous attends. Avec une chocolatine. — *carnet : Attendre ou payer*
 
 **B-B5** ▶ *« Et ce NBR, on le calcule ? »* `si entendu B-B2`  
-Le NBR, c'est (PIR − SWIR) / (PIR + SWIR) : il s'effondre là où la forêt a brûlé. La différence entre avant et après, le dNBR, dit à quel point ça a brûlé. Je vous l'ai ajouté dans le labo. Et pas de seuil choisi au feeling, hein : les classes viennent de UN-SPIDER. — *carnet : Le NBR ; 🔑 le calcul du dNBR dans le labo Copernicus*
+Le ⟪NBR⟫, c'est (PIR − SWIR) / (PIR + SWIR) : il s'effondre là où la forêt a brûlé. La différence entre avant et après, le dNBR, dit à quel point ça a brûlé. Je vous l'ai ajouté dans le labo. Et pas de seuil choisi au feeling, hein : les classes viennent de UN-SPIDER. — *carnet : Le NBR ; 🔑 le calcul du dNBR dans le labo Copernicus*
 
 **B-B6** ▶ *« Notre surface change entre deux dates. »* `si entendu B-B3`  
 Votre surface change entre deux dates ? Le feu a grandi, ou c'est votre image qui voyait moins bien ? — *carnet : Ce que Sentinel-2 ne sait pas faire ; débloque B-R1 ; −1 confiance*
@@ -147,10 +150,12 @@ Landsat photographie la Terre depuis 1972, Sentinel-2 depuis 2015. Cette forêt 
 
 ### Inès (Les orbites)
 
-**Accueil.** On va voir avec votre spécialiste orbito quelles sont les caractéristiques de vos couples capteur / vecteur, ceux qui vont mesurer votre signal. Pour cela, il a besoin d'infos sur les types de signaux et les résolutions auxquelles vous voulez les acquérir : trouvez-lui ces infos. Au fait, un couple capteur / vecteur, cela vous parle ? Parmi ces trois propositions, laquelle en est un ?
-- ◆ *« Une image Sentinel-2 en fausses couleurs. »* ✗ → Ça, c'est une donnée : ce qui sort du couple. Cherchez ce qui la fabrique.
-- ◆ *« Un avion avec une caméra RVB + PIR. »* ✓ → Exactement : le vecteur porte, le capteur mesure. Un satellite et son instrument, un drone et sa caméra… Notez bien les deux noms : tout le monde les confond. — *carnet : Capteur et vecteur*
-- ◆ *« Une station au sol qui reçoit les images. »* ✗ → Ça, c'est le segment sol : il écoute le couple, il n'en fait pas partie. Un autre essai ?
+**Accueil.** On va voir avec votre spécialiste orbito quelles sont les caractéristiques de vos couples capteur / vecteur, ceux qui vont mesurer votre signal. Pour cela, il a besoin d'infos sur les types de signaux et les résolutions auxquelles vous voulez les acquérir : trouvez-lui ces infos, ça l'aidera à se lancer… Au fait, un ⟪couple capteur / vecteur⟫, cela vous parle ?
+- ◆ *« Oui. »* → Parfait. Alors vous saurez donner les deux noms : celui qui porte, celui qui mesure. Rose vérifiera : elle vérifie tout. — *carnet : Capteur et vecteur*
+- ◆ *« Non, pas vraiment. »* → Pas de souci, c'est fait pour ça. Parmi ces trois propositions, laquelle est un couple capteur / vecteur ?
+  - ◆ *« Une image Sentinel-2 en fausses couleurs. »* ✗ → Ça, c'est une donnée : ce qui sort du couple. Cherchez ce qui la fabrique.
+  - ◆ *« Un avion avec une caméra RVB + PIR. »* ✓ → Exactement : le vecteur porte, le capteur mesure. Un satellite et son instrument, un drone et sa caméra… Notez bien les deux noms : tout le monde les confond. — *carnet : Capteur et vecteur*
+  - ◆ *« Une station au sol qui reçoit les images. »* ✗ → Ça, c'est le segment sol : il écoute le couple, il n'en fait pas partie. Un autre essai ?
 
 **B-I1** ▶ *« Pourquoi pas d'image entre le 21 et le 26 ? »* `si clef b`  
 Parce que Sentinel-2 ne survole Saumos que tous les quelques jours : il vole bas, sa trace au sol défile, et sa fauchée n'est pas infinie. Votre orbitographe est en train de le calculer : allez lui demander. — *carnet : La revisite*
@@ -190,7 +195,7 @@ Parce qu'il est loin. De si haut, chaque pixel de son capteur couvre des kilomè
 **Accueil.** Des noms de satellites ? J'ai tout le catalogue. Il y en a deux que vos collègues vont chercher, et un troisième que personne ne cite : celui qui a servi au périmètre officiel. Il est dans la page de l'activation EMSR899. Mais commencez par Inès : moi, je range ; elle, elle calcule.
 
 **C-B1** ▶ *« Le satellite et le capteur, c'est pareil ? »* `si clef c`  
-Jamais de la vie. Meteosat-10, c'est le satellite ; SEVIRI, l'appareil qu'il transporte. Sentinel-2 porte MSI, Terra porte MODIS. Dans mon catalogue, une ligne par couple. Vos collègues confondent tout le temps : corrigez-les.
+Jamais de la vie. Meteosat-12, c'est le satellite ; FCI, l'appareil qu'il transporte. Sentinel-2 porte MSI, Terra porte MODIS. Dans mon catalogue, une ligne par couple. Vos collègues confondent tout le temps : corrigez-les.
 
 **C-B2** ✦ *« Vous avez des images de cette forêt depuis quand ? »*  
 Landsat photographie la Terre depuis 1972. Une archive, c'est une machine à remonter le temps : sans elle, pas d'« avant », donc pas d'« après ».
@@ -201,7 +206,7 @@ Landsat photographie la Terre depuis 1972. Une archive, c'est une machine à rem
 
 **C-I1** ✎ *« La famille du satellite de notre rapporteur ? On propose. »* `sauf si clef c`  
 Alors, quelle famille cherche ton rapporteur ?
-- ✎ si la réponse contient `met[eo]*\s*-?\s*sat|\bmsg\b|\bmtg\b|seviri|\bfci\b` **(bonne réponse)** → Oui ! Il y a un satellite en position au-dessus de l'Europe, un Meteosat. Les images de ton rapporteur portent la mention MSG 0° : Meteosat Seconde Génération, posé à 0° de longitude. Cet été, c'est Meteosat-10 qui assurait ce service, avec son capteur SEVIRI. Tu peux le visualiser sur Deimos : je te passe les clefs. Essaie de comprendre le lien entre son orbite et ses résolutions… — *🔑 les clefs du labo Deimos ; débloque C-E1*
+- ✎ si la réponse contient `met[eo]*\s*-?\s*sat|\bmsg\b|\bmtg\b|seviri|\bfci\b` **(bonne réponse)** → Oui ! Il y a un satellite en position au-dessus de l'Europe, un Meteosat. Celui qui nous concerne, c'est Meteosat-12, le premier de la troisième génération, avec son capteur FCI : une image toutes les 10 minutes. Tu peux le visualiser sur Deimos : je te passe les clefs. Essaie de comprendre le lien entre son orbite et ses résolutions… — *🔑 les clefs du labo Deimos ; débloque C-E1*
 - ✎ si la réponse contient `terra|modis|\baqua\b` → Terra, c'est une piste : il voit les feux une à deux fois par jour. Mais ton rapporteur cherche l'heure du départ : il lui faut un œil qui ne cligne jamais. Quelle autre famille lui a-t-on soufflée ?
 - ✎ si la réponse contient `senti?nel+e?\s*-?\s*(2|ii|deux)\b|\bs\s*-?\s*2\b` → Sentinel-2, c'est la star, je te l'ai dit, et c'est pour ton analyste. Ton rapporteur, lui, a besoin d'un autre œil. Va lui demander quelle famille ses experts lui ont soufflée.
 - ✎ sinon → Je ne la connais pas, celle-là. Demande à ton rapporteur : il cherche un satellite qui ne quitte jamais l'Europe des yeux.
@@ -211,10 +216,10 @@ Alors, quelle famille cherche ton rapporteur ?
 Un indice, alors : cette famille porte le nom du temps qu'il fait. Ça vous coûte un peu de la confiance du préfet, mais pas trop. — *−1 confiance*
 
 **C-I2** ▶ *« Un satellite qui ne quitte jamais l'Europe, c'est possible ? »* `si clef c`  
-Un satellite qui ne bouge pas par rapport à la Terre : à quelle altitude doit-il être ? Regarde dans le labo si sa trace défile ou reste fixe, et note son altitude. — *carnet : Géostationnaire*
+Un satellite qui ne bouge pas par rapport à la Terre, on dit ⟪géostationnaire⟫ : à quelle altitude doit-il être ? Regarde dans le labo si sa trace défile ou reste fixe, et note son altitude. — *carnet : Géostationnaire*
 
 **C-I3** ▶ *« Et Sentinel-2, pourquoi ne repasse-t-il pas chaque jour ? »* `si clef c`  
-Il vole bas, il voit fin, mais sa trace défile : chaque jour, il survole une autre bande de Terre. Combien de jours avant de revenir sur Saumos ? Compte-les dans le labo. — *carnet : La revisite*
+Il vole bas, il voit fin, mais sa trace défile : chaque jour, il survole une autre bande de Terre. Et Sentinel-2, ils sont en fait deux, sur la même orbite, à 180° l'un de l'autre : Sentinel-2B et Sentinel-2C, qui a pris la place de Sentinel-2A en janvier 2025. Seul, chacun met 10 jours à revenir au même endroit, à l'équateur ; à deux, 5 jours : c'est leur ⟪revisite⟫. Combien de jours avant de revenir sur Saumos ? Compte-les dans le labo. — *carnet : La revisite*
 
 **C-I4** ▶ *« Et s'il fait nuageux le jour du passage ? »* `si entendu C-I3`  
 S'il repasse tous les cinq jours et qu'il fait nuageux ce jour-là, combien de temps attends-tu ? — *carnet : Les nuages ; −1 confiance*
@@ -223,10 +228,10 @@ S'il repasse tous les cinq jours et qu'il fait nuageux ce jour-là, combien de t
 Un satellite qu'on ne laisse pas défiler : on le pointe, à la demande, sur la zone. Très fin, très cher. Je t'ajoute sa fiche dans le labo ; son nom est aussi dans la page de l'activation EMSR899. — *carnet : La commande ; 🔑 la fiche du satellite commandé dans le labo Deimos ; débloque C-R1*
 
 **C-I6** ▶ *« Et le radar, il ne pourrait pas nous aider ? »* `si entendu C-I5`  
-Si ! Le radar voit à travers les nuages et la fumée, de jour comme de nuit. Sa précision sur les zones brûlées est plus relative, mais il ne vous fait pas attendre le soleil. On ne le manipule pas aujourd'hui : note-le comme une solution. — *carnet : Le radar*
+Si ! Le ⟪radar⟫ voit à travers les nuages et la fumée, de jour comme de nuit. Sa précision sur les zones brûlées est plus relative, mais il ne vous fait pas attendre le soleil. On ne le manipule pas aujourd'hui : note-le comme une solution. — *carnet : Le radar*
 
 **C-I7** ▶ *« Et Terra, dans tout ça ? »* `si clef c`  
-Terra vole à 705 km, sur une orbite héliosynchrone comme Sentinel-2, mais son capteur MODIS a une fauchée immense : plus de 2 000 km. Il voit donc presque tout, tous les jours, avec des pixels de 250 m à 1 km. Le compromis, encore. Je t'ajoute sa fiche. — *🔑 la fiche de Terra dans le labo Deimos*
+Terra vole à 705 km, sur une orbite ⟪héliosynchrone⟫ comme Sentinel-2, mais son capteur MODIS a une ⟪fauchée⟫ immense : plus de 2 000 km. Il voit donc presque tout, tous les jours, avec des pixels de 250 m à 1 km. Le compromis, encore. Je t'ajoute sa fiche. — *🔑 la fiche de Terra dans le labo Deimos*
 
 **C-I8** ✦ *« C'est vrai que tu calcules l'heure du déjeuner en orbites ? »*  
 Évidemment. Sentinel-2 boucle un tour de Terre en une centaine de minutes. Le déjeuner, c'est un tour. Le café, un quart de tour. Les réunions… on ne compte plus.
@@ -252,9 +257,9 @@ Non. Mais dites-moi : vous passez un bon moment ?
 - **Le signal du départ** : Au départ, peu de chaleur visible de loin : on cherche la fumée, qui monte vite et s'étale.
 - **Voir la fumée** : La fumée renvoie la lumière du Soleil : elle se voit dans le visible… donc de jour.
 - **La bonne résolution** : Pour saisir un départ, il faut voir souvent, quitte à voir flou : la résolution temporelle prime.
-- **Deux familles** : Meteosat ou Terra peuvent répondre. Leurs caractéristiques : voir avec l'orbitographe.
+- **Deux familles** : Meteosat ou Terra peuvent répondre. Pour connaître leurs caractéristiques, il faut voir avec l'orbitographe.
 - **L'heure** : L'heure de l'image est en UTC ; l'heure française d'été est en avance de deux heures.
-- **La nuit** : La nuit, plus de lumière solaire renvoyée : la fumée disparaît du visible ; restent les lumières des villes et ce qui émet.
+- **La nuit** : La nuit, plus de lumière solaire renvoyée : la fumée disparaît du visible ; restent les lumières des villes et ce qui émet. On peut continuer à voir des ⟪aérosols⟫ mais dans d'autres longueurs d'onde.
 - **La marge** : Une heure de départ n'a de sens qu'avec le capteur qui la donne et sa cadence : écrivez les deux.
 - **Ce que Meteosat ne sait pas faire** : Il voit le feu naître, mais pas son contour : ses pixels font des kilomètres.
 - **Capteur et vecteur** : Le vecteur porte (satellite, avion, drone), le capteur mesure (l'instrument). Deux noms distincts.
@@ -268,8 +273,29 @@ Non. Mais dites-moi : vous passez un bon moment ?
 - **Attendre ou payer** : Après le feu, le ciel reste couvert : soit on attend une image claire, soit on en commande une.
 - **Géostationnaire** : Au-dessus de l'équateur, à 36 000 km, il tourne avec la Terre : il regarde toujours le même point, en permanence, mais de très loin.
 - **Loin, donc flou** : Plus haut, plus souvent, plus flou ; plus bas, plus fin, moins souvent. C'est le même compromis partout.
-- **La revisite** : Sentinel-2 vole bas et sa trace au sol défile : il ne revient sur Saumos qu'au bout de quelques jours.
+- **La revisite** : Sentinel-2 vole bas et sa trace au sol défile : il ne revient sur Saumos qu'au bout de quelques jours. Ils sont deux, Sentinel-2B et 2C : 10 jours chacun, 5 à deux, à l'équateur.
 - **Les nuages** : Un passage nuageux ne compte pas : il faut attendre le suivant, et le suivant encore.
 - **La commande** : Un satellite très haute résolution se pointe à la demande sur la zone : il ne fait pas attendre, mais il coûte.
 - **Le radar** : Le radar voit à travers les nuages et la fumée, de jour comme de nuit ; sa précision sur les zones brûlées est plus relative. Pas manipulé ici : une solution à proposer.
 - **Les options du préfet** : Trois options, pas une : ce qui les sépare, c'est l'argent, la précision et la patience. Pour chacune, une date.
+
+## Le lexique (termes cliquables)
+
+- **jour ETP** (`jour-etp`, expliqué par Rose, 1 occurrence(s)) : Un jour en équivalent temps plein : une journée de travail d'une personne à plein temps. Deux personnes pendant une demi-journée, c'est aussi un jour ETP. C'est l'unité des devis et des plannings.
+- **signature spectrale** (`signature-spectrale`, expliqué par Elikia, 1 occurrence(s)) : La façon dont un objet renvoie la lumière selon la longueur d'onde : une courbe, comme une empreinte. Forêt vivante, forêt brûlée, eau, sable : chacun a la sienne, et c'est elle que les bandes d'un capteur échantillonnent.
+- **bande** (`bande`, expliqué par Elikia, 1 occurrence(s)) : Une tranche de longueurs d'onde que le capteur mesure à part. Sentinel-2 en a treize, de B1 à B12 (plus B8A) : B8 pour le proche infrarouge, B12 pour l'infrarouge moyen.
+- **proche infrarouge** (`proche-infrarouge`, expliqué par Elikia, 1 occurrence(s)) : Juste au-delà du rouge, de 0,7 à 1,4 µm environ. Invisible à l'œil, la végétation vivante y brille. On l'abrège PIR, ou NIR en anglais.
+- **SWIR** (`swir`, expliqué par Elikia, 1 occurrence(s)) : L'infrarouge de courtes longueurs d'onde (short-wave infrared), de 1,4 à 3 µm environ, qu'on appelle aussi infrarouge moyen. Sensible à l'eau des feuilles et des sols, il traverse mieux la fumée que le visible.
+- **réflectance** (`reflectance`, expliqué par Elikia, 1 occurrence(s)) : La part de la lumière reçue qu'une surface renvoie, de 0 à 100 %. Une signature spectrale, c'est la réflectance tracée selon la longueur d'onde.
+- **UTC** (`utc`, expliqué par Elikia, 1 occurrence(s)) : Le temps universel coordonné : l'heure de référence des satellites, la même partout. En été, l'heure française a deux heures d'avance sur l'UTC.
+- **pixel** (`pixel`, expliqué par Elikia, 1 occurrence(s)) : Le plus petit élément d'une image : un carré de terrain pour lequel le capteur ne donne qu'une valeur par bande. Sa taille au sol, c'est la résolution spatiale.
+- **aérosols** (`aerosols`, expliqué par Elikia, 1 occurrence(s)) : De fines particules en suspension dans l'air : fumées, poussières, sel marin. Ils diffusent et absorbent la lumière, différemment selon la longueur d'onde.
+- **résolution** (`resolution`, expliqué par Bastien, 1 occurrence(s)) : Trois résolutions, toujours en tension. Spatiale : la taille d'un pixel au sol. Temporelle : le temps entre deux images d'un même lieu. Spectrale : le nombre et la finesse des bandes. On ne gagne jamais sur les trois à la fois.
+- **composition colorée** (`composition-coloree`, expliqué par Bastien, 1 occurrence(s)) : Trois bandes affichées dans le rouge, le vert et le bleu de l'écran. En couleurs naturelles, on retrouve ce que voit l'œil ; en fausses couleurs, on donne une couleur à l'invisible.
+- **NBR** (`nbr`, expliqué par Bastien, 1 occurrence(s)) : Normalized Burn Ratio, l'indice de brûlure normalisé : (PIR − SWIR) / (PIR + SWIR), avec B8 ou B8A et B12 pour Sentinel-2. Il chute là où la forêt a brûlé ; la différence avant moins après, le dNBR, en mesure la sévérité.
+- **couple capteur / vecteur** (`capteur-vecteur`, expliqué par Inès, 2 occurrence(s)) : Le vecteur porte (un satellite, un avion, un drone), le capteur mesure (l'instrument embarqué). On les nomme toujours tous les deux : Sentinel-2 et MSI, Meteosat-12 et FCI, Terra et MODIS.
+- **géostationnaire** (`geostationnaire`, expliqué par Inès, 1 occurrence(s)) : Une orbite à 35 786 km au-dessus de l'équateur, parcourue en un jour : le satellite tourne avec la Terre et reste au-dessus du même point. Il voit en permanence, mais de très loin.
+- **héliosynchrone** (`heliosynchrone`, expliqué par Inès, 1 occurrence(s)) : Une orbite basse, presque polaire, dont le plan garde la même orientation par rapport au Soleil : le satellite passe au-dessus d'un lieu toujours à la même heure solaire, vers 10 h 30 pour Sentinel-2.
+- **fauchée** (`fauchee`, expliqué par Inès, 1 occurrence(s)) : La largeur de la bande de terrain vue à chaque passage : 290 km pour Sentinel-2, plus de 2 000 km pour MODIS sur Terra.
+- **revisite** (`revisite`, expliqué par Inès, 1 occurrence(s)) : Le temps qu'un satellite, ou une constellation, met à revoir le même endroit. Elle dépend de l'orbite, de la fauchée, du nombre de satellites… et de la latitude.
+- **radar** (`radar`, expliqué par Inès, 1 occurrence(s)) : Un capteur actif : il émet son propre signal, dans les hyperfréquences, et en mesure l'écho. Il ne dépend ni du Soleil ni des nuages. Sentinel-1 en porte un.

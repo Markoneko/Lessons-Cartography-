@@ -11,6 +11,7 @@ Lit donnees/saumos.json et écrit, dans source/Cas1-Saumos/ :
 """
 import json
 import os
+import re
 import shutil
 import subprocess
 import textwrap
@@ -20,6 +21,24 @@ D = json.load(open(os.path.join(COURS, "donnees", "saumos.json"), encoding="utf-
 SORTIE = os.path.join(COURS, "source", "Cas1-Saumos")
 EXP = {x["id"]: x for x in D["experts"]}
 POST = {p["id"]: p for p in D["postures"]}
+TERMES = D.get("termes", {})
+MOTIF = re.compile(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]")
+
+
+def ty(t):
+    """Le texte pour le script : les termes cliquables entre ⟪ ⟫, comme le jeu les colore."""
+    return MOTIF.sub(lambda m: "⟪" + m.group(1) + "⟫", t or "")
+
+
+def plat(t):
+    return MOTIF.sub(lambda m: m.group(1), t or "")
+
+
+def options(L, opts, retrait=""):
+    for o in opts:
+        juste = "" if "juste" not in o else (" ✓" if o["juste"] else " ✗")
+        L.append(f"{retrait}- ◆ *« {ty(o['dit'])} »*{juste} → {ty(o['r'])}{effets(o)}")
+        options(L, o.get("options", []), retrait + "  ")
 
 
 def effets(o):
@@ -60,7 +79,8 @@ def conditions(n):
 def script():
     L = ["# Atelier Saumos — les dialogues, tels que le jeu les joue", "",
          "Fichier produit par `outils/dialogues.py` à partir de `donnees/saumos.json` : ne pas le modifier à la main,",
-         "modifier le JSON puis relancer. ▶ question, ✦ aparté, ✎ réponse tapée, ◆ choix ; *effets* en italique, `conditions` en code.", ""]
+         "modifier le JSON puis relancer. ▶ question, ✦ aparté, ✎ réponse tapée, ◆ choix ; *effets* en italique, `conditions` en code ;",
+         "⟪ ⟫ : terme technique cliquable (en couleur dans le jeu, il ouvre un aparté et s'ajoute au lexique du carnet).", ""]
     for k, E in D["enquetes"].items():
         P = POST[E["posture"]]
         L += [f"## Enquête {k} — {E['titre']}", "", f"Jouée par **{P['nom'].lower()}** ; labo : {D['labos'][E['labo']]['titre']}.", ""]
@@ -68,35 +88,47 @@ def script():
             a = E["accueils"].get(x["id"])
             L += [f"### {x['prenom']} ({x['specialite']})", ""]
             if a:
-                L.append(f"**Accueil.** {a['r']}{effets(a)}")
-                for o in a.get("options", []):
-                    juste = "" if "juste" not in o else (" ✓" if o["juste"] else " ✗")
-                    L.append(f"- ◆ *« {o['dit']} »*{juste} → {o['r']}{effets(o)}")
+                L.append(f"**Accueil.** {ty(a['r'])}{effets(a)}")
+                options(L, a.get("options", []))
+                if a.get("retour"):
+                    L.append(f"- ↩ au retour : {ty(a['retour'])}")
                 L.append("")
             for n in E["noeuds"]:
                 if n["expert"] != x["id"]:
                     continue
                 signe = {"ouverte": "✎", "aparte": "✦"}.get(n.get("type"), "▶")
-                L.append(f"**{n['id']}** {signe} *« {n['q']} »*{conditions(n)}  ")
-                L.append(f"{n['r']}{effets(n)}")
-                for o in n.get("options", []):
-                    juste = "" if "juste" not in o else (" ✓" if o["juste"] else " ✗")
-                    L.append(f"- ◆ *« {o['dit']} »*{juste} → {o['r']}{effets(o)}")
+                L.append(f"**{n['id']}** {signe} *« {ty(n['q'])} »*{conditions(n)}  ")
+                L.append(f"{ty(n['r'])}{effets(n)}")
+                options(L, n.get("options", []))
                 for a2 in n.get("attendu", []):
-                    L.append(f"- ✎ si la réponse contient `{' + '.join(a2['motifs'])}`{' **(bonne réponse)**' if a2.get('fin') else ''} → {a2['r']}{effets(a2)}")
+                    L.append(f"- ✎ si la réponse contient `{' + '.join(a2['motifs'])}`{' **(bonne réponse)**' if a2.get('fin') else ''} → {ty(a2['r'])}{effets(a2)}")
                 if n.get("sinon"):
-                    L.append(f"- ✎ sinon → {n['sinon']['r']}")
+                    L.append(f"- ✎ sinon → {ty(n['sinon']['r'])}")
                 if n.get("relais"):
-                    L.append(f"- ⇄ relais : {n['relais']['texte']}")
+                    L.append(f"- ⇄ relais : {ty(n['relais']['texte'])}")
                 L.append("")
-    L += ["## Le carnet", ""] + [f"- **{v['titre']}** : {v['texte']}" for v in D["indices"].values()]
+    L += ["## Le carnet", ""] + [f"- **{v['titre']}** : {ty(v['texte'])}" for v in D["indices"].values()]
+    # le lexique : chaque terme, l'expert qui l'explique et les répliques où il apparaît
+    ou = {}
+    texte = json.dumps(D["enquetes"], ensure_ascii=False) + json.dumps(D.get("paris", []), ensure_ascii=False) + json.dumps(D.get("cadrage", {}), ensure_ascii=False) + json.dumps(D["indices"], ensure_ascii=False)
+    for m in MOTIF.finditer(texte):
+        ou.setdefault(m.group(2) or m.group(1), 0)
+        ou[m.group(2) or m.group(1)] += 1
+    noms = {x["id"]: x["prenom"] for x in D["experts"]}
+    L += ["", "## Le lexique (termes cliquables)", ""]
+    for k, v in TERMES.items():
+        L.append(f"- **{v['mot']}** (`{k}`, expliqué par {noms.get(v.get('qui'), v.get('qui', '?'))}, {ou.get(k, 0)} occurrence(s)) : {v['texte']}")
+    orphelins = sorted(set(ou) - set(TERMES))
+    if orphelins:
+        L.append("")
+        L.append("Termes marqués dans les dialogues mais absents du lexique : " + ", ".join(orphelins))
     with open(os.path.join(SORTIE, "dialogues-saumos.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(L) + "\n")
 
 
 def graphe():
     def etiquette(t, n=26):
-        return "\\n".join(textwrap.wrap(t.replace('"', "'"), n)[:4])
+        return "\\n".join(textwrap.wrap(plat(t).replace('"', "'"), n)[:4])
     G = ['digraph saumos {', 'rankdir=LR; newrank=true; node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10];',
          'edge [color="#6E6F7A", arrowsize=0.6];']
     for k, E in D["enquetes"].items():

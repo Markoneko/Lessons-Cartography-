@@ -647,18 +647,23 @@ Elles vivent dans `_briques/briques-jeu.html` et `_briques/briques-jeu.css`, ave
 
 | Brique | Ce qu'elle fait |
 |---|---|
-| `{.jdr-commande}` | le préfet dit sa commande, sa tête parle, avec un son de lecture sans langue |
+| `{.jdr-commande}` | le préfet dit sa commande, sa tête parle, avec un son de lecture sans langue ; à côté, la carte 8 bits de la zone (`carte` dans le JSON : image, emprise, lieux), produite par `outils/carte-saumos.py` |
 | `{.jdr-paris}` | les paris de départ (curseur ou choix) |
 | `{.jdr-equipe}` | groupe, prénom, posture, tête de héros, mode solo, « Recommencer la partie » |
-| `{.jdr-cadrage}` | Rose cadre le travail, réplique par réplique, selon la posture de celui qui lit |
+| `{.jdr-cadrage}` | Rose cadre le travail, réplique par réplique, selon la posture de celui qui lit ; une étape peut attendre une réponse libre de l'étudiant avant celle de Rose |
 | `{.jdr-experts}` | les experts (nom, rôle, travail), Rose à part, et « C'est parti » qui lance le chrono |
 | `{.jdr-enquete enquete="A"}` | le dialogue : « Avec qui veux-tu commencer ? », choix, réponses tapées, apartés, clefs des labos, carnet, journal, confiance du préfet, chrono |
 | `{.jdr-labo labo="a"}` | les labos, versions JRPG des sites de référence (`a` Eumetsat, `b` Copernicus, `c` Deimos), fermés tant qu'un expert n'en a pas passé les clefs |
 | `{.jdr-rapport envoi=""}` | le rapport au propre, relu par le préfet, téléchargé ou envoyé à la feuille Google |
 | `{.jdr-phrase}` | la phrase à trous de la classe, pour la projection |
 | `{.jdr-bulle qui="rose"}` | un expert dit le texte écrit dans la brique, ou une liste du fichier (`source="debrief" liste="oui"`) |
+| `{.jdr-retour envoi=""}` | une case libre pour l'avis des étudiants sur le jeu, téléchargée ou envoyée à la feuille Google (onglet « Saumos — avis ») |
 
 Les diapos de jeu prennent un identifiant, la classe `{.jdr-plein}` et `data-state="plein"` (le pied de page disparaît) : `{#enquete-a .jdr-plein data-state="plein"}`. En groupe, chacun n'a accès qu'à son enquête et à son labo ; en solo, aux trois. Le chrono (30 minutes d'enquête, 5 de rapport) part de « C'est parti ».
+
+**La navigation du jeu.** Dès qu'une diapo porte une brique du jeu, les flèches et la barre d'espace ne changent plus de diapo (F, Échap et la souris restent actifs ; une télécommande de présentation ne fait plus avancer). Deux boutons, toujours en bas à droite, ◀ et ▶, font avancer et reculer ; ils prennent l'étiquette de la diapo : « Continuer ▶ » au cadrage, « C'est parti ▶ » aux experts, « ◀ experts » et « 🔑 Labo … ▶ » dans une enquête (grisé tant que la clef manque, il clignote quand elle arrive), « ◀ enquête X » dans un labo.
+
+**Les termes techniques.** Dans n'importe quel texte du JSON, `[[mot affiché|terme]]` colore le mot ; `terme` renvoie à la rubrique `termes` (`mot`, `qui`, `texte`). Dans un dialogue, un clic ouvre un aparté de l'expert (« X · aparté : mot », puis « ↩ Reprendre la discussion ») ; ailleurs, une petite fenêtre. Le terme entre dans le lexique du carnet et s'y coche ✓. `[[mot]]` seul vaut `[[mot|mot]]`.
 
 Dans le fichier, une enquête a des accueils (un par expert) et des nœuds. Un nœud a sa question `q`, sa réponse `r`, ses conditions `si` et `sauf` (nœuds entendus, essais, indices, clefs), un type (`choix`, `ouverte`, `aparte`) et ses effets (`indices`, `clefs`, `debloque`, `cout`, `note`, `image`) ; voir la clé `lisez-moi`. Pour relire les dialogues, `outils/dialogues.py` écrit un script lisible et un graphe façon Twine dans `source/Cas1-Saumos/`. Ce que fait le joueur reste dans son navigateur.
 

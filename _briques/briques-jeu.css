@@ -115,11 +115,13 @@
 .reveal ol.jdr-dits { list-style: decimal; padding-left: 1.4em; }
 
 /* --- Commande, paris ------------------------------------------------------ */
-.reveal .jdr-commande-zone { margin: 60px 40px 16px 20px; }
-.reveal .jdr-commande-zone .jdr-texte { font-size: 26px; }
+.reveal .jdr-commande-zone { margin: 10px 0 0 0; }
+.reveal .jdr-commande-g { display: grid; grid-template-columns: 1fr 400px; gap: 26px; align-items: start; }
+.reveal .jdr-commande-g .jdr-scene { margin-top: 70px; }
+.reveal .jdr-commande-zone .jdr-texte { font-size: 24px; }
 .reveal .jdr-commande-zone .jdr-dialogue { padding: 30px 26px 22px 26px; }
 .reveal .jdr-commande-zone > .jdr-choix-ligne { justify-content: flex-end; }
-.reveal .jdr-commande ~ p { margin-left: 210px; }
+.reveal .jdr-commande ~ p { margin-left: 0; max-width: 780px; }
 .reveal .jdr-paris-zone { display: flex; flex-direction: column; gap: 22px; margin-top: 10px; }
 .reveal .jdr-pari { padding: 20px 24px; }
 .reveal .jdr-pari-q { font: 700 24px/1.3 var(--police-titre); color: var(--bleu-nuit); margin: 0 0 12px 0; }
@@ -173,7 +175,7 @@
 .reveal .jdr-retour-enq { font: 400 10px var(--pixel); padding: 9px 11px; }
 
 /* --- L'enquête -------------------------------------------------------------- */
-.reveal .jdr-enquete-zone, .reveal .jdr-labo-zone { position: relative; height: 640px; display: flex; flex-direction: column; }
+.reveal .jdr-enquete-zone, .reveal .jdr-labo-zone { position: relative; height: 618px; display: flex; flex-direction: column; }
 .reveal .jdr-enq-scene { display: grid; grid-template-columns: 1fr 350px; gap: 18px; flex: 1; min-height: 0; }
 .reveal .jdr-enq-gauche { display: flex; flex-direction: column; min-height: 0; }
 .reveal .jdr-enq-gauche > .jdr-sous { margin: 0 0 4px 0; }
@@ -256,7 +258,7 @@
 .reveal .jdr-compo-btns { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
 .reveal .jdr-labo-a { display: grid; grid-template-columns: 820px 1fr; gap: 18px; }
 .reveal .jdr-defileur { display: flex; flex-direction: column; }
-.reveal .jdr-defileur-img { width: 100%; height: 520px; object-fit: contain; background: #0B0F24; border: 3px solid var(--bleu-nuit); max-height: none; margin: 0; }
+.reveal .jdr-defileur-img { width: 100%; height: 500px; object-fit: contain; background: #0B0F24; border: 3px solid var(--bleu-nuit); max-height: none; margin: 0; }
 .reveal .jdr-lecteur-bas { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
 .reveal .jdr-lecteur-curseur { flex: 1; accent-color: var(--orange); }
 .reveal .jdr-lecteur-lab { font: 400 10px var(--pixel); color: var(--bleu-nuit); min-width: 200px; text-align: right; }
@@ -344,3 +346,64 @@
 }
 .reveal .jdr-depeche p:first-child { font: 400 10px var(--pixel); color: var(--orange-clair); margin-bottom: 10px; }
 .reveal .jdr-depeche p:last-child { margin: 0; }
+
+/* --- Les termes techniques ----------------------------------------------------------- */
+.reveal .jdr-terme { color: var(--orange-texte); font-weight: 700; border-bottom: 2px dotted currentColor; cursor: help; }
+.reveal .jdr-terme:hover { background: rgba(227, 130, 38, .15); }
+.reveal .jdr-dialogue .jdr-terme { color: #FFC98F; }
+.reveal .jdr-terme.connu { border-bottom-style: solid; }
+.reveal .jdr-terme.connu::after { content: "✓"; font-size: 0.6em; vertical-align: super; margin-left: 1px; }
+.reveal .jdr-q.reprendre { border-color: var(--orange); color: #FFC98F; }
+.reveal .jdr-note.lexique { border-left-color: var(--prune); }
+.reveal .jdr-popup {
+  position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%); width: 660px; z-index: 20; text-align: left;
+  background: var(--ecran); color: var(--blanc); border: 3px solid var(--blanc); outline: 3px solid var(--bleu-nuit);
+  box-shadow: 8px 8px 0 rgba(16, 24, 63, .35); padding: 14px 18px; font-size: 18px; line-height: 1.4;
+}
+.reveal .jdr-popup-tete { display: flex; align-items: center; gap: 10px; }
+.reveal .jdr-popup-tete strong { font: 400 13px var(--pixel); color: #FFC98F; }
+.reveal .jdr-popup p { margin: 8px 0; }
+.reveal .jdr-popup .jdr-note-labo { color: #C9CDE6; margin: 0; }
+
+/* --- La navigation : deux boutons, toujours en bas à droite ---------------------------------- */
+.reveal.jdr-jeu .slide-number { display: none !important; }
+.reveal .slides > .jdr-nav { position: absolute; right: 26px; bottom: 6px; display: flex; gap: 10px; z-index: 40; pointer-events: auto; }
+.reveal .jdr-nav-btn {
+  font: 400 12px/1 var(--pixel); padding: 10px 14px; background: var(--ecran); color: var(--blanc);
+  border: 3px solid var(--blanc); outline: 3px solid var(--bleu-nuit); box-shadow: 4px 4px 0 rgba(16, 24, 63, .35);
+}
+.reveal .jdr-nav-btn:hover:not(:disabled) { background: #24316F; }
+.reveal .jdr-nav-btn.droite { background: var(--orange); }
+.reveal .jdr-nav-btn.droite:hover:not(:disabled) { background: #F09440; }
+.reveal .jdr-nav-btn:disabled { background: #6E6F7A; opacity: 0.8; }
+.reveal .jdr-nav-btn.clignote { animation: jdr-clignote 1.2s steps(2) 4; }
+
+/* --- La carte 8 bits de la commande ---------------------------------------------------------- */
+.reveal .jdr-carte8 .jdr-sous { margin: 0 0 6px 0; }
+.reveal .jdr-carte8-cadre { position: relative; border: 3px solid var(--bleu-nuit); box-shadow: var(--ombre-dure); line-height: 0; }
+.reveal .jdr-carte8-cadre img { width: 100%; height: auto; image-rendering: pixelated; margin: 0; max-height: none; }
+.reveal .jdr-lieu { position: absolute; display: flex; align-items: center; gap: 5px; transform: translate(-5px, -50%); line-height: 1; }
+.reveal .jdr-lieu i { width: 9px; height: 9px; background: var(--blanc); border: 2px solid var(--bleu-nuit); flex: none; }
+.reveal .jdr-lieu span { font: 400 9px var(--pixel); color: var(--blanc); background: rgba(16, 24, 63, .82); padding: 3px 4px; white-space: nowrap; }
+.reveal .jdr-lieu.feu i { width: 13px; height: 13px; background: #FF4D1A; border-color: #FFE066; animation: jdr-flamme .5s steps(2) infinite; }
+.reveal .jdr-lieu.feu span { background: #A50026; }
+.reveal .jdr-lieu.mer i { display: none; }
+.reveal .jdr-lieu.mer span { background: none; color: #DDE6FF; font-size: 8px; }
+@keyframes jdr-flamme { 50% { background: #FFB020; transform: scale(1.25); } }
+.reveal .jdr-carte8 .jdr-note-labo { font-size: 12px; line-height: 1.3; }
+
+/* --- Deimos en gros pixels, le solo, l'avis ------------------------------------------------- */
+.reveal .jdr-orbite-cv.pixel { image-rendering: pixelated; cursor: grab; }
+.reveal .jdr-orbite-cv.pixel:active { cursor: grabbing; }
+.reveal .jdr-labo-c .jdr-lecteur-bas .jdr-note-labo { margin: 0; font-size: 12px; }
+.reveal .jdr-labo-c .jdr-lecteur-lab { min-width: 230px; font-size: 9px; text-align: left; }
+.reveal .jdr-solo-onglets { display: flex; flex-direction: row !important; gap: 4px; margin-left: 10px; }
+.reveal .jdr-dits li.moi { border-left-color: var(--orange); font-style: italic; color: var(--orange-texte); }
+.reveal .jdr-cadrage-zone .jdr-saisie input { font-size: 17px; }
+.reveal .jdr-retour-carte { margin-top: 8px; padding: 8px 12px; box-shadow: 3px 3px 0 var(--bleu-nuit); display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: end; }
+.reveal .jdr-retour-carte .jdr-sous { margin: 0; grid-column: 1 / -1; }
+.reveal .jdr-retour-carte textarea { width: 100%; box-sizing: border-box; font: 16px var(--police-texte); border: 2px solid var(--bleu-nuit); padding: 6px 8px; resize: none; }
+.reveal .jdr-retour-carte .jdr-choix-ligne { margin: 0; flex-wrap: nowrap; }
+.reveal .jdr-btn.jdr-onglet:hover:not(:disabled):not(.sel) { background: #FFF4E8; color: var(--bleu-nuit); }
+.reveal .jdr-btn.jdr-onglet.sel:hover:not(:disabled) { background: var(--blanc); color: var(--bleu-nuit); }
+.reveal .jdr-lieu.gauche { flex-direction: row-reverse; transform: translate(calc(-100% + 5px), -50%); }

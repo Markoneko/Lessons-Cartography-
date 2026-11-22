@@ -1,9 +1,9 @@
 <script>
-/* Briques du jeu de rôle (atelier Saumos, V3).
+/* Briques du jeu de rôle (atelier Saumos, V3.1).
    Le contenu est dans le fichier de données du cours (donnees/saumos.json) ; ce moteur ne contient aucun texte de jeu,
    seulement les libellés d'interface. Ce que fait le joueur reste dans son navigateur.
    Briques : jdr-commande, jdr-paris, jdr-equipe, jdr-cadrage, jdr-experts, jdr-enquete, jdr-labo, jdr-rapport,
-   jdr-phrase, jdr-bulle. */
+   jdr-phrase, jdr-bulle, jdr-retour. Dans les textes, [[mot affiché|terme]] devient un terme technique cliquable. */
 (function () {
   var zones = Array.prototype.slice.call(document.querySelectorAll(".jdr-zone"));
   if (!zones.length) return;
@@ -21,12 +21,6 @@
     if (action) b.addEventListener("click", action);
     return b;
   }
-  function stopper(e_) {
-    // le clavier reste à Reveal : il ignore déjà les touches tapées dans un champ
-    ["pointerdown", "click", "wheel", "touchstart", "dblclick"].forEach(function (n) {
-      e_.addEventListener(n, function (e) { e.stopPropagation(); });
-    });
-  }
   var params = new URLSearchParams(window.location.search);
   var EN_PDF = params.has("print-pdf");
   function ty(s) { return String(s || "").replace(/ ([:;!?»])/g, " $1").replace(/« /g, "« "); }
@@ -37,8 +31,12 @@
   try { D = JSON.parse(document.querySelector(".jdr-donnees").textContent); } catch (e) { return; }
   try { PX = JSON.parse(document.querySelector(".jdr-pixels").textContent); } catch (e) { PX = {}; }
   tous("img.jdr-img").forEach(function (i) { IMG[i.dataset.cle] = i.getAttribute("src"); });
+  D.termes = D.termes || {};
   var EXP = {}; D.experts.forEach(function (x) { EXP[x.id] = x; });
   var POST = {}; D.postures.forEach(function (p) { POST[p.id] = p; });
+  var LABO_DE = {}; D.postures.forEach(function (p) { LABO_DE[p.enquete] = p.labo; });
+  var racine = document.querySelector(".reveal");
+  if (racine) racine.classList.add("jdr-jeu");
 
   // --- La mémoire du joueur ------------------------------------------------------------------
   var CLE = "jdr:" + (document.title || "atelier");
@@ -47,7 +45,7 @@
     if (memoire) return memoire;
     try { memoire = JSON.parse(localStorage.getItem(CLE) || "null"); } catch (e) { memoire = null; }
     memoire = memoire || {};
-    ["vus", "essais", "succes", "accueils", "debloques", "indices", "clefs", "rapport", "paris", "prefet", "chrono"].forEach(function (k) { memoire[k] = memoire[k] || {}; });
+    ["vus", "essais", "succes", "accueils", "debloques", "indices", "termes", "clefs", "rapport", "paris", "prefet", "chrono"].forEach(function (k) { memoire[k] = memoire[k] || {}; });
     memoire.journal = memoire.journal || [];
     if (typeof memoire.confiance !== "number") memoire.confiance = 6;
     return memoire;
@@ -58,7 +56,74 @@
   function confiance(delta) { var s = S(); s.confiance = Math.max(0, Math.min(10, s.confiance + delta)); }
   function acces(k) { var s = S(); return !!(s.solo || !s.posture || POST[s.posture].enquete === k); }
   function noter(champs) { var F = S().rapport; Object.keys(champs).forEach(function (k) { F[k] = champs[k]; }); }
-  function journal(qui, texte) { var j = S().journal; j.push([qui, texte]); if (j.length > 300) j.splice(0, j.length - 300); }
+  function journal(qui, texte) { var j = S().journal; j.push([qui, plat(texte)]); if (j.length > 300) j.splice(0, j.length - 300); }
+  function monEnquete() { var s = S(); return s.posture ? POST[s.posture].enquete : "A"; }
+
+  // --- Le texte riche : les termes techniques ---------------------------------------------------
+  var MOTIF = /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g;
+  function plat(s) { return String(s || "").replace(MOTIF, "$1"); }
+  function morceaux(s) {
+    var out = [], i = 0, m; s = ty(s); MOTIF.lastIndex = 0;
+    while ((m = MOTIF.exec(s))) {
+      if (m.index > i) out.push({ t: s.slice(i, m.index) });
+      out.push({ t: m[1], terme: m[2] || m[1] });
+      i = m.index + m[0].length;
+    }
+    if (i < s.length) out.push({ t: s.slice(i) });
+    return out;
+  }
+  function noeuds(cible, s) {
+    // le texte, construit vide : la machine à écrire le remplit morceau par morceau
+    cible.textContent = "";
+    return morceaux(s).map(function (m) {
+      var n;
+      if (m.terme && D.termes[m.terme]) {
+        n = el("span", "jdr-terme" + (S().termes[m.terme] ? " connu" : ""), cible); n.dataset.terme = m.terme;
+        n.title = "Cliquer pour en savoir plus";
+      } else n = cible.appendChild(document.createTextNode(""));
+      return { n: n, t: m.t };
+    });
+  }
+  function riche(cible, s) { noeuds(cible, s).forEach(function (m) { m.n.textContent = m.t; }); return cible; }
+  function elRiche(nom, classe, parent, s) { return riche(el(nom, classe, parent), s); }
+  function apprendre(id, z) {
+    var s = S(); if (s.termes[id]) return;
+    s.termes[id] = true;
+    tous('.jdr-terme[data-terme="' + id + '"]').forEach(function (t) { t.classList.add("connu"); });
+    if (z) toast(z, "Carnet : « " + D.termes[id].mot + " »", "carnet");
+    changer();
+  }
+  function fenetreTerme(id, span) {
+    // hors d'un dialogue (paris, carnet, cadrage…) : une petite fenêtre, le terme rangé dans le carnet
+    var T = D.termes[id]; if (!T) return;
+    var z = span.closest(".jdr-zone");
+    apprendre(id, z && z.querySelector(".jdr-toasts") ? z : null);
+    var sec = span.closest("section") || racine;
+    var vieux = sec.querySelector(".jdr-popup"); if (vieux) vieux.remove();
+    var p = el("div", "jdr-popup", sec);
+    var x = EXP[T.qui];
+    var h = el("div", "jdr-popup-tete", p);
+    if (x) tete(x.id, "petit", h);
+    el("strong", "", h, T.mot);
+    el("p", "", p, ty(T.texte));
+    var b = el("div", "jdr-choix-ligne", p);
+    el("span", "jdr-note-labo", b, "✓ Rangé dans votre carnet" + (x ? " — " + x.prenom : ""));
+    bouton("Fermer ✕", "petit", b, function () { p.remove(); });
+    ["pointerdown", "click", "wheel", "touchstart"].forEach(function (n) { p.addEventListener(n, function (e) { e.stopPropagation(); }); });
+  }
+  function stopper(e_) {
+    e_.addEventListener("click", function (e) {
+      var t = e.target.closest && e.target.closest(".jdr-terme");
+      if (!t || e._jdrFini) return;
+      var z = t.closest(".jdr-zone");
+      if (z && z._terme && z._terme(t.dataset.terme, t)) return;
+      fenetreTerme(t.dataset.terme, t);
+    });
+    // le clavier n'est pas arrêté ici : Reveal ignore déjà les touches tapées dans un champ
+    ["pointerdown", "click", "wheel", "touchstart", "dblclick"].forEach(function (n) {
+      e_.addEventListener(n, function (e) { e.stopPropagation(); });
+    });
+  }
 
   // --- Le son : un bip de lecture, sans langue, comme dans les JRPG ----------------------------
   var SON = { ctx: null, on: true };
@@ -92,23 +157,24 @@
     return b;
   }
   function parler(boite, cible, texte, fin, voix) {
-    // la réplique défile ; un clic l'affiche d'un coup
-    var t = ty(texte), k = 0, n = 0, timer;
+    // la réplique défile ; un clic l'affiche d'un coup (et ne déclenche pas le terme cliqué)
     if (cible._arret) cible._arret();          // une réplique coupe la précédente
-    cible.textContent = "";
+    var parts = noeuds(cible, texte), plein = parts.map(function (p) { return p.t; }).join(""), k = 0, n = 0, timer;
     if (boite) boite.classList.add("parle");
+    function montrer(c) { var reste = c; parts.forEach(function (p) { p.n.textContent = p.t.slice(0, Math.max(0, Math.min(p.t.length, reste))); reste -= p.t.length; }); }
     function arret() { clearInterval(timer); if (boite) boite.classList.remove("parle"); cible.removeEventListener("click", finir); cible._arret = null; }
-    function finir() {
-      arret(); cible.textContent = t;
+    function finir(e) {
+      if (e && e.type === "click") e._jdrFini = true;
+      arret(); montrer(plein.length);
       if (fin) { var f = fin; fin = null; f(); }
     }
     cible._arret = arret;
     cible.addEventListener("click", finir);
     if (EN_PDF) { finir(); return finir; }
     timer = setInterval(function () {
-      k += 2; n += 1; cible.textContent = t.slice(0, k);
-      if (n % 3 === 0 && /\S/.test(t.charAt(k))) bip(voix);
-      if (k >= t.length) finir();
+      k += 2; n += 1; montrer(k);
+      if (n % 3 === 0 && /\S/.test(plein.charAt(k))) bip(voix);
+      if (k >= plein.length) finir();
     }, 24);
     return finir;
   }
@@ -138,6 +204,11 @@
   function mmss(ms) { ms = Math.max(0, ms); var s = Math.round(ms / 1000); return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); }
   function demarrer() { var c = S().chrono; if (!c.debut) { c.debut = Date.now(); changer(); } }
   function versRapport() { var c = S().chrono; if (!c.rapport) { c.rapport = Date.now(); if (!c.debut) c.debut = c.rapport; changer(); } aller("rapport"); }
+  function cestParti() {
+    demarrer();
+    if (!S().posture) { aller("equipe"); return; }
+    aller("enquete-" + monEnquete().toLowerCase());
+  }
   function boutonChrono(parent) {
     var b = bouton("", "jdr-chrono", parent);
     b.addEventListener("click", function () {
@@ -169,6 +240,47 @@
     }
   }, 1000);
 
+  // --- La navigation : deux boutons, toujours en bas à droite ; le clavier ne fait plus défiler ---
+  (function () {
+    if (EN_PDF || !window.Reveal || !racine) return;
+    function clavier() {
+      var rien = function () { /* les flèches ne font plus défiler : on navigue avec les boutons */ }, t = {};
+      [32, 33, 34, 35, 36, 37, 38, 39, 40, 72, 74, 75, 76, 78, 80].forEach(function (k) { t[k] = rien; });
+      try { Reveal.configure({ keyboard: t }); } catch (e) { /* tant pis */ }
+    }
+    if (Reveal.isReady && Reveal.isReady()) clavier(); else Reveal.on("ready", clavier);
+    // dans le cadre des diapos : les boutons suivent l'échelle de la diapo, toujours en bas à droite
+    var nav = el("div", "jdr-nav", racine.querySelector(".slides") || racine);
+    var g = bouton("◀", "jdr-nav-btn", nav), d = bouton("▶", "jdr-nav-btn droite", nav);
+    ["pointerdown", "click", "touchstart"].forEach(function (n) { nav.addEventListener(n, function (e) { e.stopPropagation(); }); });
+    var actions = { g: null, d: null };
+    g.addEventListener("click", function () { if (actions.g) actions.g(); });
+    d.addEventListener("click", function () { if (actions.d) actions.d(); });
+    function maj() {
+      var sec = Reveal.getCurrentSlide(); if (!sec) return;
+      var id = sec.id || "", s = S(), h = Reveal.getIndices().h, n = Reveal.getTotalSlides(), m;
+      var G = { t: "◀", f: function () { Reveal.prev(); }, vis: h > 0 };
+      var R = { t: "▶", f: function () { Reveal.next(); }, vis: h < n - 1 };
+      if (id === "cadrage") R.t = "Continuer ▶";
+      if (id === "experts") { R.t = "C'est parti ▶"; R.f = cestParti; }
+      if ((m = id.match(/^enquete-([abc])$/))) {
+        var lab = LABO_DE[m[1].toUpperCase()], ok = !!s.clefs[lab];
+        G = { t: "◀ experts", f: function () { aller("experts"); }, vis: true };
+        R = { t: (ok ? "🔑 " : "🔒 ") + D.labos[lab].titre + " ▶", f: function () { aller("labo-" + lab); }, vis: true, off: !ok, clin: ok };
+      }
+      if ((m = id.match(/^labo-([abc])$/))) {
+        var enq = D.labos[m[1]].enquete;
+        G = { t: "◀ enquête " + enq, f: function () { aller("enquete-" + enq.toLowerCase()); }, vis: true };
+        R = { vis: false };
+      }
+      if (id === "rapport") G = { t: "◀ enquête", f: function () { aller("enquete-" + monEnquete().toLowerCase()); }, vis: true };
+      g.textContent = G.t; g.hidden = !G.vis; actions.g = G.f;
+      d.textContent = R.t || ""; d.hidden = !R.vis; actions.d = R.f; d.disabled = !!R.off; d.classList.toggle("clignote", !!R.clin);
+      d.title = R.off ? "Fermé : un expert vous en passera les clefs" : "";
+    }
+    Reveal.on("slidechanged", maj); Reveal.on("ready", maj); abonnes.push(maj); setTimeout(maj, 0);
+  })();
+
   // --- Le titre qui passe en 8 bits -------------------------------------------------------------
   (function () {
     var h = document.querySelector("#title-slide h1.title");
@@ -193,27 +305,42 @@
   // =========================================================================================
   var BRIQUES = {};
 
-  // La commande du préfet --------------------------------------------------------------------
+  // La commande du préfet, et la carte de la région ---------------------------------------------
   BRIQUES["jdr-commande"] = function (z) {
-    var b = el("div", "jdr-scene", z);
+    var g = el("div", "jdr-commande-g", z);
+    var gauche = el("div", "", g);
+    var b = el("div", "jdr-scene", gauche);
     var t = tete("prefet", "grand", b);
     var boite = el("div", "jdr-dialogue", b);
     el("div", "jdr-plaque", boite, D.prefet.nom);
     var txt = el("p", "jdr-texte", boite);
-    var bas = el("div", "jdr-choix-ligne", z); boutonSon(bas);
-    if (EN_PDF) { txt.textContent = ty(D.prefet.commande); return; }
+    var bas = el("div", "jdr-choix-ligne", gauche); boutonSon(bas);
+    if (D.carte) carte(g, D.carte);
+    if (EN_PDF) { riche(txt, D.prefet.commande); return; }
     var lu = false;
     function lancer() { if (!lu) { lu = true; parler(t, txt, D.prefet.commande, null, 150); } }
     if (window.Reveal) Reveal.on("slidechanged", function (e) { if (e.currentSlide.contains(z)) lancer(); });
     txt.textContent = "▶";
     b.addEventListener("click", lancer);
   };
+  function carte(parent, C) {
+    var c = el("div", "jdr-carte8", parent);
+    el("div", "jdr-sous", c, C.titre);
+    var cadre = el("div", "jdr-carte8-cadre", c);
+    var im = el("img", "", cadre); im.src = IMG[C.image]; im.alt = "";
+    C.lieux.forEach(function (l) {
+      var x = (l[2] - C.lon0) / (C.lon1 - C.lon0) * 100, y = (C.lat1 - l[1]) / (C.lat1 - C.lat0) * 100;
+      var p = el("div", "jdr-lieu " + (l[3] || "") + (x > 70 ? " gauche" : ""), cadre); p.style.left = x + "%"; p.style.top = y + "%";
+      el("i", "", p); el("span", "", p, l[0]);
+    });
+    el("p", "jdr-note-labo", c, ty(C.legende));
+  }
 
   // Les paris ------------------------------------------------------------------------------------
   BRIQUES["jdr-paris"] = function (z) {
     D.paris.forEach(function (p) {
       var c = el("div", "jdr-carte jdr-pari", z);
-      el("p", "jdr-pari-q", c, ty(p.q));
+      elRiche("p", "jdr-pari-q", c, p.q);
       if (p.choix) {
         var l = el("div", "jdr-choix-ligne", c);
         p.choix.forEach(function (o) {
@@ -279,19 +406,30 @@
     var suite = el("div", "jdr-choix", bo);
     var dits = el("ul", "jdr-dits", z);
     function etapes() {
-      var p = S().posture, e = [[C.presentation], [C.question, "Votre réponse ? Puis celle de Rose ▶"], [C.reponse, null, "cle"]];
-      if (p && !S().solo) e.push([C.enquetes[p]]);
-      else ["R", "A", "O"].forEach(function (k) { e.push([C.enquetes[k]]); });
-      C.suite.forEach(function (s) { e.push([s]); });
+      var p = S().posture, e = [{ s: C.presentation }, { s: C.question, q: true }, { s: C.reponse, cle: true }];
+      if (p && !S().solo) e.push({ s: C.enquetes[p] });
+      else ["R", "A", "O"].forEach(function (k) { e.push({ s: C.enquetes[k] }); });
+      C.suite.forEach(function (s) { e.push({ s: s }); });
       return e;
     }
-    if (EN_PDF) { etapes().forEach(function (e) { el("li", "", dits, ty(e[0])); }); return; }
+    if (EN_PDF) { etapes().forEach(function (e) { elRiche("li", "", dits, e.s); }); return; }
     var i = 0, E = etapes();
     function dire() {
       suite.innerHTML = "";
-      parler(t, tx, E[i][0], function () {
-        if (i > 0) { var li = el("li", E[i - 1][2] || "", dits, ty(E[i - 1][0])); li.scrollIntoView({ block: "nearest" }); }
-        if (i < E.length - 1) bouton(E[i][1] || "▶ suite", "jdr-q", suite, function () { i += 1; dire(); });
+      parler(t, tx, E[i].s, function () {
+        if (i > 0) { var li = elRiche("li", E[i - 1].cle ? "cle" : "", dits, E[i - 1].s); li.scrollIntoView({ block: "nearest" }); }
+        if (i >= E.length - 1) return;
+        if (E[i].q) {
+          // la question de Rose : chacun écrit sa réponse avant de lire la sienne
+          var f = el("form", "jdr-saisie", suite);
+          var r = el("input", "", f); r.placeholder = C.invite || "Votre réponse"; r.value = S().cadrage || "";
+          bouton("Ma réponse ▶ celle de Rose", "principal", f).type = "submit";
+          f.addEventListener("submit", function (e) {
+            e.preventDefault(); S().cadrage = r.value.trim(); changer();
+            if (S().cadrage) el("li", "moi", dits, "Vous : " + S().cadrage);
+            i += 1; dire();
+          });
+        } else bouton("▶ suite", "jdr-q", suite, function () { i += 1; dire(); });
       }, x.voix);
     }
     tx.textContent = "▶";
@@ -318,12 +456,7 @@
     var bo = el("div", "jdr-dialogue", sc);
     el("div", "jdr-plaque", bo, "Rose").style.background = EXP.rose.couleur;
     var tx = el("p", "jdr-texte", bo, EN_PDF ? ty(D.presentation_experts) : "▶");
-    bouton("C'est parti !", "principal jdr-cestparti", bas, function () {
-      demarrer();
-      var s = S();
-      if (!s.posture) { aller("equipe"); return; }
-      aller("enquete-" + POST[s.posture].enquete.toLowerCase());
-    });
+    bouton("C'est parti !", "principal jdr-cestparti", bas, cestParti);
     if (EN_PDF) return;
     var lu = false;
     function lancer() { if (!lu) { lu = true; parler(t, tx, D.presentation_experts, null, EXP.rose.voix); } }
@@ -347,8 +480,7 @@
         var p = D.postures.filter(function (x) { return x.enquete === k; })[0];
         m.textContent = ty((labo ? D.labos[labo].titre + " : réservé à " : "Cette enquête est celle de ") + p.nom.toLowerCase() + ". En groupe, chacun mène la sienne ; cochez « Je joue en solo » sur la diapo de l'équipe pour tout jouer.");
       } else m.textContent = ty(D.labos[labo].ferme);
-      var mien = s.posture ? POST[s.posture].enquete : "A";
-      bouton("Retour à " + (ok ? "l'enquête " + k : "mon enquête"), "principal", l, function () { aller("enquete-" + (ok ? k : mien).toLowerCase()); });
+      bouton("Retour à " + (ok ? "l'enquête " + k : "mon enquête"), "principal", l, function () { aller("enquete-" + (ok ? k : monEnquete()).toLowerCase()); });
       bouton("L'équipe", "", l, function () { aller("equipe"); });
     }
     maj(); abonnes.push(maj);
@@ -375,7 +507,7 @@
     var labo = E.labo, L = D.labos[labo];
     if (EN_PDF) {
       el("p", "jdr-pdf", z, "Interactif dans la version HTML. La mission :");
-      var ol = el("ol", "jdr-mission", z); E.mission.forEach(function (m) { el("li", "", ol, ty(m)); });
+      var ol = el("ol", "jdr-mission", z); E.mission.forEach(function (m) { elRiche("li", "", ol, m); });
       return;
     }
     var N = {}; E.noeuds.forEach(function (n) { N[n.id] = n; });
@@ -385,8 +517,11 @@
       var t = el("div", "", qui);
       el("strong", "", t, (S().nom ? S().nom + ", " : "") + P.nom.toLowerCase());
       el("span", "", t, "Enquête " + k + " · " + ty(E.titre));
-      var o = !!S().clefs[labo];
-      bouton((o ? "🔑 " : "🔒 ") + L.titre, "jdr-vers-labo" + (o ? " ouvert" : ""), qui, function () { aller("labo-" + labo); });
+      if (S().solo) {
+        // en solo, on passe d'une enquête à l'autre
+        var o = el("div", "jdr-solo-onglets", qui);
+        ["A", "B", "C"].forEach(function (x) { bouton(x, "jdr-opt petit" + (x === k ? " sel" : ""), o, function () { aller("enquete-" + x.toLowerCase()); }); });
+      }
     });
     var scene = el("div", "jdr-enq-scene", z);
     var gauche = el("div", "jdr-enq-gauche", scene);
@@ -468,6 +603,29 @@
       journal(actif, rep);
       parler(parleur, texte, rep, fin, EXP[actif].voix);
     }
+    // un terme cliqué dans une réplique : l'expert fait un aparté, puis reprend la discussion
+    z._terme = function (id, span) {
+      var T = D.termes[id];
+      if (!T || !actif || !texte.contains(span)) return false;
+      apprendre(id, z);
+      var sauve = { t: Array.prototype.slice.call(texte.childNodes), c: Array.prototype.slice.call(choix.childNodes),
+        fig: fig.hidden, src: fig.getAttribute("src"), pl: plaque.textContent };
+      choix.textContent = "";
+      plaque.textContent = EXP[actif].prenom + " · aparté : " + T.mot;
+      fig.hidden = true; corps.classList.remove("avec-fig");
+      journal(actif, T.mot + " : " + T.texte);
+      parler(parleur, texte, T.texte, function () {
+        bouton("↩ Reprendre la discussion", "jdr-q reprendre", choix, function () {
+          if (texte._arret) texte._arret();
+          texte.textContent = ""; sauve.t.forEach(function (n) { texte.appendChild(n); });
+          tous(".jdr-terme", texte).forEach(function (t) { if (S().termes[t.dataset.terme]) t.classList.add("connu"); });
+          choix.textContent = ""; sauve.c.forEach(function (n) { choix.appendChild(n); });
+          plaque.textContent = sauve.pl; fig.hidden = sauve.fig;
+          if (!sauve.fig) { fig.src = sauve.src; corps.classList.add("avec-fig"); }
+        });
+      }, EXP[actif].voix);
+      return true;
+    };
     function ouvrir(x) {
       actif = x;
       if (!S().accueils[cle(x) + ":lu"]) nSuite += 1;
@@ -488,7 +646,7 @@
         fig.hidden = !acc.image; if (acc.image) fig.src = IMG[acc.image];
         corps.classList.toggle("avec-fig", !!acc.image);
         if (texte._arret) texte._arret();
-        texte.textContent = ty(acc.r);
+        riche(texte, acc.r);
         suiteAccueil(x, acc);
       } else {
         // on revient voir l'expert : une réplique de retour, puis ses questions
@@ -500,13 +658,18 @@
       else lister(x);
     }
     function proposer(options, fini) {
+      // des choix ; une option peut en ouvrir d'autres (« Non » → les trois exemples), ou être fausse (on réessaie)
       choix.innerHTML = "";
       var zq = el("div", "jdr-questions", choix);
       options.forEach(function (o) {
         bouton("▶ " + o.dit, "jdr-q", zq, function () {
           choix.innerHTML = ""; direJoueur(o.dit);
           appliquer(o); changer(); dessinerPortraits();
-          dire(o.r, o.image, function () { if (o.juste === false) proposer(options, fini); else fini(); });
+          dire(o.r, o.image, function () {
+            if (o.options) proposer(o.options, fini);
+            else if (o.juste === false) proposer(options, fini);
+            else fini();
+          });
         });
       });
     }
@@ -570,7 +733,7 @@
     }
     function dessinerOnglets() {
       onglets.innerHTML = "";
-      var nI = Object.keys(S().indices).length;
+      var nI = Object.keys(S().indices).length + Object.keys(S().termes).length;
       [["mission", "Mission"], ["carnet", "Carnet (" + nI + ")"], ["journal", "Journal"]].forEach(function (o) {
         bouton(o[1], "jdr-onglet" + (ongletActif === o[0] ? " sel" : ""), onglets, function () { ongletActif = o[0]; dessinerOnglets(); dessinerPanneau(); });
       });
@@ -579,19 +742,23 @@
       panneau.innerHTML = "";
       if (ongletActif === "mission") {
         var ol = el("ol", "jdr-mission", panneau);
-        E.mission.forEach(function (m) { el("li", "", ol, ty(m)); });
-        var l = el("div", "jdr-liens", panneau);
-        var o = !!S().clefs[labo];
-        bouton((o ? "🔑 Ouvrir le " : "🔒 ") + L.titre, o ? "principal" : "", l, function () { aller("labo-" + labo); }).disabled = !o;
-        var a = el("a", "jdr-ref", l, "Le site de référence : " + L.site.titre); a.href = L.site.url; a.target = "_blank"; a.rel = "noopener";
+        E.mission.forEach(function (m) { elRiche("li", "", ol, m); });
+        var a = el("a", "jdr-ref", panneau, "Le site de référence : " + L.site.titre); a.href = L.site.url; a.target = "_blank"; a.rel = "noopener";
       } else if (ongletActif === "carnet") {
-        var ks = Object.keys(S().indices);
-        if (!ks.length) el("p", "jdr-astuce", panneau, "Ton carnet est vide : interroge les experts.");
+        var ks = Object.keys(S().indices), ts = Object.keys(S().termes);
+        if (!ks.length && !ts.length) el("p", "jdr-astuce", panneau, "Ton carnet est vide : interroge les experts.");
         ks.forEach(function (i) {
           var I = D.indices[i]; if (!I) return;
           var c = el("div", "jdr-note", panneau);
           el("strong", "", c, I.titre);
-          el("span", "", c, ty(I.texte));
+          elRiche("span", "", c, I.texte);
+        });
+        if (ts.length) el("div", "jdr-sous", panneau, "Lexique");
+        ts.forEach(function (i) {
+          var T = D.termes[i]; if (!T) return;
+          var c = el("div", "jdr-note lexique", panneau);
+          el("strong", "", c, T.mot);
+          el("span", "", c, ty(T.texte));
         });
       } else {
         var j = S().journal.slice(-60).reverse();
@@ -612,9 +779,8 @@
     var l = z.dataset.labo, L = D.labos[l];
     if (EN_PDF) { el("p", "jdr-pdf", z, ty(L.titre + " : " + L.sous + ". Interactif dans la version HTML.")); return; }
     enTeteJeu(z, function (qui) {
-      bouton("← Retour à l'enquête " + L.enquete, "principal jdr-retour-enq", qui, function () { aller("enquete-" + L.enquete.toLowerCase()); });
       var t = el("div", "", qui);
-      el("strong", "", t, L.titre); el("span", "", t, L.sous);
+      el("strong", "", t, L.titre + " · enquête " + L.enquete); el("span", "", t, L.sous);
     });
     el("div", "jdr-toasts", z);
     var corps = el("div", "jdr-labo-corps", z);
@@ -646,7 +812,7 @@
     var vueT = defileur(gauche, D.terra, 0); vueT.hidden = true;
     el("div", "jdr-sous", cote, "La source");
     var bs = el("div", "jdr-compo-btns", cote);
-    var bM = bouton("Meteosat (MSG, 0°)", "jdr-opt sel", bs, function () { vueM.hidden = false; vueT.hidden = true; bM.classList.add("sel"); bT.classList.remove("sel"); maj(); });
+    var bM = bouton("Meteosat (0°)", "jdr-opt sel", bs, function () { vueM.hidden = false; vueT.hidden = true; bM.classList.add("sel"); bT.classList.remove("sel"); maj(); });
     var bT = bouton("Terra (anomalies thermiques)", "jdr-opt", bs, function () { vueM.hidden = true; vueT.hidden = false; bT.classList.add("sel"); bM.classList.remove("sel"); maj(); });
     var info = el("p", "jdr-note-labo", cote);
     el("div", "jdr-sous", cote, "Mes notes");
@@ -747,11 +913,22 @@
     maj(); abonnes.push(maj); dessiner();
   }
   function laboC(corps, z) {
-    // la Terre vue du pôle Nord et les satellites connus ; les fiches ; les passages de Sentinel-2 sur Saumos
+    // la Terre vue du pôle Nord, en gros pixels : on la fait pivoter, on règle la vitesse ;
+    // les satellites connus du joueur sur leur orbite ; les fiches ; les passages de Sentinel-2 sur Saumos
     var g = el("div", "jdr-labo-c", corps);
     var gauche = el("div", "", g), cote = el("div", "jdr-labo-cote", g);
-    var cv = el("canvas", "jdr-orbite-cv", gauche); cv.width = 620; cv.height = 330;
-    var cv2 = el("canvas", "jdr-orbite-cv traces", gauche); cv2.width = 620; cv2.height = 110;
+    var cv = el("canvas", "jdr-orbite-cv pixel", gauche); cv.width = 310; cv.height = 168;
+    var ctl = el("div", "jdr-lecteur-bas", gauche);
+    var VIT = [[0, "pause"], [1, "× 1 : le temps réel"], [60, "× 60 : une minute par seconde"], [600, "× 600 : dix minutes par seconde"],
+      [3600, "× 3 600 : une heure par seconde"], [21600, "× 21 600 : un jour en 4 secondes"]];
+    bouton("⟲ −1 h", "petit", ctl, function () { tau -= 3600; });
+    bouton("+1 h ⟳", "petit", ctl, function () { tau += 3600; });
+    el("span", "jdr-note-labo", ctl, "vitesse");
+    var vit = el("input", "jdr-lecteur-curseur", ctl); vit.type = "range"; vit.min = 0; vit.max = VIT.length - 1; vit.value = 3;
+    var labV = el("span", "jdr-lecteur-lab", ctl);
+    function majV() { labV.textContent = VIT[+vit.value][1]; }
+    vit.addEventListener("input", majV); majV();
+    var cv2 = el("canvas", "jdr-orbite-cv traces pixel", gauche); cv2.width = 310; cv2.height = 52;
     el("div", "jdr-sous", cote, "Les fiches");
     var cartes = el("div", "jdr-sats", cote);
     var fiche = el("div", "jdr-fiche", cote);
@@ -777,55 +954,73 @@
       el("p", "jdr-note-labo", fiche, ty(s.note));
       if (s.rapport) bouton("📌 Noter pour le rapport", "principal", fiche, function () { noter(s.rapport); changer(); toast(z, "Noté pour le rapport : " + s.nom + ".", "carnet"); });
     }
-    var t0 = performance.now(), jour = 0;
+    // le temps simulé : tau en secondes, 0 = midi solaire à Saumos ; on démarre à 10 h 30
+    var tau = -1.5 * 3600, avant = performance.now(), tire = null;
+    cv.addEventListener("pointerdown", function (e) { tire = e.clientX; cv.setPointerCapture(e.pointerId); });
+    cv.addEventListener("pointermove", function (e) { if (tire === null) return; tau += (e.clientX - tire) * 240; tire = e.clientX; });
+    cv.addEventListener("pointerup", function () { tire = null; });
+    var PERIODE = { sentinel2: 6036, terra: 5934, legion: 5640 };
+    var police = '8px "Press Start 2P", monospace';
     function anim(t) {
       if (!document.body.contains(cv)) return;
-      var x = cv.getContext("2d"), W = cv.width, H = cv.height, cx = W / 2 - 20, cy = H / 2 - 6, R = 58;
-      var a = -(t - t0) / 4000 * Math.PI * 2;          // un jour en 4 s ; vue du pôle Nord, la Terre tourne dans le sens inverse des aiguilles d'une montre
-      x.clearRect(0, 0, W, H);
-      x.font = "12px Roboto, sans-serif";
-      x.fillStyle = "#F2C94C"; x.beginPath(); x.arc(24, cy, 15, 0, 7); x.fill();
-      x.fillStyle = "#6E6F7A"; x.fillText("Soleil", 8, cy + 30);
+      tau += (t - avant) / 1000 * VIT[+vit.value][0]; avant = t;
+      var x = cv.getContext("2d"), W = cv.width, H = cv.height, cx = 128, cy = 80, R = 28;
+      var a = Math.PI - 2 * Math.PI * tau / 86400;      // le méridien de Saumos ; vue du pôle Nord, la Terre tourne dans le sens inverse des aiguilles d'une montre
+      x.imageSmoothingEnabled = false;
+      x.fillStyle = "#F4F5FB"; x.fillRect(0, 0, W, H);
+      x.font = police; x.textBaseline = "middle";
+      x.fillStyle = "#F2C94C"; x.fillRect(4, cy - 7, 14, 14);
+      x.fillStyle = "#6E6F7A"; x.fillText("Soleil", 2, cy + 16);
       x.fillStyle = "#4F6BC4"; x.beginPath(); x.arc(cx, cy, R, 0, 7); x.fill();
-      x.fillStyle = "rgba(0,0,0,.28)"; x.beginPath(); x.arc(cx, cy, R, -Math.PI / 2, Math.PI / 2); x.fill();
+      x.fillStyle = "rgba(16,24,63,.45)"; x.beginPath(); x.arc(cx, cy, R, -Math.PI / 2, Math.PI / 2); x.fill();
       var mx = cx + Math.cos(a) * R, my = cy + Math.sin(a) * R;
-      x.strokeStyle = "#FFFFFF"; x.lineWidth = 2; x.beginPath(); x.moveTo(cx, cy); x.lineTo(mx, my); x.stroke();
-      x.fillStyle = "#E38226"; x.beginPath(); x.arc(mx, my, 5, 0, 7); x.fill();
+      x.strokeStyle = "#FFFFFF"; x.lineWidth = 1; x.beginPath(); x.moveTo(cx, cy); x.lineTo(mx, my); x.stroke();
+      x.fillStyle = "#A50026"; x.fillRect(Math.round(mx) - 2, Math.round(my) - 2, 5, 5);
       var connus = {}; D.satellites.forEach(function (s) { connus[s.id] = connu(s); });
       if (connus.meteosat) {
-        var Rg = 148, gx = cx + Math.cos(a) * Rg, gy = cy + Math.sin(a) * Rg;
-        x.strokeStyle = "#B9BEDC"; x.setLineDash([4, 5]); x.lineWidth = 1; x.beginPath(); x.arc(cx, cy, Rg, 0, 7); x.stroke(); x.setLineDash([]);
-        x.fillStyle = choisi === "meteosat" ? "#E38226" : "#283B89"; x.fillRect(gx - 7, gy - 5, 14, 10);
-        x.fillText("Meteosat-10", gx + 10, gy + 4);
+        var Rg = 72, gx = cx + Math.cos(a) * Rg, gy = cy + Math.sin(a) * Rg;
+        x.strokeStyle = "#B9BEDC"; x.setLineDash([2, 3]); x.beginPath(); x.arc(cx, cy, Rg, 0, 7); x.stroke(); x.setLineDash([]);
+        x.fillStyle = "#283B89"; x.fillRect(Math.round(gx) - 4, Math.round(gy) - 3, 8, 6);
+        if (choisi === "meteosat") { x.strokeStyle = "#283B89"; x.lineWidth = 1; x.strokeRect(Math.round(gx) - 7.5, Math.round(gy) - 6.5, 15, 13); }
       }
-      function basse(nom, id, Rl, decal, coul) {
+      var legende = [];
+      if (connus.meteosat) legende.push([D.satellites[0].nom, "#283B89"]);
+      function basse(id, Rl, coul) {
         // orbite polaire vue par la tranche ; son plan reste fixe par rapport au Soleil (passage vers 10 h 30)
-        var f = (t - t0) / 4000 * 14.3 * Math.PI * 2 + decal, phi = -(180 - 22.5) * Math.PI / 180, ux = Math.cos(phi), uy = Math.sin(phi);
-        x.strokeStyle = coul; x.lineWidth = choisi === id ? 3 : 1.3; x.beginPath(); x.moveTo(cx - ux * Rl, cy - uy * Rl); x.lineTo(cx + ux * Rl, cy + uy * Rl); x.stroke();
-        var s = Math.cos(f) * Rl; x.fillStyle = coul; x.fillRect(cx + ux * s - 4, cy + uy * s - 4, 8, 8);
-        return nom;
+        var f = 2 * Math.PI * tau / PERIODE[id], phi = -(180 - 22.5) * Math.PI / 180, ux = Math.cos(phi), uy = Math.sin(phi);
+        x.strokeStyle = coul; x.lineWidth = choisi === id ? 2 : 1; x.beginPath(); x.moveTo(cx - ux * Rl, cy - uy * Rl); x.lineTo(cx + ux * Rl, cy + uy * Rl); x.stroke();
+        // Sentinel-2 : deux satellites sur la même orbite, à 180° l'un de l'autre
+        (id === "sentinel2" ? [0, Math.PI] : [0]).forEach(function (d) {
+          var s = Math.cos(f + d) * Rl, px = Math.round(cx + ux * s), py = Math.round(cy + uy * s);
+          x.fillStyle = coul; x.fillRect(px - 2, py - 2, 5, 5);
+          if (choisi === id) { x.strokeStyle = coul; x.lineWidth = 1; x.strokeRect(px - 4.5, py - 4.5, 9, 9); }
+        });
       }
-      var noms = [];
-      if (connus.sentinel2) noms.push([basse("Sentinel-2", "sentinel2", 76, 0, "#E38226"), "#E38226"]);
-      if (connus.terra) noms.push([basse("Terra", "terra", 72, 1.7, "#2E7D32"), "#2E7D32"]);
-      if (connus.legion) noms.push([basse("WorldView Legion", "legion", 68, 3.1, "#8A5264"), "#8A5264"]);
-      noms.forEach(function (nm, i) { x.fillStyle = nm[1]; x.fillText("■ " + nm[0] + " (orbite basse)", W - 190, 22 + i * 18); });
-      x.fillStyle = "#6E6F7A"; x.fillText("Vue depuis le pôle Nord · Saumos en orange · échelles non respectées", 8, H - 8);
+      if (connus.sentinel2) { basse("sentinel2", 38, "#E38226"); legende.push(["Sentinel-2", "#E38226"]); }
+      if (connus.terra) { basse("terra", 36, "#2E7D32"); legende.push(["Terra", "#2E7D32"]); }
+      if (connus.legion) { basse("legion", 34, "#8A5264"); legende.push(["Legion", "#8A5264"]); }
+      legende.forEach(function (l, i) { x.fillStyle = l[1]; x.fillRect(212, 8 + i * 12, 6, 6); x.fillText(l[0], 222, 11 + i * 12); });
+      var hs = ((12 + tau / 3600) % 24 + 24) % 24, hh = Math.floor(hs), mn = Math.floor((hs - hh) * 60);
+      x.textAlign = "right";
+      x.fillStyle = "#A50026"; x.fillRect(W - 112, H - 25, 5, 5);
+      x.fillStyle = "#1D2A66"; x.fillText("Saumos " + hh + "h" + ("0" + mn).slice(-2), W - 4, H - 22);
+      x.fillStyle = "#6E6F7A"; x.fillText("heure solaire", W - 4, H - 9);
+      x.textAlign = "left"; x.fillText("vue du pôle Nord", 2, H - 9);
       requestAnimationFrame(anim);
     }
     requestAnimationFrame(anim);
+    var jour = 0;
     function traces() {
       if (!document.body.contains(cv2)) return;
       var x = cv2.getContext("2d"), W = cv2.width, H = cv2.height;
-      x.clearRect(0, 0, W, H); x.fillStyle = "#EEF0F8"; x.fillRect(0, 0, W, H);
-      x.font = "13px Roboto, sans-serif";
-      if (!connu(D.satellites[1])) { x.fillStyle = "#6E6F7A"; x.fillText("Les passages de Sentinel-2 sur Saumos apparaîtront ici.", 14, H / 2 + 4); return; }
+      x.fillStyle = "#EEF0F8"; x.fillRect(0, 0, W, H);
+      x.font = police; x.textBaseline = "middle";
+      if (!connu(D.satellites[1])) { x.fillStyle = "#6E6F7A"; x.fillText("Passages de Sentinel-2 : à venir", 8, H / 2); return; }
       var pas = W / 5, d = jour % 5;
-      for (var b = 0; b < 5; b++) { x.fillStyle = b === d ? "rgba(227,130,38,.45)" : "rgba(40,59,137,.08)"; x.fillRect(b * pas + 4, 8, pas - 8, H - 34); }
-      var sx = 2.5 * pas, survol = d === 2;
-      x.fillStyle = survol ? "#A50026" : "#283B89"; x.beginPath(); x.arc(sx, (H - 26) / 2 + 8, 6, 0, 7); x.fill();
-      x.fillStyle = "#2B2B33";
-      x.fillText("Fauchées successives de Sentinel-2, vue simplifiée — jour " + (jour + 1) + (survol ? " : Saumos (le point) est survolé" : ""), 10, H - 9);
+      for (var b = 0; b < 5; b++) { x.fillStyle = b === d ? "rgba(227,130,38,.5)" : "rgba(40,59,137,.1)"; x.fillRect(Math.round(b * pas) + 2, 3, Math.round(pas) - 4, H - 18); }
+      var sx = Math.round(2.5 * pas), survol = d === 2;
+      x.fillStyle = survol ? "#A50026" : "#283B89"; x.fillRect(sx - 3, (H - 18) / 2, 6, 6);
+      x.fillStyle = "#2B2B33"; x.fillText("Jour " + (jour + 1) + (survol ? " : Saumos survolé" : ""), 6, H - 7);
     }
     setInterval(function () { jour = (jour + 1) % 10; traces(); }, 1100);
     function maj() { dessinerCartes(); dessinerFiche(); traces(); }
@@ -859,6 +1054,7 @@
           });
         }
       });
+      if (sec.sans_preuve) return;
       ["preuve_" + sec.posture, "limite_" + sec.posture].forEach(function (cle, j) {
         var l = el("label", "jdr-champ", c); el("span", "", l, j ? "Ce que nous ne pouvons pas dire" : "Preuve : image, date, composition");
         var i = el("input", "", l); champs[cle] = i;
@@ -866,7 +1062,7 @@
       });
     });
     var sol = el("div", "jdr-carte jdr-rap-sol", z);
-    el("div", "jdr-sous", sol, "Les trois solutions au préfet : pour chacune, une date ou un délai");
+    el("div", "jdr-sous", sol, R.solutions_titre || "Les trois solutions au préfet");
     var gs = el("div", "jdr-rap-sol-g", sol);
     R.solutions.forEach(function (s) {
       var l = el("label", "jdr-champ", gs); el("span", "", l, s[1]);
@@ -876,13 +1072,10 @@
     var pied = el("div", "jdr-choix-ligne", z);
     var res = el("div", "jdr-rap-res", z);
     bouton("Le préfet relit votre dossier", "principal", pied, function () { relire(); });
-    bouton("Télécharger", "", pied, function () { telecharger(); });
+    bouton("Télécharger", "", pied, function () { telecharger(paquet(), "saumos-groupe-" + (S().groupe || "x") + ".json"); });
     var etat = el("span", "jdr-note-labo", pied);
     var envoi = z.dataset.envoi || "";
-    if (envoi) bouton("Envoyer à la feuille du cours", "", pied, function () {
-      fetch(envoi, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(paquet()) })
-        .then(function () { etat.textContent = "Envoyé."; }).catch(function () { etat.textContent = "L'envoi a échoué : téléchargez le rapport."; });
-    });
+    if (envoi) bouton("Envoyer à la feuille du cours", "", pied, function () { envoyer(envoi, paquet(), etat); });
     function remplir() {
       var f = F();
       Object.keys(champs).forEach(function (k) { if (document.activeElement !== champs[k]) champs[k].value = f[k] || ""; });
@@ -894,7 +1087,7 @@
       tete(S().heros || "heros-1", "petit", tete_);
       el("strong", "", tete_, "Groupe " + (S().groupe || "?") + (S().nom ? " · " + S().nom : ""));
       var p = S().paris;
-      el("span", "jdr-note-labo", tete_, "Vos paris : " + (p.jours !== undefined ? p.jours + " jours" : "—") + " · " + (p.etp || "—") + " ETP");
+      el("span", "jdr-note-labo", tete_, "Vos paris : " + (p.jours !== undefined ? p.jours + " jours" : "—") + " · " + (p.etp || "—") + " jours ETP");
       var d = el("div", "jdr-jeu-outils", tete_);
       confianceHTML(d); boutonChrono(d);
     }
@@ -935,20 +1128,39 @@
       el("p", "jdr-note-labo", res, gain ? ty("Le préfet reprend confiance : +" + gain + ".") : ty("Rien de nouveau pour le préfet. Complétez, puis faites relire."));
       changer();
     }
-    function paquet() {
-      var s = S();
-      return { cours: document.title, date: new Date().toISOString(), groupe: s.groupe || "", nom: s.nom || "",
-        posture: s.posture || "", solo: !!s.solo, paris: s.paris, rapport: s.rapport, confiance: s.confiance,
-        controles: Object.keys(s.prefet), indices: Object.keys(s.indices), clefs: Object.keys(s.clefs) };
-    }
-    function telecharger() {
-      var a = document.createElement("a");
-      a.href = URL.createObjectURL(new Blob([JSON.stringify(paquet(), null, 2)], { type: "application/json" }));
-      a.download = "saumos-groupe-" + (S().groupe || "x") + ".json";
-      document.body.appendChild(a); a.click(); a.remove();
-    }
     enTete(); remplir(); abonnes.push(enTete); abonnes.push(remplir);
     if (window.Reveal) Reveal.on("slidechanged", function (e) { if (e.currentSlide.contains(z)) remplir(); });
+  };
+  function paquet(type) {
+    var s = S();
+    return { type: type || "saumos-rapport", cours: document.title, date: new Date().toISOString(), groupe: s.groupe || "", nom: s.nom || "",
+      posture: s.posture || "", solo: !!s.solo, paris: s.paris, cadrage: s.cadrage || "", rapport: s.rapport, avis: s.avis || "",
+      confiance: s.confiance, controles: Object.keys(s.prefet), indices: Object.keys(s.indices), termes: Object.keys(s.termes), clefs: Object.keys(s.clefs) };
+  }
+  function telecharger(p, nom) {
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(p, null, 2)], { type: "application/json" }));
+    a.download = nom;
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  function envoyer(url, p, etat) {
+    fetch(url, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(p) })
+      .then(function () { etat.textContent = "Envoyé, merci."; }).catch(function () { etat.textContent = "L'envoi a échoué : téléchargez votre réponse."; });
+  }
+
+  // Votre avis sur le jeu (débrief) : une réponse libre, que l'enseignant garde ----------------------
+  BRIQUES["jdr-retour"] = function (z) {
+    var R = D.retour || {};
+    var c = el("div", "jdr-carte jdr-retour-carte", z);
+    el("div", "jdr-sous", c, R.titre || "Votre avis");
+    var t = el("textarea", "", c); t.rows = 2; t.placeholder = R.invite || ""; t.value = S().avis || "";
+    t.addEventListener("input", function () { S().avis = t.value; sauver(); });
+    var l = el("div", "jdr-choix-ligne", c);
+    var envoi = z.dataset.envoi || "";
+    var etat;
+    if (envoi) bouton("Envoyer", "principal", l, function () { envoyer(envoi, paquet("saumos-avis"), etat); });
+    bouton("Télécharger", "", l, function () { telecharger(paquet("saumos-avis"), "saumos-avis-groupe-" + (S().groupe || "x") + ".json"); });
+    etat = el("span", "jdr-note-labo", l);
   };
 
   // La phrase de la classe (projection) -------------------------------------------------------------
@@ -982,14 +1194,14 @@
     var liste = z.dataset.liste ? el("ol", "jdr-dits", z) : null;
     var i = 0;
     if (EN_PDF) {
-      if (liste) { textes.forEach(function (s) { el("li", "", liste, ty(s)); }); tx.textContent = "…"; }
-      else tx.textContent = textes.map(ty).join(" ");
+      if (liste) { textes.forEach(function (s) { elRiche("li", "", liste, s); }); tx.textContent = "…"; }
+      else riche(tx, textes.join(" "));
       return;
     }
     function dire() {
       suite.innerHTML = "";
       parler(t, tx, textes[i], function () {
-        if (liste) el("li", "", liste, ty(textes[i]));
+        if (liste) elRiche("li", "", liste, textes[i]);
         if (i < textes.length - 1) bouton("▶ suite", "jdr-q", suite, function () { i += 1; dire(); });
       }, x.voix);
     }

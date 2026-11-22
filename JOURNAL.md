@@ -2,6 +2,20 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-22 (soir) — Atelier Saumos, V3.1 : termes techniques, navigation en bas à droite, retours des fiches
+
+D'après la règle ajoutée par Marc au script V3 (les PNJ font découvrir des termes techniques, en couleur, qui ouvrent un aparté et entrent au carnet), ses demandes dans les fiches d'`IMAGE-AtelierSaumos.qmd` et ses changements de dialogues faits directement dans `donnees/saumos.json`. Pas de nouvelle version de script. Désormais, on modifie le JSON par petites touches : le constructeur de la V3, qui repartait de la V2, n'est plus relancé (il effacerait les répliques de Marc).
+
+**Fait**
+
+- Termes techniques : `[[mot|terme]]` dans tout texte du JSON ; 18 définitions dans la rubrique `termes`, chacune portée par un expert. Clic dans un dialogue : aparté de l'expert, puis « Reprendre la discussion » ; ailleurs (paris, carnet, mission) : petite fenêtre. Le terme entre au lexique du carnet. Marqués : ceux de Marc (signatures spectrales, bandes, jour ETP), et proche infrarouge, SWIR, réflectance, UTC, pixel, aérosols, résolution, composition colorée, NBR, couple capteur / vecteur, géostationnaire, héliosynchrone, fauchée, revisite, radar.
+- Navigation : flèches et espace neutralisés dans le jeu ; ◀ et ▶ toujours en bas à droite, dans la diapo (ils suivent sa mise à l'échelle), étiquetés selon la diapo (« Continuer », « C'est parti », « 🔑 Labo … », « ◀ enquête X »). Numéro de diapo masqué.
+- Fiches : commande avec date et heure, carte 8 bits de la zone (`outils/carte-saumos.py`, d'après Sentinel-2 du 21 juillet ; départ placé à l'Esquirot, position approchée) ; « jour ETP » cliquable ; réponse libre au cadrage, puis celle de Rose ; question d'Inès sur le couple capteur / vecteur en deux temps (oui / non, puis trois exemples) ; Sentinel-2B et 2C, 10 jours chacun, 5 à deux ; Meteosat-12 et FCI, 500 m sous le satellite ; Deimos en gros pixels, Terre qui pivote à la souris ou d'une heure, vitesse de la pause à × 21 600, deux Sentinel-2 à 180° ; rapport : nouveaux intitulés des solutions, plus de preuve pour l'orbitographe ; débrief renommé, question méta et case d'avis (`{.jdr-retour}`).
+- `outils/dialogues.py` : termes entre ⟪ ⟫, options imbriquées, lexique en fin de script avec le nombre d'occurrences. `outils/feuille-google.gs` : les rapports et les avis de l'atelier vont dans deux onglets à part.
+- Diapo 2.1 (l'équipe) enregistrée comme figée. Vérifié en navigateur (partie complète, apartés, navigation, labo Deimos, rapport, avis) ; 0 débordement, aucune erreur JavaScript.
+
+**À signaler à Marc** : S2A a été remplacé par S2C en janvier 2025 (texte adapté) ; la couche EUMETView s'appelle « MSG 0 degree », et le service MSG 0° (SEVIRI) est assuré par Meteosat-10 selon EUMETSAT ; mais ses images se suivent toutes les 10 minutes et sont toutes distinctes, ce qui correspond à FCI sur Meteosat-12 : à vérifier dans les infos de la couche. Préfecture : attaque en cours dès 12 h 27 heure française, avant la fumée nette sur Meteosat (à vérifier).
+
 ## 2026-11-22 — Atelier Saumos, V3
 
 D'après le script V3 de Marc (`source/Cas1-Saumos/atelier-saumos-script-v3.md`), ses images Meteosat du 21 et du 22 juillet (`MSG-0/`) et ses compositions Sentinel-2 du 4 septembre. Marc a autorisé la correction des coquilles dans ses textes de l'atelier.
