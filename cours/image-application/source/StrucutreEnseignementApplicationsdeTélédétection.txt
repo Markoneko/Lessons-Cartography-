@@ -1,3 +1,5 @@
+Activité conserver pour archive. Elle n'est pas construite pour être exploitable par des néophytes.
+
 Attention cette activié d'enseignement suppose dans l'idéal de garder une trace écrite des résultats. Je ne sais pas si sur un html publié sur github, je puisse faire que les étudiants valident le travail pour compiler les résultats... Me dire.
 
 
