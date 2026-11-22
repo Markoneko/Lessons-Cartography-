@@ -647,19 +647,20 @@ Elles vivent dans `_briques/briques-jeu.html` et `_briques/briques-jeu.css`, ave
 
 | Brique | Ce qu'elle fait |
 |---|---|
-| `{.jdr-commande}` | le préfet dit sa commande, sa tête parle |
+| `{.jdr-commande}` | le préfet dit sa commande, sa tête parle, avec un son de lecture sans langue |
 | `{.jdr-paris}` | les paris de départ (curseur ou choix) |
-| `{.jdr-equipe}` | groupe, prénom, posture, tête de héros |
-| `{.jdr-experts}` | les experts, leur spécialité, leur trait |
-| `{.jdr-repartition}` | une carte par enquête, qui mène à sa diapo |
-| `{.jdr-enquete enquete="A"}` | le dialogue : « Avec qui veux-tu commencer ? », réponses selon la posture, carnet d'indices, pistes, confiance du préfet |
-| `{.jdr-labo labo="a"}` | les secours intégrés (`a` Meteosat et Terra, `b` compositions et mesure Sentinel-2, `c` orbites) |
-| `{.jdr-rapport envoi=""}` | le rapport au propre, noté, téléchargé ou envoyé à la feuille Google |
-| `{.jdr-severite}` | trois pronostics, puis proche infrarouge, moyen infrarouge, dNBR |
+| `{.jdr-equipe}` | groupe, prénom, posture, tête de héros, mode solo, « Recommencer la partie » |
+| `{.jdr-cadrage}` | Rose cadre le travail, réplique par réplique, selon la posture de celui qui lit |
+| `{.jdr-experts}` | les experts (nom, rôle, travail), Rose à part, et « C'est parti » qui lance le chrono |
+| `{.jdr-enquete enquete="A"}` | le dialogue : « Avec qui veux-tu commencer ? », choix, réponses tapées, apartés, clefs des labos, carnet, journal, confiance du préfet, chrono |
+| `{.jdr-labo labo="a"}` | les labos, versions JRPG des sites de référence (`a` Eumetsat, `b` Copernicus, `c` Deimos), fermés tant qu'un expert n'en a pas passé les clefs |
+| `{.jdr-rapport envoi=""}` | le rapport au propre, relu par le préfet, téléchargé ou envoyé à la feuille Google |
 | `{.jdr-phrase}` | la phrase à trous de la classe, pour la projection |
-| `{.jdr-bulle qui="rose"}` | un expert dit le texte écrit dans la brique, paragraphe par paragraphe |
+| `{.jdr-bulle qui="rose"}` | un expert dit le texte écrit dans la brique, ou une liste du fichier (`source="debrief" liste="oui"`) |
 
-Les diapos d'enquête et de labo prennent la classe `{.jdr-plein}` et un identifiant (`{#enquete-a .jdr-plein}`), que les pistes visent. Dans le fichier, un nœud de dialogue a un tronc commun `r` et un angle par posture (`R`, `A`, `O`) ; `requiert`, `debloque`, `cache`, `indices`, `pistes` et `cout` règlent sa place dans le graphe (voir la clé `lisez-moi` du fichier). Ce que fait le joueur reste dans son navigateur.
+Les diapos de jeu prennent un identifiant, la classe `{.jdr-plein}` et `data-state="plein"` (le pied de page disparaît) : `{#enquete-a .jdr-plein data-state="plein"}`. En groupe, chacun n'a accès qu'à son enquête et à son labo ; en solo, aux trois. Le chrono (30 minutes d'enquête, 5 de rapport) part de « C'est parti ».
+
+Dans le fichier, une enquête a des accueils (un par expert) et des nœuds. Un nœud a sa question `q`, sa réponse `r`, ses conditions `si` et `sauf` (nœuds entendus, essais, indices, clefs), un type (`choix`, `ouverte`, `aparte`) et ses effets (`indices`, `clefs`, `debloque`, `cout`, `note`, `image`) ; voir la clé `lisez-moi`. Pour relire les dialogues, `outils/dialogues.py` écrit un script lisible et un graphe façon Twine dans `source/Cas1-Saumos/`. Ce que fait le joueur reste dans son navigateur.
 
 Deux supports dans un même dossier : `suffixe-plan: "-atelier-saumos"` dans l'en-tête du second lui donne son propre `plan-atelier-saumos.md` et son propre registre `figes-atelier-saumos.json`.
 

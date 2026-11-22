@@ -399,3 +399,40 @@ Existe t-il plusieurs solutions pour la question de la surface.
 Est ce un coup de chance ou pas de pouvoir détecter le départ d'incendie?
 
 
+
+---
+
+## 8. Débrief : éléments de réponse (ajout de Claude, 22 novembre, à valider)
+
+Rose anime le débrief, question par question (diapo « Le débrief »). Les quatre premières questions sont celles de Marc ; les deux suivantes sont mes ajouts, affichés aussi sur la diapo ; les trois dernières restent ici, en réserve.
+
+**1. Qui a encore la confiance du préfet ?**
+La jauge part de 6 sur 10, perd un point par indice payé, en gagne un par point juste du dossier relu par le préfet. Ce n'est pas une note : c'est l'occasion de demander aux groupes à 10 ce qui les a fait avancer, et aux autres où ils ont payé un indice, et pourquoi.
+
+**2. Quelles sont les réponses à apporter au préfet ?**
+- *Le départ* : le 22 juillet 2026. Sur les images Meteosat (MSG 0°), la fumée se devine vers 11 h UTC (13 h, heure française d'été) et devient nette vers 12 h. Source : Meteosat-10 et son capteur SEVIRI, en orbite géostationnaire. Marge : au moins la cadence des images (ici 10 minutes autour de l'heure du départ, une heure ailleurs), plus le temps que la fumée devienne visible. Terra confirme le jour, pas l'heure.
+- *La surface* : environ 12 000 ha mesurés le 26 juillet sur Sentinel-2, alors que le feu brûle encore ; environ 25 000 ha le 4 septembre, sur la première image claire ; 31 386 ha pour le périmètre officiel de l'activation EMSR899, tracé le 29 juillet sur une image très haute résolution commandée.
+- *Les trois solutions datées* : commander une image (dès la fin du feu, payant, précis : le 29 juillet ici) ; le radar (quelques jours, à travers fumée et nuages, précision plus relative) ; attendre une Sentinel-2 sans nuages (gratuit, mais le 4 septembre ici, six semaines plus tard).
+
+**3. Existe-t-il plusieurs solutions pour la question de la surface ?**
+Oui, et pas seulement les trois scénarios. Les chiffres eux-mêmes diffèrent (12 000, 25 000, 31 386 ha), et chaque écart a une cause que l'on peut nommer : la date (le feu grandit), le capteur (20 m contre quelques dizaines de centimètres), la méthode (un tracé à la main sur une composition, un indice et des seuils, la photo-interprétation d'un opérateur), et ce que l'on compte (un périmètre qui englobe les îlots épargnés, ou la seule surface brûlée). C'est le moment de rappeler le dNBR et UN-SPIDER : un indice dit aussi à quel point cela a brûlé.
+
+**4. Est-ce un coup de chance, ou pas, de pouvoir détecter le départ de l'incendie ?**
+Pour l'œil, non : un géostationnaire regarde l'Europe en permanence, c'est un choix d'orbite, pas un hasard. Pour le reste, en partie : le feu démarre de jour (dans le visible, la nuit, on ne voit plus la fumée ; il aurait fallu les canaux infrarouges) ; le ciel est clair le matin du 22 (les nuages arrivent l'après-midi) ; le vent pousse la fumée vers l'océan, sombre, où elle contraste bien. Côté Sentinel-2, la chance joue davantage : un passage le 26 juillet, en plein feu, puis des nuages jusqu'au 4 septembre.
+
+**5. Et vos paris du début : qu'en pensez-vous maintenant ?** *(ajout)*
+Retour sur les jours et les ETP. Réponse attendue : cela dépend de la précision désirée et des moyens engagés. Référence ETP de Marc (diapo du verdict).
+
+**6. Dans la chaîne — signal, donnée, acquisition, préparation, dérivation, traitement, validation — où s'est logée la plus grosse incertitude ?** *(ajout)*
+Chaque posture peut répondre pour son enquête. Pistes : le signal (fumée plutôt que chaleur), l'acquisition (les nuages, la revisite, la date de l'image), la préparation (l'heure UTC), la dérivation (la composition, le NBR), le traitement (le tracé à la main), la validation (pas de vérité terrain : le périmètre officiel sert de référence, mais il a lui aussi sa méthode). On revient ainsi à la réponse de Rose au cadrage : maîtriser la chaîne et les incertitudes de chaque maillon.
+
+**En réserve**
+- *Qu'avez-vous appris d'un coéquipier que vous n'auriez pas trouvé seul ?* Les deux relais du jeu : Sentinel-2, d'Inès à l'orbitographe puis à l'analyste ; Meteosat, d'Elikia ou de Bastien au rapporteur puis à l'orbitographe. C'est le puzzle d'Aronson, rendu visible.
+- *Satellite ou capteur : qui a confondu ?* Meteosat-10 et SEVIRI, Sentinel-2 et MSI, Terra et MODIS.
+- *Et si c'était une inondation, sous un ciel couvert ?* Le visible ne voit plus rien, le radar devient la star : transfert vers le reste du cours, et clin d'œil au DM biosphère.
+
+## 9. Notes de réalisation de la V3 (Claude, 22 novembre)
+
+- La carte des dialogues, façon Twine, est produite à partir du fichier de données : `outils/dialogues.py` écrit `dialogues-saumos.md` (le script lisible) et `graphe-saumos.svg` (le graphe) dans ce dossier. On modifie `donnees/saumos.json`, puis on relance.
+- Les répliques de Marc sont reprises ; les coquilles corrigées, comme autorisé. Les autres répliques sont de Claude, dans la voix des personnages ; les traits de caractère restent invisibles et ne servent qu'au ton.
+- Les réponses tapées sont comparées sans accents ni majuscules : « Météosat », « meteo-sat », « MSG », « Sentinel 2 », « S2 », « B8 et SWIR » passent.

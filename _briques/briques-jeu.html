@@ -1,7 +1,9 @@
 <script>
-/* Briques du jeu de rôle (atelier Saumos) : commande du préfet, paris, équipe, experts, répartition,
-   enquêtes (dialogues à indices), labos de secours, rapport au propre, sévérité, phrase de la classe, bulles.
-   Tout le contenu est dans le fichier de données du cours ; ce qui est fait reste dans le navigateur. */
+/* Briques du jeu de rôle (atelier Saumos, V3).
+   Le contenu est dans le fichier de données du cours (donnees/saumos.json) ; ce moteur ne contient aucun texte de jeu,
+   seulement les libellés d'interface. Ce que fait le joueur reste dans son navigateur.
+   Briques : jdr-commande, jdr-paris, jdr-equipe, jdr-cadrage, jdr-experts, jdr-enquete, jdr-labo, jdr-rapport,
+   jdr-phrase, jdr-bulle. */
 (function () {
   var zones = Array.prototype.slice.call(document.querySelectorAll(".jdr-zone"));
   if (!zones.length) return;
@@ -28,6 +30,8 @@
   var params = new URLSearchParams(window.location.search);
   var EN_PDF = params.has("print-pdf");
   function ty(s) { return String(s || "").replace(/ ([:;!?»])/g, " $1").replace(/« /g, "« "); }
+  function simple(s) { return String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
+  function aller(id) { location.hash = "#/" + id; }
 
   var D = {}, PX = {}, IMG = {};
   try { D = JSON.parse(document.querySelector(".jdr-donnees").textContent); } catch (e) { return; }
@@ -43,23 +47,53 @@
     if (memoire) return memoire;
     try { memoire = JSON.parse(localStorage.getItem(CLE) || "null"); } catch (e) { memoire = null; }
     memoire = memoire || {};
-    ["vus", "accueils", "debloques", "indices", "pistes", "rapport", "paris", "surf", "points"].forEach(function (k) { memoire[k] = memoire[k] || {}; });
+    ["vus", "essais", "succes", "accueils", "debloques", "indices", "clefs", "rapport", "paris", "prefet", "chrono"].forEach(function (k) { memoire[k] = memoire[k] || {}; });
+    memoire.journal = memoire.journal || [];
     if (typeof memoire.confiance !== "number") memoire.confiance = 6;
     return memoire;
   }
   function sauver() { try { localStorage.setItem(CLE, JSON.stringify(memoire)); } catch (e) { /* stockage indisponible */ } }
   var abonnes = [];
-  function changer() { sauver(); abonnes.forEach(function (f) { try { f(); } catch (e) { /* une brique ne casse pas les autres */ } }); }
+  function changer() { sauver(); abonnes.forEach(function (f) { try { f(); } catch (e) { if (window.console) console.error(e); } }); }
+  function confiance(delta) { var s = S(); s.confiance = Math.max(0, Math.min(10, s.confiance + delta)); }
+  function acces(k) { var s = S(); return !!(s.solo || !s.posture || POST[s.posture].enquete === k); }
+  function noter(champs) { var F = S().rapport; Object.keys(champs).forEach(function (k) { F[k] = champs[k]; }); }
+  function journal(qui, texte) { var j = S().journal; j.push([qui, texte]); if (j.length > 300) j.splice(0, j.length - 300); }
 
-  // --- Têtes et bulles ------------------------------------------------------------------------
+  // --- Le son : un bip de lecture, sans langue, comme dans les JRPG ----------------------------
+  var SON = { ctx: null, on: true };
+  try { SON.on = localStorage.getItem("jdr:son") !== "0"; } catch (e) { /* par défaut, le son */ }
+  function bip(freq) {
+    if (!SON.on || EN_PDF || !freq) return;
+    try {
+      if (!SON.ctx) SON.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      var c = SON.ctx; if (c.state === "suspended") c.resume();
+      var o = c.createOscillator(), g = c.createGain(), t = c.currentTime;
+      o.type = "square"; o.frequency.value = freq * (0.9 + Math.random() * 0.2);
+      g.gain.setValueAtTime(0.03, t); g.gain.exponentialRampToValueAtTime(0.0005, t + 0.05);
+      o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 0.06);
+    } catch (e) { /* pas de son, tant pis */ }
+  }
+  function boutonSon(parent) {
+    var b = bouton("", "jdr-son", parent, function () {
+      SON.on = !SON.on;
+      try { localStorage.setItem("jdr:son", SON.on ? "1" : "0"); } catch (e) { /* rien */ }
+      tous(".jdr-son").forEach(maj);
+    });
+    function maj(x) { x.textContent = SON.on ? "♪ son" : "♪ muet"; x.classList.toggle("muet", !SON.on); x.title = SON.on ? "Couper le son" : "Remettre le son"; }
+    maj(b);
+    return b;
+  }
+
+  // --- Têtes et paroles ------------------------------------------------------------------------
   function tete(id, classe, parent) {
     var b = el("span", "jdr-tete" + (classe ? " " + classe : ""), parent);
     b.innerHTML = PX[id] || "";
     return b;
   }
-  function parler(boite, cible, texte, fin) {
+  function parler(boite, cible, texte, fin, voix) {
     // la réplique défile ; un clic l'affiche d'un coup
-    var t = ty(texte), k = 0, timer;
+    var t = ty(texte), k = 0, n = 0, timer;
     if (cible._arret) cible._arret();          // une réplique coupe la précédente
     cible.textContent = "";
     if (boite) boite.classList.add("parle");
@@ -70,10 +104,12 @@
     }
     cible._arret = arret;
     cible.addEventListener("click", finir);
+    if (EN_PDF) { finir(); return finir; }
     timer = setInterval(function () {
-      k += 2; cible.textContent = t.slice(0, k);
+      k += 2; n += 1; cible.textContent = t.slice(0, k);
+      if (n % 3 === 0 && /\S/.test(t.charAt(k))) bip(voix);
       if (k >= t.length) finir();
-    }, 22);
+    }, 24);
     return finir;
   }
   function toast(zone, texte, genre) {
@@ -81,8 +117,8 @@
     var t = el("div", "jdr-toast " + (genre || ""), boite, ty(texte));
     var vus = boite.querySelectorAll(".jdr-toast");
     for (var i = 0; i < vus.length - 3; i++) vus[i].remove();      // trois au plus à l'écran
-    setTimeout(function () { t.classList.add("part"); }, 3000);
-    setTimeout(function () { t.remove(); }, 3600);
+    setTimeout(function () { t.classList.add("part"); }, 3200);
+    setTimeout(function () { t.remove(); }, 3800);
   }
   function confianceHTML(parent) {
     var c = el("div", "jdr-confiance", parent);
@@ -91,7 +127,68 @@
     for (var k = 0; k < 10; k++) el("i", k < S().confiance ? "plein" : "", j);
     return c;
   }
-  function confiance(delta) { var s = S(); s.confiance = Math.max(0, Math.min(10, s.confiance + delta)); }
+
+  // --- Le chrono : 30 minutes d'enquête, puis 5 de rapport ------------------------------------
+  function chrono() {
+    var c = S().chrono; if (!c.debut) return null;
+    var now = Date.now();
+    if (c.rapport) return { phase: "rapport", reste: c.rapport + D.chrono.rapport * 60000 - now };
+    return { phase: "enquete", reste: c.debut + D.chrono.enquete * 60000 - now };
+  }
+  function mmss(ms) { ms = Math.max(0, ms); var s = Math.round(ms / 1000); return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); }
+  function demarrer() { var c = S().chrono; if (!c.debut) { c.debut = Date.now(); changer(); } }
+  function versRapport() { var c = S().chrono; if (!c.rapport) { c.rapport = Date.now(); if (!c.debut) c.debut = c.rapport; changer(); } aller("rapport"); }
+  function boutonChrono(parent) {
+    var b = bouton("", "jdr-chrono", parent);
+    b.addEventListener("click", function () {
+      var c = chrono();
+      if (c && c.phase === "rapport") { aller("rapport"); return; }
+      if (b.dataset.sur) { versRapport(); return; }
+      b.dataset.sur = "1"; b.classList.add("sur");
+      setTimeout(function () { delete b.dataset.sur; b.classList.remove("sur"); majChrono(b); }, 4000);
+      majChrono(b);
+    });
+    majChrono(b);
+    return b;
+  }
+  function majChrono(b) {
+    var c = chrono();
+    if (b.dataset.sur) { b.textContent = "Passer au rapport ? (5 min) ✓"; return; }
+    if (!c) { b.textContent = "⧗ " + D.chrono.enquete + ":00 · rapport"; b.title = "Le chrono démarre avec « C'est parti »"; return; }
+    b.textContent = (c.phase === "rapport" ? "✎ rapport " : "⧗ ") + mmss(c.reste) + (c.phase === "enquete" ? " · rapport" : "");
+    b.classList.toggle("urgent", c.reste < 120000);
+    b.title = c.phase === "enquete" ? "Cliquer pour passer au rapport (5 minutes)" : "Temps du rapport";
+  }
+  setInterval(function () {
+    tous(".jdr-chrono").forEach(majChrono);
+    var c = chrono(), s = S();
+    if (c && c.phase === "enquete" && c.reste <= 0) {
+      s.chrono.rapport = Date.now(); changer();
+      var ici = window.Reveal && Reveal.getCurrentSlide();
+      if (ici && ici.querySelector(".jdr-enquete-zone, .jdr-labo-zone")) aller("rapport");
+    }
+  }, 1000);
+
+  // --- Le titre qui passe en 8 bits -------------------------------------------------------------
+  (function () {
+    var h = document.querySelector("#title-slide h1.title");
+    if (!h || EN_PDF) return;
+    var lettres = [];
+    var texte = h.textContent; h.textContent = ""; h.classList.add("jdr-glitch");
+    // une boîte par mot (pas de coupure au milieu d'un mot), une boîte par lettre
+    texte.split(/(\s+)/).forEach(function (m) {
+      if (!m) return;
+      if (/^\s+$/.test(m)) { h.appendChild(document.createTextNode(" ")); return; }
+      var mot = el("span", "jdr-mot", h);
+      Array.prototype.forEach.call(m, function (c) { lettres.push(el("span", "", mot, c)); });
+    });
+    var sens = true, pas = 0;
+    setInterval(function () {
+      var restants = lettres.filter(function (s) { return s.classList.contains("px") !== sens; });
+      if (!restants.length) { pas += 1; if (pas > 14) { sens = !sens; pas = 0; } return; }
+      restants[Math.floor(Math.random() * restants.length)].classList.toggle("px", sens);
+    }, 90);
+  })();
 
   // =========================================================================================
   var BRIQUES = {};
@@ -103,9 +200,10 @@
     var boite = el("div", "jdr-dialogue", b);
     el("div", "jdr-plaque", boite, D.prefet.nom);
     var txt = el("p", "jdr-texte", boite);
+    var bas = el("div", "jdr-choix-ligne", z); boutonSon(bas);
     if (EN_PDF) { txt.textContent = ty(D.prefet.commande); return; }
     var lu = false;
-    function lancer() { if (!lu) { lu = true; parler(t, txt, D.prefet.commande); } }
+    function lancer() { if (!lu) { lu = true; parler(t, txt, D.prefet.commande, null, 150); } }
     if (window.Reveal) Reveal.on("slidechanged", function (e) { if (e.currentSlide.contains(z)) lancer(); });
     txt.textContent = "▶";
     b.addEventListener("click", lancer);
@@ -132,7 +230,7 @@
     });
   };
 
-  // L'équipe : posture, tête, nom, groupe -----------------------------------------------------
+  // L'équipe : posture, mode solo, tête, nom, groupe ----------------------------------------------
   BRIQUES["jdr-equipe"] = function (z) {
     var haut = el("div", "jdr-equipe-haut", z);
     var lg = el("label", "jdr-champ", haut); el("span", "", lg, "Groupe n°");
@@ -141,12 +239,16 @@
     var ln = el("label", "jdr-champ large", haut); el("span", "", ln, "Ton prénom de héros");
     var n = el("input", "", ln); n.value = S().nom || ""; n.placeholder = "comme tu veux";
     n.addEventListener("input", function () { S().nom = n.value; changer(); });
+    var lsolo = el("label", "jdr-solo", haut);
+    var cs = el("input", "", lsolo); cs.type = "checkbox"; cs.checked = !!S().solo;
+    var ts = el("span", "", lsolo); el("strong", "", ts, "Je joue en solo"); el("span", "", ts, "j'ai accès aux trois profils, l'un après l'autre");
+    cs.addEventListener("change", function () { S().solo = cs.checked; changer(); });
     el("div", "jdr-sous", z, "1. Ta posture");
     var ps = el("div", "jdr-postures", z);
     D.postures.forEach(function (p) {
       var c = el("button", "jdr-carte jdr-posture" + (S().posture === p.id ? " sel" : ""), ps); c.type = "button";
       el("strong", "", c, p.nom);
-      el("span", "jdr-posture-enq", c, "Enquête " + p.enquete + " · " + D.enquetes[p.enquete].titre);
+      el("span", "jdr-posture-enq", c, "Enquête " + p.enquete + " · " + D.enquetes[p.enquete].titre + " · " + D.labos[p.labo].titre);
       el("span", "jdr-posture-role", c, ty(p.role));
       c.addEventListener("click", function () { S().posture = p.id; tous(".jdr-posture", ps).forEach(function (x) { x.classList.toggle("sel", x === c); }); changer(); });
     });
@@ -166,113 +268,190 @@
     });
   };
 
-  // Les experts ----------------------------------------------------------------------------------
+  // Le cadrage de Rose ------------------------------------------------------------------------------
+  BRIQUES["jdr-cadrage"] = function (z) {
+    var C = D.cadrage, x = EXP.rose;
+    var sc = el("div", "jdr-scene", z);
+    var t = tete("rose", "moyen", sc);
+    var bo = el("div", "jdr-dialogue", sc);
+    el("div", "jdr-plaque", bo, x.prenom + " · " + x.specialite).style.background = x.couleur;
+    var tx = el("p", "jdr-texte", bo);
+    var suite = el("div", "jdr-choix", bo);
+    var dits = el("ul", "jdr-dits", z);
+    function etapes() {
+      var p = S().posture, e = [[C.presentation], [C.question, "Votre réponse ? Puis celle de Rose ▶"], [C.reponse, null, "cle"]];
+      if (p && !S().solo) e.push([C.enquetes[p]]);
+      else ["R", "A", "O"].forEach(function (k) { e.push([C.enquetes[k]]); });
+      C.suite.forEach(function (s) { e.push([s]); });
+      return e;
+    }
+    if (EN_PDF) { etapes().forEach(function (e) { el("li", "", dits, ty(e[0])); }); return; }
+    var i = 0, E = etapes();
+    function dire() {
+      suite.innerHTML = "";
+      parler(t, tx, E[i][0], function () {
+        if (i > 0) { var li = el("li", E[i - 1][2] || "", dits, ty(E[i - 1][0])); li.scrollIntoView({ block: "nearest" }); }
+        if (i < E.length - 1) bouton(E[i][1] || "▶ suite", "jdr-q", suite, function () { i += 1; dire(); });
+      }, x.voix);
+    }
+    tx.textContent = "▶";
+    var lance = false;
+    function lancer() { if (!lance) { lance = true; E = etapes(); dits.innerHTML = ""; dire(); } }
+    sc.addEventListener("click", lancer);
+    if (window.Reveal) Reveal.on("slidechanged", function (e) { if (e.currentSlide.contains(z)) lancer(); });
+  };
+
+  // Les experts, et « C'est parti » ----------------------------------------------------------------
   BRIQUES["jdr-experts"] = function (z) {
     var g = el("div", "jdr-experts-g", z);
     D.experts.forEach(function (x) {
-      var c = el("div", "jdr-carte jdr-expert", g);
+      var c = el("div", "jdr-carte jdr-expert" + (x.apart ? " apart" : ""), g);
       c.style.setProperty("--coul", x.couleur);
       tete(x.id, "moyen", c);
       el("strong", "jdr-expert-nom", c, x.prenom);
       el("span", "jdr-expert-spe", c, x.specialite);
-      el("span", "jdr-expert-trait", c, ty(x.trait));
+      el("span", "jdr-expert-trait", c, ty(x.travail));
     });
+    var bas = el("div", "jdr-experts-bas", z);
+    var sc = el("div", "jdr-scene petite", bas);
+    var t = tete("rose", "petit", sc);
+    var bo = el("div", "jdr-dialogue", sc);
+    el("div", "jdr-plaque", bo, "Rose").style.background = EXP.rose.couleur;
+    var tx = el("p", "jdr-texte", bo, EN_PDF ? ty(D.presentation_experts) : "▶");
+    bouton("C'est parti !", "principal jdr-cestparti", bas, function () {
+      demarrer();
+      var s = S();
+      if (!s.posture) { aller("equipe"); return; }
+      aller("enquete-" + POST[s.posture].enquete.toLowerCase());
+    });
+    if (EN_PDF) return;
+    var lu = false;
+    function lancer() { if (!lu) { lu = true; parler(t, tx, D.presentation_experts, null, EXP.rose.voix); } }
+    sc.addEventListener("click", lancer);
+    if (window.Reveal) Reveal.on("slidechanged", function (e) { if (e.currentSlide.contains(z)) lancer(); });
   };
 
-  // La répartition des enquêtes ---------------------------------------------------------------
-  BRIQUES["jdr-repartition"] = function (z) {
-    var g = el("div", "jdr-repart", z);
-    function dessiner() {
-      g.innerHTML = "";
-      ["A", "B", "C"].forEach(function (k) {
-        var e = D.enquetes[k], p = POST[e.posture];
-        var c = el("a", "jdr-carte jdr-enq-carte" + (S().posture === e.posture ? " sel" : ""), g);
-        c.href = "#/enquete-" + k.toLowerCase();
-        el("span", "jdr-enq-lettre", c, k);
-        el("strong", "", c, ty(e.titre));
-        el("span", "jdr-enq-qui", c, p.nom);
-        var exp = el("span", "jdr-enq-exp", c);
-        el("span", "", exp, "Tous les experts répondent ; un seul est le bon premier interlocuteur.");
-        if (S().posture === e.posture) el("span", "jdr-enq-toi", c, "▶ ton enquête");
-      });
+  // Le verrou d'une enquête ou d'un labo, en mode groupe -----------------------------------------
+  function verrou(z, k, labo) {
+    var v = el("div", "jdr-verrou", z); v.hidden = true;
+    var b = el("div", "jdr-verrou-boite", v);
+    el("div", "jdr-verrou-cadenas", b, "🔒");
+    var m = el("p", "", b);
+    var l = el("div", "jdr-choix-ligne", b);
+    function maj() {
+      var s = S(), ok = acces(k), ouvert = !labo || s.clefs[labo];
+      v.hidden = ok && ouvert;
+      if (v.hidden) return;
+      l.innerHTML = "";
+      if (!ok) {
+        var p = D.postures.filter(function (x) { return x.enquete === k; })[0];
+        m.textContent = ty((labo ? D.labos[labo].titre + " : réservé à " : "Cette enquête est celle de ") + p.nom.toLowerCase() + ". En groupe, chacun mène la sienne ; cochez « Je joue en solo » sur la diapo de l'équipe pour tout jouer.");
+      } else m.textContent = ty(D.labos[labo].ferme);
+      var mien = s.posture ? POST[s.posture].enquete : "A";
+      bouton("Retour à " + (ok ? "l'enquête " + k : "mon enquête"), "principal", l, function () { aller("enquete-" + (ok ? k : mien).toLowerCase()); });
+      bouton("L'équipe", "", l, function () { aller("equipe"); });
     }
-    dessiner(); abonnes.push(dessiner);
-  };
+    maj(); abonnes.push(maj);
+  }
+  function enTeteJeu(z, gauche) {
+    var h = el("div", "jdr-jeu-tete", z);
+    var qui = el("div", "jdr-enq-qui-suis", h);
+    var d = el("div", "jdr-jeu-outils", h);
+    var conf = el("div", "", d);
+    boutonChrono(d); boutonSon(d);
+    function maj() {
+      qui.innerHTML = "";
+      gauche(qui);
+      conf.innerHTML = ""; confianceHTML(conf);
+    }
+    maj(); abonnes.push(maj);
+    return h;
+  }
 
   // L'enquête : le cœur du jeu -------------------------------------------------------------------
   BRIQUES["jdr-enquete"] = function (z) {
     var k = z.dataset.enquete, E = D.enquetes[k];
     if (!E) return;
+    var labo = E.labo, L = D.labos[labo];
     if (EN_PDF) {
-      el("p", "jdr-pdf", z, "Interactif dans la version HTML. Ta mission :");
+      el("p", "jdr-pdf", z, "Interactif dans la version HTML. La mission :");
       var ol = el("ol", "jdr-mission", z); E.mission.forEach(function (m) { el("li", "", ol, ty(m)); });
       return;
     }
     var N = {}; E.noeuds.forEach(function (n) { N[n.id] = n; });
-    var tete_ = el("div", "jdr-enq-tete", z);
-    var qui = el("div", "jdr-enq-qui-suis", tete_);
-    var conf = el("div", "", tete_);
+    var P = POST[E.posture];
+    enTeteJeu(z, function (qui) {
+      tete(S().heros || "heros-1", "petit", qui);
+      var t = el("div", "", qui);
+      el("strong", "", t, (S().nom ? S().nom + ", " : "") + P.nom.toLowerCase());
+      el("span", "", t, "Enquête " + k + " · " + ty(E.titre));
+      var o = !!S().clefs[labo];
+      bouton((o ? "🔑 " : "🔒 ") + L.titre, "jdr-vers-labo" + (o ? " ouvert" : ""), qui, function () { aller("labo-" + labo); });
+    });
     var scene = el("div", "jdr-enq-scene", z);
     var gauche = el("div", "jdr-enq-gauche", scene);
-    el("div", "jdr-sous", gauche, "Avec qui veux-tu commencer ?");
+    var invite = el("div", "jdr-sous", gauche, E.debut);
     var portraits = el("div", "jdr-portraits", gauche);
     var boite = el("div", "jdr-dialogue grand", gauche);
-    var plaque = el("div", "jdr-plaque", boite, "");
-    plaque.style.visibility = "hidden";
-    var texte = el("p", "jdr-texte", boite, "Clique sur un expert.");
+    var plaque = el("div", "jdr-plaque", boite, ""); plaque.style.visibility = "hidden";
+    var corps = el("div", "jdr-dial-corps", boite);
+    var texte = el("p", "jdr-texte", corps, "Clique sur un expert.");
+    var fig = el("img", "jdr-fig", corps); fig.alt = ""; fig.hidden = true;
     var choix = el("div", "jdr-choix", boite);
     var droite = el("div", "jdr-enq-droite", scene);
     var onglets = el("div", "jdr-onglets", droite);
     var panneau = el("div", "jdr-panneau", droite);
     el("div", "jdr-toasts", z);
-    var actif = null, ongletActif = "mission", parleur = null;
+    verrou(z, k, null);
+    var actif = null, ongletActif = "mission", parleur = null, nSuite = 0;
 
-    function posture() { return S().posture || E.posture; }
+    function cle(x) { return k + ":" + x; }
     function vu(id) { return !!S().vus[id]; }
-    function dispo(n) {
-      if (n.cache && !S().debloques[n.id]) return false;
-      if (n.expert === E.bon && !S().accueils[k + ":" + E.bon + ":ouvert"]) return false;
-      return (n.requiert || []).every(vu);
+    function accueilFait(x) { return !!S().accueils[cle(x)]; }
+    function remplit(c, neg) {
+      if (!c) return !neg;
+      var s = S(), tests = [];
+      (c.noeuds || []).forEach(function (i) { tests.push(vu(i)); });
+      (c.indices || []).forEach(function (i) { tests.push(!!s.indices[i]); });
+      (c.clefs || []).forEach(function (i) { tests.push(!!s.clefs[i]); });
+      (c.essais || []).forEach(function (i) { tests.push(!!s.essais[i]); });
+      return neg ? tests.some(Boolean) : tests.every(Boolean);
     }
-    function aDire(xid) {
-      // le badge ne trahit pas le bon premier interlocuteur : il ne compte que ce qui s'est ouvert
-      return E.noeuds.filter(function (n) { return n.expert === xid && dispo(n) && !vu(n.id); }).length;
+    function dispo(n) {
+      if (!accueilFait(n.expert)) return false;
+      if (n.cache && !S().debloques[n.id]) return false;
+      return remplit(n.si, false) && !remplit(n.sauf, true);
+    }
+    function aDire(x) {
+      if (!accueilFait(x)) return E.noeuds.some(function (n) { return n.expert === x && n.cache && S().debloques[n.id] && !vu(n.id); }) ? "!" : "";
+      var c = E.noeuds.filter(function (n) { return n.expert === x && dispo(n) && !vu(n.id) && n.type !== "aparte"; }).length;
+      return c ? String(c) : "";
     }
     function appliquer(o) {
+      var s = S();
       (o.indices || []).forEach(function (i) {
-        if (!S().indices[i] && D.indices[i]) { S().indices[i] = true; toast(z, "Carnet : « " + D.indices[i].titre + " »", "carnet"); }
+        if (!s.indices[i] && D.indices[i]) { s.indices[i] = true; toast(z, "Carnet : « " + D.indices[i].titre + " »", "carnet"); }
       });
-      (o.pistes || []).forEach(function (p) {
-        if (!S().pistes[p]) { S().pistes[p] = true; toast(z, "Nouvelle piste : " + (D.pistes[p] ? D.pistes[p].titre : "le labo"), "piste"); }
+      (o.clefs || []).forEach(function (c) {
+        if (!s.clefs[c]) { s.clefs[c] = true; toast(z, "🔑 " + (actif ? EXP[actif].prenom : "On") + " vous passe " + D.clefs[c] + ".", "clef"); }
       });
       (o.debloque || []).forEach(function (n) {
-        if (!S().debloques[n]) {
-          S().debloques[n] = true;
-          var nn = N[n]; if (nn) toast(z, EXP[nn.expert].prenom + " a quelque chose à te dire.", "debloque");
-        }
+        if (!s.debloques[n]) { s.debloques[n] = true; var nn = N[n]; if (nn && nn.expert !== actif) toast(z, EXP[nn.expert].prenom + " a quelque chose à vous dire.", "debloque"); }
       });
+      if (o.note) noter(o.note);
       if (o.cout) { confiance(-o.cout); toast(z, "Le préfet s'impatiente : un indice de plus.", "cout"); }
-    }
-    function dessinerTete() {
-      qui.innerHTML = "";
-      var p = POST[posture()];
-      tete(S().heros || "heros-1", "petit", qui);
-      var t = el("div", "", qui);
-      el("strong", "", t, (S().nom ? S().nom + ", " : "") + p.nom.toLowerCase());
-      el("span", "", t, "Enquête " + k + " · " + ty(E.titre));
-      if (posture() !== E.posture) el("span", "jdr-aide-enq", t, "Cette enquête est celle de " + POST[E.posture].nom.toLowerCase() + " : tu viens l'aider.");
-      conf.innerHTML = ""; confianceHTML(conf);
     }
     function dessinerPortraits() {
       portraits.innerHTML = "";
       D.experts.forEach(function (x) {
-        var b = el("button", "jdr-portrait" + (actif === x.id ? " actif" : ""), portraits); b.type = "button";
+        if (x.apart) el("span", "jdr-portraits-sep", portraits);
+        var b = el("button", "jdr-portrait" + (actif === x.id ? " actif" : "") + (x.apart ? " apart" : ""), portraits); b.type = "button";
         b.style.setProperty("--coul", x.couleur);
         var t = tete(x.id, "", b);
         el("span", "jdr-portrait-nom", b, x.prenom);
         el("span", "jdr-portrait-spe", b, x.specialite);
         var n = aDire(x.id);
-        if (n) el("span", "jdr-badge", b, String(n));
+        if (n) el("span", "jdr-badge", b, n);
         b.addEventListener("click", function () { ouvrir(x.id); });
         if (actif === x.id) parleur = t;
       });
@@ -281,68 +460,118 @@
       var l = el("div", "jdr-joueur", choix);
       tete(S().heros || "heros-1", "mini", l);
       el("span", "", l, ty(texteJoueur));
+      journal("moi", texteJoueur);
     }
-    function ouvrir(xid) {
-      actif = xid; dessinerPortraits();
-      var x = EXP[xid];
-      plaque.textContent = x.prenom + " · " + x.specialite;
-      plaque.style.visibility = "visible";
-      plaque.style.background = x.couleur;
+    function dire(rep, image, fin) {
+      fig.hidden = !image; if (image) fig.src = IMG[image];
+      corps.classList.toggle("avec-fig", !!image);
+      journal(actif, rep);
+      parler(parleur, texte, rep, fin, EXP[actif].voix);
+    }
+    function ouvrir(x) {
+      actif = x;
+      if (!S().accueils[cle(x) + ":lu"]) nSuite += 1;
+      invite.textContent = nSuite > 1 ? E.suites[(nSuite - 2) % E.suites.length] : E.debut;
+      dessinerPortraits();
+      var X = EXP[x];
+      plaque.textContent = X.prenom + " · " + X.specialite; plaque.style.visibility = "visible"; plaque.style.background = X.couleur;
       choix.innerHTML = "";
-      var cleA = k + ":" + xid, acc = E.accueils[xid] || { r: "…" };
-      if (!S().accueils[cleA]) {
-        S().accueils[cleA] = true;
-        if (!acc.choix) { appliquer(acc); if (xid === E.bon) S().accueils[k + ":" + xid + ":ouvert"] = true; }
-        changer();
-        parler(parleur, texte, acc.r, function () {
-          if (acc.choix) {
-            acc.choix.forEach(function (c) {
-              bouton("▶ " + c.dit, "jdr-q", choix, function () {
-                choix.innerHTML = ""; direJoueur(c.dit);
-                appliquer(c);
-                if (c.ouvre || xid === E.bon) S().accueils[k + ":" + xid + ":ouvert"] = true;
-                changer();
-                parler(parleur, texte, c.r, function () { listerQuestions(xid); });
-                dessinerPortraits();
-              });
-            });
-          } else listerQuestions(xid);
-        });
-      } else {
+      var acc = E.accueils[x] || { r: "…" };
+      if (!S().accueils[cle(x) + ":lu"]) {
+        S().accueils[cle(x) + ":lu"] = true;
+        appliquer(acc);
+        if (!acc.options) S().accueils[cle(x)] = true;
+        changer(); dessinerPortraits();
+        dire(acc.r, acc.image, function () { suiteAccueil(x, acc); });
+      } else if (!accueilFait(x)) {
+        // l'accueil attend encore une réponse : on le redit tel quel
+        fig.hidden = !acc.image; if (acc.image) fig.src = IMG[acc.image];
+        corps.classList.toggle("avec-fig", !!acc.image);
+        if (texte._arret) texte._arret();
         texte.textContent = ty(acc.r);
-        listerQuestions(xid);
+        suiteAccueil(x, acc);
+      } else {
+        // on revient voir l'expert : une réplique de retour, puis ses questions
+        dire(X.retour || "Je vous écoute.", null, function () { lister(x); });
       }
     }
-    function listerQuestions(xid) {
-      var liste = E.noeuds.filter(function (n) { return n.expert === xid && dispo(n); });
-      var nouveaux = liste.filter(function (n) { return !vu(n.id); });
-      var deja = liste.filter(function (n) { return vu(n.id); });
-      var zoneQ = el("div", "jdr-questions", choix);
-      nouveaux.forEach(function (n) {
-        bouton("▶ " + n.q + (n.cout ? "  (indice : −1 confiance)" : ""), "jdr-q" + (n.cout ? " cout" : ""), zoneQ, function () { poser(n); });
+    function suiteAccueil(x, acc) {
+      if (acc.options && !accueilFait(x)) proposer(acc.options, function () { S().accueils[cle(x)] = true; changer(); lister(x); });
+      else lister(x);
+    }
+    function proposer(options, fini) {
+      choix.innerHTML = "";
+      var zq = el("div", "jdr-questions", choix);
+      options.forEach(function (o) {
+        bouton("▶ " + o.dit, "jdr-q", zq, function () {
+          choix.innerHTML = ""; direJoueur(o.dit);
+          appliquer(o); changer(); dessinerPortraits();
+          dire(o.r, o.image, function () { if (o.juste === false) proposer(options, fini); else fini(); });
+        });
       });
-      deja.forEach(function (n) { bouton("↺ " + n.q, "jdr-q vu", zoneQ, function () { poser(n, true); }); });
-      if (!liste.length) {
-        var autre = xid === E.bon ? "Tu as fait le tour pour l'instant." :
-          "Pour cette enquête, ce n'est pas le bon premier interlocuteur. Essaie un autre expert.";
-        el("p", "jdr-astuce", zoneQ, autre);
-      } else if (!nouveaux.length && xid === E.bon) {
-        el("p", "jdr-astuce", zoneQ, "Tu as fait le tour avec " + EXP[xid].prenom + ". Va au labo, aide tes coéquipiers, ou passe au rapport.");
+    }
+    function lister(x) {
+      dessinerPortraits();
+      var liste = E.noeuds.filter(function (n) { return n.expert === x && dispo(n); });
+      var nouveaux = liste.filter(function (n) { return !vu(n.id) && n.type !== "aparte"; });
+      var apartes = liste.filter(function (n) { return !vu(n.id) && n.type === "aparte"; });
+      var deja = liste.filter(function (n) { return vu(n.id); });
+      var zq = el("div", "jdr-questions", choix);
+      nouveaux.forEach(function (n) { bouton("▶ " + n.q + (n.cout ? "  (indice : −1 confiance)" : ""), "jdr-q" + (n.cout ? " cout" : ""), zq, function () { poser(n); }); });
+      apartes.forEach(function (n) { bouton("✦ " + n.q, "jdr-q aparte", zq, function () { poser(n); }); });
+      deja.forEach(function (n) { bouton("↺ " + n.q, "jdr-q vu", zq, function () { poser(n, true); }); });
+      if (!nouveaux.length) {
+        el("p", "jdr-astuce", zq, x === "rose" ? "Rose reviendra vers vous quand vous aurez avancé." :
+          "Pour l'instant, " + EXP[x].prenom + " n'a rien de plus à vous dire. Un autre expert, un coéquipier, ou votre labo ?");
       }
     }
     function poser(n, relire) {
       choix.innerHTML = "";
       direJoueur(n.q);
-      // le tronc commun, puis l'angle de la posture, à la ligne : les répliques de Marc restent telles quelles
-      var rep = n.r + (n.angles && n.angles[posture()] ? "\n" + n.angles[posture()] : "");
-      if (!relire) { S().vus[n.id] = true; appliquer(n); changer(); }
-      dessinerPortraits();
-      parler(parleur, texte, rep, function () { listerQuestions(n.expert); });
+      if (relire) {
+        dire(S().succes[n.id] || n.r, n.image, function () { lister(n.expert); });
+        return;
+      }
+      if (n.type === "ouverte") {
+        dire(n.r, n.image, function () { saisir(n); });
+      } else if (n.options) {
+        dire(n.r, n.image, function () {
+          proposer(n.options, function () { S().vus[n.id] = true; appliquer(n); changer(); lister(n.expert); });
+        });
+      } else {
+        S().vus[n.id] = true; appliquer(n); changer(); dessinerPortraits();
+        dire(n.r, n.image, function () { lister(n.expert); });
+      }
+    }
+    function saisir(n) {
+      choix.innerHTML = "";
+      var f = el("form", "jdr-saisie", choix);
+      var i = el("input", "", f); i.placeholder = n.invite || "votre réponse"; i.setAttribute("aria-label", n.invite || "votre réponse");
+      bouton("Répondre", "principal", f).type = "submit";
+      bouton("Plus tard", "discret", f, function () { choix.innerHTML = ""; lister(n.expert); });
+      setTimeout(function () { try { i.focus({ preventScroll: true }); } catch (e) { /* rien */ } }, 30);
+      f.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var v = i.value.trim(); if (!v) return;
+        var s = S(); s.essais[n.id] = (s.essais[n.id] || 0) + 1;
+        choix.innerHTML = ""; direJoueur(v);
+        var u = simple(v), m = null;
+        (n.attendu || []).some(function (a) {
+          var ok = a.motifs.every(function (p) { return new RegExp(p, "i").test(u); });
+          if (ok) m = a;
+          return ok;
+        });
+        var r = m || n.sinon || { r: "…" };
+        appliquer(r);
+        if (m && m.fin) { s.vus[n.id] = true; s.succes[n.id] = m.r; appliquer(n); }
+        changer(); dessinerPortraits();
+        dire(r.r, r.image, function () { if (m && m.fin) lister(n.expert); else saisir(n); });
+      });
     }
     function dessinerOnglets() {
       onglets.innerHTML = "";
-      var nI = Object.keys(S().indices).length, nP = Object.keys(S().pistes).length;
-      [["mission", "Mission"], ["pistes", "Pistes (" + nP + ")"], ["carnet", "Carnet (" + nI + ")"]].forEach(function (o) {
+      var nI = Object.keys(S().indices).length;
+      [["mission", "Mission"], ["carnet", "Carnet (" + nI + ")"], ["journal", "Journal"]].forEach(function (o) {
         bouton(o[1], "jdr-onglet" + (ongletActif === o[0] ? " sel" : ""), onglets, function () { ongletActif = o[0]; dessinerOnglets(); dessinerPanneau(); });
       });
     }
@@ -351,300 +580,366 @@
       if (ongletActif === "mission") {
         var ol = el("ol", "jdr-mission", panneau);
         E.mission.forEach(function (m) { el("li", "", ol, ty(m)); });
-        var site = D.pistes[E.piste];
         var l = el("div", "jdr-liens", panneau);
-        var a = el("a", "jdr-btn principal", l, "Ouvrir " + site.titre); a.href = site.url; a.target = "_blank"; a.rel = "noopener";
-        var s = el("a", "jdr-btn", l, "Le site ne répond pas ? Le labo"); s.href = "#/" + site.labo;
-      } else if (ongletActif === "pistes") {
-        var ks = Object.keys(S().pistes);
-        if (!ks.length) el("p", "jdr-astuce", panneau, "Les experts t'ouvriront des pistes.");
-        ks.forEach(function (p) {
-          if (p.indexOf("labo-") === 0) { var a = el("a", "jdr-piste", panneau, "Le labo " + p.slice(5).toUpperCase() + " (secours intégré)"); a.href = "#/" + p; return; }
-          var P = D.pistes[p]; if (!P) return;
-          var b = el("a", "jdr-piste", panneau, P.titre); b.href = P.url; b.target = "_blank"; b.rel = "noopener";
-        });
-      } else {
-        var ks2 = Object.keys(S().indices);
-        if (!ks2.length) el("p", "jdr-astuce", panneau, "Ton carnet est vide : interroge les experts.");
-        ks2.forEach(function (i) {
+        var o = !!S().clefs[labo];
+        bouton((o ? "🔑 Ouvrir le " : "🔒 ") + L.titre, o ? "principal" : "", l, function () { aller("labo-" + labo); }).disabled = !o;
+        var a = el("a", "jdr-ref", l, "Le site de référence : " + L.site.titre); a.href = L.site.url; a.target = "_blank"; a.rel = "noopener";
+      } else if (ongletActif === "carnet") {
+        var ks = Object.keys(S().indices);
+        if (!ks.length) el("p", "jdr-astuce", panneau, "Ton carnet est vide : interroge les experts.");
+        ks.forEach(function (i) {
           var I = D.indices[i]; if (!I) return;
           var c = el("div", "jdr-note", panneau);
           el("strong", "", c, I.titre);
           el("span", "", c, ty(I.texte));
         });
+      } else {
+        var j = S().journal.slice(-60).reverse();
+        if (!j.length) el("p", "jdr-astuce", panneau, "Le journal garde la trace de vos échanges.");
+        j.forEach(function (e) {
+          var c = el("div", "jdr-jl" + (e[0] === "moi" ? " moi" : ""), panneau);
+          el("strong", "", c, e[0] === "moi" ? (S().nom || "Moi") : (EXP[e[0]] ? EXP[e[0]].prenom : e[0]));
+          el("span", "", c, ty(e[1]));
+        });
       }
     }
-    function tout() { dessinerTete(); dessinerPortraits(); dessinerOnglets(); dessinerPanneau(); }
-    tout(); abonnes.push(function () { dessinerTete(); dessinerOnglets(); dessinerPanneau(); });
+    dessinerPortraits(); dessinerOnglets(); dessinerPanneau();
+    abonnes.push(function () { dessinerOnglets(); dessinerPanneau(); });
   };
 
-  // Les labos de secours ---------------------------------------------------------------------------
+  // Les labos ---------------------------------------------------------------------------------------
   BRIQUES["jdr-labo"] = function (z) {
-    var l = z.dataset.labo;
-    if (l === "a") laboA(z); else if (l === "b") laboB(z); else if (l === "c") laboC(z);
-  };
-  function lecteur(parent, cles, etiquettes, titre, note, vitesse) {
-    var c = el("div", "jdr-lecteur", parent);
-    el("div", "jdr-sous", c, titre);
-    var im = el("img", "jdr-lecteur-img", c); im.src = IMG[cles[0]]; im.alt = "";
-    var bas = el("div", "jdr-lecteur-bas", c);
-    var lire = bouton("▶ Lancer", "", bas);
-    var r = el("input", "jdr-lecteur-curseur", bas); r.type = "range"; r.min = 0; r.max = cles.length - 1; r.value = 0;
-    var lab = el("span", "jdr-lecteur-lab", bas, etiquettes[0]);
-    var t = null;
-    if (window.Reveal) Reveal.on("slidechanged", function () { if (t) { clearInterval(t); t = null; lire.textContent = "▶ Lancer"; } });
-    function aller(i) { r.value = i; im.src = IMG[cles[i]]; lab.textContent = etiquettes[i]; }
-    r.addEventListener("input", function () { aller(+r.value); });
-    lire.addEventListener("click", function () {
-      if (t) { clearInterval(t); t = null; lire.textContent = "▶ Lancer"; return; }
-      lire.textContent = "■ Arrêter";
-      t = setInterval(function () { aller((+r.value + 1) % cles.length); }, vitesse || 180);
+    var l = z.dataset.labo, L = D.labos[l];
+    if (EN_PDF) { el("p", "jdr-pdf", z, ty(L.titre + " : " + L.sous + ". Interactif dans la version HTML.")); return; }
+    enTeteJeu(z, function (qui) {
+      bouton("← Retour à l'enquête " + L.enquete, "principal jdr-retour-enq", qui, function () { aller("enquete-" + L.enquete.toLowerCase()); });
+      var t = el("div", "", qui);
+      el("strong", "", t, L.titre); el("span", "", t, L.sous);
     });
-    if (note) el("p", "jdr-note-labo", c, ty(note));
+    el("div", "jdr-toasts", z);
+    var corps = el("div", "jdr-labo-corps", z);
+    if (l === "a") laboA(corps, z); else if (l === "b") laboB(corps, z); else laboC(corps, z);
+    var ref = el("a", "jdr-ref jdr-labo-ref", z, "Inspiré de : " + L.site.titre + " ↗"); ref.href = L.site.url; ref.target = "_blank"; ref.rel = "noopener";
+    verrou(z, L.enquete, l);
+  };
+  function defileur(parent, liste, depart) {
+    // une image, des flèches, un curseur : comme on feuillette un viewer
+    var c = el("div", "jdr-defileur", parent);
+    var im = el("img", "jdr-defileur-img", c); im.alt = "";
+    var bas = el("div", "jdr-lecteur-bas", c);
+    var i = depart || 0;
+    var b0 = bouton("⏮", "petit", bas), b1 = bouton("◀", "petit", bas);
+    var r = el("input", "jdr-lecteur-curseur", bas); r.type = "range"; r.min = 0; r.max = liste.length - 1;
+    var b2 = bouton("▶", "petit", bas), b3 = bouton("⏭", "petit", bas);
+    var lab = el("span", "jdr-lecteur-lab", bas);
+    function va(j) { i = Math.max(0, Math.min(liste.length - 1, j)); r.value = i; im.src = IMG[liste[i][0]]; lab.textContent = liste[i][1]; }
+    b0.onclick = function () { va(0); }; b1.onclick = function () { va(i - 1); }; b2.onclick = function () { va(i + 1); }; b3.onclick = function () { va(liste.length - 1); };
+    r.addEventListener("input", function () { va(+r.value); });
+    c.va = va; c.index = function () { return i; };
+    va(i);
     return c;
   }
-  function laboA(z) {
-    var g = el("div", "jdr-labo-deux", z);
-    var cles = [], et = [];
-    for (var k = 0; k < 37; k++) { cles.push("mtg-" + (k < 10 ? "0" : "") + k); et.push(D.meteosat_dates[k] + " UTC"); }
-    lecteur(g, cles, et, "Meteosat, la séquence de secours", D.meteosat_note, 180);
-    var tc = [], tl = [];
-    for (var j = 21; j <= 28; j++) { tc.push("terra-" + j); tl.push(j + " juillet 2026"); }
-    lecteur(g, tc, tl, "Terra, les anomalies thermiques, jour par jour", "Les pixels rouges sont des anomalies thermiques. Comparez le 21 et le 22 juillet.", 900);
-  }
-  function laboB(z) {
-    var on = el("div", "jdr-onglets", z);
-    var p1 = el("div", "jdr-labo-page", z), p2 = el("div", "jdr-labo-page", z);
-    var b1 = bouton("Comparer les compositions", "jdr-onglet sel", on, function () { p1.hidden = false; p2.hidden = true; b1.classList.add("sel"); b2.classList.remove("sel"); });
-    var b2 = bouton("Mesurer la surface", "jdr-onglet", on, function () { p1.hidden = true; p2.hidden = false; b2.classList.add("sel"); b1.classList.remove("sel"); dessinerB(); });
-    p2.hidden = true;
-    // 1. compositions : 21 juillet sous 26 juillet, un curseur fond l'un dans l'autre
-    var compo = "naturelles";
-    var g = el("div", "jdr-compo", p1);
-    var cadre = el("div", "jdr-compo-cadre", g);
-    var avant = el("img", "", cadre), apres = el("img", "dessus", cadre);
-    var cote = el("div", "jdr-compo-cote", g);
-    el("div", "jdr-sous", cote, "Composition");
+  function laboA(corps, z) {
+    var g = el("div", "jdr-labo-a", corps);
+    var gauche = el("div", "", g), cote = el("div", "jdr-labo-cote", g);
+    var vueM = defileur(gauche, D.meteosat, 0);
+    var vueT = defileur(gauche, D.terra, 0); vueT.hidden = true;
+    el("div", "jdr-sous", cote, "La source");
     var bs = el("div", "jdr-compo-btns", cote);
-    D.compositions.forEach(function (c) {
-      bouton(c[1], "jdr-opt" + (c[0] === compo ? " sel" : ""), bs, function () {
-        compo = c[0]; tous(".jdr-opt", bs).forEach(function (x) { x.classList.toggle("sel", x.textContent === c[1]); }); maj();
-      });
+    var bM = bouton("Meteosat (MSG, 0°)", "jdr-opt sel", bs, function () { vueM.hidden = false; vueT.hidden = true; bM.classList.add("sel"); bT.classList.remove("sel"); maj(); });
+    var bT = bouton("Terra (anomalies thermiques)", "jdr-opt", bs, function () { vueM.hidden = true; vueT.hidden = false; bT.classList.add("sel"); bM.classList.remove("sel"); maj(); });
+    var info = el("p", "jdr-note-labo", cote);
+    el("div", "jdr-sous", cote, "Mes notes");
+    var pin = bouton("📌 Premier signe : cette image", "principal", cote, function () {
+      var f = D.meteosat[vueM.index()];
+      noter({ a_date: f[2], a_h: f[3] }); changer();
+      toast(z, "Noté pour le rapport : " + f[2] + ", " + f[3] + ".", "carnet");
     });
-    el("div", "jdr-sous", cote, "Date");
-    var r = el("input", "jdr-pari-curseur", cote); r.type = "range"; r.min = 0; r.max = 100; r.value = 100;
-    var dl = el("div", "jdr-compo-dates", cote); el("span", "", dl, "21 juillet"); el("span", "", dl, "26 juillet");
-    el("p", "jdr-note-labo", cote, "Exports du Copernicus Browser, Sentinel-2 L2A. Faites glisser pour passer d'une date à l'autre, et changez de composition.");
-    function maj() { avant.src = IMG["s2-21-" + compo]; apres.src = IMG["s2-26-" + compo]; apres.style.opacity = r.value / 100; }
-    r.addEventListener("input", maj); maj();
-    // 2. la mesure, comme dans la séance prépa
-    var M = D.mesure, mi = 0, poly = [];
-    var g2 = el("div", "jdr-mesure", p2), gc = el("div", "", g2), gd = el("div", "jdr-mesure-cote", g2);
-    el("div", "jdr-sous", gd, "L'image");
-    var mb = el("div", "jdr-compo-btns", gd);
-    var boutons = M.images.map(function (m, i) {
-      return bouton(m[1], "jdr-opt" + (i === 0 ? " sel" : ""), mb, function () {
-        mi = i; poly = []; boutons.forEach(function (b, j) { b.classList.toggle("sel", j === i); }); out.innerHTML = "Surface tracée : <b>—</b>"; dessinerB();
-      });
-    });
-    var cv = el("canvas", "jdr-mesure-cv", gc); cv.width = M.geo.w; cv.height = M.geo.h;
-    el("div", "jdr-sous", gd, "Le tracé");
-    el("p", "jdr-note-labo", gd, "Clic pour poser un sommet, double-clic pour fermer.");
-    var outils = el("div", "jdr-compo-btns", gd);
-    bouton("Annuler le dernier point", "", outils, function () { poly.pop(); dessinerB(); });
-    bouton("Recommencer le tracé", "", outils, function () { poly = []; out.innerHTML = "Surface tracée : <b>—</b>"; dessinerB(); });
-    var out = el("div", "jdr-mesure-out", gd); out.innerHTML = "Surface tracée : <b>—</b>";
-    var images = {};
-    function img(cle, cb) { if (images[cle]) return cb(images[cle]); var i = new Image(); i.onload = function () { images[cle] = i; cb(i); }; i.src = IMG[cle]; }
-    function dessinerB() {
-      var x = cv.getContext("2d");
-      img(M.images[mi][0], function (im) {
-        x.drawImage(im, 0, 0, cv.width, cv.height);
-        if (!poly.length) return;
-        x.strokeStyle = "#ff8a4c"; x.lineWidth = 2; x.fillStyle = "rgba(255,138,76,.20)";
-        x.beginPath(); poly.forEach(function (p, i) { if (i) x.lineTo(p[0], p[1]); else x.moveTo(p[0], p[1]); });
-        if (poly.length > 2) { x.closePath(); x.fill(); }
-        x.stroke(); x.fillStyle = "#ff8a4c";
-        poly.forEach(function (p) { x.beginPath(); x.arc(p[0], p[1], 4, 0, 7); x.fill(); });
-      });
+    var ici = el("p", "jdr-note-labo", cote);
+    function maj() {
+      var t = !!S().clefs["a-terra"];
+      bT.disabled = !t; bT.textContent = (t ? "" : "🔒 ") + "Terra (anomalies thermiques)";
+      info.textContent = vueM.hidden ? ty("Terra passe une à deux fois par jour. Les pixels rouges sont des anomalies thermiques. Comparez le 21 et le 22 juillet.")
+        : ty("Une image par pas de temps, du 21 juillet midi au 22 juillet 23 h. L'heure, en UTC, est inscrite en bas à droite de l'image. Avancez image par image.");
+      pin.hidden = vueM.hidden;
+      var F = S().rapport;
+      ici.textContent = F.a_date ? ty("Dans le rapport : " + F.a_date + (F.a_h ? ", " + F.a_h : "")) : "";
     }
-    function point(e) { var rc = cv.getBoundingClientRect(); poly.push([(e.clientX - rc.left) / rc.width * M.geo.w, (e.clientY - rc.top) / rc.height * M.geo.h]); dessinerB(); }
-    cv.addEventListener("click", function (e) { if (e.detail > 1) return; point(e); });
-    cv.addEventListener("dblclick", function () { fermer(); });
-    function fermer() {
-      if (poly.length < 3) return;
-      var G = M.geo;
+    maj(); abonnes.push(maj);
+  }
+  function laboB(corps, z) {
+    var g = el("div", "jdr-labo-b", corps);
+    var vue = el("div", "jdr-vue-b", g), cote = el("div", "jdr-labo-cote", g);
+    var cv = el("canvas", "jdr-mesure-cv", vue);
+    var legende = el("div", "jdr-legende", vue);
+    var date = D.dates_s2[1][0], compo = "naturelles", mesurer = false, poly = [], aire = null;
+    el("div", "jdr-sous", cote, "La date");
+    var bd = el("div", "jdr-choix-ligne serre", cote);
+    D.dates_s2.forEach(function (d) { bouton(d[1].replace(" 2026", ""), "jdr-opt petit" + (d[0] === date ? " sel" : ""), bd, function (e) { date = d[0]; sel(bd, e.currentTarget); poly = []; aire = null; dessiner(); }); });
+    el("div", "jdr-sous", cote, "La composition");
+    var bc = el("div", "jdr-compo-btns", cote);
+    D.compositions.forEach(function (c) { bouton(c[1], "jdr-opt" + (c[0] === compo ? " sel" : ""), bc, function (e) { compo = c[0]; sel(bc, e.currentTarget); poly = []; aire = null; dessiner(); }); });
+    var bN = bouton("Indice dNBR", "jdr-opt", bc, function (e) { compo = "dnbr"; sel(bc, e.currentTarget); poly = []; aire = null; dessiner(); });
+    var info = el("p", "jdr-note-labo", cote);
+    el("div", "jdr-sous", cote, "La mesure");
+    var lm = el("div", "jdr-choix-ligne serre", cote);
+    var bm = bouton("✎ Tracer", "jdr-opt petit", lm, function () { mesurer = !mesurer; bm.classList.toggle("sel", mesurer); cv.classList.toggle("trace", mesurer); dessiner(); });
+    bouton("↶ Annuler", "jdr-opt petit", lm, function () { poly.pop(); aire = null; dessiner(); });
+    bouton("✕ Effacer", "jdr-opt petit", lm, function () { poly = []; aire = null; dessiner(); });
+    var out = el("div", "jdr-mesure-out", cote);
+    bouton("📌 Noter pour le rapport", "principal", cote, function () {
+      var d = D.dates_s2.filter(function (x) { return x[0] === date; })[0];
+      var c = D.compositions.filter(function (x) { return x[0] === compo; })[0];
+      var n = {};
+      if (d[2] === "avant" && compo !== "dnbr") n.b_avant = d[1];
+      else {
+        n.b_pdt = compo === "dnbr" ? "dNBR, 21 juillet → 4 septembre" : d[1];
+        n.b_comp = c ? c[1] : "dNBR";
+        n.b_bandes = c ? c[2].split(" — ")[0].split(" (")[0] + (/20 m/.test(c[2]) ? ", 20 m" : /10 m/.test(c[2]) ? ", 10 m" : "") : "B8A, B12, 20 m";
+        if (aire) n.b_surf = String(aire);
+      }
+      noter(n); changer();
+      toast(z, "Noté pour le rapport : " + Object.keys(n).map(function (k) { return n[k]; }).join(" · "), "carnet");
+    });
+    function sel(parent, b) { tous(".jdr-opt", parent).forEach(function (x) { x.classList.toggle("sel", x === b); }); }
+    var images = {};
+    function charger(cle, cb) { if (images[cle]) return cb(images[cle]); var i = new Image(); i.onload = function () { images[cle] = i; cb(i); }; i.src = IMG[cle]; }
+    function geo() { return compo === "dnbr" ? D.mesure.geo : D.fenetre; }
+    function dessiner() {
+      var cle = compo === "dnbr" ? "m-dnbr" : "s2-" + date + "-" + compo;
+      tous("button", bd).forEach(function (b) { b.disabled = compo === "dnbr"; });
+      var c = D.compositions.filter(function (x) { return x[0] === compo; })[0];
+      var d = D.dates_s2.filter(function (x) { return x[0] === date; })[0];
+      info.textContent = ty(c ? c[2] : "dNBR : NBR du 21 juillet moins NBR du 4 septembre, calculé sur B8A et B12 à 20 m. Classes UN-SPIDER. Vue resserrée sur le feu.");
+      legende.innerHTML = "";
+      if (compo === "dnbr") D.dnbr_legende.forEach(function (x) { var s = el("span", "", legende); el("i", "", s).style.background = x[0]; el("span", "", s, x[1]); });
+      else el("span", "jdr-vue-date", legende, d[1] + " · " + (c ? c[1] : ""));
+      charger(cle, function (im) {
+        var G = geo(); cv.width = G.w; cv.height = G.h;
+        var x = cv.getContext("2d"); x.drawImage(im, 0, 0, G.w, G.h);
+        if (poly.length) {
+          x.strokeStyle = "#ff8a4c"; x.lineWidth = 2.5; x.fillStyle = "rgba(255,138,76,.22)";
+          x.beginPath(); poly.forEach(function (p, i) { if (i) x.lineTo(p[0], p[1]); else x.moveTo(p[0], p[1]); });
+          if (poly.length > 2) { x.closePath(); x.fill(); }
+          x.stroke(); x.fillStyle = "#ff8a4c";
+          poly.forEach(function (p) { x.beginPath(); x.arc(p[0], p[1], 3.5, 0, 7); x.fill(); });
+        }
+      });
+      var ref = D.mesure.references[date];
+      out.innerHTML = "";
+      if (aire !== null) {
+        el("b", "", out, aire.toLocaleString("fr-FR") + " ha");
+        if (ref && compo !== "dnbr") el("p", "jdr-note-labo", out, ty("Ordre de grandeur attendu : environ " + ref[0].toLocaleString("fr-FR") + " ha. " + ref[1]));
+      } else el("span", "jdr-note-labo", out, mesurer ? "Clic : un sommet. Double-clic : fermer." : "Appuyez sur « Tracer », puis cliquez autour de la zone brûlée.");
+    }
+    function point(e) { var r = cv.getBoundingClientRect(), G = geo(); poly.push([(e.clientX - r.left) / r.width * G.w, (e.clientY - r.top) / r.height * G.h]); aire = null; dessiner(); }
+    cv.addEventListener("click", function (e) { if (!mesurer || e.detail > 1) return; point(e); });
+    cv.addEventListener("dblclick", function () {
+      if (!mesurer || poly.length < 3) return;
+      var G = geo();
       var kx = (G.lon1 - G.lon0) / G.w * 111320 * Math.cos(44.85 * Math.PI / 180), ky = (G.lat1 - G.lat0) / G.h * 110570;
       var s = 0;
       for (var i = 0; i < poly.length; i++) { var a = poly[i], b = poly[(i + 1) % poly.length]; s += (a[0] * kx) * (b[1] * ky) - (b[0] * kx) * (a[1] * ky); }
-      var ha = Math.round(Math.abs(s) / 2 / 10000);
-      S().surf[mi] = ha; changer();
-      out.innerHTML = "Surface tracée le " + M.images[mi][1] + " :<br><b>" + ha.toLocaleString("fr-FR") + " ha</b><p class=\"jdr-note-labo\">Ordre de grandeur attendu : environ " +
-        M.images[mi][2].toLocaleString("fr-FR") + " ha. " + ty(M.images[mi][3]) + "</p>";
-    }
+      aire = Math.round(Math.abs(s) / 2 / 10000);
+      dessiner();
+    });
+    function maj() { var o = !!S().clefs["b-nbr"]; bN.disabled = !o; bN.textContent = (o ? "" : "🔒 ") + "Indice dNBR"; }
+    maj(); abonnes.push(maj); dessiner();
   }
-  function laboC(z) {
-    // Une animation de secours pour Deimos : la Terre vue du pôle Nord, un géostationnaire, Sentinel-2 ;
-    // puis les traces au sol de Sentinel-2, jour après jour, au-dessus de Saumos.
-    var g = el("div", "jdr-labo-deux", z);
-    var c1 = el("div", "jdr-lecteur", g); el("div", "jdr-sous", c1, "Vue depuis le pôle Nord (échelles non respectées)");
-    var cv = el("canvas", "jdr-orbite-cv", c1); cv.width = 560; cv.height = 420;
-    el("p", "jdr-note-labo", c1, "Le géostationnaire tourne avec la Terre : il reste au-dessus du même méridien. Sentinel-2 passe par les pôles, sur une orbite dont le plan garde la même position par rapport au Soleil : la Terre tourne sous lui.");
-    var c2 = el("div", "jdr-lecteur", g); el("div", "jdr-sous", c2, "Les traces de Sentinel-2 au-dessus de Saumos, jour après jour");
-    var cv2 = el("canvas", "jdr-orbite-cv", c2); cv2.width = 560; cv2.height = 300;
-    var bas = el("div", "jdr-lecteur-bas", c2);
-    var lab = el("span", "jdr-lecteur-lab", bas, "Jour 1");
-    var alt = el("div", "jdr-altitudes", c2);
-    var lA = el("div", "", alt); el("span", "", lA, "Sentinel-2 : 786 km"); var bA = el("i", "", lA); bA.style.width = (786 / 36000 * 100) + "%";
-    var lB = el("div", "", alt); el("span", "", lB, "Géostationnaire : 36 000 km"); var bB = el("i", "", lB); bB.style.width = "100%";
+  function laboC(corps, z) {
+    // la Terre vue du pôle Nord et les satellites connus ; les fiches ; les passages de Sentinel-2 sur Saumos
+    var g = el("div", "jdr-labo-c", corps);
+    var gauche = el("div", "", g), cote = el("div", "jdr-labo-cote", g);
+    var cv = el("canvas", "jdr-orbite-cv", gauche); cv.width = 620; cv.height = 330;
+    var cv2 = el("canvas", "jdr-orbite-cv traces", gauche); cv2.width = 620; cv2.height = 110;
+    el("div", "jdr-sous", cote, "Les fiches");
+    var cartes = el("div", "jdr-sats", cote);
+    var fiche = el("div", "jdr-fiche", cote);
+    var choisi = null;
+    function connu(s) { var m = S(); return s.indice ? !!m.indices[s.indice] && !!m.clefs.c : !!m.clefs[s.clef]; }
+    function dessinerCartes() {
+      cartes.innerHTML = "";
+      D.satellites.forEach(function (s) {
+        var ok = connu(s);
+        var b = bouton(ok ? s.nom : "???", "jdr-opt petit" + (choisi === s.id ? " sel" : ""), cartes, function () { choisi = s.id; dessinerCartes(); dessinerFiche(); });
+        b.disabled = !ok;
+      });
+    }
+    function dessinerFiche() {
+      fiche.innerHTML = "";
+      var s = D.satellites.filter(function (x) { return x.id === choisi; })[0];
+      if (!s) { el("p", "jdr-note-labo", fiche, ty("Une fiche s'ouvre quand vous connaissez un satellite : choisissez-en une.")); return; }
+      el("strong", "", fiche, s.nom + " · capteur " + s.capteur);
+      var dl = el("dl", "", fiche);
+      [["Orbite", s.orbite], ["Altitude", "environ " + s.altitude.toLocaleString("fr-FR") + " km"], ["Revisite", s.revisite], ["Pixel", s.pixel], ["La nuit", s.nuit]].forEach(function (r) {
+        el("dt", "", dl, r[0]); el("dd", "", dl, ty(r[1]));
+      });
+      el("p", "jdr-note-labo", fiche, ty(s.note));
+      if (s.rapport) bouton("📌 Noter pour le rapport", "principal", fiche, function () { noter(s.rapport); changer(); toast(z, "Noté pour le rapport : " + s.nom + ".", "carnet"); });
+    }
     var t0 = performance.now(), jour = 0;
     function anim(t) {
       if (!document.body.contains(cv)) return;
-      var x = cv.getContext("2d"), W = cv.width, H = cv.height, cx = W / 2, cy = H / 2, R = 70;
-      var a = -(t - t0) / 4000 * Math.PI * 2;          // un jour terrestre en 4 s ; vue du pôle Nord, la Terre tourne dans le sens inverse des aiguilles d'une montre
+      var x = cv.getContext("2d"), W = cv.width, H = cv.height, cx = W / 2 - 20, cy = H / 2 - 6, R = 58;
+      var a = -(t - t0) / 4000 * Math.PI * 2;          // un jour en 4 s ; vue du pôle Nord, la Terre tourne dans le sens inverse des aiguilles d'une montre
       x.clearRect(0, 0, W, H);
-      // le Soleil, à gauche
-      x.fillStyle = "#F2C94C"; x.beginPath(); x.arc(30, cy, 18, 0, 7); x.fill();
-      x.fillStyle = "#6E6F7A"; x.font = "12px Roboto, sans-serif"; x.fillText("Soleil", 12, cy + 34);
-      // la Terre et le méridien de Saumos
+      x.font = "12px Roboto, sans-serif";
+      x.fillStyle = "#F2C94C"; x.beginPath(); x.arc(24, cy, 15, 0, 7); x.fill();
+      x.fillStyle = "#6E6F7A"; x.fillText("Soleil", 8, cy + 30);
       x.fillStyle = "#4F6BC4"; x.beginPath(); x.arc(cx, cy, R, 0, 7); x.fill();
-      x.fillStyle = "rgba(0,0,0,.25)"; x.beginPath(); x.arc(cx, cy, R, -Math.PI / 2, Math.PI / 2); x.fill();
+      x.fillStyle = "rgba(0,0,0,.28)"; x.beginPath(); x.arc(cx, cy, R, -Math.PI / 2, Math.PI / 2); x.fill();
       var mx = cx + Math.cos(a) * R, my = cy + Math.sin(a) * R;
       x.strokeStyle = "#FFFFFF"; x.lineWidth = 2; x.beginPath(); x.moveTo(cx, cy); x.lineTo(mx, my); x.stroke();
       x.fillStyle = "#E38226"; x.beginPath(); x.arc(mx, my, 5, 0, 7); x.fill();
-      // le géostationnaire, toujours au-dessus de Saumos
-      var Rg = 185, gx = cx + Math.cos(a) * Rg, gy = cy + Math.sin(a) * Rg;
-      x.strokeStyle = "#B9BEDC"; x.setLineDash([4, 5]); x.beginPath(); x.arc(cx, cy, Rg, 0, 7); x.stroke(); x.setLineDash([]);
-      x.fillStyle = "#283B89"; x.fillRect(gx - 7, gy - 5, 14, 10);
-      x.fillStyle = "#283B89"; x.fillText("géostationnaire", gx + 10, gy + 4);
-      // Sentinel-2 : orbite polaire vue par la tranche. Son plan reste fixe par rapport au Soleil :
-      // il passe au-dessus de chaque lieu vers 10 h 30, heure solaire locale (22,5° avant midi)
-      var Rl = 92, f = (t - t0) / 4000 * 14.3 * Math.PI * 2, phi = -(180 - 22.5) * Math.PI / 180;
-      var ux = Math.cos(phi), uy = Math.sin(phi);
-      x.strokeStyle = "#E38226"; x.lineWidth = 1.5; x.beginPath(); x.moveTo(cx - ux * Rl, cy - uy * Rl); x.lineTo(cx + ux * Rl, cy + uy * Rl); x.stroke();
-      var s = Math.cos(f) * Rl;
-      x.fillStyle = "#E38226"; x.fillRect(cx + ux * s - 5, cy + uy * s - 5, 10, 10);
-      x.fillText("Sentinel-2 : 14 tours par jour, passage vers 10 h 30", cx - 150, cy + Rl + 34);
+      var connus = {}; D.satellites.forEach(function (s) { connus[s.id] = connu(s); });
+      if (connus.meteosat) {
+        var Rg = 148, gx = cx + Math.cos(a) * Rg, gy = cy + Math.sin(a) * Rg;
+        x.strokeStyle = "#B9BEDC"; x.setLineDash([4, 5]); x.lineWidth = 1; x.beginPath(); x.arc(cx, cy, Rg, 0, 7); x.stroke(); x.setLineDash([]);
+        x.fillStyle = choisi === "meteosat" ? "#E38226" : "#283B89"; x.fillRect(gx - 7, gy - 5, 14, 10);
+        x.fillText("Meteosat-10", gx + 10, gy + 4);
+      }
+      function basse(nom, id, Rl, decal, coul) {
+        // orbite polaire vue par la tranche ; son plan reste fixe par rapport au Soleil (passage vers 10 h 30)
+        var f = (t - t0) / 4000 * 14.3 * Math.PI * 2 + decal, phi = -(180 - 22.5) * Math.PI / 180, ux = Math.cos(phi), uy = Math.sin(phi);
+        x.strokeStyle = coul; x.lineWidth = choisi === id ? 3 : 1.3; x.beginPath(); x.moveTo(cx - ux * Rl, cy - uy * Rl); x.lineTo(cx + ux * Rl, cy + uy * Rl); x.stroke();
+        var s = Math.cos(f) * Rl; x.fillStyle = coul; x.fillRect(cx + ux * s - 4, cy + uy * s - 4, 8, 8);
+        return nom;
+      }
+      var noms = [];
+      if (connus.sentinel2) noms.push([basse("Sentinel-2", "sentinel2", 76, 0, "#E38226"), "#E38226"]);
+      if (connus.terra) noms.push([basse("Terra", "terra", 72, 1.7, "#2E7D32"), "#2E7D32"]);
+      if (connus.legion) noms.push([basse("WorldView Legion", "legion", 68, 3.1, "#8A5264"), "#8A5264"]);
+      noms.forEach(function (nm, i) { x.fillStyle = nm[1]; x.fillText("■ " + nm[0] + " (orbite basse)", W - 190, 22 + i * 18); });
+      x.fillStyle = "#6E6F7A"; x.fillText("Vue depuis le pôle Nord · Saumos en orange · échelles non respectées", 8, H - 8);
       requestAnimationFrame(anim);
     }
     requestAnimationFrame(anim);
-    // les traces : deux satellites, une fauchée de 290 km, Saumos survolé tous les 5 jours (vue simplifiée)
     function traces() {
       if (!document.body.contains(cv2)) return;
       var x = cv2.getContext("2d"), W = cv2.width, H = cv2.height;
-      x.clearRect(0, 0, W, H);
-      x.fillStyle = "#EEF0F8"; x.fillRect(0, 0, W, H);
-      var pas = W / 5;                                   // cinq bandes de fauchée côte à côte
-      var d = jour % 5;
-      for (var b = 0; b < 5; b++) {
-        var vu = b === d;
-        x.fillStyle = vu ? "rgba(227,130,38,.45)" : "rgba(40,59,137,.08)";
-        x.fillRect(b * pas + 4, 10, pas - 8, H - 40);
-      }
-      var sx = 2.5 * pas;
-      var survol = d === 2;
-      x.fillStyle = survol ? "#A50026" : "#283B89"; x.beginPath(); x.arc(sx, H / 2 - 10, 7, 0, 7); x.fill();
-      x.fillStyle = "#2B2B33"; x.font = "13px Roboto, sans-serif";
-      x.fillText(survol ? "Saumos est survolé aujourd'hui" : "Saumos n'est pas survolé", sx - 80, H - 12);
-      lab.textContent = "Jour " + (jour + 1) + (survol ? " · passage au-dessus de Saumos" : "");
+      x.clearRect(0, 0, W, H); x.fillStyle = "#EEF0F8"; x.fillRect(0, 0, W, H);
+      x.font = "13px Roboto, sans-serif";
+      if (!connu(D.satellites[1])) { x.fillStyle = "#6E6F7A"; x.fillText("Les passages de Sentinel-2 sur Saumos apparaîtront ici.", 14, H / 2 + 4); return; }
+      var pas = W / 5, d = jour % 5;
+      for (var b = 0; b < 5; b++) { x.fillStyle = b === d ? "rgba(227,130,38,.45)" : "rgba(40,59,137,.08)"; x.fillRect(b * pas + 4, 8, pas - 8, H - 34); }
+      var sx = 2.5 * pas, survol = d === 2;
+      x.fillStyle = survol ? "#A50026" : "#283B89"; x.beginPath(); x.arc(sx, (H - 26) / 2 + 8, 6, 0, 7); x.fill();
+      x.fillStyle = "#2B2B33";
+      x.fillText("Fauchées successives de Sentinel-2, vue simplifiée — jour " + (jour + 1) + (survol ? " : Saumos (le point) est survolé" : ""), 10, H - 9);
     }
-    setInterval(function () { jour = (jour + 1) % 10; traces(); }, 1100); traces();
+    setInterval(function () { jour = (jour + 1) % 10; traces(); }, 1100);
+    function maj() { dessinerCartes(); dessinerFiche(); traces(); }
+    maj(); abonnes.push(maj);
   }
 
-  // Le rapport au propre -------------------------------------------------------------------------
+  // Le rapport au propre ---------------------------------------------------------------------------
   BRIQUES["jdr-rapport"] = function (z) {
-    var R = D.rapport, F = S().rapport, champs = {};
-    if (!F.b_surf && (S().surf[0] || S().surf[1])) F.b_surf = String(S().surf[0] || S().surf[1]);
+    var R = D.rapport, champs = {}, boutonsOpt = {};
+    function F() { return S().rapport; }
+    if (EN_PDF) {
+      R.sections.forEach(function (sec) { el("p", "", z, sec.titre + " : " + sec.champs.map(function (c) { return c[2]; }).join(" · ")); });
+      return;
+    }
     var tete_ = el("div", "jdr-rap-tete", z);
     var grille = el("div", "jdr-rap-grille", z);
     R.sections.forEach(function (sec) {
-      var c = el("div", "jdr-carte jdr-rap-sec" + (S().posture === sec.posture ? " sel" : ""), grille);
+      var c = el("div", "jdr-carte jdr-rap-sec", grille);
+      c.dataset.posture = sec.posture;
       el("div", "jdr-sous", c, sec.titre + " · " + POST[sec.posture].nom.toLowerCase());
       sec.champs.forEach(function (ch) {
         var l = el("label", "jdr-champ", c); el("span", "", l, ch[2]);
         if (ch[1] === "text") {
-          var i = el("input", "", l); i.value = F[ch[0]] || ""; champs[ch[0]] = i;
-          i.addEventListener("input", function () { F[ch[0]] = i.value; sauver(); });
+          var i = el("input", "", l); champs[ch[0]] = i;
+          i.addEventListener("input", function () { F()[ch[0]] = i.value; sauver(); });
         } else {
-          var o = el("div", "jdr-choix-ligne", l);
+          var o = el("div", "jdr-choix-ligne", l); boutonsOpt[ch[0]] = o;
           ch[3].split("|").forEach(function (v) {
-            var b = bouton(v, "jdr-opt petit" + (F[ch[0]] === v ? " sel" : ""), o, function () {
-              F[ch[0]] = v; tous(".jdr-opt", o).forEach(function (x) { x.classList.toggle("sel", x === b); }); sauver();
-            });
+            var b = bouton(v, "jdr-opt petit", o, function () { F()[ch[0]] = v; tous(".jdr-opt", o).forEach(function (x) { x.classList.toggle("sel", x === b); }); sauver(); });
+            b.dataset.v = v;
           });
         }
       });
-      var lp = el("label", "jdr-champ", c); el("span", "", lp, "Preuve : site, date de l'image, composition");
-      var tp = el("input", "", lp); tp.value = F["preuve_" + sec.posture] || "";
-      tp.addEventListener("input", function () { F["preuve_" + sec.posture] = tp.value; sauver(); });
-      var ll = el("label", "jdr-champ", c); el("span", "", ll, "Ce que nous ne pouvons pas dire");
-      var tl = el("input", "", ll); tl.value = F["limite_" + sec.posture] || "";
-      tl.addEventListener("input", function () { F["limite_" + sec.posture] = tl.value; sauver(); });
+      ["preuve_" + sec.posture, "limite_" + sec.posture].forEach(function (cle, j) {
+        var l = el("label", "jdr-champ", c); el("span", "", l, j ? "Ce que nous ne pouvons pas dire" : "Preuve : image, date, composition");
+        var i = el("input", "", l); champs[cle] = i;
+        i.addEventListener("input", function () { F()[cle] = i.value; sauver(); });
+      });
     });
     var sol = el("div", "jdr-carte jdr-rap-sol", z);
     el("div", "jdr-sous", sol, "Les trois solutions au préfet : pour chacune, une date ou un délai");
     var gs = el("div", "jdr-rap-sol-g", sol);
     R.solutions.forEach(function (s) {
       var l = el("label", "jdr-champ", gs); el("span", "", l, s[1]);
-      var i = el("input", "", l); i.value = F[s[0]] || "";
-      i.addEventListener("input", function () { F[s[0]] = i.value; sauver(); });
+      var i = el("input", "", l); champs[s[0]] = i;
+      i.addEventListener("input", function () { F()[s[0]] = i.value; sauver(); });
     });
     var pied = el("div", "jdr-choix-ligne", z);
     var res = el("div", "jdr-rap-res", z);
-    bouton("Valider le rapport", "principal", pied, function () { valider(); });
-    bouton("Télécharger le rapport", "", pied, function () { telecharger(); });
+    bouton("Le préfet relit votre dossier", "principal", pied, function () { relire(); });
+    bouton("Télécharger", "", pied, function () { telecharger(); });
     var etat = el("span", "jdr-note-labo", pied);
     var envoi = z.dataset.envoi || "";
     if (envoi) bouton("Envoyer à la feuille du cours", "", pied, function () {
       fetch(envoi, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(paquet()) })
         .then(function () { etat.textContent = "Envoyé."; }).catch(function () { etat.textContent = "L'envoi a échoué : téléchargez le rapport."; });
     });
+    function remplir() {
+      var f = F();
+      Object.keys(champs).forEach(function (k) { if (document.activeElement !== champs[k]) champs[k].value = f[k] || ""; });
+      Object.keys(boutonsOpt).forEach(function (k) { tous(".jdr-opt", boutonsOpt[k]).forEach(function (b) { b.classList.toggle("sel", f[k] === b.dataset.v); }); });
+      tous(".jdr-rap-sec", grille).forEach(function (c) { c.classList.toggle("sel", c.dataset.posture === S().posture); });
+    }
     function enTete() {
       tete_.innerHTML = "";
       tete(S().heros || "heros-1", "petit", tete_);
-      el("strong", "", tete_, "Groupe " + (S().groupe || "?") + (S().nom ? " · rapport rédigé par " + S().nom : ""));
+      el("strong", "", tete_, "Groupe " + (S().groupe || "?") + (S().nom ? " · " + S().nom : ""));
       var p = S().paris;
       el("span", "jdr-note-labo", tete_, "Vos paris : " + (p.jours !== undefined ? p.jours + " jours" : "—") + " · " + (p.etp || "—") + " ETP");
-      confianceHTML(tete_);
+      var d = el("div", "jdr-jeu-outils", tete_);
+      confianceHTML(d); boutonChrono(d);
     }
-    function verifie(b) {
-      var v = (F[b.champ] || "").toString().toLowerCase();
-      switch (b.id) {
-        case "date": return /22/.test(v) && /(juil|\/0?7|-0?7|\b7\b)/.test(v);
-        case "source": return /(meteosat|mtg|fci|seviri)/.test(v);
-        case "surface": var n = parseInt(v.replace(/[^0-9]/g, ""), 10); return (n >= 8000 && n <= 16000) || (n >= 20000 && n <= 32000);
-        case "image": return /(26|4\s*sept|04\/09|4\/9)/.test(v);
-        case "resolution": return /20\s*m/.test(v);
-        case "orbite": return v === "géostationnaire";
-        case "revisite": return /(\b5\b|cinq)/.test(v);
-        case "solutions": return R.solutions.every(function (s) { return (F[s[0]] || "").trim().length > 1; });
+    function heure(v) { var m = v.match(/(\d{1,2})\s*(?:h|:)\s*(\d{2})?/); return m ? (+m[1]) * 60 + (+(m[2] || 0)) : null; }
+    function verifie(id) {
+      var f = F(), v = function (k) { return simple(f[k] || ""); };
+      switch (id) {
+        case "date": return /22/.test(v("a_date")) && /(juil|\/0?7|-0?7|\b7\b)/.test(v("a_date"));
+        case "heure": var h = heure(v("a_h")); return h !== null && h >= 600 && h <= 750;
+        case "source": return /met[eo]*\s*-?\s*sat|\bmsg\b|\bmtg\b|seviri|\bfci\b/.test(v("a_nom"));
+        case "surface":
+          // l'ordre de grandeur dépend de la date mesurée : le 26 juillet, le feu brûle encore
+          var n = parseInt(v("b_surf").replace(/[^0-9]/g, ""), 10), d = v("b_pdt");
+          if (/26/.test(d)) return n >= 8000 && n <= 16000;
+          if (/(4\s*sept|04\/09|4\/9|09-04|dnbr)/.test(d)) return n >= 20000 && n <= 34000;
+          return (n >= 8000 && n <= 16000) || (n >= 20000 && n <= 34000);
+        case "image": return /(26|4\s*sept|04\/09|4\/9|09-04)/.test(v("b_pdt"));
+        case "resolution": return /\b(10|20)\s*m\b/.test(v("b_bandes"));
+        case "orbite": return f.c_orba === "géostationnaire";
+        case "revisite": return /(\b5\b|cinq)/.test(v("c_ret"));
+        case "solutions": return R.solutions.every(function (s) { return (f[s[0]] || "").trim().length > 1; });
       }
       return false;
     }
-    var score = 0;
-    function valider() {
+    function relire() {
       res.innerHTML = "";
-      var ferme0 = bouton("Fermer ✕", "", res, function () { res.innerHTML = ""; });
-      ferme0.style.float = "right";
-      var avant = S().score || 0;
-      score = 0;
-      var ul = el("ul", "jdr-bareme", res);
-      R.bareme.forEach(function (b) {
-        var ok = verifie(b); if (ok) score += 1;
+      bouton("Fermer ✕", "", res, function () { res.innerHTML = ""; }).style.float = "right";
+      el("p", "jdr-score", res, "Le préfet relit votre dossier…");
+      var ul = el("ul", "jdr-bareme", res), gain = 0;
+      R.controles.forEach(function (c) {
+        var ok = verifie(c.id);
+        if (ok && !S().prefet[c.id]) { S().prefet[c.id] = true; gain += 1; }
         var li = el("li", ok ? "ok" : "ko", ul);
-        el("strong", "", li, (ok ? "✓ " : "✗ ") + b.nom);
-        if (!ok) el("span", "", li, " — attendu : " + ty(b.attendu));
+        el("strong", "", li, (ok ? "✓ " : "… ") + c.nom);
+        if (!ok) el("span", "", li, " — à compléter : " + ty(c.aide));
       });
-      el("p", "jdr-score", res, "Votre rapport : " + score + " / " + R.bareme.length);
-      var nope = el("div", "jdr-note-labo", res);
-      R.sections.forEach(function (sec) { el("p", "", nope, "Ce que l'enquête " + D.postures.filter(function (p) { return p.id === sec.posture; })[0].enquete + " ne pouvait pas dire : " + ty(sec.nope)); });
-      if (score > avant) confiance(score - avant);
-      S().score = score; changer(); enTete();
+      if (gain) confiance(gain);
+      el("p", "jdr-note-labo", res, gain ? ty("Le préfet reprend confiance : +" + gain + ".") : ty("Rien de nouveau pour le préfet. Complétez, puis faites relire."));
+      changer();
     }
     function paquet() {
-      return { cours: document.title, date: new Date().toISOString(), groupe: S().groupe || "", nom: S().nom || "",
-        posture: S().posture || "", paris: S().paris, rapport: F, score: S().score || 0, confiance: S().confiance,
-        surfaces: S().surf, sev: S().points, indices: Object.keys(S().indices) };
+      var s = S();
+      return { cours: document.title, date: new Date().toISOString(), groupe: s.groupe || "", nom: s.nom || "",
+        posture: s.posture || "", solo: !!s.solo, paris: s.paris, rapport: s.rapport, confiance: s.confiance,
+        controles: Object.keys(s.prefet), indices: Object.keys(s.indices), clefs: Object.keys(s.clefs) };
     }
     function telecharger() {
       var a = document.createElement("a");
@@ -652,106 +947,8 @@
       a.download = "saumos-groupe-" + (S().groupe || "x") + ".json";
       document.body.appendChild(a); a.click(); a.remove();
     }
-    function surface() {
-      var m = S().surf[0] || S().surf[1];
-      if (m && !F.b_surf && champs.b_surf) { F.b_surf = String(m); champs.b_surf.value = F.b_surf; sauver(); }
-    }
-    enTete(); abonnes.push(enTete); abonnes.push(surface);
-  };
-
-  // La sévérité ----------------------------------------------------------------------------------------
-  BRIQUES["jdr-severite"] = function (z) {
-    var V = D.severite, G = D.mesure.geo;
-    var haut = el("div", "jdr-scene petite", z);
-    var ty_ = tete("youri", "moyen", haut);
-    var bo = el("div", "jdr-dialogue", haut);
-    el("div", "jdr-plaque", bo, "Youri · Les traitements").style.background = EXP.youri.couleur;
-    var tx = el("p", "jdr-texte", bo, ty(V.youri[0]));
-    var g = el("div", "jdr-sev", z);
-    var gc = el("div", "", g);
-    var cv = el("canvas", "jdr-mesure-cv", gc); cv.width = G.w; cv.height = G.h;
-    var bas = el("div", "jdr-sev-bas", gc);
-    var cote = el("div", "jdr-sev-cote", g);
-    var choixP = el("div", "jdr-sev-points", cote);
-    var actifP = V.points[0].id, etape = -1;
-    var pts = S().points;
-    var res = el("div", "jdr-sev-res", cote);
-    var et = el("div", "jdr-choix-ligne", cote);
-    var txt = el("div", "jdr-sev-txt", cote);
-    var images = {}, dnbr = null;
-    function img(cle, cb) { if (images[cle]) return cb(images[cle]); var i = new Image(); i.onload = function () { images[cle] = i; cb(i); }; i.src = IMG[cle]; }
-    function classe(px, py) {
-      if (!dnbr) return null;
-      var d = dnbr.getContext("2d", { willReadFrequently: true }).getImageData(Math.round(px), Math.round(py), 1, 1).data, best = null, dm = 1e9;
-      V.legende.forEach(function (l) {
-        var h = l[2].replace("#", ""), r = parseInt(h.slice(0, 2), 16), gg = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
-        var dd = (r - d[0]) * (r - d[0]) + (gg - d[1]) * (gg - d[1]) + (b - d[2]) * (b - d[2]);
-        if (dd < dm) { dm = dd; best = l; }
-      });
-      return best;
-    }
-    img("m-dnbr", function (i) { dnbr = document.createElement("canvas"); dnbr.width = G.w; dnbr.height = G.h; dnbr.getContext("2d", { willReadFrequently: true }).drawImage(i, 0, 0, G.w, G.h); });
-    function dessiner() {
-      var x = cv.getContext("2d");
-      var cle = etape < 0 ? "s2-04-swir" : V.etapes[etape].image;
-      img(cle, function (im) {
-        x.drawImage(im, 0, 0, cv.width, cv.height);
-        V.points.forEach(function (p) {
-          var q = pts[p.id]; if (!q) return;
-          x.lineWidth = 3; x.strokeStyle = "#FFFFFF"; x.beginPath(); x.arc(q[0], q[1], 13, 0, 7); x.stroke();
-          x.strokeStyle = p.couleur; x.lineWidth = 2.5; x.beginPath(); x.arc(q[0], q[1], 13, 0, 7); x.stroke();
-          x.fillStyle = p.couleur; x.beginPath(); x.arc(q[0], q[1], 3, 0, 7); x.fill();
-        });
-      });
-    }
-    function dessinerChoix() {
-      choixP.innerHTML = "";
-      el("div", "jdr-sous", choixP, "Vos trois pronostics");
-      V.points.forEach(function (p) {
-        var b = bouton((pts[p.id] ? "✓ " : "") + p.nom, "jdr-opt" + (actifP === p.id ? " sel" : ""), choixP, function () { actifP = p.id; dessinerChoix(); });
-        b.style.borderLeft = "8px solid " + p.couleur;
-      });
-      var tous3 = V.points.every(function (p) { return pts[p.id]; });
-      if (!tous3) el("p", "jdr-note-labo", choixP, "Choisissez un pronostic, puis cliquez sur l'image du 4 septembre.");
-      et.innerHTML = "";
-      if (tous3) {
-        V.etapes.forEach(function (s, i) {
-          bouton((i + 1) + " — " + s.titre.split("—")[0].trim(), "jdr-opt" + (etape === i ? " sel" : ""), et, function () { etape = i; etapeTexte(); dessinerChoix(); dessiner(); });
-        });
-      }
-    }
-    function etapeTexte() {
-      txt.innerHTML = ""; bas.innerHTML = "";
-      if (etape < 0) return;
-      var s = V.etapes[etape];
-      el("strong", "", txt, s.titre);
-      el("p", "", txt, ty(s.texte));
-      res.innerHTML = "";
-      if (etape === V.etapes.length - 1) {
-        var leg = el("div", "jdr-legende", bas);
-        V.legende.forEach(function (l) { var d = el("span", "", leg); el("i", "", d).style.background = l[2]; el("span", "", d, l[3]); });
-        el("p", "", bas, ty(V.fin));
-        el("p", "jdr-note-labo", txt, ty(V.morale));
-        var ul = el("ul", "jdr-bareme", res);
-        V.points.forEach(function (p) {
-          var q = pts[p.id], c = q && classe(q[0], q[1]);
-          var li = el("li", "", ul); el("strong", "", li, p.nom + " : ");
-          if (c) el("i", "jdr-pastille", li).style.background = c[2];
-          el("span", "", li, c ? c[3] : "—");
-        });
-        parler(ty_, tx, V.youri[1]);
-      }
-    }
-    cv.addEventListener("click", function (e) {
-      if (etape >= 0) return;
-      var r = cv.getBoundingClientRect();
-      pts[actifP] = [(e.clientX - r.left) / r.width * G.w, (e.clientY - r.top) / r.height * G.h];
-      var reste = V.points.filter(function (p) { return !pts[p.id]; });
-      if (reste.length) actifP = reste[0].id;
-      changer(); dessinerChoix(); dessiner();
-    });
-    bouton("Effacer mes points", "discret", cote, function () { V.points.forEach(function (p) { delete pts[p.id]; }); etape = -1; res.innerHTML = ""; txt.innerHTML = ""; bas.innerHTML = ""; changer(); dessinerChoix(); dessiner(); });
-    dessinerChoix(); dessiner();
+    enTete(); remplir(); abonnes.push(enTete); abonnes.push(remplir);
+    if (window.Reveal) Reveal.on("slidechanged", function (e) { if (e.currentSlide.contains(z)) remplir(); });
   };
 
   // La phrase de la classe (projection) -------------------------------------------------------------
@@ -770,11 +967,11 @@
     el("p", "jdr-note-labo", z, ty(D.phrase_note));
   };
 
-  // Une bulle : un expert dit le texte écrit dans la diapo ------------------------------------------
+  // Une bulle : un expert dit le texte de la diapo, ou une liste du fichier (source="debrief") ------
   BRIQUES["jdr-bulle"] = function (z) {
     var qui = z.dataset.qui || "rose", x = EXP[qui] || { prenom: D.prefet.nom, specialite: "", couleur: "#1D2A66" };
     var parent = z.parentNode, paras = tous(":scope > p, :scope > ul, :scope > ol", parent);
-    var textes = paras.map(function (p) { return p.textContent; });
+    var textes = z.dataset.source && D[z.dataset.source] ? D[z.dataset.source].slice() : paras.map(function (p) { return p.textContent; });
     paras.forEach(function (p) { p.classList.add("jdr-cache"); });
     var sc = el("div", "jdr-scene", z);
     var t = tete(qui, "moyen", sc);
@@ -782,13 +979,19 @@
     el("div", "jdr-plaque", bo, x.prenom + (x.specialite ? " · " + x.specialite : "")).style.background = x.couleur;
     var tx = el("p", "jdr-texte", bo);
     var suite = el("div", "jdr-choix", bo);
+    var liste = z.dataset.liste ? el("ol", "jdr-dits", z) : null;
     var i = 0;
-    if (EN_PDF) { tx.textContent = textes.map(ty).join(" "); return; }
+    if (EN_PDF) {
+      if (liste) { textes.forEach(function (s) { el("li", "", liste, ty(s)); }); tx.textContent = "…"; }
+      else tx.textContent = textes.map(ty).join(" ");
+      return;
+    }
     function dire() {
       suite.innerHTML = "";
       parler(t, tx, textes[i], function () {
+        if (liste) el("li", "", liste, ty(textes[i]));
         if (i < textes.length - 1) bouton("▶ suite", "jdr-q", suite, function () { i += 1; dire(); });
-      });
+      }, x.voix);
     }
     tx.textContent = "▶";
     var lance = false;

@@ -1339,8 +1339,8 @@ end
 -- Toutes lisent le même fichier de données (répliques, indices, rapport) et les têtes en pixel art ;
 -- les images listées dans le fichier sont posées une fois, cachées, pour être embarquées dans le HTML.
 ----------------------------------------------------------------------------
-local JDR = { "jdr-commande", "jdr-paris", "jdr-equipe", "jdr-experts", "jdr-repartition", "jdr-enquete",
-  "jdr-labo", "jdr-rapport", "jdr-severite", "jdr-phrase", "jdr-bulle" }
+local JDR = { "jdr-commande", "jdr-paris", "jdr-equipe", "jdr-cadrage", "jdr-experts", "jdr-enquete",
+  "jdr-labo", "jdr-rapport", "jdr-phrase", "jdr-bulle" }
 local jdr_embarque = {}
 local function jdr_donnees(chemin, pixels)
   if jdr_embarque[chemin] then return "" end

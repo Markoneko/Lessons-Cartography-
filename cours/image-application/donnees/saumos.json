@@ -1,1275 +1,2192 @@
 {
-  "lisez-moi": "Atelier Saumos (jeu de rôle). Les répliques entre « » qui viennent de Marc (scripts v1 et v2, séance prépa) sont recopiées telles quelles. Une réplique a un tronc commun « r » et un angle par posture : R (rapporteur), A (analyste), O (orbitographe). « requiert » : les nœuds à avoir entendus avant ; « debloque » : nœuds d'autres experts ; « indices » : notes du carnet ; « pistes » : sites et labos ; « cout » : 1 si l'indice coûte un point de confiance du préfet.",
-  "prefet": {
-    "nom": "Le préfet",
-    "avatar": "prefet",
-    "commande": "Il me faut deux choses : la date précise du départ du feu, et la surface brûlée, connue précisément quand il sera éteint. Je compte sur vous."
+ "lisez-moi": "Atelier Saumos, V3 (script V3 de Marc). Les répliques reprises de Marc sont fidèles à ses scripts ; il a autorisé la correction des coquilles. Chaque enquête est jouée par sa posture (A rapporteur, B analyste, C orbitographe). Un expert parle d'abord par son « accueil », puis ses nœuds s'ouvrent. Nœud : « q » la question du joueur, « r » la réponse ; « si » les conditions (noeuds entendus, indices, clefs), « sauf » les conditions interdites ; « cache » : il faut qu'un autre nœud le « debloque ». Types : « choix » (options, « juste » si une seule est bonne : on peut réessayer), « ouverte » (réponse tapée, comparée aux motifs de « attendu », sans accents ni majuscules ; « fin » marque la bonne réponse), « aparte » (culture et quatrième mur). Effets : « indices » (carnet), « clefs » (labos : a, b, c, et a-terra, b-nbr, c-terra, c-legion), « debloque », « cout » (confiance du préfet), « note » (champs du rapport), « image » (figure montrée).",
+ "titre": "Atelier : le feu de Saumos",
+ "prefet": {
+  "nom": "Le préfet",
+  "avatar": "prefet",
+  "commande": "Il me faut deux choses : la date précise du départ du feu, et la surface brûlée, connue précisément quand il sera éteint. Je compte sur vous."
+ },
+ "experts": [
+  {
+   "id": "elikia",
+   "prenom": "Elikia",
+   "specialite": "Le signal",
+   "couleur": "#E38226",
+   "voix": 560,
+   "travail": "Physicienne. Ce que les photons racontent d'un phénomène, et dans quelles bandes les écouter.",
+   "trait": "Physicienne d'origine kongolaise. Parle des photons comme de témoins capricieux.",
+   "retour": "Revoilà mes chasseurs de photons. Je vous écoute."
   },
-  "experts": [
-    {
-      "id": "elikia",
-      "prenom": "Elikia",
-      "specialite": "Le signal",
-      "couleur": "#E38226",
-      "trait": "Physicienne d'origine Kongolaise. Parle des photons comme de témoins capricieux."
-    },
-    {
-      "id": "bastien",
-      "prenom": "Bastien",
-      "specialite": "Les données",
-      "couleur": "#8A5264",
-      "trait": "Archiviste toulousain compulsif. Vexé quand on cherche une image sans regarder les dates. Fait des blagues sur les chocolatinnes"
-    },
-    {
-      "id": "ines",
-      "prenom": "Inès",
-      "specialite": "Les orbites",
-      "couleur": "#283B89",
-      "trait": "Ancienne étudiante de géodata Paris. Ne pense qu'en tours de Terre. Calcule tout en orbites, même l'heure du déjeuner."
-    },
-    {
-      "id": "youri",
-      "prenom": "Youri",
-      "specialite": "Les traitements",
-      "couleur": "#2E7D6B",
-      "trait": "Pince-sans-rire d'origine sibérienne. Allergique aux seuils choisis « au feeling »."
-    },
-    {
-      "id": "rose",
-      "prenom": "Rose",
-      "specialite": "La contradictrice",
-      "couleur": "#C2185B",
-      "trait": "Juriste parisienne, ancienne journaliste. Toujours la question qui gêne."
-    }
-  ],
-  "postures": [
-    {
-      "id": "R",
-      "nom": "Le rapporteur",
-      "enquete": "A",
-      "role": "Il s'occupe des infos cadrantes, donc de la découverte de la date de départ. Il prend les notes, compile les résultats des autres et livre le rapport final."
-    },
-    {
-      "id": "A",
-      "nom": "L'analyste",
-      "enquete": "B",
-      "role": "Il dégage les informations spatiales : il lit les images, compare, mesure la surface brûlée."
-    },
-    {
-      "id": "O",
-      "nom": "L'orbitographe",
-      "enquete": "C",
-      "role": "Il perce le secret des couples vecteur / capteur : quels satellites, quelles orbites, quels passages. Puis il aide les deux autres."
-    }
-  ],
-  "heros": [
-    "heros-1",
-    "heros-2",
-    "heros-3",
-    "heros-4",
-    "heros-5",
-    "heros-6",
-    "heros-7",
-    "heros-8",
-    "heros-9"
-  ],
-  "pistes": {
-    "eumetview": {
-      "titre": "EUMETView (Meteosat)",
-      "url": "https://view.eumetsat.int/productviewer?v=default",
-      "labo": "labo-a"
-    },
-    "copernicus": {
-      "titre": "Copernicus Browser (Sentinel-2)",
-      "url": "https://browser.dataspace.copernicus.eu/",
-      "labo": "labo-b"
-    },
-    "deimos": {
-      "titre": "Deimos (orbites, IGN)",
-      "url": "https://deimos.ign.fr/",
-      "labo": "labo-c"
-    },
-    "emsr899": {
-      "titre": "Les cartes de l'activation EMSR899",
-      "url": "https://mapping.emergency.copernicus.eu/activations/EMSR899/reporting/"
-    },
-    "unspider": {
-      "titre": "La méthode de sévérité de UN-SPIDER",
-      "url": "https://un-spider.org/advisory-support/recommended-practices/recommended-practice-burn-severity/in-detail/normalized-burn-ratio"
-    }
+  {
+   "id": "bastien",
+   "prenom": "Bastien",
+   "specialite": "Les données et les traitements",
+   "couleur": "#8A5264",
+   "voix": 300,
+   "travail": "Archiviste et analyste. Quelle image, de quelle date, et quel calcul en tirer.",
+   "trait": "Archiviste toulousain compulsif, pince-sans-rire. Vexé quand on cherche une image sans regarder les dates, allergique aux seuils choisis « au feeling ». Fait des blagues sur les chocolatines.",
+   "retour": "Vous revoilà. Les archives sont ouvertes, la boîte de chocolatines aussi."
   },
-  "indices": {
-    "fumee-chaleur": {
-      "titre": "Ce qui trahit un feu",
-      "texte": "la fumée dans le visible, l'emission dans l'infrarouge moyen"
-    },
-    "compositions": {
-      "titre": "Les compositions colorées",
-      "texte": "Couleurs naturelles pour voir la fumée ; infrarouge moyen (SWIR) pour voir à travers et faire briller les flammes. À essayer dans le labo B."
-    },
-    "date-depeche": {
-      "titre": "La dépêche",
-      "texte": "Dépêche du 23 juillet, 6 h 04 : « Un incendie déclaré hier à Saumos… »"
-    },
-    "heure-utc": {
-      "titre": "L'heure",
-      "texte": "Le viewer affiche l'heure UTC ; l'heure française d'été est en avance de deux heures."
-    },
-    "terra": {
-      "titre": "Un second œil",
-      "texte": "Terra, en orbite basse, marque en rouge les anomalies thermiques une à deux fois par jour. Comparez le 21 et le 22 juillet."
-    },
-    "marge": {
-      "titre": "La marge",
-      "texte": "Une heure de départ n'a de sens qu'avec le capteur qui la donne et sa cadence : écrivez les deux."
-    },
-    "limite-a": {
-      "titre": "Ce que Meteosat ne sait pas faire",
-      "texte": "Il voit le feu naître, mais pas son contour : ses pixels font des kilomètres."
-    },
-    "nuit": {
-      "titre": "La nuit",
-      "texte": "La nuit, plus de lumière solaire renvoyée : seul le rayonnement émis reste visible."
-    },
-    "geo-loin": {
-      "titre": "Loin, donc flou",
-      "texte": "À 36 000 km, chaque pixel couvre des kilomètres au sol. Plus près, plus fin ; plus fin, moins souvent."
-    },
-    "avant-apres": {
-      "titre": "Avant, après",
-      "texte": "Une date avant le feu, une date après : c'est la différence qui parle."
-    },
-    "swir": {
-      "titre": "À travers la fumée",
-      "texte": "Les grandes longueurs d'onde traversent mieux la fumée : la composition SWIR montre le front de flammes."
-    },
-    "limite-b": {
-      "titre": "Ce que Sentinel-2 ne sait pas faire",
-      "texte": "Il voit fin, mais seulement les jours où il passe, et seulement sans nuages : la surface d'un jour n'est pas la surface finale."
-    },
-    "attendre-payer": {
-      "titre": "Attendre ou payer",
-      "texte": "Après le feu, le ciel reste couvert : soit on attend une image claire, soit on en commande une."
-    },
-    "noms": {
-      "titre": "Satellite et capteur",
-      "texte": "Deux noms distincts : la plateforme en orbite (le satellite) et l'appareil embarqué (le capteur)."
-    },
-    "geostationnaire": {
-      "titre": "Géostationnaire",
-      "texte": "Au-dessus de l'équateur, il tourne avec la Terre : il regarde toujours le même point, en permanence, mais de très loin."
-    },
-    "revisite": {
-      "titre": "La revisite",
-      "texte": "Sentinel-2 vole bas et sa trace au sol défile : il ne revient sur Saumos qu'au bout de quelques jours."
-    },
-    "nuages-attente": {
-      "titre": "Les nuages",
-      "texte": "Un passage nuageux ne compte pas : il faut attendre le suivant, et le suivant encore."
-    },
-    "commande": {
-      "titre": "La commande",
-      "texte": "Un satellite très haute résolution se pointe à la demande sur la zone : il ne fait pas attendre, mais il coûte."
-    },
-    "radar": {
-      "titre": "Le radar",
-      "texte": "Le radar voit à travers les nuages et la fumée, de jour comme de nuit ; sa précision sur les zones brûlées est plus relative. Il n'est pas manipulé dans cet atelier : c'est une solution à proposer."
-    },
-    "trois-solutions": {
-      "titre": "Les options du préfet",
-      "texte": "Le préfet a trois options, pas une : ce qui les sépare, c'est l'argent, la précision et la patience. Pour chacune, une date."
-    }
+  {
+   "id": "ines",
+   "prenom": "Inès",
+   "specialite": "Les orbites",
+   "couleur": "#283B89",
+   "voix": 680,
+   "travail": "Orbitographe. Quel satellite passe où, quand, et ce que son orbite lui permet de voir.",
+   "trait": "Ancienne étudiante de Géodata Paris. Ne pense qu'en tours de Terre. Calcule tout en orbites, même l'heure du déjeuner.",
+   "retour": "Déjà de retour ? Même pas un tour de Sentinel-2. Je t'écoute."
   },
+  {
+   "id": "rose",
+   "prenom": "Rose",
+   "specialite": "La contradictrice",
+   "couleur": "#C2185B",
+   "voix": 430,
+   "apart": true,
+   "travail": "Elle ne vous apprend rien sur le fond : elle cadre, elle questionne, et vous rappelle ce que le préfet attend.",
+   "trait": "Juriste parisienne, ancienne journaliste. Toujours la question qui gêne.",
+   "retour": "Oui ? Je vous écoute. Et je prends des notes."
+  }
+ ],
+ "postures": [
+  {
+   "id": "R",
+   "nom": "Le rapporteur",
+   "enquete": "A",
+   "labo": "a",
+   "role": "Il s'occupe des infos cadrantes : la date de départ du feu. Il prend les notes, compile les résultats des deux autres et livre le mini dossier."
+  },
+  {
+   "id": "A",
+   "nom": "L'analyste",
+   "enquete": "B",
+   "labo": "b",
+   "role": "Il dégage les informations spatiales : il lit les images, compare, mesure la surface brûlée."
+  },
+  {
+   "id": "O",
+   "nom": "L'orbitographe",
+   "enquete": "C",
+   "labo": "c",
+   "role": "Il perce le secret des couples vecteur / capteur : quels satellites, quelles orbites, quels passages. Puis il aide les deux autres."
+  }
+ ],
+ "heros": [
+  "heros-1",
+  "heros-2",
+  "heros-3",
+  "heros-4",
+  "heros-5",
+  "heros-6",
+  "heros-7",
+  "heros-8",
+  "heros-9"
+ ],
+ "paris": [
+  {
+   "id": "jours",
+   "q": "Combien de jours après la fin de l'incendie seront nécessaires pour la cartographie demandée ?",
+   "min": 0,
+   "max": 60,
+   "unite": "jours",
+   "defaut": 7
+  },
+  {
+   "id": "etp",
+   "q": "Combien d'ETP seraient nécessaires à cette estimation ?",
+   "choix": [
+    "moins d'un",
+    "un",
+    "deux à cinq",
+    "plus de cinq"
+   ]
+  }
+ ],
+ "chrono": {
+  "enquete": 30,
+  "rapport": 5
+ },
+ "cadrage": {
+  "presentation": "Bonjour à toutes et à tous. Moi, c'est Rose. Je ne vous apprendrai rien sur le fond : les experts sont là pour ça. Moi, je vous aide à cadrer votre travail, et je vous pose les questions que le préfet vous posera.",
+  "question": "Alors, d'après vous, qu'est-ce qui est important ?",
+  "reponse": "Assurer la maîtrise de la chaîne d'information entre le phénomène observé et les conclusions faites. Cela demande de maîtriser les incertitudes associées à chaque maillon.",
   "enquetes": {
-    "A": {
-      "titre": "Quand le feu a-t-il démarré ?",
-      "posture": "R",
-      "bon": "elikia",
-      "piste": "eumetview",
-      "mission": [
-        "Avant toute observation : quel est le nom du satellite qui porte l'instrument, et quel est le nom du capteur qui mesure ? Ce sont deux choses différentes — l'un est la plateforme en orbite, l'autre l'appareil embarqué.",
-        "Quand peut-on voir le feu démarrer ? Donnez la date et l'heure en UTC, celle affichée en haut du viewer. Attention, l'heure française est en avance de deux heures.",
-        "Quand s'éteint-il ? Est-ce aussi net que le départ ?",
-        "Peut-on délimiter précisément l'emprise du feu sur cette image ?",
-        "Ce satellite voit-il le sol la nuit ? Faites défiler jusqu'à une heure nocturne."
-      ],
-      "accueils": {
-        "elikia": {
-          "r": "Bonjour, il n'y a pas de fumée sans feu, si vous êtes là c'est que vous cherchez à détecter quelque chose dans une image, je me trompe?",
-          "choix": [
-            {
-              "dit": "Oui : on cherche quand le feu a démarré.",
-              "r": "Parfait. Alors on va parler de photons. Posez-moi vos questions.",
-              "ouvre": true
-            },
-            {
-              "dit": "Non, on est venus pour les chocolatines.",
-              "r": "Vous vous trompez d'expert : les chocolatines, c'est Bastien, au fond du couloir. Restez quand même, j'ai mieux : des photons. Et vous cherchez un départ de feu, n'est-ce pas ?",
-              "ouvre": true
-            }
-          ]
-        },
-        "bastien": {
-          "r": "J'ai des images de cette forêt tous les cinq jours depuis des années. Enfin, quand il ne fait pas trop nuageux. Enfin, quand il ne fume pas. Bref, cherchez bien. J'ai aussi des images toutes les 15 minutes, mais c'est plutôt utilisé pour la météo, pas le suivi de la végétation, cela vous intéresse?",
-          "choix": [
-            {
-              "dit": "Oui ! Les images de la météo.",
-              "r": "Ah, ce n'est pas mon rayon : c'est celui d'Elikia, elle parle aux photons chauds. La donnée est sur EUMETView. Et revenez me voir pour les chocolatines.",
-              "pistes": [
-                "eumetview"
-              ]
-            },
-            {
-              "dit": "Non, merci.",
-              "r": "Dommage. Pour un départ de feu, il vous faut un œil qui regarde tout le temps. Allez voir Elikia."
-            }
-          ]
-        },
-        "ines": {
-          "r": "Un satellite qui regarde toujours la même face de la Terre ? Je connais. Revenez me voir avec son nom."
-        },
-        "youri": {
-          "r": "Trop tôt. Le feu n'a pas encore fini de brûler. Revenez avec des images d'après."
-        },
-        "rose": {
-          "r": "« Il a démarré à 11 h. » Selon quel capteur ? Avec quelle incertitude ?",
-          "indices": [
-            "marge"
-          ]
-        }
-      },
-      "noeuds": [
-        {
-          "id": "A1",
-          "expert": "elikia",
-          "q": "Qu'est-ce qui trahit un feu ?",
-          "r": "Quels sont les phénomènes qui trahissent la présence d'un feu? Une idée des propriétés des photons qui vous intéressent? Cela vous donnera une idée des bandes spectrales qui vous intéressent",
-          "angles": {
-            "R": "Et notez bien : on ne voit pas le feu, on voit sa chaleur et sa fumée. Écrivez ce que vous observez, pas ce que vous croyez.",
-            "A": "Pensez à deux choses qui se voient : ce qui monte, et ce qui chauffe. L'une est dans le visible, l'autre bien au-delà.",
-            "O": "Et un feu naît vite : il vous faut un œil qui ne cligne jamais. Inès sait lequel."
-          },
-          "indices": [
-            "fumee-chaleur",
-            "compositions"
-          ],
-          "debloque": [
-            "A-I1"
-          ]
-        },
-        {
-          "id": "A2",
-          "expert": "elikia",
-          "requiert": [
-            "A1"
-          ],
-          "q": "Où chercher le premier signe ?",
-          "r": "Faites défiler les images une à une. Le premier point chaud, c'est quand ?",
-          "angles": {
-            "R": "Et notez l'heure affichée par le viewer : elle est en UTC, pas à l'heure de Saumos.",
-            "A": "Cherchez un pixel plus chaud que ses voisins, puis remontez le temps jusqu'à ce qu'il disparaisse.",
-            "O": "Demandez-vous aussi pourquoi ce satellite a une image toutes les quelques minutes : Inès a la réponse."
-          },
-          "indices": [
-            "date-depeche",
-            "heure-utc"
-          ],
-          "pistes": [
-            "eumetview",
-            "labo-a"
-          ],
-          "debloque": [
-            "A-R1"
-          ]
-        },
-        {
-          "id": "A5",
-          "expert": "elikia",
-          "requiert": [
-            "A1"
-          ],
-          "q": "Il n'y a qu'un seul satellite qui voit les feux ?",
-          "r": "Oh non. Il y a un second œil, en orbite basse cette fois : Terra. Il passe une à deux fois par jour, et marque en rouge les pixels anormalement chauds. Comparez le 21 et le 22 juillet dans le labo.",
-          "angles": {
-            "R": "Deux capteurs qui disent la même date, c'est une preuve plus solide qu'un seul.",
-            "O": "Une à deux fois par jour, contre une image toutes les quelques minutes : demandez à Inès d'où vient la différence."
-          },
-          "indices": [
-            "terra"
-          ],
-          "pistes": [
-            "labo-a"
-          ]
-        },
-        {
-          "id": "A4",
-          "expert": "elikia",
-          "requiert": [
-            "A2"
-          ],
-          "q": "Et la nuit, on voit encore le sol ?",
-          "r": "La nuit, le soleil n'éclaire plus le sol : tout ce qui était lumière renvoyée disparaît. Ce qui chauffe, en revanche, continue d'émettre. Faites défiler jusqu'à une heure nocturne : que reste-t-il ?",
-          "indices": [
-            "nuit"
-          ]
-        },
-        {
-          "id": "A3",
-          "expert": "elikia",
-          "requiert": [
-            "A2"
-          ],
-          "cout": 1,
-          "q": "Peut-on tracer le contour du feu avec ces images ?",
-          "r": "Comparez la taille d'un pixel à celle d'une commune. Vous pourriez tracer un contour, vous, avec des pixels pareils ?",
-          "indices": [
-            "limite-a"
-          ]
-        },
-        {
-          "id": "A-I1",
-          "expert": "ines",
-          "cache": true,
-          "q": "Pourquoi Meteosat voit-il tout le temps ?",
-          "r": "Parce qu'il tourne aussi vite que la Terre : très haut au-dessus de l'équateur, il reste au-dessus du même point. Le prix ? Il est si loin que ses pixels font des kilomètres.",
-          "angles": {
-            "R": "Notez son nom, satellite et capteur : l'orbitographe en aura besoin.",
-            "O": "Cherchez son altitude dans Deimos : vous allez rire, c'est loin."
-          },
-          "indices": [
-            "geo-loin"
-          ]
-        },
-        {
-          "id": "A-R1",
-          "expert": "rose",
-          "cache": true,
-          "q": "Le feu a démarré le 22. C'est sûr ?",
-          "r": "Sûr selon quel capteur ? À quelle heure, et à combien de minutes près ? Si le satellite prend une image toutes les quelques minutes, votre heure a cette marge-là. Écrivez-la dans le rapport.",
-          "indices": [
-            "marge"
-          ]
-        }
-      ]
-    },
-    "B": {
-      "titre": "Quelle surface a brûlé ?",
-      "posture": "A",
-      "bon": "bastien",
-      "piste": "copernicus",
-      "mission": [
-        "Quelle date permet de voir toute la zone intacte, avant le feu ?",
-        "Y a-t-il une image pendant le feu ? Laquelle ?",
-        "Quelle composition colorée montre le mieux les dégâts ?",
-        "Quelles bandes composent cette composition, et quelle est leur résolution ? L'information est dans le panneau de la composition.",
-        "Quel est le nom du satellite, et celui du capteur embarqué ? Donnez les deux au groupe C — ce sont deux noms distincts.",
-        "Cherchez maintenant une image après le 26 juillet, quand le feu est terminé. Que trouvez-vous ?",
-        "Mesurez la surface brûlée sur les deux images ci-dessous."
-      ],
-      "accueils": {
-        "bastien": {
-          "r": "J'ai des images de cette forêt tous les cinq jours depuis des années. Enfin, quand il ne fait pas trop nuageux. Enfin, quand il ne fume pas. Bref, cherchez bien. J'ai aussi des images toutes les 15 minutes, mais c'est plutôt utilisé pour la météo, pas le suivi de la végétation, cela vous intéresse?",
-          "choix": [
-            {
-              "dit": "Non : il nous faut des images fines, pour une surface.",
-              "r": "Excellent choix. Les images tous les cinq jours, donc. Et pour fêter ça, je vous offre une chocolatine. Pas un pain au chocolat : une chocolatine.",
-              "ouvre": true
-            },
-            {
-              "dit": "Une chocolatine ou un pain au chocolat ?",
-              "r": "Enfin quelqu'un qui pose les vraies questions. Chocolatine, évidemment. Bon, au travail : pour mesurer une surface, il vous faut des images fines. Demandez.",
-              "ouvre": true
-            }
-          ]
-        },
-        "elikia": {
-          "r": "Une surface ? Je vous parle de photons, pas d'hectares. Mais si la fumée vous gêne, revenez me voir : je sais ce qui la traverse.",
-          "debloque": [
-            "B-E1"
-          ]
-        },
-        "ines": {
-          "r": "Vous cherchez une image du 23 ? Du 24 ? Il n'y en a pas. Venez me demander pourquoi.",
-          "debloque": [
-            "B-I1"
-          ]
-        },
-        "youri": {
-          "r": "Une surface, c'est bien. Mais brûlée comment ? Ça, c'est mon rayon, et c'est pour plus tard."
-        },
-        "rose": {
-          "r": "Le préfet veut UN chiffre demain matin. Lequel lui donnez-vous, et à quel prix ?",
-          "indices": [
-            "trois-solutions"
-          ]
-        }
-      },
-      "noeuds": [
-        {
-          "id": "B1",
-          "expert": "bastien",
-          "q": "Quelle image prendre ?",
-          "r": "Une date avant, une date après. Commencez par l'avant : il n'y a rien à voir, et c'est justement pour ça qu'il compte.",
-          "angles": {
-            "A": "Dans le Copernicus Browser, prenez Sentinel-2 L2A, et regardez la couverture nuageuse de chaque date avant de l'ouvrir.",
-            "R": "Notez la date exacte de chaque image : sans elle, votre surface ne veut rien dire.",
-            "O": "Et demandez-vous pourquoi il n'y a pas une image chaque jour : Inès vous le dira."
-          },
-          "indices": [
-            "avant-apres"
-          ],
-          "pistes": [
-            "copernicus",
-            "labo-b"
-          ],
-          "debloque": [
-            "B-I1"
-          ]
-        },
-        {
-          "id": "B2",
-          "expert": "bastien",
-          "requiert": [
-            "B1"
-          ],
-          "q": "La fumée et les nuages nous gênent.",
-          "r": "Si la fumée vous gêne, essayez une composition qui ne regarde pas dans le visible.",
-          "angles": {
-            "A": "Dans le labo B, passez d'une composition à l'autre sur le 26 juillet, et regardez où disparaît la fumée."
-          },
-          "pistes": [
-            "labo-b"
-          ],
-          "debloque": [
-            "B-E1"
-          ]
-        },
-        {
-          "id": "B4",
-          "expert": "bastien",
-          "requiert": [
-            "B1"
-          ],
-          "q": "Et après le 26 juillet ?",
-          "r": "Cherchez une image après le 26 juillet, et dites-moi combien de semaines il faut attendre un ciel dégagé. Je vous attends. Avec une chocolatine.",
-          "angles": {
-            "R": "Notez la date de la première image vraiment claire : le préfet voudra la connaître.",
-            "O": "Chaque passage nuageux, c'est quelques jours de plus : Inès sait combien."
-          },
-          "indices": [
-            "attendre-payer"
-          ]
-        },
-        {
-          "id": "B3",
-          "expert": "bastien",
-          "requiert": [
-            "B2"
-          ],
-          "cout": 1,
-          "q": "Notre surface change entre deux dates.",
-          "r": "Votre surface change entre deux dates ? Le feu a grandi, ou c'est votre image qui voyait moins bien ?",
-          "indices": [
-            "limite-b"
-          ],
-          "debloque": [
-            "B-R1"
-          ]
-        },
-        {
-          "id": "B-E1",
-          "expert": "elikia",
-          "cache": true,
-          "q": "Qu'est-ce qui traverse la fumée ?",
-          "r": "Les grandes longueurs d'onde. La fumée arrête le bleu bien plus que l'infrarouge moyen : une composition SWIR voit à travers, et le front de flammes y brille.",
-          "angles": {
-            "A": "Comparez couleurs naturelles et SWIR sur la même date : ce qui change, c'est la fumée, pas le feu."
-          },
-          "indices": [
-            "swir"
-          ]
-        },
-        {
-          "id": "B-I1",
-          "expert": "ines",
-          "cache": true,
-          "q": "Pourquoi pas d'image entre le 21 et le 26 ?",
-          "r": "Parce que Sentinel-2 ne survole Saumos que tous les quelques jours : il vole bas, sa trace au sol défile, et sa fauchée n'est pas infinie. Votre orbitographe est justement en train de le calculer : allez lui demander.",
-          "indices": [
-            "revisite"
-          ]
-        },
-        {
-          "id": "B-R1",
-          "expert": "rose",
-          "cache": true,
-          "q": "Alors, quel chiffre pour le préfet ?",
-          "r": "Le préfet a trois options, pas une. Ce qui les sépare : l'argent, la précision, la patience. Pour chacune, trouvez une date. Et pour chacune, dites ce qu'elle ne permet pas.",
-          "indices": [
-            "trois-solutions"
-          ]
-        }
-      ]
-    },
-    "C": {
-      "titre": "Quels satellites, et quand passent-ils ?",
-      "posture": "O",
-      "bon": "ines",
-      "piste": "deimos",
-      "mission": [
-        "Les groupes A et B vont venir vous donner le nom de leur satellite et de leur capteur. Notez bien les deux : seul le satellite figure dans la liste, avec ctrl+F. Le capteur, lui, est l'appareil qu'il transporte.",
-        "À quelle altitude vole chacun d'eux ?",
-        "Sa trace au sol défile-t-elle, ou reste-t-elle fixe au-dessus du même point ?",
-        "Lequel peut regarder la Gironde en permanence ? Lequel doit attendre de repasser ?",
-        "Combien de jours s'écoulent entre deux passages de Sentinel-2 sur la même zone ?",
-        "Allez expliquer aux groupes A et B pourquoi leurs images sont si différentes."
-      ],
-      "accueils": {
-        "ines": {
-          "r": "Rien ne passe au-dessus de Saumos par hasard. Tout est écrit dans l'orbite. Vous me donnez un nom de satellite, je vous dis quand il revient. Enfin, Deimos vous le dira.",
-          "choix": [
-            {
-              "dit": "On a les noms de nos satellites.",
-              "r": "Parfait. Ouvrez Deimos, et posez-moi vos questions : je compte en tours de Terre, vous comptez en jours.",
-              "ouvre": true
-            },
-            {
-              "dit": "Pas encore.",
-              "r": "Demandez aux groupes A et B le nom de leur satellite. Sans eux, vous calculez dans le vide. Revenez vite : c'est bientôt l'heure du déjeuner, soit un peu moins d'un tour de Sentinel-2.",
-              "ouvre": true
-            }
-          ]
-        },
-        "elikia": {
-          "r": "Les orbites ? Moi, je ne m'occupe que de ce qui arrive au capteur. Mais demandez-moi pourquoi un satellite qui voit tout le temps voit si flou.",
-          "debloque": [
-            "C-E1"
-          ]
-        },
-        "bastien": {
-          "r": "Des noms de satellites ? J'ai tout le catalogue. Il y en a deux que vos collègues connaissent, et un troisième que personne ne cite : celui qui a servi au périmètre officiel. Cherchez dans la page de l'activation EMSR899.",
-          "pistes": [
-            "emsr899"
-          ]
-        },
-        "youri": {
-          "r": "Une orbite, c'est une promesse de passage. Pas une promesse de ciel bleu."
-        },
-        "rose": {
-          "r": "Un satellite que l'on pointe à la demande, ça coûte combien, et qui paie ?",
-          "indices": [
-            "commande"
-          ]
-        }
-      },
-      "noeuds": [
-        {
-          "id": "C1",
-          "expert": "ines",
-          "q": "Par où commencer ?",
-          "r": "Demandez aux groupes A et B le nom de leur satellite. Sans eux, vous calculez dans le vide.",
-          "angles": {
-            "O": "Dans Deimos, cherchez le satellite avec ctrl+F : le capteur n'y figure pas, c'est l'appareil qu'il transporte.",
-            "R": "Notez les deux noms, satellite et capteur : tout le monde les confond.",
-            "A": "Votre image a un satellite et un capteur : retrouvez les deux noms dans le Browser, puis donnez-les à l'orbitographe."
-          },
-          "indices": [
-            "noms"
-          ],
-          "pistes": [
-            "deimos",
-            "labo-c"
-          ]
-        },
-        {
-          "id": "C2",
-          "expert": "ines",
-          "requiert": [
-            "C1"
-          ],
-          "q": "Un satellite qui ne quitte jamais l'Europe, c'est possible ?",
-          "r": "Un satellite qui ne bouge pas par rapport à la Terre : à quelle altitude doit-il être ?",
-          "angles": {
-            "O": "Regardez dans Deimos si sa trace au sol défile ou reste fixe. Et cherchez son altitude.",
-            "R": "« En permanence » et « de loin » : notez les deux, ils vont ensemble."
-          },
-          "indices": [
-            "geostationnaire"
-          ],
-          "pistes": [
-            "labo-c"
-          ]
-        },
-        {
-          "id": "C3",
-          "expert": "ines",
-          "requiert": [
-            "C1"
-          ],
-          "q": "Pourquoi Sentinel-2 ne repasse-t-il pas chaque jour ?",
-          "r": "Il vole bas, il voit fin, mais sa trace défile : chaque jour, il survole une autre bande de Terre. Combien de jours avant de revenir sur Saumos ? C'est dans Deimos, ou dans mon animation.",
-          "angles": {
-            "O": "Comptez les jours entre deux traces qui passent sur Saumos.",
-            "A": "C'est pour cela que vos images sautent du 21 au 26."
-          },
-          "indices": [
-            "revisite"
-          ],
-          "pistes": [
-            "labo-c"
-          ]
-        },
-        {
-          "id": "C4",
-          "expert": "ines",
-          "requiert": [
-            "C3"
-          ],
-          "cout": 1,
-          "q": "Et s'il fait nuageux le jour du passage ?",
-          "r": "S'il repasse tous les cinq jours et qu'il fait nuageux ce jour-là, combien de temps attendez-vous ?",
-          "indices": [
-            "nuages-attente"
-          ]
-        },
-        {
-          "id": "C5",
-          "expert": "ines",
-          "requiert": [
-            "C2",
-            "C3"
-          ],
-          "q": "Qui a tracé le périmètre officiel si tôt ?",
-          "r": "Un satellite qu'on ne laisse pas défiler : on le pointe, à la demande, sur la zone. Très fin, très cher. Son nom est dans la page de l'activation EMSR899.",
-          "indices": [
-            "commande"
-          ],
-          "pistes": [
-            "emsr899"
-          ],
-          "debloque": [
-            "C-R1"
-          ]
-        },
-        {
-          "id": "C6",
-          "expert": "ines",
-          "requiert": [
-            "C5"
-          ],
-          "q": "Et le radar, il ne pourrait pas nous aider ?",
-          "r": "Si ! Le radar voit à travers les nuages et la fumée, de jour comme de nuit. Sa précision sur les zones brûlées est plus relative, mais il ne vous fait pas attendre le soleil. On ne le manipule pas aujourd'hui : notez-le comme une solution.",
-          "indices": [
-            "radar"
-          ]
-        },
-        {
-          "id": "C-E1",
-          "expert": "elikia",
-          "cache": true,
-          "q": "Pourquoi celui qui voit tout le temps voit-il si flou ?",
-          "r": "Parce qu'il est loin. De si haut, chaque pixel de son capteur couvre des kilomètres au sol. Plus près, plus fin. Plus fin, moins souvent : c'est le même compromis partout.",
-          "indices": [
-            "geo-loin"
-          ]
-        },
-        {
-          "id": "C-R1",
-          "expert": "rose",
-          "cache": true,
-          "q": "Une image commandée, c'est la solution ?",
-          "r": "C'est une solution. Rapide, précise, et chère. Le préfet en a deux autres. Faites-lui la liste, avec une date et un prix pour chacune.",
-          "indices": [
-            "trois-solutions"
-          ]
-        }
-      ]
-    }
+   "R": "Enquête A : cela suppose de connaître le signal, de trouver un satellite sur zone au bon moment, dont on connaît les caractéristiques, pour s'assurer du départ du feu.",
+   "A": "Enquête B : cela suppose d'identifier les signaux qui permettent de mesurer au mieux les dégâts d'un incendie, en créant éventuellement une information qui les synthétise. Avec une difficulté dans le choix de la date… vous avez les experts pour vous aider.",
+   "O": "Enquête C : vous allez permettre à vos collègues de comprendre les forces et faiblesses de leurs capteurs pour chacune de leurs problématiques. Pour cela, il faut appréhender les liens entre capteur et vecteur."
   },
-  "severite": {
-    "youri": [
-      "Le plus noir à l'œil n'est presque jamais le plus brûlé. Vous voulez parier ? Posez vos points.",
-      "La dune a le même indice qu'une zone brûlée. Alors, qu'est-ce qui la distingue ?"
-    ],
-    "points": [
-      {
-        "id": "severe",
-        "nom": "Sévèrement brûlé",
-        "couleur": "#A50026"
-      },
-      {
-        "id": "moyen",
-        "nom": "Moyennement brûlé",
-        "couleur": "#F46D43"
-      },
-      {
-        "id": "epargne",
-        "nom": "Épargné",
-        "couleur": "#1A9641"
-      }
-    ],
-    "etapes": [
-      {
-        "image": "m-b8a",
-        "titre": "Proche infrarouge — B8A, 865 nm",
-        "texte": "La végétation vivante réfléchit fortement le proche infrarouge : elle apparaît claire. La zone brûlée est sombre."
-      },
-      {
-        "image": "m-b12",
-        "titre": "Moyen infrarouge — B12, 2190 nm",
-        "texte": "C'est l'inverse. Le B12 réagit à l'eau contenue dans la végétation : une forêt saine l'absorbe et paraît sombre, une zone brûlée et sèche renvoie beaucoup et paraît claire."
-      },
-      {
-        "image": "m-dnbr",
-        "titre": "dNBR — différence entre avant et après",
-        "texte": "NBR = (B8A − B12) / (B8A + B12), calculé le 21 juillet puis le 4 septembre. La différence entre les deux élimine tout ce qui n'a pas changé : la plage, les champs, les villes. Il ne reste que le feu."
-      }
-    ],
-    "legende": [
-      [
-        -9,
-        -0.25,
-        "#1a9641",
-        "Repousse forte"
-      ],
-      [
-        -0.25,
-        -0.1,
-        "#a6d96a",
-        "Repousse faible"
-      ],
-      [
-        -0.1,
-        0.1,
-        "#f0f0ec",
-        "Non brûlé"
-      ],
-      [
-        0.1,
-        0.27,
-        "#fee08b",
-        "Sévérité faible"
-      ],
-      [
-        0.27,
-        0.44,
-        "#fdae61",
-        "Sévérité modérée-basse"
-      ],
-      [
-        0.44,
-        0.66,
-        "#f46d43",
-        "Sévérité modérée-haute"
-      ],
-      [
-        0.66,
-        99,
-        "#a50026",
-        "Sévérité élevée"
-      ]
-    ],
-    "fin": "Légende UN-SPIDER appliquée strictement. Dans le périmètre officiel : 48,5 % en sévérité élevée et 40,5 % en modérée-haute. dNBR médian 0,654 à l'intérieur, 0,055 à l'extérieur — la soustraction fait son travail.",
-    "morale": "Le point le plus noir à l'œil n'est presque jamais le plus sévère : la couleur visible vient des cendres de surface, alors que le dNBR mesure la perte d'eau et de structure de la végétation."
-  },
-  "paris": [
-    {
-      "id": "jours",
-      "q": "Combien de jours après la fin de l'incendie seront nécessaire pour la cartographie demandée?",
-      "min": 0,
-      "max": 60,
-      "unite": "jours",
-      "defaut": 7
-    },
-    {
-      "id": "etp",
-      "q": "combien d'ETP seraient nécessaire à cette estimation?",
-      "choix": [
-        "moins d'un",
-        "un",
-        "deux à cinq",
-        "plus de cinq"
-      ]
-    }
-  ],
-  "reponse_etp": [
-    "Pour un non Géodata Paris, quelques jours.",
-    "Pour un Géodata Paris quelques heures.",
-    "Un processus automatique maitrisé, pour un non Géodata Paris, impossible.",
-    "Un processus automatique maitrisé, pour un Géodata Paris, quelques jours à quelques mois suivant l'emprise spaction temporelle."
-  ],
-  "rapport": {
-    "sections": [
-      {
-        "posture": "R",
-        "titre": "Enquête A — le départ du feu",
-        "champs": [
-          [
-            "a_nom",
-            "text",
-            "Satellite et capteur embarqué"
-          ],
-          [
-            "a_date",
-            "text",
-            "Première apparition du feu, date"
-          ],
-          [
-            "a_h",
-            "text",
-            "Heure UTC"
-          ],
-          [
-            "a_freq",
-            "opt",
-            "Ce satellite observe",
-            "toutes les 10 min|deux fois par jour|tous les 5 jours"
-          ],
-          [
-            "a_res",
-            "opt",
-            "Sur son image, la zone brûlée est",
-            "délimitable au champ près|visible mais floue|invisible"
-          ],
-          [
-            "a_nuit",
-            "opt",
-            "La nuit, il voit le sol",
-            "oui|non"
-          ]
-        ],
-        "nope": "combien d'hectares ont brûlé."
-      },
-      {
-        "posture": "A",
-        "titre": "Enquête B — la surface brûlée",
-        "champs": [
-          [
-            "b_avant",
-            "text",
-            "Dernière image intacte avant le feu"
-          ],
-          [
-            "b_pdt",
-            "text",
-            "Image utilisée pour la mesure"
-          ],
-          [
-            "b_comp",
-            "text",
-            "Composition employée"
-          ],
-          [
-            "b_bandes",
-            "text",
-            "Bandes et résolution"
-          ],
-          [
-            "b_surf",
-            "text",
-            "Surface que j'ai mesurée (ha)"
-          ],
-          [
-            "b_apres",
-            "opt",
-            "Image exploitable après le 26 juillet",
-            "oui|non"
-          ]
-        ],
-        "nope": "à quelle heure le feu a démarré, ni quelle est sa surface finale."
-      },
-      {
-        "posture": "O",
-        "titre": "Enquête C — les satellites",
-        "champs": [
-          [
-            "c_sata",
-            "text",
-            "Satellite et capteur du groupe A"
-          ],
-          [
-            "c_alta",
-            "text",
-            "Son altitude (km)"
-          ],
-          [
-            "c_orba",
-            "opt",
-            "Son orbite",
-            "géostationnaire|basse"
-          ],
-          [
-            "c_satb",
-            "text",
-            "Satellite et capteur du groupe B"
-          ],
-          [
-            "c_altb",
-            "text",
-            "Son altitude (km)"
-          ],
-          [
-            "c_ret",
-            "text",
-            "Retour de Sentinel-2 sur la même zone (jours)"
-          ]
-        ],
-        "nope": "ce que ces satellites ont réellement vu."
-      }
-    ],
-    "solutions": [
-      [
-        "sol_commande",
-        "Avec des moyens : on commande une image à un satellite pointable"
-      ],
-      [
-        "sol_radar",
-        "Pour une précision relative : le radar"
-      ],
-      [
-        "sol_attente",
-        "Sans moyens : on attend une Sentinel-2 sans nuages"
-      ]
-    ],
-    "bareme": [
-      {
-        "id": "date",
-        "nom": "La date de départ",
-        "champ": "a_date",
-        "attendu": "le 22 juillet"
-      },
-      {
-        "id": "source",
-        "nom": "La source de cette date",
-        "champ": "a_nom",
-        "attendu": "Meteosat (et son capteur)"
-      },
-      {
-        "id": "surface",
-        "nom": "La surface mesurée",
-        "champ": "b_surf",
-        "attendu": "environ 12 000 ha au 26 juillet, environ 25 000 ha au 4 septembre"
-      },
-      {
-        "id": "image",
-        "nom": "La date de l'image mesurée",
-        "champ": "b_pdt",
-        "attendu": "le 26 juillet ou le 4 septembre"
-      },
-      {
-        "id": "resolution",
-        "nom": "La résolution",
-        "champ": "b_bandes",
-        "attendu": "20 m"
-      },
-      {
-        "id": "orbite",
-        "nom": "L'orbite de Meteosat",
-        "champ": "c_orba",
-        "attendu": "géostationnaire"
-      },
-      {
-        "id": "revisite",
-        "nom": "La revisite de Sentinel-2",
-        "champ": "c_ret",
-        "attendu": "5 jours"
-      },
-      {
-        "id": "solutions",
-        "nom": "Les trois solutions au préfet",
-        "champ": "solutions",
-        "attendu": "trois solutions, chacune avec une date ou un délai"
-      }
-    ]
-  },
-  "phrase": [
-    [
-      "t",
-      "Le feu de Saumos a été repéré le "
-    ],
-    [
-      "b",
-      "A1",
-      6
-    ],
-    [
-      "t",
-      ", par un satellite qui temporellement observe "
-    ],
-    [
-      "b",
-      "A2",
-      9
-    ],
-    [
-      "t",
-      " mais ne voit spatialement qu'à "
-    ],
-    [
-      "b",
-      "A3",
-      9
-    ],
-    [
-      "t",
-      "."
-    ],
-    [
-      "br",
-      ""
-    ],
-    [
-      "t",
-      "Avec Sentinel-2, on ne mesure que "
-    ],
-    [
-      "b",
-      "B1",
-      6
-    ],
-    [
-      "t",
-      " hectares au "
-    ],
-    [
-      "b",
-      "B2",
-      6
-    ],
-    [
-      "t",
-      ", sur une image à "
-    ],
-    [
-      "b",
-      "B3",
-      4
-    ],
-    [
-      "t",
-      " — et le feu n'est pas encore fini."
-    ],
-    [
-      "br",
-      ""
-    ],
-    [
-      "t",
-      "C'est que Meteosat est "
-    ],
-    [
-      "b",
-      "C1",
-      9
-    ],
-    [
-      "t",
-      ", à "
-    ],
-    [
-      "b",
-      "C2",
-      6
-    ],
-    [
-      "t",
-      " d'altitude, quand Sentinel-2 est en orbite basse et ne repasse que "
-    ],
-    [
-      "b",
-      "C3",
-      7
-    ],
-    [
-      "t",
-      "."
-    ],
-    [
-      "br",
-      ""
-    ],
-    [
-      "t",
-      "La surface totale — "
-    ],
-    [
-      "r",
-      "T1",
-      "31 386"
-    ],
-    [
-      "t",
-      " hectares — n'a été obtenue que le 29 juillet, "
-    ],
-    [
-      "t",
-      "sur une image "
-    ],
-    [
-      "r",
-      "T2",
-      "WorldView Legion"
-    ],
-    [
-      "t",
-      " commandée en urgence. La sévérité, elle, "
-    ],
-    [
-      "t",
-      "a demandé six semaines de plus : il fallait "
-    ],
-    [
-      "r",
-      "T3",
-      "une image sans nuages, après le feu"
-    ],
-    [
-      "t",
-      "."
-    ]
-  ],
-  "phrase_note": "A et C se remplissent en écoutant les groupes. B1 attendu autour de 12 000 : c'est volontairement incomplet, et c'est ce qui justifie les trois dernières révélations.",
-  "mesure": {
-    "geo": {
-      "lon0": -1.239395,
-      "lon1": -0.803229,
-      "lat0": 44.715026,
-      "lat1": 44.9784,
-      "w": 1212,
-      "h": 732
-    },
-    "images": [
-      [
-        "s2-26-swir",
-        "26 juillet 2026",
-        12000,
-        "Le feu n'est pas encore terminé à cette date."
-      ],
-      [
-        "s2-04-swir",
-        "4 septembre 2026",
-        25000,
-        "Le périmètre officiel EMSR899, tracé le 29 juillet, en compte 31 386."
-      ]
-    ]
-  },
-  "meteosat_note": "Séquence de secours, du 23 juillet 15 h 40 au 29 juillet, une image toutes les deux heures. Elle ne couvre pas le départ de feu du 22 : pour la question 1, il faut le site.",
-  "meteosat_dates": [
-    "23/07 15h",
-    "23/07 19h",
-    "23/07 23h",
-    "24/07 03h",
-    "24/07 07h",
-    "24/07 11h",
-    "24/07 15h",
-    "24/07 19h",
-    "24/07 23h",
-    "25/07 03h",
-    "25/07 07h",
-    "25/07 11h",
-    "25/07 15h",
-    "25/07 19h",
-    "25/07 23h",
-    "26/07 03h",
-    "26/07 07h",
-    "26/07 11h",
-    "26/07 15h",
-    "26/07 19h",
-    "26/07 23h",
-    "27/07 03h",
-    "27/07 07h",
-    "27/07 11h",
-    "27/07 15h",
-    "27/07 19h",
-    "27/07 23h",
-    "28/07 03h",
-    "28/07 07h",
-    "28/07 11h",
-    "28/07 15h",
-    "28/07 19h",
-    "28/07 23h",
-    "29/07 03h",
-    "29/07 07h",
-    "29/07 11h",
-    "29/07 15h"
-  ],
-  "images": {
-    "accroche": "images/saumos/accroche.jpg",
-    "contexte": "images/saumos/contexte-emsr899.jpg",
-    "mtg-00": "images/saumos/mtg-00.jpg",
-    "mtg-01": "images/saumos/mtg-01.jpg",
-    "mtg-02": "images/saumos/mtg-02.jpg",
-    "mtg-03": "images/saumos/mtg-03.jpg",
-    "mtg-04": "images/saumos/mtg-04.jpg",
-    "mtg-05": "images/saumos/mtg-05.jpg",
-    "mtg-06": "images/saumos/mtg-06.jpg",
-    "mtg-07": "images/saumos/mtg-07.jpg",
-    "mtg-08": "images/saumos/mtg-08.jpg",
-    "mtg-09": "images/saumos/mtg-09.jpg",
-    "mtg-10": "images/saumos/mtg-10.jpg",
-    "mtg-11": "images/saumos/mtg-11.jpg",
-    "mtg-12": "images/saumos/mtg-12.jpg",
-    "mtg-13": "images/saumos/mtg-13.jpg",
-    "mtg-14": "images/saumos/mtg-14.jpg",
-    "mtg-15": "images/saumos/mtg-15.jpg",
-    "mtg-16": "images/saumos/mtg-16.jpg",
-    "mtg-17": "images/saumos/mtg-17.jpg",
-    "mtg-18": "images/saumos/mtg-18.jpg",
-    "mtg-19": "images/saumos/mtg-19.jpg",
-    "mtg-20": "images/saumos/mtg-20.jpg",
-    "mtg-21": "images/saumos/mtg-21.jpg",
-    "mtg-22": "images/saumos/mtg-22.jpg",
-    "mtg-23": "images/saumos/mtg-23.jpg",
-    "mtg-24": "images/saumos/mtg-24.jpg",
-    "mtg-25": "images/saumos/mtg-25.jpg",
-    "mtg-26": "images/saumos/mtg-26.jpg",
-    "mtg-27": "images/saumos/mtg-27.jpg",
-    "mtg-28": "images/saumos/mtg-28.jpg",
-    "mtg-29": "images/saumos/mtg-29.jpg",
-    "mtg-30": "images/saumos/mtg-30.jpg",
-    "mtg-31": "images/saumos/mtg-31.jpg",
-    "mtg-32": "images/saumos/mtg-32.jpg",
-    "mtg-33": "images/saumos/mtg-33.jpg",
-    "mtg-34": "images/saumos/mtg-34.jpg",
-    "mtg-35": "images/saumos/mtg-35.jpg",
-    "mtg-36": "images/saumos/mtg-36.jpg",
-    "terra-21": "images/saumos/terra-07-21.jpg",
-    "terra-22": "images/saumos/terra-07-22.jpg",
-    "terra-23": "images/saumos/terra-07-23.jpg",
-    "terra-24": "images/saumos/terra-07-24.jpg",
-    "terra-25": "images/saumos/terra-07-25.jpg",
-    "terra-26": "images/saumos/terra-07-26.jpg",
-    "terra-27": "images/saumos/terra-07-27.jpg",
-    "terra-28": "images/saumos/terra-07-28.jpg",
-    "s2-21-naturelles": "images/saumos/s2-07-21-naturelles.jpg",
-    "s2-21-infrarouge": "images/saumos/s2-07-21-infrarouge.jpg",
-    "s2-21-swir": "images/saumos/s2-07-21-swir.jpg",
-    "s2-21-feux": "images/saumos/s2-07-21-feux.jpg",
-    "s2-26-naturelles": "images/saumos/s2-07-26-naturelles.jpg",
-    "s2-26-infrarouge": "images/saumos/s2-07-26-infrarouge.jpg",
-    "s2-26-swir": "images/saumos/s2-26-swir.jpg",
-    "s2-26-feux": "images/saumos/s2-07-26-feux.jpg",
-    "s2-04-swir": "images/saumos/s2-04-swir.jpg",
-    "m-b8a": "images/saumos/m-b8a.jpg",
-    "m-b12": "images/saumos/m-b12.jpg",
-    "m-dnbr": "images/saumos/m-dnbr.png"
-  },
-  "compositions": [
-    [
-      "naturelles",
-      "Couleurs naturelles"
-    ],
-    [
-      "infrarouge",
-      "Fausses couleurs (infrarouge)"
-    ],
-    [
-      "swir",
-      "SWIR"
-    ],
-    [
-      "feux",
-      "Feux (wildfires)"
-    ]
+  "suite": [
+   "Prenez une page et un crayon : notez vos réponses au fur et à mesure.",
+   "Il peut y avoir plusieurs solutions à un problème. Il faut être en mesure de proposer des scénarios différents au préfet, tant que l'on est capable d'en estimer le niveau de qualité et le coût.",
+   "C'est un travail d'équipe. N'hésitez pas à échanger : vous n'avez pas accès aux mêmes infos. Si ça bloque, c'est souvent que quelqu'un d'autre peut vous aider.",
+   "Je lance un compte à rebours : 30 minutes. Vous pouvez appuyer dessus en avance pour commencer à remplir le rapport : vous aurez alors 5 minutes pour le faire."
   ]
+ },
+ "presentation_experts": "Voici l'équipe. Trois experts vous apportent la matière ; moi, je reste un peu à part : je cadre. Quand vous êtes prêts, appuyez sur « C'est parti » : le chrono démarre.",
+ "labos": {
+  "a": {
+   "titre": "Labo Eumetsat",
+   "sous": "Meteosat, image par image",
+   "enquete": "A",
+   "site": {
+    "titre": "EUMETView",
+    "url": "https://view.eumetsat.int/productviewer?v=default"
+   },
+   "ferme": "Le labo Eumetsat est fermé. Un expert vous en passera les clefs quand vous saurez quel signal chercher, et à quelle cadence."
+  },
+  "b": {
+   "titre": "Labo Copernicus",
+   "sous": "Sentinel-2, compositions et mesure",
+   "enquete": "B",
+   "site": {
+    "titre": "Copernicus Browser",
+    "url": "https://browser.dataspace.copernicus.eu/"
+   },
+   "ferme": "Le labo Copernicus est fermé. Un expert vous en passera les clefs quand vous saurez quel satellite et quelles bandes il vous faut."
+  },
+  "c": {
+   "titre": "Labo Deimos",
+   "sous": "Les orbites, vues d'en haut",
+   "enquete": "C",
+   "site": {
+    "titre": "Deimos (IGN)",
+    "url": "https://deimos.ign.fr/"
+   },
+   "ferme": "Le labo Deimos est fermé. Inès vous en passera les clefs quand vous lui aurez donné une famille de satellites."
+  }
+ },
+ "clefs": {
+  "a": "les clefs du labo Eumetsat",
+  "b": "les clefs du labo Copernicus",
+  "c": "les clefs du labo Deimos",
+  "a-terra": "un second œil dans le labo Eumetsat : Terra",
+  "b-nbr": "le calcul du dNBR dans le labo Copernicus",
+  "c-terra": "la fiche de Terra dans le labo Deimos",
+  "c-legion": "la fiche du satellite commandé dans le labo Deimos"
+ },
+ "indices": {
+  "signal": {
+   "titre": "Le signal du départ",
+   "texte": "Au départ, peu de chaleur visible de loin : on cherche la fumée, qui monte vite et s'étale."
+  },
+  "visible": {
+   "titre": "Voir la fumée",
+   "texte": "La fumée renvoie la lumière du Soleil : elle se voit dans le visible… donc de jour."
+  },
+  "res-temporelle": {
+   "titre": "La bonne résolution",
+   "texte": "Pour saisir un départ, il faut voir souvent, quitte à voir flou : la résolution temporelle prime."
+  },
+  "meteosat-terra": {
+   "titre": "Deux familles",
+   "texte": "Meteosat ou Terra peuvent répondre. Leurs caractéristiques : voir avec l'orbitographe."
+  },
+  "heure-utc": {
+   "titre": "L'heure",
+   "texte": "L'heure de l'image est en UTC ; l'heure française d'été est en avance de deux heures."
+  },
+  "nuit": {
+   "titre": "La nuit",
+   "texte": "La nuit, plus de lumière solaire renvoyée : la fumée disparaît du visible ; restent les lumières des villes et ce qui émet."
+  },
+  "marge": {
+   "titre": "La marge",
+   "texte": "Une heure de départ n'a de sens qu'avec le capteur qui la donne et sa cadence : écrivez les deux."
+  },
+  "limite-a": {
+   "titre": "Ce que Meteosat ne sait pas faire",
+   "texte": "Il voit le feu naître, mais pas son contour : ses pixels font des kilomètres."
+  },
+  "noms": {
+   "titre": "Capteur et vecteur",
+   "texte": "Le vecteur porte (satellite, avion, drone), le capteur mesure (l'instrument). Deux noms distincts."
+  },
+  "pir-swir": {
+   "titre": "Les deux signaux de la brûlure",
+   "texte": "Proche infrarouge (B8) : la végétation vivante. Infrarouge moyen, SWIR (B12) : la sécheresse. Brûlée, la forêt perd l'un et gagne l'autre."
+  },
+  "sentinel-2": {
+   "titre": "La star du moment",
+   "texte": "Inès parie sur Sentinel-2, le satellite à tout faire, en particulier pour la végétation. À transmettre à l'analyste."
+  },
+  "compositions": {
+   "titre": "Les compositions colorées",
+   "texte": "Avant de calculer, on regarde : couleurs naturelles pour la fumée, SWIR pour voir à travers."
+  },
+  "nbr": {
+   "titre": "Le NBR",
+   "texte": "NBR = (PIR − SWIR) / (PIR + SWIR) : il s'effondre là où la forêt a brûlé. Avant moins après : le dNBR."
+  },
+  "avant-apres": {
+   "titre": "Avant, après",
+   "texte": "Une date avant le feu, une date après : c'est la différence qui parle."
+  },
+  "swir": {
+   "titre": "À travers la fumée",
+   "texte": "Les grandes longueurs d'onde traversent mieux la fumée : la composition SWIR montre le front de flammes."
+  },
+  "limite-b": {
+   "titre": "Ce que Sentinel-2 ne sait pas faire",
+   "texte": "Il voit fin, mais seulement les jours où il passe, et seulement sans nuages : la surface d'un jour n'est pas la surface finale."
+  },
+  "attendre-payer": {
+   "titre": "Attendre ou payer",
+   "texte": "Après le feu, le ciel reste couvert : soit on attend une image claire, soit on en commande une."
+  },
+  "geostationnaire": {
+   "titre": "Géostationnaire",
+   "texte": "Au-dessus de l'équateur, à 36 000 km, il tourne avec la Terre : il regarde toujours le même point, en permanence, mais de très loin."
+  },
+  "geo-loin": {
+   "titre": "Loin, donc flou",
+   "texte": "Plus haut, plus souvent, plus flou ; plus bas, plus fin, moins souvent. C'est le même compromis partout."
+  },
+  "revisite": {
+   "titre": "La revisite",
+   "texte": "Sentinel-2 vole bas et sa trace au sol défile : il ne revient sur Saumos qu'au bout de quelques jours."
+  },
+  "nuages-attente": {
+   "titre": "Les nuages",
+   "texte": "Un passage nuageux ne compte pas : il faut attendre le suivant, et le suivant encore."
+  },
+  "commande": {
+   "titre": "La commande",
+   "texte": "Un satellite très haute résolution se pointe à la demande sur la zone : il ne fait pas attendre, mais il coûte."
+  },
+  "radar": {
+   "titre": "Le radar",
+   "texte": "Le radar voit à travers les nuages et la fumée, de jour comme de nuit ; sa précision sur les zones brûlées est plus relative. Pas manipulé ici : une solution à proposer."
+  },
+  "trois-solutions": {
+   "titre": "Les options du préfet",
+   "texte": "Trois options, pas une : ce qui les sépare, c'est l'argent, la précision et la patience. Pour chacune, une date."
+  }
+ },
+ "enquetes": {
+  "A": {
+   "titre": "Quand le feu a-t-il démarré ?",
+   "posture": "R",
+   "labo": "a",
+   "debut": "Avec qui veux-tu commencer ?",
+   "suites": [
+    "Avec qui désires-tu continuer de travailler ?",
+    "Qui d'autre pourrait t'éclairer ?",
+    "Avec qui veux-tu creuser ?",
+    "Un autre avis ?"
+   ],
+   "mission": [
+    "Avant toute observation : quel est le nom du satellite qui porte l'instrument, et quel est le nom du capteur qui mesure ? Ce sont deux choses différentes — l'un est la plateforme en orbite, l'autre l'appareil embarqué.",
+    "Quand peut-on voir le feu démarrer ? Donnez la date et l'heure en UTC, celle affichée sur l'image. Attention, l'heure française est en avance de deux heures.",
+    "Quand s'éteint-il ? Est-ce aussi net que le départ ?",
+    "Peut-on délimiter précisément l'emprise du feu sur cette image ?",
+    "Ce satellite voit-il le sol la nuit ? Faites défiler jusqu'à une heure nocturne."
+   ],
+   "accueils": {
+    "elikia": {
+     "r": "Bonjour ! Rose m'a prévenue : si vous êtes là, c'est que vous cherchez à détecter quelque chose dans une image, je me trompe ? Quel phénomène vous intéresse donc ?",
+     "options": [
+      {
+       "dit": "La fumée.",
+       "r": "Bon instinct. Au tout début, la chaleur tient dans quelques mètres carrés : vue de très loin, elle se noie dans un pixel de plusieurs kilomètres, sauf pour des canaux faits exprès. La fumée, elle, monte vite et s'étale : sur des images en couleurs naturelles, on la voit avant les flammes.",
+       "indices": [
+        "signal"
+       ]
+      },
+      {
+       "dit": "La chaleur.",
+       "r": "Ah, la chaleur… Au départ, il n'y en a pas beaucoup, et elle tient dans quelques mètres carrés : vue de très loin, elle se noie dans un pixel de plusieurs kilomètres. Je privilégierais la fumée : elle monte vite et s'étale ; sur des images en couleurs naturelles, on la voit avant les flammes.",
+       "indices": [
+        "signal"
+       ]
+      },
+      {
+       "dit": "Autre chose : l'odeur ?",
+       "r": "Les satellites n'ont pas de nez. Pas encore. Je vous propose la fumée : au départ, peu de chaleur visible de loin, mais la fumée monte vite et s'étale.",
+       "indices": [
+        "signal"
+       ]
+      }
+     ]
+    },
+    "bastien": {
+     "r": "Salut ! Bastien, données et traitements. Un départ de feu, hein ? Alors, question d'archiviste : pour attraper un départ, quelle résolution faut-il privilégier dans la donnée ?",
+     "options": [
+      {
+       "dit": "La résolution spatiale : voir fin.",
+       "juste": false,
+       "r": "Voir fin, c'est beau. Mais un satellite qui voit fin passe rarement : le feu aura démarré, brûlé et fait la une avant qu'il revienne. Une autre idée ?"
+      },
+      {
+       "dit": "La résolution temporelle : voir souvent.",
+       "juste": true,
+       "r": "Voilà ! Un départ, c'est un instant : il faut une image très souvent, quitte à voir flou. J'ai des images toutes les 15 minutes, mais c'est plutôt utilisé pour la météo, pas le suivi de la végétation.",
+       "indices": [
+        "res-temporelle"
+       ]
+      },
+      {
+       "dit": "La résolution spectrale : beaucoup de bandes.",
+       "juste": false,
+       "r": "Beaucoup de bandes, c'est précieux pour savoir ce qui brûle. Pour savoir quand ça démarre, il faut autre chose. Encore un essai ?"
+      }
+     ]
+    },
+    "ines": {
+     "r": "On va voir avec votre spécialiste orbito quelles sont les caractéristiques de vos couples capteur / vecteur, ceux qui vont mesurer votre signal. Pour cela, il a besoin d'infos sur les types de signaux et les résolutions auxquelles vous voulez les acquérir : trouvez-lui ces infos. Au fait, un couple capteur / vecteur, cela vous parle ? Parmi ces trois propositions, laquelle en est un ?",
+     "options": [
+      {
+       "dit": "Une image Sentinel-2 en fausses couleurs.",
+       "juste": false,
+       "r": "Ça, c'est une donnée : ce qui sort du couple. Cherchez ce qui la fabrique."
+      },
+      {
+       "dit": "Un avion avec une caméra RVB + PIR.",
+       "juste": true,
+       "r": "Exactement : le vecteur porte, le capteur mesure. Un satellite et son instrument, un drone et sa caméra… Notez bien les deux noms : tout le monde les confond.",
+       "indices": [
+        "noms"
+       ]
+      },
+      {
+       "dit": "Une station au sol qui reçoit les images.",
+       "juste": false,
+       "r": "Ça, c'est le segment sol : il écoute le couple, il n'en fait pas partie. Un autre essai ?"
+      }
+     ]
+    },
+    "rose": {
+     "r": "Moi, je ne vous donnerai aucun fait : je vous poserai les questions du préfet. Première : « il a démarré à 11 h ». Selon quel capteur ? Avec quelle incertitude ?",
+     "indices": [
+      "marge"
+     ]
+    }
+   },
+   "noeuds": [
+    {
+     "id": "A-E1",
+     "expert": "elikia",
+     "type": "choix",
+     "q": "Et pour voir cette fumée, quel signal regarder ?",
+     "r": "Quel signal serait pertinent, à votre avis ? Oui, là, on parle de photons.",
+     "options": [
+      {
+       "dit": "La lumière du Soleil renvoyée par la fumée, dans le visible.",
+       "juste": true,
+       "r": "Oui ! La fumée diffuse la lumière du Soleil : elle se voit dans le visible. Retenez la conséquence : de jour seulement.",
+       "indices": [
+        "visible"
+       ]
+      },
+      {
+       "dit": "Le rayonnement thermique émis par la fumée.",
+       "juste": false,
+       "r": "La fumée émet peu dans l'infrarouge thermique ; à ces longueurs d'onde, elle est même presque transparente. Elle, elle diffuse ce qu'elle reçoit. De qui ?"
+      },
+      {
+       "dit": "Les ondes radio.",
+       "juste": false,
+       "r": "Ça, c'est le domaine du radar, et il voit à travers la fumée : l'inverse de ce que vous cherchez !"
+      }
+     ]
+    },
+    {
+     "id": "A-E2",
+     "expert": "elikia",
+     "si": {
+      "noeuds": [
+       "A-E1"
+      ]
+     },
+     "sauf": {
+      "indices": [
+       "res-temporelle"
+      ],
+      "clefs": [
+       "a"
+      ]
+     },
+     "q": "Alors, quel satellite ?",
+     "r": "Un signal, c'est la moitié du chemin. L'autre moitié, c'est la donnée : à quelle cadence faut-il une image pour saisir un départ ? Bastien adore cette question."
+    },
+    {
+     "id": "A-E3",
+     "expert": "elikia",
+     "si": {
+      "noeuds": [
+       "A-E1"
+      ],
+      "indices": [
+       "res-temporelle"
+      ]
+     },
+     "sauf": {
+      "clefs": [
+       "a"
+      ]
+     },
+     "q": "Un signal visible, une image très souvent : quel satellite ?",
+     "r": "Un satellite de la famille des Meteosat, ou Terra, peut répondre à vos besoins. Voyez avec votre orbitographe comment connaître leurs caractéristiques. Tenez : je vous passe les clefs du labo Eumetsat.",
+     "indices": [
+      "meteosat-terra"
+     ],
+     "clefs": [
+      "a"
+     ]
+    },
+    {
+     "id": "A-E4",
+     "expert": "elikia",
+     "si": {
+      "clefs": [
+       "a"
+      ]
+     },
+     "q": "Comment trouver le premier signe ?",
+     "r": "Faites défiler les images une à une, en commençant la veille. La première fumée qui part de la forêt, c'est quand ? Notez l'heure inscrite sur l'image : elle est en UTC.",
+     "indices": [
+      "heure-utc"
+     ]
+    },
+    {
+     "id": "A-E5",
+     "expert": "elikia",
+     "si": {
+      "noeuds": [
+       "A-E4"
+      ]
+     },
+     "q": "Et la nuit, on voit encore le sol ?",
+     "r": "La nuit, plus de Soleil à renvoyer : la fumée disparaît avec lui. Faites défiler jusqu'à 22 h : que reste-t-il ? Des lumières de villes… et pas notre fumée. Les canaux infrarouges, eux, continuent de voir ce qui émet.",
+     "indices": [
+      "nuit"
+     ]
+    },
+    {
+     "id": "A-E6",
+     "expert": "elikia",
+     "si": {
+      "noeuds": [
+       "A-E4"
+      ]
+     },
+     "cout": 1,
+     "q": "Peut-on tracer le contour du feu avec ces images ?",
+     "r": "Comparez la taille d'un pixel à celle d'une commune. Vous traceriez un contour, vous, avec des pixels pareils ?",
+     "indices": [
+      "limite-a"
+     ]
+    },
+    {
+     "id": "A-E7",
+     "expert": "elikia",
+     "si": {
+      "clefs": [
+       "a"
+      ]
+     },
+     "q": "Il n'y a qu'un satellite qui voit les feux ?",
+     "r": "Oh non. Il y a un second œil, en orbite basse cette fois : Terra. Il passe une à deux fois par jour, et marque en rouge les pixels anormalement chauds. Je vous l'ajoute dans le labo : comparez le 21 et le 22 juillet. Deux capteurs qui disent la même date, c'est une preuve plus solide qu'un seul.",
+     "clefs": [
+      "a-terra"
+     ]
+    },
+    {
+     "id": "A-E8",
+     "expert": "elikia",
+     "type": "aparte",
+     "q": "Une anecdote ?",
+     "r": "Chaque jour, la NASA publie les feux actifs détectés sur toute la planète par les capteurs MODIS et VIIRS, quelques heures après le passage des satellites : c'est le service FIRMS. Des pompiers du monde entier le consultent le matin, comme on lit la météo."
+    },
+    {
+     "id": "A-B1",
+     "expert": "bastien",
+     "si": {
+      "indices": [
+       "visible"
+      ]
+     },
+     "sauf": {
+      "clefs": [
+       "a"
+      ]
+     },
+     "q": "On sait quoi chercher : la fumée, dans le visible. Et maintenant ?",
+     "r": "Une image très souvent, un signal visible : un satellite comme Meteosat ou Terra peut répondre à vos besoins. Voyez avec votre orbitographe comment connaître leurs caractéristiques. Allez, je vous ouvre le labo Eumetsat. Et ne regardez pas que les dates, regardez les heures.",
+     "indices": [
+      "meteosat-terra"
+     ],
+     "clefs": [
+      "a"
+     ]
+    },
+    {
+     "id": "A-B2",
+     "expert": "bastien",
+     "sauf": {
+      "indices": [
+       "visible"
+      ],
+      "clefs": [
+       "a"
+      ]
+     },
+     "q": "Quel satellite nous faut-il ?",
+     "r": "Doucement. Une cadence, je vous l'ai donnée ; mais une cadence pour voir quoi, et dans quel signal ? Ça, c'est le rayon d'Elikia. Revenez avec la réponse."
+    },
+    {
+     "id": "A-B3",
+     "expert": "bastien",
+     "type": "aparte",
+     "q": "Vous avez des images de cette forêt depuis quand ?",
+     "r": "Landsat photographie la Terre depuis 1972. Cette forêt des Landes, je l'ai vue pousser, brûler, repousser. Une archive, c'est une machine à remonter le temps : sans elle, pas d'« avant », donc pas d'« après »."
+    },
+    {
+     "id": "A-I1",
+     "expert": "ines",
+     "si": {
+      "indices": [
+       "meteosat-terra"
+      ]
+     },
+     "q": "Pourquoi Meteosat voit-il tout le temps ?",
+     "r": "Parce qu'il tourne aussi vite que la Terre : très haut au-dessus de l'équateur, il reste au-dessus du même point. Le prix ? Il est si loin que ses pixels font des kilomètres. Donnez son nom à votre orbitographe : il en fera la fiche.",
+     "indices": [
+      "geo-loin"
+     ]
+    },
+    {
+     "id": "A-I2",
+     "expert": "ines",
+     "type": "aparte",
+     "q": "C'est vrai que tu calcules l'heure du déjeuner en orbites ?",
+     "r": "Évidemment. Sentinel-2 boucle un tour de Terre en une centaine de minutes. Le déjeuner, c'est un tour. Le café, un quart de tour. Les réunions… on ne compte plus."
+    },
+    {
+     "id": "A-R1",
+     "expert": "rose",
+     "si": {
+      "clefs": [
+       "a"
+      ]
+     },
+     "q": "Le feu a démarré le 22. C'est sûr ?",
+     "r": "Sûr selon quel capteur ? À quelle heure, et à combien de minutes près ? Si le satellite prend une image toutes les dix ou quinze minutes, votre heure a au moins cette marge-là. Et si la fumée a mis du temps à devenir visible ? Écrivez tout cela dans le rapport.",
+     "indices": [
+      "marge"
+     ]
+    },
+    {
+     "id": "A-R2",
+     "expert": "rose",
+     "si": {
+      "clefs": [
+       "a"
+      ]
+     },
+     "q": "Et la surface ?",
+     "r": "La surface, c'est le travail de votre analyste. Mais le préfet vous la demandera à vous : vous compilez. Alors demandez-lui trois choses : son chiffre, la date de l'image, et ce qu'il ne peut pas dire."
+    },
+    {
+     "id": "A-R3",
+     "expert": "rose",
+     "type": "aparte",
+     "q": "Rose, on peut faire une pause ?",
+     "r": "Non. Mais dites-moi : vous passez un bon moment ?",
+     "options": [
+      {
+       "dit": "Oui, carrément.",
+       "r": "Tant mieux. Le préfet, lui, ne s'amuse pas : il attend votre heure de départ."
+      },
+      {
+       "dit": "Bof.",
+       "r": "Noté. Je le dirai à Marc : c'est lui qui écrit nos répliques. En attendant, il vous reste du temps : servez-vous-en."
+      },
+      {
+       "dit": "On est perdus.",
+       "r": "Alors on revient au début : qu'est-ce qu'on cherche à voir ? Qui, ici, parle de signal ? Et qui, de cadence ? Les réponses sont chez deux experts différents."
+      }
+     ]
+    }
+   ]
+  },
+  "B": {
+   "titre": "Quelle surface a brûlé ?",
+   "posture": "A",
+   "labo": "b",
+   "debut": "Avec qui veux-tu commencer ?",
+   "suites": [
+    "Avec qui désires-tu continuer de travailler ?",
+    "Qui d'autre pourrait t'éclairer ?",
+    "Avec qui veux-tu creuser ?",
+    "Un autre avis ?"
+   ],
+   "mission": [
+    "Quelle date permet de voir toute la zone intacte, avant le feu ?",
+    "Y a-t-il une image pendant le feu ? Laquelle ?",
+    "Quelle composition colorée montre le mieux les dégâts ?",
+    "Quelles bandes composent cette composition, et quelle est leur résolution ? L'information est dans le panneau de la composition.",
+    "Quel est le nom du satellite, et celui du capteur embarqué ? Donnez les deux à l'orbitographe — ce sont deux noms distincts.",
+    "Cherchez maintenant une image après le 26 juillet, quand le feu est terminé. Que trouvez-vous ?",
+    "Mesurez la surface brûlée sur deux images."
+   ],
+   "accueils": {
+    "elikia": {
+     "r": "Rose m'a prévenue que vous vouliez mesurer l'étendue d'un feu de forêt. Cela va sans doute demander des traitements : Bastien vous en parlera. Pour cela, il faut croiser des signaux qui mesurent l'état de la végétation et son humidité : le proche infrarouge et le moyen infrarouge, le SWIR. Regardez : en vert la forêt vivante, en brun la forêt brûlée. Dans Sentinel-2, ce sont les bandes B8 et B12.",
+     "image": "reflectance",
+     "indices": [
+      "pir-swir"
+     ]
+    },
+    "bastien": {
+     "r": "Bastien, données et traitements. Et chocolatines, mais ça, c'est hors service. Pour mesurer l'étendue d'un feu, une bonne solution est de créer un indice qui mette en valeur la disparition de la végétation et l'assèchement du milieu. Vous avez une idée du satellite et des bandes nécessaires ?"
+    },
+    "ines": {
+     "r": "On va voir avec votre spécialiste orbito quelles sont les caractéristiques de vos couples capteur / vecteur, ceux qui vont mesurer votre signal. Pour cela, il a besoin d'infos sur les types de signaux et les résolutions auxquelles vous voulez les acquérir : trouvez-lui ces infos. Au fait, un couple capteur / vecteur, cela vous parle ? Parmi ces trois propositions, laquelle en est un ?",
+     "options": [
+      {
+       "dit": "Une image Sentinel-2 en fausses couleurs.",
+       "juste": false,
+       "r": "Ça, c'est une donnée : ce qui sort du couple. Cherchez ce qui la fabrique."
+      },
+      {
+       "dit": "Un avion avec une caméra RVB + PIR.",
+       "juste": true,
+       "r": "Exactement : le vecteur porte, le capteur mesure. Un satellite et son instrument, un drone et sa caméra… Notez bien les deux noms : tout le monde les confond.",
+       "indices": [
+        "noms"
+       ]
+      },
+      {
+       "dit": "Une station au sol qui reçoit les images.",
+       "juste": false,
+       "r": "Ça, c'est le segment sol : il écoute le couple, il n'en fait pas partie. Un autre essai ?"
+      }
+     ]
+    },
+    "rose": {
+     "r": "Le préfet veut UN chiffre demain matin. Lequel lui donnez-vous, et à quel prix ? Réfléchissez-y en mesurant : une surface sans date ni méthode, ce n'est pas un chiffre, c'est une rumeur."
+    }
+   },
+   "noeuds": [
+    {
+     "id": "B-E1",
+     "expert": "elikia",
+     "type": "ouverte",
+     "sauf": {
+      "clefs": [
+       "b"
+      ]
+     },
+     "relais": {
+      "depuis": [
+       "C:ines"
+      ],
+      "texte": "Sentinel-2 : Inès l'a soufflé à l'orbitographe."
+     },
+     "q": "Un satellite avec ces bandes ? Il y en a beaucoup !",
+     "r": "Un satellite avec ces caractéristiques, il y en a beaucoup ! Vous pensez à un en particulier ?",
+     "invite": "le nom d'un satellite",
+     "attendu": [
+      {
+       "motifs": [
+        "senti?nel+e?\\s*-?\\s*(2|ii|deux)\\b|\\bs\\s*-?\\s*2\\b"
+       ],
+       "fin": true,
+       "r": "Oui, c'est un très bon candidat, gratuit en plus ! Ses bandes B8 et B12 sont faites pour ça. Tenez : les clefs du labo Copernicus.",
+       "clefs": [
+        "b"
+       ]
+      },
+      {
+       "motifs": [
+        "landsat"
+       ],
+       "r": "Landsat ferait l'affaire, il a les bonnes bandes. Mais il en existe un plus récent, plus fin, qui repasse plus souvent sur la Gironde. Votre orbitographe connaît son nom."
+      },
+      {
+       "motifs": [
+        "met[eo]*\\s*-?\\s*sat|\\bmsg\\b|\\bmtg\\b|seviri|\\bfci\\b"
+       ],
+       "r": "Celui-là voit le feu naître, pas son contour : ses pixels sont bien trop gros pour mesurer des hectares. Il vous faut un œil plus fin. Demandez à votre orbitographe."
+      },
+      {
+       "motifs": [
+        "terra|modis|\\baqua\\b"
+       ],
+       "r": "Terra a de bonnes bandes, mais des pixels de 250 m à 1 km : pour des hectares, c'est grossier. Il vous faut plus fin. Votre orbitographe a sûrement un nom."
+      }
+     ],
+     "sinon": {
+      "r": "Hum, je ne le connais pas, celui-là. Voyez avec votre orbitographe : Inès lui a sûrement soufflé un nom."
+     }
+    },
+    {
+     "id": "B-E2",
+     "expert": "elikia",
+     "si": {
+      "essais": [
+       "B-E1"
+      ]
+     },
+     "sauf": {
+      "clefs": [
+       "b"
+      ]
+     },
+     "cout": 1,
+     "q": "On ne trouve pas de nom de satellite…",
+     "r": "Un indice, alors : il fait partie d'une famille européenne qui porte le nom d'un guetteur. Le deuxième de la famille, c'est le vôtre. Votre orbitographe le sait déjà, je parie."
+    },
+    {
+     "id": "B-E3",
+     "expert": "elikia",
+     "si": {
+      "clefs": [
+       "b"
+      ]
+     },
+     "cache": true,
+     "q": "Qu'est-ce qui traverse la fumée ?",
+     "r": "Les grandes longueurs d'onde. La fumée arrête le bleu bien plus que l'infrarouge moyen : une composition SWIR voit à travers, et le front de flammes y brille. Comparez couleurs naturelles et SWIR sur le 26 juillet : ce qui change, c'est la fumée, pas le feu.",
+     "indices": [
+      "swir"
+     ]
+    },
+    {
+     "id": "B-E4",
+     "expert": "elikia",
+     "type": "aparte",
+     "q": "Pourquoi une forêt vivante brille-t-elle autant dans le proche infrarouge ?",
+     "r": "Parce que l'intérieur d'une feuille est un labyrinthe de cellules et d'air : le proche infrarouge y rebondit et ressort. Brûlée, plus de feuilles, plus de labyrinthe : le miroir s'éteint. Et le SWIR remonte quand l'eau s'en va."
+    },
+    {
+     "id": "B-B1",
+     "expert": "bastien",
+     "type": "ouverte",
+     "relais": {
+      "depuis": [
+       "C:ines",
+       "B:elikia"
+      ],
+      "texte": "Le satellite vient de l'orbitographe, les bandes d'Elikia."
+     },
+     "q": "Le satellite et les bandes ? On propose.",
+     "r": "Je vous écoute : quel satellite, et quelles bandes ?",
+     "invite": "satellite et bandes",
+     "attendu": [
+      {
+       "motifs": [
+        "senti?nel+e?\\s*-?\\s*(2|ii|deux)\\b|\\bs\\s*-?\\s*2\\b",
+        "\\bb\\s*-?\\s*0?8\\s*a?\\b|proche\\s*infra|\\bpir\\b|\\bnir\\b",
+        "\\bb\\s*-?\\s*12\\b|swir|infra\\s*-?\\s*rouge\\s*moyen|moyen\\s*infra"
+       ],
+       "fin": true,
+       "r": "Parfait ! Grâce à ça, on peut créer le NBR, l'indice de brûlure normalisé. Mais avant cela, on peut visualiser le phénomène en composition colorée. Je vous ouvre le labo Copernicus.",
+       "indices": [
+        "compositions"
+       ],
+       "clefs": [
+        "b"
+       ],
+       "debloque": [
+        "B-E3"
+       ]
+      },
+      {
+       "motifs": [
+        "senti?nel+e?\\s*-?\\s*(2|ii|deux)\\b|\\bs\\s*-?\\s*2\\b"
+       ],
+       "r": "Le satellite, oui. Et les bandes ? Une pour la végétation vivante, une pour la sécheresse : il vous les faut toutes les deux."
+      },
+      {
+       "motifs": [
+        "\\bb\\s*-?\\s*0?8\\s*a?\\b|proche\\s*infra|\\bpir\\b|\\bnir\\b",
+        "\\bb\\s*-?\\s*12\\b|swir|infra\\s*-?\\s*rouge\\s*moyen|moyen\\s*infra"
+       ],
+       "r": "Les bandes, bravo. Et le satellite qui les porte ? Votre orbitographe doit avoir un nom."
+      },
+      {
+       "motifs": [
+        "\\bb\\s*-?\\s*0?8\\s*a?\\b|proche\\s*infra|\\bpir\\b|\\bnir\\b"
+       ],
+       "r": "Le proche infrarouge, oui : la végétation vivante. Il en manque une : celle qui voit la sécheresse."
+      },
+      {
+       "motifs": [
+        "\\bb\\s*-?\\s*12\\b|swir|infra\\s*-?\\s*rouge\\s*moyen|moyen\\s*infra"
+       ],
+       "r": "Le SWIR, oui : la sécheresse. Il en manque une : celle qui voit la végétation vivante."
+      },
+      {
+       "motifs": [
+        "met[eo]*\\s*-?\\s*sat|\\bmsg\\b|\\bmtg\\b|seviri|\\bfci\\b|terra|modis|\\baqua\\b"
+       ],
+       "r": "Trop grossier pour des hectares. Il vous faut un œil fin, qui passe régulièrement. Votre orbitographe le connaît."
+      }
+     ],
+     "sinon": {
+      "r": "Allez en discuter avec Elikia : les interactions avec les objets, c'est une de ses spécialités."
+     }
+    },
+    {
+     "id": "B-B2",
+     "expert": "bastien",
+     "si": {
+      "clefs": [
+       "b"
+      ]
+     },
+     "q": "Quelle image prendre ?",
+     "r": "Une date avant, une date après. Commencez par l'avant : il n'y a rien à voir, et c'est justement pour ça qu'il compte. Notez la date exacte de chaque image : sans elle, votre surface ne veut rien dire.",
+     "indices": [
+      "avant-apres"
+     ]
+    },
+    {
+     "id": "B-B3",
+     "expert": "bastien",
+     "si": {
+      "noeuds": [
+       "B-B2"
+      ]
+     },
+     "q": "La fumée nous gêne.",
+     "r": "Si la fumée vous gêne, essayez une composition qui ne regarde pas dans le visible. Et demandez à Elikia ce qui traverse la fumée : elle a une réponse en longueurs d'onde.",
+     "debloque": [
+      "B-E3"
+     ]
+    },
+    {
+     "id": "B-B4",
+     "expert": "bastien",
+     "si": {
+      "noeuds": [
+       "B-B2"
+      ]
+     },
+     "q": "Et après le 26 juillet ?",
+     "r": "Cherchez la première image claire après le 26 juillet, et dites-moi combien de semaines il a fallu attendre. Je vous attends. Avec une chocolatine.",
+     "indices": [
+      "attendre-payer"
+     ]
+    },
+    {
+     "id": "B-B5",
+     "expert": "bastien",
+     "si": {
+      "noeuds": [
+       "B-B2"
+      ]
+     },
+     "q": "Et ce NBR, on le calcule ?",
+     "r": "Le NBR, c'est (PIR − SWIR) / (PIR + SWIR) : il s'effondre là où la forêt a brûlé. La différence entre avant et après, le dNBR, dit à quel point ça a brûlé. Je vous l'ai ajouté dans le labo. Et pas de seuil choisi au feeling, hein : les classes viennent de UN-SPIDER.",
+     "indices": [
+      "nbr"
+     ],
+     "clefs": [
+      "b-nbr"
+     ]
+    },
+    {
+     "id": "B-B6",
+     "expert": "bastien",
+     "si": {
+      "noeuds": [
+       "B-B3"
+      ]
+     },
+     "cout": 1,
+     "q": "Notre surface change entre deux dates.",
+     "r": "Votre surface change entre deux dates ? Le feu a grandi, ou c'est votre image qui voyait moins bien ?",
+     "indices": [
+      "limite-b"
+     ],
+     "debloque": [
+      "B-R1"
+     ]
+    },
+    {
+     "id": "B-B7",
+     "expert": "bastien",
+     "type": "aparte",
+     "q": "Vous avez des images de cette forêt depuis quand ?",
+     "r": "Landsat photographie la Terre depuis 1972, Sentinel-2 depuis 2015. Cette forêt des Landes, je l'ai vue pousser, brûler, repousser. Une archive, c'est une machine à remonter le temps : sans elle, pas d'« avant », donc pas d'« après »."
+    },
+    {
+     "id": "B-I1",
+     "expert": "ines",
+     "si": {
+      "clefs": [
+       "b"
+      ]
+     },
+     "q": "Pourquoi pas d'image entre le 21 et le 26 ?",
+     "r": "Parce que Sentinel-2 ne survole Saumos que tous les quelques jours : il vole bas, sa trace au sol défile, et sa fauchée n'est pas infinie. Votre orbitographe est en train de le calculer : allez lui demander.",
+     "indices": [
+      "revisite"
+     ]
+    },
+    {
+     "id": "B-I2",
+     "expert": "ines",
+     "type": "aparte",
+     "q": "C'est vrai que tu calcules l'heure du déjeuner en orbites ?",
+     "r": "Évidemment. Sentinel-2 boucle un tour de Terre en une centaine de minutes. Le déjeuner, c'est un tour. Le café, un quart de tour."
+    },
+    {
+     "id": "B-R1",
+     "expert": "rose",
+     "cache": true,
+     "q": "Alors, quel chiffre pour le préfet ?",
+     "r": "Le préfet a trois options, pas une. Ce qui les sépare : l'argent, la précision, la patience. Pour chacune, trouvez une date. Et pour chacune, dites ce qu'elle ne permet pas.",
+     "indices": [
+      "trois-solutions"
+     ]
+    },
+    {
+     "id": "B-R2",
+     "expert": "rose",
+     "si": {
+      "clefs": [
+       "b"
+      ]
+     },
+     "q": "Notre chiffre est bon ?",
+     "r": "Bon par rapport à quoi ? Le 26 juillet, le feu brûle encore. Une surface, c'est une date, une image, une méthode. Donnez les trois, et le préfet vous croira."
+    },
+    {
+     "id": "B-R3",
+     "expert": "rose",
+     "type": "aparte",
+     "q": "Rose, on peut faire une pause ?",
+     "r": "Non. Mais dites-moi : vous passez un bon moment ?",
+     "options": [
+      {
+       "dit": "Oui, carrément.",
+       "r": "Tant mieux. Le préfet, lui, attend son chiffre."
+      },
+      {
+       "dit": "Bof.",
+       "r": "Noté. Je le dirai à Marc : c'est lui qui écrit nos répliques. En attendant, mesurez."
+      },
+      {
+       "dit": "On est perdus.",
+       "r": "Alors on revient au début : quels signaux voient une forêt brûlée ? Qui parle de photons ici ? Et quel satellite les capte ? Votre orbitographe a peut-être la réponse."
+      }
+     ]
+    }
+   ]
+  },
+  "C": {
+   "titre": "Quels satellites, et quand passent-ils ?",
+   "posture": "O",
+   "labo": "c",
+   "debut": "Avec qui veux-tu commencer ?",
+   "suites": [
+    "Avec qui désires-tu continuer de travailler ?",
+    "Qui d'autre pourrait t'éclairer ?",
+    "Avec qui veux-tu creuser ?",
+    "Un autre avis ?"
+   ],
+   "mission": [
+    "Vos coéquipiers vont venir vous donner le nom de leur satellite et de leur capteur. Notez bien les deux : dans Deimos, seul le satellite figure dans la liste, avec ctrl+F. Le capteur, lui, est l'appareil qu'il transporte.",
+    "À quelle altitude vole chacun d'eux ?",
+    "Sa trace au sol défile-t-elle, ou reste-t-elle fixe au-dessus du même point ?",
+    "Lequel peut regarder la Gironde en permanence ? Lequel doit attendre de repasser ?",
+    "Combien de jours s'écoulent entre deux passages de Sentinel-2 sur la même zone ?",
+    "Allez expliquer à vos coéquipiers pourquoi leurs images sont si différentes."
+   ],
+   "accueils": {
+    "elikia": {
+     "r": "Les orbites ? Moi, je m'arrête là où le photon touche le capteur. Avant, il a voyagé ; après, c'est de l'électronique ; autour, c'est de la mécanique céleste. Et la mécanique céleste, c'est Inès : elle a déjà calculé dans combien de minutes vous allez la voir."
+    },
+    "bastien": {
+     "r": "Des noms de satellites ? J'ai tout le catalogue. Il y en a deux que vos collègues vont chercher, et un troisième que personne ne cite : celui qui a servi au périmètre officiel. Il est dans la page de l'activation EMSR899. Mais commencez par Inès : moi, je range ; elle, elle calcule."
+    },
+    "ines": {
+     "r": "Alors, il y a près de 500 satellites d'observation de la Terre en orbite. Pour t'aider à trouver ceux qui t'intéressent, j'ai besoin de connaître leur famille. Par contre, je suis prête à parier que vous aurez besoin de Sentinel-2 : c'est la star du moment, le satellite à tout faire, en particulier pour le suivi de la végétation. Dis-le à ton analyste.",
+     "indices": [
+      "sentinel-2"
+     ]
+    },
+    "rose": {
+     "r": "Un satellite que l'on pointe à la demande, ça coûte combien, et qui paie ? Gardez la question : vous la reposerez au préfet.",
+     "indices": [
+      "commande"
+     ]
+    }
+   },
+   "noeuds": [
+    {
+     "id": "C-I1",
+     "expert": "ines",
+     "type": "ouverte",
+     "sauf": {
+      "clefs": [
+       "c"
+      ]
+     },
+     "relais": {
+      "depuis": [
+       "A-E3",
+       "A-B1"
+      ],
+      "texte": "Meteosat : le rapporteur l'a appris d'Elikia ou de Bastien."
+     },
+     "q": "La famille du satellite de notre rapporteur ? On propose.",
+     "r": "Alors, quelle famille cherche ton rapporteur ?",
+     "invite": "une famille de satellites",
+     "attendu": [
+      {
+       "motifs": [
+        "met[eo]*\\s*-?\\s*sat|\\bmsg\\b|\\bmtg\\b|seviri|\\bfci\\b"
+       ],
+       "fin": true,
+       "r": "Oui ! Il y a un satellite en position au-dessus de l'Europe, un Meteosat. Les images de ton rapporteur portent la mention MSG 0° : Meteosat Seconde Génération, posé à 0° de longitude. Cet été, c'est Meteosat-10 qui assurait ce service, avec son capteur SEVIRI. Tu peux le visualiser sur Deimos : je te passe les clefs. Essaie de comprendre le lien entre son orbite et ses résolutions…",
+       "clefs": [
+        "c"
+       ],
+       "debloque": [
+        "C-E1"
+       ]
+      },
+      {
+       "motifs": [
+        "terra|modis|\\baqua\\b"
+       ],
+       "r": "Terra, c'est une piste : il voit les feux une à deux fois par jour. Mais ton rapporteur cherche l'heure du départ : il lui faut un œil qui ne cligne jamais. Quelle autre famille lui a-t-on soufflée ?"
+      },
+      {
+       "motifs": [
+        "senti?nel+e?\\s*-?\\s*(2|ii|deux)\\b|\\bs\\s*-?\\s*2\\b"
+       ],
+       "r": "Sentinel-2, c'est la star, je te l'ai dit, et c'est pour ton analyste. Ton rapporteur, lui, a besoin d'un autre œil. Va lui demander quelle famille ses experts lui ont soufflée."
+      }
+     ],
+     "sinon": {
+      "r": "Je ne la connais pas, celle-là. Demande à ton rapporteur : il cherche un satellite qui ne quitte jamais l'Europe des yeux."
+     }
+    },
+    {
+     "id": "C-I0",
+     "expert": "ines",
+     "si": {
+      "essais": [
+       "C-I1"
+      ]
+     },
+     "sauf": {
+      "clefs": [
+       "c"
+      ]
+     },
+     "cout": 1,
+     "q": "Notre rapporteur n'a pas encore de nom…",
+     "r": "Un indice, alors : cette famille porte le nom du temps qu'il fait. Ça vous coûte un peu de la confiance du préfet, mais pas trop."
+    },
+    {
+     "id": "C-I2",
+     "expert": "ines",
+     "si": {
+      "clefs": [
+       "c"
+      ]
+     },
+     "q": "Un satellite qui ne quitte jamais l'Europe, c'est possible ?",
+     "r": "Un satellite qui ne bouge pas par rapport à la Terre : à quelle altitude doit-il être ? Regarde dans le labo si sa trace défile ou reste fixe, et note son altitude.",
+     "indices": [
+      "geostationnaire"
+     ]
+    },
+    {
+     "id": "C-I3",
+     "expert": "ines",
+     "si": {
+      "clefs": [
+       "c"
+      ]
+     },
+     "q": "Et Sentinel-2, pourquoi ne repasse-t-il pas chaque jour ?",
+     "r": "Il vole bas, il voit fin, mais sa trace défile : chaque jour, il survole une autre bande de Terre. Combien de jours avant de revenir sur Saumos ? Compte-les dans le labo.",
+     "indices": [
+      "revisite"
+     ]
+    },
+    {
+     "id": "C-I4",
+     "expert": "ines",
+     "si": {
+      "noeuds": [
+       "C-I3"
+      ]
+     },
+     "cout": 1,
+     "q": "Et s'il fait nuageux le jour du passage ?",
+     "r": "S'il repasse tous les cinq jours et qu'il fait nuageux ce jour-là, combien de temps attends-tu ?",
+     "indices": [
+      "nuages-attente"
+     ]
+    },
+    {
+     "id": "C-I5",
+     "expert": "ines",
+     "si": {
+      "noeuds": [
+       "C-I2",
+       "C-I3"
+      ]
+     },
+     "q": "Qui a tracé le périmètre officiel si tôt ?",
+     "r": "Un satellite qu'on ne laisse pas défiler : on le pointe, à la demande, sur la zone. Très fin, très cher. Je t'ajoute sa fiche dans le labo ; son nom est aussi dans la page de l'activation EMSR899.",
+     "indices": [
+      "commande"
+     ],
+     "clefs": [
+      "c-legion"
+     ],
+     "debloque": [
+      "C-R1"
+     ]
+    },
+    {
+     "id": "C-I6",
+     "expert": "ines",
+     "si": {
+      "noeuds": [
+       "C-I5"
+      ]
+     },
+     "q": "Et le radar, il ne pourrait pas nous aider ?",
+     "r": "Si ! Le radar voit à travers les nuages et la fumée, de jour comme de nuit. Sa précision sur les zones brûlées est plus relative, mais il ne vous fait pas attendre le soleil. On ne le manipule pas aujourd'hui : note-le comme une solution.",
+     "indices": [
+      "radar"
+     ]
+    },
+    {
+     "id": "C-I7",
+     "expert": "ines",
+     "si": {
+      "clefs": [
+       "c"
+      ]
+     },
+     "q": "Et Terra, dans tout ça ?",
+     "r": "Terra vole à 705 km, sur une orbite héliosynchrone comme Sentinel-2, mais son capteur MODIS a une fauchée immense : plus de 2 000 km. Il voit donc presque tout, tous les jours, avec des pixels de 250 m à 1 km. Le compromis, encore. Je t'ajoute sa fiche.",
+     "clefs": [
+      "c-terra"
+     ]
+    },
+    {
+     "id": "C-I8",
+     "expert": "ines",
+     "type": "aparte",
+     "q": "C'est vrai que tu calcules l'heure du déjeuner en orbites ?",
+     "r": "Évidemment. Sentinel-2 boucle un tour de Terre en une centaine de minutes. Le déjeuner, c'est un tour. Le café, un quart de tour. Les réunions… on ne compte plus."
+    },
+    {
+     "id": "C-E1",
+     "expert": "elikia",
+     "cache": true,
+     "q": "Pourquoi celui qui voit tout le temps voit-il si flou ?",
+     "r": "Parce qu'il est loin. De si haut, chaque pixel de son capteur couvre des kilomètres au sol. Plus près, plus fin. Plus fin, moins souvent : c'est le même compromis partout.",
+     "indices": [
+      "geo-loin"
+     ]
+    },
+    {
+     "id": "C-B1",
+     "expert": "bastien",
+     "si": {
+      "clefs": [
+       "c"
+      ]
+     },
+     "q": "Le satellite et le capteur, c'est pareil ?",
+     "r": "Jamais de la vie. Meteosat-10, c'est le satellite ; SEVIRI, l'appareil qu'il transporte. Sentinel-2 porte MSI, Terra porte MODIS. Dans mon catalogue, une ligne par couple. Vos collègues confondent tout le temps : corrigez-les."
+    },
+    {
+     "id": "C-B2",
+     "expert": "bastien",
+     "type": "aparte",
+     "q": "Vous avez des images de cette forêt depuis quand ?",
+     "r": "Landsat photographie la Terre depuis 1972. Une archive, c'est une machine à remonter le temps : sans elle, pas d'« avant », donc pas d'« après »."
+    },
+    {
+     "id": "C-R1",
+     "expert": "rose",
+     "cache": true,
+     "q": "Une image commandée, c'est la solution ?",
+     "r": "C'est une solution. Rapide, précise, et chère. Le préfet en a deux autres. Faites-lui la liste, avec une date et un prix pour chacune.",
+     "indices": [
+      "trois-solutions"
+     ]
+    },
+    {
+     "id": "C-R2",
+     "expert": "rose",
+     "si": {
+      "clefs": [
+       "c"
+      ]
+     },
+     "q": "Et nos coéquipiers, on leur dit quoi ?",
+     "r": "Ce que leurs capteurs savent faire, et ce qu'ils ne savent pas. Au rapporteur : pourquoi son heure est fiable mais pas son contour. À l'analyste : pourquoi ses images sautent du 21 au 26. C'est votre livrable, à vous."
+    },
+    {
+     "id": "C-R3",
+     "expert": "rose",
+     "type": "aparte",
+     "q": "Rose, on peut faire une pause ?",
+     "r": "Non. Mais dites-moi : vous passez un bon moment ?",
+     "options": [
+      {
+       "dit": "Oui, carrément.",
+       "r": "Tant mieux. Vos coéquipiers, eux, attendent vos fiches."
+      },
+      {
+       "dit": "Bof.",
+       "r": "Noté. Je le dirai à Marc : c'est lui qui écrit nos répliques. En attendant, allez voir vos coéquipiers : ils ont des noms pour vous."
+      },
+      {
+       "dit": "On est perdus.",
+       "r": "Alors on revient au début : Inès a besoin d'une famille de satellites. Qui, dans votre groupe, cherche le départ du feu ? Allez lui demander ce que ses experts lui ont dit."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "satellites": [
+  {
+   "id": "meteosat",
+   "nom": "Meteosat-10",
+   "clef": "c",
+   "capteur": "SEVIRI",
+   "orbite": "géostationnaire",
+   "altitude": 36000,
+   "revisite": "une image toutes les 15 minutes",
+   "pixel": "3 km sous le satellite, davantage sur la France",
+   "nuit": "oui en infrarouge thermique, non dans le visible",
+   "note": "Service MSG 0° d'EUMETSAT. Depuis 2025, Meteosat-12 (troisième génération, capteur FCI) assure le service principal européen, avec une image toutes les 10 minutes.",
+   "rapport": {
+    "c_sata": "Meteosat-10, capteur SEVIRI",
+    "c_alta": "36 000",
+    "c_orba": "géostationnaire"
+   }
+  },
+  {
+   "id": "sentinel2",
+   "nom": "Sentinel-2",
+   "indice": "sentinel-2",
+   "capteur": "MSI",
+   "orbite": "basse, héliosynchrone",
+   "altitude": 786,
+   "revisite": "tous les 5 jours avec deux satellites",
+   "pixel": "10 à 60 m selon la bande",
+   "nuit": "non",
+   "note": "Fauchée de 290 km. Il passe au-dessus de chaque lieu vers 10 h 30, heure solaire.",
+   "rapport": {
+    "c_satb": "Sentinel-2, capteur MSI",
+    "c_altb": "786",
+    "c_ret": "5"
+   }
+  },
+  {
+   "id": "terra",
+   "nom": "Terra",
+   "clef": "c-terra",
+   "capteur": "MODIS",
+   "orbite": "basse, héliosynchrone",
+   "altitude": 705,
+   "revisite": "une à deux fois par jour",
+   "pixel": "250 m à 1 km",
+   "nuit": "oui en infrarouge thermique",
+   "note": "Fauchée de plus de 2 000 km : presque toute la Terre chaque jour."
+  },
+  {
+   "id": "legion",
+   "nom": "WorldView Legion",
+   "clef": "c-legion",
+   "capteur": "imageur très haute résolution",
+   "orbite": "basse, pointable",
+   "altitude": 500,
+   "revisite": "à la demande : on le pointe",
+   "pixel": "quelques dizaines de centimètres",
+   "nuit": "non",
+   "note": "Satellite commercial : c'est lui qui a servi au périmètre officiel de l'activation EMSR899, le 29 juillet. Payant."
+  }
+ ],
+ "compositions": [
+  [
+   "naturelles",
+   "Couleurs naturelles",
+   "B4, B3, B2 (rouge, vert, bleu) — 10 m. Ce que verrait l'œil : la fumée y est blanche."
+  ],
+  [
+   "infrarouge",
+   "Fausses couleurs",
+   "B8, B4, B3 (proche infrarouge, rouge, vert) — 10 m. La végétation vivante ressort en rouge."
+  ],
+  [
+   "swir",
+   "SWIR",
+   "B12, B8A, B4 (infrarouge moyen, proche infrarouge étroit, rouge) — 20 m. Voit à travers la fumée ; le brûlé vire au brun."
+  ],
+  [
+   "feux",
+   "Feux (wildfires)",
+   "Couleurs naturelles où les bandes SWIR (B11, B12) font ressortir les flammes actives en orange."
+  ]
+ ],
+ "dates_s2": [
+  [
+   "07-21",
+   "21 juillet 2026",
+   "avant"
+  ],
+  [
+   "07-26",
+   "26 juillet 2026",
+   "pendant"
+  ],
+  [
+   "09-04",
+   "4 septembre 2026",
+   "après"
+  ]
+ ],
+ "fenetre": {
+  "lon0": -1.32,
+  "lon1": -0.72,
+  "lat0": 44.66,
+  "lat1": 45.03,
+  "w": 692,
+  "h": 604
+ },
+ "mesure": {
+  "geo": {
+   "lon0": -1.239395,
+   "lon1": -0.803229,
+   "lat0": 44.715026,
+   "lat1": 44.9784,
+   "w": 1212,
+   "h": 732
+  },
+  "references": {
+   "07-26": [
+    12000,
+    "Le feu n'est pas encore terminé à cette date."
+   ],
+   "09-04": [
+    25000,
+    "Le périmètre officiel EMSR899, tracé le 29 juillet, en compte 31 386."
+   ]
+  }
+ },
+ "dnbr_legende": [
+  [
+   "#1a9641",
+   "Repousse forte"
+  ],
+  [
+   "#a6d96a",
+   "Repousse faible"
+  ],
+  [
+   "#f0f0f0",
+   "Non brûlé"
+  ],
+  [
+   "#fee08b",
+   "Sévérité faible"
+  ],
+  [
+   "#fdae61",
+   "Sévérité modérée-faible"
+  ],
+  [
+   "#f46d43",
+   "Sévérité modérée-haute"
+  ],
+  [
+   "#a50026",
+   "Sévérité forte"
+  ]
+ ],
+ "meteosat": [
+  [
+   "msg-0721-1200",
+   "21 juillet · 12:00 UTC",
+   "21 juillet 2026",
+   "12:00 UTC"
+  ],
+  [
+   "msg-0721-1230",
+   "21 juillet · 12:30 UTC",
+   "21 juillet 2026",
+   "12:30 UTC"
+  ],
+  [
+   "msg-0721-1300",
+   "21 juillet · 13:00 UTC",
+   "21 juillet 2026",
+   "13:00 UTC"
+  ],
+  [
+   "msg-0721-1400",
+   "21 juillet · 14:00 UTC",
+   "21 juillet 2026",
+   "14:00 UTC"
+  ],
+  [
+   "msg-0721-1500",
+   "21 juillet · 15:00 UTC",
+   "21 juillet 2026",
+   "15:00 UTC"
+  ],
+  [
+   "msg-0721-1600",
+   "21 juillet · 16:00 UTC",
+   "21 juillet 2026",
+   "16:00 UTC"
+  ],
+  [
+   "msg-0721-1700",
+   "21 juillet · 17:00 UTC",
+   "21 juillet 2026",
+   "17:00 UTC"
+  ],
+  [
+   "msg-0721-1800",
+   "21 juillet · 18:00 UTC",
+   "21 juillet 2026",
+   "18:00 UTC"
+  ],
+  [
+   "msg-0721-1900",
+   "21 juillet · 19:00 UTC",
+   "21 juillet 2026",
+   "19:00 UTC"
+  ],
+  [
+   "msg-0721-2000",
+   "21 juillet · 20:00 UTC",
+   "21 juillet 2026",
+   "20:00 UTC"
+  ],
+  [
+   "msg-0721-2100",
+   "21 juillet · 21:00 UTC",
+   "21 juillet 2026",
+   "21:00 UTC"
+  ],
+  [
+   "msg-0721-2200",
+   "21 juillet · 22:00 UTC",
+   "21 juillet 2026",
+   "22:00 UTC"
+  ],
+  [
+   "msg-0721-2300",
+   "21 juillet · 23:00 UTC",
+   "21 juillet 2026",
+   "23:00 UTC"
+  ],
+  [
+   "msg-0722-0000",
+   "22 juillet · 00:00 UTC",
+   "22 juillet 2026",
+   "00:00 UTC"
+  ],
+  [
+   "msg-0722-0100",
+   "22 juillet · 01:00 UTC",
+   "22 juillet 2026",
+   "01:00 UTC"
+  ],
+  [
+   "msg-0722-0200",
+   "22 juillet · 02:00 UTC",
+   "22 juillet 2026",
+   "02:00 UTC"
+  ],
+  [
+   "msg-0722-0300",
+   "22 juillet · 03:00 UTC",
+   "22 juillet 2026",
+   "03:00 UTC"
+  ],
+  [
+   "msg-0722-0400",
+   "22 juillet · 04:00 UTC",
+   "22 juillet 2026",
+   "04:00 UTC"
+  ],
+  [
+   "msg-0722-0500",
+   "22 juillet · 05:00 UTC",
+   "22 juillet 2026",
+   "05:00 UTC"
+  ],
+  [
+   "msg-0722-0600",
+   "22 juillet · 06:00 UTC",
+   "22 juillet 2026",
+   "06:00 UTC"
+  ],
+  [
+   "msg-0722-0700",
+   "22 juillet · 07:00 UTC",
+   "22 juillet 2026",
+   "07:00 UTC"
+  ],
+  [
+   "msg-0722-0800",
+   "22 juillet · 08:00 UTC",
+   "22 juillet 2026",
+   "08:00 UTC"
+  ],
+  [
+   "msg-0722-0900",
+   "22 juillet · 09:00 UTC",
+   "22 juillet 2026",
+   "09:00 UTC"
+  ],
+  [
+   "msg-0722-1000",
+   "22 juillet · 10:00 UTC",
+   "22 juillet 2026",
+   "10:00 UTC"
+  ],
+  [
+   "msg-0722-1010",
+   "22 juillet · 10:10 UTC",
+   "22 juillet 2026",
+   "10:10 UTC"
+  ],
+  [
+   "msg-0722-1020",
+   "22 juillet · 10:20 UTC",
+   "22 juillet 2026",
+   "10:20 UTC"
+  ],
+  [
+   "msg-0722-1030",
+   "22 juillet · 10:30 UTC",
+   "22 juillet 2026",
+   "10:30 UTC"
+  ],
+  [
+   "msg-0722-1040",
+   "22 juillet · 10:40 UTC",
+   "22 juillet 2026",
+   "10:40 UTC"
+  ],
+  [
+   "msg-0722-1050",
+   "22 juillet · 10:50 UTC",
+   "22 juillet 2026",
+   "10:50 UTC"
+  ],
+  [
+   "msg-0722-1100",
+   "22 juillet · 11:00 UTC",
+   "22 juillet 2026",
+   "11:00 UTC"
+  ],
+  [
+   "msg-0722-1110",
+   "22 juillet · 11:10 UTC",
+   "22 juillet 2026",
+   "11:10 UTC"
+  ],
+  [
+   "msg-0722-1120",
+   "22 juillet · 11:20 UTC",
+   "22 juillet 2026",
+   "11:20 UTC"
+  ],
+  [
+   "msg-0722-1130",
+   "22 juillet · 11:30 UTC",
+   "22 juillet 2026",
+   "11:30 UTC"
+  ],
+  [
+   "msg-0722-1140",
+   "22 juillet · 11:40 UTC",
+   "22 juillet 2026",
+   "11:40 UTC"
+  ],
+  [
+   "msg-0722-1150",
+   "22 juillet · 11:50 UTC",
+   "22 juillet 2026",
+   "11:50 UTC"
+  ],
+  [
+   "msg-0722-1200",
+   "22 juillet · 12:00 UTC",
+   "22 juillet 2026",
+   "12:00 UTC"
+  ],
+  [
+   "msg-0722-1210",
+   "22 juillet · 12:10 UTC",
+   "22 juillet 2026",
+   "12:10 UTC"
+  ],
+  [
+   "msg-0722-1220",
+   "22 juillet · 12:20 UTC",
+   "22 juillet 2026",
+   "12:20 UTC"
+  ],
+  [
+   "msg-0722-1230",
+   "22 juillet · 12:30 UTC",
+   "22 juillet 2026",
+   "12:30 UTC"
+  ],
+  [
+   "msg-0722-1240",
+   "22 juillet · 12:40 UTC",
+   "22 juillet 2026",
+   "12:40 UTC"
+  ],
+  [
+   "msg-0722-1250",
+   "22 juillet · 12:50 UTC",
+   "22 juillet 2026",
+   "12:50 UTC"
+  ],
+  [
+   "msg-0722-1300",
+   "22 juillet · 13:00 UTC",
+   "22 juillet 2026",
+   "13:00 UTC"
+  ],
+  [
+   "msg-0722-1330",
+   "22 juillet · 13:30 UTC",
+   "22 juillet 2026",
+   "13:30 UTC"
+  ],
+  [
+   "msg-0722-1400",
+   "22 juillet · 14:00 UTC",
+   "22 juillet 2026",
+   "14:00 UTC"
+  ],
+  [
+   "msg-0722-1500",
+   "22 juillet · 15:00 UTC",
+   "22 juillet 2026",
+   "15:00 UTC"
+  ],
+  [
+   "msg-0722-1600",
+   "22 juillet · 16:00 UTC",
+   "22 juillet 2026",
+   "16:00 UTC"
+  ],
+  [
+   "msg-0722-1700",
+   "22 juillet · 17:00 UTC",
+   "22 juillet 2026",
+   "17:00 UTC"
+  ],
+  [
+   "msg-0722-1800",
+   "22 juillet · 18:00 UTC",
+   "22 juillet 2026",
+   "18:00 UTC"
+  ],
+  [
+   "msg-0722-1900",
+   "22 juillet · 19:00 UTC",
+   "22 juillet 2026",
+   "19:00 UTC"
+  ],
+  [
+   "msg-0722-2000",
+   "22 juillet · 20:00 UTC",
+   "22 juillet 2026",
+   "20:00 UTC"
+  ],
+  [
+   "msg-0722-2100",
+   "22 juillet · 21:00 UTC",
+   "22 juillet 2026",
+   "21:00 UTC"
+  ],
+  [
+   "msg-0722-2200",
+   "22 juillet · 22:00 UTC",
+   "22 juillet 2026",
+   "22:00 UTC"
+  ],
+  [
+   "msg-0722-2300",
+   "22 juillet · 23:00 UTC",
+   "22 juillet 2026",
+   "23:00 UTC"
+  ]
+ ],
+ "terra": [
+  [
+   "terra-21",
+   "21 juillet 2026"
+  ],
+  [
+   "terra-22",
+   "22 juillet 2026"
+  ],
+  [
+   "terra-23",
+   "23 juillet 2026"
+  ],
+  [
+   "terra-24",
+   "24 juillet 2026"
+  ],
+  [
+   "terra-25",
+   "25 juillet 2026"
+  ],
+  [
+   "terra-26",
+   "26 juillet 2026"
+  ],
+  [
+   "terra-27",
+   "27 juillet 2026"
+  ],
+  [
+   "terra-28",
+   "28 juillet 2026"
+  ]
+ ],
+ "rapport": {
+  "sections": [
+   {
+    "posture": "R",
+    "titre": "Enquête A — le départ du feu",
+    "champs": [
+     [
+      "a_nom",
+      "text",
+      "Satellite et capteur embarqué"
+     ],
+     [
+      "a_date",
+      "text",
+      "Première apparition du feu, date"
+     ],
+     [
+      "a_h",
+      "text",
+      "Heure UTC"
+     ],
+     [
+      "a_freq",
+      "opt",
+      "Ce satellite observe",
+      "toutes les 10 min|deux fois par jour|tous les 5 jours"
+     ],
+     [
+      "a_res",
+      "opt",
+      "Sur son image, la zone brûlée est",
+      "délimitable au champ près|visible mais floue|invisible"
+     ],
+     [
+      "a_nuit",
+      "opt",
+      "La nuit, il voit le sol",
+      "oui|non"
+     ]
+    ],
+    "nope": "combien d'hectares ont brûlé."
+   },
+   {
+    "posture": "A",
+    "titre": "Enquête B — la surface brûlée",
+    "champs": [
+     [
+      "b_avant",
+      "text",
+      "Dernière image intacte avant le feu"
+     ],
+     [
+      "b_pdt",
+      "text",
+      "Image utilisée pour la mesure"
+     ],
+     [
+      "b_comp",
+      "text",
+      "Composition employée"
+     ],
+     [
+      "b_bandes",
+      "text",
+      "Bandes et résolution"
+     ],
+     [
+      "b_surf",
+      "text",
+      "Surface que j'ai mesurée (ha)"
+     ],
+     [
+      "b_apres",
+      "opt",
+      "Image exploitable après le 26 juillet",
+      "oui|non"
+     ]
+    ],
+    "nope": "à quelle heure le feu a démarré, ni quelle est sa surface finale."
+   },
+   {
+    "posture": "O",
+    "titre": "Enquête C — les satellites",
+    "champs": [
+     [
+      "c_sata",
+      "text",
+      "Satellite et capteur de l'enquête A"
+     ],
+     [
+      "c_alta",
+      "text",
+      "Son altitude (km)"
+     ],
+     [
+      "c_orba",
+      "opt",
+      "Son orbite",
+      "géostationnaire|basse"
+     ],
+     [
+      "c_satb",
+      "text",
+      "Satellite et capteur de l'enquête B"
+     ],
+     [
+      "c_altb",
+      "text",
+      "Son altitude (km)"
+     ],
+     [
+      "c_ret",
+      "text",
+      "Retour de Sentinel-2 sur la même zone (jours)"
+     ]
+    ],
+    "nope": "ce que ces satellites ont réellement vu."
+   }
+  ],
+  "solutions": [
+   [
+    "sol_commande",
+    "Avec des moyens : on commande une image à un satellite pointable"
+   ],
+   [
+    "sol_radar",
+    "Pour une précision relative : le radar"
+   ],
+   [
+    "sol_attente",
+    "Sans moyens : on attend une Sentinel-2 sans nuages"
+   ]
+  ],
+  "controles": [
+   {
+    "id": "date",
+    "nom": "La date de départ",
+    "aide": "Le jour où la première fumée apparaît sur Meteosat."
+   },
+   {
+    "id": "heure",
+    "nom": "L'heure de départ (UTC)",
+    "aide": "L'heure inscrite sur la première image où la fumée apparaît."
+   },
+   {
+    "id": "source",
+    "nom": "La source de cette date",
+    "aide": "Le satellite (et son capteur) qui vous a donné cette heure."
+   },
+   {
+    "id": "surface",
+    "nom": "La surface mesurée",
+    "aide": "Une mesure en hectares, tracée dans le labo Copernicus, cohérente avec la date de l'image mesurée."
+   },
+   {
+    "id": "image",
+    "nom": "La date de l'image mesurée",
+    "aide": "Le jour de l'image sur laquelle vous avez mesuré."
+   },
+   {
+    "id": "resolution",
+    "nom": "La résolution",
+    "aide": "La taille des pixels de la composition employée : voir son panneau dans le labo."
+   },
+   {
+    "id": "orbite",
+    "nom": "L'orbite de Meteosat",
+    "aide": "Sa trace au sol défile-t-elle ? Voir le labo Deimos."
+   },
+   {
+    "id": "revisite",
+    "nom": "La revisite de Sentinel-2",
+    "aide": "Comptez les jours entre deux passages, dans le labo Deimos."
+   },
+   {
+    "id": "solutions",
+    "nom": "Les trois solutions au préfet",
+    "aide": "Avec des moyens, avec le radar, sans moyens : une date ou un délai pour chacune."
+   }
+  ]
+ },
+ "debrief": [
+  "Alors, qui a encore la confiance du préfet ?",
+  "Quelles sont les réponses à apporter au préfet ?",
+  "Existe-t-il plusieurs solutions pour la question de la surface ?",
+  "Est-ce un coup de chance, ou pas, de pouvoir détecter le départ de l'incendie ?",
+  "Et vos paris du début : qu'en pensez-vous maintenant ?",
+  "Dans la chaîne — signal, donnée, acquisition, préparation, dérivation, traitement, validation — où s'est logée la plus grosse incertitude ?"
+ ],
+ "phrase": [
+  [
+   "t",
+   "Le feu de Saumos a été repéré le "
+  ],
+  [
+   "b",
+   "A1",
+   6
+  ],
+  [
+   "t",
+   ", par un satellite qui temporellement observe "
+  ],
+  [
+   "b",
+   "A2",
+   9
+  ],
+  [
+   "t",
+   " mais ne voit spatialement qu'à "
+  ],
+  [
+   "b",
+   "A3",
+   9
+  ],
+  [
+   "t",
+   "."
+  ],
+  [
+   "br",
+   ""
+  ],
+  [
+   "t",
+   "Avec Sentinel-2, on ne mesure que "
+  ],
+  [
+   "b",
+   "B1",
+   6
+  ],
+  [
+   "t",
+   " hectares au "
+  ],
+  [
+   "b",
+   "B2",
+   6
+  ],
+  [
+   "t",
+   ", sur une image à "
+  ],
+  [
+   "b",
+   "B3",
+   4
+  ],
+  [
+   "t",
+   " — et le feu n'est pas encore fini."
+  ],
+  [
+   "br",
+   ""
+  ],
+  [
+   "t",
+   "C'est que Meteosat est "
+  ],
+  [
+   "b",
+   "C1",
+   9
+  ],
+  [
+   "t",
+   ", à "
+  ],
+  [
+   "b",
+   "C2",
+   6
+  ],
+  [
+   "t",
+   " d'altitude, quand Sentinel-2 est en orbite basse et ne repasse que "
+  ],
+  [
+   "b",
+   "C3",
+   7
+  ],
+  [
+   "t",
+   "."
+  ],
+  [
+   "br",
+   ""
+  ],
+  [
+   "t",
+   "La surface totale — "
+  ],
+  [
+   "r",
+   "T1",
+   "31 386"
+  ],
+  [
+   "t",
+   " hectares — n'a été obtenue que le 29 juillet, "
+  ],
+  [
+   "t",
+   "sur une image "
+  ],
+  [
+   "r",
+   "T2",
+   "WorldView Legion"
+  ],
+  [
+   "t",
+   " commandée en urgence. La sévérité, elle, "
+  ],
+  [
+   "t",
+   "a demandé six semaines de plus : il fallait "
+  ],
+  [
+   "r",
+   "T3",
+   "une image sans nuages, après le feu"
+  ],
+  [
+   "t",
+   "."
+  ]
+ ],
+ "phrase_note": "A et C se remplissent en écoutant les groupes. B1 attendu autour de 12 000 : c'est volontairement incomplet, et c'est ce qui justifie les trois dernières révélations.",
+ "reponse_etp": [
+  "Pour un non Géodata Paris, quelques jours.",
+  "Pour un Géodata Paris, quelques heures.",
+  "Un processus automatique maîtrisé, pour un non Géodata Paris, impossible.",
+  "Un processus automatique maîtrisé, pour un Géodata Paris, quelques jours à quelques mois suivant l'emprise spatio-temporelle."
+ ],
+ "images": {
+  "msg-0721-1200": "images/saumos/msg-0721-1200.jpg",
+  "msg-0721-1230": "images/saumos/msg-0721-1230.jpg",
+  "msg-0721-1300": "images/saumos/msg-0721-1300.jpg",
+  "msg-0721-1400": "images/saumos/msg-0721-1400.jpg",
+  "msg-0721-1500": "images/saumos/msg-0721-1500.jpg",
+  "msg-0721-1600": "images/saumos/msg-0721-1600.jpg",
+  "msg-0721-1700": "images/saumos/msg-0721-1700.jpg",
+  "msg-0721-1800": "images/saumos/msg-0721-1800.jpg",
+  "msg-0721-1900": "images/saumos/msg-0721-1900.jpg",
+  "msg-0721-2000": "images/saumos/msg-0721-2000.jpg",
+  "msg-0721-2100": "images/saumos/msg-0721-2100.jpg",
+  "msg-0721-2200": "images/saumos/msg-0721-2200.jpg",
+  "msg-0721-2300": "images/saumos/msg-0721-2300.jpg",
+  "msg-0722-0000": "images/saumos/msg-0722-0000.jpg",
+  "msg-0722-0100": "images/saumos/msg-0722-0100.jpg",
+  "msg-0722-0200": "images/saumos/msg-0722-0200.jpg",
+  "msg-0722-0300": "images/saumos/msg-0722-0300.jpg",
+  "msg-0722-0400": "images/saumos/msg-0722-0400.jpg",
+  "msg-0722-0500": "images/saumos/msg-0722-0500.jpg",
+  "msg-0722-0600": "images/saumos/msg-0722-0600.jpg",
+  "msg-0722-0700": "images/saumos/msg-0722-0700.jpg",
+  "msg-0722-0800": "images/saumos/msg-0722-0800.jpg",
+  "msg-0722-0900": "images/saumos/msg-0722-0900.jpg",
+  "msg-0722-1000": "images/saumos/msg-0722-1000.jpg",
+  "msg-0722-1010": "images/saumos/msg-0722-1010.jpg",
+  "msg-0722-1020": "images/saumos/msg-0722-1020.jpg",
+  "msg-0722-1030": "images/saumos/msg-0722-1030.jpg",
+  "msg-0722-1040": "images/saumos/msg-0722-1040.jpg",
+  "msg-0722-1050": "images/saumos/msg-0722-1050.jpg",
+  "msg-0722-1100": "images/saumos/msg-0722-1100.jpg",
+  "msg-0722-1110": "images/saumos/msg-0722-1110.jpg",
+  "msg-0722-1120": "images/saumos/msg-0722-1120.jpg",
+  "msg-0722-1130": "images/saumos/msg-0722-1130.jpg",
+  "msg-0722-1140": "images/saumos/msg-0722-1140.jpg",
+  "msg-0722-1150": "images/saumos/msg-0722-1150.jpg",
+  "msg-0722-1200": "images/saumos/msg-0722-1200.jpg",
+  "msg-0722-1210": "images/saumos/msg-0722-1210.jpg",
+  "msg-0722-1220": "images/saumos/msg-0722-1220.jpg",
+  "msg-0722-1230": "images/saumos/msg-0722-1230.jpg",
+  "msg-0722-1240": "images/saumos/msg-0722-1240.jpg",
+  "msg-0722-1250": "images/saumos/msg-0722-1250.jpg",
+  "msg-0722-1300": "images/saumos/msg-0722-1300.jpg",
+  "msg-0722-1330": "images/saumos/msg-0722-1330.jpg",
+  "msg-0722-1400": "images/saumos/msg-0722-1400.jpg",
+  "msg-0722-1500": "images/saumos/msg-0722-1500.jpg",
+  "msg-0722-1600": "images/saumos/msg-0722-1600.jpg",
+  "msg-0722-1700": "images/saumos/msg-0722-1700.jpg",
+  "msg-0722-1800": "images/saumos/msg-0722-1800.jpg",
+  "msg-0722-1900": "images/saumos/msg-0722-1900.jpg",
+  "msg-0722-2000": "images/saumos/msg-0722-2000.jpg",
+  "msg-0722-2100": "images/saumos/msg-0722-2100.jpg",
+  "msg-0722-2200": "images/saumos/msg-0722-2200.jpg",
+  "msg-0722-2300": "images/saumos/msg-0722-2300.jpg",
+  "accroche": "images/saumos/accroche.jpg",
+  "contexte": "images/saumos/contexte-emsr899.jpg",
+  "m-dnbr": "images/saumos/m-dnbr.png",
+  "reflectance": "images/saumos/reflectance.svg",
+  "terra-21": "images/saumos/terra-07-21.jpg",
+  "terra-22": "images/saumos/terra-07-22.jpg",
+  "terra-23": "images/saumos/terra-07-23.jpg",
+  "terra-24": "images/saumos/terra-07-24.jpg",
+  "terra-25": "images/saumos/terra-07-25.jpg",
+  "terra-26": "images/saumos/terra-07-26.jpg",
+  "terra-27": "images/saumos/terra-07-27.jpg",
+  "terra-28": "images/saumos/terra-07-28.jpg",
+  "s2-07-21-naturelles": "images/saumos/s2-07-21-naturelles.jpg",
+  "s2-07-21-infrarouge": "images/saumos/s2-07-21-infrarouge.jpg",
+  "s2-07-21-swir": "images/saumos/s2-07-21-swir.jpg",
+  "s2-07-21-feux": "images/saumos/s2-07-21-feux.jpg",
+  "s2-07-26-naturelles": "images/saumos/s2-07-26-naturelles.jpg",
+  "s2-07-26-infrarouge": "images/saumos/s2-07-26-infrarouge.jpg",
+  "s2-07-26-swir": "images/saumos/s2-07-26-swir.jpg",
+  "s2-07-26-feux": "images/saumos/s2-07-26-feux.jpg",
+  "s2-09-04-naturelles": "images/saumos/s2-09-04-naturelles.jpg",
+  "s2-09-04-infrarouge": "images/saumos/s2-09-04-infrarouge.jpg",
+  "s2-09-04-swir": "images/saumos/s2-09-04-swir.jpg",
+  "s2-09-04-feux": "images/saumos/s2-09-04-feux.jpg"
+ }
 }

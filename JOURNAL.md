@@ -2,6 +2,24 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-22 — Atelier Saumos, V3
+
+D'après le script V3 de Marc (`source/Cas1-Saumos/atelier-saumos-script-v3.md`), ses images Meteosat du 21 et du 22 juillet (`MSG-0/`) et ses compositions Sentinel-2 du 4 septembre. Marc a autorisé la correction des coquilles dans ses textes de l'atelier.
+
+**Fait**
+
+- Structure du script V3 : titre « Atelier : le feu de Saumos » qui passe lettre à lettre en 8 bits ; plus d'intercalaires ; cadrage de Rose (nouvelle diapo, texte de Marc) ; experts présentés par Rose, « C'est parti » et chrono de 30 minutes ; enquêtes et labos ; rapport en 5 minutes ; débrief animé par Rose ; phrase ; verdict. Sévérité et répartition supprimées.
+- Quatre experts : Youri fondu dans Bastien (données et traitements). Traits de caractère cachés, réplique de retour propre à chacun.
+- Dialogues réécrits sur les lignes de Marc : questions à choix (avec nouvel essai), réponses tapées comparées sans accents ni majuscules, apartés et quatrième mur, indice payant après un premier essai. Deux relais obligatoires entre coéquipiers : Sentinel-2 (Inès → orbitographe → analyste) et Meteosat (Elikia ou Bastien → rapporteur → orbitographe).
+- Les labos, versions JRPG des sites de référence, s'ouvrent quand un expert en passe les clefs : Eumetsat (53 images, « Premier signe » note la date et l'heure), Copernicus (trois dates, quatre compositions et leurs bandes, dNBR, mesure sur toutes les vues), Deimos (orbites des satellites connus, fiches, revisite). « Noter » remplit le rapport.
+- Mode solo et accès par posture ; journal des échanges ; son de lecture (que l'on peut couper) ; courbe de réflectance en 8 bits montrée par Elikia.
+- Rapport : plus de note sur 8, le préfet relit (point juste : +1 confiance ; manque : une aide, pas la réponse).
+- `outils/dialogues.py` : script lisible et graphe façon Twine, pour relire les dialogues.
+- Fin du script V3 : éléments de réponse du débrief (questions de Marc et ajouts), notes de réalisation. Le texte de Marc n'est pas touché.
+- Vérifié en navigateur : partie en groupe (rapporteur) et en solo (les trois enquêtes), labos, rapport, chrono ; 0 débordement, aucune erreur ; PDF imprimé.
+
+**Sources ajoutées** : service MSG 0° assuré par Meteosat-10, service principal européen par Meteosat-12 depuis juin 2025 (EUMETSAT) ; 472 satellites d'observation de la Terre en 2024 (USGS, cité par l'OCDE).
+
 ## 2026-11-20 (soir, suite) — Vote : la vidéo de Skybox, des flèches, « Recommencer » partout
 
 Demande de Marc dans la fiche 1.1 d'« Image & Application ». YouTube refuse désormais de jouer une vidéo intégrée dans une page ouverte comme fichier (`file://`) : il exige l'adresse de la page. La brique « vote » intègre donc la vidéo comme dans le lien de Marc (`youtube.com/embed`, politique de référent `strict-origin-when-cross-origin`) quand le support est servi par un serveur, et montre sinon la vignette, qui ouvre la vidéo sur YouTube. Deux flèches passent d'un énoncé à l'autre sans voter ; « Recommencer » est en tête du vote, à tout moment. Testé en navigateur (sans réseau ici : la vignette elle-même n'a pas pu être vérifiée).
