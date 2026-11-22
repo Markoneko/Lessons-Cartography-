@@ -83,6 +83,17 @@ Enfin elle lance un compte à rebours : 30 minutes. Elle précise que l'on peut 
 - slide les experts ; Bastien et Youri fusionne. Rose fait les présentations. Elle est visible un peu à part, car c'est elle qui aide à cadrer le travail, pas le fond.
 Attention, on précise poru chaque expert le nom, le role et le travail. Les infos de caractère ou d'origine ne sont pas visibles, elles servent pour la tonalité de l'écriture des échanges.
 
+Un bouton, c'est parti lance le chrono dont parlais Rose et on passe à la slide
+-slide enquête. LMa strucutre proposée est déja bonne. faire attnetion qu'une fois les labos ouvert, si un etudiant va dans le labo, il puisse bien revenir sur son enquête
+
+-le labo pour chaque profil
+
+LEs etudiants passent alternativement de leur labo à leur enquète.
+au bout du chrono ou s'il clique sur le picto du rapport, il passe à $
+-slide rapport qu'il remplisse
+- puis la slide débrief (animé par Rose comme dans la slide échange)
+- psui la slide prase de la classe.
+- On finit par le verdict.
 
 ---
 
