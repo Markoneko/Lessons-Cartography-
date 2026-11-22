@@ -69,7 +69,7 @@ Cela dépend des données disponibles et donc des vecteurs en faisant l'acquisit
 ::: {.fiche n="1.2" etat="a-revoir"}
 Intention : Le préfet passe la commande : la date précise du départ, la surface brûlée connue précisément à la fin du feu. Sa tête parle quand on arrive sur la diapo, avec un petit son de lecture sans langue, comme dans les JRPG ; le bouton « son » le coupe. [V3 : le son.]
 Expérience : écouter la commande (brique jdr-commande)
-Demande :
+Demande : Il faut préciser qu'il faut la date et l'heure précise du départ. Ajouter aussi sur le coté, une petite carte 8 bit de la région ou l'on voit la ville de Saumos. qui positionne le départ du feu.
 :::
 
 ::: {.jdr-commande}
@@ -82,7 +82,7 @@ Demande :
 ::: {.fiche n="1.3" etat="a-revoir"}
 Intention : Les deux paris, avant toute enquête. La réponse attendue au verdict : cela dépend de la précision voulue et des moyens engagés.
 Expérience : parier (brique jdr-paris), un pari par groupe
-Demande :
+Demande : Ajouter un lien vers le carnet des joueurs qui explique la notion de jour ETP (Equivalent temps plein). Là l'explication arrive et sera présente ensuite dans le carnet.
 :::
 
 ::: {.jdr-paris}
@@ -90,7 +90,7 @@ Demande :
 
 ## Votre équipe {#equipe .jdr .jdr-plein data-state="plein"}
 
-::: {.fiche n="2.1" etat="a-revoir"}
+::: {.fiche n="2.1" etat="fige"}
 Intention : Chaque étudiant choisit sa posture (rapporteur, analyste, orbitographe) et sa tête de héros. Un groupe de trois : une posture chacun. En groupe, chacun n'a accès qu'à son enquête et à son labo ; la case « solo » ouvre les trois profils (pour rejouer chez soi). [V3 : mode solo.]
 Expérience : choisir sa posture, sa tête, son nom, son numéro de groupe, le mode solo (brique jdr-equipe)
 Demande :
@@ -104,7 +104,7 @@ Demande :
 ::: {.fiche n="2.2" etat="a-revoir"}
 Intention : Rose se présente, demande ce qui est important (réponse : la maîtrise de la chaîne d'information du phénomène aux conclusions, et des incertitudes de chaque maillon), donne les grandes lignes de l'enquête selon la posture de celui qui lit, invite à prendre une page et un crayon, rappelle qu'il peut y avoir plusieurs solutions et que c'est un travail d'équipe, annonce le compte à rebours. Texte de Marc (script V3). [V3 : nouvelle diapo.]
 Expérience : écouter Rose, réplique par réplique (brique jdr-cadrage)
-Demande :
+Demande : Ajouter une boxe pour que les étudiants mettent une réponse ouverte à la question "qu'est ce qui est important" + Ajouter un bouton continuer en bas à droite pour passer à la page suivante.
 :::
 
 ::: {.jdr-cadrage}
@@ -137,7 +137,7 @@ Demande :
 ::: {.fiche n="3.2" etat="a-revoir"}
 Intention : La version JRPG d'EUMETView : les images Meteosat (MSG 0°) du 21 juillet midi au 22 juillet 23 h, à faire défiler une à une, l'heure inscrite sur l'image. « Premier signe » note la date et l'heure pour le rapport. Terra en second œil, quand Elikia l'a ouvert. [V3 : images de Marc.]
 Expérience : feuilleter les images, noter le premier signe (brique jdr-labo)
-Demande :
+Demande : depuis le labo, il faut un bouton en bas à droite pour pouvoir revenir à l'enquête A
 :::
 
 ::: {.jdr-labo labo="a"}
@@ -148,7 +148,7 @@ Demande :
 ::: {.fiche n="3.3" etat="a-revoir"}
 Intention : L'enquête de l'analyste. Elikia montre la courbe de réflectance en 8 bits (proche infrarouge et SWIR, B8 et B12) et demande quel satellite : la réponse, Sentinel-2, vient de l'orbitographe (Inès la lui a soufflée). Bastien demande satellite et bandes, puis le NBR, après les compositions colorées. Les clefs du labo Copernicus. [V3 : dialogues réécrits d'après le script V3.]
 Expérience : dialoguer avec les experts, réponses tapées (brique jdr-enquete)
-Demande :
+Demande :  Elikia c'est préciser qu'elle montre des signatures spectrales. Ce terme apparait en couleur. Si on clique dessus, elle précise ce que c'est le terme se rajoute au carnet / idem avec bande. Dans l'idéal, elle fait un apparté pour répondre, et revient ensuite à la discussion, cela va rendre le dialogue encore plus naturel / depuis le labo, il faut un bouton en bas à droite pour pouvoir revenir à l'enquête B
 :::
 
 ::: {.jdr-enquete enquete="B"}
@@ -170,7 +170,7 @@ Demande :
 ::: {.fiche n="3.5" etat="a-revoir"}
 Intention : L'enquête de l'orbitographe. Elikia le renvoie vers Inès avec une blague ; Inès parie sur Sentinel-2 (à transmettre à l'analyste) et demande la famille du satellite du rapporteur : « Meteosat », sous toutes ses graphies, ouvre le labo Deimos. Puis géostationnaire, revisite, nuages, commande, radar. [V3 : dialogues réécrits d'après le script V3.]
 Expérience : dialoguer avec les experts, réponse tapée (brique jdr-enquete)
-Demande :
+Demande : Il faut découper la première question d'Inés sur ke couple vecteur/capteur. Elle pose la question en attentand une réponse par oui et non. Si non, elle continue en proposant les 3 exemples. Il faut aussi qu'elle précise à un moment ou l'autre que si S2-MSI met 5 jorus à repasser, c'est qu'ils sont en fait 2, S2A et S2B. individuellement et à l'équateur, ils mettentà 10 jours
 :::
 
 ::: {.jdr-enquete enquete="C"}
@@ -181,7 +181,8 @@ Demande :
 ::: {.fiche n="3.6" etat="a-revoir"}
 Intention : La version JRPG de Deimos : la Terre vue du pôle Nord, les satellites connus du joueur sur leur orbite, les passages de Sentinel-2 au-dessus de Saumos, et une fiche par satellite (orbite, altitude, revisite, pixel, nuit) qui s'ouvre à mesure de l'enquête. « Noter » remplit le rapport. [V3.]
 Expérience : regarder, ouvrir les fiches, noter (brique jdr-labo)
-Demande :
+Demande : Alors, il faut corriger l'erreur de resolution spatiale sur Meteosat, le 12 (qui nous concerne) a une résolution de 500 m à l'équateur.
+Dans l'idéal aussi, il faudrait que l'on puisse faire pivoter la terre. On reste sur cette gaphie 8 bit, mais il faudrait pouvoir pivoter d'une part et jouer sur la vitesse d'autre part, avec une indication du facteur multiplicateur.
 :::
 
 ::: {.jdr-labo labo="c"}
@@ -192,7 +193,8 @@ Demande :
 ::: {.fiche n="4.1" etat="a-revoir"}
 Intention : Le rapporteur compile : pour chaque enquête, la réponse, la preuve, et ce que l'on ne peut pas dire ; puis les trois solutions au préfet, chacune datée. Cinq minutes (chrono), à la fin des 30 minutes ou plus tôt. Le préfet relit le dossier : chaque point juste lui redonne confiance, chaque manque reçoit une aide, jamais la réponse. Téléchargement, envoi à la feuille du cours. [V3 : plus de note sur 8.]
 Expérience : remplir, faire relire, envoyer (brique jdr-rapport)
-Demande :
+Demande : - Il faut changer l'énoncé des 3 solutions au préfet pour : Les trois solutions au préfet : pour chacune, un capteur, une date ou un délai et changer l'intitulé de la seconde case => Pour une précision relative mais régulièrement mesurée car insensibles au nuages :
+- Il faut aussi supprimer ces 2 items pour l'enquete C, il sont hors sujet pour l'orbitographe : Preuve : image, date, composition + Ce que nous ne pouvons pas dire
 :::
 
 ::: {.jdr-rapport envoi=""}
@@ -203,7 +205,7 @@ Demande :
 ::: {.fiche n="5.1" etat="a-revoir"}
 Intention : Rose anime le débrief, question par question : qui a encore la confiance du préfet ; quelles réponses au préfet ; plusieurs solutions pour la surface ; coup de chance ou pas, la détection du départ (questions de Marc). Ajouts de Claude, à valider : les paris du début, et le maillon le plus incertain de la chaîne. Éléments de réponse : fin du script V3. [V3 : remplace l'échange.]
 Expérience : répondre à voix haute (brique jdr-bulle)
-Demande :
+Demande : Changer le titre pour Pause, le debrief, on arrête le jeu et on fait le point. / Ajouter aussi une question plus meta sur l'approche ludique proposée. Est ce qu'elle semble appropriée ou pas. Elle leur demande ce qui leur parait avoir fonctionné ou pas. Mettre cela en réponse ouverte histoire que je garde une trace des réponses.
 :::
 
 ::: {.jdr-bulle qui="rose" source="debrief" liste="oui"}

@@ -4,7 +4,7 @@
  "prefet": {
   "nom": "Le préfet",
   "avatar": "prefet",
-  "commande": "Il me faut deux choses : la date précise du départ du feu, et la surface brûlée, connue précisément quand il sera éteint. Je compte sur vous."
+  "commande": "Il me faut deux choses : l'heure précise du départ du feu, et la surface brûlée, connue précisément quand il sera éteint. Je compte sur vous."
  },
  "experts": [
   {
@@ -25,7 +25,7 @@
    "voix": 300,
    "travail": "Archiviste et analyste. Quelle image, de quelle date, et quel calcul en tirer.",
    "trait": "Archiviste toulousain compulsif, pince-sans-rire. Vexé quand on cherche une image sans regarder les dates, allergique aux seuils choisis « au feeling ». Fait des blagues sur les chocolatines.",
-   "retour": "Vous revoilà. Les archives sont ouvertes, la boîte de chocolatines aussi."
+   "retour": "Vous revoilà. Les archives sont ouvertes, le sachet de chocolatines aussi."
   },
   {
    "id": "ines",
@@ -94,7 +94,7 @@
   },
   {
    "id": "etp",
-   "q": "Combien d'ETP seraient nécessaires à cette estimation ?",
+   "q": "Combien de jours ETP seraient nécessaires à cette estimation ?",
    "choix": [
     "moins d'un",
     "un",
@@ -108,7 +108,7 @@
   "rapport": 5
  },
  "cadrage": {
-  "presentation": "Bonjour à toutes et à tous. Moi, c'est Rose. Je ne vous apprendrai rien sur le fond : les experts sont là pour ça. Moi, je vous aide à cadrer votre travail, et je vous pose les questions que le préfet vous posera.",
+  "presentation": "Bonjour à toutes et à tous. Moi, c'est Rose. Je ne vous apprendrai rien sur le fond : les experts sont là pour ça. Moi, je vous aide à cadrer votre travail, et j'essaie de vous poser les questions que le préfet se posera.",
   "question": "Alors, d'après vous, qu'est-ce qui est important ?",
   "reponse": "Assurer la maîtrise de la chaîne d'information entre le phénomène observé et les conclusions faites. Cela demande de maîtriser les incertitudes associées à chaque maillon.",
   "enquetes": {
@@ -119,8 +119,8 @@
   "suite": [
    "Prenez une page et un crayon : notez vos réponses au fur et à mesure.",
    "Il peut y avoir plusieurs solutions à un problème. Il faut être en mesure de proposer des scénarios différents au préfet, tant que l'on est capable d'en estimer le niveau de qualité et le coût.",
-   "C'est un travail d'équipe. N'hésitez pas à échanger : vous n'avez pas accès aux mêmes infos. Si ça bloque, c'est souvent que quelqu'un d'autre peut vous aider.",
-   "Je lance un compte à rebours : 30 minutes. Vous pouvez appuyer dessus en avance pour commencer à remplir le rapport : vous aurez alors 5 minutes pour le faire."
+   "C'est un travail d'équipe. N'hésitez pas à échanger : vous n'avez pas accès aux mêmes infos. Si ça bloque, c'est souvent que quelqu'un d'autre peut vous aider. N'hésiter pas à partager juste pour le plaisir aussi.",
+   "Après les présentations, je lancerai un compte à rebours : 30 minutes. Vous pouvez appuyer dessus en avance pour commencer à remplir le rapport : vous aurez alors 5 minutes pour le faire."
   ]
  },
  "presentation_experts": "Voici l'équipe. Trois experts vous apportent la matière ; moi, je reste un peu à part : je cadre. Quand vous êtes prêts, appuyez sur « C'est parti » : le chrono démarre.",
@@ -180,7 +180,7 @@
   },
   "meteosat-terra": {
    "titre": "Deux familles",
-   "texte": "Meteosat ou Terra peuvent répondre. Leurs caractéristiques : voir avec l'orbitographe."
+   "texte": "Meteosat ou Terra peuvent répondre. Pour connaitre leurs caractéristiques; il faut voir avec l'orbitographe."
   },
   "heure-utc": {
    "titre": "L'heure",
@@ -188,7 +188,7 @@
   },
   "nuit": {
    "titre": "La nuit",
-   "texte": "La nuit, plus de lumière solaire renvoyée : la fumée disparaît du visible ; restent les lumières des villes et ce qui émet."
+   "texte": "La nuit, plus de lumière solaire renvoyée : la fumée disparaît du visible ; restent les lumières des villes et ce qui émet. On peut continuer à voir des aérosols mais dans d'autres longueurs d'onde."
   },
   "marge": {
    "titre": "La marge",
@@ -278,7 +278,7 @@
    "mission": [
     "Avant toute observation : quel est le nom du satellite qui porte l'instrument, et quel est le nom du capteur qui mesure ? Ce sont deux choses différentes — l'un est la plateforme en orbite, l'autre l'appareil embarqué.",
     "Quand peut-on voir le feu démarrer ? Donnez la date et l'heure en UTC, celle affichée sur l'image. Attention, l'heure française est en avance de deux heures.",
-    "Quand s'éteint-il ? Est-ce aussi net que le départ ?",
+    "Quand s'éteint-il ? Est-ce aussi net que le départ ? Là il faut chercher avec les outils hors-jeu",
     "Peut-on délimiter précisément l'emprise du feu sur cette image ?",
     "Ce satellite voit-il le sol la nuit ? Faites défiler jusqu'à une heure nocturne."
    ],
@@ -320,7 +320,7 @@
       {
        "dit": "La résolution temporelle : voir souvent.",
        "juste": true,
-       "r": "Voilà ! Un départ, c'est un instant : il faut une image très souvent, quitte à voir flou. J'ai des images toutes les 15 minutes, mais c'est plutôt utilisé pour la météo, pas le suivi de la végétation.",
+       "r": "Voilà ! Un départ, c'est un instant : il faut une image très souvent, quitte à voir flou. J'ai des images toutes les 10-15 minutes, mais c'est plutôt utilisé pour la météo, pas le suivi de la végétation.",
        "indices": [
         "res-temporelle"
        ]
@@ -333,7 +333,7 @@
      ]
     },
     "ines": {
-     "r": "On va voir avec votre spécialiste orbito quelles sont les caractéristiques de vos couples capteur / vecteur, ceux qui vont mesurer votre signal. Pour cela, il a besoin d'infos sur les types de signaux et les résolutions auxquelles vous voulez les acquérir : trouvez-lui ces infos. Au fait, un couple capteur / vecteur, cela vous parle ? Parmi ces trois propositions, laquelle en est un ?",
+     "r": "On va voir avec votre spécialiste orbito quelles sont les caractéristiques de vos couples capteur / vecteur, ceux qui vont mesurer votre signal. Pour cela, il a besoin d'infos sur les types de signaux et les résolutions auxquelles vous voulez les acquérir : trouvez-lui ces infos, ca l'aidera à se lancer... Au fait, un couple capteur / vecteur, cela vous parle ? Parmi ces trois propositions, laquelle en est un ?",
      "options": [
       {
        "dit": "Une image Sentinel-2 en fausses couleurs.",

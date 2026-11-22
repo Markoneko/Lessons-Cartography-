@@ -14,7 +14,8 @@ On tache de suivre les objectifs généraux suivants :
 - On peut appliquer les principes de pédagogie vue dans le fil sur le cours Aprrendre à apprendre.
 - les etudiants enfin doivent appréhender un début de process qui pour répondre à une commande donnée suppose de : Signal, donnée, acquisition, préparation, dérivation (primitives), traitement et analyses, validation pour un résultat.
 - On inverse la logique longtemps admises d'experimentation sur un site web. On raccourcit le temps de consultation et on evite les risques de connections, etc... donc les exercices se font en direct dans le support de l'atelier, les sites deviennent des références et des crédits.
-- l'activité doit avoir un mode solo (accès à tous les profils) ou en groupe (accès qu'aux ressources de son profil)   cf slides equipe. 
+- l'activité doit avoir un mode solo (accès à tous les profils) ou en groupe (accès qu'aux ressources de son profil)   cf slides equipe.
+- les interventions avec les PNJs, permettent aussi aux étudiants de découvrir des termes techniques, qui apparaissent d'une couleur différentes et ouvre des interruptions de dialogue pour l'expliquer et s'ajoute au carnet de l'étudiant. 
 ---
 
 ## 1. Décisions de Marc (reprises et amandées de la V1 et V2)
