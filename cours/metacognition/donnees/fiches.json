@@ -1,0 +1,97 @@
+{
+  "lisez-moi": "Source unique des fiches du cours. Plusieurs briques relisent ce fichier : le jeu de fiches (recto/verso), l'appariement avec la liste de l'etudiant, le classement en familles, la matrice du savoir. Modifier une fiche ici la met a jour partout. Schema d'une fiche : id (sans accent ni espace), groupe (contexte|cap|outil), nom (le nom court, en francais simple), aussi (le nom savant, pour le lexique), recto (2 a 4 lignes : en quoi ca consiste, a la deuxieme personne), picto (nom du dessin SVG dans images/schemas/fiches/), emotion (un mot : ce que l'on ressent quand on le fait), etoiles (voir echelle), ampleur (la phrase chiffree du verso), source (auteur, annee, titre court), ia (ce qu'un usage naif ampute, puis l'inversion), famille (extraire|revenir|se-regarder|respirer, vide pour contexte et cap), matrice (la case du savoir que la fiche eclaire). Les trois fiches entierement redigees ci-dessous servent de gabarit de format : une par groupe.",
+  "echelle": {
+    "5": "Effet large, replique par plusieurs meta-analyses, sur l'apprentissage durable (d superieur ou egal a 0,6)",
+    "4": "Effet solide et bien etabli (d entre 0,4 et 0,6)",
+    "3": "Effet modere, ou qui depend fortement du contexte (d entre 0,2 et 0,4)",
+    "2": "Effet faible, ou conteste en tant que technique d'etude",
+    "0": "Pas d'etoile : condition ou cadre de l'apprentissage, pas une technique. Une ampleur d'effet n'aurait pas de sens ici."
+  },
+  "familles": [
+    { "id": "extraire", "nom": "Extraire", "sous-titre": "faire sortir ce qui est dedans" },
+    { "id": "revenir", "nom": "Revenir", "sous-titre": "repasser, autrement et plus tard" },
+    { "id": "se-regarder", "nom": "Se regarder", "sous-titre": "savoir ou j'en suis" },
+    { "id": "respirer", "nom": "Respirer", "sous-titre": "s'arreter pour que ca tienne" }
+  ],
+  "matrice": [
+    { "id": "sais-sais", "nom": "Je sais que je sais" },
+    { "id": "sais-pas", "nom": "Je sais que je ne sais pas" },
+    { "id": "pas-sais", "nom": "Je ne sais pas que je sais" },
+    { "id": "pas-pas", "nom": "Je ne sais pas que je ne sais pas" }
+  ],
+
+  "fiches": [
+
+    {
+      "id": "se-tester",
+      "groupe": "outil",
+      "nom": "Se tester",
+      "aussi": "Recuperation active (retrieval practice)",
+      "recto": "Fermer le document et faire sortir l'information de votre tete, sans la relire. L'effort de rappel est ce qui renforce la trace : c'est l'effort, pas la lecture, qui fait l'apprentissage.",
+      "picto": "se-tester",
+      "emotion": "ca pique",
+      "etoiles": 5,
+      "ampleur": "A VERIFIER AVANT DIFFUSION. Effet large et replique ; classe en utilite elevee par Dunlosky et al. (2013), qui ne retiennent que deux techniques a ce niveau avec la repetition espacee.",
+      "source": "Roediger & Karpicke (2006), Psychological Science ; synthese : Dunlosky, Rawson, Marsh, Nathan & Willingham (2013)",
+      "ia": "Ampute : demander la reponse avant d'avoir cherche court-circuite le rappel, c'est-a-dire exactement ce qui renforce la trace. On obtient la reponse, on perd la memoire. | Inversion : le LLM interrogateur. Lui demander de poser les questions et de ne corriger qu'apres votre tentative, jamais de donner la reponse.",
+      "famille": "extraire",
+      "matrice": "pas-pas"
+    },
+
+    {
+      "id": "sommeil",
+      "groupe": "contexte",
+      "nom": "Laisser dormir",
+      "aussi": "Consolidation en sommeil",
+      "recto": "Accepter de s'arreter avec l'impression de ne pas avoir fini. Pendant la nuit, le cerveau rejoue et trie ce qui a ete appris dans la journee : une partie de votre travail se fait sans vous, a condition de lui laisser la place.",
+      "picto": "sommeil",
+      "emotion": "l'inacheve du soir",
+      "etoiles": 0,
+      "ampleur": "Condition, pas technique. La privation de sommeil degrade la memorisation en amont comme en aval de l'apprentissage ; l'effet est etabli, mais il ne se compare pas a celui d'une technique d'etude.",
+      "source": "Rasch & Born (2013), Physiological Reviews ; vulgarisation : Walker (2017)",
+      "ia": "Ampute : un partenaire de travail qui ne fatigue jamais et ne ferme jamais. Il n'y avait toujours une heure ou la bibliotheque fermait, ou le camarade de revision rentrait chez lui. A 1 h du matin le LLM repond aussi bien qu'a 14 h, mieux que vous. | Inversion : poser la question difficile avant de dormir et ne lire la reponse qu'au matin, apres que votre propre cerveau a travaille dessus.",
+      "famille": "respirer",
+      "matrice": ""
+    },
+
+    {
+      "id": "role-village",
+      "groupe": "cap",
+      "nom": "Le role au village",
+      "aussi": "Motivation autodeterminee",
+      "recto": "Dans un village qui doit tout refaire, quel role voudriez-vous tenir ? Soigner, transmettre, construire, explorer, organiser, raconter, proteger, arbitrer, nourrir, echanger. La question court-circuite les intitules de metiers, que personne ne peut evaluer a 19 ans.",
+      "picto": "village",
+      "emotion": "ca remue",
+      "etoiles": 0,
+      "ampleur": "Condition, pas technique. L'ecriture du lien entre ce que l'on apprend et ce qui compte pour soi ameliore l'interet et les resultats, surtout chez les etudiants qui se croyaient mauvais (Hulleman & Harackiewicz, 2009, Science). A VERIFIER AVANT DIFFUSION.",
+      "source": "Deci & Ryan (2000), theorie de l'autodetermination ; Hulleman & Harackiewicz (2009), Science",
+      "ia": "Ampute : la question « a quoi bon, puisque la machine sait deja » se pose avant meme d'etre formulee, et elle demotive sans qu'on la voie. | Inversion : le LLM pan-encyclopedique sert a explorer des voies dont vous ignorez l'existence, pas a decider a votre place.",
+      "famille": "",
+      "matrice": ""
+    },
+
+    { "id": "appropriation", "groupe": "contexte", "nom": "Savoir pour qui je suis la", "aussi": "Appropriation du cursus", "recto": "", "picto": "", "emotion": "", "etoiles": 0, "ampleur": "", "source": "", "ia": "", "famille": "", "matrice": "" },
+    { "id": "curiosite", "groupe": "contexte", "nom": "Garder la curiosite", "aussi": "Difficultes desirables (Bjork)", "recto": "", "picto": "", "emotion": "", "etoiles": 0, "ampleur": "", "source": "Bjork (1994)", "ia": "", "famille": "se-regarder", "matrice": "" },
+    { "id": "conditions", "groupe": "contexte", "nom": "Tenir le materiel", "aussi": "Conditions materielles, nutrition", "recto": "", "picto": "", "emotion": "", "etoiles": 0, "ampleur": "", "source": "", "ia": "", "famille": "", "matrice": "" },
+    { "id": "sinterrompre", "groupe": "contexte", "nom": "S'interrompre", "aussi": "Consolidation, micro-pauses", "recto": "", "picto": "", "emotion": "", "etoiles": 0, "ampleur": "", "source": "Buch et al. (2021)", "ia": "", "famille": "respirer", "matrice": "" },
+    { "id": "lieu", "groupe": "contexte", "nom": "Ancrer dans le lieu et le corps", "aussi": "Encodage dependant du contexte", "recto": "", "picto": "", "emotion": "", "etoiles": 3, "ampleur": "", "source": "Godden & Baddeley (1975)", "ia": "", "famille": "revenir", "matrice": "" },
+
+    { "id": "incertitude", "groupe": "cap", "nom": "Le droit au doute", "aussi": "", "recto": "", "picto": "", "emotion": "", "etoiles": 0, "ampleur": "", "source": "", "ia": "", "famille": "", "matrice": "" },
+    { "id": "flow", "groupe": "cap", "nom": "Reconnaitre le flow", "aussi": "Experience optimale", "recto": "", "picto": "", "emotion": "", "etoiles": 0, "ampleur": "", "source": "Csikszentmihalyi (1990)", "ia": "", "famille": "", "matrice": "" },
+
+    { "id": "attention", "groupe": "outil", "nom": "Proteger son attention", "aussi": "Memoire de travail et ses limites", "recto": "", "picto": "", "emotion": "", "etoiles": 0, "ampleur": "", "source": "Baddeley & Hitch (1974) ; Cowan (2001)", "ia": "", "famille": "respirer", "matrice": "" },
+    { "id": "espacer", "groupe": "outil", "nom": "Espacer", "aussi": "Repetition espacee, sequencage", "recto": "", "picto": "", "emotion": "", "etoiles": 5, "ampleur": "", "source": "Cepeda et al. (2006), meta-analyse", "ia": "", "famille": "revenir", "matrice": "" },
+    { "id": "pairs", "groupe": "outil", "nom": "Expliquer a un pair", "aussi": "Peer instruction", "recto": "", "picto": "", "emotion": "", "etoiles": 4, "ampleur": "", "source": "Mazur (1997) ; Crouch & Mazur (2001)", "ia": "", "famille": "extraire", "matrice": "" },
+    { "id": "metacognition", "groupe": "outil", "nom": "Se jauger", "aussi": "Metacognition, jugements d'apprentissage", "recto": "", "picto": "", "emotion": "", "etoiles": 0, "ampleur": "", "source": "Flavell (1979) ; Dunlosky & Metcalfe (2009)", "ia": "", "famille": "se-regarder", "matrice": "pas-pas" },
+    { "id": "actif", "groupe": "outil", "nom": "Faire plutot qu'ecouter", "aussi": "Apprentissage actif", "recto": "", "picto": "", "emotion": "", "etoiles": 4, "ampleur": "", "source": "Freeman et al. (2014), PNAS", "ia": "", "famille": "extraire", "matrice": "" },
+    { "id": "ancres", "groupe": "outil", "nom": "Multiplier les ancres", "aussi": "Double codage", "recto": "", "picto": "", "emotion": "", "etoiles": 3, "ampleur": "", "source": "Paivio (1986) ; neuromythes : Dekker et al. (2012)", "ia": "", "famille": "revenir", "matrice": "" },
+    { "id": "varier", "groupe": "outil", "nom": "Varier les angles", "aussi": "Interleaving, variabilite d'encodage", "recto": "", "picto": "", "emotion": "", "etoiles": 4, "ampleur": "", "source": "Rohrer & Taylor (2007)", "ia": "", "famille": "revenir", "matrice": "" },
+    { "id": "relier", "groupe": "outil", "nom": "Relier", "aussi": "Creation de liens", "recto": "", "picto": "", "emotion": "", "etoiles": 3, "ampleur": "", "source": "", "ia": "", "famille": "se-regarder", "matrice": "" },
+    { "id": "expliquer", "groupe": "outil", "nom": "S'expliquer a soi-meme", "aussi": "Elaboration, auto-explication", "recto": "", "picto": "", "emotion": "", "etoiles": 4, "ampleur": "", "source": "Chi et al. (1994)", "ia": "", "famille": "extraire", "matrice": "" },
+    { "id": "feedback", "groupe": "outil", "nom": "Chercher le bon retour", "aussi": "Feedback efficace", "recto": "", "picto": "", "emotion": "", "etoiles": 4, "ampleur": "", "source": "Hattie & Timperley (2007) ; nuance : Kluger & DeNisi (1996)", "ia": "", "famille": "se-regarder", "matrice": "" },
+    { "id": "offloading", "groupe": "outil", "nom": "Deleguer ce qu'on sait evaluer", "aussi": "Offloading cognitif", "recto": "", "picto": "", "emotion": "", "etoiles": 0, "ampleur": "", "source": "Risko & Gilbert (2016), Trends in Cognitive Sciences", "ia": "", "famille": "se-regarder", "matrice": "" },
+    { "id": "difficultes", "groupe": "outil", "nom": "Chercher la bonne difficulte", "aussi": "Difficultes desirables", "recto": "", "picto": "", "emotion": "", "etoiles": 5, "ampleur": "", "source": "Bjork (1994) ; Bjork, Dunlosky & Kornell (2013)", "ia": "", "famille": "se-regarder", "matrice": "" },
+    { "id": "se-tromper", "groupe": "outil", "nom": "Se tromper d'abord", "aussi": "Effet protege (pretesting), effet de generation", "recto": "", "picto": "", "emotion": "", "etoiles": 4, "ampleur": "", "source": "Kornell, Hays & Bjork (2009) ; Slamecka & Graf (1978)", "ia": "", "famille": "extraire", "matrice": "sais-pas" }
+
+  ]
+}
