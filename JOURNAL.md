@@ -2,6 +2,29 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-23 — Nouveau cours « Apprendre à apprendre » : les fiches deviennent une donnée
+
+Premier cours du dépôt qui ne soit pas un cours de géomatique : deux heures de métacognition pour les Ing1, construites à partir des notes de travail de Marc (archivées telles quelles dans `cours/metacognition/source/`).
+
+**La décision de structure.** Les vingt-trois fiches d'apprentissage (contexte, cap, outils) ne sont pas des diapos : elles vivent dans un seul fichier, `donnees/fiches.json`, que plusieurs briques relisent. Même patron que l'atelier Saumos. Corriger une source ou une étoile met la fiche à jour partout — dans le paquet, dans l'appariement, dans le panneau de lecture. Les étudiants les manipulent, le cours n'en commente aucune.
+
+**Fait**
+
+- Nouvelle famille de briques, `_briques/briques-apprendre.css` et `.html`, déclarée dans `_quarto.yml`.
+- `{.jeu-fiches donnees="…" groupe="…"}` : le paquet. Une fiche montre son nom, son émotion et ses étoiles ; un clic l'ouvre dans le panneau de droite (texte, ampleur d'effet, source, ce que l'IA ampute, comment le retourner), un second clic la retourne. Filtres par groupe quand le paquet en contient plusieurs.
+- L'attribut `rappel="…"` allume le mode appariement : ce que l'étudiant a écrit plus tôt dans une zone « observer » revient au-dessus du paquet, et chaque fiche se marque « déjà » ou « nouveau ». C'est l'activité pivot du cours.
+- `{.lexique termes="…"}` : le dictionnaire qui se remplit tout seul. `[[mot|identifiant]]` dans n'importe quel texte — diapo ou fiche — colore le mot ; un clic l'ouvre et le coche au lexique. 34 entrées dans `donnees/lexique.json`.
+- Échelle d'étoiles avec une case explicite « pas d'étoile » : condition ou cadre, pas une technique. Sans elle, il aurait fallu inventer un chiffre pour le sommeil ou le cap.
+- `images/schemas/memoires.svg` : les quatre mémoires et leurs aires ; le transfert nocturne hippocampe → cortex apparaît avec la réponse.
+- À l'impression, une fiche tient en deux lignes : les quatorze fiches d'outils entrent dans une page de PDF au lieu d'être tronquées.
+
+**Constaté**
+
+- Le contrôle compte comme débordement tout ce qui dépasse, y compris le contenu caché d'un conteneur qui défile. Une brique à grille doit donc tenir sans ascenseur : les fiches sont passées d'un format bavard (texte au recto) à un format compact, ce qui vaut mieux en projection de toute façon.
+- La diapo `.fin` a une mise en page absolue : elle ne supporte ni colonnes ni tableau. Les références ont leur propre diapo, et la clôture est redevenue une consigne courte.
+
+**À trancher avec Marc** — les points sont listés dans le compte rendu du 23 novembre : le budget temps (le déroulé vise 2 h 06), les étoiles de trois fiches, six références à vérifier avant diffusion, et l'epub de Steve Masson à dépouiller.
+
 ## 2026-11-22 (soir) — Atelier Saumos, V3.1 : termes techniques, navigation en bas à droite, retours des fiches
 
 D'après la règle ajoutée par Marc au script V3 (les PNJ font découvrir des termes techniques, en couleur, qui ouvrent un aparté et entrent au carnet), ses demandes dans les fiches d'`IMAGE-AtelierSaumos.qmd` et ses changements de dialogues faits directement dans `donnees/saumos.json`. Pas de nouvelle version de script. Désormais, on modifie le JSON par petites touches : le constructeur de la V3, qui repartait de la V2, n'est plus relancé (il effacerait les répliques de Marc).

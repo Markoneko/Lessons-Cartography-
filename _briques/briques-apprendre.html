@@ -1,0 +1,375 @@
+<script>
+/* Briques d'apprentissage : le jeu de fiches (recto/verso, filtres, panneau de lecture,
+   mode appariement avec ce que l'étudiant a écrit plus tôt), les termes cliquables
+   et le lexique qui se remplit au fil du cours.
+   Les fiches viennent d'un seul fichier JSON du cours, embarqué dans la page.
+   Ce que fait l'étudiant reste dans son navigateur. */
+(function () {
+  function tous(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function el(nom, classe, parent, texte) {
+    var e = document.createElement(nom);
+    if (classe) e.className = classe;
+    if (texte !== undefined) e.textContent = texte;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function stopper(n) {
+    ["pointerdown", "keydown", "click", "wheel"].forEach(function (x) {
+      n.addEventListener(x, function (e) { e.stopPropagation(); });
+    });
+  }
+  function lire(cle, defaut) {
+    try { var v = window.localStorage.getItem(cle); return v === null ? defaut : v; } catch (e) { return defaut; }
+  }
+  function ecrire(cle, valeur) {
+    try { window.localStorage.setItem(cle, valeur); } catch (e) { /* navigation privée : tant pis */ }
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  var EN = (document.documentElement.lang || "fr").slice(0, 2) === "en";
+  var CORRIGE = params.has("print-pdf");
+
+  var T = EN ? {
+    tous: "All", contexte: "Context", cap: "Direction", outil: "Tools",
+    compte: function (n) { return n + " card" + (n > 1 ? "s" : ""); },
+    choisir: "Pick a card to read it in full. Click it again to turn it over.",
+    effet: "Effect size", source: "Source", ampute: "What a careless use of AI takes away",
+    inversion: "How to turn it around", famille: "Family",
+    vousAviez: "What you listed at the start of the session:", rienEcrit: "(nothing written yet)",
+    deja: "I already do this", nouveau: "New to me", remettre: "Not marked",
+    bilan: function (a, b, n) { return a + " already yours, " + b + " new, out of " + n + "."; },
+    sansEtoile: "condition",
+    lexVide: "No term opened yet. Click a coloured word during the session: it will land here.",
+    lexEtat: function (a, n) { return a + " term" + (a > 1 ? "s" : "") + " opened, out of " + n + "."; },
+    fermer: "Close"
+  } : {
+    tous: "Toutes", contexte: "Contexte", cap: "Cap", outil: "Outils",
+    compte: function (n) { return n + " fiche" + (n > 1 ? "s" : ""); },
+    choisir: "Choisissez une fiche pour la lire en entier. Un second clic la retourne.",
+    effet: "Ampleur d'effet", source: "Source", ampute: "Ce qu'un usage naïf de l'IA ampute",
+    inversion: "Comment le retourner", famille: "Famille",
+    vousAviez: "Ce que vous aviez listé en début de séance :", rienEcrit: "(rien d'écrit pour l'instant)",
+    deja: "Je le fais déjà", nouveau: "Nouveau pour moi", remettre: "Sans marque",
+    bilan: function (a, b, n) { return a + " déjà à vous, " + b + " nouvelles, sur " + n + "."; },
+    sansEtoile: "condition",
+    lexVide: "Aucun terme ouvert pour l'instant. Cliquez un mot coloré pendant la séance : il arrivera ici.",
+    lexEtat: function (a, n) { return a + " terme" + (a > 1 ? "s" : "") + " ouvert" + (a > 1 ? "s" : "") + ", sur " + n + "."; },
+    fermer: "Fermer"
+  };
+
+  // ------------------------------------------------------------------ les données
+  function donnees(source) {
+    var bloc = document.querySelector('script.fiches-donnees[data-source="' + source + '"]')
+      || document.querySelector("script.fiches-donnees");
+    if (!bloc) return null;
+    try { return JSON.parse(bloc.textContent); } catch (e) { return null; }
+  }
+
+  function etoiles(n) {
+    if (!n) return T.sansEtoile;
+    var s = "";
+    for (var i = 0; i < 5; i++) s += i < n ? "★" : "☆";
+    return s;
+  }
+
+  // ------------------------------------------------------------------ les termes cliquables
+  // Dans n'importe quel texte : [[mot affiché|identifiant]] ou [[mot]].
+  var LEXIQUE = {};
+  var VUS = {};
+  try { VUS = JSON.parse(lire("lexique:vus", "{}")) || {}; } catch (e) { VUS = {}; }
+  var abonnes = [];
+
+  function noterVu(id) {
+    if (VUS[id]) return;
+    VUS[id] = 1;
+    ecrire("lexique:vus", JSON.stringify(VUS));
+    abonnes.forEach(function (f) { f(); });
+  }
+
+  var fenetre = null;
+  function fermerFenetre() { if (fenetre) { fenetre.remove(); fenetre = null; } }
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") fermerFenetre(); });
+
+  function ouvrirTerme(id, ancre) {
+    fermerFenetre();
+    var t = LEXIQUE[id];
+    if (!t) return;
+    noterVu(id);
+    fenetre = el("div", "terme-fenetre", document.body);
+    var f = el("button", "terme-fermer", fenetre, "×");
+    f.type = "button";
+    f.setAttribute("aria-label", T.fermer);
+    f.addEventListener("click", fermerFenetre);
+    el("h4", "", fenetre, t.mot || id);
+    el("p", "", fenetre, t.texte || "");
+    stopper(fenetre);
+    var r = ancre.getBoundingClientRect();
+    var h = fenetre.getBoundingClientRect();
+    var x = Math.min(Math.max(8, r.left), window.innerWidth - h.width - 8);
+    var y = r.bottom + 8 + h.height > window.innerHeight ? r.top - h.height - 8 : r.bottom + 8;
+    fenetre.style.left = x + "px";
+    fenetre.style.top = Math.max(8, y) + "px";
+  }
+
+  // Transforme les [[…]] d'une chaîne en HTML, le reste étant échappé.
+  function avecTermes(texte) {
+    var sortie = "", reste = String(texte == null ? "" : texte);
+    var motif = /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/;
+    function propre(s) {
+      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+    var m;
+    while ((m = motif.exec(reste))) {
+      sortie += propre(reste.slice(0, m.index));
+      var mot = m[1], id = (m[2] || m[1]).trim();
+      sortie += '<span class="terme" data-terme="' + propre(id) + '" role="button" tabindex="0">' + propre(mot) + "</span>";
+      reste = reste.slice(m.index + m[0].length);
+    }
+    return sortie + propre(reste);
+  }
+
+  function brancherTermes(racine) {
+    tous(".terme", racine).forEach(function (s) {
+      if (s.dataset.branche) return;
+      s.dataset.branche = "1";
+      s.addEventListener("click", function (e) { e.stopPropagation(); ouvrirTerme(s.dataset.terme, s); });
+      s.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); ouvrirTerme(s.dataset.terme, s); }
+      });
+    });
+  }
+
+  // Les [[…]] écrits directement dans une diapo : on les remplace dans le texte rendu.
+  function termesDansLesDiapos() {
+    var marcheur = document.createTreeWalker(document.querySelector(".reveal .slides") || document.body,
+      NodeFilter.SHOW_TEXT, null);
+    var aFaire = [], n;
+    while ((n = marcheur.nextNode())) {
+      if (n.nodeValue.indexOf("[[") >= 0 && n.parentNode && n.parentNode.closest("script,style,.fiche-carte") === null) aFaire.push(n);
+    }
+    aFaire.forEach(function (noeud) {
+      var enveloppe = document.createElement("span");
+      enveloppe.innerHTML = avecTermes(noeud.nodeValue);
+      noeud.parentNode.replaceChild(enveloppe, noeud);
+    });
+  }
+
+  // ------------------------------------------------------------------ le jeu de fiches
+  function construireJeu(zone) {
+    var jeu = donnees(zone.dataset.source);
+    if (!jeu) { el("p", "fiches-vide", zone, "Fiches introuvables : " + (zone.dataset.source || "")); return; }
+    stopper(zone);
+
+    var groupes = (zone.dataset.groupe || "").split(",").map(function (s) { return s.trim(); }).filter(Boolean);
+    var liste = jeu.fiches.filter(function (f) { return !groupes.length || groupes.indexOf(f.groupe) >= 0; });
+    var familles = {};
+    (jeu.familles || []).forEach(function (f) { familles[f.id] = f.nom; });
+
+    var apparier = !!zone.dataset.rappel;
+    if (apparier) zone.classList.add("apparier");
+
+    // Bandeau : filtres par groupe quand il y en a plusieurs, et le compte.
+    var haut = el("div", "fiches-haut", zone);
+    var compte = el("span", "fiches-compte", haut);
+
+    // Ce que l'étudiant avait écrit plus tôt.
+    var rappelP = null;
+    if (apparier) {
+      var r = el("div", "fiches-rappel", zone);
+      el("div", "fiches-rappel-titre", r, T.vousAviez);
+      rappelP = el("p", "", r);
+    }
+
+    var corps = el("div", "fiches-corps", zone);
+    var grille = el("div", "fiches-grille", corps);
+    var panneau = el("div", "fiches-panneau", corps);
+    el("p", "fiches-vide", panneau, T.choisir);
+
+    var bilan = apparier ? el("div", "fiches-bilan", zone) : null;
+
+    var marques = {};
+    try { marques = JSON.parse(lire("fiches:marques", "{}")) || {}; } catch (e) { marques = {}; }
+
+    function majBilan() {
+      if (!bilan) return;
+      var a = 0, b = 0;
+      liste.forEach(function (f) {
+        if (marques[f.id] === "deja") a++;
+        else if (marques[f.id] === "nouveau") b++;
+      });
+      bilan.innerHTML = "";
+      var p = el("span", "", bilan, T.bilan(a, b, liste.length));
+      return p;
+    }
+
+    function relireRappel() {
+      if (!rappelP) return;
+      var texte = lire("observer:" + zone.dataset.rappel, "");
+      rappelP.className = texte ? "" : "vide";
+      rappelP.textContent = texte || T.rienEcrit;
+    }
+
+    function montrer(f) {
+      panneau.innerHTML = "";
+      el("div", "fiche-nom", panneau, f.nom);
+      if (f.aussi) el("div", "fiche-aussi", panneau, f.aussi);
+      var p = el("p", "fiche-detail", panneau);
+      p.innerHTML = avecTermes(f.recto);
+      el("div", "fiche-rubrique", panneau, T.effet);
+      var a = el("p", "fiche-detail", panneau);
+      a.innerHTML = avecTermes(f.ampleur || "");
+      el("div", "fiche-rubrique", panneau, T.source);
+      el("p", "fiche-detail", panneau, f.source || "");
+      if (f["ia-ampute"]) {
+        el("div", "fiche-rubrique", panneau, T.ampute);
+        var x = el("p", "fiche-detail", panneau);
+        x.innerHTML = avecTermes(f["ia-ampute"]);
+      }
+      if (f["ia-inversion"]) {
+        el("div", "fiche-rubrique", panneau, T.inversion);
+        var y = el("p", "fiche-detail", panneau);
+        y.innerHTML = avecTermes(f["ia-inversion"]);
+      }
+      if (f.famille && familles[f.famille]) {
+        el("div", "fiche-rubrique", panneau, T.famille);
+        el("p", "fiche-detail", panneau, familles[f.famille]);
+      }
+      brancherTermes(panneau);
+      tous(".fiche-carte", grille).forEach(function (c) { c.classList.toggle("choisie", c.dataset.id === f.id); });
+    }
+
+    liste.forEach(function (f) {
+      var carte = el("button", "fiche-carte", grille);
+      carte.type = "button";
+      carte.dataset.id = f.id;
+      carte.dataset.groupe = f.groupe;
+      var pivot = el("div", "fiche-pivot", carte);
+
+      var recto = el("div", "fiche-recto", pivot);
+      el("div", "fiche-nom", recto, f.nom);
+      var pied = el("div", "fiche-pied", recto);
+      el("span", "fiche-emotion", pied, f.emotion || "");
+      var et = el("span", "fiche-etoiles", pied, etoiles(f.etoiles));
+      et.dataset.etoiles = String(f.etoiles || 0);
+
+      // Le verso tient en deux rubriques courtes ; le détail complet est dans le panneau.
+      var verso = el("div", "fiche-verso", pivot);
+      var cv = el("div", "fiche-corps", verso);
+      el("div", "fiche-rubrique", cv, T.source);
+      el("p", "fiche-detail", cv, (f.source || "").split(" ;")[0]);
+      el("div", "fiche-rubrique", cv, T.inversion);
+      el("p", "fiche-detail", cv, f["ia-inversion"] || "");
+
+      carte.addEventListener("click", function () {
+        if (carte.classList.contains("choisie")) carte.classList.toggle("retournee");
+        else montrer(f);
+      });
+
+      if (apparier) {
+        var marque = el("button", "fiche-marque", carte);
+        marque.type = "button";
+        var etats = ["", "deja", "nouveau"];
+        var signes = { "": "·", deja: "✓", nouveau: "+" };
+        var titres = { "": T.remettre, deja: T.deja, nouveau: T.nouveau };
+        function peindre() {
+          var e = marques[f.id] || "";
+          marque.dataset.etat = e;
+          marque.textContent = signes[e];
+          marque.title = titres[e];
+          marque.setAttribute("aria-label", f.nom + " — " + titres[e]);
+        }
+        peindre();
+        marque.addEventListener("click", function (ev) {
+          ev.stopPropagation();
+          var i = etats.indexOf(marques[f.id] || "");
+          marques[f.id] = etats[(i + 1) % etats.length];
+          ecrire("fiches:marques", JSON.stringify(marques));
+          peindre();
+          majBilan();
+        });
+      }
+
+      brancherTermes(carte);
+    });
+
+    // Les filtres n'apparaissent que s'il y a plusieurs groupes dans le paquet.
+    var presents = [];
+    liste.forEach(function (f) { if (presents.indexOf(f.groupe) < 0) presents.push(f.groupe); });
+    if (presents.length > 1) {
+      var boite = el("div", "fiches-filtres", haut);
+      var choix = [""].concat(presents);
+      var actif = "";
+      var boutons = choix.map(function (g) {
+        var b = el("button", "fiches-filtre", boite, g ? (T[g] || g) : T.tous);
+        b.type = "button";
+        b.setAttribute("aria-pressed", g === actif ? "true" : "false");
+        b.addEventListener("click", function () {
+          actif = g;
+          boutons.forEach(function (x, i) { x.setAttribute("aria-pressed", choix[i] === actif ? "true" : "false"); });
+          var n = 0;
+          tous(".fiche-carte", grille).forEach(function (c) {
+            var vu = !actif || c.dataset.groupe === actif;
+            c.style.display = vu ? "" : "none";
+            if (vu) n++;
+          });
+          compte.textContent = T.compte(n);
+        });
+        return b;
+      });
+      haut.insertBefore(boite, compte);
+    }
+    compte.textContent = T.compte(liste.length);
+
+    relireRappel();
+    majBilan();
+    if (window.Reveal) {
+      window.Reveal.on("slidechanged", function (e) { if (e.currentSlide.contains(zone)) relireRappel(); });
+    }
+  }
+
+  // ------------------------------------------------------------------ le lexique
+  function construireLexique(zone) {
+    stopper(zone);
+    var ids = Object.keys(LEXIQUE);
+    if (!ids.length) { el("p", "lexique-etat", zone, T.lexVide); return; }
+    ids.sort(function (a, b) {
+      return (LEXIQUE[a].mot || a).localeCompare(LEXIQUE[b].mot || b, EN ? "en" : "fr");
+    });
+    var etat = el("p", "lexique-etat", zone);
+    var mots = el("div", "lexique-mots", zone);
+    var entrees = ids.map(function (id) {
+      var b = el("button", "lexique-entree", mots, LEXIQUE[id].mot || id);
+      b.type = "button";
+      b.addEventListener("click", function () { ouvrirTerme(id, b); });
+      return { id: id, noeud: b };
+    });
+    function peindre() {
+      var n = 0;
+      entrees.forEach(function (e) {
+        var vu = !!VUS[e.id] || CORRIGE;
+        e.noeud.classList.toggle("vue", vu);
+        if (vu) n++;
+      });
+      etat.textContent = T.lexEtat(n, entrees.length);
+    }
+    peindre();
+    abonnes.push(peindre);
+  }
+
+  // ------------------------------------------------------------------ départ
+  function demarrer() {
+    tous("script.lexique-donnees").forEach(function (b) {
+      try {
+        (JSON.parse(b.textContent) || []).forEach(function (t) { if (t && t.id) LEXIQUE[t.id] = t; });
+      } catch (e) { /* fichier illisible : le lexique reste vide */ }
+    });
+    termesDansLesDiapos();
+    brancherTermes(document);
+    tous(".fiches-zone").forEach(construireJeu);
+    tous(".lexique-zone").forEach(construireLexique);
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", demarrer);
+  else demarrer();
+})();
+</script>

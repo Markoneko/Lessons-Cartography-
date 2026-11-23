@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" role="img" aria-label="Coupe schématique du cerveau : les quatre mémoires et les régions qui les portent">
+
+  <!-- Contour du cerveau, vu de profil, hémisphère gauche, face tournée vers la droite -->
+  <path class="s-fond" d="M232 250
+    C214 196 232 140 282 108
+    C330 76 400 62 470 66
+    C546 70 614 92 664 128
+    C706 158 730 196 730 238
+    C730 262 722 282 708 298
+    C716 310 714 324 700 330
+    C704 344 694 354 676 354
+    L676 372 C676 384 666 392 652 392
+    L470 392 C430 392 400 380 382 356
+    C356 356 330 344 310 322
+    C276 320 248 294 232 250 Z"/>
+
+  <!-- Cervelet et tronc, discrets -->
+  <path class="s-fin" d="M676 354 C700 350 718 332 718 310"/>
+  <path class="s-fin" d="M382 356 C392 372 408 384 428 390"/>
+
+  <!-- Scissure centrale, pour situer frontal et pariétal -->
+  <path class="s-tirets" d="M470 74 C462 136 452 186 436 240"/>
+
+  <!-- 1. Cortex préfrontal et pariétal : mémoire de travail -->
+  <path class="s-accent" d="M300 118 C266 150 250 196 258 244"/>
+  <ellipse class="s-plein-accent" cx="296" cy="176" rx="7" ry="7" opacity="0.85"/>
+  <path class="s-accent" d="M496 86 C546 92 590 110 622 136"/>
+  <ellipse class="s-plein-accent" cx="560" cy="100" rx="7" ry="7" opacity="0.85"/>
+
+  <!-- 2. Hippocampe : mémoire épisodique. Forme en hameçon, au centre -->
+  <path class="s-violet" style="stroke-width:7" d="M452 268 C492 252 540 258 566 284 C586 304 580 332 556 338 C534 344 520 330 526 314"/>
+
+  <!-- 3. Cortex associatif : mémoire sémantique. Flèches de transfert nocturne -->
+  <g class="s-apparait">
+    <path class="s-trait" style="stroke-dasharray:6 6" d="M470 262 C452 206 430 166 404 142"/>
+    <path class="s-plein" d="M400 134 l10 14 l-15 3 z"/>
+    <path class="s-trait" style="stroke-dasharray:6 6" d="M546 264 C574 214 606 182 640 164"/>
+    <path class="s-plein" d="M648 158 l-4 17 l-12 -9 z"/>
+  </g>
+
+  <!-- 4. Noyaux sous-corticaux : mémoire procédurale -->
+  <ellipse class="s-blanc" cx="432" cy="300" rx="26" ry="17"/>
+  <ellipse class="s-blanc" cx="392" cy="276" rx="18" ry="13"/>
+
+  <!-- ———————————— Légende ———————————— -->
+
+  <!-- Mémoire de travail -->
+  <path class="s-fin" d="M296 176 L186 176"/>
+  <circle class="s-plein-accent" cx="182" cy="176" r="4"/>
+  <text class="s-titre" x="172" y="162" text-anchor="end">Mémoire de travail</text>
+  <text class="s-petit" x="172" y="182" text-anchor="end">cortex préfrontal</text>
+  <text class="s-petit" x="172" y="200" text-anchor="end">et pariétal</text>
+  <text class="s-petit" x="172" y="224" text-anchor="end">quelques secondes,</text>
+  <text class="s-petit" x="172" y="242" text-anchor="end">environ quatre éléments</text>
+
+  <!-- Mémoire épisodique -->
+  <path class="s-fin" d="M566 300 L852 300"/>
+  <circle class="s-violet" style="fill:var(--violet)" cx="856" cy="300" r="4"/>
+  <text class="s-titre" x="872" y="294">Mémoire épisodique</text>
+  <text class="s-petit" x="872" y="314">hippocampe</text>
+  <text class="s-petit" x="872" y="336">ce que j'ai vécu, daté et situé</text>
+
+  <!-- Mémoire sémantique -->
+  <path class="s-fin" d="M640 164 L852 128"/>
+  <circle class="s-plein" cx="856" cy="127" r="4"/>
+  <text class="s-titre" x="872" y="122">Mémoire sémantique</text>
+  <text class="s-petit" x="872" y="142">cortex ; se consolide la nuit</text>
+  <text class="s-petit" x="872" y="164">ce que je sais, détaché</text>
+  <text class="s-petit" x="872" y="182">du moment où je l'ai appris</text>
+
+  <!-- Mémoire procédurale -->
+  <path class="s-fin" d="M414 310 L300 374"/>
+  <circle class="s-plein" cx="296" cy="376" r="4"/>
+  <text class="s-titre" x="286" y="370" text-anchor="end">Mémoire procédurale</text>
+  <text class="s-petit" x="286" y="390" text-anchor="end">circuits sous-corticaux</text>
+  <text class="s-petit" x="286" y="408" text-anchor="end">les gestes automatisés</text>
+
+  <!-- Note sur le transfert nocturne, apparaît avec la réponse -->
+  <text class="s-orange s-apparait" x="872" y="214">La nuit, l'hippocampe rejoue</text>
+  <text class="s-orange s-apparait" x="872" y="234">et transfère vers le cortex.</text>
+</svg>

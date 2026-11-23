@@ -1,0 +1,131 @@
+/* Briques d'apprentissage (cours « Apprendre à apprendre ») :
+   le jeu de fiches recto/verso, l'appariement avec ce que l'étudiant a écrit,
+   les termes cliquables et le lexique qui se remplit au fil du cours. */
+
+/* --- Le paquet ----------------------------------------------------------- */
+.reveal .fiches-zone { display: flex; flex-direction: column; gap: 9px; height: var(--hauteur-fiches, 440px); }
+.reveal .fiches-haut { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.reveal .fiches-filtres { display: flex; gap: 6px; flex-wrap: wrap; }
+.reveal .fiches-compte { margin-left: auto; font-family: var(--police-mono); font-size: 13px; color: var(--gris); white-space: nowrap; }
+.reveal .fiches-corps { display: flex; gap: 12px; flex: 1 1 auto; min-height: 0; }
+
+/* --- La grille ------------------------------------------------------------ */
+.reveal .fiches-grille {
+  flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(144px, 1fr));
+  grid-auto-rows: 86px; gap: 8px; padding: 3px; align-content: start;
+}
+.reveal .fiche-carte {
+  position: relative; perspective: 900px; background: none; border: 0; padding: 0;
+  cursor: pointer; font-family: var(--police-texte); text-align: left;
+}
+.reveal .fiche-pivot { position: relative; width: 100%; height: 100%; transition: transform 0.4s; transform-style: preserve-3d; }
+.reveal .fiche-carte.retournee .fiche-pivot { transform: rotateY(180deg); }
+.reveal .fiche-carte.choisie .fiche-recto { box-shadow: 0 0 0 2px var(--bleu); }
+.reveal .fiche-recto, .reveal .fiche-verso {
+  position: absolute; inset: 0; backface-visibility: hidden; border: 1.5px solid var(--filet);
+  border-radius: 9px; padding: 7px 9px; overflow: hidden; display: flex; flex-direction: column; gap: 3px;
+}
+.reveal .fiche-recto { background: var(--blanc); border-top: 4px solid var(--bleu); }
+.reveal .fiche-verso { background: var(--fond-doux); transform: rotateY(180deg); border-top: 4px solid var(--orange); }
+.reveal .fiche-carte[data-groupe="contexte"] .fiche-recto { border-top-color: var(--violet); }
+.reveal .fiche-carte[data-groupe="cap"] .fiche-recto { border-top-color: var(--orange); }
+.reveal .fiche-nom { font-family: var(--police-titre); font-weight: 700; font-size: 13.5px; line-height: 1.14; color: var(--bleu-nuit); }
+.reveal .fiche-pied { display: flex; align-items: baseline; justify-content: space-between; gap: 5px; flex: 0 0 auto; margin-top: auto; }
+.reveal .fiche-emotion { font-size: 10px; font-style: italic; color: var(--gris); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.reveal .fiche-etoiles { font-size: 11px; color: var(--orange-texte); letter-spacing: 0.03em; white-space: nowrap; }
+.reveal .fiche-etoiles[data-etoiles="0"] { color: var(--violet); font-style: italic; letter-spacing: 0; font-size: 10px; }
+.reveal .fiches-panneau .fiche-nom { font-size: 19px; }
+.reveal .fiche-verso .fiche-corps { overflow: hidden; flex: 1 1 auto; }
+.reveal .fiche-verso .fiche-detail { font-size: 10.5px; line-height: 1.26; }
+.reveal .fiche-verso .fiche-rubrique { font-size: 9px; margin-top: 2px; }
+.reveal .fiche-rubrique {
+  font-family: var(--police-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--orange-texte); margin-top: 3px;
+}
+.reveal .fiche-detail { font-size: 11px; line-height: 1.3; color: var(--encre); margin: 0; }
+
+/* --- Le panneau de lecture ------------------------------------------------ */
+.reveal .fiches-panneau {
+  flex: 0 0 332px; min-height: 0; border: 1.5px solid var(--filet); border-left: 4px solid var(--bleu);
+  border-radius: 10px; background: var(--blanc); padding: 10px 12px; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.reveal .fiches-panneau .fiche-nom { font-size: 19px; }
+.reveal .fiches-panneau .fiche-aussi { font-size: 12px; font-style: italic; color: var(--gris); margin: -2px 0 2px; }
+.reveal .fiches-panneau .fiche-detail { font-size: 14px; line-height: 1.38; }
+.reveal .fiches-panneau .fiche-rubrique { font-size: 11px; margin-top: 7px; }
+.reveal .fiches-vide { font-size: 14px; color: var(--gris); font-style: italic; margin: auto 0; }
+
+/* --- L'appariement -------------------------------------------------------- */
+.reveal .fiches-rappel {
+  flex: 0 0 auto; border: 1.5px dashed var(--filet); border-radius: 10px; background: var(--fond-doux);
+  padding: 7px 11px; max-height: 96px; overflow-y: auto;
+}
+.reveal .fiches-rappel-titre { font-family: var(--police-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bleu); }
+.reveal .fiches-rappel p { margin: 2px 0 0; font-size: 14px; line-height: 1.35; white-space: pre-wrap; }
+.reveal .fiches-rappel p.vide { color: var(--gris); font-style: italic; }
+.reveal .fiche-marque {
+  position: absolute; top: -7px; right: -7px; width: 23px; height: 23px; border-radius: 50%;
+  border: 1.5px solid var(--filet); background: var(--blanc); color: var(--gris); font-size: 13px;
+  line-height: 1; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 2; padding: 0;
+}
+.reveal .fiches-zone.apparier .fiche-marque { display: flex; }
+.reveal .fiche-marque[data-etat="deja"] { background: var(--bleu); border-color: var(--bleu); color: var(--blanc); }
+.reveal .fiche-marque[data-etat="nouveau"] { background: var(--orange); border-color: var(--orange); color: var(--blanc); }
+.reveal .fiches-bilan { flex: 0 0 auto; font-size: 14px; line-height: 1.4; color: var(--encre); border-top: 1.5px solid var(--filet); padding-top: 5px; min-height: 1.2em; }
+.reveal .fiches-bilan strong { color: var(--bleu); }
+
+/* --- Termes cliquables et lexique ----------------------------------------- */
+.reveal .terme { color: var(--violet); border-bottom: 1.5px dotted var(--violet); cursor: pointer; }
+.reveal .terme:hover { background: #F3EAF5; }
+.terme-fenetre {
+  position: fixed; z-index: 60; max-width: 380px; background: var(--blanc); border: 1.5px solid var(--violet);
+  border-radius: 10px; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18); padding: 12px 30px 12px 14px; font-family: var(--police-texte);
+}
+.terme-fenetre h4 { margin: 0 0 4px; font-family: var(--police-titre); font-size: 18px; color: var(--prune); }
+.terme-fenetre p { margin: 0; font-size: 15px; line-height: 1.4; color: var(--encre); }
+.terme-fermer { position: absolute; top: 3px; right: 8px; border: 0; background: none; font-size: 18px; color: var(--gris); cursor: pointer; }
+.reveal .lexique-zone { display: flex; flex-direction: column; gap: 6px; }
+.reveal .lexique-mots {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(196px, 1fr));
+  gap: 5px 12px; align-content: start;
+}
+.reveal .lexique-entree {
+  border: 0; background: none; text-align: left; padding: 2px 4px 2px 9px; cursor: pointer;
+  border-left: 3px solid var(--filet); font-family: var(--police-titre); font-weight: 700;
+  font-size: 14px; line-height: 1.2; color: var(--gris);
+}
+.reveal .lexique-entree:hover { border-left-color: var(--bleu); }
+.reveal .lexique-entree.vue { border-left-color: var(--violet); color: var(--bleu-nuit); }
+.reveal .lexique-entree.vue::after { content: " ✓"; color: var(--violet); }
+.reveal .lexique-etat { font-size: 14px; font-style: italic; color: var(--gris); margin: 0; }
+
+/* --- Impression ----------------------------------------------------------- */
+/* À l'impression, une fiche tient en deux lignes : le recto, puis source et inversion
+   sur une seule ligne. Les quatorze fiches entrent alors dans une page. */
+html.reveal-print .reveal .fiches-zone { height: auto !important; display: block; }
+html.reveal-print .reveal .fiches-corps { display: block; }
+html.reveal-print .reveal .fiches-haut,
+html.reveal-print .reveal .fiches-panneau { display: none; }
+html.reveal-print .reveal .fiches-zone .fiche-marque { display: none !important; }
+html.reveal-print .reveal .fiches-grille {
+  grid-template-columns: 1fr 1fr; grid-auto-rows: auto; gap: 4px 14px; overflow: visible; height: auto; padding: 0;
+}
+html.reveal-print .reveal .fiche-carte { page-break-inside: avoid; break-inside: avoid; perspective: none; cursor: default; }
+html.reveal-print .reveal .fiche-pivot { transform: none !important; height: auto; }
+html.reveal-print .reveal .fiche-recto,
+html.reveal-print .reveal .fiche-verso {
+  position: static; backface-visibility: visible; transform: none; height: auto; overflow: visible;
+  border: 0; border-radius: 0; padding: 0; background: none; gap: 0;
+}
+html.reveal-print .reveal .fiche-recto { border-top: 1.5px solid var(--filet) !important; padding-top: 3px; }
+html.reveal-print .reveal .fiche-pied { margin-top: 0; }
+html.reveal-print .reveal .fiche-nom { font-size: 13px; display: inline; }
+html.reveal-print .reveal .fiche-emotion { white-space: normal; }
+html.reveal-print .reveal .fiche-verso .fiche-corps { overflow: visible; }
+html.reveal-print .reveal .fiche-verso .fiche-rubrique { display: none; }
+html.reveal-print .reveal .fiche-verso .fiche-detail { display: inline; font-size: 10px; color: var(--gris); }
+html.reveal-print .reveal .fiche-verso .fiche-detail ~ .fiche-detail::before { content: " — "; color: var(--orange-texte); }
+html.reveal-print .reveal .fiches-rappel { max-height: none; }
+html.reveal-print .reveal .lexique-zone { max-height: none; overflow: visible; }
+html.reveal-print .reveal .terme { border-bottom: 0; color: var(--encre); }

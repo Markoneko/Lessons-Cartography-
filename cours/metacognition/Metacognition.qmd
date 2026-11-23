@@ -1,14 +1,14 @@
 ---
 title: "Apprendre à apprendre"
 subtitle: "Métacognition et cognition augmentée"
-author: "Marc Poupée · Emmanuel ??? · Géodata Paris"
-date: "2026-12-??"
+author: "Marc Poupée · Géodata Paris"
+date: "2026-12-01"
 date-format: "D MMMM YYYY"
 footer: "Apprendre à apprendre"
 ---
 
 ::: {.fiche n="0.1" etat="a-realiser"}
-Intention : Couverture. Image à choisir : une piste est le temple de Delphes (γνῶθι σεαυτόν), une autre un cerveau en coupe, une autre une carte marine avec un point estimé. Décision à prendre avec Marc.
+Intention : Couverture. Image à choisir : une piste est le fronton de Delphes (γνῶθι σεαυτόν), une autre une carte marine avec un point estimé. Décision à prendre avec Marc.
 Expérience : aucune
 Demande :
 :::
@@ -16,25 +16,49 @@ Demande :
 ## Comment lire ce support
 
 ::: {.fiche n="0.2" etat="a-realiser"}
-Intention : Mode d'emploi commun, plus ce qui est propre à ce cours : on écrit avant de lire la réponse, le jeu de fiches se manipule, le lexique se remplit tout seul, la capsule se referme à la fin. Déclaration de transparence IA.
+Intention : Mode d'emploi commun, plus ce qui est propre à ce cours : on écrit avant de lire la réponse, les fiches se manipulent, le lexique se remplit tout seul. Déclaration de transparence IA.
 Expérience : aucune
 Demande :
+:::
+
+Ce cours se manipule plus qu'il ne s'écoute. Vous écrirez avant de lire, vous vous tromperez avant de savoir, et vous repartirez avec un plan que vous aurez écrit vous-même.
+
+- Le **pictogramme** devant chaque titre donne le niveau : **socle**, à maîtriser ; **appui**, pour consolider ; **veille**, pour aller plus loin.
+- Les **zones d'écriture** gardent ce que vous écrivez, dans votre navigateur seulement : vous le retrouverez plus loin dans la séance.
+- Les **mots colorés** s'ouvrent d'un clic. Chacun de ceux que vous ouvrez vient se ranger dans le lexique, à l'avant-dernière diapo.
+- Les **fiches** se retournent : une face dit ce que c'est, l'autre dit ce que ça vaut et ce que l'IA en fait.
+
+::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"}
 :::
 
 ## Ce que vous saurez faire
 
 ::: {.fiche n="0.3" etat="a-realiser"}
-Intention : Les compétences du cours, en bilan d'entrée, reprises à la fin pour montrer l'écart. Liste à écrire par Marc.
-Expérience : bilan d'entrée (brique « bilan », moment="debut")
+Intention : Les compétences du cours, en bilan d'entrée, reprises à la fin pour montrer l'écart. Liste proposée, à reprendre par Marc : elle pilote aussi le mode révision.
+Expérience : bilan d'entrée (brique « bilan »)
 Demande :
+:::
+
+Situez-vous avant de commencer. La même grille revient à la fin.
+
+::: {.bilan moment="debut"}
+- C1 | Décrire ma propre façon d'apprendre, et dire ce qui y marche ou non
+- C2 | Distinguer ce que je sais de ce que je crois savoir, et mesurer l'écart
+- C3 | Nommer les gestes d'apprentissage dont l'effet est établi, et dire lequel sert à quoi
+- C4 | Dire, pour un geste donné, ce qu'un usage naïf de l'IA lui fait perdre et comment le retourner
+- C5 | Situer mon travail dans un cap, même provisoire
+- C6 | Bâtir un plan de travail personnel, planifié et vérifiable
 :::
 
 ## Carte du cours
 
 ::: {.fiche n="0.4" etat="a-realiser"}
-Intention : Les six parties et la légende S / A / V.
+Intention : Les sept parties et la légende S / A / V.
 Expérience : liens vers chaque diapo
 Demande :
+:::
+
+::: {.carte-du-cours}
 :::
 
 <!-- PARTIE 1 · 20 min -->
@@ -42,49 +66,99 @@ Demande :
 ## Ce que vous faites déjà {.intercalaire}
 
 ::: {.fiche n="1.0" etat="a-realiser"}
-Intention : Ouvrir sur eux, pas sur nous. Rien n'est enseigné dans cette partie : on récolte, on gèle, on y reviendra.
+Intention : Ouvrir sur eux, pas sur nous. Rien n'est enseigné dans cette partie : on récolte, on gèle, on y reviendra en partie 6.
 Expérience : aucune
 Demande :
 :::
 
+Vingt minutes sans aucun apport de notre part.
+
 ## Qui a vu la vidéo ?
 
 ::: {.fiche n="1.1" etat="a-realiser"}
-Intention : Repérer qui a vu la vidéo de David Louapre conseillée à la rentrée, et constituer des binômes mixtes (un qui l'a vue, un qui ne l'a pas vue). Présenté comme de la logistique, sans jugement.
+Intention : Repérer qui a vu la vidéo de David Louapre conseillée à la rentrée, et constituer des binômes mixtes. Présenté comme de la logistique, sans jugement. Ne pas résumer la vidéo : ce sont les étudiants qui le feront en 1.5.
 Expérience : main levée, puis constitution des binômes
 Demande :
 :::
 
-## Vos outils, maintenant {competences="C?"}
+Main levée, sans commentaire : **qui a regardé la vidéo conseillée à la rentrée ?**
+
+Formez des binômes avec quelqu'un qui n'a pas répondu comme vous. Gardez-le : vous travaillerez ensemble deux fois dans l'heure.
+
+::: {.notes}
+Logistique seulement, aucun jugement. On ne résume pas la vidéo : ceux qui l'ont vue le feront eux-mêmes en 1.5, et ils apprendront en la restituant.
+:::
+
+## Vos outils, maintenant {.socle competences="C1"}
 
 ::: {.fiche n="1.2" etat="a-realiser"}
-Intention : Chacun note, seul et en silence, les outils d'apprentissage qu'il utilise aujourd'hui, et les note de 1 à 5 étoiles (« 5 étoiles du top 1 étoile, pas mal mais un peu gadget 3 c'est du solide »). Donnée gelée, non discutée : elle sera comparée aux fiches en partie 5.
+Intention : Chacun note, seul et en silence, les outils d'apprentissage qu'il utilise aujourd'hui, avec les étoiles de Marc. Donnée gelée, non discutée : elle revient en 6.2, confrontée aux fiches. L'écrire fige la réponse et empêche de la réviser après coup.
 Expérience : zone d'écriture (brique « observer », cle="mes-outils")
 Demande :
 :::
 
-## Ce qui coince
+Seul, en silence, trois minutes. **Identifier les outils que vous utilisez à l'heure actuelle.**
+
+Notez-les avec des étoiles : **5 étoiles du top 1 étoile, pas mal mais un peu gadget 3 c'est du solide.**
+
+::: {.observer cle="mes-outils" invite="Fiches ★★★ · relire mes notes ★★★★ · refaire les exos ★★★★★…"}
+:::
+
+::: {.notes}
+Pas de mise en commun ici : ce qui est dit à voix haute devient une position à défendre, et on aura plus de mal à en changer tout à l'heure.
+:::
+
+## Ce qui coince {.socle competences="C1"}
 
 ::: {.fiche n="1.3" etat="a-realiser"}
-Intention : Chacun note ce qui ne fonctionne pas, ce qui l'insécurise. Exemples donnés par Marc : « je n'ose pas poser des questions en cours. J'ai l'impression de manquer de certains concepts clefs, je dors mal ». Sert de cible au livrable noté.
+Intention : Chacun note ce qui ne fonctionne pas, ce qui l'insécurise. Exemples repris mot pour mot de Marc. Sert de cible au livrable noté de la partie 7.
 Expérience : zone d'écriture (brique « observer », cle="mes-difficultes")
 Demande :
 :::
 
-## [Micro-démonstration à choisir]
+Toujours seul. **Identifier ce qui ne fonctionne pas, ou ce qui vous pose des questions, vous insécurise.**
+
+Par exemple : *je n'ose pas poser des questions en cours. J'ai l'impression de manquer de certains concepts clefs, je dors mal.*
+
+::: {.observer cle="mes-difficultes" invite="Ce qui coince, en vrac…"}
+:::
+
+## Trois lettres {.socle competences="C2"}
 
 ::: {.fiche n="1.4" etat="a-realiser"}
-Intention : Une démonstration de 3 minutes où la salle se trompe sur elle-même, avant tout apport théorique. Trois candidats proposés dans le compte rendu (empan de mémoire de travail, effet de position sérielle, effet de génération). Un seul à retenir.
-Expérience : à définir avec la démonstration retenue
+Intention : La démonstration d'ouverture : la salle se trompe sur elle-même avant tout apport théorique. Variante Brown-Peterson, 90 secondes, qui ne rate jamais. Deux autres candidats proposés dans le compte rendu si Marc préfère.
+Expérience : prédiction, puis test, puis comparaison (question / réponse)
 Demande :
 :::
 
-## Ce qui vient de se passer
+Retenez ces trois lettres : **Q · V · L**
+
+::: {.question etiquette="Prédiction"}
+Vous allez compter à voix basse de 3 en 3 à rebours à partir de 487, pendant vingt secondes. Avant de commencer : combien de ces trois lettres pensez-vous pouvoir redonner ensuite ?
+:::
+
+::: {.reponse}
+La plupart des salles prédisent trois sur trois. La plupart des salles en retrouvent une ou deux.
+
+Rien n'a effacé ces lettres : elles ont simplement été **poussées dehors** par le calcul. Votre [[mémoire de travail|memoire-travail]] tient environ quatre éléments, et le comptage en a pris toute la place.
+
+Retenez surtout l'écart entre ce que vous aviez prédit et ce qui s'est passé : c'est le sujet de ces deux heures.
+:::
+
+## Ce qui vient de se passer {.socle competences="C1 C2"}
 
 ::: {.fiche n="1.5" etat="a-realiser"}
-Intention : Débrief en binômes mixtes : ceux qui ont vu la vidéo font de la récupération active sur son contenu, les autres reçoivent l'explication d'un pair. Mise en commun au tableau, Marc nomme le vocabulaire. Première mise en abîme, non signalée.
+Intention : Débrief en binômes mixtes. Ceux qui ont vu la vidéo font de la récupération active sur son contenu, les autres reçoivent l'explication d'un pair. Mise en commun au tableau. Première mise en abîme, non signalée : elle sera révélée en 7.3.
 Expérience : binômes puis mise en commun
 Demande :
+:::
+
+Avec votre binôme, cinq minutes : **mettez des mots sur ce qui vient de se passer**, les plus précis possible.
+
+Puis une question pour ceux qui ont vu la vidéo : **vos khôlles, vos DS, vos colles de reprise — c'était quoi, au fond, dans ce vocabulaire ?**
+
+::: {.notes}
+Laisser venir les mots, les noter au tableau, corriger à la marge. Ne pas exposer : ce qui est nommé ici l'est par eux. Trois ou quatre minutes de mise en commun suffisent.
 :::
 
 <!-- PARTIE 2 · 10 min -->
@@ -92,94 +166,161 @@ Demande :
 ## Pourquoi maintenant {.intercalaire}
 
 ::: {.fiche n="2.0" etat="a-realiser"}
-Intention : Les quatre raisons de Marc, à reprendre mot pour mot depuis source/notes-marc-2026-11-23.md (grand bain, on vous apprend à fonctionner, compétences métier, révolution cognitive). Découpage en diapos à valider.
+Intention : Les quatre raisons de Marc, reprises mot pour mot de ses notes, réparties sur trois diapos.
 Expérience : aucune
 Demande :
 :::
 
+Quatre raisons, et elles tombent toutes cette année.
+
 ## Le grand bain {.socle}
 
 ::: {.fiche n="2.1" etat="a-realiser"}
-Intention : « le secondaire comme la prépa ont institutionnalisé les méthodes d'apprentissage ». L'échafaudage (khôlles, DS, colles) faisait la métacognition à leur place et vient de disparaître. Recadrage non culpabilisant : vos méthodes ont marché, mais pas pour les raisons que vous croyez.
-Expérience : question ouverte : « vos khôlles, c'était quoi, dans ce vocabulaire ? »
+Intention : Raison 1 de Marc, mot pour mot. Recadrage non culpabilisant ajouté en commentaire oral : leurs méthodes ont marché, mais l'échafaudage était extérieur.
+Expérience : aucune
 Demande :
+:::
+
+**Le secondaire comme la prépa ont institutionnalisé les méthodes d'apprentissage.** Là, vous allez devoir mettre en place vos méthodologies d'apprentissage. Il faut activement rentrer en processus réflexif : la [[métacognition|metacognition]].
+
+[Vos méthodes ont marché. Mais une part du travail était faite par l'institution, et elle vient de s'arrêter.]{.a-retenir}
+
+::: {.notes}
+Les khôlles, les DS hebdomadaires, les colles de reprise : c'était de la [[récupération active|recuperation]] et de la [[répétition espacée|espacement]] institutionnalisées. Le système faisait la métacognition à leur place. Ce qui disparaît, ce n'est pas leur compétence, c'est l'échafaudage. Insister : ce n'est pas « vous faisiez tout faux », c'est « vous ne saviez pas pourquoi ça marchait ».
 :::
 
 ## Apprendre, pas fonctionner {.appui}
 
 ::: {.fiche n="2.2" etat="a-realiser"}
-Intention : Raison 2 et 3 de Marc : on apprend à fonctionner, pas à apprendre ; et c'est maintenant que s'étayent les compétences métier, « le pouvoir d'agir sur le monde ».
+Intention : Raisons 2 et 3 de Marc, mot pour mot.
 Expérience : aucune
 Demande :
 :::
 
-## Centaures {.socle}
+**On ne vous apprend pas à apprendre, on vous apprend avant tout à fonctionner.** Ce n'est pas l'idée à Géodata Paris où l'on veut faire de vous des adultes responsables de leur choix et actions.
+
+**Vous entrez dans la période où vous allez étayer vos compétences métiers.** C'est-à-dire des éléments qui vont vous donner le pouvoir d'agir sur le monde. Ce n'est plus un bassin socio-culturel, ni des pré-requis théoriques. On rentre dans le concret.
+
+## Centaures {.socle competences="C4"}
 
 ::: {.fiche n="2.3" etat="a-realiser"}
-Intention : Raison 4 : la révolution cognitive. Croiser les méthodes classiques (certaines antiques) avec les outils de demain. Annonce du mot centaure, « inversé ou non », repris en partie 6. Figure possible : Chiron, le centaure précepteur.
+Intention : Raison 4 de Marc, mot pour mot, plus l'annonce du mot centaure, repris en 6.5 et 6.6. Figure possible en illustration : Chiron, le centaure précepteur.
 Expérience : aucune
 Demande :
 :::
+
+**Nous faisons face à une révolution cognitive méthodologique et professionnelle. Les IAs.** Il faut s'inspirer des méthodes classiques — certaines remontent à l'Antiquité — avec les outils de demain. C'est faisable, et c'est aussi maintenant que vous allez réussir à vous positionner comme des [[centaures|centaure]], inversés ou non.
+
+Nous sommes là pour vous proposer des pistes, pas plus. Vous êtes spécifiques, uniques, et certains outils vous sont peut-être déjà acquis quand d'autres ne vous toucheront jamais. Ce qui est sûr, c'est qu'ils ont fait leurs preuves.
 
 ## Vos trois objectifs {.socle}
 
 ::: {.fiche n="2.4" etat="a-realiser"}
-Intention : Les trois objectifs de Marc pour les deux mois : être serein (contexte), avoir un cap, avoir une méthode solide dans laquelle on a confiance. Ils annoncent exactement les parties 4, 5 et 6 : c'est la charpente du cours.
+Intention : Les trois objectifs de Marc pour les deux mois. Ils annoncent exactement les parties 4, 5 et 6 : c'est la charpente du cours, et il faut le dire.
 Expérience : aucune
 Demande :
 :::
 
-<!-- PARTIE 3 · 15 min -->
+Sur les deux mois qui viennent :
+
+- **Être serein = être libre.** C'est le contexte. *(partie 4)*
+- **Avoir un cap** qui donne du sens à votre apprentissage, si possible à des échelles différentes. *(partie 5)*
+- **Avoir une méthode solide dans laquelle on a confiance**, pour franchir les étapes de votre apprentissage. *(partie 6)*
+
+::: {.notes}
+Le cap viendra aussi des découvertes, c'est tout à fait normal — encore faut-il laisser cette possibilité ouverte.
+:::
+
+<!-- PARTIE 3 · 12 min -->
 
 ## Un cerveau, des preuves {.intercalaire}
 
 ::: {.fiche n="3.0" etat="a-realiser"}
-Intention : Poser le cadre scientifique qui rend les fiches crédibles : où ça se passe, et comment on mesure qu'un effet existe.
+Intention : Poser le cadre scientifique qui rend les fiches crédibles : où ça se passe, et comment on mesure qu'un effet existe. Partie resserrée de 15 à 12 minutes ; l'intelligence et le bayésien passent en veille et en bonus.
 Expérience : aucune
 Demande :
 :::
 
-## Où ça se passe {.appui}
+Ce qui suit n'est pas une opinion de pédagogue : ce sont des expériences, avec des résultats mesurables.
+
+## Où ça se passe {.appui competences="C3"}
 
 ::: {.fiche n="3.1" etat="a-realiser"}
-Intention : Schéma du cerveau avec les mémoires de Marc : mémoire de travail (cortex pariétal et préfrontal), épisodique (hippocampe), sémantique (se déplace dans le cortex la nuit), procédurale (cortex et circuits sous-corticaux). Schéma SVG à produire, pas une image trouvée.
-Expérience : zones à cliquer sur le schéma, ou remise en ordre
+Intention : Le schéma des quatre mémoires de Marc. Le transfert nocturne hippocampe → cortex n'apparaît qu'avec la réponse. Le schéma est dessiné, pas emprunté.
+Expérience : question avant la réponse, le schéma se complète
 Demande :
 :::
 
-## Qu'est-ce qu'un effet mesuré {.socle}
+::: {.schema fichier="images/schemas/memoires.svg" hauteur="268"}
+:::
+
+::: {.question}
+Vous révisez un cours le soir. Où est-il quand vous fermez le classeur, et où sera-t-il dans six mois ?
+:::
+
+::: {.reponse}
+Il passe de l'[[hippocampe|episodique]] au [[cortex|semantique]], et ce déménagement se fait en grande partie **la nuit**.
+:::
+
+## Qu'est-ce qu'un effet mesuré {.socle competences="C3"}
 
 ::: {.fiche n="3.2" etat="a-realiser"}
-Intention : Expliquer l'ampleur d'effet simplement, et dire tout de suite ses limites : un d ne se compare pas d'un domaine à l'autre, et certaines fiches n'en ont pas du tout. Fonde l'échelle d'étoiles du jeu de fiches.
-Expérience : curseur, ou comparaison de deux distributions
+Intention : Expliquer l'ampleur d'effet simplement, et dire tout de suite ses limites. Fonde l'échelle d'étoiles des fiches, et prévient la question « d'où sortent ces étoiles ».
+Expérience : QCM
 Demande :
 :::
 
-## Qu'est-ce que l'intelligence {.veille}
+L'[[ampleur d'effet|ampleur]] répond à une question simple : **de combien les deux groupes se séparent-ils**, une fois qu'on tient compte de la dispersion ? C'est elle qui permet de comparer deux expériences qui n'ont pas mesuré la même chose.
+
+::: {.qcm .serre}
+Une technique affiche une grosse ampleur d'effet. Qu'est-ce que cela vous dit ?
+
+- [ ] Qu'elle marchera pour vous.
+    - Non : une moyenne ne dit rien d'un individu. Elle dit que, sur un groupe, l'écart était net.
+- [x] Que, sur les groupes testés, l'écart avec le groupe témoin était net.
+    - Oui. Et c'est tout ce qu'elle dit.
+- [ ] Qu'elle est plus efficace qu'une technique d'un autre domaine à l'ampleur plus faible.
+    - Non : deux ampleurs ne se comparent utilement qu'à l'intérieur d'un même domaine, mesuré de la même façon.
+:::
+
+[Les étoiles des fiches suivent cette règle. Certaines fiches n'ont pas d'étoile du tout : ce sont des conditions, pas des techniques, et leur donner un chiffre serait l'inventer.]{.a-retenir}
+
+## Ce que la plasticité permet {.appui competences="C3"}
 
 ::: {.fiche n="3.3" etat="a-realiser"}
-Intention : La définition reprise par Marc : « capacité à connecter des éléments qui ne l'étaient pas pour étayer notre compréhension du monde ». Attribution à vérifier avant diffusion (voir compte rendu).
+Intention : Vacciner contre trois neuromythes avant la partie 6, parce qu'ils circulent et qu'ils contredisent plusieurs fiches. Le transfert lointain est le point dur : il protège aussi Marc d'une objection en partie 5.
+Expérience : QCM vrai/faux
+Demande :
+:::
+
+::: {.qcm .serre}
+Trois affirmations. Une seule est vraie.
+
+- [ ] La plasticité cérébrale s'arrête vers 25 ans.
+    - Faux, et c'est un [[neuromythe|neuromythe]] tenace. Elle diminue, elle ne s'arrête pas.
+- [ ] Chacun a un style d'apprentissage — visuel, auditif, kinesthésique — et il faut lui servir le sien.
+    - Faux. Multiplier les formats profite à tout le monde ; trier les étudiants par style n'a jamais été confirmé.
+- [x] Apprendre à lire modifie physiquement l'organisation du cortex.
+    - Vrai : la comparaison entre lecteurs et non-lecteurs adultes le montre. C'est le [[recyclage neuronal|recyclage]].
+:::
+
+::: {.plus titre="Et le transfert ?"}
+Apprendre les échecs, la musique ou le latin ne rend pas « l'esprit » plus vif en général : le [[transfert|transfert]] entre domaines éloignés est l'un des résultats les plus décevants de la psychologie cognitive. Ce qui se transfère, ce sont des dispositions — le rapport au temps, à l'effort, à l'erreur — et les compétences entre domaines qui se ressemblent vraiment.
+:::
+
+## Apprendre, c'est corriger un modèle {.veille}
+
+::: {.fiche n="3.4" etat="a-realiser"}
+Intention : L'unité théorique des gestes : ils maximisent tous l'écart entre ce qu'on prédisait et ce qui arrive. Diapo optionnelle, à retirer si le temps manque.
 Expérience : aucune
 Demande :
 :::
 
-## Un modèle du monde qui se corrige {.veille}
+Votre cerveau ne part jamais de rien. Il prédit, puis corrige l'écart. C'est l'[[inférence bayésienne|bayes]], et c'est ce qui donne leur unité aux gestes de la partie 6 : ils servent tous à **fabriquer de l'[[erreur de prédiction|erreur-prediction]]** et à bien mesurer sa propre incertitude.
 
-::: {.fiche n="3.4" etat="a-realiser"}
-Intention : L'apprentissage comme mise à jour bayésienne : on ne part jamais de rien, chaque observation déplace ce qu'on croyait. Donne l'unité des douze gestes : ils maximisent tous l'écart entre ce qu'on prédisait et ce qui arrive. Matériel déjà rédigé (fiche « Bayes sans mathématiques »), à condenser en une à deux diapos.
-Expérience : schéma de la boucle a priori → observation → a posteriori
-Demande :
-:::
+Relire ne produit aucune prédiction, donc aucun écart, donc aucune correction. C'est pour cela que ça ne marche pas.
 
-## Ce que la plasticité permet, et ce qu'elle ne permet pas {.appui}
-
-::: {.fiche n="3.5" etat="a-realiser"}
-Intention : La plasticité ne s'arrête pas à 25 ans (le chiffre est un mythe), mais le transfert lointain n'existe pas : on ne muscle pas une mémoire en général. Marc avait lui-même marqué « à vérifier » sur la réouverture des fenêtres par le besoin ou l'urgence : point à trancher dans le compte rendu.
-Expérience : QCM vrai/faux sur trois neuromythes
-Demande :
-:::
-
-<!-- PARTIE 4 · 15 min -->
+<!-- PARTIE 4 · 14 min -->
 
 ## Le contexte {.intercalaire}
 
@@ -189,65 +330,140 @@ Expérience : aucune
 Demande :
 :::
 
-## Les fiches du contexte {.socle}
+Avant toute méthode : ce qui doit tenir pour qu'une méthode ait une chance.
+
+## Six conditions {.socle competences="C3 C4"}
 
 ::: {.fiche n="4.1" etat="a-realiser"}
-Intention : Le premier jeu de fiches, en main. Six fiches : appropriation du cursus, curiosité et difficultés désirables, conditions matérielles, sommeil, s'interrompre, lieu et corps. Elles n'ont pas d'étoiles : ce sont des conditions, pas des techniques, et le cours le dit.
-Expérience : jeu de fiches, recto/verso (brique à créer, lit donnees/fiches.json, groupe="contexte")
+Intention : Le premier paquet, en main. Aucune fiche n'est commentée une par une : les étudiants les parcourent eux-mêmes. Elles n'ont pas d'étoiles, et le cours assume de le dire.
+Expérience : jeu de fiches, groupe contexte (recto/verso, panneau de lecture)
 Demande :
 :::
 
-## Ce que l'IA fait au contexte {.socle}
+Six minutes, en binôme : parcourez les fiches, retournez celles qui vous intriguent. Repérez **celle qui vous concerne le plus en ce moment**.
+
+::: {.jeu-fiches donnees="donnees/fiches.json" groupe="contexte" style="--hauteur-fiches: 300px"}
+:::
+
+## Ce que l'IA fait au contexte {.socle competences="C4"}
 
 ::: {.fiche n="4.2" etat="a-realiser"}
-Intention : Le versant IA des six fiches, pris ensemble : l'outil qui ne ferme jamais, qui n'émet aucun signal de clôture, et qui attaque donc le repos autant que l'effort. Le « BurnIA » de Marc.
-Expérience : vote ou barre de certitude
+Intention : Le versant IA des six fiches, pris ensemble. Le point original de Marc : l'outil n'émet aucun signal de clôture, donc il attaque le repos autant que l'effort.
+Expérience : question / réponse
 Demande :
 :::
 
-<!-- PARTIE 5 · 20 min -->
+::: {.question}
+Qu'est-ce que tous vos interlocuteurs humains font, et qu'une IA ne fait jamais ?
+:::
+
+::: {.reponse}
+**Ils s'arrêtent.** Ils baîllent, ils ont un train, ils disent « on reprend demain ». Une conversation avec une IA n'a pas de fin naturelle : pas de fin de chapitre, pas de sonnerie, et chaque réponse se termine par une relance.
+
+L'outil attaque donc l'apprentissage **par les deux bouts** : il court-circuite l'effort, et il occupe les vides où le cerveau travaillait seul.
+
+[L'IA ne vous dira jamais d'arrêter. C'est la première compétence qu'elle vous transfère sans vous prévenir.]{.a-retenir}
+:::
+
+<!-- PARTIE 5 · 16 min -->
 
 ## Le cap {.intercalaire}
 
 ::: {.fiche n="5.0" etat="a-realiser"}
-Intention : Deuxième objectif. « Sans doute la partie la plus difficile. » Cadrage à tenir : un cap est une route qu'on tient et qu'on corrige, pas une vocation à découvrir. On fait le point, on ne devine pas l'arrivée.
+Intention : Deuxième objectif, « sans doute la partie la plus difficile » (Marc). Cadrage à tenir : un cap est une route qu'on tient et qu'on corrige, pas une vocation à découvrir. Sinon on récompense ceux dont le cap est hérité.
 Expérience : aucune
 Demande :
 :::
 
-## Le village {.socle}
+Un cap n'est pas une destination connue. C'est une route que l'on tient, que l'on corrige, et sur laquelle **on refait le point régulièrement**.
+
+## Le village {.socle competences="C5"}
 
 ::: {.fiche n="5.1" etat="a-realiser"}
-Intention : « Quel rôle j'aimerais tenir dans une société primitive ? » Court-circuite les intitulés de métiers. Dix rôles proposés, à l'oral ou en classement.
-Expérience : classer, ou choix multiple assumé
+Intention : La question du village, de Marc. Elle court-circuite les intitulés de métiers, que personne ne peut évaluer à 19 ans.
+Expérience : classer les rôles en trois cases
 Demande :
 :::
 
-## Vos axes {.socle}
+Un village doit tout reconstruire. **Quel rôle aimeriez-vous y tenir ?** Rangez les dix rôles — sans réfléchir trop longtemps.
+
+::: {.classer}
+### Ce serait moi
+
+- Soigner
+- Explorer
+
+### Pourquoi pas
+
+- Construire
+- Organiser
+- Raconter
+- Nourrir
+
+### Sûrement pas
+
+- Transmettre
+- Protéger
+- Arbitrer
+- Échanger
+:::
+
+::: {.notes}
+Le rangement initial est arbitraire : c'est l'étudiant qui déplace tout. Ce qui compte est la discussion sur les deux ou trois rôles qui hésitent entre deux cases.
+:::
+
+## Vos axes {.socle competences="C5"}
 
 ::: {.fiche n="5.2" etat="a-realiser"}
-Intention : La matrice du cap. Cinq axes proposés : l'objet (sur quoi j'aime agir), l'espace, le temps (dans combien de temps je veux voir le résultat), l'incertitude (problèmes à bonne réponse ou non), la portée. Remplie par les traces, pas par les intentions : trois moments où j'ai perdu la notion du temps, trois tâches faciles que j'ai repoussées.
-Expérience : matrice à remplir (brique à créer ou classer détourné) + zone d'écriture
+Intention : La matrice du cap, remplie par les traces et non par les intentions — sinon c'est exactement l'introspection non fiable que le cours démonte. Cinq axes.
+Expérience : zone d'écriture guidée
 Demande :
 :::
 
-## Le droit au doute {.appui}
+Ne répondez pas « ce que je préfère ». Répondez par des **traces** : trois moments où vous avez perdu la notion du temps, trois tâches faciles que vous avez repoussées.
+
+:::: {.columns .resserre}
+::: {.column width="42%"}
+- **L'objet** — matière, vivant, machine, information, symbole, humain
+- **L'espace** — terrain ou bureau, sédentaire ou nomade
+- **Le temps** — un résultat dans la journée, dans l'année, dans trente ans
+- **L'incertitude** — problèmes à bonne réponse, ou sans
+- **La portée** — beaucoup sur peu de gens, ou peu sur beaucoup
+:::
+::: {.column width="58%"}
+::: {.observer cle="mon-cap" invite="Mes traces, puis où elles me placent sur chaque axe…"}
+:::
+:::
+::::
+
+## Le droit au doute {.appui competences="C5"}
 
 ::: {.fiche n="5.3" etat="a-realiser"}
-Intention : Texte de Marc à reprendre mot pour mot : « Il vaut mieux douter 20 ans et s'épanouir le reste, que ne jamais douter... et vivre pour des fantômes. » Les vocations existent et c'est tant mieux ; le cap peut rester un a priori large, c'est l'état normal à cet âge.
+Intention : Texte de Marc, mot pour mot. Désamorce la honte de ceux qui n'ont pas de cap : ils sont la majorité, et c'est l'état normal.
 Expérience : aucune
 Demande :
 :::
 
-## Reconnaître le flow {.appui}
+Se donner le temps du doute et le plaisir des découvertes personnelles.
+
+[Il vaut mieux douter 20 ans et s'épanouir le reste, que ne jamais douter… et vivre pour des fantômes.]{.a-retenir}
+
+Réussite, injonction familiale : les fantômes ont des noms. Et les vocations existent aussi, c'est tant mieux.
+
+## Reconnaître le flow {.appui competences="C5"}
 
 ::: {.fiche n="5.4" etat="a-realiser"}
-Intention : L'identifier, le comprendre, le reproduire. Lien avec les difficultés désirables : le flow est le nom subjectif de la bonne difficulté. « C'est dans la déconnexion que vous le ressentirez. »
-Expérience : zone d'écriture : le dernier moment de flow
+Intention : Le flow comme donnée sur soi, et son lien avec les difficultés désirables : c'est le nom subjectif de la bonne difficulté. Trois fiches du cap en jeu, en lecture rapide.
+Expérience : jeu de fiches, groupe cap
 Demande :
 :::
 
-<!-- PARTIE 6 · 30 min -->
+::: {.jeu-fiches donnees="donnees/fiches.json" groupe="cap" style="--hauteur-fiches: 230px"}
+:::
+
+[Le flow est le nom que vous donnez, de l'intérieur, à la bonne difficulté. C'est dans la déconnexion que vous le ressentirez.]{.a-retenir}
+
+<!-- PARTIE 6 · 32 min -->
 
 ## Les outils {.intercalaire}
 
@@ -257,55 +473,140 @@ Expérience : aucune
 Demande :
 :::
 
-## Le jeu complet {.socle}
+Quatorze fiches. Aucune ne sera commentée : vous allez les manipuler.
+
+## Le paquet {.socle competences="C3"}
 
 ::: {.fiche n="6.1" etat="a-realiser"}
-Intention : Les seize fiches d'outils, en main, recto/verso. Aucune n'est commentée une par une : les étudiants les parcourent eux-mêmes pendant un temps donné.
-Expérience : jeu de fiches (brique à créer, groupe="outil")
+Intention : Les quatorze fiches d'outils, en main, recto/verso, huit minutes chrono. Le panneau de droite donne le verso complet : ampleur, source, ce que l'IA ampute, comment le retourner.
+Expérience : jeu de fiches, groupe outil
 Demande :
 :::
 
-## Ce que vous aviez déjà trouvé {.socle}
+::: {.jeu-fiches donnees="donnees/fiches.json" groupe="outil" style="--hauteur-fiches: 330px"}
+:::
+
+## Ce que vous aviez déjà trouvé {.socle competences="C1 C3"}
 
 ::: {.fiche n="6.2" etat="a-realiser"}
-Intention : L'activité pivot de Marc : « On compare les réponses du départ avec une liste de fiche. Si concept similaire, les étudiants les relient. Sinon, cela ouvre de nouvelles pistes. » Leur liste de la diapo 1.2 revient à l'écran, à côté des fiches.
-Expérience : appariement (brique à créer, rappel="mes-outils")
+Intention : L'activité pivot de Marc : comparer les réponses du départ avec les fiches, relier ce qui se recoupe, et voir ce qui ouvre de nouvelles pistes. Leur liste de 1.2 revient à l'écran, telle qu'ils l'ont écrite.
+Expérience : jeu de fiches en mode appariement (rappel="mes-outils")
 Demande :
 :::
 
-## Quatre familles {.socle}
+Votre liste du début est revenue. Marquez chaque fiche : **✓ déjà**, **+ nouveau**.
+
+::: {.jeu-fiches donnees="donnees/fiches.json" groupe="outil" rappel="mes-outils" style="--hauteur-fiches: 404px"}
+:::
+
+::: {.notes}
+Le point intéressant n'est pas le score. C'est la fiche que presque personne ne marque « déjà » alors qu'elle a cinq étoiles — en général « Se tromper d'abord » ou « Varier les angles ».
+:::
+
+## Quatre familles {.socle competences="C3"}
 
 ::: {.fiche n="6.3" etat="a-realiser"}
-Intention : Classer les fiches en Extraire / Revenir / Se regarder / Respirer. Les étudiants construisent le rangement, on ne le leur donne pas : c'est l'effet de génération, et les désaccords entre groupes sont le meilleur débat sur ce que chaque geste veut dire.
-Expérience : classer (brique existante, alimentée par fiches.json)
+Intention : Classer les gestes en quatre familles. Les étudiants construisent le rangement, on ne le leur donne pas : effet de génération, et les désaccords entre groupes sont le meilleur débat sur ce que chaque geste veut dire. Le rangement proposé ici est celui du JSON ; plusieurs sont défendables.
+Expérience : classer
 Demande :
 :::
 
-## Quatre cases {.appui}
+::: {.classer}
+### Extraire
+
+- Se tester
+- Se tromper d'abord
+- S'expliquer à soi-même
+- Expliquer à un pair
+- Faire plutôt qu'écouter
+
+### Revenir
+
+- Espacer
+- Varier les angles
+- Multiplier les ancres
+- Ancrer dans le lieu
+
+### Se regarder
+
+- Se jauger
+- Chercher la bonne difficulté
+- Relier
+- Chercher le bon retour
+- Déléguer ce qu'on sait évaluer
+
+### Respirer
+
+- S'interrompre
+- Laisser dormir
+- Protéger son attention
+:::
+
+::: {.notes}
+Plusieurs rangements se défendent, et c'est tout l'intérêt. « Relier » peut aller dans Extraire, « Protéger son attention » dans Se regarder. Faire argumenter plutôt que corriger.
+:::
+
+## Quatre cases {.appui competences="C2"}
 
 ::: {.fiche n="6.4" etat="a-realiser"}
-Intention : La matrice du savoir de Dehaene : je sais que je sais / je sais que je ne sais pas / je ne sais pas que je sais / je ne sais pas que je ne sais pas. Quelle fiche éclaire quelle case. Insister sur la dernière : c'est la seule défaillance invisible à celui qui en souffre.
-Expérience : classer, puis commentaire
+Intention : La matrice du savoir reprise du cours de Dehaene au Collège de France. Insister sur la quatrième case : c'est la seule défaillance invisible à celui qui en souffre.
+Expérience : question / réponse
 Demande :
 :::
 
-## La règle d'or {.socle}
+:::: {.columns}
+::: {.column width="52%" .centre-v}
+|  | **Je sais** | **Je ne sais pas** |
+|---|---|---|
+| **Je le sais** | confiance juste | lacune repérée |
+| **Je l'ignore** | savoir implicite | [illusion]{.a-retenir} |
+:::
+::: {.column width="48%" .centre-v}
+::: {.question}
+Trois de ces quatre cases se corrigent toutes seules avec le temps. Laquelle ne se corrige jamais seule, et pourquoi ?
+:::
+
+::: {.reponse}
+La quatrième. Un étudiant qui a perdu la [[récupération active|recuperation]] peut s'en rendre compte à son prochain examen. Un étudiant dont la [[calibration|calibration]] est faussée **ne peut plus** s'en rendre compte : l'instrument de mesure est l'organe malade.
+:::
+:::
+::::
+
+## La règle d'or {.socle competences="C4"}
 
 ::: {.fiche n="6.5" etat="a-realiser"}
-Intention : « L'IA après l'effort, jamais à la place », et son corollaire : jamais à la place du repos. L'effort est le signe que l'apprentissage opère. Référence et citation originale de Hebb à placer ici (voir compte rendu : la formule courante n'est pas de lui).
+Intention : La règle de Marc, et son corollaire sur le repos. La référence de Hebb est placée ici ; attention, la formule courante n'est pas de lui (voir le compte rendu).
 Expérience : aucune
 Demande :
 :::
 
-## Le critère {.socle}
+[L'IA après l'effort, jamais à la place. Et jamais à la place du repos.]{.a-retenir}
+
+L'effort en apprentissage, c'est la marque que cela opère. Il est donc **nécessaire**, et il est **bon signe**. Détruire ce paramètre revient à détruire l'apprentissage.
+
+Cet effort, c'est de l'activation neuronale. En 1949, Donald Hebb énonce que lorsqu'un neurone participe de façon répétée à l'activation d'un autre, un changement s'opère qui renforce le lien entre les deux : c'est la [[règle de Hebb|hebb]].
+
+[Source de l'énoncé original : D. O. Hebb, *The Organization of Behavior*, 1949, p. 62. La formule « cells that fire together, wire together » est postérieure et n'est pas de lui.]{.legende}
+
+## Le critère {.socle competences="C4"}
 
 ::: {.fiche n="6.6" etat="a-realiser"}
-Intention : Déléguer ce qu'on saurait faire et qu'on n'a pas le temps de faire, jamais ce qu'on ne saurait pas évaluer. Formulation opératoire de la règle d'or, qui distingue le centaure du passager.
-Expérience : vote sur des cas concrets d'usage
+Intention : Rendre la règle d'or opératoire sur des cas concrets. C'est ce qui distingue le centaure du passager. Les cas sont à adapter aux enseignements du semestre.
+Expérience : vote
 Demande :
 :::
 
-<!-- PARTIE 7 · 20 min -->
+::: {.vote question="Déléguer, ou pas ?"}
+- [vrai] Lui demander de reformuler un énoncé que je n'ai pas compris : Légitime. Je saurai juger si la reformulation est fidèle, puisque je vais ensuite buter dessus moi-même.
+- [faux] Lui demander la correction d'un exercice avant d'avoir cherché : L'erreur féconde est supprimée, et avec elle l'attente à laquelle la correction se serait accrochée.
+- [vrai] Lui demander de m'interroger sur un chapitre, sans me donner les réponses : C'est de la récupération active outillée. L'inversion type.
+- [faux] Lui faire produire la synthèse d'un cours que je dois connaître : Je stocke le plan de quelqu'un d'autre. Faire la sienne, puis lui demander d'attaquer les liens faibles.
+- [vrai] Lui faire mettre en forme une bibliographie : Pur coût d'accès, rien à encoder. Déléguer sans scrupule.
+:::
+
+[Déléguez ce que vous sauriez faire et n'avez pas le temps de faire. Jamais ce que vous ne sauriez pas évaluer.]{.a-retenir}
+
+<!-- PARTIE 7 · 22 min -->
 
 ## Avant de partir {.intercalaire}
 
@@ -315,82 +616,203 @@ Expérience : aucune
 Demande :
 :::
 
-## Ce qui reste {.socle}
+## Ce qui reste {.socle competences="C2 C3"}
 
 ::: {.fiche n="7.1" etat="a-realiser"}
-Intention : Le cours applique à lui-même ce qu'il enseigne : récupération active sur ce qui vient d'être vu, sans notes. Sans cette diapo, un étudiant attentif pourra reprocher au cours de n'avoir jamais testé.
-Expérience : révision (brique existante)
+Intention : Le cours applique à lui-même ce qu'il enseigne. Sans cette diapo, un étudiant attentif pourra reprocher au cours de n'avoir jamais testé ce qu'il venait d'enseigner. Les cartes sont écrites pour le rappel, pas recopiées des QCM.
+Expérience : révision (cartes de rappel, espacées)
 Demande :
 :::
 
-## Où vous en êtes {.appui}
+::: {.revision}
+- C2 | Distinguer ce que je sais de ce que je crois savoir
+- C3 | Nommer les gestes et dire lequel sert à quoi
+- C4 | Dire ce que l'IA ampute et comment le retourner
+
+### C3 libre
+
+Citez les deux gestes dont l'effet est le mieux établi, et dites en une phrase ce qu'ils ont en commun.
+
+---
+
+Se tester et espacer. Tous deux rendent le rappel plus coûteux sur le moment, et plus durable ensuite : ce sont des difficultés désirables.
+
+### C2 libre
+
+Pourquoi la relecture donne-t-elle une impression de maîtrise qu'elle ne produit pas ?
+
+---
+
+Parce qu'elle est fluide. On confond la facilité de lecture avec l'apprentissage : c'est l'illusion de fluidité. Relire ne demande aucune prédiction, donc ne produit aucun écart à corriger.
+
+### C4 qcm
+
+Vous butez sur un exercice depuis vingt minutes. Quel usage de l'IA respecte la règle d'or ?
+
+- [x] Lui demander un indice sur l'étape qui bloque, pas la solution : Oui. L'effort est préservé, l'impasse est levée.
+- [ ] Lui demander la solution, puis la refaire seul le lendemain : Tentant, mais l'erreur féconde a déjà été dépensée. Le lendemain, vous reconnaîtrez au lieu de retrouver.
+- [ ] Lui demander la solution en lui demandant de l'expliquer en détail : La qualité de l'explication ne change rien : c'est vous qui n'avez pas produit.
+
+### C2 libre
+
+Des quatre cases du savoir, laquelle ne se corrige jamais seule ?
+
+---
+
+Ne pas savoir que l'on ne sait pas. Les trois autres finissent par se heurter au réel ; celle-là fausse l'instrument de mesure lui-même.
+:::
+
+## Où vous en êtes {.appui competences="C2"}
 
 ::: {.fiche n="7.2" etat="a-realiser"}
-Intention : Le bilan de sortie, qui montre l'écart avec le bilan d'entrée, et la calibration : quand vous vous disiez sûr, aviez-vous raison ?
-Expérience : bilan moment="fin" + calibration
+Intention : Le bilan de sortie, qui montre l'écart avec le bilan d'entrée.
+Expérience : bilan moment="fin"
 Demande :
+:::
+
+::: {.bilan moment="fin"}
+- C1 | Décrire ma propre façon d'apprendre, et dire ce qui y marche ou non
+- C2 | Distinguer ce que je sais de ce que je crois savoir, et mesurer l'écart
+- C3 | Nommer les gestes d'apprentissage dont l'effet est établi, et dire lequel sert à quoi
+- C4 | Dire, pour un geste donné, ce qu'un usage naïf de l'IA lui fait perdre et comment le retourner
+- C5 | Situer mon travail dans un cap, même provisoire
+- C6 | Bâtir un plan de travail personnel, planifié et vérifiable
 :::
 
 ## Qu'est-ce que je vous ai fait {.socle}
 
 ::: {.fiche n="7.3" etat="a-realiser"}
-Intention : La mise en abîme, enfin explicite. Reprendre les deux heures et demander quelles parties du cours étaient des démonstrateurs. Ils redécouvrent chaque fiche dans la structure de la séance.
-Expérience : relier les moments du cours aux fiches
+Intention : La mise en abîme, enfin explicite. Ils redécouvrent la séance comme démonstration d'elle-même. C'est le moment le plus important du cours : ne pas le bâcler faute de temps.
+Expérience : relier les moments du cours aux gestes
 Demande :
 :::
 
-## Le volet émotionnel {.appui}
+Reprenons ces deux heures. **Quelle partie du cours était une démonstration de ce qu'elle enseignait ?**
 
-::: {.fiche n="7.4" etat="a-realiser"}
-Intention : Point de Marc : l'émotion est positive à bien des égards, elle permet d'être serein, de partager, et elle facilite la mémorisation (Damasio, L'erreur de Descartes).
-Expérience : aucune
-Demande :
+::: {.relier}
+- Les trois lettres, au début -> Se tromper d'abord
+- Vous avez écrit avant d'en parler -> Se jauger
+- Les binômes mixtes du débrief -> Expliquer à un pair
+- Vous avez rangé les fiches vous-mêmes -> Faire plutôt qu'écouter
+- Les cartes de rappel, il y a trois minutes -> Se tester
+- Rien ne vous a été expliqué avant d'avoir été vécu -> Chercher la bonne difficulté
 :::
 
 ## Ce que nous ne sommes pas {.socle}
 
-::: {.fiche n="7.5" etat="a-realiser"}
-Intention : Phrase de Marc à reprendre mot pour mot : « Nous ne sommes pas des neurologues ou des dr en sciences cognitives. Mais nous sommes des cartographes et à ce titre, nous savons donner de quoi tracer son chemin. » Suivie de Darwin sur l'ignorance et la confiance, et de l'effet Dunning-Kruger.
+::: {.fiche n="7.4" etat="a-realiser"}
+Intention : Phrase de Marc, mot pour mot, suivie de Darwin et de Dunning-Kruger. Clôture modeste et juste : elle désamorce l'objection de légitimité tout en l'assumant.
 Expérience : aucune
 Demande :
 :::
 
-## Votre livrable {.socle}
+Notre propos reste limité. **Nous ne sommes pas des neurologues ou des docteurs en sciences cognitives. Mais nous sommes des cartographes et à ce titre, nous savons donner de quoi tracer son chemin.**
+
+> L'ignorance engendre plus souvent la confiance que ne le fait la connaissance.
+>
+> — Charles Darwin, cité par Kruger & Dunning (1999)
+
+::: {.notes}
+Dire aussi un mot de l'émotion : elle n'est pas l'ennemie de la mémoire, elle en est un adjuvant. Partager, rire, être serein facilite la mémorisation (Damasio, *L'erreur de Descartes*).
+:::
+
+## Votre livrable {.socle competences="C6"}
+
+::: {.fiche n="7.5" etat="a-realiser"}
+Intention : Le plan d'action noté. Contrainte essentielle : peu de changements, planifiés, pas tout d'un coup ; chaque engagement avec un quand et un où, ce qui double le passage à l'acte.
+Expérience : zone d'écriture au format contraint
+Demande :
+:::
+
+Un mois pour tester, une stabilisation en janvier. Le livrable noté est **votre plan d'action, en expliquant le pourquoi et le comment de vos choix**.
+
+Trois engagements, pas dix. Chacun au format : **quel geste · quand · où · pour quelle difficulté de ma liste du début**.
+
+::: {.observer cle="mon-plan" invite="1. Je me teste sur le cours de la veille · tous les mardis, en arrivant · salle de travail · parce que je perds les notions des premières semaines"}
+:::
+
+::: {.notes}
+Insister sur le « quand » et le « où » : un engagement qui porte un moment et un lieu est bien plus souvent tenu qu'une bonne résolution générale.
+:::
+
+## La capsule au moi du futur {.socle competences="C6"}
 
 ::: {.fiche n="7.6" etat="a-realiser"}
-Intention : Le plan d'action noté, expliquant le pourquoi et le comment des choix. Un mois pour tester, stabilisation en janvier. Contrainte à poser : peu de changements, planifiés, pas tout d'un coup ; chaque engagement avec un quand et un où.
-Expérience : zone d'écriture, format contraint
+Intention : L'activité finale, sur papier, hors écran. 60 enveloppes à préparer. Marc les rend à J+30.
+Expérience : écriture papier
 Demande :
 :::
 
-## La capsule au moi du futur {.socle}
+Écrivez à votre moi de janvier. Ce que vous avez décidé aujourd'hui, et ce que vous aimerez lire dans un mois.
 
-::: {.fiche n="7.7" etat="a-realiser"}
-Intention : L'activité finale. Chacun écrit à son moi de janvier, glisse la fiche dans une enveloppe (60 à préparer) avec sa liste de départ et son plan d'action. Marc les rend à J+30.
-Expérience : écriture papier, hors écran
-Demande :
-:::
+Glissez la feuille dans l'enveloppe avec votre liste de départ et votre plan. **Nous vous la rendrons dans un mois.**
+
+[Recevoir un bon conseil de son soi passé est peut-être le seul retour que l'on accepte sans se défendre : il n'y a personne d'autre à contredire que soi-même.]{.a-retenir}
 
 ## Le lexique {.appui}
 
-::: {.fiche n="7.8" etat="a-realiser"}
-Intention : Le dictionnaire incrémental demandé par Marc : tous les termes sur lesquels les étudiants ont cliqué pendant le cours, rassemblés ici. Mécanique à porter depuis les briques du jeu de rôle.
-Expérience : lexique (brique à créer)
+::: {.fiche n="7.7" etat="a-realiser"}
+Intention : Le dictionnaire incrémental : les termes ouverts pendant la séance sont cochés. Diapo à montrer en fin de séance et à rouvrir plus tard.
+Expérience : lexique (brique « lexique »)
 Demande :
+:::
+
+::: {.lexique termes="donnees/lexique.json"}
 :::
 
 ## Emporter ce support {.appui}
 
-::: {.fiche n="7.9" etat="a-realiser"}
-Intention : Comment produire le PDF depuis le navigateur, selon Chrome, Firefox, Edge et Safari. Diapo réutilisable dans tous les cours du dépôt : à verser dans le gabarit plutôt que dans ce seul cours.
+::: {.fiche n="7.8" etat="a-realiser"}
+Intention : Comment produire le PDF depuis le navigateur. Diapo réutilisable dans tous les cours du dépôt : à verser dans le gabarit plutôt que dans ce seul cours (voir le compte rendu).
 Expérience : aucune
 Demande :
 :::
 
-## Pour aller plus loin {.veille .fin}
+Ajoutez **`?print-pdf`** à la fin de l'adresse de cette page, puis imprimez.
+
+| Navigateur | Ce qu'il faut faire |
+|---|---|
+| Chrome, Edge | Imprimer → Destination **Enregistrer au format PDF** · Marges **Aucune** · cocher **Graphiques d'arrière-plan** |
+| Firefox | Imprimer → **Enregistrer au format PDF** · Marges **Aucune** · cocher **Imprimer les arrière-plans** |
+| Safari | Rendu moins fidèle. Préférer Chrome ou Firefox pour cette page. |
+
+Pour le support sans les réponses : **`?print-pdf&reponses=non`**.
+
+## Pour aller plus loin {.veille}
+
+::: {.fiche n="7.9" etat="a-realiser"}
+Intention : Les sources, plus les références ludiques de Marc. Les références de Steve Masson sont à compléter une fois l'ouvrage dépouillé.
+Expérience : aucune
+Demande :
+:::
+
+:::: {.columns .resserre}
+::: {.column width="52%"}
+**Lire**
+
+- Dehaene, *Apprendre !* (2018), et ses cours au Collège de France
+- Masson, *Activer ses neurones*
+- Brown, Roediger & McDaniel, *Make It Stick* (2014)
+- Bjork, Dunlosky & Kornell (2013)
+:::
+::: {.column width="48%"}
+**Jouer**
+
+- *Celeste*, pour l'aspect psychologique
+- *Night in the Woods*, pour le désir de faire
+:::
+::::
+
+[Lire, lire, lire : même sans tout retenir, vous décèlerez les erreurs. Et toujours privilégier le « pourquoi » et le « comment » au « fais-moi ceci ».]{.a-retenir}
+
+## À vous {.fin}
 
 ::: {.fiche n="7.10" etat="a-realiser"}
-Intention : Les sources, plus les références ludiques de Marc : Celeste pour l'aspect psychologique, Night in the Woods pour le cadre familial et le désir de faire.
+Intention : Diapo de clôture au format du gabarit : une consigne courte, rien d'autre. Elle renvoie au livrable et à la capsule.
 Expérience : aucune
 Demande :
 :::
+
+Choisissez **trois gestes**, pas dix. Donnez à chacun un jour et un lieu. Testez-les un mois.
+
+En janvier, vous ouvrirez votre enveloppe et vous saurez si votre vous de novembre avait vu juste.

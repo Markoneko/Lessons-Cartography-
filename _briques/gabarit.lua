@@ -1370,7 +1370,51 @@ local function brique_jdr(div, classe)
   return div
 end
 
+----------------------------------------------------------------------------
+-- Briques d'apprentissage (cours « Apprendre à apprendre ») : leur comportement
+-- est dans _briques/briques-apprendre.html
+----------------------------------------------------------------------------
+
+-- Le fichier des fiches n'est embarqué qu'une fois par support.
+local fiches_embarquees = {}
+local function donnees_fiches(chemin, classe)
+  if fiches_embarquees[chemin] then return "" end
+  local json = lire_fichier(chemin)
+  if not json then return '<p class="fiches-vide">Données introuvables : ' .. echappe(chemin) .. '</p>' end
+  fiches_embarquees[chemin] = true
+  return '<script type="application/json" class="' .. classe .. '" data-source="' .. echappe(chemin) .. '">'
+      .. json:gsub("</", "<\\/") .. '</script>'
+end
+
+-- ::: {.jeu-fiches donnees="donnees/fiches.json" groupe="outil" rappel="mes-outils"} :::
+--   groupe : contexte, cap, outil, ou plusieurs séparés par des virgules ; vide = tout le paquet
+--   rappel : la clef d'une zone « observer » ; sa présence allume le mode appariement
+local function brique_jeu_fiches(div)
+  local chemin = attribut(div, "donnees", "donnees/fiches.json")
+  local groupe = attribut(div, "groupe", "")
+  local rappel = attribut(div, "rappel", "")
+  if not EN_HTML then return div end
+  local h = donnees_fiches(chemin, "fiches-donnees")
+      .. '<div class="fiches-zone" data-source="' .. echappe(chemin)
+      .. '" data-groupe="' .. echappe(groupe)
+      .. '" data-rappel="' .. echappe(rappel) .. '"></div>'
+  div.content:insert(pandoc.RawBlock("html", h))
+  return div
+end
+
+-- ::: {.lexique termes="donnees/lexique.json"} :::  le dictionnaire des termes cliqués
+local function brique_lexique(div)
+  local chemin = attribut(div, "termes", "donnees/lexique.json")
+  if not EN_HTML then return div end
+  local h = donnees_fiches(chemin, "lexique-donnees")
+      .. '<div class="lexique-zone"></div>'
+  div.content:insert(pandoc.RawBlock("html", h))
+  return div
+end
+
 local function briques(div)
+  if div.classes:includes("jeu-fiches") then return brique_jeu_fiches(div) end
+  if div.classes:includes("lexique") then return brique_lexique(div) end
   for _, classe in ipairs(JDR) do
     if div.classes:includes(classe) then return brique_jdr(div, classe) end
   end

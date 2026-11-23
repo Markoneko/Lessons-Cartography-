@@ -23,12 +23,14 @@ format:
       - _briques/briques-enquete.css
       - _briques/briques-application.css
       - _briques/briques-jeu.css
+      - _briques/briques-apprendre.css
     include-after-body:
       - _briques/briques.html
       - _briques/briques-carto.html
       - _briques/briques-enquete.html
       - _briques/briques-application.html
       - _briques/briques-jeu.html
+      - _briques/briques-apprendre.html
     logo: _charte/logos/geodata.svg
     width: 1280
     height: 720
