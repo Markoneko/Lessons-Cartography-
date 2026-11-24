@@ -513,6 +513,24 @@ FEUILLE = """<!DOCTYPE html>
 APERCU = {"contexte": "#FBF3CC", "cap": "#FBE4EC", "outil": "#DFF0DC", "": "#FFFFFF"}
 
 
+def derniere_version():
+    """Le fichier de fiches le plus récent : fichesV12 l'emporte sur fichesV9,
+    et fiches.json ne sert que si aucune version numérotée n'existe. Marc
+    travaille en versions successives ; le générateur suit sans rien à régler."""
+    dossier = ICI / "donnees"
+    versions = []
+    for f in dossier.glob("fichesV*.json"):
+        m = re.fullmatch(r"fichesV(\d+)", f.stem)
+        if m:
+            versions.append((int(m.group(1)), f))
+    if versions:
+        return max(versions)[1]
+    simple = dossier / "fiches.json"
+    if simple.exists():
+        return simple
+    raise SystemExit("aucun fichier de fiches dans donnees/")
+
+
 def impose_a4(corps):
     """Quatre cartes A6 par page A4, prêtes à tirer en recto-verso.
 
@@ -542,6 +560,8 @@ def impose_a4(corps):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--fiches", default="",
+                    help="fichier de fiches ; par défaut la version la plus récente de donnees/")
     ap.add_argument("--groupe", default="", help="contexte, cap, outil ; vide = tout le jeu")
     ap.add_argument("--sortie", default="")
     ap.add_argument("--a4", action="store_true",
@@ -550,7 +570,8 @@ def main():
                     help="aperçu sur fond blanc, comme à l'impression sur papier de couleur")
     args = ap.parse_args()
 
-    jeu = json.loads((ICI / "donnees" / "fiches.json").read_text(encoding="utf-8"))
+    source = args.fiches and pathlib.Path(args.fiches) or derniere_version()
+    jeu = json.loads(source.read_text(encoding="utf-8"))
     fiches = [f for f in jeu["fiches"] if not args.groupe or f["groupe"] == args.groupe]
     if not fiches:
         raise SystemExit(f"aucune fiche pour le groupe « {args.groupe} »")
@@ -575,6 +596,7 @@ def main():
     tire = len(fiches)
     feuilles = -(-tire * 2 // 8)
     chiffres = sum(1 for f in fiches if f.get("chiffre"))
+    print(f"source : {source.name}")
     print(f"{tire} cartes ({tire * 2} faces) → {sortie}")
     print(f"{feuilles} feuilles A4 en recto-verso, 4 cartes par feuille")
     print(f"{chiffres} cartes portent une ampleur d'effet chiffrée, {tire - chiffres} n'en ont pas")
