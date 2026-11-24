@@ -273,6 +273,7 @@
       "recto": "Revenir sur une notion au moment où elle commence à s'effacer, plutôt que de tout revoir d'un bloc la veille. Le même temps de travail, réparti autrement, produit une mémoire qui tient des mois au lieu de jours. La courbe d'oubli, une exponetielle décroissante s'aplatit de plus en plus avec le bon écart de répétition.",
       "emotions": ["la patience", "ça me rassure", "je n'y penserai jamais"],
       "chiffre": "g = 0,74",
+      "schema-verso": "oubli",
       "ampleur": "Se tester à intervalles espacés plutôt que d'affilée, mesuré sur 39 comparaisons. Le gain tient surtout au délai : plus l'échéance est lointaine, plus l'espacement paye.",
       "source": "Latimier, Peyre & Ramus (2021) ; racine : Ebbinghaus (1885)",
       "ia-ampute": "Pourquoi réviser ce que l'on peut redemander ? Le tout-disponible-tout-de-suite tue le besoin de revenir : c'est de l'oubli programmé par confort.",
