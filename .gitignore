@@ -15,4 +15,5 @@ bac-a-sable/**/*.html
 bac-a-sable/**/*.pdf
 
 __pycache__/
-cours/metacognition/Metacognition-Cartes-*.pdf
+cours/metacognition/Cartes-*.html
+cours/metacognition/impression/*.pdf
