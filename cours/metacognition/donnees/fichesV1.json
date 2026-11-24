@@ -1,0 +1,487 @@
+{
+  "lisez-moi": "Source unique des 23 gestes. Le générateur outils/cartes.py en fabrique le jeu A6 ; la brique du support HTML lit le même fichier. Schéma d'une fiche : id (sans accent ni espace) · groupe (contexte|cap|outil) · nom (le geste, formulé comme un verbe) · aussi (le nom savant) · recto (2 à 4 lignes, à la deuxième personne) · emotions (trois propositions contrastées, l'étudiant raye les mentions inutiles) · chiffre (l'ampleur d'effet publiée, ou vide quand il n'y en a pas de reconnue — voir note-chiffres) · ampleur (la phrase qui situe ce chiffre) · source · ia-ampute et ia-inversion · famille (le picto du verso, jamais son nom : les étudiants nomment eux-mêmes leur classement) · visuel (l'activité ou le schéma du recto) · etoiles (NON imprimé sur les cartes, conservé pour le support HTML).",
+  "note-chiffres": "Seuls six gestes sur vingt-trois ont une ampleur d'effet publiée et vérifiée. Les autres sont soit des conditions (on ne randomise pas le sommeil d'un étudiant), soit des cadres qui chapeautent plusieurs techniques, soit des gestes dont les mesures sont trop hétérogènes pour un chiffre unique. Les cartes le disent au lieu d'inventer un nombre : c'est une leçon en soi.",
+  "visuel": "Types combinables, rendus dans cet ordre : schema (un dessin, par son identifiant dans cartes.py) · echelle (une ligne graduée entre deux extrêmes, à marquer d'une croix) · cases (des cases à cocher) · lignes (des lignes à remplir, avec une amorce facultative). consigne est la phrase qui ouvre l'activité.",
+
+  "echelle": {
+    "5": "Effet large, répliqué par plusieurs méta-analyses",
+    "4": "Effet solide et bien établi",
+    "3": "Effet modéré, ou très dépendant du contexte",
+    "2": "Effet faible, ou contesté en tant que technique d'étude",
+    "0": "Pas d'étoile : condition ou cadre de l'apprentissage, pas une technique"
+  },
+  "familles": [
+    { "id": "extraire", "nom": "Extraire", "sous-titre": "faire sortir ce qui est dedans" },
+    { "id": "revenir", "nom": "Revenir", "sous-titre": "repasser, autrement et plus tard" },
+    { "id": "se-regarder", "nom": "Se regarder", "sous-titre": "savoir où j'en suis" },
+    { "id": "respirer", "nom": "Respirer", "sous-titre": "s'arrêter pour que ça tienne" }
+  ],
+
+  "fiches": [
+
+    {
+      "id": "appropriation",
+      "groupe": "contexte",
+      "nom": "Savoir pour qui je suis là",
+      "aussi": "Appropriation du cursus",
+      "recto": "Répondre honnêtement à une question simple : qui a choisi que je sois ici ? Tant que la réponse est quelqu'un d'autre, chaque heure de travail coûte le double, et aucune technique ne compense cela.",
+      "emotions": ["ça gratte", "ça libère", "ça m'est égal"],
+      "chiffre": "",
+      "ampleur": "Condition, pas technique : elle ne se mesure pas comme une méthode de révision, mais elle conditionne la mise en œuvre de toutes les autres.",
+      "source": "Deci & Ryan (2000), théorie de l'autodétermination",
+      "ia-ampute": "La question « à quoi bon, puisque la machine le fait déjà » s'installe sans jamais être formulée, et démotive d'autant mieux qu'elle reste implicite.",
+      "ia-inversion": "En faire un sujet explicite plutôt qu'un bruit de fond : lui demander de défendre l'utilité de ce que vous apprenez, puis de l'attaquer, et juger vous-même.",
+      "famille": "se-regarder",
+      "etoiles": 0,
+      "visuel": {
+        "consigne": "Qui a choisi que vous soyez ici ?",
+        "cases": ["moi", "ma famille", "mon classement", "le hasard"]
+      }
+    },
+
+    {
+      "id": "curiosite",
+      "groupe": "contexte",
+      "nom": "Garder la curiosité",
+      "aussi": "Difficultés désirables",
+      "recto": "Chercher le point où c'est encore inconfortable mais déjà faisable. Trop facile, rien ne s'apprend ; trop dur, rien n'accroche. Le plaisir d'apprendre se loge exactement là, et cette zone se cherche activement.",
+      "emotions": ["ça résiste", "ça m'excite", "ça m'épuise"],
+      "chiffre": "",
+      "ampleur": "Principe général plutôt que technique isolée : il chapeaute le test, l'espacement et l'alternance, qui en sont les applications mesurées.",
+      "source": "Bjork (1994) ; Bjork, Dunlosky & Kornell (2013)",
+      "ia-ampute": "L'outil est conçu pour supprimer la friction. Supprimer toute friction, c'est supprimer l'apprentissage lui-même : c'est le risque qui contient tous les autres.",
+      "ia-inversion": "Elle peut aussi vous ramener dans la zone : quand un prérequis manque, elle le rattrape en dix minutes et le cours redevient abordable. Demander de la résistance, pas de l'aide.",
+      "famille": "se-regarder",
+      "etoiles": 0,
+      "visuel": {
+        "consigne": "Le cours qui vous occupe en ce moment : placez-y une croix.",
+        "echelle": ["trop facile", "trop dur"]
+      }
+    },
+
+    {
+      "id": "conditions",
+      "groupe": "contexte",
+      "nom": "Tenir le matériel",
+      "aussi": "Conditions matérielles, nutrition",
+      "recto": "Un cerveau est un organe : il mange, il boit, il a besoin de stabilité. Le logement, l'argent, les repas ne sont pas le décor de vos études, ils en sont une pièce. Ce qui manque là ne se rattrape par aucune méthode.",
+      "emotions": ["ça ne se discute pas", "ça m'inquiète", "c'est réglé"],
+      "chiffre": "",
+      "ampleur": "Condition. Les carences avérées ont des conséquences neurologiques graves et documentées ; entre la carence et le confort, l'effet est réel mais difficile à chiffrer.",
+      "source": "À COMPLÉTER : l'affaire des nourrissons privés de thiamine (B1), citée par Dehaene — référence exacte à retrouver avant diffusion.",
+      "ia-ampute": "Inquiétude pour les juniors : si l'outil absorbe les tâches par lesquelles on entrait dans un métier, la stabilité matérielle des premières années devient plus incertaine.",
+      "ia-inversion": "Rien à inverser ici. Certaines cartes n'ont pas de versant IA, et le dire est plus honnête que d'en inventer un.",
+      "famille": "",
+      "etoiles": 0,
+      "visuel": {
+        "consigne": "Cochez ce qui tient en ce moment.",
+        "cases": ["dormir", "manger", "se loger", "l'argent"]
+      }
+    },
+
+    {
+      "id": "sommeil",
+      "groupe": "contexte",
+      "nom": "Laisser dormir",
+      "aussi": "Consolidation en sommeil",
+      "recto": "Accepter de s'arrêter avec l'impression de ne pas avoir fini. Pendant la nuit, le cerveau rejoue et trie ce qui a été appris dans la journée : une partie de votre travail se fait sans vous, à condition de lui laisser la place.",
+      "emotions": ["l'inachevé du soir", "ça me soulage", "ça m'angoisse"],
+      "chiffre": "",
+      "ampleur": "Condition. La privation de sommeil dégrade la mémorisation en amont comme en aval de l'apprentissage, mais l'effet ne se compare pas à celui d'une technique d'étude.",
+      "source": "Rasch & Born (2013), Physiological Reviews ; vulgarisation : Walker (2017)",
+      "ia-ampute": "Un partenaire qui ne fatigue jamais et ne ferme jamais. Il y avait toujours une heure où la bibliothèque fermait, où le camarade de révision rentrait chez lui. À 1 h du matin, l'outil répond aussi bien qu'à 14 h. Mieux que vous.",
+      "ia-inversion": "Renverser la nuit en outil : poser la question difficile avant de dormir, et ne lire la réponse qu'au matin, après que votre propre cerveau a travaillé dessus.",
+      "famille": "respirer",
+      "etoiles": 0,
+      "visuel": {
+        "schema": "lune",
+        "consigne": "Cette nuit, j'ai dormi … h. Il m'en faudrait … h.",
+        "lignes": 1
+      }
+    },
+
+    {
+      "id": "sinterrompre",
+      "groupe": "contexte",
+      "nom": "S'interrompre",
+      "aussi": "Micro-pauses, consolidation éveillée",
+      "recto": "Clore avant d'être vide, et de préférence sur une question ouverte plutôt que sur une réponse reçue. Les quelques minutes où l'esprit vagabonde après l'effort font partie de l'encodage : ce n'est pas du temps perdu.",
+      "emotions": ["le soulagement d'arrêter", "ça me frustre", "je n'y arrive pas"],
+      "chiffre": "",
+      "ampleur": "Condition. Le cerveau rejoue les séquences apprises pendant de très courtes pauses ; le résultat est établi en apprentissage moteur, sa portée générale reste un domaine actif.",
+      "source": "Buch et al. (2021) ; sur l'errance mentale : Immordino-Yang et al. (2012)",
+      "ia-ampute": "Le flux sans fin. La conversation n'a pas de fin naturelle : pas de fin de chapitre, pas de sonnerie, pas d'interlocuteur qui se lève. Chaque réponse se termine par une relance.",
+      "ia-inversion": "Imposer la clôture soi-même : terminer chaque session par sa propre synthèse, écrite avant de lire celle de la machine.",
+      "famille": "respirer",
+      "etoiles": 0,
+      "visuel": {
+        "consigne": "Je tiens … minutes avant de décrocher.",
+        "cases": ["jamais mesuré", "mesuré une fois", "je le sais"]
+      }
+    },
+
+    {
+      "id": "lieu",
+      "groupe": "contexte",
+      "nom": "Ancrer dans le lieu et le corps",
+      "aussi": "Encodage dépendant du contexte",
+      "recto": "Ce que vous apprenez s'attache au lieu, à la posture, au geste qui l'accompagnait. Varier les lieux de travail, manipuler, se déplacer : autant de prises supplémentaires pour retrouver l'information plus tard.",
+      "emotions": ["ça se situe", "ça m'amuse", "ça me disperse"],
+      "chiffre": "",
+      "ampleur": "Effet réel mais modéré et très dépendant du contexte. L'expérience fondatrice compare le rappel de plongeurs ayant appris et restitué sur terre ou sous l'eau.",
+      "source": "Godden & Baddeley (1975)",
+      "ia-ampute": "L'appauvrissement contextuel absolu : mille savoirs, un seul décor. Le même écran, la même posture, le même défilement, quel que soit le sujet.",
+      "ia-inversion": "C'est la carte qui justifie que le cours en présentiel, le terrain et la manipulation existent encore. L'outil peut au mieux aider à scénariser un palais de mémoire.",
+      "famille": "revenir",
+      "etoiles": 3,
+      "visuel": {
+        "consigne": "Mes trois lieux de travail :",
+        "lignes": 3
+      }
+    },
+
+    {
+      "id": "role-village",
+      "groupe": "cap",
+      "nom": "Le rôle au village",
+      "aussi": "Motivation autodéterminée",
+      "recto": "Un village doit tout reconstruire. Quel rôle voudriez-vous y tenir ? La question court-circuite les intitulés de métiers, que personne ne peut évaluer à 19 ans.",
+      "emotions": ["ça remue", "c'est évident", "aucun ne me va"],
+      "chiffre": "",
+      "ampleur": "Condition. Écrire soi-même le lien entre ce que l'on apprend et ce qui compte pour soi améliore l'intérêt et les résultats, surtout chez les étudiants qui se croyaient mauvais.",
+      "source": "Deci & Ryan (2000) ; Hulleman & Harackiewicz (2009), Science",
+      "ia-ampute": "Une machine qui répond à tout rend plus difficile de savoir ce que l'on veut, soi, apporter aux autres.",
+      "ia-inversion": "Pan-encyclopédique, elle sert à explorer des voies dont vous ignoriez l'existence. Elle ne choisit pas à votre place.",
+      "famille": "",
+      "etoiles": 0,
+      "visuel": {
+        "palette": ["soigner", "transmettre", "construire", "explorer", "organiser", "raconter", "protéger", "arbitrer", "nourrir", "échanger"],
+        "schema": "village",
+        "consigne": "Inscrivez le vôtre sur la bannière."
+      }
+    },
+
+    {
+      "id": "incertitude",
+      "groupe": "cap",
+      "nom": "Le droit au doute",
+      "aussi": "",
+      "recto": "Ne pas savoir à 19 ans est la situation normale, pas un retard. Un cap large se déplace à chaque expérience ; un cap décidé trop tôt résiste aux données, et c'est là le vrai danger.",
+      "emotions": ["ça soulage", "ça m'angoisse", "je sais déjà"],
+      "chiffre": "",
+      "ampleur": "Condition. Les étudiants qui pensent qu'un intérêt se découvre abandonnent plus vite quand le domaine devient difficile que ceux qui pensent qu'il se construit.",
+      "source": "O'Keefe, Dweck & Walton (2018) ; sur le propos à long terme : Damon (2008)",
+      "ia-ampute": "La facilité à produire un projet professionnel présentable peut figer un cap avant qu'il ait été éprouvé.",
+      "ia-inversion": "S'en servir pour élargir le champ des possibles, pas pour le refermer sur la première réponse plausible.",
+      "famille": "",
+      "etoiles": 0,
+      "visuel": {
+        "consigne": "Où en êtes-vous aujourd'hui ? Datez votre croix, vous y reviendrez.",
+        "echelle": ["aucune idée", "je sais exactement"]
+      }
+    },
+
+    {
+      "id": "flow",
+      "groupe": "cap",
+      "nom": "Reconnaître le flow",
+      "aussi": "Expérience optimale",
+      "recto": "Ces moments où le temps disparaît sont une donnée sur vous-même, pas une anecdote. Les repérer, comprendre ce qu'ils avaient en commun, chercher à les reproduire : c'est la boussole la plus fiable dont vous disposiez.",
+      "emotions": ["on ne voit pas l'heure passer", "ça m'arrive souvent", "jamais au travail"],
+      "chiffre": "",
+      "ampleur": "Condition. Le flow est le nom subjectif de la bonne difficulté : ni trop facile, ni hors d'atteinte. La même zone que les difficultés désirables, vue de l'intérieur.",
+      "source": "Csikszentmihalyi (1990)",
+      "ia-ampute": "Il ne se rencontre pas dans un échange où la réponse arrive avant l'effort. C'est dans la déconnexion que vous le ressentirez.",
+      "ia-inversion": "Rien à inverser. Cette carte se vit hors de l'écran.",
+      "famille": "",
+      "etoiles": 0,
+      "visuel": {
+        "schema": "sablier",
+        "consigne": "La dernière fois que le temps a disparu :",
+        "lignes": 2
+      }
+    },
+
+    {
+      "id": "attention",
+      "groupe": "outil",
+      "nom": "Protéger son attention",
+      "aussi": "Mémoire de travail et ses limites",
+      "recto": "Vous tenez environ quatre choses à la fois dans votre tête, pas davantage. Tout ce qui occupe une de ces places — une notification, une inquiétude, un message non lu — est retiré de ce que vous essayez de comprendre.",
+      "emotions": ["ça sature vite", "ça me soulage", "je tiens plus que ça"],
+      "chiffre": "≈ 4",
+      "ampleur": "Ce n'est pas une ampleur d'effet mais une capacité : la mémoire de travail tient de l'ordre de quatre éléments, et non des sept souvent cités.",
+      "source": "Baddeley & Hitch (1974) ; Cowan (2001)",
+      "ia-ampute": "Le même écran porte l'outil de travail et tout le reste. La surchauffe guette d'autant plus que rien n'oblige à s'arrêter.",
+      "ia-inversion": "Lui faire décharger ce qui encombre sans rien apprendre : mise en forme, recherche de référence, résumé d'un document que vous n'avez pas à retenir.",
+      "famille": "respirer",
+      "etoiles": 0,
+      "visuel": {
+        "schema": "cases-memoire",
+        "consigne": "Qu'est-ce qui occupe vos places, là, maintenant ?"
+      }
+    },
+
+    {
+      "id": "se-tester",
+      "groupe": "outil",
+      "nom": "Se tester",
+      "aussi": "Récupération active",
+      "recto": "Fermer le document et faire sortir l'information de votre tête, sans la relire. L'effort de rappel est ce qui renforce la trace : c'est l'effort, pas la lecture, qui fait l'apprentissage.",
+      "emotions": ["ça pique", "ça rassure", "ça me décourage"],
+      "chiffre": "g = 0,50",
+      "ampleur": "Se tester plutôt que relire, mesuré sur 159 comparaisons. L'une des deux seules techniques classées en utilité élevée par la synthèse de Dunlosky, avec la répétition espacée.",
+      "source": "Rowland (2014), Psychological Bulletin ; Dunlosky et al. (2013)",
+      "ia-ampute": "Demander la réponse avant d'avoir cherché court-circuite le rappel, c'est-à-dire exactement ce qui renforce la trace. On obtient la réponse, on perd la mémoire.",
+      "ia-inversion": "Le LLM interrogateur : lui demander de poser les questions et de ne corriger qu'après votre tentative. Corriger votre mémorisation, jamais donner les réponses.",
+      "famille": "extraire",
+      "etoiles": 5,
+      "visuel": {
+        "consigne": "Cachez cette carte avec la main. Que disait-elle ? Puis vérifiez.",
+        "cases": ["j'avais juste", "à peu près", "rien du tout"]
+      }
+    },
+
+    {
+      "id": "se-tromper",
+      "groupe": "outil",
+      "nom": "Se tromper d'abord",
+      "aussi": "Effet protégé (pretesting), effet de génération",
+      "recto": "Répondre avant de savoir, même mal, même au hasard. L'erreur crée une attente ; la correction s'y accroche, au lieu de flotter dans le vide. Chercher sans trouver prépare le terrain mieux que lire la réponse.",
+      "emotions": ["la honte utile", "ça m'amuse", "je préfère attendre"],
+      "chiffre": "",
+      "ampleur": "Effet établi, mais sans chiffre unique : les écarts publiés varient trop d'un protocole à l'autre pour qu'une moyenne veuille dire quelque chose.",
+      "source": "Kornell, Hays & Bjork (2009) ; Slamecka & Graf (1978)",
+      "ia-ampute": "La réponse instantanée supprime l'erreur féconde. On ne se trompe plus jamais seul, donc on ne prépare plus jamais le terrain.",
+      "ia-inversion": "La fiche inversée : écrire d'abord ce que l'on croit, demander ensuite la correction. C'est l'écart entre les deux que l'on retient.",
+      "famille": "extraire",
+      "etoiles": 4,
+      "visuel": {
+        "consigne": "Avant de retourner la carte : à votre avis, cet effet a-t-il un chiffre officiel ?",
+        "cases": ["oui, un seul", "oui, plusieurs", "aucun"]
+      }
+    },
+
+    {
+      "id": "espacer",
+      "groupe": "outil",
+      "nom": "Espacer",
+      "aussi": "Répétition espacée",
+      "recto": "Revenir sur une notion au moment où elle commence à s'effacer, plutôt que de tout revoir d'un bloc la veille. Le même temps de travail, réparti autrement, produit une mémoire qui tient des mois au lieu de jours.",
+      "emotions": ["la patience", "ça me rassure", "je n'y penserai jamais"],
+      "chiffre": "g = 0,74",
+      "ampleur": "Se tester à intervalles espacés plutôt que d'affilée, mesuré sur 39 comparaisons. Le gain tient surtout au délai : plus l'échéance est lointaine, plus l'espacement paye.",
+      "source": "Latimier, Peyre & Ramus (2021) ; racine : Ebbinghaus (1885)",
+      "ia-ampute": "Pourquoi réviser ce que l'on peut redemander ? Le tout-disponible-tout-de-suite tue le besoin de revenir : c'est de l'oubli programmé par confort.",
+      "ia-inversion": "La khôlle portative : « re-teste-moi sur X » à J+3, J+10, J+30, sans redonner le contenu entre les séances.",
+      "famille": "revenir",
+      "etoiles": 5,
+      "visuel": {
+        "consigne": "Datez vos quatre retours sur le cours d'aujourd'hui.",
+        "jalons": ["J+1", "J+3", "J+10", "J+30"]
+      }
+    },
+
+    {
+      "id": "varier",
+      "groupe": "outil",
+      "nom": "Varier les angles",
+      "aussi": "Alternance (interleaving)",
+      "recto": "Mélanger les types de problèmes au lieu de les traiter par séries. C'est plus désagréable sur le moment et les résultats en séance sont moins bons — mais c'est la seule façon d'apprendre à reconnaître quel outil sortir devant un problème inconnu.",
+      "emotions": ["ça désoriente", "ça me stimule", "ça me ralentit"],
+      "chiffre": "g = 0,42",
+      "ampleur": "Mesuré sur 59 études, mais très modulé par la matière : 0,67 sur des images, 0,34 en mathématiques, et −0,39 sur du vocabulaire, où le bloc l'emporte. Un chiffre moyen n'est pas une promesse.",
+      "source": "Brunmair & Richter (2019), Psychological Bulletin ; Rohrer & Taylor (2007)",
+      "ia-ampute": "Elle excelle à produire vingt exercices du même type à la demande : elle industrialise la pratique en blocs, confortable et peu fertile.",
+      "ia-inversion": "Demander le mélange et le déguisement : « interroge-moi en alternant les notions sans m'annoncer laquelle », « donne-moi ce concept dans trois contextes qui ne se ressemblent pas ».",
+      "famille": "revenir",
+      "etoiles": 4,
+      "visuel": {
+        "schema": "alternance",
+        "consigne": "Deux heures de travail, deux façons de les remplir."
+      }
+    },
+
+    {
+      "id": "ancres",
+      "groupe": "outil",
+      "nom": "Multiplier les ancres",
+      "aussi": "Double codage",
+      "recto": "Donner au même savoir plusieurs corps : un schéma, une phrase, un geste, une histoire. Deux codes valent deux chemins d'accès. Surtout : l'ancre que vous fabriquez vaut dix ancres que vous recevez.",
+      "emotions": ["ça prend forme", "ça m'amuse", "je ne sais pas dessiner"],
+      "chiffre": "",
+      "ampleur": "La théorie du double codage est solide, mais l'imagerie mentale comme technique d'étude est classée en utilité faible. À ne pas confondre avec le neuromythe des styles d'apprentissage : multiplier les formats profite à tous.",
+      "source": "Paivio (1986) ; Dunlosky et al. (2013) ; neuromythes : Dekker et al. (2012)",
+      "ia-ampute": "C'est une machine à texte : son format de sortie par défaut aplatit tout savoir en paragraphes. Un monde d'ancres uniques, toutes du même gris.",
+      "ia-inversion": "Exiger la traduction entre codes : « fais-m'en un schéma », « trouve une analogie physique », « raconte-le comme une scène ». Puis dessiner soi-même.",
+      "famille": "revenir",
+      "etoiles": 3,
+      "visuel": {
+        "cadre": true,
+        "consigne": "Dessinez ici, sans mots, une notion vue cette semaine."
+      }
+    },
+
+    {
+      "id": "pairs",
+      "groupe": "outil",
+      "nom": "Expliquer à un pair",
+      "aussi": "Peer instruction",
+      "recto": "Expliquer à quelqu'un qui vient d'échouer sur la même question marche mieux que d'écouter quelqu'un qui n'a jamais échoué dessus. Celui qui explique apprend au moins autant que celui qui écoute.",
+      "emotions": ["ça engage", "ça me gêne", "j'adore ça"],
+      "chiffre": "",
+      "ampleur": "Les études de référence mesurent des gains conceptuels, pas une ampleur d'effet comparable aux autres cartes. Le chiffre le plus proche est celui de l'apprentissage actif, dont la peer instruction est une forme.",
+      "source": "Mazur (1997) ; Crouch & Mazur (2001)",
+      "ia-ampute": "Elle est toujours disponible, jamais vexée, jamais en retard : elle remplace insensiblement le camarade, qui lui coûtait un effort social.",
+      "ia-inversion": "Le renversement pédagogique : c'est vous qui expliquez, et vous lui demandez de jouer l'élève de mauvaise foi, qui pose les questions naïves et pointe les incohérences.",
+      "famille": "extraire",
+      "etoiles": 4,
+      "visuel": {
+        "consigne": "À qui, cette semaine ? Et sur quoi ?",
+        "lignes": 2
+      }
+    },
+
+    {
+      "id": "expliquer",
+      "groupe": "outil",
+      "nom": "S'expliquer à soi-même",
+      "aussi": "Élaboration, auto-explication",
+      "recto": "À chaque étape, se demander pourquoi c'est ainsi et pas autrement, et répondre à voix haute. Le moment où l'explication se bloque est exactement le moment où vous aviez cru comprendre.",
+      "emotions": ["ça coince, puis ça cède", "ça me fatigue", "je le fais déjà"],
+      "chiffre": "g = 0,55",
+      "ampleur": "S'expliquer à soi-même en apprenant, mesuré sur 64 études. L'effet tient quand la question est posée : s'expliquer spontanément est plus rare qu'on ne croit.",
+      "source": "Bisra et al. (2018), Educational Psychology Review ; Chi et al. (1994)",
+      "ia-ampute": "Elle reformule si bien qu'on ne reformule plus rien. On lit des explications limpides que l'on serait incapable de produire, et la limpidité se prend pour de la compréhension.",
+      "ia-inversion": "Écrire son explication avant de lire la sienne, puis comparer. L'écart est l'information.",
+      "famille": "extraire",
+      "etoiles": 4,
+      "visuel": {
+        "consigne": "Prenez la dernière notion vue. Pourquoi ? Et pourquoi cela ?",
+        "lignes": 3
+      }
+    },
+
+    {
+      "id": "relier",
+      "groupe": "outil",
+      "nom": "Relier",
+      "aussi": "Création de liens",
+      "recto": "Accrocher le nouveau à ce que vous savez déjà, et le dire explicitement. Une notion isolée s'oublie ; une notion rattachée à trois autres se retrouve par trois chemins. C'est aussi ce qui permet de reconnaître une erreur.",
+      "emotions": ["le déclic", "ça m'éclaire", "je ne vois aucun lien"],
+      "chiffre": "",
+      "ampleur": "Effet modéré, et conditionnel : sans connaissances préalables auxquelles rattacher, il n'y a rien à relier. Cette carte suppose un socle déjà constitué.",
+      "source": "Chi et al. (1994) ; Bjork, Dunlosky & Kornell (2013)",
+      "ia-ampute": "Les synthèses pré-digérées livrent une structure toute faite : on stocke le plan de quelqu'un d'autre au lieu de construire le sien.",
+      "ia-inversion": "Construire sa propre carte d'abord, puis lui demander d'attaquer les liens faibles.",
+      "famille": "se-regarder",
+      "etoiles": 3,
+      "visuel": {
+        "schema": "etoile-liens",
+        "consigne": "Une notion au centre, trois choses que vous savez déjà autour."
+      }
+    },
+
+    {
+      "id": "actif",
+      "groupe": "outil",
+      "nom": "Faire plutôt qu'écouter",
+      "aussi": "Apprentissage actif",
+      "recto": "Produire quelque chose pendant le cours — une réponse, une prédiction, un schéma — plutôt que de suivre. Un cours magistral reste utile par courtes séquences, au bon moment ; comme régime permanent, il est le format le moins efficace.",
+      "emotions": ["ça réveille", "ça m'expose", "ça me fatigue"],
+      "chiffre": "0,47",
+      "ampleur": "Sur les notes d'examen, à partir de 225 études en sciences et en ingénierie. Et le taux d'échec est presque deux fois plus élevé en cours magistral pur.",
+      "source": "Freeman et al. (2014), PNAS",
+      "ia-ampute": "Elle place l'étudiant en position de lecteur : elle produit, il consomme. Le format par défaut de l'échange est passif.",
+      "ia-inversion": "Toujours produire avant de demander. La règle d'or de ce cours ne dit rien d'autre.",
+      "famille": "extraire",
+      "etoiles": 4,
+      "visuel": {
+        "consigne": "Depuis le début de la séance, qu'avez-vous produit de vos mains ?",
+        "lignes": 2
+      }
+    },
+
+    {
+      "id": "feedback",
+      "groupe": "outil",
+      "nom": "Chercher le bon retour",
+      "aussi": "Feedback efficace",
+      "recto": "Un retour utile dit où vous en êtes, où vous allez, et quoi faire ensuite. Un retour qui ne porte que sur vous — votre niveau, votre personne — est au mieux inutile. Savoir réclamer le premier et écarter le second est une compétence.",
+      "emotions": ["ça pique encore", "ça m'aide", "je n'en demande jamais"],
+      "chiffre": "d = 0,41",
+      "ampleur": "Moyenne sur 607 mesures — mais plus d'un tiers des retours ont fait BAISSER la performance, surtout ceux qui visaient la personne plutôt que la tâche. Une moyenne qui cache deux effets opposés.",
+      "source": "Kluger & DeNisi (1996), Psychological Bulletin ; Hattie & Timperley (2007)",
+      "ia-ampute": "Elle donne une illusion de maîtrise : le retour est immédiat, aimable et fluide, donc il rassure même quand il devrait alerter.",
+      "ia-inversion": "Lui demander l'écart, pas la note : où j'en suis, où je devrais être, et le prochain pas.",
+      "famille": "se-regarder",
+      "etoiles": 4,
+      "visuel": {
+        "consigne": "Les trois questions d'un retour utile :",
+        "lignes": 3,
+        "amorces": ["où j'en suis", "où je vais", "le prochain pas"]
+      }
+    },
+
+    {
+      "id": "metacognition",
+      "groupe": "outil",
+      "nom": "Se jauger",
+      "aussi": "Métacognition, jugements d'apprentissage",
+      "recto": "Avant de vérifier, prédire : combien je pense en savoir, et à quel point j'en suis sûr. Puis comparer à la réalité. C'est la seule carte qui répare les autres, parce qu'elle vous dit laquelle il vous manque.",
+      "emotions": ["ça désillusionne", "ça me rassure", "je me connais bien"],
+      "chiffre": "",
+      "ampleur": "Cadre plutôt que technique. Sa défaillance est la seule qui soit invisible à celui qui en souffre : quand la mesure est faussée, plus rien ne signale l'erreur.",
+      "source": "Flavell (1979) ; Dunlosky & Metcalfe (2009) ; Dehaene, Collège de France 2010-2011",
+      "ia-ampute": "La plus insidieuse des amputations : la fluidité des réponses démultiplie l'illusion de maîtrise. On confond ce que l'outil sait produire avec ce que l'on sait faire.",
+      "ia-inversion": "S'en servir comme instrument de mesure : prédire sa note, se faire tester, confronter l'écart. Elle mesure bien ce qu'elle ne doit pas remplacer.",
+      "famille": "se-regarder",
+      "etoiles": 0,
+      "visuel": {
+        "consigne": "Sur le dernier cours : je pense savoir … /10. Vérifié : … /10.",
+        "lignes": 1
+      }
+    },
+
+    {
+      "id": "difficultes",
+      "groupe": "outil",
+      "nom": "Chercher la bonne difficulté",
+      "aussi": "Difficultés désirables",
+      "recto": "Se méfier de ce qui est agréable à réviser. Surligner, relire, recopier : fluide, rassurant, et presque sans effet. Ce qui construit est ce qui résiste — à condition de résister juste ce qu'il faut.",
+      "emotions": ["ça force", "ça me plaît", "ça me bloque"],
+      "chiffre": "",
+      "ampleur": "Principe fédérateur plutôt que technique : il explique pourquoi le test, l'espacement et l'alternance fonctionnent, et pourquoi la relecture échoue malgré la sensation inverse.",
+      "source": "Bjork (1994) ; Bjork, Dunlosky & Kornell (2013)",
+      "ia-ampute": "Elle est optimisée pour supprimer la friction — c'est-à-dire pour supprimer ce qui fait apprendre. Méta-risque qui contient tous les autres.",
+      "ia-inversion": "Demander explicitement de la résistance : « rends-moi ça plus difficile », « ne m'aide pas encore », « interroge-moi avant de m'expliquer ».",
+      "famille": "se-regarder",
+      "etoiles": 5,
+      "visuel": {
+        "schema": "cloche",
+        "consigne": "Vos révisions d'hier : où étaient-elles ?"
+      }
+    },
+
+    {
+      "id": "offloading",
+      "groupe": "outil",
+      "nom": "Déléguer ce qu'on sait évaluer",
+      "aussi": "Délestage cognitif",
+      "recto": "Décharger une tâche sur un outil est légitime et ancien : l'écriture a déchargé la mémoire. Le critère est simple — déléguez ce que vous sauriez faire et n'avez pas le temps de faire, jamais ce que vous ne sauriez pas évaluer.",
+      "emotions": ["ça libère", "ça m'inquiète", "je délègue tout"],
+      "chiffre": "",
+      "ampleur": "Cadre théorique plutôt que technique. La recherche distingue le coût d'accès à l'information, qui se délègue sans dommage, et le coût d'encodage dans un cerveau, qui ne se délègue pas.",
+      "source": "Risko & Gilbert (2016), Trends in Cognitive Sciences",
+      "ia-ampute": "Vérifier un raisonnement produit par une machine exige de savoir raisonner sur le domaine — c'est-à-dire exactement la compétence que l'on aurait déléguée.",
+      "ia-inversion": "Déléguer la génération, garder la discrimination. Elle produit les options, vous jugez lesquelles tiennent.",
+      "famille": "se-regarder",
+      "etoiles": 0,
+      "visuel": {
+        "colonnes": ["je délègue", "je garde"],
+        "consigne": "Cette semaine, en deux colonnes."
+      }
+    }
+
+  ]
+}
