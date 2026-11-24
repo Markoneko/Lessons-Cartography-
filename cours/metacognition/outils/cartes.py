@@ -159,6 +159,8 @@ def zone_visuelle(v):
     if v.get("colonnes"):
         bouts.append('<div class="colonnes">' + "".join(
             f'<span class="col"><b>{propre(c)}</b><i></i><i></i></span>' for c in v["colonnes"]) + "</div>")
+    if v.get("va-avec"):
+        bouts.append(f'<p class="va-avec"><b>ne marche qu\'avec</b> {propre(v["va-avec"])}</p>')
     if v.get("cadre"):
         bouts.append('<div class="cadre"></div>')
     if v.get("lignes"):
@@ -321,6 +323,14 @@ FEUILLE = """<!DOCTYPE html>
   }
   .colonnes i { display: block; height: .25mm; background: var(--encre); opacity: .45; margin-bottom: 6mm; }
 
+  .va-avec {
+    font-size: 7pt; line-height: 1.4; margin: 0; padding: 1.6mm 2.4mm;
+    border: .3mm solid var(--encre); border-radius: 1mm;
+  }
+  .va-avec b {
+    font-family: 'IBM Plex Mono', monospace; font-size: 5.8pt; font-weight: 400;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--gris);
+  }
   .cadre { flex: 1 1 auto; min-height: 26mm; border: .3mm dashed var(--encre); border-radius: 1mm; }
 
   .lignes { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between; min-height: 18mm; }

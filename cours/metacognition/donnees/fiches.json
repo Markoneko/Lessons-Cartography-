@@ -247,18 +247,19 @@
       "groupe": "outil",
       "nom": "Se tromper d'abord",
       "aussi": "Effet protégé (pretesting), effet de génération",
-      "recto": "Répondre avant de savoir, même mal, même au hasard. L'erreur crée une attente ; la correction s'y accroche, au lieu de flotter dans le vide. Chercher sans trouver prépare le terrain mieux que lire la réponse.",
+      "recto": "Répondre avant de savoir, même mal, même au hasard : l'erreur creuse une attente, et la correction vient s'y loger. Mais c'est une moitié de geste. Une erreur laissée seule ne se corrige pas toute seule — il faut que la bonne réponse arrive.",
       "emotions": ["la honte utile", "ça m'amuse", "je préfère attendre"],
       "chiffre": "",
-      "ampleur": "Effet établi, mais sans chiffre unique : les écarts publiés varient trop d'un protocole à l'autre pour qu'une moyenne veuille dire quelque chose.",
-      "source": "Kornell, Hays & Bjork (2009) ; Slamecka & Graf (1978)",
+      "ampleur": "Effet établi, sans chiffre unique : les protocoles varient trop. Et sous condition stricte — la correction doit suivre et donner la bonne réponse ; savoir seulement qu'on s'est trompé ne suffit pas. Le délai, lui, importe moins qu'on ne croit.",
+      "source": "Kornell, Hays & Bjork (2009) ; Metcalfe (2017), Annual Review of Psychology ; Slamecka & Graf (1978)",
       "ia-ampute": "La réponse instantanée supprime l'erreur féconde. On ne se trompe plus jamais seul, donc on ne prépare plus jamais le terrain.",
-      "ia-inversion": "La fiche inversée : écrire d'abord ce que l'on croit, demander ensuite la correction. C'est l'écart entre les deux que l'on retient.",
+      "ia-inversion": "La fiche inversée : écrire d'abord ce que l'on croit, demander ensuite la correction. C'est l'écart que l'on retient — et la correction peut attendre le lendemain sans rien perdre.",
       "famille": "extraire",
       "etoiles": 4,
       "visuel": {
-        "consigne": "Avant de retourner la carte : à votre avis, cet effet a-t-il un chiffre officiel ?",
-        "cases": ["oui, un seul", "oui, plusieurs", "aucun"]
+        "consigne": "Avant de retourner : cet effet a-t-il un chiffre officiel ? Puis vérifiez au dos.",
+        "cases": ["oui, un seul", "oui, plusieurs", "aucun"],
+        "va-avec": "Chercher le bon retour"
       }
     },
 
