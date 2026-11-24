@@ -144,6 +144,48 @@ SCHEMAS = {
       <path d="M60 44 h12 M180 44 h12" class="e"/>
     </g></svg>""",
 
+    "cairns": """<svg viewBox="0 0 120 106"><g class="a">
+  <rect x="4" y="98" width="112" height="1.6" rx=".8" opacity=".5"/>
+  <ellipse cx="22" cy="92" rx="15" ry="6"/><ellipse cx="22" cy="80" rx="11.5" ry="5.5"/>
+  <ellipse cx="21" cy="69" rx="8.5" ry="5"/><ellipse cx="22" cy="60" rx="5.5" ry="4"/>
+  <ellipse cx="60" cy="92" rx="17" ry="6.5"/><ellipse cx="60" cy="79" rx="13" ry="6"/>
+  <ellipse cx="59" cy="67" rx="10" ry="5.5"/><ellipse cx="60" cy="57" rx="7.5" ry="4.5"/>
+  <ellipse cx="60" cy="48" rx="5" ry="3.5"/>
+  <ellipse cx="97" cy="92" rx="13" ry="6"/><ellipse cx="97" cy="81" rx="9.5" ry="5"/>
+  <ellipse cx="96" cy="72" rx="6.5" ry="4"/>
+</g></svg>""",
+
+    "profils": """<svg viewBox="0 0 200 100"><g class="a">
+  <path d="M20,96C20,62 20,44 24,34C30,18 46,10 60,14C70,17 76,26 78,36L86,52C87,55 85,57 82,57L78,57C79,64 78,68 72,69L68,70C69,78 66,82 60,83L56,84L56,96Z"/>
+  <path d="M20,96C20,62 20,44 24,34C30,18 46,10 60,14C70,17 76,26 78,36L86,52C87,55 85,57 82,57L78,57C79,64 78,68 72,69L68,70C69,78 66,82 60,83L56,84L56,96Z" transform="translate(200,0) scale(-1,1)"/>
+</g></svg>""",
+
+    "spirale": """<svg viewBox="0 0 92 92"><g class="a"><path d="M46.0,39.8L46.8,39.6L47.7,39.4L48.7,39.4L49.6,39.6L50.6,39.8L51.6,40.2L52.5,40.8L53.4,41.5L54.2,42.4L54.9,43.4L55.5,44.5L55.9,45.7L56.2,47.0L56.3,48.4L56.2,49.8L55.9,51.3L55.4,52.7L54.7,54.0L53.8,55.3L52.7,56.5L51.5,57.6L50.0,58.5L48.4,59.2L46.7,59.8L44.9,60.1L43.1,60.1L41.2,60.0L39.3,59.5L37.4,58.8L35.6,57.9L34.0,56.6L32.4,55.2L31.1,53.5L29.9,51.7L29.0,49.6L28.4,47.4L28.0,45.1L27.9,42.8L28.2,40.4L28.8,38.0L29.6,35.7L30.9,33.5L32.4,31.4L34.2,29.5L36.2,27.8L38.5,26.4L41.0,25.3L43.7,24.5L46.5,24.1L49.3,24.0L52.2,24.3L55.1,24.9L57.9,26.0L60.5,27.4L63.0,29.2L65.3,31.3L67.3,33.8L69.0,36.5L70.4,39.4L71.3,42.6L71.9,45.8L72.0,49.2L71.7,52.6L71.0,56.0L69.8,59.2L68.1,62.4L66.1,65.3L63.6,68.0L60.8,70.3L57.7,72.3L54.3,74.0L50.7,75.1L47.0,75.8L43.1,76.0L39.2,75.7L35.3,74.9L31.6,73.6L28.0,71.8L24.6,69.5L21.5,66.8L18.7,63.6L16.4,60.1L14.5,56.3L13.1,52.3L12.3,48.0L12.0,43.7L12.2,39.2L13.1,34.9L14.5,30.6L16.4,26.5L18.9,22.6L21.9,19.1L25.4,16.0L29.3,13.3L33.5,11.1L38.0,9.4L42.7,8.4L47.6,7.9L52.5,8.1L57.4,9.0L62.2,10.4L66.8,12.5L71.1,15.2L75.1,18.5L78.7,22.3L78.0,22.7L74.5,19.1L70.6,15.9L66.3,13.3L61.8,11.3L57.1,9.9L52.3,9.2L47.5,9.0L42.8,9.5L38.3,10.6L33.9,12.2L29.8,14.4L26.1,17.0L22.8,20.1L20.0,23.5L17.6,27.3L15.8,31.2L14.5,35.4L13.8,39.6L13.6,43.8L13.9,47.9L14.8,51.9L16.2,55.8L18.0,59.4L20.3,62.6L22.9,65.6L25.9,68.1L29.1,70.2L32.5,71.8L36.1,73.0L39.7,73.7L43.3,73.9L46.9,73.6L50.4,72.9L53.7,71.7L56.8,70.2L59.6,68.3L62.1,66.1L64.3,63.6L66.1,60.9L67.5,58.0L68.5,55.0L69.1,51.9L69.3,48.9L69.1,45.9L68.5,42.9L67.6,40.2L66.3,37.6L64.7,35.3L62.9,33.2L60.9,31.4L58.6,29.9L56.3,28.7L53.8,27.9L51.3,27.4L48.8,27.2L46.4,27.4L44.0,27.9L41.8,28.7L39.8,29.7L37.9,31.0L36.3,32.4L34.9,34.1L33.7,35.8L32.8,37.7L32.2,39.6L31.9,41.5L31.8,43.5L32.0,45.3L32.4,47.1L33.0,48.8L33.8,50.3L34.8,51.6L35.9,52.8L37.2,53.8L38.5,54.6L39.9,55.2L41.3,55.5L42.7,55.7L44.0,55.7L45.3,55.5L46.5,55.1L47.6,54.6L48.6,54.0L49.4,53.2L50.1,52.4L50.6,51.5L51.0,50.6L51.3,49.7L51.4,48.8L51.3,48.0L51.2,47.2L50.9,46.5L50.5,45.9L50.1,45.4L49.6,44.9L49.1,44.7L48.6,44.5L48.0,44.4L47.5,44.4L47.1,44.6L46.7,44.8L46.4,45.1L46.2,45.4L46.0,45.8L46.0,46.2Z"/></g></svg>""",
+
+    "main": """<svg viewBox="0 0 92 100"><g class="a">
+  <rect x="31" y="50" width="48" height="44" rx="15"/>
+  <rect x="33" y="18" width="10" height="46" rx="5"/>
+  <rect x="45" y="12" width="10" height="52" rx="5"/>
+  <rect x="57" y="17" width="10" height="47" rx="5"/>
+  <rect x="69" y="27" width="9" height="37" rx="4.5"/>
+  <rect x="26" y="44" width="11" height="40" rx="5.5" transform="rotate(-32 31.5 64)"/>
+</g></svg>""",
+
+    "plomb": """<svg viewBox="0 0 100 100"><g class="a">
+  <path fill-rule="evenodd" d="M50,1a5,5 0 1,0 .1,0ZM50,4a2,2 0 1,1 -.1,0Z"/>
+  <rect x="49.1" y="9" width="1.8" height="50" rx=".9"/>
+  <path d="M41,59h18v11l-9,21l-9,-21Z"/>
+  <path d="M10,96 L90,88 90,90.4 10,98.4Z" opacity=".45"/>
+</g></svg>""",
+
+    "niveau": """<svg viewBox="0 0 120 56"><g class="a">
+  <path fill-rule="evenodd" d="M4,15h112a5,5 0 0,1 5,5v17a5,5 0 0,1 -5,5h-112a5,5 0 0,1 -5,-5v-17a5,5 0 0,1 5,-5Z
+     M26,21h68a7.5,7.5 0 0,1 0,15h-68a7.5,7.5 0 0,1 0,-15Z"/>
+  <circle cx="79" cy="28.5" r="5.6"/>
+  <rect x="53" y="21" width="1.5" height="15"/><rect x="65" y="21" width="1.5" height="15"/>
+  <rect x="12" y="46" width="24" height="1.6" rx=".8" opacity=".45"/>
+  <rect x="84" y="46" width="24" height="1.6" rx=".8" opacity=".45"/>
+</g></svg>""",
     # La courbe de l'oubli, et ce que les retours espacés en font
     "oubli": """<svg viewBox="0 0 250 112"><g class="t">
       <path d="M26 96 h214 M26 96 v-82" class="e"/>
@@ -363,6 +405,7 @@ FEUILLE = """<!DOCTYPE html>
   .schema .f { stroke-dasharray: 3 2.4; }
   .schema .h { fill: var(--encre); opacity: .18; }
   .schema .pl { fill: var(--encre); stroke: none; }
+  .schema .a { fill: var(--encre); stroke: none; }
   .schema .l {
     font-family: 'IBM Plex Mono', monospace; font-size: 7px; fill: var(--encre);
     stroke: none; letter-spacing: .04em;
@@ -405,10 +448,10 @@ FEUILLE = """<!DOCTYPE html>
   }
   .cadre { flex: 1 1 auto; min-height: 26mm; border: .3mm dashed var(--encre); border-radius: 1mm; }
 
-  .lignes { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between; min-height: 18mm; }
+  .lignes { flex: 0 0 auto; display: flex; flex-direction: column; gap: 2mm; }
   .lignes .ligne {
     display: block; border-bottom: .25mm solid var(--encre);
-    opacity: .9; flex: 1 1 0; min-height: 7mm; position: relative;
+    opacity: .9; flex: 0 0 auto; height: 8mm; position: relative;
   }
   .lignes .ligne b {
     font-family: 'IBM Plex Mono', monospace; font-size: 6pt; font-weight: 400;
