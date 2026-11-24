@@ -113,17 +113,55 @@ SCHEMAS = {
     </g></svg>""",
 
     # Le village : des toits, et une bannière vide à remplir
-    "village": """<svg viewBox="0 0 230 96"><g class="t">
-      <path d="M6 88 h218" class="e"/>
-      <path d="M16 88 v-20 l16 -14 l16 14 v20 z"/><path d="M28 88 v-11 h8 v11"/>
-      <path d="M58 88 v-15 l13 -11 l13 11 v15 z"/>
-      <path d="M152 88 v-17 l14 -12 l14 12 v17 z"/><path d="M163 88 v-10 h7 v10"/>
-      <path d="M192 88 v-13 l11 -10 l11 10 v13 z"/>
-      <path d="M100 88 v-34"/><path d="M134 88 v-34"/>
-      <rect x="96" y="40" width="42" height="24" rx="2"/>
-      <path d="M96 52 h42" class="f"/>
-      <path d="M117 40 v-10 l9 5 l-9 5" class="e"/>
+    # Un village d'irréductibles : huttes rondes au toit de chaume, palissade,
+    # menhir, et une bannière vide — c'est là que l'étudiant écrit son rôle.
+    "village": """<svg viewBox="0 0 250 152"><g class="t">
+
+      <path d="M6 142 q24 -6 48 -2 q40 6 76 0 q44 -7 84 1 q16 2 30 1" class="e"/>
+
+      <path d="M10 142 v-26 l5 -6 l5 6 v26"/><path d="M22 142 v-30 l5 -6 l5 6 v30"/>
+      <path d="M232 142 v-28 l5 -6 l5 6 v28"/>
+
+      <path d="M34 142 v-26 q0 -5 5 -5 h30 q5 0 5 5 v26"/>
+      <path d="M28 111 Q54 74 80 111 Z"/>
+      <path d="M49 103 l10 -12 M49 91 l10 12" class="e"/>
+      <path d="M46 142 v-16 q8 -7 16 0 v16" class="e"/>
+
+      <path d="M96 142 v-21 q0 -4 4 -4 h24 q4 0 4 4 v21"/>
+      <path d="M91 117 Q112 88 133 117 Z"/>
+      <path d="M107 110 l10 -10 M107 100 l10 10" class="e"/>
+      <circle cx="112" cy="130" r="4" class="e"/>
+
+      <path d="M160 142 v-29 q0 -5 6 -5 h34 q6 0 6 5 v29"/>
+      <path d="M153 108 Q183 66 213 108 Z"/>
+      <path d="M177 99 l12 -14 M177 85 l12 14" class="e"/>
+      <path d="M174 142 v-18 q9 -8 18 0 v18" class="e"/>
+
+      <path d="M222 142 v-30 q0 -14 7 -14 q7 0 7 14 v30" class="f"/>
+
+      <path d="M66 142 v-96" class="e"/><path d="M186 142 v-96" class="e"/>
+      <path d="M66 46 h120 v34 q-30 7 -60 0 q-30 -7 -60 0 z"/>
+      <path d="M60 44 h12 M180 44 h12" class="e"/>
     </g></svg>""",
+
+    # La courbe de l'oubli, et ce que les retours espacés en font
+    "oubli": """<svg viewBox="0 0 250 112"><g class="t">
+      <path d="M26 96 h214 M26 96 v-82" class="e"/>
+      <path d="M26 14 C66 14 70 86 240 90" class="f"/>
+      <path d="M26 14 C50 14 54 74 72 76"/>
+      <path d="M72 76 v-62"/>
+      <path d="M72 14 C100 14 106 70 126 74"/>
+      <path d="M126 74 v-60"/>
+      <path d="M126 14 C166 14 176 60 202 64"/>
+      <path d="M202 64 v-50"/>
+      <path d="M202 14 C228 14 236 38 240 44"/>
+      <text x="22" y="18" text-anchor="end" class="l">tout</text>
+      <text x="22" y="99" text-anchor="end" class="l">rien</text>
+      <text x="238" y="108" text-anchor="end" class="l">le temps</text>
+      <text x="112" y="92" class="l">sans retour</text>
+      <text x="80" y="10" class="l">chaque retour relance</text>
+    </g></svg>""",
+
 }
 
 
@@ -144,7 +182,13 @@ def zone_visuelle(v, paire=""):
     v = v or {}
     bouts = []
     if v.get("palette"):
-        bouts.append('<p class="palette">' + " · ".join(propre(m) for m in v["palette"]) + "</p>")
+        # Un nuage de mots : trois tailles qui alternent, pour que l'œil se promène
+        # au lieu de lire une liste. Les rôles sont la matière de l'activité.
+        tailles = ["g", "m", "p", "m", "g", "p", "m", "g", "p", "m"]
+        mots = "".join(
+            f'<span class="{tailles[i % len(tailles)]}">{propre(m)}</span>'
+            for i, m in enumerate(v["palette"]))
+        bouts.append(f'<div class="nuage">{mots}</div>')
     if v.get("consigne"):
         bouts.append(f'<p class="consigne">{propre(v["consigne"])}</p>')
     if v.get("schema"):
@@ -173,8 +217,6 @@ def zone_visuelle(v, paire=""):
             a = f'<b>{propre(amorces[i])}</b>' if i < len(amorces) else ""
             lignes += f'<span class="ligne">{a}</span>'
         bouts.append(f'<div class="lignes">{lignes}</div>')
-    if paire:
-        bouts.append(paire)
     return f'<div class="visuel">{"".join(bouts)}</div>'
 
 
@@ -190,7 +232,7 @@ def carte(f, numero, total):
             '<p class="mention">rayez les mentions inutiles</p>')
 
     va_avec = (f.get("visuel") or {}).get("va-avec") or f.get("va-avec") or ""
-    paire = (f'<p class="va-avec"><b>ne marche qu\'avec</b> {propre(va_avec)}</p>'
+    paire = (f'<p class="va-avec"><b>ne marche qu\'avec :</b> {propre(va_avec)}</p>'
              if va_avec else "")
 
     recto = f"""
@@ -199,7 +241,8 @@ def carte(f, numero, total):
   <div class="corps">
     <h1>{propre(f['nom'])}</h1>
     <p class="geste">{propre(f['recto'])}</p>
-    {zone_visuelle(f.get('visuel'), paire)}
+    {zone_visuelle(f.get('visuel'))}
+    {paire}
   </div>
   <footer>
     <div class="ressenti">{bloc_emotions}</div>
@@ -214,6 +257,10 @@ def carte(f, numero, total):
             '<div class="famille">'
             f'<svg viewBox="0 0 32 32" aria-hidden="true">{MARQUES[fam]}</svg>'
             '<span class="nommer"><i></i><b>ma famille</b></span></div>')
+
+    sv = f.get("schema-verso") or ""
+    schema_verso = (f'<div class="schema schema-verso">{SCHEMAS.get(sv, "")}</div>'
+                    if sv in SCHEMAS else "")
 
     renvoi = f.get("renvoi-ia") or ""
     if renvoi and renvoi in RANGS:
@@ -243,6 +290,7 @@ def carte(f, numero, total):
     <p class="aussi">{propre(f.get('aussi') or '—')}</p>
     {bloc_chiffre}
     <p class="ampleur">{propre(f.get('ampleur', ''))}</p>
+    {schema_verso}
     {bloc_ia}
   </div>
   <footer><span class="source">{propre(f.get('source', ''))}</span></footer>
@@ -292,7 +340,7 @@ FEUILLE = """<!DOCTYPE html>
 
   /* La zone d'activité occupe tout ce qui reste sous le texte : les champs à
      remplir sont généreux, parce qu'on écrit dessus à la main. */
-  .visuel { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; gap: 2.5mm; padding: 5mm 0 4mm; }
+  .visuel { flex: 1 1 0; min-height: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: 2.5mm; padding: 5mm 0 4mm; }
   .visuel > * { flex: 0 0 auto; min-height: 0; }
   .visuel .schema { flex: 0 1 auto; overflow: hidden; }
   .visuel .consigne { margin-bottom: 0; }
@@ -300,17 +348,22 @@ FEUILLE = """<!DOCTYPE html>
     font-family: 'IBM Plex Mono', monospace; font-size: 6.4pt; line-height: 1.4;
     letter-spacing: .04em; color: var(--encre); margin: 0 0 2mm;
   }
-  .visuel .palette {
-    font-size: 6.6pt; line-height: 1.5; color: var(--gris); margin: 0 0 1.6mm;
+  .nuage {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center;
+    gap: .6mm 3mm; font-family: Quicksand, sans-serif; font-weight: 600;
+    line-height: 1.18; text-align: center;
   }
-  .visuel .schema { margin: 0 0 2mm; }
-  .visuel .schema svg { display: block; width: 100%%; height: auto; max-height: 36mm; }
-  .visuel .schema .t { fill: none; stroke: var(--encre); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-  .visuel .schema .e { stroke-width: .9; }
-  .visuel .schema .f { stroke-dasharray: 3 2.4; }
-  .visuel .schema .h { fill: var(--encre); opacity: .18; }
-  .visuel .schema .pl { fill: var(--encre); stroke: none; }
-  .visuel .schema .l {
+  .nuage .g { font-size: 13pt; }
+  .nuage .m { font-size: 10.5pt; opacity: .88; }
+  .nuage .p { font-size: 8.5pt; opacity: .72; }
+  .schema { margin: 0 0 2mm; }
+  .schema svg { display: block; width: 100%%; height: auto; max-height: 36mm; }
+  .schema .t { fill: none; stroke: var(--encre); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .schema .e { stroke-width: .9; }
+  .schema .f { stroke-dasharray: 3 2.4; }
+  .schema .h { fill: var(--encre); opacity: .18; }
+  .schema .pl { fill: var(--encre); stroke: none; }
+  .schema .l {
     font-family: 'IBM Plex Mono', monospace; font-size: 7px; fill: var(--encre);
     stroke: none; letter-spacing: .04em;
   }
@@ -343,7 +396,7 @@ FEUILLE = """<!DOCTYPE html>
   .colonnes i { display: block; height: .25mm; background: var(--encre); opacity: .45; margin-bottom: 6mm; }
 
   .va-avec {
-    font-size: 7pt; line-height: 1.4; margin: 0; padding: 1.6mm 2.4mm;
+    flex: 0 0 auto; margin: 0 0 1.5mm; font-size: 7pt; line-height: 1.4; padding: 1.6mm 2.4mm;
     border: .3mm solid var(--encre); border-radius: 1mm;
   }
   .va-avec b {
@@ -395,7 +448,9 @@ FEUILLE = """<!DOCTYPE html>
     font-size: 6.4pt; letter-spacing: .1em; text-transform: uppercase; color: var(--gris);
     font-weight: 400; margin: 1.4mm 0 1.4mm;
   }
-  .verso .ampleur { font-size: 7.8pt; line-height: 1.5; margin: 0 0 4.5mm; }
+  .verso .ampleur { font-size: 7.8pt; line-height: 1.5; margin: 0 0 3mm; }
+  .verso .schema-verso { margin: 0 0 4mm; }
+  .verso .schema-verso svg { max-height: 30mm; }
   .verso .ia { margin-bottom: 4mm; padding-left: 3mm; border-left: .6mm solid var(--encre); }
   .verso .ia.retour { border-left-style: double; border-left-width: 1mm; }
   .verso .ia h2 {
@@ -412,6 +467,22 @@ FEUILLE = """<!DOCTYPE html>
   }
   .verso .renvoi p { font-size: 8.2pt; line-height: 1.4; margin: 0; }
   .verso .source { font-family: 'IBM Plex Mono', monospace; font-size: 5.6pt; line-height: 1.38; color: var(--gris); }
+
+  /* ------------------------------- imposition : 4 cartes par A4 */
+  .planche {
+    width: 210mm; height: 296mm; display: grid;
+    grid-template-columns: 105mm 105mm; grid-template-rows: 148mm 148mm;
+    background: var(--papier);
+  }
+  .planche .carte { box-shadow: none !important; }
+  .carte.vide { border-top: 0; background: var(--papier); }
+  body.a4 main { display: block; padding: 0; }
+  @media screen { body.a4 .planche { margin: 0 auto 8mm; box-shadow: 0 2mm 7mm rgba(35,41,104,.22); } }
+  @media print {
+    body.a4 .planche { break-after: page; page-break-after: always; box-shadow: none; }
+    body.a4 .planche:last-child { break-after: auto; page-break-after: auto; }
+    body.a4 .carte { break-after: auto !important; page-break-after: auto !important; }
+  }
 
   /* ------------------------------- écran : planche de contact */
   @media screen {
@@ -442,10 +513,39 @@ FEUILLE = """<!DOCTYPE html>
 APERCU = {"contexte": "#FBF3CC", "cap": "#FBE4EC", "outil": "#DFF0DC", "": "#FFFFFF"}
 
 
+def impose_a4(corps):
+    """Quatre cartes A6 par page A4, prêtes à tirer en recto-verso.
+
+    Les faces arrivent en recto, verso, recto, verso. On remplit d'abord une
+    page de quatre rectos, puis la page des quatre versos correspondants, en
+    inversant les colonnes : avec un retournement sur le bord long, chaque
+    verso retombe derrière son recto.
+    """
+    morceaux = [m for m in corps.split("<article") if m.strip()]
+    morceaux = ["<article" + m for m in morceaux]
+    rectos = morceaux[0::2]
+    versos = morceaux[1::2]
+
+    pages = []
+    for d in range(0, len(rectos), 4):
+        r = rectos[d:d + 4]
+        v = versos[d:d + 4]
+        while len(r) < 4:
+            r.append('<article class="carte vide"></article>')
+            v.append('<article class="carte vide"></article>')
+        # colonnes inversées au verso : 2,1,4,3
+        v = [v[1], v[0], v[3], v[2]]
+        pages.append('<section class="planche">' + "".join(r) + "</section>")
+        pages.append('<section class="planche">' + "".join(v) + "</section>")
+    return "\n".join(pages)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--groupe", default="", help="contexte, cap, outil ; vide = tout le jeu")
     ap.add_argument("--sortie", default="")
+    ap.add_argument("--a4", action="store_true",
+                    help="impose quatre cartes par page A4, prêt à tirer en recto-verso")
     ap.add_argument("--blanc", action="store_true",
                     help="aperçu sur fond blanc, comme à l'impression sur papier de couleur")
     args = ap.parse_args()
@@ -461,7 +561,13 @@ def main():
     corps = "\n".join(carte(f, rangs[f["id"]], total) for f in fiches)
     papier = "#FFFFFF" if args.blanc else APERCU.get(args.groupe, "#FFFFFF")
 
+    if args.a4:
+        corps = impose_a4(corps)
     page = FEUILLE % {"encre": ENCRE, "gris": GRIS, "papier": papier, "cartes": corps}
+    if args.a4:
+        page = page.replace("@page { size: 105mm 148mm; margin: 0; }",
+                            "@page { size: 210mm 297mm; margin: 0; }")
+        page = page.replace("<body>", '<body class="a4">', 1)
     nom = args.groupe or "Jeu-complet"
     sortie = args.sortie or str(ICI / f"Cartes-{nom.capitalize()}.html")
     pathlib.Path(sortie).write_text(page, encoding="utf-8")
