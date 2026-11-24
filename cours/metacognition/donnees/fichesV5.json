@@ -35,7 +35,7 @@
       "famille": "se-regarder",
       "etoiles": 0,
       "visuel": {
-        "consigne": "Le cours qui vous occupe en ce moment : placez-y une croix.",
+        "consigne": "3 notions étudiés cette semaine qui vous occupe en ce moment : placez-y une croix.",
         "echelle": ["trop facile", "trop dur"]
       }
     },
@@ -147,7 +147,7 @@
       "groupe": "cap",
       "nom": "Le rôle au village",
       "aussi": "Motivation autodéterminée",
-      "recto": "Imaginez... Un village d'irréductibles, doit finalement tout reconstruire. Quel rôle voudriez-vous y tenir ? Cette question court-circuite les intitulés de métiers, qu'il est impossible d'évaluer enfant, qui reste parfois obscure à votre place.",
+      "recto": "Imaginez... Un village d'irréductibles, doit finalement tout reconstruire. Quel rôle voudriez-vous y tenir ? Cette question court-circuite les intitulés de métiers, qu'il est impossible d'évaluer enfant et qui restent parfois obscures à votre place.",
       "emotions": ["ça remue", "c'est évident", "aucun ne me va"],
       "chiffre": "",
       "ampleur": "Condition. Écrire soi-même le lien entre ce que l'on apprend et ce qui compte pour soi améliore l'intérêt et les résultats, surtout chez les étudiants qui se croyaient mauvais. Car l'attention étant la clef, il faut savoir pourquoi et où la porter pour la rendre naturelle",
@@ -270,7 +270,7 @@
       "groupe": "outil",
       "nom": "Espacer",
       "aussi": "Répétition espacée",
-      "recto": "Revenir sur une notion au moment où elle commence à s'effacer, plutôt que de tout revoir d'un bloc la veille. Le même temps de travail, réparti autrement, produit une mémoire qui tient des mois au lieu de jours.",
+      "recto": "Revenir sur une notion au moment où elle commence à s'effacer, plutôt que de tout revoir d'un bloc la veille. Le même temps de travail, réparti autrement, produit une mémoire qui tient des mois au lieu de jours. La courbe d'oubli, une exponetielle décroissante s'aplatit de plus en plus avec le bon écart de répétition.",
       "emotions": ["la patience", "ça me rassure", "je n'y penserai jamais"],
       "chiffre": "g = 0,74",
       "ampleur": "Se tester à intervalles espacés plutôt que d'affilée, mesuré sur 39 comparaisons. Le gain tient surtout au délai : plus l'échéance est lointaine, plus l'espacement paye.",
@@ -280,7 +280,7 @@
       "famille": "revenir",
       "etoiles": 5,
       "visuel": {
-        "consigne": "Datez vos quatre retours sur le cours d'aujourd'hui.",
+        "consigne": "Datez vos quatre retours sur le cours le plus difficile en ce moment.",
         "jalons": ["J+1", "J+3", "J+10", "J+30"]
       }
     },
@@ -290,13 +290,13 @@
       "groupe": "outil",
       "nom": "Varier les angles",
       "aussi": "Alternance (interleaving)",
-      "recto": "Mélanger les types de problèmes au lieu de les traiter par séries. C'est plus désagréable sur le moment et les résultats en séance sont moins bons — mais c'est la seule façon d'apprendre à reconnaître quel outil sortir devant un problème inconnu.",
+      "recto": "Mélanger les types de problèmes au lieu de les traiter par séries. C'est plus désagréable sur le moment et les résultats en séance sont moins bons — mais c'est la seule façon d'apprendre à reconnaître quel outil sortir devant un problème inconnu. Vous developper votre adaptabilité et faciliter les connexions avec d'autres compétences.",
       "emotions": ["ça désoriente", "ça me stimule", "ça me ralentit"],
       "chiffre": "g = 0,42",
       "ampleur": "Mesuré sur 59 études, mais très modulé par la matière : 0,67 sur des images, 0,34 en mathématiques, et −0,39 sur du vocabulaire, où le bloc l'emporte. Un chiffre moyen n'est pas une promesse.",
       "source": "Brunmair & Richter (2019), Psychological Bulletin ; Rohrer & Taylor (2007)",
       "ia-ampute": "Elle excelle à produire vingt exercices du même type à la demande : elle industrialise la pratique en blocs, confortable et peu fertile.",
-      "ia-inversion": "Demander le mélange et le déguisement : « interroge-moi en alternant les notions sans m'annoncer laquelle », « donne-moi ce concept dans trois contextes qui ne se ressemblent pas ».",
+      "ia-inversion": "Demander le mélange et le déguisement : « interroge-moi en alternant les notions sans m'annoncer laquelle », « donne-moi ce concept dans trois contextes qui ne se ressemblent pas ». Ce que j'ai essayé de faire sur le cours de Image-intelligence",
       "famille": "revenir",
       "etoiles": 4,
       "visuel": {
@@ -309,7 +309,7 @@
       "id": "ancres",
       "groupe": "outil",
       "nom": "Multiplier les ancres",
-      "aussi": "Double codage",
+      "aussi": "Double ou multi codages",
       "recto": "Donner au même savoir plusieurs corps : un schéma, une phrase, un geste, une histoire. Deux codes valent deux chemins d'accès. Surtout : l'ancre que vous fabriquez vaut dix ancres que vous recevez.",
       "emotions": ["ça prend forme", "ça m'amuse", "je ne sais pas dessiner"],
       "chiffre": "",
@@ -330,13 +330,13 @@
       "groupe": "outil",
       "nom": "Expliquer à un pair",
       "aussi": "Peer instruction",
-      "recto": "Expliquer à quelqu'un qui vient d'échouer sur la même question marche mieux que d'écouter quelqu'un qui n'a jamais échoué dessus. Celui qui explique apprend au moins autant que celui qui écoute.",
+      "recto": "Expliquer à quelqu'un qui vient d'échouer sur la même question marche mieux que d'écouter quelqu'un qui n'a jamais échoué dessus. Celui qui explique apprend au moins autant que celui qui écoute. geste classé gold, c'est du win\u00B3",
       "emotions": ["ça engage", "ça me gêne", "j'adore ça"],
       "chiffre": "",
       "ampleur": "Les études de référence mesurent des gains conceptuels, pas une ampleur d'effet comparable aux autres cartes. Le chiffre le plus proche est celui de l'apprentissage actif, dont la peer instruction est une forme.",
       "source": "Mazur (1997) ; Crouch & Mazur (2001)",
-      "ia-ampute": "Elle est toujours disponible, jamais vexée, jamais en retard : elle remplace insensiblement le camarade, qui lui coûtait un effort social.",
-      "ia-inversion": "Le renversement pédagogique : c'est vous qui expliquez, et vous lui demandez de jouer l'élève de mauvaise foi, qui pose les questions naïves et pointe les incohérences.",
+      "ia-ampute": "Elle est toujours disponible, jamais vexée, jamais en retard : elle remplace insensiblement le camarade, qui lui coûtait un effort social. Un apprend en sillo.",
+      "ia-inversion": "On s'entraide dans la promo? A minima, le renversement pédagogique avec l'IA : c'est vous qui expliquez, et vous lui demandez de jouer l'élève de mauvaise foi, qui pose les questions naïves et pointe les incohérences.",
       "famille": "extraire",
       "etoiles": 4,
       "visuel": {
@@ -350,7 +350,7 @@
       "groupe": "outil",
       "nom": "S'expliquer à soi-même",
       "aussi": "Élaboration, auto-explication",
-      "recto": "À chaque étape, se demander pourquoi c'est ainsi et pas autrement, et répondre à voix haute. Le moment où l'explication se bloque est exactement le moment où vous aviez cru comprendre.",
+      "recto": "À chaque étape, se demander pourquoi c'est ainsi et pas autrement, et répondre à voix haute. Le moment où l'explication se bloque est exactement le moment où vous aviez cru comprendre. Cela génère aussi des associations d'idée qui consolide et créée le lien : l'intelligence",
       "emotions": ["ça coince, puis ça cède", "ça me fatigue", "je le fais déjà"],
       "chiffre": "g = 0,55",
       "ampleur": "S'expliquer à soi-même en apprenant, mesuré sur 64 études. L'effet tient quand la question est posée : s'expliquer spontanément est plus rare qu'on ne croit.",
@@ -376,7 +376,7 @@
       "ampleur": "Effet modéré, et conditionnel : sans connaissances préalables auxquelles rattacher, il n'y a rien à relier. Cette carte suppose un socle déjà constitué.",
       "source": "Chi et al. (1994) ; Bjork, Dunlosky & Kornell (2013)",
       "ia-ampute": "Les synthèses pré-digérées livrent une structure toute faite : on stocke le plan de quelqu'un d'autre au lieu de construire le sien.",
-      "ia-inversion": "Construire sa propre carte d'abord, puis lui demander d'attaquer les liens faibles.",
+      "ia-inversion": "Construire sa propre carte d'abord, la dessiner par exemple, puis lui demander d'attaquer les liens faibles.",
       "famille": "se-regarder",
       "etoiles": 3,
       "visuel": {
@@ -431,17 +431,17 @@
       "groupe": "outil",
       "nom": "Se jauger",
       "aussi": "Métacognition, jugements d'apprentissage",
-      "recto": "Avant de vérifier, prédire : combien je pense en savoir, et à quel point j'en suis sûr. Puis comparer à la réalité. C'est la seule carte qui répare les autres, parce qu'elle vous dit laquelle il vous manque.",
+      "recto": "Avant de vérifier, prédire : combien je pense en savoir, et à quel point j'en suis sûr. Puis comparer à la réalité. C'est la seule carte qui répare les autres, parce qu'elle vous dit laquelle il vous manque. De façon générale, c'est prendre du recul sur nos mécaniques propres : Gnothi Seauthon ",
       "emotions": ["ça désillusionne", "ça me rassure", "je me connais bien"],
       "chiffre": "",
       "ampleur": "Cadre plutôt que technique. Sa défaillance est la seule qui soit invisible à celui qui en souffre : quand la mesure est faussée, plus rien ne signale l'erreur.",
       "source": "Flavell (1979) ; Dunlosky & Metcalfe (2009) ; Dehaene, Collège de France 2010-2011",
       "ia-ampute": "La plus insidieuse des amputations : la fluidité des réponses démultiplie l'illusion de maîtrise. On confond ce que l'outil sait produire avec ce que l'on sait faire.",
-      "ia-inversion": "S'en servir comme instrument de mesure : prédire sa note, se faire tester, confronter l'écart. Elle mesure bien ce qu'elle ne doit pas remplacer.",
+      "ia-inversion": "S'en servir comme instrument de mesure : prédire sa note, se faire tester, confronter l'écart. Elle mesure bien ce qu'elle ne doit pas remplacer. Profiter de l'historique de vos échanges pour à terme mener des études sur vos habitudes, vos biais, etc...",
       "famille": "se-regarder",
       "etoiles": 0,
       "visuel": {
-        "consigne": "Sur le dernier cours : je pense savoir … /10. Vérifié : … /10.",
+        "consigne": "Sur le dernier cours : je pensais savoir … /10. Vérifié : … /10.",
         "lignes": 1
       }
     },
@@ -462,7 +462,7 @@
       "etoiles": 5,
       "visuel": {
         "schema": "cloche",
-        "consigne": "Vos révisions d'hier : où étaient-elles ?"
+        "consigne": "Vos révisions d'hier : quelles formes ont-elles prises? avec difficulté ?"
       }
     },
 
@@ -477,7 +477,7 @@
       "ampleur": "Cadre théorique plutôt que technique. La recherche distingue le coût d'accès à l'information, qui se délègue sans dommage, et le coût d'encodage dans un cerveau, qui ne se délègue pas.",
       "source": "Risko & Gilbert (2016), Trends in Cognitive Sciences",
       "ia-ampute": "Vérifier un raisonnement produit par une machine exige de savoir raisonner sur le domaine — c'est-à-dire exactement la compétence que l'on aurait déléguée.",
-      "ia-inversion": "Déléguer la génération, garder la discrimination. Elle produit les options, vous jugez lesquelles tiennent.",
+      "ia-inversion": "Déléguer la génération de ce que vous savez parfaitement faire, garder la discrimination. Elle produit les options, vous jugez lesquelles tiennent. Et de temps en temps continuer à refaire ce que vous saviez faire sans IA",
       "famille": "se-regarder",
       "etoiles": 0,
       "visuel": {
