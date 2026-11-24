@@ -50,10 +50,11 @@ MARQUES = {
 # Dessinés au trait, sans aplat : ils doivent tenir sur un papier teinté.
 SCHEMAS = {
 
-    "lune": """<svg viewBox="0 0 120 70"><g class="t">
-      <path d="M62 8 a27 27 0 1 0 0 54 a21 21 0 1 1 0 -54 z"/>
-      <circle cx="92" cy="18" r="1.6" class="p"/><circle cx="101" cy="31" r="1.2" class="p"/>
-      <circle cx="86" cy="42" r="1.2" class="p"/>
+    "lune": """<svg viewBox="0 0 120 72"><g class="t">
+      <path class="pl" d="M64 8 A28 28 0 1 0 64 64 A34 34 0 0 1 64 8 Z"/>
+      <circle class="pl" cx="94" cy="20" r="2.2"/>
+      <circle class="pl" cx="103" cy="35" r="1.6"/>
+      <circle class="pl" cx="90" cy="48" r="1.6"/>
     </g></svg>""",
 
     "sablier": """<svg viewBox="0 0 120 76"><g class="t">
@@ -126,17 +127,21 @@ SCHEMAS = {
 }
 
 
+RANGS = {}
+
+
 def propre(texte):
     """Échappe le HTML et retire le balisage [[mot|id]] des termes cliquables."""
     texte = re.sub(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", r"\1", texte or "")
     return html.escape(texte)
 
 
-def zone_visuelle(v):
+def zone_visuelle(v, paire=""):
     """Compose l'activité du recto : un schéma, une échelle, des cases,
     des jalons, des colonnes, un cadre à dessiner ou des lignes à remplir."""
-    if not v:
+    if not v and not paire:
         return ""
+    v = v or {}
     bouts = []
     if v.get("palette"):
         bouts.append('<p class="palette">' + " · ".join(propre(m) for m in v["palette"]) + "</p>")
@@ -159,8 +164,6 @@ def zone_visuelle(v):
     if v.get("colonnes"):
         bouts.append('<div class="colonnes">' + "".join(
             f'<span class="col"><b>{propre(c)}</b><i></i><i></i></span>' for c in v["colonnes"]) + "</div>")
-    if v.get("va-avec"):
-        bouts.append(f'<p class="va-avec"><b>ne marche qu\'avec</b> {propre(v["va-avec"])}</p>')
     if v.get("cadre"):
         bouts.append('<div class="cadre"></div>')
     if v.get("lignes"):
@@ -170,6 +173,8 @@ def zone_visuelle(v):
             a = f'<b>{propre(amorces[i])}</b>' if i < len(amorces) else ""
             lignes += f'<span class="ligne">{a}</span>'
         bouts.append(f'<div class="lignes">{lignes}</div>')
+    if paire:
+        bouts.append(paire)
     return f'<div class="visuel">{"".join(bouts)}</div>'
 
 
@@ -184,13 +189,17 @@ def carte(f, numero, total):
             '<p class="emotions">' + " · ".join(propre(e) for e in emotions) + "</p>"
             '<p class="mention">rayez les mentions inutiles</p>')
 
+    va_avec = (f.get("visuel") or {}).get("va-avec") or f.get("va-avec") or ""
+    paire = (f'<p class="va-avec"><b>ne marche qu\'avec</b> {propre(va_avec)}</p>'
+             if va_avec else "")
+
     recto = f"""
 <article class="carte recto">
   <header><span class="groupe">{nom_groupe}</span><span class="rang">{rang}</span></header>
   <div class="corps">
     <h1>{propre(f['nom'])}</h1>
     <p class="geste">{propre(f['recto'])}</p>
-    {zone_visuelle(f.get('visuel'))}
+    {zone_visuelle(f.get('visuel'), paire)}
   </div>
   <footer>
     <div class="ressenti">{bloc_emotions}</div>
@@ -206,6 +215,21 @@ def carte(f, numero, total):
             f'<svg viewBox="0 0 32 32" aria-hidden="true">{MARQUES[fam]}</svg>'
             '<span class="nommer"><i></i><b>ma famille</b></span></div>')
 
+    renvoi = f.get("renvoi-ia") or ""
+    if renvoi and renvoi in RANGS:
+        n, titre = RANGS[renvoi]
+        bloc_ia = ('<section class="renvoi"><h2>Le versant IA de ce geste</h2>'
+                   f'<p>est traité sur la carte {n:02d} · {propre(titre)}</p></section>')
+    else:
+        bloc_ia = f"""<section class="ia">
+      <h2>Ce que l'IA ampute</h2>
+      <p>{propre(f.get('ia-ampute', ''))}</p>
+    </section>
+    <section class="ia retour">
+      <h2>Comment le retourner</h2>
+      <p>{propre(f.get('ia-inversion', ''))}</p>
+    </section>"""
+
     chiffre = f.get("chiffre") or ""
     bloc_chiffre = (
         f'<p class="chiffre">{propre(chiffre)}</p>' if chiffre
@@ -219,14 +243,7 @@ def carte(f, numero, total):
     <p class="aussi">{propre(f.get('aussi') or '—')}</p>
     {bloc_chiffre}
     <p class="ampleur">{propre(f.get('ampleur', ''))}</p>
-    <section class="ia">
-      <h2>Ce que l'IA ampute</h2>
-      <p>{propre(f.get('ia-ampute', ''))}</p>
-    </section>
-    <section class="ia retour">
-      <h2>Comment le retourner</h2>
-      <p>{propre(f.get('ia-inversion', ''))}</p>
-    </section>
+    {bloc_ia}
   </div>
   <footer><span class="source">{propre(f.get('source', ''))}</span></footer>
 </article>"""
@@ -275,8 +292,9 @@ FEUILLE = """<!DOCTYPE html>
 
   /* La zone d'activité occupe tout ce qui reste sous le texte : les champs à
      remplir sont généreux, parce qu'on écrit dessus à la main. */
-  .visuel { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: flex-end; gap: 2.5mm; padding-top: 4mm; }
-  .visuel > * { flex: 0 0 auto; }
+  .visuel { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; gap: 2.5mm; padding: 5mm 0 4mm; }
+  .visuel > * { flex: 0 0 auto; min-height: 0; }
+  .visuel .schema { flex: 0 1 auto; overflow: hidden; }
   .visuel .consigne { margin-bottom: 0; }
   .visuel .consigne {
     font-family: 'IBM Plex Mono', monospace; font-size: 6.4pt; line-height: 1.4;
@@ -286,11 +304,12 @@ FEUILLE = """<!DOCTYPE html>
     font-size: 6.6pt; line-height: 1.5; color: var(--gris); margin: 0 0 1.6mm;
   }
   .visuel .schema { margin: 0 0 2mm; }
-  .visuel .schema svg { display: block; width: 100%%; height: auto; max-height: 42mm; }
+  .visuel .schema svg { display: block; width: 100%%; height: auto; max-height: 36mm; }
   .visuel .schema .t { fill: none; stroke: var(--encre); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
   .visuel .schema .e { stroke-width: .9; }
   .visuel .schema .f { stroke-dasharray: 3 2.4; }
   .visuel .schema .h { fill: var(--encre); opacity: .18; }
+  .visuel .schema .pl { fill: var(--encre); stroke: none; }
   .visuel .schema .l {
     font-family: 'IBM Plex Mono', monospace; font-size: 7px; fill: var(--encre);
     stroke: none; letter-spacing: .04em;
@@ -384,6 +403,14 @@ FEUILLE = """<!DOCTYPE html>
     letter-spacing: .12em; text-transform: uppercase; color: var(--gris); margin: 0 0 .8mm;
   }
   .verso .ia p { font-size: 7.8pt; line-height: 1.5; margin: 0; }
+  .verso .renvoi {
+    border: .3mm solid var(--encre); border-radius: 1mm; padding: 2.4mm 3mm; margin-bottom: 4mm;
+  }
+  .verso .renvoi h2 {
+    font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 5.8pt;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--gris); margin: 0 0 .8mm;
+  }
+  .verso .renvoi p { font-size: 8.2pt; line-height: 1.4; margin: 0; }
   .verso .source { font-family: 'IBM Plex Mono', monospace; font-size: 5.6pt; line-height: 1.38; color: var(--gris); }
 
   /* ------------------------------- écran : planche de contact */
@@ -428,7 +455,8 @@ def main():
     if not fiches:
         raise SystemExit(f"aucune fiche pour le groupe « {args.groupe} »")
 
-    rangs = {f["id"]: i + 1 for i, f in enumerate(jeu["fiches"])}
+    RANGS.update({f["id"]: (i + 1, f["nom"]) for i, f in enumerate(jeu["fiches"])})
+    rangs = {i: n for i, (n, _t) in RANGS.items()}
     total = len(jeu["fiches"])
     corps = "\n".join(carte(f, rangs[f["id"]], total) for f in fiches)
     papier = "#FFFFFF" if args.blanc else APERCU.get(args.groupe, "#FFFFFF")
