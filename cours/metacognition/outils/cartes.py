@@ -112,37 +112,91 @@ SCHEMAS = {
       <text x="115" y="30" text-anchor="middle" class="l">ce qui s'apprend</text>
     </g></svg>""",
 
-    # Le village : des toits, et une bannière vide à remplir
-    # Un village d'irréductibles : huttes rondes au toit de chaume, palissade,
-    # menhir, et une bannière vide — c'est là que l'étudiant écrit son rôle.
-    "village": """<svg viewBox="0 0 250 152"><g class="t">
-
-      <path d="M6 142 q24 -6 48 -2 q40 6 76 0 q44 -7 84 1 q16 2 30 1" class="e"/>
-
-      <path d="M10 142 v-26 l5 -6 l5 6 v26"/><path d="M22 142 v-30 l5 -6 l5 6 v30"/>
-      <path d="M232 142 v-28 l5 -6 l5 6 v28"/>
-
-      <path d="M34 142 v-26 q0 -5 5 -5 h30 q5 0 5 5 v26"/>
-      <path d="M28 111 Q54 74 80 111 Z"/>
-      <path d="M49 103 l10 -12 M49 91 l10 12" class="e"/>
-      <path d="M46 142 v-16 q8 -7 16 0 v16" class="e"/>
-
-      <path d="M96 142 v-21 q0 -4 4 -4 h24 q4 0 4 4 v21"/>
-      <path d="M91 117 Q112 88 133 117 Z"/>
-      <path d="M107 110 l10 -10 M107 100 l10 10" class="e"/>
-      <circle cx="112" cy="130" r="4" class="e"/>
-
-      <path d="M160 142 v-29 q0 -5 6 -5 h34 q6 0 6 5 v29"/>
-      <path d="M153 108 Q183 66 213 108 Z"/>
-      <path d="M177 99 l12 -14 M177 85 l12 14" class="e"/>
-      <path d="M174 142 v-18 q9 -8 18 0 v18" class="e"/>
-
-      <path d="M222 142 v-30 q0 -14 7 -14 q7 0 7 14 v30" class="f"/>
-
-      <path d="M66 142 v-96" class="e"/><path d="M186 142 v-96" class="e"/>
-      <path d="M66 46 h120 v34 q-30 7 -60 0 q-30 -7 -60 0 z"/>
-      <path d="M60 44 h12 M180 44 h12" class="e"/>
-    </g></svg>""",
+    # Un village perché de Provence : maisons mitoyennes, toits décalés,
+    # clocher au point haut, deux cyprès — et une bannière vide au premier
+    # plan, où l'étudiant écrit le rôle qu'il se donne.
+    "village": """<svg viewBox="0 0 250 148">
+      <path class="t e" d="M14,125 C38,122 58,118 86,115 C120,111 150,109 180,112 C208,115 228,120 238,122"/>
+      <path class="m" d="M54,101 L54,60 L80,57 L80,101 Z"/>
+      <path class="m" d="M80,101 L80,52 L104,50 L104,101 Z"/>
+      <path class="m" d="M134,101 L134,50 L158,53 L158,101 Z"/>
+      <path class="m" d="M158,101 L158,58 L182,56 L182,101 Z"/>
+      <path class="m" d="M182,101 L182,64 L204,66 L204,101 Z"/>
+      <path class="a" d="M51,60.3 L80,57.0 L80,61.2 L51,64.5 Z"/>
+      <path class="a" d="M80,52.0 L104,50.0 L104,54.2 L80,56.2 Z"/>
+      <path class="a" d="M134,50.0 L158,53.0 L158,57.2 L134,54.2 Z"/>
+      <path class="a" d="M158,58.0 L182,56.0 L182,60.2 L158,62.2 Z"/>
+      <path class="a" d="M182,64.0 L207,66.3 L207,70.5 L182,68.2 Z"/>
+      <path class="m" d="M104,101 L104,26 L134,26 L134,101 Z"/>
+      <path class="a" d="M99,28.4 L119,15 L139,28.4 L139,32.6 L119,19.2 L99,32.6 Z"/>
+      <path class="t e" d="M112,56 L112,44 A7,7 0 0 1 126,44 L126,56 Z"/>
+      <path class="a" d="M117,46 h4 v7 h-4 Z"/>
+      <path class="m" d="M18,122 L18,86 L48,83 L48,122 Z"/>
+      <path class="m" d="M48,122 L48,74 L76,76 L76,122 Z"/>
+      <path class="m" d="M76,122 L76,80 L104,78 L104,122 Z"/>
+      <path class="m" d="M104,122 L104,70 L134,72 L134,122 Z"/>
+      <path class="m" d="M134,122 L134,82 L162,80 L162,122 Z"/>
+      <path class="m" d="M162,122 L162,76 L192,78 L192,122 Z"/>
+      <path class="m" d="M192,122 L192,86 L218,84 L218,122 Z"/>
+      <path class="m" d="M218,122 L218,92 L238,94 L238,122 Z"/>
+      <path class="a" d="M15,86.3 L48,83.0 L48,87.2 L15,90.5 Z"/>
+      <path class="a" d="M48,74.0 L76,76.0 L76,80.2 L48,78.2 Z"/>
+      <path class="a" d="M76,80.0 L104,78.0 L104,82.2 L76,84.2 Z"/>
+      <path class="a" d="M104,70.0 L134,72.0 L134,76.2 L104,74.2 Z"/>
+      <path class="a" d="M134,82.0 L162,80.0 L162,84.2 L134,86.2 Z"/>
+      <path class="a" d="M162,76.0 L192,78.0 L192,82.2 L162,80.2 Z"/>
+      <path class="a" d="M192,86.0 L218,84.0 L218,88.2 L192,90.2 Z"/>
+      <path class="a" d="M218,92.0 L241,94.3 L241,98.5 L218,96.2 Z"/>
+      <g class="a">
+      <rect x="60.7" y="86" width="4" height="5.4"/>
+      <rect x="69.3" y="86" width="4" height="5.4"/>
+      <rect x="86.0" y="86" width="4" height="5.4"/>
+      <rect x="94.0" y="86" width="4" height="5.4"/>
+      <rect x="86.0" y="71" width="4" height="5.4"/>
+      <rect x="94.0" y="71" width="4" height="5.4"/>
+      <rect x="140.0" y="86" width="4" height="5.4"/>
+      <rect x="148.0" y="86" width="4" height="5.4"/>
+      <rect x="140.0" y="71" width="4" height="5.4"/>
+      <rect x="148.0" y="71" width="4" height="5.4"/>
+      <rect x="164.0" y="86" width="4" height="5.4"/>
+      <rect x="172.0" y="86" width="4" height="5.4"/>
+      <rect x="164.0" y="71" width="4" height="5.4"/>
+      <rect x="172.0" y="71" width="4" height="5.4"/>
+      <rect x="187.3" y="86" width="4" height="5.4"/>
+      <rect x="194.7" y="86" width="4" height="5.4"/>
+      <rect x="23.5" y="100" width="4" height="5.4"/>
+      <rect x="31.0" y="100" width="4" height="5.4"/>
+      <rect x="38.5" y="100" width="4" height="5.4"/>
+      <rect x="53.0" y="100" width="4" height="5.4"/>
+      <rect x="60.0" y="100" width="4" height="5.4"/>
+      <rect x="67.0" y="100" width="4" height="5.4"/>
+      <rect x="81.0" y="100" width="4" height="5.4"/>
+      <rect x="88.0" y="100" width="4" height="5.4"/>
+      <rect x="95.0" y="100" width="4" height="5.4"/>
+      <rect x="109.5" y="100" width="4" height="5.4"/>
+      <rect x="117.0" y="100" width="4" height="5.4"/>
+      <rect x="124.5" y="100" width="4" height="5.4"/>
+      <rect x="109.5" y="85" width="4" height="5.4"/>
+      <rect x="117.0" y="85" width="4" height="5.4"/>
+      <rect x="124.5" y="85" width="4" height="5.4"/>
+      <rect x="139.0" y="100" width="4" height="5.4"/>
+      <rect x="146.0" y="100" width="4" height="5.4"/>
+      <rect x="153.0" y="100" width="4" height="5.4"/>
+      <rect x="167.5" y="100" width="4" height="5.4"/>
+      <rect x="175.0" y="100" width="4" height="5.4"/>
+      <rect x="182.5" y="100" width="4" height="5.4"/>
+      <rect x="198.7" y="100" width="4" height="5.4"/>
+      <rect x="207.3" y="100" width="4" height="5.4"/>
+      <rect x="117" y="66" width="4" height="5.4"/>
+      <rect x="117" y="81" width="4" height="5.4"/>
+      </g>
+      <g class="a">
+      <path d="M11,67 C14.5,86 15.5,107 13.6,125 L8.4,125 C6.5,107 7.5,86 11,67 Z"/>
+      <path d="M245,80 C248,95 249,112 247.4,126 L242.6,126 C241,112 242,95 245,80 Z"/>
+      </g>
+      <path class="a" d="M52,104 L198,104 L198,106.8 L52,106.8 Z"/>
+      <path class="m" d="M58,106.8 L192,106.8 L192,134 L125,145 L58,134 Z"/>
+      </svg>""",
 
     "cairns": """<svg viewBox="0 0 120 106"><g class="a">
   <rect x="4" y="98" width="112" height="1.6" rx=".8" opacity=".5"/>
@@ -154,11 +208,116 @@ SCHEMAS = {
   <ellipse cx="97" cy="92" rx="13" ry="6"/><ellipse cx="97" cy="81" rx="9.5" ry="5"/>
   <ellipse cx="96" cy="72" rx="6.5" ry="4"/>
 </g></svg>""",
-
-    "profils": """<svg viewBox="0 0 200 100"><g class="a">
-  <path d="M20,96C20,62 20,44 24,34C30,18 46,10 60,14C70,17 76,26 78,36L86,52C87,55 85,57 82,57L78,57C79,64 78,68 72,69L68,70C69,78 66,82 60,83L56,84L56,96Z"/>
-  <path d="M20,96C20,62 20,44 24,34C30,18 46,10 60,14C70,17 76,26 78,36L86,52C87,55 85,57 82,57L78,57C79,64 78,68 72,69L68,70C69,78 66,82 60,83L56,84L56,96Z" transform="translate(200,0) scale(-1,1)"/>
-</g></svg>""",
+    # Deux têtes empruntées au jeu de l'atelier Saumos (Image-Application),
+    # reprises en une seule encre : celle de gauche parle, celle de droite
+    # écoute. Le jeu alterne déjà bouche fermée et bouche ouverte.
+    "pair": """<svg viewBox="0 0 48 20" shape-rendering="crispEdges"><g class="a">
+      <rect x="6" y="2" width="1" height="1"/>
+      <rect x="8" y="2" width="1" height="1"/>
+      <rect x="10" y="2" width="2" height="1"/>
+      <rect x="13" y="2" width="1" height="1"/>
+      <rect x="5" y="3" width="10" height="1"/>
+      <rect x="4" y="4" width="3" height="1"/>
+      <rect x="7" y="4" width="1" height="1" opacity="0.55"/>
+      <rect x="8" y="4" width="8" height="1"/>
+      <rect x="4" y="5" width="1" height="1"/>
+      <rect x="5" y="5" width="10" height="1"/>
+      <rect x="15" y="5" width="1" height="1"/>
+      <rect x="4" y="6" width="1" height="1"/>
+      <rect x="5" y="6" width="1" height="1"/>
+      <rect x="14" y="6" width="1" height="1"/>
+      <rect x="15" y="6" width="1" height="1"/>
+      <rect x="4" y="7" width="1" height="1"/>
+      <rect x="15" y="7" width="1" height="1"/>
+      <rect x="4" y="8" width="1" height="1"/>
+      <rect x="15" y="8" width="1" height="1"/>
+      <rect x="4" y="9" width="1" height="1"/>
+      <rect x="6" y="9" width="2" height="1"/>
+      <rect x="12" y="9" width="2" height="1"/>
+      <rect x="15" y="9" width="1" height="1"/>
+      <rect x="4" y="10" width="1" height="1"/>
+      <rect x="15" y="10" width="1" height="1"/>
+      <rect x="4" y="11" width="1" height="1"/>
+      <rect x="9" y="11" width="2" height="1" opacity="0.14"/>
+      <rect x="15" y="11" width="1" height="1"/>
+      <rect x="4" y="12" width="1" height="1"/>
+      <rect x="15" y="12" width="1" height="1"/>
+      <rect x="5" y="13" width="1" height="1"/>
+      <rect x="14" y="13" width="1" height="1"/>
+      <rect x="6" y="14" width="1" height="1"/>
+      <rect x="13" y="14" width="1" height="1"/>
+      <rect x="7" y="15" width="1" height="1"/>
+      <rect x="8" y="15" width="4" height="1" opacity="0.14"/>
+      <rect x="12" y="15" width="1" height="1"/>
+      <rect x="5" y="16" width="3" height="1" opacity="0.22"/>
+      <rect x="8" y="16" width="4" height="1" opacity="0.14"/>
+      <rect x="12" y="16" width="3" height="1" opacity="0.22"/>
+      <rect x="3" y="17" width="14" height="1" opacity="0.22"/>
+      <rect x="2" y="18" width="16" height="1" opacity="0.22"/>
+      <rect x="2" y="19" width="16" height="1" opacity="0.22"/>
+      <rect x="8" y="12" width="4" height="1"/>
+      <rect x="9" y="13" width="2" height="1"/>
+      <rect x="21" y="1" width="6" height="1"/>
+      <rect x="20" y="2" width="1" height="3"/>
+      <rect x="27" y="2" width="1" height="3"/>
+      <rect x="21" y="5" width="6" height="1"/>
+      <rect x="22" y="6" width="2" height="1"/>
+      <rect x="22" y="7" width="1" height="1"/>
+      <rect x="21" y="3" width="1" height="1"/>
+      <rect x="23" y="3" width="1" height="1"/>
+      <rect x="25" y="3" width="1" height="1"/>
+      <rect x="33" y="0" width="10" height="1"/>
+      <rect x="31" y="1" width="7" height="1"/>
+      <rect x="38" y="1" width="1" height="1" opacity="0.55"/>
+      <rect x="39" y="1" width="6" height="1"/>
+      <rect x="30" y="2" width="16" height="1"/>
+      <rect x="30" y="3" width="3" height="1"/>
+      <rect x="33" y="3" width="1" height="1" opacity="0.55"/>
+      <rect x="34" y="3" width="12" height="1"/>
+      <rect x="30" y="4" width="12" height="1"/>
+      <rect x="42" y="4" width="1" height="1" opacity="0.55"/>
+      <rect x="43" y="4" width="3" height="1"/>
+      <rect x="30" y="5" width="16" height="1"/>
+      <rect x="30" y="6" width="2" height="1"/>
+      <rect x="32" y="6" width="1" height="1"/>
+      <rect x="43" y="6" width="1" height="1"/>
+      <rect x="44" y="6" width="2" height="1"/>
+      <rect x="30" y="7" width="2" height="1"/>
+      <rect x="32" y="7" width="1" height="1"/>
+      <rect x="43" y="7" width="1" height="1"/>
+      <rect x="44" y="7" width="2" height="1"/>
+      <rect x="30" y="8" width="2" height="1"/>
+      <rect x="32" y="8" width="1" height="1"/>
+      <rect x="43" y="8" width="1" height="1"/>
+      <rect x="44" y="8" width="2" height="1"/>
+      <rect x="30" y="9" width="2" height="1"/>
+      <rect x="32" y="9" width="1" height="1"/>
+      <rect x="34" y="9" width="2" height="1"/>
+      <rect x="40" y="9" width="2" height="1"/>
+      <rect x="43" y="9" width="1" height="1"/>
+      <rect x="44" y="9" width="2" height="1"/>
+      <rect x="32" y="10" width="1" height="1"/>
+      <rect x="43" y="10" width="1" height="1"/>
+      <rect x="32" y="11" width="1" height="1"/>
+      <rect x="37" y="11" width="2" height="1" opacity="0.14"/>
+      <rect x="43" y="11" width="1" height="1"/>
+      <rect x="32" y="12" width="1" height="1"/>
+      <rect x="43" y="12" width="1" height="1"/>
+      <rect x="33" y="13" width="1" height="1"/>
+      <rect x="42" y="13" width="1" height="1"/>
+      <rect x="34" y="14" width="1" height="1"/>
+      <rect x="41" y="14" width="1" height="1"/>
+      <rect x="35" y="15" width="1" height="1"/>
+      <rect x="36" y="15" width="4" height="1" opacity="0.14"/>
+      <rect x="40" y="15" width="1" height="1"/>
+      <rect x="33" y="16" width="3" height="1" opacity="0.22"/>
+      <rect x="36" y="16" width="4" height="1" opacity="0.14"/>
+      <rect x="40" y="16" width="3" height="1" opacity="0.22"/>
+      <rect x="31" y="17" width="14" height="1" opacity="0.22"/>
+      <rect x="30" y="18" width="16" height="1" opacity="0.22"/>
+      <rect x="30" y="19" width="16" height="1" opacity="0.22"/>
+      <rect x="37" y="12" width="2" height="1"/>
+      </g></svg>""",
 
     "spirale": """<svg viewBox="0 0 92 92"><g class="a"><path d="M46.0,39.8L46.8,39.6L47.7,39.4L48.7,39.4L49.6,39.6L50.6,39.8L51.6,40.2L52.5,40.8L53.4,41.5L54.2,42.4L54.9,43.4L55.5,44.5L55.9,45.7L56.2,47.0L56.3,48.4L56.2,49.8L55.9,51.3L55.4,52.7L54.7,54.0L53.8,55.3L52.7,56.5L51.5,57.6L50.0,58.5L48.4,59.2L46.7,59.8L44.9,60.1L43.1,60.1L41.2,60.0L39.3,59.5L37.4,58.8L35.6,57.9L34.0,56.6L32.4,55.2L31.1,53.5L29.9,51.7L29.0,49.6L28.4,47.4L28.0,45.1L27.9,42.8L28.2,40.4L28.8,38.0L29.6,35.7L30.9,33.5L32.4,31.4L34.2,29.5L36.2,27.8L38.5,26.4L41.0,25.3L43.7,24.5L46.5,24.1L49.3,24.0L52.2,24.3L55.1,24.9L57.9,26.0L60.5,27.4L63.0,29.2L65.3,31.3L67.3,33.8L69.0,36.5L70.4,39.4L71.3,42.6L71.9,45.8L72.0,49.2L71.7,52.6L71.0,56.0L69.8,59.2L68.1,62.4L66.1,65.3L63.6,68.0L60.8,70.3L57.7,72.3L54.3,74.0L50.7,75.1L47.0,75.8L43.1,76.0L39.2,75.7L35.3,74.9L31.6,73.6L28.0,71.8L24.6,69.5L21.5,66.8L18.7,63.6L16.4,60.1L14.5,56.3L13.1,52.3L12.3,48.0L12.0,43.7L12.2,39.2L13.1,34.9L14.5,30.6L16.4,26.5L18.9,22.6L21.9,19.1L25.4,16.0L29.3,13.3L33.5,11.1L38.0,9.4L42.7,8.4L47.6,7.9L52.5,8.1L57.4,9.0L62.2,10.4L66.8,12.5L71.1,15.2L75.1,18.5L78.7,22.3L78.0,22.7L74.5,19.1L70.6,15.9L66.3,13.3L61.8,11.3L57.1,9.9L52.3,9.2L47.5,9.0L42.8,9.5L38.3,10.6L33.9,12.2L29.8,14.4L26.1,17.0L22.8,20.1L20.0,23.5L17.6,27.3L15.8,31.2L14.5,35.4L13.8,39.6L13.6,43.8L13.9,47.9L14.8,51.9L16.2,55.8L18.0,59.4L20.3,62.6L22.9,65.6L25.9,68.1L29.1,70.2L32.5,71.8L36.1,73.0L39.7,73.7L43.3,73.9L46.9,73.6L50.4,72.9L53.7,71.7L56.8,70.2L59.6,68.3L62.1,66.1L64.3,63.6L66.1,60.9L67.5,58.0L68.5,55.0L69.1,51.9L69.3,48.9L69.1,45.9L68.5,42.9L67.6,40.2L66.3,37.6L64.7,35.3L62.9,33.2L60.9,31.4L58.6,29.9L56.3,28.7L53.8,27.9L51.3,27.4L48.8,27.2L46.4,27.4L44.0,27.9L41.8,28.7L39.8,29.7L37.9,31.0L36.3,32.4L34.9,34.1L33.7,35.8L32.8,37.7L32.2,39.6L31.9,41.5L31.8,43.5L32.0,45.3L32.4,47.1L33.0,48.8L33.8,50.3L34.8,51.6L35.9,52.8L37.2,53.8L38.5,54.6L39.9,55.2L41.3,55.5L42.7,55.7L44.0,55.7L45.3,55.5L46.5,55.1L47.6,54.6L48.6,54.0L49.4,53.2L50.1,52.4L50.6,51.5L51.0,50.6L51.3,49.7L51.4,48.8L51.3,48.0L51.2,47.2L50.9,46.5L50.5,45.9L50.1,45.4L49.6,44.9L49.1,44.7L48.6,44.5L48.0,44.4L47.5,44.4L47.1,44.6L46.7,44.8L46.4,45.1L46.2,45.4L46.0,45.8L46.0,46.2Z"/></g></svg>""",
 
@@ -206,6 +365,8 @@ SCHEMAS = {
 
 }
 
+SCHEMAS["profils"] = SCHEMAS["pair"]
+
 
 RANGS = {}
 
@@ -224,11 +385,15 @@ def zone_visuelle(v, paire=""):
     v = v or {}
     bouts = []
     if v.get("palette"):
-        # Un nuage de mots : trois tailles qui alternent, pour que l'œil se promène
-        # au lieu de lire une liste. Les rôles sont la matière de l'activité.
-        tailles = ["g", "m", "p", "m", "g", "p", "m", "g", "p", "m"]
+        # Un nuage de mots. Tous les mots ont la même taille et la même graisse :
+        # aucun n'est proposé avant un autre, c'est à l'étudiant de choisir. Seule
+        # la position varie — un peu haut, un peu bas, un peu de biais — pour que
+        # l'œil se promène au lieu de lire une liste.
+        decal = [0, -1.5, 1.1, -0.7, 1.6, -1.2, .5, -1.7, 1.3, -.4, .9, -1]
+        tourne = [-3, 2, -1.5, 3, -2.5, 1, -3.5, 2.5, -1, 1.5, -2, 3.5]
         mots = "".join(
-            f'<span class="{tailles[i % len(tailles)]}">{propre(m)}</span>'
+            f'<span style="transform:translateY({decal[i % len(decal)]}mm)'
+            f' rotate({tourne[i % len(tourne)]}deg)">{propre(m)}</span>'
             for i, m in enumerate(v["palette"]))
         bouts.append(f'<div class="nuage">{mots}</div>')
     if v.get("consigne"):
@@ -391,21 +556,25 @@ FEUILLE = """<!DOCTYPE html>
     letter-spacing: .04em; color: var(--encre); margin: 0 0 2mm;
   }
   .nuage {
-    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center;
-    gap: .6mm 3mm; font-family: Quicksand, sans-serif; font-weight: 600;
-    line-height: 1.18; text-align: center;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 1.4mm 3.4mm; font-family: Quicksand, sans-serif; font-weight: 600;
+    font-size: 10.5pt; line-height: 1.18; text-align: center; padding: 1.4mm 0;
   }
-  .nuage .g { font-size: 13pt; }
-  .nuage .m { font-size: 10.5pt; opacity: .88; }
-  .nuage .p { font-size: 8.5pt; opacity: .72; }
+  .nuage span { display: inline-block; }
   .schema { margin: 0 0 2mm; }
-  .schema svg { display: block; width: 100%%; height: auto; max-height: 36mm; }
+  .schema svg { display: block; width: 100%%; height: auto; max-height: 44mm; }
   .schema .t { fill: none; stroke: var(--encre); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
   .schema .e { stroke-width: .9; }
   .schema .f { stroke-dasharray: 3 2.4; }
   .schema .h { fill: var(--encre); opacity: .18; }
   .schema .pl { fill: var(--encre); stroke: none; }
   .schema .a { fill: var(--encre); stroke: none; }
+  /* un volume plein : le papier à l'intérieur, l'encre au pourtour. Ce qui est
+     derrière est masqué — un mur n'est jamais coupé par ce qu'il cache. */
+  .schema .m {
+    fill: var(--papier); stroke: var(--encre); stroke-width: 1.1;
+    stroke-linejoin: round;
+  }
   .schema .l {
     font-family: 'IBM Plex Mono', monospace; font-size: 7px; fill: var(--encre);
     stroke: none; letter-spacing: .04em;
