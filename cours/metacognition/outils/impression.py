@@ -30,6 +30,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--groupe", default="",
                     help="contexte, cap ou outil ; vide = le jeu entier")
+    ap.add_argument("--a4", action="store_true",
+                    help="quatre cartes par page A4, rectos puis versos, prêt "
+                         "pour un tirage recto-verso avec retournement sur le "
+                         "bord long")
     args = ap.parse_args()
 
     sortie = ICI / "impression"
@@ -46,6 +50,8 @@ def main():
                 "--blanc", "--sortie", str(html)]
     if args.groupe:
         commande += ["--groupe", args.groupe]
+    if args.a4:
+        commande += ["--a4"]
 
     # On lit la sortie de cartes.py au lieu de l'avaler : quand il échoue, c'est
     # lui qui sait pourquoi — un JSON mal formé, le plus souvent — et son message
@@ -59,7 +65,8 @@ def main():
                          + "\n\nCorrigez cela, puis relancez l'impression.\n")
     print((fait.stdout or "").rstrip())
 
-    pdf = imprimer(html, sortie / f"Cartes-{nom}.pdf", attente=1600)
+    fichier = f"Cartes-{nom}-A4-recto-verso.pdf" if args.a4 else f"Cartes-{nom}.pdf"
+    pdf = imprimer(html, sortie / fichier, attente=1800)
     html.unlink()
     print(f"{pdf.name} — {pdf.stat().st_size // 1024} Ko")
 
