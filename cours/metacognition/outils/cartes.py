@@ -25,6 +25,14 @@ import html
 import json
 import pathlib
 import re
+import sys
+
+# Sous Windows, la sortie d'un script appelé par un autre passe par un tuyau, et
+# Python l'encode alors dans la page de code locale, pas en UTF-8 : une flèche
+# « → » suffit à faire échouer le script entier. On force l'UTF-8 quand c'est
+# possible, sans rien casser ailleurs.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ICI = pathlib.Path(__file__).resolve().parent.parent
 

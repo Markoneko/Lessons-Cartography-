@@ -20,7 +20,8 @@ import pathlib
 import subprocess
 import sys
 
-from playwright.sync_api import sync_playwright
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from feuille import imprimer   # noqa: E402 — même routine d'impression
 
 ICI = pathlib.Path(__file__).resolve().parent.parent
 
@@ -45,16 +46,20 @@ def main():
                 "--blanc", "--sortie", str(html)]
     if args.groupe:
         commande += ["--groupe", args.groupe]
-    subprocess.run(commande, check=True, capture_output=True)
 
-    pdf = sortie / f"Cartes-{nom}.pdf"
-    with sync_playwright() as p:
-        nav = p.chromium.launch()
-        page = nav.new_page()
-        page.goto(html.as_uri())
-        page.wait_for_timeout(1600)      # le temps que les polices arrivent
-        page.pdf(path=str(pdf), prefer_css_page_size=True, print_background=True)
-        nav.close()
+    # On lit la sortie de cartes.py au lieu de l'avaler : quand il échoue, c'est
+    # lui qui sait pourquoi — un JSON mal formé, le plus souvent — et son message
+    # vaut mille fois mieux qu'un « returned non-zero exit status 1 ».
+    fait = subprocess.run(commande, capture_output=True, text=True,
+                          encoding="utf-8", errors="replace")
+    if fait.returncode != 0:
+        raise SystemExit("\nLa fabrication des cartes a échoué. Ce que cartes.py "
+                         "en dit :\n"
+                         + (fait.stderr or fait.stdout or "(aucun message)").rstrip()
+                         + "\n\nCorrigez cela, puis relancez l'impression.\n")
+    print((fait.stdout or "").rstrip())
+
+    pdf = imprimer(html, sortie / f"Cartes-{nom}.pdf", attente=1600)
     html.unlink()
     print(f"{pdf.name} — {pdf.stat().st_size // 1024} Ko")
 
