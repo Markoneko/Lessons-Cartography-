@@ -13,7 +13,7 @@ IMPRESSION EN COULEURS, SUR PAPIER BLANC.
 Le groupe n'est plus porté par la teinte du papier mais par celle de l'encre :
 bandeau de tête, filets, picto de famille et étoiles prennent sa couleur.
 
-    contexte → violet · cap → orange · outil → bleu
+    contexte → pourpre · cap → orange · outil → bleu
 
 Le reste — texte courant, dessins, lignes à remplir — garde le bleu nuit de la
 charte. Les petits textes utilisent une version assombrie de l'accent : l'orange
@@ -45,7 +45,7 @@ GRIS = "6E6F7A"
 # les filets, une plus sombre pour les petits textes, qui ne tiendraient pas la
 # lecture en orange vif à six points.
 GROUPES = {
-    "contexte": ("Contexte", "jaune", "#62538B", "#52447A"),   # violet
+    "contexte": ("Contexte", "jaune", "#9C5099", "#84407F"),   # pourpre
     "cap": ("Cap", "rose", "#E17E0A", "#B5660A"),              # orange
     "outil": ("Outil", "vert", "#2E3387", "#2E3387"),          # bleu
 }
@@ -568,7 +568,7 @@ FEUILLE = """<!DOCTYPE html>
   :root { --encre:#%(encre)s; --gris:#%(gris)s; --papier:%(papier)s; }
   /* l'accent vaut l'encre tant qu'aucun groupe n'est déclaré */
   .carte { --accent: var(--encre); --accent-texte: var(--encre); }
-  .carte[data-groupe="contexte"] { --accent: #62538B; --accent-texte: #52447A; }
+  .carte[data-groupe="contexte"] { --accent: #9C5099; --accent-texte: #84407F; }
   .carte[data-groupe="cap"] { --accent: #E17E0A; --accent-texte: #B5660A; }
   .carte[data-groupe="outil"] { --accent: #2E3387; --accent-texte: #2E3387; }
   * { box-sizing: border-box; }
