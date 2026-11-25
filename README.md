@@ -60,6 +60,54 @@ quarto preview cours/mon-cours/Mon-Cours.qmd
 
 Pendant l'aperçu, pas de PDF.
 
+## Les supports imprimés (cours « metacognition »)
+
+Ce cours ne se projette pas, il se manipule : un jeu de 23 cartes A6 et une
+feuille A4 recto-verso. Les deux se fabriquent depuis la racine du dépôt.
+
+**Changer le contenu des cartes.** Tout est dans un seul fichier de données,
+`cours/metacognition/donnees/fichesV7.json` : une fiche par carte, avec son nom,
+son texte de recto, ses émotions, son chiffre d'ampleur d'effet, ses deux blocs
+« IA » et sa zone d'activité. Le générateur prend **toujours la version numérotée
+la plus haute** : pour garder une version de côté, enregistrer sous `fichesV8.json`
+et c'est elle qui sera lue, sans rien changer d'autre.
+
+**Voir le résultat tout de suite**, sans PDF ni Playwright — c'est la boucle de
+travail, elle prend une seconde :
+
+```
+python3 cours/metacognition/outils/cartes.py --sortie cours/metacognition/apercu.html
+```
+
+Puis ouvrir `apercu.html` dans Chrome. Les options : `--groupe contexte|cap|outil`
+pour n'en voir qu'un, `--fiches <chemin>` pour forcer une version précise.
+
+**Produire le PDF d'impression** — 46 pages A6, une face par page, à tirer en
+recto-verso :
+
+```
+python3 cours/metacognition/outils/impression.py
+```
+
+Il écrit `cours/metacognition/impression/Cartes-jeu-complet.pdf`. Avec
+`--groupe cap`, il n'en sort qu'un groupe. Le tirage est prévu **en couleurs sur
+papier blanc** : chaque groupe porte sa couleur (contexte violet, cap orange,
+outil bleu) sur le bandeau de tête, les filets, le picto de famille et les étoiles.
+
+**La feuille A4** se fabrique de la même façon :
+
+```
+python3 cours/metacognition/outils/feuille.py --pdf
+```
+
+Son contenu n'est pas dans un JSON mais directement dans `outils/feuille.py` :
+les consignes en haut du fichier, le dessin de la carte marine dans
+`carte_marine()`. Les deux schémas de l'ampleur d'effet du support projeté
+viennent de `outils/schemas-ampleur.py`.
+
+Ces trois outils n'ont besoin que de Python, sauf la sortie PDF qui passe par
+Playwright — déjà installé si les PDF de cours fonctionnent.
+
 ## Le plan et le cours : un seul fichier
 
 Le plan n'est pas un document à part. Sous chaque titre de diapo, une **fiche** dit ce que la diapo doit faire et où elle en est. Elle n'apparaît ni dans le HTML ni dans le PDF.
