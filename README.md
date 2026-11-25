@@ -702,7 +702,7 @@ Deux classes de mise en page : `::: {.column .centre-v width="60%"}` centre une 
 
 ### Les briques du jeu de rôle
 
-Elles vivent dans `_briques/briques-jeu.html` et `_briques/briques-jeu.css`, avec une identité propre (JRPG 8 bits aux couleurs de Géodata, police pixel *Press Start 2P*, sous licence OFL). Exemple complet : `cours/image-application/IMAGE-AtelierSaumos.qmd`. Tout le contenu du jeu (préfet, experts, postures, enquêtes, indices, pistes, rapport, barème, sévérité, phrase) est dans un fichier JSON du cours, par défaut `donnees/saumos.json` ; les têtes en pixel art dans `donnees/pixels.json`, produit par `outils/pixels.py`. Une autre partie se joue en changeant de fichier : `donnees="…"`, `pixels="…"` sur la brique.
+Elles vivent dans `_briques/briques-jeu.html` et `_briques/briques-jeu.css`, avec une identité propre (JRPG 8 bits aux couleurs de Géodata, police pixel *Press Start 2P*, sous licence OFL). Exemple complet : la partie 4 de `cours/image-application/IMAGE-Application.qmd` (l'atelier Saumos). Tout le contenu du jeu (préfet, experts, postures, enquêtes, indices, pistes, rapport, barème, sévérité, phrase) est dans un fichier JSON du cours, par défaut `donnees/saumos.json` ; les têtes en pixel art dans `donnees/pixels.json`, produit par `outils/pixels.py`. Une autre partie se joue en changeant de fichier : `donnees="…"`, `pixels="…"` sur la brique.
 
 | Brique | Ce qu'elle fait |
 |---|---|
@@ -720,7 +720,7 @@ Elles vivent dans `_briques/briques-jeu.html` et `_briques/briques-jeu.css`, ave
 
 Les diapos de jeu prennent un identifiant, la classe `{.jdr-plein}` et `data-state="plein"` (le pied de page disparaît) : `{#enquete-a .jdr-plein data-state="plein"}`. En groupe, chacun n'a accès qu'à son enquête et à son labo ; en solo, aux trois. Le chrono (30 minutes d'enquête, 5 de rapport) part de « C'est parti ».
 
-**La navigation du jeu.** Les flèches du clavier restent actives. En plus, deux boutons, toujours en bas à droite (un peu au-dessus du bord), ◀ et ▶, prennent l'étiquette de la diapo : « Choisissez une posture » (grisé à l'équipe tant qu'aucune posture ni le mode solo n'est choisi), « Continuer ▶ » au cadrage, « C'est parti ▶ » aux experts (seul bouton de lancement), « ◀ experts » et « 🔑 Labo … ▶ » dans une enquête (grisé tant que la clef manque), « ◀ enquête X » dans un labo.
+**La navigation du jeu.** Les flèches du clavier restent actives. Dans un cours dont le jeu n'est qu'une partie, l'intercalaire de cette partie prend la classe `.jdr-titre` (son titre passe en 8 bits) ; les boutons ◀ ▶ n'apparaissent alors que sur les diapos du jeu (`.jdr-titre`, `.jdr`, `.jdr-plein`). En plus, deux boutons, toujours en bas à droite (un peu au-dessus du bord), ◀ et ▶, prennent l'étiquette de la diapo : « Choisissez une posture » (grisé à l'équipe tant qu'aucune posture ni le mode solo n'est choisi), « Continuer ▶ » au cadrage, « C'est parti ▶ » aux experts (seul bouton de lancement), « ◀ experts » et « 🔑 Labo … ▶ » dans une enquête (grisé tant que la clef manque), « ◀ enquête X » dans un labo.
 
 **Les termes techniques.** Dans n'importe quel texte du JSON, `[[mot affiché|terme]]` colore le mot ; `terme` renvoie à la rubrique `termes` (`mot`, `qui`, `texte`). Dans un dialogue, un clic ouvre un aparté de l'expert (« X · aparté : mot », puis « ↩ Reprendre la discussion ») ; ailleurs, une petite fenêtre. Le terme entre dans le lexique du carnet et s'y coche ✓. `[[mot]]` seul vaut `[[mot|mot]]`.
 

@@ -8,11 +8,11 @@
  *        Exécuter en tant que : moi.  Qui a accès : tout le monde.
  *      Autoriser l'accès quand Google le demande.
  *   4. Copier l'adresse du déploiement (elle finit par /exec) et la coller dans le cours,
- *      diapo 4.3 :  ::: {.atelier-commandes donnees="donnees/atelier.json" envoi="https://script.google.com/…/exec"}
+ *      (ancien atelier des commandes, mis de côté) :  ::: {.atelier-commandes donnees="donnees/atelier.json" envoi="https://script.google.com/…/exec"}
  *   5. Recompiler le cours. Tester avec un groupe fictif : une ligne doit apparaître dans la feuille.
  *
  * Atelier Saumos (jeu de rôle) : la même adresse reçoit aussi le rapport des groupes et leur avis sur le jeu.
- * Coller l'adresse dans IMAGE-AtelierSaumos.qmd :  ::: {.jdr-rapport envoi="…/exec"}  et  ::: {.jdr-retour envoi="…/exec"}
+ * Coller l'adresse dans IMAGE-Application.qmd, partie 4 :  ::: {.jdr-rapport envoi="…/exec"}  et  ::: {.jdr-retour envoi="…/exec"}
  * Les envois sont rangés dans deux onglets créés au premier envoi : « Saumos — rapports » et « Saumos — avis ».
  *
  * Chaque envoi ajoute une ligne. Un groupe qui renvoie son travail ajoute une nouvelle ligne :

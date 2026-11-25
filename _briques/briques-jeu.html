@@ -250,6 +250,12 @@
     if (EN_PDF || !window.Reveal || !racine) return;
     // dans le cadre des diapos : les boutons suivent l'échelle de la diapo, toujours en bas à droite
     var nav = el("div", "jdr-nav", racine.querySelector(".slides") || racine);
+    // une diapo du jeu : titre de partie du jeu, diapo .jdr ou .jdr-plein, ou toute diapo d'un support qui n'est qu'un jeu
+    var seulJeu = !document.querySelector("section.jdr-titre");
+    function enJeu(sec) {
+      if (seulJeu) return true;
+      return sec.matches(".jdr-titre, .jdr, .jdr-plein") || !!sec.querySelector(".jdr-zone");
+    }
     var g = bouton("◀", "jdr-nav-btn", nav), d = bouton("▶", "jdr-nav-btn droite", nav);
     ["pointerdown", "click", "touchstart"].forEach(function (n) { nav.addEventListener(n, function (e) { e.stopPropagation(); }); });
     var actions = { g: null, d: null };
@@ -257,6 +263,9 @@
     d.addEventListener("click", function () { if (actions.d) actions.d(); });
     function maj() {
       var sec = Reveal.getCurrentSlide(); if (!sec) return;
+      var jeu = enJeu(sec);
+      racine.classList.toggle("jdr-ici", jeu); nav.hidden = !jeu;
+      if (!jeu) return;
       var id = sec.id || "", s = S(), h = Reveal.getIndices().h, n = Reveal.getTotalSlides(), m;
       var G = { t: "◀", f: function () { Reveal.prev(); }, vis: h > 0 };
       var R = { t: "▶", f: function () { Reveal.next(); }, vis: h < n - 1 };
@@ -283,7 +292,8 @@
 
   // --- Le titre qui passe en 8 bits -------------------------------------------------------------
   (function () {
-    var h = document.querySelector("#title-slide h1.title");
+    // le titre de la partie du jeu (intercalaire .jdr-titre), sinon celui du support s'il est tout entier un jeu
+    var h = document.querySelector("section.jdr-titre h2") || (document.querySelector("section.jdr-titre") ? null : document.querySelector("#title-slide h1.title"));
     if (!h || EN_PDF) return;
     var lettres = [];
     var texte = h.textContent; h.textContent = ""; h.classList.add("jdr-glitch");

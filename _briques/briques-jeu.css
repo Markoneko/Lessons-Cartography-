@@ -9,9 +9,9 @@
 .reveal { --pixel: "Press Start 2P", "Courier New", monospace; --ombre-dure: 4px 4px 0 var(--bleu-nuit); --ecran: #10183F; }
 
 /* --- Le titre qui passe en 8 bits -------------------------------------------- */
-.reveal #title-slide h1.jdr-glitch .jdr-mot { display: inline-block; white-space: nowrap; }
-.reveal #title-slide h1.jdr-glitch .jdr-mot span { display: inline-block; }
-.reveal #title-slide h1.jdr-glitch .jdr-mot span.px { font-family: var(--pixel); font-size: 0.66em; font-weight: 400; color: var(--orange-clair); vertical-align: 0.08em; }
+.reveal .jdr-glitch .jdr-mot { display: inline-block; white-space: nowrap; }
+.reveal .jdr-glitch .jdr-mot span { display: inline-block; }
+.reveal .jdr-glitch .jdr-mot span.px { font-family: var(--pixel); font-size: 0.66em; font-weight: 400; color: var(--orange-clair); vertical-align: 0.08em; }
 
 /* --- Diapos du jeu ---------------------------------------------------------- */
 .reveal .slides section.jdr-plein { padding: 14px 30px 14px 30px; }
@@ -366,7 +366,7 @@
 .reveal .jdr-popup .jdr-note-labo { color: #C9CDE6; margin: 0; }
 
 /* --- La navigation : deux boutons, toujours en bas à droite ---------------------------------- */
-.reveal.jdr-jeu .slide-number { display: none !important; }
+.reveal.jdr-ici .slide-number { display: none !important; }
 .reveal .slides > .jdr-nav { position: absolute; right: 26px; bottom: 34px; display: flex; gap: 10px; z-index: 40; pointer-events: auto; }
 .reveal .jdr-nav-btn {
   font: 400 12px/1 var(--pixel); padding: 10px 14px; background: var(--ecran); color: var(--blanc);
@@ -408,3 +408,4 @@
 .reveal .jdr-btn.jdr-onglet.sel:hover:not(:disabled) { background: var(--blanc); color: var(--bleu-nuit); }
 .reveal .jdr-lieu.gauche { flex-direction: row-reverse; transform: translate(calc(-100% + 5px), -50%); }
 .reveal .jdr-posture.clignote { animation: jdr-clignote 0.6s steps(2) 4; }
+.reveal section.intercalaire .jdr-glitch .jdr-mot span.px { color: var(--bleu-nuit); }
