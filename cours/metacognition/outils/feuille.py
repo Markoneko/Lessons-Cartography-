@@ -57,7 +57,7 @@ def tableau(titre, numero, consigne, jauge, lignes):
       <thead><tr>
         <th class="point">dans vos mots</th>
         <th class="note">{jauge}</th>
-        <th class="carte">la carte qui lui répond</th>
+        <th class="carte">CORRESPONDANCE</th>
       </tr></thead>
       <tbody>{rangs}</tbody>
     </table>
@@ -69,9 +69,7 @@ def recto():
 <article class="page recto">
   <header><span>Géodata Paris · Ing1</span><span>Apprendre à apprendre</span></header>
   <h1>Ce qui fonctionne, ce qui bloque</h1>
-  <p class="chapeau">Avant d'ouvrir le jeu de cartes. Écrivez d'abord, vous
-    chercherez les correspondances ensuite : la troisième colonne ne se remplit
-    qu'une fois les cartes en main.</p>
+  <p class="chapeau">En échangeant avec votre binôme ou trinôme, identifier et noter les stratégies d’apprentissage que vous utilisez. Puis vous ferez de mêmes avec les blocages.</p>
   {tableau("Ce qui fonctionne déjà", "1", ACTIVITE_1, "ce que ça vaut", 7)}
   {tableau("Ce qui bloque", "2", ACTIVITE_2, "ce que ça me coûte", 6)}
   <footer>Gardez cette feuille : son verso part dans l'enveloppe à la fin de la séance.</footer>

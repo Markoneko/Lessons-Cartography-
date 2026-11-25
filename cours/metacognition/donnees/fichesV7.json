@@ -61,7 +61,7 @@
     {
       "id": "conditions",
       "groupe": "contexte",
-      "nom": "Tenir le matériel",
+      "nom": "Attention et environnement de vie",
       "aussi": "Conditions matérielles, nutrition, calme et bonnes dispositions",
       "recto": "Un cerveau est un organe : il mange, il boit, il a besoin de stabilité. Le logement, l'argent, les repas ne sont pas le décor de vos études, ils en sont une pièce. Dans la mesure du possible il est important de réussir à se mettre dans de bonnes dispositions d'attention. Car l'attention est la clef.",
       "emotions": [
@@ -82,7 +82,9 @@
           "dormir",
           "manger",
           "se loger",
-          "l'argent"
+          "l'argent",
+          "une autre propre?",
+          "encore une autre?"
         ]
       }
     },
