@@ -820,6 +820,37 @@ def impose_a4(corps):
     return "\n".join(pages)
 
 
+def lire_fiches(source):
+    """Charge le fichier de fiches, et explique l'erreur plutôt que de la jeter.
+
+    Un JSON à la main se casse toujours de la même façon : une virgule oubliée
+    entre deux entrées, une virgule en trop avant une accolade fermante, ou un
+    guillemet droit tapé au milieu d'un texte. Le message de Python donne une
+    ligne et une colonne, mais pas la ligne elle-même ; on la montre.
+    """
+    texte = source.read_text(encoding="utf-8")
+    try:
+        return json.loads(texte)
+    except json.JSONDecodeError as e:
+        lignes = texte.splitlines()
+        debut = max(0, e.lineno - 3)
+        vu = []
+        for n in range(debut, min(len(lignes), e.lineno + 2)):
+            marque = "→" if n + 1 == e.lineno else " "
+            vu.append(f"  {marque} {n + 1:>4} | {lignes[n]}")
+            if n + 1 == e.lineno:
+                vu.append("       " + " " * (len(str(e.lineno)) + e.colno) + "^")
+        raise SystemExit(
+            f"\n{source.name} n'est pas un JSON valide.\n"
+            f"  ligne {e.lineno}, colonne {e.colno} : {e.msg}\n\n"
+            + "\n".join(vu)
+            + "\n\n  Trois causes, par ordre de fréquence :\n"
+              "  · une virgule manque à la fin de la ligne précédente ;\n"
+              "  · une virgule est restée avant un } ou un ] ;\n"
+              "  · un guillemet droit \" a été tapé dans un texte — il faut\n"
+              "    l'écrire \\\" ou utiliser des guillemets français « ».\n")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--fiches", default="",
@@ -833,7 +864,7 @@ def main():
     args = ap.parse_args()
 
     source = args.fiches and pathlib.Path(args.fiches) or derniere_version()
-    jeu = json.loads(source.read_text(encoding="utf-8"))
+    jeu = lire_fiches(source)
     fiches = [f for f in jeu["fiches"] if not args.groupe or f["groupe"] == args.groupe]
     if not fiches:
         raise SystemExit(f"aucune fiche pour le groupe « {args.groupe} »")
