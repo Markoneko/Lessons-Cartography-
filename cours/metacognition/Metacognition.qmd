@@ -1,0 +1,393 @@
+---
+title: "Apprendre à apprendre"
+subtitle: "Métacognition et cognition augmentée"
+author: "Marc Poupée · Géodata Paris"
+date: "2026-12-01"
+date-format: "D MMMM YYYY"
+footer: "Apprendre à apprendre"
+---
+
+::: {.fiche n="0.1" etat="a-realiser"}
+Intention : Couverture. Image à choisir : une piste est le fronton de Delphes (γνῶθι σεαυτόν), une autre une carte marine avec un point estimé. Décision à prendre avec Marc.
+Expérience : aucune
+Demande :
+:::
+
+## Comment lire ce support
+
+::: {.fiche n="0.2" etat="a-realiser"}
+Intention : Dire ce que ce support est devenu. Le cours n'est plus dans les diapos : il est dans le jeu de cartes et sur la feuille. Les diapos ne servent plus qu'à rythmer les activités, à montrer les deux schémas qui ne tiennent pas sur une carte, et à garder le lexique. Déclaration de transparence IA.
+Expérience : aucune
+Demande :
+:::
+
+Ce cours tient dans vos mains, pas à l'écran. Vous avez une **feuille** et un **jeu de cartes** : c'est là que tout s'écrit.
+
+- L'écran ne sert qu'à trois choses : donner le départ de chaque activité, montrer deux schémas qui ne tiennent pas sur une carte, et garder le lexique.
+- Le **pictogramme** devant chaque titre donne le niveau : **socle**, à maîtriser ; **appui**, pour consolider ; **veille**, pour aller plus loin.
+- Les **mots colorés** s'ouvrent d'un clic. Chacun de ceux que vous ouvrez vient se ranger dans le lexique, à l'avant-dernière diapo.
+
+::: {.transparence-ia profil="✒️ L'Auteur outillé" coordonnees="F2 · R0 · S0" outil="Claude 5"}
+:::
+
+## Carte du cours
+
+::: {.fiche n="0.3" etat="a-realiser"}
+Intention : Les quatre parties et la légende S / A / V.
+Expérience : liens vers chaque diapo
+Demande :
+:::
+
+::: {.carte-du-cours}
+:::
+
+<!-- PARTIE 1 · 20 min -->
+
+## Ce que vous faites déjà {.intercalaire}
+
+::: {.fiche n="1.0" etat="a-realiser"}
+Intention : Ouvrir sur eux, pas sur nous. Rien n'est enseigné dans cette partie : on récolte, on gèle, on y reviendra quand les cartes seront distribuées.
+Expérience : aucune
+Demande :
+:::
+
+Vingt minutes sans aucun apport de notre part.
+
+## Qui a vu la vidéo ?
+
+::: {.fiche n="1.1" etat="a-realiser"}
+Intention : Repérer qui a vu la vidéo de David Louapre conseillée à la rentrée, et constituer des binômes mixtes. Présenté comme de la logistique, sans jugement. Ne pas résumer la vidéo : ce sont les étudiants qui le feront en 1.5.
+Expérience : main levée, puis constitution des binômes
+Demande :
+:::
+
+Main levée, sans commentaire : **qui a regardé la vidéo conseillée à la rentrée ?**
+
+Formez des binômes avec quelqu'un qui n'a pas répondu comme vous. Gardez-le : vous travaillerez ensemble deux fois dans l'heure.
+
+::: {.notes}
+Logistique seulement, aucun jugement. On ne résume pas la vidéo : ceux qui l'ont vue le feront eux-mêmes en 1.5, et ils apprendront en la restituant.
+:::
+
+## Vos outils, maintenant {.socle competences="C1"}
+
+::: {.fiche n="1.2" etat="a-realiser"}
+Intention : Chacun note, seul et en silence, les outils d'apprentissage qu'il utilise aujourd'hui, avec les étoiles de Marc. Cela se passe sur le recto de la feuille, colonne de gauche : la donnée est gelée sur papier et reviendra quand les cartes seront en main. Consigne reprise mot pour mot.
+Expérience : écriture sur la feuille, première partie du recto
+Demande :
+:::
+
+Seul, en silence, trois minutes, **sur le recto de votre feuille**. **Identifier les outils que vous utilisez à l'heure actuelle.**
+
+Notez-les avec des étoiles : **5 étoiles du top 1 étoile, pas mal mais un peu gadget 3 c'est du solide.**
+
+::: {.notes}
+Pas de mise en commun ici : ce qui est dit à voix haute devient une position à défendre, et on aura plus de mal à en changer tout à l'heure. La troisième colonne reste vide : elle ne se remplira qu'avec les cartes.
+:::
+
+## Ce qui coince {.socle competences="C1"}
+
+::: {.fiche n="1.3" etat="a-realiser"}
+Intention : Chacun note ce qui ne fonctionne pas, ce qui l'insécurise. Exemples repris mot pour mot de Marc. Sert de cible au livrable noté.
+Expérience : écriture sur la feuille, seconde partie du recto
+Demande :
+:::
+
+Toujours seul, **sous le premier tableau**. **Identifier ce qui ne fonctionne pas, ou ce qui vous pose des questions, vous insécurise.**
+
+Par exemple : *je n'ose pas poser des questions en cours. J'ai l'impression de manquer de certains concepts clefs, je dors mal.*
+
+## Trois lettres {.socle competences="C2"}
+
+::: {.fiche n="1.4" etat="a-realiser"}
+Intention : La démonstration d'ouverture : la salle se trompe sur elle-même avant tout apport théorique. Variante Brown-Peterson. Marc l'a testée sur ses collègues sans qu'elle rate personne : elle demande plusieurs essais d'affilée pour que l'interférence s'accumule. Voir le compte rendu.
+Expérience : prédiction, puis test, puis comparaison (question / réponse)
+Demande :
+:::
+
+Retenez ces trois lettres : **Q · V · L**
+
+::: {.question etiquette="Prédiction"}
+Vous allez compter à voix basse de 3 en 3 à rebours à partir de 487, pendant vingt secondes. Avant de commencer : combien de ces trois lettres pensez-vous pouvoir redonner ensuite ?
+:::
+
+::: {.reponse}
+La plupart des salles prédisent trois sur trois. La plupart des salles en retrouvent une ou deux.
+
+Rien n'a effacé ces lettres : elles ont simplement été **poussées dehors** par le calcul. Votre [[mémoire de travail|memoire-travail]] tient environ quatre éléments, et le comptage en a pris toute la place.
+
+Retenez surtout l'écart entre ce que vous aviez prédit et ce qui s'est passé : c'est le sujet de ces deux heures.
+:::
+
+::: {.notes}
+Un seul essai ne suffit pas : l'oubli vient de l'interférence proactive, qui s'accumule d'un essai à l'autre. Enchaîner quatre triplets de lettres différents, sans pause, en demandant la prédiction à chaque fois. C'est au troisième ou au quatrième que la salle décroche.
+:::
+
+## Ce qui vient de se passer {.socle competences="C1 C2"}
+
+::: {.fiche n="1.5" etat="a-realiser"}
+Intention : Débrief en binômes mixtes. Ceux qui ont vu la vidéo font de la récupération active sur son contenu, les autres reçoivent l'explication d'un pair. Mise en commun au tableau. Première mise en abîme, non signalée.
+Expérience : binômes puis mise en commun
+Demande :
+:::
+
+Avec votre binôme, cinq minutes : **mettez des mots sur ce qui vient de se passer**, les plus précis possible.
+
+Puis une question pour ceux qui ont vu la vidéo : **vos khôlles, vos DS, vos colles de reprise — c'était quoi, au fond, dans ce vocabulaire ?**
+
+::: {.notes}
+Laisser venir les mots, les noter au tableau, corriger à la marge. Ne pas exposer : ce qui est nommé ici l'est par eux. Trois ou quatre minutes de mise en commun suffisent.
+:::
+
+<!-- PARTIE 2 · 15 min -->
+
+## Un cerveau, des preuves {.intercalaire}
+
+::: {.fiche n="2.0" etat="a-realiser"}
+Intention : Poser le cadre scientifique qui rend les cartes crédibles : où ça se passe, et comment on mesure qu'un effet existe. C'est la seule partie exposée de la séance, et la seule qui justifie un écran.
+Expérience : aucune
+Demande :
+:::
+
+Ce qui suit n'est pas une opinion de pédagogue : ce sont des expériences, avec des résultats mesurables.
+
+## Où ça se passe {.appui competences="C3"}
+
+::: {.fiche n="2.1" etat="a-realiser"}
+Intention : Le schéma des quatre mémoires de Marc. Le transfert nocturne hippocampe → cortex n'apparaît qu'avec la réponse. Le schéma est dessiné, pas emprunté.
+Expérience : question avant la réponse, le schéma se complète
+Demande :
+:::
+
+::: {.schema fichier="images/schemas/memoires.svg" hauteur="268"}
+:::
+
+::: {.question}
+Vous révisez un cours le soir. Où est-il quand vous fermez le classeur, et où sera-t-il dans six mois ?
+:::
+
+::: {.reponse}
+Il passe de l'[[hippocampe|episodique]] au [[cortex|semantique]], et ce déménagement se fait en grande partie **la nuit**.
+:::
+
+## Qu'est-ce qu'un effet mesuré {.socle competences="C3"}
+
+::: {.fiche n="2.2" etat="a-realiser"}
+Intention : Expliquer l'ampleur d'effet simplement, et dire tout de suite ses limites. Fonde les chiffres imprimés au dos des cartes, et prévient la question « d'où sortent ces nombres ». Les deux diapos suivantes le montrent.
+Expérience : QCM
+Demande :
+:::
+
+L'[[ampleur d'effet|ampleur]] répond à une question simple : **de combien les deux groupes se séparent-ils**, une fois qu'on tient compte de la dispersion ? C'est elle qui permet de comparer deux expériences qui n'ont pas mesuré la même chose.
+
+::: {.qcm .serre}
+Une technique affiche une grosse ampleur d'effet. Qu'est-ce que cela vous dit ?
+
+- [ ] Qu'elle marchera pour vous.
+    - Non : une moyenne ne dit rien d'un individu. Elle dit que, sur un groupe, l'écart était net.
+- [x] Que, sur les groupes testés, l'écart avec le groupe témoin était net.
+    - Oui. Et c'est tout ce qu'elle dit.
+- [ ] Qu'elle est plus efficace qu'une technique d'un autre domaine à l'ampleur plus faible.
+    - Non : deux ampleurs ne se comparent utilement qu'à l'intérieur d'un même domaine, mesuré de la même façon.
+:::
+
+[Les chiffres au dos des cartes suivent cette règle. Certaines cartes n'en portent aucun : ce sont des conditions, pas des techniques, et leur donner un chiffre serait l'inventer.]{.a-retenir}
+
+## Ce que vaut un g {.socle competences="C3"}
+
+::: {.fiche n="2.3" etat="a-realiser"}
+Intention : Donner une intuition de l'échelle. Trois fois les mêmes deux courbes, écartées de 0,2, de 0,5 et de 0,8 écart-type, avec la seule traduction qui parle à un étudiant : le rang du médian. Schéma produit par outils/schemas-ampleur.py.
+Expérience : question avant la réponse
+Demande :
+:::
+
+Courbe grise : le groupe témoin. Courbe orange : le groupe qui a utilisé la technique.
+
+::: {.schema fichier="images/schemas/ampleur-echelle.svg" hauteur="214"}
+:::
+
+::: {.question}
+Sur la carte « Se tester », vous lirez *g = 0,50*. Si l'on refaisait passer l'examen aux deux groupes, où se situerait l'étudiant médian du groupe qui s'est testé ?
+:::
+
+::: {.reponse}
+Au-dessus de **69 %** du groupe témoin — pas au-dessus de tous : les courbes se chevauchent encore. Une ampleur déplace une population, elle ne promet rien à une personne.
+:::
+
+## Pourquoi on divise par l'écart-type {.socle competences="C3"}
+
+::: {.fiche n="2.4" etat="a-realiser"}
+Intention : Le point que les étudiants de prépa comprennent tout de suite et qui fonde tout le reste : un gain brut ne veut rien dire tant qu'on ne le rapporte pas à la dispersion. Même flèche, même gain, deux ampleurs. Schéma produit par outils/schemas-ampleur.py.
+Expérience : question avant la réponse
+Demande :
+:::
+
+Le même gain brut, dans deux promotions. La flèche a la même longueur des deux côtés.
+
+::: {.schema fichier="images/schemas/ampleur-dispersion.svg" hauteur="214"}
+:::
+
+::: {.question}
+Deux promotions gagnent exactement quatre points de moyenne avec la même technique. Pourquoi la première annonce-t-elle *g = 2,0* et la seconde *g = 0,55* ?
+:::
+
+::: {.reponse}
+Parce qu'un gain ne se juge pas en points, mais **en largeurs de la distribution**. Quatre points font deux écarts-types dans une promotion homogène, un demi dans une promotion dispersée. C'est pour cela qu'une ampleur se compare à une autre ampleur, jamais à un nombre de points.
+:::
+
+::: {.plus titre="Pourquoi g et pas d"}
+Le *d* de Cohen divise par l'écart-type estimé ; le *g* de Hedges applique une correction pour les petits échantillons, et c'est lui qu'on trouve dans les méta-analyses récentes. Sur des effectifs de classe, les deux diffèrent de quelques centièmes.
+:::
+
+<!-- PARTIE 3 · 45 min -->
+
+## Les cartes {.intercalaire}
+
+::: {.fiche n="3.0" etat="a-realiser"}
+Intention : Passer la main. À partir d'ici, l'écran ne sert plus qu'à donner les consignes : tout se passe sur la table.
+Expérience : aucune
+Demande :
+:::
+
+Vingt-trois gestes, trois couleurs de papier. Le reste de la séance se passe sur la table.
+
+## Le paquet {.socle competences="C3"}
+
+::: {.fiche n="3.1" etat="a-realiser"}
+Intention : Distribuer et cadrer la manipulation. Les trois couleurs disent les trois groupes. Les étoiles du recto sont vides : c'est l'étudiant qui les colorie, avant de retourner la carte et de lire le chiffre officiel. C'est la même mécanique de prédiction que les trois lettres, appliquée vingt-trois fois.
+Expérience : manipulation du jeu, par groupes de quatre
+Demande :
+:::
+
+Par groupes de quatre. Chaque carte a deux faces, et vous ne lisez le verso **qu'après** avoir rempli le recto.
+
+- **Coloriez les étoiles** du recto : ce que vous croyez que ce geste vaut, sur la même échelle que votre liste de tout à l'heure.
+- **Rayez les mentions inutiles** parmi les émotions, et gardez celle qui vous vient.
+- **Donnez un nom à la famille** : le pictogramme est là, le nom est à vous.
+- Puis retournez la carte et comparez avec le chiffre publié.
+
+::: {.notes}
+Insister sur l'ordre : colorier d'abord, lire ensuite. Une carte retournée trop tôt ne sert plus à rien. Les cartes sans chiffre portent « pas de chiffre reconnu » : ce sont des conditions, pas des techniques.
+:::
+
+## Ce que vous aviez déjà trouvé {.socle competences="C1 C3"}
+
+::: {.fiche n="3.2" etat="a-realiser"}
+Intention : L'activité pivot de Marc, maintenant sur papier : la troisième colonne du recto se remplit en mettant une carte en face de chaque ligne écrite au début. Ce qui ne trouve pas de carte est aussi intéressant que le reste.
+Expérience : appariement feuille ↔ cartes
+Demande :
+:::
+
+Reprenez le recto de votre feuille. Pour chaque ligne, **cherchez la carte qui lui répond** et écrivez son nom dans la troisième colonne.
+
+Trois cas, et les trois comptent : la carte confirme ce que vous faisiez, la carte vous apprend un geste que vous ne faisiez pas, ou **aucune carte ne répond** — notez-le, c'est une question pour la fin de séance.
+
+<!-- PARTIE 4 · 25 min -->
+
+## Votre plan {.intercalaire}
+
+::: {.fiche n="4.0" etat="a-realiser"}
+Intention : Le passage à l'acte. Tout se joue au verso de la feuille, qui part ensuite dans l'enveloppe.
+Expérience : aucune
+Demande :
+:::
+
+Retournez la feuille. La carte marine, c'est votre mois de décembre.
+
+## Votre livrable {.socle competences="C6"}
+
+::: {.fiche n="4.1" etat="a-realiser"}
+Intention : Le plan d'action noté. Contrainte essentielle : peu de changements, planifiés, pas tout d'un coup ; chaque engagement avec un quand et un où, ce qui double le passage à l'acte. Le verso de la feuille impose déjà la forme : sept îlots au plus, un geste par pavillon.
+Expérience : écriture sur le verso de la feuille
+Demande :
+:::
+
+Un mois pour tester, une stabilisation en janvier. Le livrable noté est **votre plan d'action, en expliquant le pourquoi et le comment de vos choix**.
+
+Au verso : l'**île du contexte** et ses trois lignes, la **rose des vents** du cap, et entre les deux les **îlots** de décembre — un geste par pavillon, sept au plus, et bien moins si vous êtes sérieux.
+
+::: {.notes}
+Insister sur le « quand » et le « où » : un engagement qui porte un moment et un lieu est bien plus souvent tenu qu'une bonne résolution générale. Trois îlots remplis valent mieux que sept.
+:::
+
+## La capsule au moi du futur {.socle competences="C6"}
+
+::: {.fiche n="4.2" etat="a-realiser"}
+Intention : L'activité finale, sur papier, hors écran. 60 enveloppes à préparer. Marc les rend à J+30.
+Expérience : écriture papier
+Demande :
+:::
+
+Écrivez à votre moi de janvier. Ce que vous avez décidé aujourd'hui, et ce que vous aimerez lire dans un mois.
+
+Glissez la feuille dans l'enveloppe. **Nous vous la rendrons dans un mois.** Les cartes, elles, restent avec vous.
+
+[Recevoir un bon conseil de son soi passé est peut-être le seul retour que l'on accepte sans se défendre : il n'y a personne d'autre à contredire que soi-même.]{.a-retenir}
+
+## Le lexique {.appui}
+
+::: {.fiche n="4.3" etat="a-realiser"}
+Intention : Le dictionnaire incrémental : les termes ouverts pendant la séance sont cochés. Diapo à montrer en fin de séance et à rouvrir plus tard, quand un mot entendu en cours ne dit plus rien.
+Expérience : lexique (brique « lexique »)
+Demande :
+:::
+
+::: {.lexique termes="donnees/lexique.json"}
+:::
+
+## Emporter ce support {.appui}
+
+::: {.fiche n="4.4" etat="a-realiser"}
+Intention : Comment produire le PDF depuis le navigateur. Diapo réutilisable dans tous les cours du dépôt : à verser dans le gabarit plutôt que dans ce seul cours.
+Expérience : aucune
+Demande :
+:::
+
+Ajoutez **`?print-pdf`** à la fin de l'adresse de cette page, puis imprimez.
+
+| Navigateur | Ce qu'il faut faire |
+|---|---|
+| Chrome, Edge | Imprimer → Destination **Enregistrer au format PDF** · Marges **Aucune** · cocher **Graphiques d'arrière-plan** |
+| Firefox | Imprimer → **Enregistrer au format PDF** · Marges **Aucune** · cocher **Imprimer les arrière-plans** |
+| Safari | Rendu moins fidèle. Préférer Chrome ou Firefox pour cette page. |
+
+Pour le support sans les réponses : **`?print-pdf&reponses=non`**.
+
+## Pour aller plus loin {.veille}
+
+::: {.fiche n="4.5" etat="a-realiser"}
+Intention : Les sources, plus les références ludiques de Marc. Les références de Steve Masson sont à compléter une fois l'ouvrage dépouillé.
+Expérience : aucune
+Demande :
+:::
+
+:::: {.columns .resserre}
+::: {.column width="52%"}
+**Lire**
+
+- Dehaene, *Apprendre !* (2018), et ses cours au Collège de France
+- Masson, *Activer ses neurones*
+- Brown, Roediger & McDaniel, *Make It Stick* (2014)
+- Bjork, Dunlosky & Kornell (2013)
+:::
+::: {.column width="48%"}
+**Jouer**
+
+- *Celeste*, pour l'aspect psychologique
+- *Night in the Woods*, pour le désir de faire
+:::
+::::
+
+[Lire, lire, lire : même sans tout retenir, vous décèlerez les erreurs. Et toujours privilégier le « pourquoi » et le « comment » au « fais-moi ceci ».]{.a-retenir}
+
+## À vous {.fin}
+
+::: {.fiche n="4.6" etat="a-realiser"}
+Intention : Diapo de clôture au format du gabarit : une consigne courte, rien d'autre. Elle renvoie au livrable et à la capsule.
+Expérience : aucune
+Demande :
+:::
+
+Choisissez **trois gestes**, pas dix. Donnez à chacun un jour et un lieu. Testez-les un mois.
+
+En janvier, vous ouvrirez votre enveloppe et vous saurez si votre vous de novembre avait vu juste.

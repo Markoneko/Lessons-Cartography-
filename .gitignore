@@ -1,0 +1,19 @@
+.quarto/
+*_files/
+
+/.quarto/
+
+**/*.quarto_ipynb
+
+# Fichiers produits, déposés à côté du cours : ils se régénèrent, on ne les envoie pas
+cours/**/*.html
+cours/**/*.pdf
+# sauf les documents de travail déposés dans les dossiers source (ex. une séance antérieure à reprendre)
+!cours/*/source/**/*.html
+!cours/*/source/**/*.pdf
+bac-a-sable/**/*.html
+bac-a-sable/**/*.pdf
+
+__pycache__/
+cours/metacognition/Cartes-*.html
+cours/metacognition/impression/*.pdf

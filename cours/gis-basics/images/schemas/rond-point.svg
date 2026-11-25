@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 330" role="img" aria-label="Un rond-point, trois modélisations : le réel, un anneau de tronçons, deux lignes et un point">
+  <!-- réel -->
+  <g transform="translate(180,140)">
+    <path d="M-150 0 H150 M0 -110 V110" stroke="#B9B9B9" stroke-width="30"/>
+    <circle r="62" fill="none" stroke="#B9B9B9" stroke-width="30"/>
+    <circle r="46" fill="#C9D3B8"/>
+  </g>
+  <text class="s-titre" x="180" y="290" text-anchor="middle">Le réel</text>
+  <!-- anneau -->
+  <g transform="translate(550,140)">
+    <path class="s-accent" d="M-150 0 H-62 M62 0 H150 M0 -110 V-62 M0 62 V110"/>
+    <circle class="s-accent" r="62"/>
+    <g class="s-blanc"><circle cx="-62" cy="0" r="7"/><circle cx="62" cy="0" r="7"/><circle cx="0" cy="-62" r="7"/><circle cx="0" cy="62" r="7"/></g>
+  </g>
+  <text class="s-titre" x="550" y="290" text-anchor="middle">Un anneau de tronçons</text>
+  <text class="s-petit" x="550" y="312" text-anchor="middle">la géométrie suit la chaussée</text>
+  <!-- point -->
+  <g transform="translate(920,140)">
+    <path class="s-accent" d="M-150 0 H150 M0 -110 V110"/>
+    <circle class="s-plein" r="11"/>
+    <text class="s-petit" x="18" y="-16">rond-point = oui</text>
+  </g>
+  <text class="s-titre" x="920" y="290" text-anchor="middle">Deux lignes et un point</text>
+  <text class="s-petit" x="920" y="312" text-anchor="middle">l'information passe dans un attribut</text>
+</svg>

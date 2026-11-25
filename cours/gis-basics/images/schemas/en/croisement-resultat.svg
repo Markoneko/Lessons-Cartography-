@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="290 0 520 330" role="img" aria-label="Result of the overlay: the stands crossed by the river">
+<g transform="translate(300,20)">
+<path class="s-plein-accent" opacity="0.75" d="M60 60 L190 50 L210 140 L80 150 Z"/>
+<path class="s-trait" style="stroke-width:2" d="M60 60 L190 50 L210 140 L80 150 Z"/>
+<path class="s-fin" d="M200 40 L330 45 L320 120 L215 128 Z"/>
+<path class="s-plein-accent" opacity="0.75" d="M90 165 L215 150 L230 250 L70 260 Z"/>
+<path class="s-trait" style="stroke-width:2" d="M90 165 L215 150 L230 250 L70 260 Z"/>
+<path class="s-plein-accent" opacity="0.75" d="M230 140 L330 135 L345 250 L245 255 Z"/>
+<path class="s-trait" style="stroke-width:2" d="M230 140 L330 135 L345 250 L245 255 Z"/>
+<path class="s-plein-accent" opacity="0.75" d="M350 50 L470 60 L460 170 L345 160 Z"/>
+<path class="s-trait" style="stroke-width:2" d="M350 50 L470 60 L460 170 L345 160 Z"/>
+<path class="s-fin" d="M350 175 L465 185 L470 270 L360 262 Z"/>
+<path d="M30 120 C 120 110 170 175 240 200 S 320 150 345 120 S 420 90 500 100" style="fill:none;stroke:#4A7CC2;stroke-width:3;stroke-dasharray:8 6"/>
+<text x="135" y="106" text-anchor="middle">P1</text>
+<text class="s-petit" x="266" y="89" text-anchor="middle">P2</text>
+<text x="151" y="212" text-anchor="middle">P3</text>
+<text x="288" y="201" text-anchor="middle">P4</text>
+<text x="406" y="116" text-anchor="middle">P5</text>
+<text class="s-petit" x="411" y="229" text-anchor="middle">P6</text>
+<text class="s-titre" x="250" y="300" text-anchor="middle">Result: a new layer</text></g></svg>

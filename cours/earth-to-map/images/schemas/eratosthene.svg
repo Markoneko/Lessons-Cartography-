@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 370" style="overflow:hidden" role="img" aria-label="La distance entre Syène et Alexandrie est fixe ; plus l'angle de l'ombre est grand, plus la Terre est petite">
+  <!-- La Terre : son rayon vaut (distance fixe) ÷ (angle). Le curseur fournit l'angle dans --x. -->
+  <g style="transform-origin: 300px 90px; transform: scale(calc(8.59437 / var(--x, 7.2)));">
+    <circle class="s-eau" cx="300" cy="1090" r="1000"/>
+    <circle class="s-trait" vector-effect="non-scaling-stroke" cx="300" cy="1090" r="1000"/>
+    <g style="transform-origin: 300px 1090px; transform: rotate(calc(var(--x, 7.2) * -1deg));">
+      <path class="s-tirets" vector-effect="non-scaling-stroke" d="M300 1090 V90"/>
+      <g style="transform-origin: 300px 90px; transform: scale(calc(var(--x, 7.2) * 0.116355));">
+        <path class="s-trait" d="M300 90 V44"/>
+        <circle class="s-plein" cx="300" cy="90" r="7"/>
+        <text class="s-titre" x="286" y="122" text-anchor="end">Alexandrie</text>
+        <g style="transform-origin: 300px 44px; transform: rotate(calc(var(--x, 7.2) * 1deg));">
+          <path class="s-accent" d="M300 -80 V44"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <!-- Syène : fixe -->
+  <path class="s-accent" d="M300 6 V84"/>
+  <path class="s-plein-accent" d="M300 92 l-7 -14 h14 z"/>
+  <text class="s-orange" x="312" y="26">rayons du Soleil</text>
+  <path class="s-tirets" d="M300 90 V370"/>
+  <circle class="s-plein" cx="300" cy="90" r="7"/>
+  <text class="s-titre" x="314" y="122">Syène</text>
+  <text class="s-petit" x="226" y="176" text-anchor="middle">5 000 stades,</text>
+  <text class="s-petit" x="226" y="194" text-anchor="middle">distance fixe</text>
+  <text class="s-petit" x="312" y="356">vers le centre de la Terre</text>
+</svg>

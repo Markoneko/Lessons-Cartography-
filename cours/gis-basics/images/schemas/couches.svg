@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="90 20 820 360" role="img" aria-label="Trois couches superposées : peuplements forestiers, cours d'eau, orthophotographie">
+  <path d="M190 290 L560 290 L480 370 L110 370 Z" style="fill:#C9D3B8;stroke:var(--filet);stroke-width:1.5"/>
+  <path d="M150 315 q60 -15 110 5 t120 -5 t90 15" style="fill:none;stroke:#A9B794;stroke-width:8;opacity:.8"/>
+  <path d="M250 345 q40 -10 90 2" style="fill:none;stroke:#E7E1D0;stroke-width:6"/>
+  <path class="s-fond" d="M190 160 L560 160 L480 240 L110 240 Z"/>
+  <path class="s-trait" d="M170 230 C 220 205 270 210 300 190 S 390 170 420 175 S 500 168 535 165" style="stroke:#4A7CC2;stroke-width:3.5"/>
+  <path class="s-fond" d="M190 30 L560 30 L480 110 L110 110 Z"/>
+  <path class="s-plein-accent" opacity="0.35" d="M180 42 L300 40 L270 95 L140 100 Z M310 40 L430 38 L400 70 L285 72 Z M282 76 L398 74 L380 102 L262 104 Z M440 38 L545 36 L500 85 L410 88 Z"/>
+  <path class="s-trait" d="M180 42 L300 40 L270 95 L140 100 Z M310 40 L430 38 L400 70 L285 72 Z M282 76 L398 74 L380 102 L262 104 Z M440 38 L545 36 L500 85 L410 88 Z" style="stroke-width:1.8"/>
+  <path class="s-tirets" d="M110 110 V370 M480 110 V370 M560 30 V290"/>
+  <text class="s-titre" style="font-size:25px" x="590" y="65">Peuplements forestiers</text>
+  <text class="s-petit" style="font-size:19px" x="590" y="88">vecteur : des surfaces</text>
+  <text class="s-titre" style="font-size:25px" x="590" y="195">Cours d'eau</text>
+  <text class="s-petit" style="font-size:19px" x="590" y="218">vecteur : des lignes</text>
+  <text class="s-titre" style="font-size:25px" x="590" y="325">Orthophotographie</text>
+  <text class="s-petit" style="font-size:19px" x="590" y="348">raster : le fond</text>
+</svg>

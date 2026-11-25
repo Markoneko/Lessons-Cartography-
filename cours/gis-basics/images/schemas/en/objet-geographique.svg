@@ -1,0 +1,29 @@
+<svg id="svg-objet-en" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 380" role="img" aria-label="Describing a geographic feature: a geometry and a description, possibly a topology, always a coordinate system">
+  <style>#svg-objet-en text{font-size:20px} #svg-objet-en .s-titre{font-size:23px} #svg-objet-en .s-petit{font-size:17px}</style>
+  <!-- réel -->
+  <text class="s-titre" x="130" y="34" text-anchor="middle">The real world</text>
+  <rect x="30" y="60" width="200" height="120" rx="8" style="fill:#E8EDE0"/>
+  <path d="M30 150 C 90 120 140 140 230 90" style="fill:none;stroke:#9A9A9A;stroke-width:16"/>
+  <path d="M30 150 C 90 120 140 140 230 90" style="fill:none;stroke:#fff;stroke-width:1.5;stroke-dasharray:8 8"/>
+  <path class="s-accent" d="M245 120 h40"/><path class="s-plein-accent" d="M297 120 l-14 -7 v14 z"/>
+  <!-- géométrie -->
+  <text class="s-titre" x="430" y="34" text-anchor="middle">A geometry</text>
+  <path class="s-trait" d="M330 160 L400 110 L470 135 L540 80"/>
+  <g class="s-blanc"><circle cx="330" cy="160" r="6"/><circle cx="400" cy="110" r="6"/><circle cx="470" cy="135" r="6"/><circle cx="540" cy="80" r="6"/></g>
+  <text class="s-petit" x="318" y="186">X1, Y1</text><text class="s-petit" x="378" y="96">X2, Y2</text><text class="s-petit" x="456" y="162">X3, Y3</text><text class="s-petit" x="520" y="66">X4, Y4</text>
+  <!-- sémantique -->
+  <text class="s-titre" x="800" y="34" text-anchor="middle">A description</text>
+  <rect class="s-blanc" x="640" y="75" width="320" height="80" rx="8"/>
+  <text x="800" y="108" text-anchor="middle">D400 · departmental road</text>
+  <text x="800" y="136" text-anchor="middle">2 lanes · paved</text>
+  <!-- obligatoire / facultatif -->
+  <rect class="s-fond" x="300" y="215" width="660" height="56" rx="8" style="stroke:var(--bleu);stroke-width:2"/>
+  <text x="630" y="250" text-anchor="middle"><tspan class="s-titre" style="font-size:17px">Required</tspan>: the geometry and the description</text>
+  <rect class="s-fond" x="300" y="285" width="660" height="56" rx="8" style="stroke-dasharray:6 5"/>
+  <text x="630" y="313" text-anchor="middle"><tspan class="s-titre" style="font-size:17px">Optional</tspan>: the topology</text>
+  <text class="s-petit" x="630" y="333" text-anchor="middle">the D400 meets the D12 at a node, but passes over the motorway</text>
+  <text class="s-orange" x="130" y="250" text-anchor="middle">Always:</text>
+  <text x="130" y="276" text-anchor="middle">a coordinate</text>
+  <text x="130" y="298" text-anchor="middle">system</text>
+  <text class="s-petit" x="130" y="322" text-anchor="middle">(Lambert 93)</text>
+</svg>

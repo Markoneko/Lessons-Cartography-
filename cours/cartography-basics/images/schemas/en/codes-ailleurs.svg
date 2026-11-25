@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 590 268" role="img" aria-label="Four colour codes from elsewhere">
+<rect x="0" y="0" width="290" height="128" rx="10" class="s-fond"/>
+<rect x="12" y="14.0" width="50" height="100.0" fill="#D7191C" stroke="#9A9AA4" stroke-width="1"/>
+<text class="s-titre" x="76" y="36" text-anchor="start">Red</text>
+<text class="s-petit" x="76" y="57" text-anchor="start">China, Japan, Korea</text>
+<g class="s-apparait">
+<text x="76" y="86" text-anchor="start" style="font-size:15px;fill:#2B2B33">prosperity; on the stock</text>
+<text x="76" y="106" text-anchor="start" style="font-size:15px;fill:#2B2B33">market, a rise</text>
+</g>
+<rect x="300" y="0" width="290" height="128" rx="10" class="s-fond"/>
+<rect x="312" y="14.0" width="50" height="100.0" fill="#FFFFFF" stroke="#9A9AA4" stroke-width="1"/>
+<text class="s-titre" x="376" y="36" text-anchor="start">White</text>
+<text class="s-petit" x="376" y="57" text-anchor="start">East Asia</text>
+<g class="s-apparait">
+<text x="376" y="86" text-anchor="start" style="font-size:15px;fill:#2B2B33">mourning</text>
+</g>
+<rect x="0" y="140" width="290" height="128" rx="10" class="s-fond"/>
+<rect x="12" y="154.0" width="50" height="50.0" fill="#D7191C" stroke="#9A9AA4" stroke-width="1"/>
+<rect x="12" y="204.0" width="50" height="50.0" fill="#2C5AA0" stroke="#9A9AA4" stroke-width="1"/>
+<text class="s-titre" x="76" y="176" text-anchor="start">Red, blue</text>
+<text class="s-petit" x="76" y="197" text-anchor="start">United States</text>
+<g class="s-apparait">
+<text x="76" y="226" text-anchor="start" style="font-size:15px;fill:#2B2B33">Republicans, Democrats</text>
+<text x="76" y="246" text-anchor="start" style="font-size:15px;fill:#2B2B33">(in France, red = left)</text>
+</g>
+<rect x="300" y="140" width="290" height="128" rx="10" class="s-fond"/>
+<rect x="312" y="154.0" width="50" height="100.0" fill="#11845B" stroke="#9A9AA4" stroke-width="1"/>
+<text class="s-titre" x="376" y="176" text-anchor="start">Green</text>
+<text class="s-petit" x="376" y="197" text-anchor="start">Muslim world</text>
+<g class="s-apparait">
+<text x="376" y="226" text-anchor="start" style="font-size:15px;fill:#2B2B33">the colour of Islam</text>
+</g>
+</svg>

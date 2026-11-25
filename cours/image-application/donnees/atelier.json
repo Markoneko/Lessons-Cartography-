@@ -1,0 +1,566 @@
+{
+  "lisez-moi": "Contenu de l'atelier des commandes (cours Image Application). Familles, hexagones, personnages, commandes. Un hexagone « fin » n'apparaît dans la réserve que lorsqu'un personnage l'a débloqué. Dans une correction, une entrée « ids » à plusieurs éléments se lit « l'un ou l'autre ».",
+
+  "familles": [
+    { "id": "verbe",     "nom": "Verbe",      "etape": 0, "fond": "#283B89", "texte": "#FFFFFF" },
+    { "id": "signal",    "nom": "Signal",     "etape": 1, "fond": "#D8D33A", "texte": "#2B2B33" },
+    { "id": "donnee",    "nom": "Donnée",     "etape": 2, "fond": "#E38226", "texte": "#FFFFFF" },
+    { "id": "acquerir",  "nom": "Acquérir",   "etape": 3, "fond": "#8A5264", "texte": "#FFFFFF" },
+    { "id": "preparer",  "nom": "Préparer",   "etape": 4, "fond": "#4F6BC4", "texte": "#FFFFFF" },
+    { "id": "deriver",   "nom": "Dériver",    "etape": 5, "fond": "#9655A2", "texte": "#FFFFFF" },
+    { "id": "analyser",  "nom": "Analyser",   "etape": 6, "fond": "#541C5B", "texte": "#FFFFFF" },
+    { "id": "valider",   "nom": "Valider",    "etape": 7, "fond": "#2E7D6B", "texte": "#FFFFFF" },
+    { "id": "resultat",  "nom": "Résultat",   "etape": 8, "fond": "#F2AE6D", "texte": "#2B2B33" }
+  ],
+
+  "hexagones": [
+    { "id": "mesurer",  "famille": "verbe", "court": "Mesurer", "quoi": "Obtenir une grandeur physique, avec son unité.", "permet": "Répondre à « combien ? » quand la grandeur se mesure directement." },
+    { "id": "detecter", "famille": "verbe", "court": "Détecter", "quoi": "Dire si un objet ou un événement est présent, et où.", "permet": "Répondre à « y en a-t-il ? » et « où ? »." },
+    { "id": "classer",  "famille": "verbe", "court": "Classer", "quoi": "Ranger chaque lieu dans une catégorie d'une liste fixée à l'avance.", "permet": "Répondre à « qu'est-ce que c'est, partout ? »." },
+    { "id": "suivre",   "famille": "verbe", "court": "Suivre", "quoi": "Comparer un même lieu à plusieurs dates.", "permet": "Répondre à « qu'est-ce qui a changé ? » et « à quel rythme ? »." },
+    { "id": "estimer",  "famille": "verbe", "court": "Estimer", "quoi": "Déduire une grandeur invisible d'une grandeur mesurée.", "permet": "Répondre à « combien ? » quand rien ne mesure directement la réponse." },
+    { "id": "modeliser","famille": "verbe", "court": "Modéliser, prévoir", "quoi": "Représenter un mécanisme pour l'expliquer ou le projeter.", "permet": "Répondre à « que va-t-il se passer ? » ou « que se passe-t-il hors de la vue ? »." },
+
+    { "id": "visible",       "famille": "signal", "court": "Visible", "quoi": "La lumière du soleil renvoyée par la surface, dans les couleurs que l'œil perçoit.", "permet": "Voir les couleurs, les formes, les objets, comme sur une photographie." },
+    { "id": "pir",           "famille": "signal", "court": "Proche infrarouge", "quoi": "La lumière du soleil renvoyée juste au-delà du rouge, invisible à l'œil.", "permet": "Distinguer ce qui est vivant et chlorophyllien de ce qui ne l'est pas." },
+    { "id": "swir",          "famille": "signal", "court": "Infrarouge moyen (SWIR)", "quoi": "La lumière du soleil renvoyée aux grandes longueurs d'onde de l'infrarouge solaire.", "permet": "Sentir l'eau contenue dans les feuilles et les sols, et certains minéraux." },
+    { "id": "thermique",     "famille": "signal", "court": "Infrarouge thermique", "quoi": "Le rayonnement émis par la surface elle-même, selon sa température.", "permet": "Estimer une température de surface, de jour comme de nuit." },
+    { "id": "gaz",           "famille": "signal", "court": "Absorption par un gaz", "quoi": "Les « trous » que creuse un gaz dans le spectre de la lumière qui le traverse.", "permet": "Reconnaître un gaz et en estimer la quantité dans la colonne d'air." },
+    { "id": "nuit",          "famille": "signal", "court": "Lumière nocturne", "quoi": "La lumière émise la nuit par les activités humaines.", "permet": "Approcher l'éclairage, et donc l'activité et l'occupation humaines." },
+    { "id": "retrodiffusion","famille": "signal", "court": "Écho radar (intensité)", "quoi": "L'énergie d'une onde radar émise par le satellite et renvoyée par la surface.", "permet": "Voir la rugosité, la structure, l'eau libre et le métal, de jour comme de nuit, à travers les nuages." },
+    { "id": "phase",         "famille": "signal", "court": "Phase radar", "quoi": "Le décalage de l'onde radar entre deux passages du satellite.", "permet": "Mesurer de très petits déplacements de la surface." },
+    { "id": "laser",         "famille": "signal", "court": "Écho laser (LiDAR)", "quoi": "Le temps de retour d'impulsions laser, et leurs échos multiples.", "permet": "Mesurer des hauteurs, et atteindre le sol sous la végétation." },
+    { "id": "altimetrie",    "famille": "signal", "court": "Écho altimétrique", "quoi": "Le temps de retour d'une onde radar envoyée à la verticale.", "permet": "Mesurer la hauteur d'une surface : la mer, les glaces, les lacs." },
+
+    { "id": "optique-libre", "famille": "donnee", "court": "Sentinel-2, Landsat", "quoi": "Images optiques multispectrales en accès libre : 10 à 30 m, tous les 5 à 16 jours, une dizaine de bandes.", "permet": "Couvrir de grandes surfaces, régulièrement, sans payer." },
+    { "id": "optique-thr",   "famille": "donnee", "court": "Satellite très haute résolution", "quoi": "Images optiques de 0,3 à 0,5 m (Pléiades, Pléiades Neo), sur commande, quelques bandes.", "permet": "Voir des objets de quelques mètres, sur des zones restreintes." },
+    { "id": "ortho",         "famille": "donnee", "court": "Orthophoto aérienne", "quoi": "Photographies aériennes redressées, autour de 20 cm, couvrant tout un pays, renouvelées par campagnes.", "permet": "Voir des objets de l'ordre du mètre, partout, à une date connue." },
+    { "id": "thermique-sat", "famille": "donnee", "court": "Satellite thermique", "quoi": "Images dans l'infrarouge thermique : de l'ordre de 100 m, quelques jours, une ou deux bandes, à heure fixe.", "permet": "Cartographier des températures de surface à l'échelle d'une ville ou d'une région." },
+    { "id": "sar",           "famille": "donnee", "court": "Radar (Sentinel-1…)", "quoi": "Images radar : 5 à 50 m selon le mode, tous les 6 à 12 jours, une fréquence, plusieurs polarisations.", "permet": "Observer sans dépendre du soleil ni des nuages." },
+    { "id": "lidar-aerien",  "famille": "donnee", "court": "LiDAR aérien", "quoi": "Un nuage de points en 3D acquis par avion, à quelques points par mètre carré ou davantage.", "permet": "Modéliser le sol, le sursol et la végétation en trois dimensions." },
+    { "id": "altimetre",     "famille": "donnee", "court": "Altimètre satellite", "quoi": "Des profils de hauteur sous la trace du satellite, de résolution kilométrique.", "permet": "Suivre le niveau de la mer et des glaces sur tout le globe." },
+    { "id": "atmo-sat",      "famille": "donnee", "court": "Spectromètre atmosphérique", "quoi": "Un satellite qui mesure finement le spectre de la lumière : quelques km, chaque jour (Sentinel-5P).", "permet": "Cartographier des gaz à l'échelle du globe." },
+    { "id": "nuit-sat",      "famille": "donnee", "court": "Imageur nocturne", "quoi": "Images de nuit, de quelques centaines de mètres, chaque jour (VIIRS).", "permet": "Suivre les lumières humaines à l'échelle d'un pays." },
+    { "id": "drone",         "famille": "donnee", "court": "Drone", "quoi": "Un capteur embarqué sur un drone : centimétrique, à la demande, sur une petite zone.", "permet": "Voir très fin, quand on veut, là où l'on peut voler." },
+    { "id": "exogenes",      "famille": "donnee", "court": "Données exogènes", "quoi": "Ce qui ne vient pas d'une image : cadastre, déclarations, cartes d'aléas, réseaux, statistiques.", "permet": "Donner un sens à ce que l'on voit, ou le confronter à ce qui est déclaré." },
+    { "id": "modele-externe","famille": "donnee", "court": "Modèle externe", "quoi": "Les sorties d'un modèle déjà existant : météo, vents, courants, climat.", "permet": "Connaître ce que l'image ne montre pas : le vent, le courant, l'avenir proche." },
+    { "id": "egms",          "famille": "donnee", "court": "Service EGMS", "fin": true, "quoi": "Un service européen gratuit qui publie des déplacements du sol déjà calculés par interférométrie radar.", "permet": "Partir de mesures prêtes à l'emploi, sans retraiter des années d'images." },
+    { "id": "hyperspectral", "famille": "donnee", "court": "Imageur hyperspectral", "fin": true, "quoi": "Des images de quelques dizaines de mètres, en plus de deux cents bandes étroites, sur commande.", "permet": "Reconnaître des matériaux ou des gaz à leur spectre détaillé." },
+
+    { "id": "catalogue",  "famille": "acquerir", "court": "Chercher dans l'archive", "quoi": "Trouver, dans les catalogues, les images ou produits déjà acquis.", "permet": "Ne pas payer ni attendre ce qui existe déjà." },
+    { "id": "serie",      "famille": "acquerir", "court": "Constituer une série", "quoi": "Rassembler des images d'un même lieu à plusieurs dates.", "permet": "Préparer une comparaison dans le temps." },
+    { "id": "terrain",    "famille": "acquerir", "court": "Mesurer sur le terrain", "quoi": "Relever sur place des mesures ou des observations, localisées.", "permet": "Disposer d'une vérité de référence, pour caler ou pour contrôler." },
+    { "id": "programmer", "famille": "acquerir", "court": "Programmer l'acquisition", "fin": true, "quoi": "Demander au satellite d'acquérir une zone précise, à une date choisie.", "permet": "Obtenir une image qui n'existe pas encore." },
+    { "id": "dates",      "famille": "acquerir", "court": "Choisir les dates", "fin": true, "quoi": "Choisir la saison, l'heure de passage, les jours sans nuages.", "permet": "Avoir des images comparables, prises au bon moment." },
+
+    { "id": "preparer",   "famille": "preparer", "court": "Préparer les images", "quoi": "Rendre les images exploitables et comparables.", "permet": "Passer d'une image brute à une mesure fiable. Demandez aux personnages ce que cela recouvre." },
+    { "id": "calibrer",   "famille": "preparer", "court": "Étalonner le signal", "fin": true, "parent": "preparer", "quoi": "Convertir les comptes numériques du capteur en grandeur physique.", "permet": "Comparer des valeurs d'un capteur à l'autre, d'une date à l'autre." },
+    { "id": "atmo",       "famille": "preparer", "court": "Corriger l'atmosphère", "fin": true, "parent": "preparer", "quoi": "Retirer l'effet de l'air traversé entre la surface et le capteur.", "permet": "Obtenir la valeur au sol, et non au sommet de l'atmosphère." },
+    { "id": "ortho-rect", "famille": "preparer", "court": "Orthorectifier", "fin": true, "parent": "preparer", "quoi": "Corriger les déformations dues au relief et à la prise de vue.", "permet": "Superposer l'image à une carte." },
+    { "id": "recaler",    "famille": "preparer", "court": "Recaler les images", "fin": true, "parent": "preparer", "quoi": "Superposer au pixel près des images de dates ou de capteurs différents.", "permet": "Comparer pixel à pixel sans fausse différence." },
+    { "id": "nuages",     "famille": "preparer", "court": "Masquer nuages et ombres", "fin": true, "parent": "preparer", "quoi": "Repérer et écarter les pixels couverts de nuages, de fumée ou d'ombre.", "permet": "Éviter de prendre un nuage pour un changement." },
+    { "id": "speckle",    "famille": "preparer", "court": "Filtrer le chatoiement", "fin": true, "parent": "preparer", "quoi": "Atténuer le bruit granuleux propre aux images radar.", "permet": "Rendre les images radar lisibles et les seuils plus stables." },
+    { "id": "mosaiquer",  "famille": "preparer", "court": "Mosaïquer", "fin": true, "parent": "preparer", "quoi": "Assembler plusieurs images en une seule couverture continue.", "permet": "Couvrir une grande zone d'un seul tenant." },
+
+    { "id": "composition",    "famille": "deriver", "court": "Composition colorée", "quoi": "Afficher trois bandes choisies dans le rouge, le vert et le bleu de l'écran.", "permet": "Rendre visible un signal invisible à l'œil." },
+    { "id": "indice",         "famille": "deriver", "court": "Indice spectral", "quoi": "Combiner des bandes par un calcul simple, souvent une différence normalisée.", "permet": "Résumer en une valeur ce qui distingue une surface d'une autre." },
+    { "id": "difference",     "famille": "deriver", "court": "Différence entre dates", "quoi": "Soustraire ou diviser deux images d'un même lieu.", "permet": "Faire ressortir ce qui a changé." },
+    { "id": "mnh",            "famille": "deriver", "court": "Modèle de hauteur", "quoi": "La différence entre le modèle de surface (sommets) et le modèle de terrain (sol).", "permet": "Obtenir la hauteur des objets : arbres, bâtiments." },
+    { "id": "texture",        "famille": "deriver", "court": "Texture", "fin": true, "quoi": "Mesurer le grain d'une image autour de chaque pixel.", "permet": "Distinguer des surfaces de même couleur mais de structure différente." },
+    { "id": "acp",            "famille": "deriver", "court": "Composantes principales", "fin": true, "quoi": "Recombiner les bandes pour concentrer l'information en peu de canaux.", "permet": "Réduire le volume et faire ressortir ce qui varie le plus." },
+    { "id": "interferogramme","famille": "deriver", "court": "Interférogramme", "fin": true, "quoi": "La carte des décalages de phase entre deux images radar.", "permet": "Transformer la phase en déplacement." },
+    { "id": "temperature",    "famille": "deriver", "court": "Température de surface", "fin": true, "quoi": "Convertir le rayonnement thermique en température, en tenant compte de l'émissivité des matériaux.", "permet": "Passer d'un signal à une température en degrés." },
+    { "id": "colonne",        "famille": "deriver", "court": "Quantité de gaz", "fin": true, "quoi": "Convertir l'absorption mesurée en quantité de gaz dans la colonne d'air.", "permet": "Cartographier un panache." },
+
+    { "id": "photo-interpretation", "famille": "analyser", "court": "Photo-interpréter", "quoi": "Lire l'image avec les clés d'identification et d'interprétation.", "permet": "Reconnaître ce qu'aucun algorithme ne sait encore reconnaître seul." },
+    { "id": "seuillage",      "famille": "analyser", "court": "Seuiller", "quoi": "Garder les pixels au-dessus ou au-dessous d'une valeur.", "permet": "Isoler simplement ce qui se distingue nettement." },
+    { "id": "classification", "famille": "analyser", "court": "Classification supervisée", "quoi": "Attribuer une classe à chaque pixel ou objet, à partir d'exemples connus.", "permet": "Produire une carte en catégories sur une grande surface." },
+    { "id": "apprentissage",  "famille": "analyser", "court": "Étiqueter des exemples", "quoi": "Désigner à la main, sur des images, des exemples de ce que l'on cherche.", "permet": "Nourrir et entraîner un algorithme d'apprentissage." },
+    { "id": "deep",           "famille": "analyser", "court": "Réseau de neurones", "quoi": "Un modèle d'apprentissage profond qui détecte ou délimite des objets.", "permet": "Automatiser une reconnaissance complexe sur des millions d'images." },
+    { "id": "changement",     "famille": "analyser", "court": "Détecter les changements", "quoi": "Repérer, entre deux dates, ce qui a changé de façon significative.", "permet": "Signaler des événements ou des évolutions." },
+    { "id": "croiser",        "famille": "analyser", "court": "Croiser dans un SIG", "quoi": "Superposer le résultat à d'autres couches géographiques.", "permet": "Relier ce que l'on voit à ce que l'on sait : parcelles, bâtiments, aléas." },
+    { "id": "modele-empirique","famille": "analyser", "court": "Modèle empirique", "fin": true, "quoi": "Une relation statistique ajustée entre une mesure et la grandeur cherchée.", "permet": "Estimer une grandeur invisible à partir d'une mesure." },
+    { "id": "modele-physique","famille": "analyser", "court": "Modèle physique", "fin": true, "quoi": "Un calcul fondé sur les lois physiques du phénomène.", "permet": "Remonter d'une mesure à une cause, ou projeter dans le temps." },
+    { "id": "serie-temporelle","famille": "analyser", "court": "Analyser une série", "fin": true, "quoi": "Étudier l'évolution d'un pixel ou d'un point sur des dizaines de dates.", "permet": "Séparer le cycle des saisons de la tendance et des ruptures." },
+    { "id": "segmentation",   "famille": "analyser", "court": "Segmenter", "fin": true, "quoi": "Découper l'image en objets homogènes.", "permet": "Raisonner sur des objets plutôt que sur des pixels." },
+    { "id": "non-supervisee", "famille": "analyser", "court": "Classification non supervisée", "fin": true, "quoi": "Regrouper les pixels qui se ressemblent, sans exemple fourni.", "permet": "Explorer une image dont on ne connaît pas les classes." },
+    { "id": "stats-zonales",  "famille": "analyser", "court": "Statistiques par zone", "fin": true, "quoi": "Résumer les valeurs d'une image dans des zones : moyenne, somme, part.", "permet": "Passer du pixel à la parcelle, à la commune, au massif." },
+
+    { "id": "comparer-ref",    "famille": "valider", "court": "Comparer à une référence", "quoi": "Confronter le résultat à des observations indépendantes : terrain, image plus fine.", "permet": "Savoir si le résultat est juste, et où il se trompe." },
+    { "id": "controle-humain", "famille": "valider", "court": "Contrôle humain", "quoi": "Un expert vérifie les détections avant toute décision.", "permet": "Écarter les fausses alertes." },
+    { "id": "matrice",         "famille": "valider", "court": "Matrice de confusion", "fin": true, "quoi": "Le tableau des bonnes et mauvaises réponses, classe par classe.", "permet": "Chiffrer la précision d'une classification ou d'une détection." },
+    { "id": "incertitude",     "famille": "valider", "court": "Chiffrer l'incertitude", "fin": true, "quoi": "Donner la marge d'erreur d'une mesure ou d'une estimation.", "permet": "Dire avec quelle confiance on peut utiliser le chiffre." },
+
+    { "id": "carte",  "famille": "resultat", "court": "Carte", "quoi": "Le résultat représenté dans l'espace, avec sa légende.", "permet": "Montrer où." },
+    { "id": "alerte", "famille": "resultat", "court": "Alerte", "quoi": "Un signalement envoyé à quelqu'un qui doit agir.", "permet": "Déclencher une action." },
+    { "id": "chiffre","famille": "resultat", "court": "Chiffre, indicateur", "quoi": "Une valeur ou un indicateur, avec son unité et sa marge.", "permet": "Répondre à « combien ? »." },
+    { "id": "liste",  "famille": "resultat", "court": "Liste d'objets", "quoi": "Des objets localisés, un par ligne.", "permet": "Traiter les cas un à un." },
+    { "id": "zone",   "famille": "resultat", "court": "Zone délimitée", "quoi": "Un périmètre tracé, à éviter ou à surveiller.", "permet": "Fixer une règle dans l'espace." },
+    { "id": "courbe", "famille": "resultat", "court": "Courbe dans le temps", "quoi": "L'évolution d'une valeur au fil des dates.", "permet": "Montrer quand et à quel rythme." }
+  ],
+
+  "personnages": [
+    { "id": "signal", "prenom": "Héloïse", "role": "Le signal", "initiales": "H", "couleur": "#D8D33A", "encre": "#2B2B33",
+      "presentation": "Physicienne de la mesure. Elle sait ce que chaque capteur reçoit vraiment, et ce qu'il ne verra jamais.",
+      "questions": [
+        { "q": "Quels signaux existent ?", "r": "Ce que le soleil renvoie (le visible et les infrarouges solaires), ce que la Terre émet (l'infrarouge thermique), et ce qu'un instrument envoie puis reçoit (le radar, le laser). Choisir un signal, c'est choisir ce que l'on pourra voir." }
+      ] },
+    { "id": "donnees", "prenom": "Bastien", "role": "Les données", "initiales": "B", "couleur": "#E38226", "encre": "#FFFFFF",
+      "presentation": "Gestionnaire de données. Il connaît les catalogues, les résolutions, les coûts et les délais.",
+      "questions": [
+        { "q": "Comment choisir une donnée ?", "r": "Par ses quatre résolutions (spatiale, temporelle, spectrale, radiométrique), par son coût, et par une question simple : existe-t-elle déjà ? Et choisissez la date : la saison, l'heure de passage, les nuages.", "debloque": ["dates"] }
+      ] },
+    { "id": "traitements", "prenom": "Inès", "role": "Les traitements", "initiales": "I", "couleur": "#541C5B", "encre": "#FFFFFF",
+      "presentation": "Ingénieure de traitement. Elle transforme les images en résultats, et sait comment ils se trompent.",
+      "questions": [
+        { "q": "Qu'y a-t-il dans « Préparer » ?", "r": "Tout ce qui rend une image exploitable et comparable : étalonner le signal, corriger l'atmosphère, orthorectifier, recaler les dates entre elles, masquer les nuages, filtrer le bruit radar, mosaïquer. Prenez seulement ce dont votre commande a besoin.", "debloque": ["calibrer", "atmo", "ortho-rect", "recaler", "nuages", "speckle", "mosaiquer"] },
+        { "q": "Quels autres outils d'analyse existent ?", "r": "Segmenter l'image en objets, regrouper les pixels sans exemple, mesurer des textures, recombiner les bandes, résumer par zone. Chacun répond à une question précise : ne les empilez pas.", "debloque": ["segmentation", "non-supervisee", "texture", "acp", "stats-zonales"] },
+        { "q": "Comment rendre un résultat fiable ?", "r": "En le confrontant à une référence indépendante : le terrain, une image plus fine, un expert. Puis en chiffrant l'erreur.", "debloque": ["matrice", "incertitude"], "pepite": "valider" }
+      ] },
+    { "id": "contradicteur", "prenom": "Rose", "role": "La contradictrice", "initiales": "R", "couleur": "#2E7D6B", "encre": "#FFFFFF",
+      "presentation": "Juriste, ancienne journaliste d'investigation. Elle demande si votre résultat tiendrait face à quelqu'un qui le conteste.",
+      "questions": [
+        { "q": "Qu'est-ce qui rend un résultat recevable ?", "r": "Une source datée, une méthode décrite, une précision chiffrée. Si quelqu'un d'autre ne peut pas refaire votre chaîne, elle ne prouve rien.", "pepite": "recevable" }
+      ] }
+  ],
+
+  "pepites": [
+    { "id": "signal-demande", "texte": "Aucun capteur ne mesure ce que veut le client : il mesure un signal, que l'on relie à la demande." },
+    { "id": "pas-ce-que-tu-crois", "texte": "Ce capteur ne mesure pas ce que tu crois mesurer : vérifie toujours la grandeur physique." },
+    { "id": "existe-deja", "texte": "La meilleure donnée est celle qui existe déjà : cherche le produit avant de le fabriquer." },
+    { "id": "croisement", "texte": "L'image suffit rarement : la valeur naît du croisement avec une autre donnée." },
+    { "id": "deux-dates", "texte": "Une image seule ne dit pas ce qui a changé : c'est la différence entre deux dates qui parle." },
+    { "id": "terrain", "texte": "Sans terrain, ton modèle ne vaut rien." },
+    { "id": "valider", "texte": "Sans validation, un résultat n'est qu'une hypothèse." },
+    { "id": "pas-comme-ca", "texte": "Savoir dire au client « pas comme ça » fait partie du métier." },
+    { "id": "reutiliser", "texte": "Une donnée faite pour autre chose peut répondre à ta question : la réutilisation est un réflexe de métier." },
+    { "id": "grossier-fin", "texte": "Un capteur grossier pour chercher, un capteur fin pour désigner." },
+    { "id": "calendrier", "texte": "Ce qu'une image ne distingue pas, un calendrier le distingue : la série temporelle est une signature." },
+    { "id": "humain", "texte": "L'algorithme signale, l'humain décide : prévois toujours le contrôle." },
+    { "id": "recevable", "texte": "Ton résultat tiendrait-il devant un juge ? Source datée, méthode décrite, précision chiffrée." },
+    { "id": "savoir", "texte": "Qui a le droit de savoir, et quand ? La transparence est aussi un choix." }
+  ],
+
+  "commandes": [
+    {
+      "id": "lidar", "donnee": "LiDAR", "client": "Gestionnaire forestier",
+      "titre": "Le volume de bois d'un massif",
+      "question": "« Quel volume de bois sur pied dans mon massif, parcelle par parcelle, pour planifier les coupes des dix prochaines années ? »",
+      "dialogues": {
+        "signal": [
+          { "q": "Que mesure vraiment un LiDAR ?", "r": "Un temps de retour de la lumière laser, donc une distance. Une même impulsion donne plusieurs échos : la cime, les branches, le sol. La hauteur des arbres vient de la différence entre le premier et le dernier." },
+          { "q": "Et le volume de bois, il le voit ?", "r": "Non. Aucun capteur ne mesure un volume de bois. Il faut une relation entre ce que l'on mesure (hauteur, densité du couvert) et le volume, et cette relation se cale sur le terrain.", "debloque": ["modele-empirique"], "pepite": "signal-demande" }
+        ],
+        "donnees": [
+          { "q": "Faut-il faire voler un avion ?", "r": "Pas forcément. Le programme LiDAR HD de l'IGN couvre la France : nuages de points classés, et modèles de terrain, de surface et de hauteur déjà calculés. Commencez par l'archive.", "pepite": "existe-deja" },
+          { "q": "La date du vol compte-t-elle ?", "r": "Oui : la forêt pousse et se coupe. Et les mesures de terrain doivent être faites à une période proche du vol, sinon le modèle compare deux forêts différentes." }
+        ],
+        "traitements": [
+          { "q": "Comment passer de la hauteur au volume ?", "r": "On mesure des placettes sur le terrain (hauteur, diamètre, volume), on ajuste un modèle entre les mesures LiDAR et le volume des placettes, puis on l'applique à tout le massif, et on somme par parcelle.", "debloque": ["modele-empirique", "stats-zonales"], "pepite": "terrain" },
+          { "q": "Comment savoir si ma carte est juste ?", "r": "Gardez des placettes de côté, que le modèle n'a pas vues : l'écart entre prédiction et mesure donne la précision.", "debloque": ["incertitude"] }
+        ],
+        "contradicteur": [
+          { "q": "Ma carte peut-elle servir à vendre du bois ?", "r": "Pour planifier, oui. Pour un contrat, il faut dire la marge d'erreur : un volume sans incertitude n'est pas un volume, c'est une promesse." }
+        ]
+      },
+      "correction": {
+        "indispensables": [
+          { "ids": ["estimer"], "si_absent": "Le client veut un volume, que rien ne mesure directement : c'est une estimation." },
+          { "ids": ["laser"], "si_absent": "Quel signal donne la hauteur des arbres, et le sol dessous ?" },
+          { "ids": ["lidar-aerien"], "si_absent": "Il manque la donnée qui porte ce signal." },
+          { "ids": ["mnh"], "si_absent": "Il faut passer du nuage de points à la hauteur des arbres." },
+          { "ids": ["terrain"], "si_absent": "Sans placettes mesurées sur le terrain, aucun modèle ne passe de la hauteur au volume." },
+          { "ids": ["modele-empirique"], "si_absent": "Il manque la relation entre la hauteur et le volume. Demandez à Inès." },
+          { "ids": ["comparer-ref", "incertitude"], "si_absent": "Comment saurez-vous que la carte est juste ?" },
+          { "ids": ["carte", "chiffre"], "si_absent": "Que remettez-vous au client ?" }
+        ],
+        "acceptables": {
+          "catalogue": "Bon réflexe : le LiDAR HD existe déjà.",
+          "preparer": "Le nuage du LiDAR HD est déjà classé ; la préparation est légère.",
+          "classification": "Utile pour séparer les essences, en complément.",
+          "stats-zonales": "Oui : c'est ainsi qu'on passe du pixel à la parcelle.",
+          "optique-thr": "Utile pour reconnaître les essences, en complément.",
+          "mesurer": "Le LiDAR mesure une hauteur ; mais le client demande un volume, qui s'estime.",
+          "incertitude": "Indispensable pour un usage contractuel."
+        },
+        "pieges": {
+          "optique-libre": "Sentinel-2 voit le dessus de la canopée, pas la hauteur : il ne donne pas un volume.",
+          "sar": "Le radar des satellites courants sature vite en forêt dense : il ne distingue plus les forts volumes.",
+          "thermique": "La température des feuilles ne dit rien du bois.",
+          "photo-interpretation": "On ne compte pas des mètres cubes à l'œil sur tout un massif."
+        }
+      },
+      "chaine": ["estimer", "laser", "lidar-aerien", "catalogue", "mnh", "terrain", "modele-empirique", "stats-zonales", "comparer-ref", "carte"]
+    },
+
+    {
+      "id": "piscines", "donnee": "Optique très haute résolution", "client": "Administration fiscale",
+      "titre": "Les piscines non déclarées",
+      "question": "« Quelles piscines enterrées n'ont pas été déclarées, commune par commune, pour régulariser la taxe foncière ? »",
+      "dialogues": {
+        "signal": [
+          { "q": "Qu'est-ce qui trahit une piscine ?", "r": "Sa couleur turquoise, très particulière dans le visible, sa forme géométrique et sa taille. C'est presque une signature." },
+          { "q": "Et une piscine bâchée en hiver ?", "r": "Elle perd sa couleur : il ne reste que la forme. C'est là que les erreurs commencent, et que la date de prise de vue compte." }
+        ],
+        "donnees": [
+          { "q": "Quelle image prendre ?", "r": "Il faut voir un objet de quelques mètres : une résolution décimétrique. Les orthophotos de l'IGN, autour de 20 cm, couvrent tout le territoire. Inutile de commander des images satellite.", "pepite": "existe-deja" },
+          { "q": "Comment savoir si la piscine est déclarée ?", "r": "L'image ne le dit pas. Il faut croiser avec le cadastre et les déclarations : c'est ce croisement qui crée l'information.", "pepite": "croisement" }
+        ],
+        "traitements": [
+          { "q": "Peut-on automatiser la détection ?", "r": "Oui, avec un réseau de neurones entraîné sur des milliers de piscines étiquetées à la main : le travail d'annotation vu en photo-interprétation." },
+          { "q": "Et les fausses détections ?", "r": "Il y en aura : bâches bleues, bassins, toits clairs. Un agent contrôle chaque détection avant tout courrier.", "debloque": ["matrice"], "pepite": "humain" }
+        ],
+        "contradicteur": [
+          { "q": "A-t-on le droit de scruter les jardins ?", "r": "La question a été posée publiquement. L'administration répond qu'elle exploite des images aériennes existantes et qu'un agent contrôle. Demandez-vous qui contrôle le contrôleur." },
+          { "q": "La détection est-elle une preuve ?", "r": "Non : c'est une présomption. Le propriétaire est invité à régulariser, et peut contester. La preuve, c'est le contrôle." }
+        ]
+      },
+      "correction": {
+        "indispensables": [
+          { "ids": ["detecter"], "si_absent": "Le client veut savoir où sont les piscines : c'est une détection." },
+          { "ids": ["visible"], "si_absent": "Quel signal montre la couleur turquoise de l'eau ?" },
+          { "ids": ["ortho", "optique-thr"], "si_absent": "Il faut une image assez fine pour voir un objet de quelques mètres." },
+          { "ids": ["apprentissage"], "si_absent": "Un algorithme apprend sur des exemples étiquetés : qui les fournit ?" },
+          { "ids": ["deep", "photo-interpretation"], "si_absent": "Comment repérez-vous les piscines sur des millions d'images ?" },
+          { "ids": ["exogenes"], "si_absent": "Comment savoir qu'une piscine n'est pas déclarée, sans le cadastre ni les déclarations ?" },
+          { "ids": ["croiser"], "si_absent": "Il faut confronter les détections au déclaré." },
+          { "ids": ["controle-humain"], "si_absent": "Qui vérifie avant d'écrire au propriétaire ?" },
+          { "ids": ["liste", "alerte"], "si_absent": "Que remettez-vous au service des impôts ?" }
+        ],
+        "acceptables": {
+          "optique-thr": "Possible, mais l'orthophoto existe déjà sur tout le territoire.",
+          "pir": "Les orthophotos infrarouges aident à séparer l'eau de la végétation.",
+          "catalogue": "Bon réflexe : l'orthophoto existe déjà.",
+          "matrice": "Oui : chiffrer les fausses détections.",
+          "comparer-ref": "Un échantillon contrôlé donne la précision.",
+          "carte": "Utile pour le pilotage, mais le service attend des cas à traiter.",
+          "segmentation": "Une étape possible avant la détection."
+        },
+        "pieges": {
+          "optique-libre": "À 10 m, une piscine de 4 × 8 m tient dans un pixel : on ne la détecte pas, on la devine.",
+          "thermique": "La température de l'eau ne distingue pas une piscine d'une mare, et le pixel est bien trop gros.",
+          "sar": "Une piscine est bien trop petite pour les images radar courantes.",
+          "classer": "Le client ne veut pas une carte de tout le territoire en catégories, mais les piscines elles-mêmes."
+        }
+      },
+      "chaine": ["detecter", "visible", "ortho", "catalogue", "apprentissage", "deep", "exogenes", "croiser", "controle-humain", "liste"]
+    },
+
+    {
+      "id": "feux", "donnee": "Infrarouge moyen (SWIR)", "client": "Préfecture et assureurs",
+      "titre": "Après le grand feu",
+      "question": "« Quelle surface a brûlé, et avec quelle sévérité, pour organiser la remise en état et l'indemnisation ? »",
+      "dialogues": {
+        "signal": [
+          { "q": "Pourquoi l'infrarouge moyen ?", "r": "Une végétation saine renvoie beaucoup de proche infrarouge et peu d'infrarouge moyen ; après le feu, c'est l'inverse. Un indice de brûlis joue sur cet écart." },
+          { "q": "Et la fumée ?", "r": "Les grandes longueurs d'onde traversent mieux la fumée que le visible. Mais pour la sévérité, on attend qu'elle soit partie." }
+        ],
+        "donnees": [
+          { "q": "Une seule image suffit-elle ?", "r": "Non : il faut une image avant et une image après, de la même saison, sans nuages. C'est la différence qui parle.", "debloque": ["dates"], "pepite": "deux-dates" },
+          { "q": "Laquelle ?", "r": "Sentinel-2 : 10 à 20 m, gratuit, tous les cinq jours environ, avec les bandes d'infrarouge moyen." }
+        ],
+        "traitements": [
+          { "q": "Comment passer de l'indice aux classes ?", "r": "On calcule l'indice avant et après, on en fait la différence, puis on fixe des seuils de sévérité, calés sur des observations de terrain. Masquez d'abord les nuages et la fumée.", "debloque": ["nuages"] },
+          { "q": "Comment valider ?", "r": "Des relevés de terrain, ou des images très fines sur quelques secteurs, puis une matrice de confusion.", "debloque": ["matrice"] }
+        ],
+        "contradicteur": [
+          { "q": "Un assureur peut-il indemniser avec ça ?", "r": "Pour la surface totale, c'est robuste. Pour une parcelle précise, le pixel de 20 m pèse : sur la lisière, qui a brûlé, et qui non ?" }
+        ]
+      },
+      "correction": {
+        "indispensables": [
+          { "ids": ["classer"], "si_absent": "Le client veut des classes de sévérité : c'est un classement." },
+          { "ids": ["swir"], "si_absent": "Quel signal sent la perte d'eau et de végétation après le feu ?" },
+          { "ids": ["pir"], "si_absent": "L'indice de brûlis compare deux signaux : le second manque." },
+          { "ids": ["optique-libre"], "si_absent": "Il faut une donnée qui porte ces bandes, régulièrement et gratuitement." },
+          { "ids": ["preparer", "nuages", "atmo"], "si_absent": "Nuages, fumée, atmosphère : rien n'est préparé." },
+          { "ids": ["indice"], "si_absent": "Il manque le calcul qui résume l'écart entre les deux signaux." },
+          { "ids": ["difference", "dates", "serie"], "si_absent": "Une image après le feu ne suffit pas : à quoi la comparez-vous ?" },
+          { "ids": ["seuillage", "classification"], "si_absent": "Comment passez-vous d'une valeur continue à des classes ?" },
+          { "ids": ["comparer-ref", "matrice", "controle-humain"], "si_absent": "Qui a vérifié la sévérité sur le terrain ?" },
+          { "ids": ["carte"], "si_absent": "Que remettez-vous à la préfecture ?" }
+        ],
+        "acceptables": {
+          "mesurer": "La surface se mesure ; mais la sévérité se classe.",
+          "chiffre": "La surface brûlée, en hectares.",
+          "visible": "Le visible montre la cicatrice, mais confond brûlé, ombre et sol sombre.",
+          "optique-thr": "Utile pour valider sur quelques secteurs.",
+          "sar": "Bon réflexe de secours si les nuages persistent.",
+          "thermique": "Utile pendant le feu, pour les foyers actifs ; pas pour la sévérité après.",
+          "catalogue": "Les images avant le feu sont dans l'archive.",
+          "dates": "Oui : même saison, sans nuages.",
+          "terrain": "Pour caler les seuils et valider."
+        },
+        "pieges": {
+          "lidar-aerien": "Il faudrait un vol avant et un vol après : trop lent et trop cher pour une crise.",
+          "deep": "Possible, mais un indice et des seuils suffisent ici ; inutile d'entraîner un réseau.",
+          "nuit": "Les lumières nocturnes ne disent rien de la végétation."
+        }
+      },
+      "chaine": ["classer", "swir", "pir", "optique-libre", "dates", "nuages", "indice", "difference", "seuillage", "comparer-ref", "carte"]
+    },
+
+    {
+      "id": "chaleur", "donnee": "Infrarouge thermique", "client": "Maire d'une grande ville",
+      "titre": "Les îlots de chaleur",
+      "question": "« Où sont les îlots de chaleur de ma ville, rue par rue, pour préparer le plan canicule de l'été prochain ? »",
+      "dialogues": {
+        "signal": [
+          { "q": "Que mesure un capteur thermique ?", "r": "Le rayonnement émis par la surface : un toit, une route, un arbre. On en tire une température de surface. Ce n'est pas la température de l'air que respirent les habitants.", "debloque": ["temperature"], "pepite": "pas-ce-que-tu-crois" },
+          { "q": "À quelle heure ?", "r": "Le satellite passe à heure fixe, souvent en fin de matinée. Or l'îlot de chaleur qui pèse sur la santé est nocturne : c'est la nuit que la ville ne refroidit pas." }
+        ],
+        "donnees": [
+          { "q": "Quelle résolution ?", "r": "Le thermique satellite est grossier : de l'ordre de 100 m. Une rue fait 15 m de large. On repère des quartiers, pas des rues." },
+          { "q": "Existe-t-il plus fin ?", "r": "La thermographie aérienne de nuit, des capteurs fixes au sol, des mesures participatives, ou des modèles de climat urbain." }
+        ],
+        "traitements": [
+          { "q": "Comment obtenir une température ?", "r": "Corriger l'atmosphère, puis tenir compte de l'émissivité de chaque matériau, souvent estimée d'après la végétation et l'occupation du sol.", "debloque": ["atmo", "temperature"] },
+          { "q": "Comment descendre à la rue ?", "r": "En croisant la carte grossière avec l'occupation du sol fine et des mesures au sol, ou en passant par un modèle de climat urbain.", "debloque": ["modele-physique"] }
+        ],
+        "contradicteur": [
+          { "q": "Puis-je promettre au maire une carte rue par rue ?", "r": "Pas avec le satellite seul. Le bon professionnel sait dire « pas comme ça », et propose la combinaison qui répond vraiment.", "pepite": "pas-comme-ca" }
+        ]
+      },
+      "correction": {
+        "indispensables": [
+          { "ids": ["mesurer", "modeliser"], "si_absent": "Le client veut des températures : que faites-vous ?" },
+          { "ids": ["thermique"], "si_absent": "Quel signal dit la température d'une surface ?" },
+          { "ids": ["thermique-sat", "drone"], "si_absent": "Il manque la donnée qui porte ce signal." },
+          { "ids": ["atmo", "preparer"], "si_absent": "Entre la surface et le capteur, l'air modifie le signal." },
+          { "ids": ["temperature"], "si_absent": "Il faut convertir le signal en température : demandez à Inès." },
+          { "ids": ["terrain"], "si_absent": "Le satellite mesure la surface, pas l'air à hauteur d'homme, et de jour : il faut des mesures au sol." },
+          { "ids": ["croiser", "modele-physique"], "si_absent": "Comment passez-vous du quartier à la rue ?" },
+          { "ids": ["comparer-ref", "incertitude"], "si_absent": "Comment savez-vous que la carte dit vrai ?" },
+          { "ids": ["carte"], "si_absent": "Que remettez-vous au maire ?" }
+        ],
+        "acceptables": {
+          "modeliser": "Oui : pour descendre à la rue, il faut modéliser.",
+          "drone": "Thermographie de nuit, fine mais locale : un très bon complément.",
+          "optique-libre": "Pour la végétation et l'occupation du sol.",
+          "indice": "Un indice de végétation sert à estimer l'émissivité.",
+          "exogenes": "Le bâti, la voirie, les espaces verts.",
+          "classification": "Une carte d'occupation du sol, pour croiser.",
+          "modele-externe": "La météo de la nuit étudiée.",
+          "dates": "Choisir une journée de canicule sans nuages.",
+          "serie": "Plusieurs étés, pour ne pas conclure sur un seul jour."
+        },
+        "pieges": {
+          "visible": "La couleur d'un toit n'est pas sa température.",
+          "nuit": "Les lumières de la ville ne sont pas sa chaleur.",
+          "optique-thr": "Très fine, mais aveugle à la température."
+        }
+      },
+      "chaine": ["mesurer", "thermique", "thermique-sat", "dates", "atmo", "temperature", "terrain", "croiser", "modele-physique", "comparer-ref", "carte"]
+    },
+
+    {
+      "id": "icebergs", "donnee": "Radar", "client": "Direction d'une course au large",
+      "titre": "Les icebergs sur la route",
+      "question": "« Où sont les icebergs sur la route des skippers dans les mers du Sud, et où seront-ils quand la flotte passera ? »",
+      "dialogues": {
+        "signal": [
+          { "q": "Pourquoi le radar ?", "r": "Il émet sa propre onde : il voit de jour comme de nuit, à travers les nuages, si fréquents dans les mers du Sud. Un iceberg renvoie en général plus d'énergie que la mer autour." },
+          { "q": "Et quand la mer est forte ?", "r": "La mer agitée renvoie aussi de l'énergie : de faux échos apparaissent. Un navire fait aussi un écho brillant." }
+        ],
+        "donnees": [
+          { "q": "Quelle image ?", "r": "Sentinel-1, en mode large fauchée : des images de 400 km de côté, à 50 m environ. Ici, on préfère couvrir grand plutôt que voir fin. Et il faut demander les acquisitions sur les zones critiques.", "debloque": ["programmer"] },
+          { "q": "Et les altimètres ?", "r": "Faits pour mesurer la hauteur de la mer, ils voient aussi passer les gros icebergs. Une donnée conçue pour autre chose.", "pepite": "reutiliser" }
+        ],
+        "traitements": [
+          { "q": "Comment trier les échos ?", "r": "Filtrer le bruit radar, seuiller, puis un analyste confirme chaque détection douteuse.", "debloque": ["speckle"], "pepite": "humain" },
+          { "q": "Et entre deux images ?", "r": "Les icebergs dérivent : un modèle de vents et de courants prédit où ils seront quand la flotte passera.", "debloque": ["modele-physique"] }
+        ],
+        "contradicteur": [
+          { "q": "Qui est responsable si un bateau touche un iceberg ?", "r": "La zone interdite est une décision de la direction de course, prise sur une détection qui n'est jamais complète : les petits blocs échappent au radar. L'outil réduit le risque, il ne le supprime pas." }
+        ]
+      },
+      "correction": {
+        "indispensables": [
+          { "ids": ["detecter"], "si_absent": "Le client veut savoir où sont les icebergs : c'est une détection." },
+          { "ids": ["retrodiffusion"], "si_absent": "Quel signal voit à travers les nuages, de jour comme de nuit ?" },
+          { "ids": ["sar"], "si_absent": "Il manque la donnée qui porte ce signal." },
+          { "ids": ["programmer"], "si_absent": "Les mers du Sud ne sont pas couvertes en continu : il faut demander les images. Demandez à Bastien." },
+          { "ids": ["seuillage", "photo-interpretation", "deep"], "si_absent": "Comment séparez-vous un iceberg de la mer ?" },
+          { "ids": ["controle-humain"], "si_absent": "Qui confirme les échos douteux ?" },
+          { "ids": ["modele-externe", "modele-physique"], "si_absent": "Les icebergs bougent : où seront-ils dans trois jours ?" },
+          { "ids": ["zone", "alerte"], "si_absent": "Que remettez-vous à la direction de course ?" }
+        ],
+        "acceptables": {
+          "suivre": "Oui : on suit les icebergs d'une image à l'autre.",
+          "modeliser": "Oui : on prévoit leur dérive.",
+          "altimetrie": "Excellent : les altimètres repèrent les gros icebergs.",
+          "altimetre": "Excellent : une donnée faite pour autre chose.",
+          "optique-libre": "Utile par temps clair, rare dans les mers du Sud.",
+          "speckle": "Oui : le bruit radar gêne les seuils.",
+          "serie": "Pour suivre la dérive.",
+          "liste": "La liste des icebergs détectés, avec leur position."
+        },
+        "pieges": {
+          "optique-thr": "Trop étroit : on ne couvre pas l'océan Austral avec des images de 20 km.",
+          "visible": "Les nuages des mers du Sud cachent presque tout.",
+          "thermique": "La mer et la glace y sont toutes deux froides, et les nuages bloquent ce signal."
+        }
+      },
+      "chaine": ["detecter", "retrodiffusion", "sar", "programmer", "speckle", "seuillage", "controle-humain", "modele-physique", "zone"]
+    },
+
+    {
+      "id": "argiles", "donnee": "Interférométrie radar", "client": "Assureur",
+      "titre": "Les maisons qui se fissurent",
+      "question": "« Dans ce lotissement, les maisons fissurées bougent-elles à cause du retrait et du gonflement des argiles ? »",
+      "dialogues": {
+        "signal": [
+          { "q": "Comment mesurer des millimètres depuis 700 km ?", "r": "Avec la phase de l'onde radar : entre deux passages, un décalage d'une fraction de longueur d'onde (5,6 cm pour Sentinel-1) trahit un déplacement de quelques millimètres.", "debloque": ["interferogramme"] },
+          { "q": "Dans quelle direction ?", "r": "Selon la ligne de visée du satellite, qui est oblique. Il faut deux orbites différentes pour séparer le vertical de l'horizontal." }
+        ],
+        "donnees": [
+          { "q": "Faut-il tout calculer soi-même ?", "r": "Non : le service européen EGMS publie déjà, pour l'Europe, des séries de déplacement mesurées au millimètre, point par point. Cherchez le produit avant de le fabriquer.", "debloque": ["egms"], "pepite": "existe-deja" },
+          { "q": "Pourquoi aucun point dans les champs ?", "r": "La méthode garde les cibles stables d'un passage à l'autre : bâtiments, rochers, ouvrages. La végétation change trop pour être suivie." }
+        ],
+        "traitements": [
+          { "q": "Comment voir l'effet des argiles ?", "r": "Les argiles gonflent en hiver et se rétractent en été : on cherche un cycle saisonnier, puis une tendance qui s'accentue les années sèches.", "debloque": ["serie-temporelle"], "pepite": "calendrier" },
+          { "q": "Et le lien avec les sinistres ?", "r": "En croisant avec la carte de l'aléa argiles du BRGM, le bâti et les déclarations de sinistres.", "pepite": "croisement" }
+        ],
+        "contradicteur": [
+          { "q": "Puis-je refuser une indemnisation sur cette base ?", "r": "Prudence : les mesures sont relatives à un point de référence, et n'existent que là où il y a des cibles stables. C'est un indice fort, pas un constat d'expert sur une maison." }
+        ]
+      },
+      "correction": {
+        "indispensables": [
+          { "ids": ["mesurer", "suivre"], "si_absent": "Le client veut savoir si le sol bouge : que faites-vous ?" },
+          { "ids": ["phase"], "si_absent": "Quel signal mesure des déplacements de quelques millimètres ?" },
+          { "ids": ["sar", "egms"], "si_absent": "Il manque la donnée qui porte ce signal." },
+          { "ids": ["serie", "egms"], "si_absent": "Un déplacement se lit sur de nombreuses dates." },
+          { "ids": ["interferogramme", "egms"], "si_absent": "Il faut transformer la phase en déplacement." },
+          { "ids": ["serie-temporelle"], "si_absent": "Comment séparez-vous le cycle des saisons de la tendance ? Demandez à Inès." },
+          { "ids": ["exogenes"], "si_absent": "Sans la carte de l'aléa argiles ni le bâti, comment relier le mouvement aux argiles ?" },
+          { "ids": ["croiser"], "si_absent": "Il faut confronter les mouvements aux argiles et aux sinistres." },
+          { "ids": ["comparer-ref", "incertitude"], "si_absent": "Avec quelle précision, et confirmée comment ?" },
+          { "ids": ["carte", "courbe"], "si_absent": "Que remettez-vous à l'assureur ?" }
+        ],
+        "acceptables": {
+          "estimer": "On estime un risque ; mais d'abord on mesure un mouvement.",
+          "catalogue": "Oui : les images et le service existent déjà.",
+          "egms": "Excellent : la mesure est déjà faite.",
+          "recaler": "Indispensable si l'on calcule soi-même.",
+          "chiffre": "Une vitesse de déplacement, en mm par an.",
+          "terrain": "Des repères de nivellement ou des fissuromètres, pour confirmer.",
+          "incertitude": "Oui : une vitesse sans marge ne vaut rien."
+        },
+        "pieges": {
+          "optique-thr": "Une fissure se voit au sol, pas depuis l'orbite ; et quelques millimètres ne se voient sur aucune image optique.",
+          "lidar-aerien": "Deux campagnes LiDAR diffèrent de plusieurs centimètres : trop grossier pour des millimètres.",
+          "retrodiffusion": "L'intensité de l'écho ne dit pas le déplacement : c'est la phase qui le dit.",
+          "optique-libre": "Aucune image optique ne mesure des millimètres de déplacement."
+        }
+      },
+      "chaine": ["mesurer", "phase", "sar", "egms", "serie-temporelle", "exogenes", "croiser", "comparer-ref", "carte"]
+    },
+
+    {
+      "id": "methane", "donnee": "Atmosphère", "client": "ONG et journaliste d'investigation",
+      "titre": "Les panaches de méthane",
+      "question": "« Quelles installations relâchent d'énormes panaches de méthane, et combien ? »",
+      "dialogues": {
+        "signal": [
+          { "q": "Comment voit-on un gaz invisible ?", "r": "Par ce qu'il absorbe : le méthane absorbe la lumière du soleil, réfléchie par le sol, dans certaines bandes de l'infrarouge moyen. Un spectromètre mesure ce manque.", "debloque": ["colonne"] },
+          { "q": "Pourquoi pas partout ?", "r": "Il faut du soleil et un sol qui renvoie assez de lumière ; l'eau et la neige compliquent la mesure, les nuages l'empêchent." }
+        ],
+        "donnees": [
+          { "q": "Quel satellite ?", "r": "Sentinel-5P couvre la Terre chaque jour, mais avec des pixels de plusieurs kilomètres : il repère les très gros panaches, sans désigner l'installation." },
+          { "q": "Et pour trouver la source ?", "r": "Des capteurs plus fins, sur la zone et autour de la date : des imageurs hyperspectraux, et même Sentinel-2 pour les plus gros panaches.", "debloque": ["hyperspectral"], "pepite": "grossier-fin" }
+        ],
+        "traitements": [
+          { "q": "Comment estimer le débit ?", "r": "On convertit l'absorption en quantité de méthane, puis on utilise le vent pour savoir quel débit a pu produire ce panache.", "debloque": ["colonne", "modele-physique"] },
+          { "q": "Comment désigner l'installation ?", "r": "En superposant le panache aux installations connues : puits, gazoducs, décharges, mines." }
+        ],
+        "contradicteur": [
+          { "q": "Faut-il publier tout de suite ?", "r": "Le système de l'ONU notifie d'abord gouvernements et entreprises, et ne rend les données publiques que 45 à 75 jours après la détection. Transparence ou diplomatie : à vous de peser.", "pepite": "savoir" }
+        ]
+      },
+      "correction": {
+        "indispensables": [
+          { "ids": ["detecter"], "si_absent": "Le client veut savoir où sont les panaches : c'est une détection." },
+          { "ids": ["gaz"], "si_absent": "Quel signal trahit un gaz invisible ?" },
+          { "ids": ["atmo-sat"], "si_absent": "Il manque la donnée qui couvre le globe chaque jour." },
+          { "ids": ["hyperspectral", "optique-libre"], "si_absent": "Avec des pixels de plusieurs kilomètres, comment désigner l'installation ? Demandez à Bastien." },
+          { "ids": ["colonne"], "si_absent": "Il faut convertir l'absorption en quantité de gaz." },
+          { "ids": ["modele-physique", "modele-externe"], "si_absent": "Sans le vent, pas de débit." },
+          { "ids": ["exogenes", "croiser"], "si_absent": "Comment reliez-vous un panache à une installation ?" },
+          { "ids": ["comparer-ref", "controle-humain", "incertitude"], "si_absent": "Avant d'accuser une entreprise, qui vérifie ?" },
+          { "ids": ["alerte", "liste"], "si_absent": "Que publiez-vous, ou à qui écrivez-vous ?" }
+        ],
+        "acceptables": {
+          "estimer": "Oui : le débit s'estime.",
+          "suivre": "Oui : un site qui fuit souvent est suivi.",
+          "nuages": "Oui : les nuages faussent la mesure.",
+          "chiffre": "Le débit, avec sa marge.",
+          "carte": "Pour montrer les panaches.",
+          "serie": "Plusieurs passages, pour confirmer qu'une fuite dure.",
+          "swir": "Oui : c'est dans l'infrarouge moyen que le méthane absorbe."
+        },
+        "pieges": {
+          "thermique": "Le méthane ne se voit pas à sa chaleur, mais à ce qu'il absorbe.",
+          "visible": "Le méthane est invisible à l'œil.",
+          "nuit": "Les torchères se voient la nuit ; le méthane qui fuit, non.",
+          "sar": "Le radar ne voit pas les gaz."
+        }
+      },
+      "chaine": ["detecter", "gaz", "atmo-sat", "hyperspectral", "colonne", "modele-physique", "croiser", "controle-humain", "alerte"]
+    },
+
+    {
+      "id": "pac", "donnee": "Optique et radar en séries", "client": "Organisme payeur de la PAC",
+      "titre": "Les cultures déclarées",
+      "question": "« Les cultures déclarées par les agriculteurs pour les aides européennes sont-elles bien celles qui poussent dans leurs parcelles ? »",
+      "dialogues": {
+        "signal": [
+          { "q": "Comment distinguer un blé d'un maïs ?", "r": "Pas sur une seule image : par leur calendrier. Chaque culture verdit, mûrit et est récoltée à son rythme ; la courbe d'un indice de végétation au fil de la saison est sa signature.", "pepite": "calendrier" },
+          { "q": "Et s'il pleut tout le printemps ?", "r": "Le radar prend le relais : il voit la structure des plantes à travers les nuages." }
+        ],
+        "donnees": [
+          { "q": "Quelles données ?", "r": "Sentinel-2 tous les cinq jours environ, Sentinel-1 en complément, et le registre des parcelles déclarées." },
+          { "q": "Combien d'images ?", "r": "Des dizaines par parcelle et par saison : il faut des traitements automatiques sur des séries.", "debloque": ["serie-temporelle"] }
+        ],
+        "traitements": [
+          { "q": "Comment repérer une déclaration fausse ?", "r": "On classe chaque parcelle d'après sa série temporelle, puis on compare au déclaré ; les désaccords partent en contrôle.", "debloque": ["serie-temporelle", "stats-zonales"] },
+          { "q": "Et la précision ?", "r": "Calculée sur des parcelles contrôlées sur le terrain : sans elles, aucun chiffre de précision n'a de sens.", "debloque": ["matrice"], "pepite": "terrain" }
+        ],
+        "contradicteur": [
+          { "q": "Un agriculteur sanctionné par un algorithme ?", "r": "Le suivi signale ; la décision reste humaine, et l'agriculteur doit pouvoir apporter une preuve contraire.", "pepite": "humain" }
+        ]
+      },
+      "correction": {
+        "indispensables": [
+          { "ids": ["classer", "suivre"], "si_absent": "Le client veut savoir quelle culture pousse : que faites-vous ?" },
+          { "ids": ["pir", "visible"], "si_absent": "Quel signal suit la vigueur de la végétation ?" },
+          { "ids": ["optique-libre"], "si_absent": "Il faut une donnée qui revienne souvent, sur tout le territoire." },
+          { "ids": ["serie"], "si_absent": "Une image ne suffit pas : c'est le calendrier qui distingue les cultures." },
+          { "ids": ["preparer", "nuages", "atmo"], "si_absent": "Des dizaines d'images : les nuages et l'atmosphère les rendent incomparables." },
+          { "ids": ["indice"], "si_absent": "Il manque la valeur qui résume la vigueur de la végétation." },
+          { "ids": ["classification", "serie-temporelle", "deep"], "si_absent": "Comment attribuez-vous une culture à chaque parcelle ?" },
+          { "ids": ["exogenes"], "si_absent": "Sans le registre des parcelles déclarées, à quoi comparez-vous ?" },
+          { "ids": ["croiser"], "si_absent": "Il faut confronter le classement au déclaré." },
+          { "ids": ["comparer-ref", "controle-humain", "matrice"], "si_absent": "Qui contrôle avant de sanctionner ?" },
+          { "ids": ["liste", "alerte", "carte"], "si_absent": "Que remettez-vous aux contrôleurs ?" }
+        ],
+        "acceptables": {
+          "sar": "Excellent : les nuages ne bloquent plus le suivi.",
+          "retrodiffusion": "Oui : le radar voit la structure des cultures.",
+          "serie-temporelle": "Oui : c'est la signature d'une culture.",
+          "stats-zonales": "Oui : on résume les pixels par parcelle.",
+          "apprentissage": "Les parcelles contrôlées servent d'exemples.",
+          "terrain": "Pour les exemples et pour la validation.",
+          "catalogue": "Les images sont en accès libre."
+        },
+        "pieges": {
+          "optique-thr": "Trop cher et trop rare pour suivre toutes les parcelles chaque semaine.",
+          "lidar-aerien": "Une campagne LiDAR ne suit pas une saison de culture.",
+          "photo-interpretation": "Des millions de parcelles, des dizaines de dates : on ne regarde pas tout à l'œil.",
+          "thermique": "La température ne suffit pas à reconnaître une culture."
+        }
+      },
+      "chaine": ["classer", "pir", "optique-libre", "sar", "serie", "nuages", "indice", "serie-temporelle", "exogenes", "croiser", "controle-humain", "liste"]
+    }
+  ]
+}

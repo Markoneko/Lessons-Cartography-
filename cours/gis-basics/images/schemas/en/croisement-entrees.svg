@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 330" role="img" aria-label="Two layers to overlay: forest stands and the river">
+<g transform="translate(20,20)">
+<path class="s-plein-accent" opacity="0.25" d="M60 60 L190 50 L210 140 L80 150 Z"/>
+<path class="s-trait" style="stroke-width:1.8" d="M60 60 L190 50 L210 140 L80 150 Z"/>
+<text x="135" y="106" text-anchor="middle">P1</text>
+<path class="s-plein-accent" opacity="0.25" d="M200 40 L330 45 L320 120 L215 128 Z"/>
+<path class="s-trait" style="stroke-width:1.8" d="M200 40 L330 45 L320 120 L215 128 Z"/>
+<text x="266" y="89" text-anchor="middle">P2</text>
+<path class="s-plein-accent" opacity="0.25" d="M90 165 L215 150 L230 250 L70 260 Z"/>
+<path class="s-trait" style="stroke-width:1.8" d="M90 165 L215 150 L230 250 L70 260 Z"/>
+<text x="151" y="212" text-anchor="middle">P3</text>
+<path class="s-plein-accent" opacity="0.25" d="M230 140 L330 135 L345 250 L245 255 Z"/>
+<path class="s-trait" style="stroke-width:1.8" d="M230 140 L330 135 L345 250 L245 255 Z"/>
+<text x="288" y="201" text-anchor="middle">P4</text>
+<path class="s-plein-accent" opacity="0.25" d="M350 50 L470 60 L460 170 L345 160 Z"/>
+<path class="s-trait" style="stroke-width:1.8" d="M350 50 L470 60 L460 170 L345 160 Z"/>
+<text x="406" y="116" text-anchor="middle">P5</text>
+<path class="s-plein-accent" opacity="0.25" d="M350 175 L465 185 L470 270 L360 262 Z"/>
+<path class="s-trait" style="stroke-width:1.8" d="M350 175 L465 185 L470 270 L360 262 Z"/>
+<text x="411" y="229" text-anchor="middle">P6</text>
+<text class="s-titre" x="250" y="300" text-anchor="middle">Layer 1: forest stands</text></g>
+<text class="s-titre" x="550" y="175" text-anchor="middle" style="font-size:36px">+</text>
+<g transform="translate(580,20)"><rect class="s-fond" x="0" y="30" width="500" height="240"/>
+<path d="M30 120 C 120 110 170 175 240 200 S 320 150 345 120 S 420 90 500 100" style="fill:none;stroke:#4A7CC2;stroke-width:4"/>
+<text class="s-titre" x="250" y="300" text-anchor="middle">Layer 2: the river</text></g></svg>

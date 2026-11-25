@@ -1,0 +1,913 @@
+<script>
+/* Briques d'application (cours « Image Application ») :
+   vote (oui / non / pas sûr), compromis (les quatre résolutions), atelier des commandes
+   (hexagones, personnages, correction, cas réel, envoi), chaîne de référence, pépites, envoi.
+   Ce qui est fait est gardé dans le navigateur ; l'envoi vers la feuille de calcul est volontaire. */
+(function () {
+  function tous(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function stopper(e_) {
+    ["pointerdown", "keydown", "click", "wheel", "dragstart", "touchstart"].forEach(function (n) {
+      e_.addEventListener(n, function (e) { e.stopPropagation(); });
+    });
+  }
+  function el(nom, classe, parent, texte) {
+    var e = document.createElement(nom);
+    if (classe) e.className = classe;
+    if (texte !== undefined) e.textContent = texte;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function bouton(texte, classe, parent, action) {
+    var b = el("button", "hx-bouton" + (classe ? " " + classe : ""), parent, texte);
+    b.type = "button";
+    if (action) b.addEventListener("click", action);
+    return b;
+  }
+  var params = new URLSearchParams(window.location.search);
+  var EN = (document.documentElement.lang || "fr").slice(0, 2) === "en";
+  var EN_PDF = params.has("print-pdf");
+  var CORRIGE = EN_PDF && params.get("reponses") !== "non";
+  // typographie française : espace insécable devant : ; ! ? et à l'intérieur des guillemets
+  function ty(s) {
+    if (EN || !s) return s || "";
+    return String(s).replace(/ ([:;!?»])/g, " $1").replace(/« /g, "« ");
+  }
+
+  var T = EN ? {
+    oui: "Yes", non: "No", pasSur: "Not sure", suivant: "Next", recommencer: "Start again",
+    precedent: "Previous statement", prochain: "Next statement", voirVideo: "Watch on YouTube",
+    possible: "Possible.", impossible: "Not possible (or not yet).", sondage: "Noted.",
+    juste: "Right", rate: "Wrong", doute: "You were not sure",
+    bilanVote: function (j, f, d, n) { return j + " right, " + f + " wrong, " + d + " not sure, out of " + n + "."; },
+    question: "Can it be done from the sky?",
+    axes: ["Spatial", "Temporal", "Spectral", "Radiometric"],
+    axesCourts: ["spatial", "temporal", "spectral", "radiometric"],
+    objectif: "Goal", atteint: "Goal reached.", pasAtteint: "Not yet.",
+    ressemble: "Your sensor looks like:", bloque: "Every other setting is at its minimum: a single sensor cannot have it all.",
+    impossibleObj: "This goal cannot be reached by a single sensor: that is why sensors are combined (constellations, fusion).",
+    plus: "more", moins: "less", raz: "Back to zero",
+    groupe: "Group", noms: "Names (optional)", commande: "Order", chaine: "The chain", casReel: "The real case", envoyer: "Send",
+    valider: "Check my chain", effacer: "Clear the board", reserve: "Your hexagons", nouveau: "new",
+    choisirHex: "Pick a hexagon, then click an empty cell. Click a placed hexagon to move it; click it twice to take it back.",
+    infoVide: "Point at a hexagon to read what it is.",
+    aRetenir: "What it is: ", permet: "What it allows: ",
+    parler: "Talk to", fermer: "Close", debloque: "New in your reserve: ", pepite: "Nugget",
+    correction: "Feedback", indispensable: "Essential", acceptable: "Acceptable", piege: "Trap", hors: "Off-topic here",
+    isole: "This hexagon rests on no earlier step.", sansValider: "Rose: “Nobody checked your result. Who would trust it?”",
+    sansResultat: "What do you hand over to the client? A Result hexagon is missing.",
+    sansVerbe: "What does the client want? A Verb hexagon is missing.",
+    score: function (a, n) { return a + " / " + n + " essential steps present."; },
+    manque: "Missing", pieges: "Traps", reference: "Show the reference chain", voirSolution: "Go to the solution",
+    horsDefaut: "Ask yourself what this brings to the order.",
+    retourReserve: "Back to the reserve", vide: "Place some hexagons first.",
+    casTitre: "Find a real case that matches your order, then fill in this record.",
+    champs: [["titre", "The real case (title, organisation, year)"], ["lien", "Link to the source"], ["signal", "Signal used"],
+      ["donnee", "Data actually used"], ["traitements", "Processing performed"], ["sensibilite", "Sensitivity to external factors"],
+      ["ecarts", "Differences between your chain and the real case"]],
+    resolutions: "Its four resolutions", moyens: "Means", moyensListe: ["Choose…", "One person", "Small team", "Large team", "Institution (a few hundred)", "Even more"],
+    precision: "Can the accuracy be estimated?", precisionListe: ["Choose…", "Yes, quantified", "Partly", "No", "Unknown"],
+    envoiTitre: "Send your work", envoiAide: "Sending puts your group, your chain, its feedback, your real-case record and your votes in the course spreadsheet.",
+    envoiBouton: "Send to the spreadsheet", telecharger: "Download the record (JSON)", copier: "Copy as text",
+    envoiFait: "Sent. The spreadsheet does not confirm receipt: check with your teacher.", envoiErreur: "Sending failed: download the record instead.",
+    envoiAbsent: "The sending address is not set yet: download the record and hand it in.", copie: "Copied.",
+    groupeManque: "Enter your group number first.",
+    pepitesCompte: function (a, n) { return a + " / " + n + " nuggets heard during the workshop."; },
+    pepiteEntendue: "heard", interactif: "Interactive in the HTML version.",
+    commandesPdf: "The eight orders"
+  } : {
+    oui: "Oui", non: "Non", pasSur: "Pas sûr", suivant: "Suivant", recommencer: "Recommencer",
+    precedent: "Énoncé précédent", prochain: "Énoncé suivant", voirVideo: "Voir sur YouTube",
+    possible: "C'est possible.", impossible: "Ce n'est pas possible (ou pas encore).", sondage: "C'est noté.",
+    juste: "Juste", rate: "Raté", doute: "Vous n'étiez pas sûr",
+    bilanVote: function (j, f, d, n) { return j + " juste" + (j > 1 ? "s" : "") + ", " + f + " raté" + (f > 1 ? "s" : "") + ", " + d + " « pas sûr », sur " + n + "."; },
+    question: "Peut-on le faire depuis le ciel ?",
+    axes: ["Spatiale", "Temporelle", "Spectrale", "Radiométrique"],
+    axesCourts: ["spatiale", "temporelle", "spectrale", "radiométrique"],
+    objectif: "Objectif", atteint: "Objectif atteint.", pasAtteint: "Pas encore.",
+    ressemble: "Votre capteur ressemble à :", bloque: "Tous les autres réglages sont au minimum : un seul capteur ne peut pas tout avoir.",
+    impossibleObj: "Aucun capteur seul n'atteint cet objectif : c'est pour cela qu'on combine des capteurs (constellations, fusion).",
+    plus: "plus", moins: "moins", raz: "Remettre à zéro",
+    groupe: "Groupe", noms: "Noms (facultatif)", commande: "Commande", chaine: "La chaîne", casReel: "Le cas réel", envoyer: "Envoyer",
+    valider: "Valider ma chaîne", effacer: "Vider le plateau", reserve: "Vos hexagones", nouveau: "nouveau",
+    choisirHex: "Choisissez un hexagone, puis cliquez une case vide. Cliquez un hexagone posé pour le déplacer ; deux fois pour le reprendre.",
+    infoVide: "Survolez un hexagone pour lire ce qu'il est.",
+    aRetenir: "Ce que c'est : ", permet: "Ce que ça permet : ",
+    parler: "Parler à", fermer: "Fermer", debloque: "Nouveau dans votre réserve : ", pepite: "Pépite",
+    correction: "Correction", indispensable: "Indispensable", acceptable: "Acceptable", piege: "Piège", hors: "Hors sujet ici",
+    isole: "Cet hexagone ne s'appuie sur aucune étape précédente.", sansValider: "Rose : « Personne n'a vérifié votre résultat. Qui le croira ? »",
+    sansResultat: "Que remettez-vous au client ? Il manque un hexagone Résultat.",
+    sansVerbe: "Que veut le client ? Il manque un hexagone Verbe.",
+    score: function (a, n) { return a + " / " + n + " étapes indispensables présentes."; },
+    manque: "Ce qui manque", pieges: "Les pièges", reference: "Voir la chaîne de référence", voirSolution: "Aller à la solution",
+    horsDefaut: "Demandez-vous ce qu'il apporte à la commande.",
+    retourReserve: "Revenir à la réserve", vide: "Posez d'abord des hexagones.",
+    casTitre: "Trouvez un cas réel qui ressemble à votre commande, puis remplissez cette fiche.",
+    champs: [["titre", "Le cas réel (titre, organisme, année)"], ["lien", "Lien vers la source"], ["signal", "Signal utilisé"],
+      ["donnee", "Données réellement utilisées"], ["traitements", "Traitements effectués"], ["sensibilite", "Sensibilité à des paramètres extérieurs"],
+      ["ecarts", "Écarts entre votre chaîne et le cas réel"]],
+    resolutions: "Ses quatre résolutions", moyens: "Moyens", moyensListe: ["Choisir…", "Une personne", "Petite équipe", "Grosse équipe", "Institution (quelques centaines)", "Plus encore"],
+    precision: "Peut-on estimer la précision ?", precisionListe: ["Choisir…", "Oui, chiffrée", "En partie", "Non", "Inconnu"],
+    envoiTitre: "Envoyer votre travail", envoiAide: "L'envoi range dans la feuille du cours votre groupe, votre chaîne et sa correction, la fiche du cas réel et vos votes.",
+    envoiBouton: "Envoyer vers la feuille", telecharger: "Télécharger la fiche (JSON)", copier: "Copier en texte",
+    envoiFait: "Envoyé. La feuille ne renvoie pas d'accusé de réception : vérifiez avec l'enseignant.", envoiErreur: "L'envoi a échoué : téléchargez la fiche.",
+    envoiAbsent: "L'adresse d'envoi n'est pas encore réglée : téléchargez la fiche et remettez-la.", copie: "Copié.",
+    groupeManque: "Indiquez d'abord votre numéro de groupe.",
+    pepitesCompte: function (a, n) { return a + " / " + n + " pépites entendues pendant l'atelier."; },
+    pepiteEntendue: "entendue", interactif: "Interactif dans la version HTML.",
+    commandesPdf: "Les huit commandes"
+  };
+
+  // --- Mémoire, dans le navigateur seulement ------------------------------------------------
+  var CLE = "image-app:" + (document.title || "cours") + ":";
+  var memoire = {};
+  function lire(k, defaut) {
+    try { var v = localStorage.getItem(CLE + k); if (v !== null) return JSON.parse(v); } catch (e) { /* stockage indisponible */ }
+    return k in memoire ? memoire[k] : defaut;
+  }
+  function ecrire(k, v) {
+    memoire[k] = v;
+    try { localStorage.setItem(CLE + k, JSON.stringify(v)); } catch (e) { /* stockage indisponible */ }
+  }
+
+  // --- Les données de l'atelier, embarquées une fois ---------------------------------------
+  var cache = {};
+  function donnees(source) {
+    if (cache[source]) return cache[source];
+    var s = tous(".hx-donnees").filter(function (n) { return n.dataset.source === source; })[0] || document.querySelector(".hx-donnees");
+    var d = null;
+    try { d = JSON.parse(s.textContent); } catch (e) { d = null; }
+    if (!d) return null;
+    d.hex = {}; d.hexagones.forEach(function (h) { d.hex[h.id] = h; });
+    d.fam = {}; d.familles.forEach(function (f) { d.fam[f.id] = f; });
+    d.cmd = {}; d.commandes.forEach(function (c) { d.cmd[c.id] = c; });
+    d.pep = {}; d.pepites.forEach(function (p) { d.pep[p.id] = p; });
+    cache[source] = d;
+    return d;
+  }
+  // un hexagone dessiné en HTML (deux couches : le filet et le fond)
+  function hexa(d, id, classe, parent) {
+    var h = d.hex[id], f = h ? d.fam[h.famille] : null;
+    var boite = el("div", "hx-hex" + (classe ? " " + classe : ""), parent);
+    boite.dataset.id = id;
+    var fond = el("div", "hx-hex-fond", boite);
+    if (f) { fond.style.background = f.fond; fond.style.color = f.texte; }
+    el("span", "hx-hex-texte", fond, h ? ty(h.court) : id);
+    return boite;
+  }
+
+  // =====================================================================================
+  // VOTE : oui, non, pas sûr
+  // =====================================================================================
+  tous(".vote-zone").forEach(function (zone, numero) {
+    stopper(zone);
+    var items = [];
+    try { items = JSON.parse(zone.querySelector(".vote-donnees").textContent); } catch (e) { items = []; }
+    if (!items.length) return;
+    var cle = "vote:" + numero;
+    var rep = lire(cle, {});
+    var question = zone.dataset.question || T.question;
+    if (CORRIGE) {
+      var ul = el("ol", "vote-imprime", zone);
+      items.forEach(function (it) {
+        var li = el("li", "", ul);
+        el("strong", "", li, ty(it.t));
+        if (it.n !== "sondage") el("span", "vote-verdict " + it.n, li, " " + (it.n === "vrai" ? T.possible : T.impossible) + " ");
+        if (it.e) el("span", "", li, ty(it.e));
+      });
+      return;
+    }
+    var tete = el("div", "vote-tete", zone);
+    // deux flèches pour passer d'un énoncé à l'autre sans voter, et « Recommencer » à tout moment
+    var avant = bouton("←", "vote-fleche", tete, function () { if (i > 0) { i -= 1; afficher(); } });
+    var compte = el("span", "vote-compte", tete);
+    var apres = bouton("→", "vote-fleche", tete, function () { if (i < items.length) { i += 1; afficher(); } });
+    avant.title = T.precedent; avant.setAttribute("aria-label", T.precedent);
+    apres.title = T.prochain; apres.setAttribute("aria-label", T.prochain);
+    el("span", "vote-question", tete, ty(question));
+    bouton("↺ " + T.recommencer, "discret vote-raz", tete, function () { rep = {}; ecrire(cle, rep); i = 0; afficher(); });
+    var carte = el("div", "vote-carte", zone);
+    var pied = el("div", "vote-pied", zone);
+    var i = 0;
+    function suivantNonVu() { for (var k = 0; k < items.length; k++) if (!(k in rep)) return k; return items.length; }
+    function verdict(k) {
+      var it = items[k], r = rep[k];
+      if (it.n === "sondage") return "";
+      if (r === "pas-sur") return "doute";
+      return ((r === "oui") === (it.n === "vrai")) ? "juste" : "rate";
+    }
+    // les images de chaque énoncé : de vraies balises embarquées, rangées par numéro d'énoncé
+    var sources = {};
+    tous(".vote-source", zone).forEach(function (im) {
+      var k = im.dataset.k; sources[k] = sources[k] || {}; sources[k][im.dataset.role] = im.getAttribute("src");
+    });
+    function idVideo(url) {
+      var m = (url || "").match(/(?:v=|youtu\.be\/|embed\/)([\w-]{6,})/);
+      return m ? m[1] : "";
+    }
+    function media(k, parent) {
+      var it = items[k], src = sources[k] || {};
+      if (!src.image && !it.video) return false;
+      var boite = el("figure", "vote-media", parent);
+      if (it.video && idVideo(it.video)) {
+        // YouTube refuse de jouer une vidéo intégrée dans une page ouverte comme fichier (file://) :
+        // il lui faut l'adresse de la page. Hors serveur, on montre donc la vignette, qui ouvre la vidéo.
+        var id = idVideo(it.video), regarder = "https://www.youtube.com/watch?v=" + id;
+        if (location.protocol === "file:") {
+          var vig = el("a", "vote-video vote-vignette", boite); vig.href = regarder; vig.target = "_blank"; vig.rel = "noopener";
+          vig.style.backgroundImage = "url(https://i.ytimg.com/vi/" + id + "/hqdefault.jpg)";
+          el("span", "vote-lecture", vig, "▶ " + T.voirVideo);
+        } else {
+          var f = el("iframe", "vote-video", boite);
+          f.src = "https://www.youtube.com/embed/" + id;
+          f.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+          f.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+          f.setAttribute("allowfullscreen", "");
+          f.title = it.legende || it.t;
+        }
+      } else if (src.fondu) {
+        var cadre = el("div", "vote-fondu", boite);
+        var a = el("img", "", cadre); a.src = src.image; a.alt = "";
+        var b = el("img", "dessus", cadre); b.src = src.fondu; b.alt = ""; b.style.opacity = 0.5;
+        var r = el("input", "vote-fondu-curseur", boite); r.type = "range"; r.min = 0; r.max = 100; r.value = 50;
+        r.addEventListener("input", function () { b.style.opacity = r.value / 100; });
+      } else if (parseFloat(it.zoom) > 1) {
+        // comme la brique « loupe » : un clic agrandit dans le cadre, la souris parcourt, un second clic revient
+        var z = parseFloat(it.zoom);
+        var cadreZ = el("div", "vote-loupe", boite);
+        var imz = el("img", "", cadreZ); imz.src = src.image; imz.alt = "";
+        el("span", "vote-loupe-aide", cadreZ, EN ? "Click to zoom" : "Cliquez pour zoomer");
+        function viser(e) {
+          var r = cadreZ.getBoundingClientRect();
+          var px = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1), py = Math.min(Math.max((e.clientY - r.top) / r.height, 0), 1);
+          imz.style.transformOrigin = (px * 100) + "% " + (py * 100) + "%";
+        }
+        cadreZ.addEventListener("click", function (e) {
+          var actif = cadreZ.classList.toggle("zoome");
+          imz.style.transform = actif ? "scale(" + z + ")" : "";
+          viser(e);
+        });
+        cadreZ.addEventListener("mousemove", function (e) { if (cadreZ.classList.contains("zoome")) viser(e); });
+        cadreZ.addEventListener("touchmove", function (e) { if (cadreZ.classList.contains("zoome")) { viser(e.touches[0]); e.preventDefault(); } }, { passive: false });
+      } else {
+        var im = el("img", "", boite); im.src = src.image; im.alt = "";
+      }
+      var leg = el("figcaption", "", boite);
+      if (it.legende) el("span", "", leg, ty(it.legende) + " ");
+      if (it.lien) { var l = el("a", "", leg, EN ? "Source" : "Source"); l.href = it.lien; l.target = "_blank"; l.rel = "noopener"; }
+      return true;
+    }
+    function afficher() {
+      carte.innerHTML = ""; pied.innerHTML = "";
+      avant.disabled = i <= 0; apres.disabled = i >= items.length;
+      if (i >= items.length) { bilan(); return; }
+      compte.textContent = (i + 1) + " / " + items.length;
+      var it = items[i];
+      var gauche = el("div", "vote-gauche", carte);
+      el("p", "vote-enonce", gauche, ty(it.t));
+      var choix = el("div", "vote-choix", gauche);
+      [["oui", T.oui], ["non", T.non], ["pas-sur", T.pasSur]].forEach(function (c) {
+        var b = bouton(c[1], "vote-bouton " + c[0] + (rep[i] === c[0] ? " actif" : ""), choix, function () {
+          rep[i] = c[0]; ecrire(cle, rep); afficher();
+        });
+        if (i in rep) b.disabled = true;
+      });
+      if (i in rep) {
+        var v = verdict(i), retour = el("div", "vote-retour " + (v || "sondage"), gauche);
+        if (it.n === "sondage") el("strong", "", retour, T.sondage);
+        else {
+          el("strong", "", retour, (v === "juste" ? T.juste : v === "rate" ? T.rate : T.doute) + " · " + (it.n === "vrai" ? T.possible : T.impossible) + " ");
+          if (it.e) el("span", "", retour, ty(it.e));
+        }
+        var avec = media(i, carte);
+        carte.classList.toggle("avec-media", avec);
+        // avec une illustration, « Suivant » passe dans la colonne de texte, pour laisser la hauteur à l'image
+        var suivant = bouton(T.suivant + " →", "principal", avec ? el("div", "vote-suivant", gauche) : pied, function () { i += 1; afficher(); });
+      } else carte.classList.remove("avec-media");
+    }
+    function bilan() {
+      carte.classList.remove("avec-media");
+      compte.textContent = items.length + " / " + items.length;
+      var j = 0, f = 0, d_ = 0, n = 0;
+      items.forEach(function (it, k) {
+        if (it.n === "sondage") return;
+        n += 1; var v = verdict(k);
+        if (v === "juste") j += 1; else if (v === "rate") f += 1; else d_ += 1;
+      });
+      if (n) el("p", "vote-bilan", carte, T.bilanVote(j, f, d_, n));
+      var grille = el("div", "vote-grille", carte);
+      items.forEach(function (it, k) {
+        var v = verdict(k);
+        var c = el("button", "vote-pastille " + (v || "sondage"), grille, ty(it.t));
+        c.type = "button";
+        c.title = it.n === "sondage" ? "" : (it.n === "vrai" ? T.possible : T.impossible);
+        c.addEventListener("click", function () { i = k; afficher(); });
+      });
+      bouton(T.recommencer, "discret", pied, function () { rep = {}; ecrire(cle, rep); i = 0; afficher(); });
+    }
+    i = suivantNonVu();
+    afficher();
+  });
+
+  // =====================================================================================
+  // COMPROMIS : quatre curseurs centrés sur zéro ; monter l'un en fait baisser un autre
+  // =====================================================================================
+  var RAISONS = EN ? {
+    "0-1": "Finer pixels mean a narrower swath: the satellite takes longer to come back over the same place.",
+    "0-2": "More pixels and more bands mean too much data to record and send down: one has to choose.",
+    "0-3": "A smaller pixel receives less light: the signal is weaker against the noise.",
+    "1-2": "More bands mean more data to send down at each pass: images cannot be taken as often.",
+    "1-3": "Frequent images leave less exposure time, or come from a higher orbit: less light reaches each pixel.",
+    "2-3": "Narrower bands receive less light: each measurement is noisier."
+  } : {
+    "0-1": "Des pixels plus fins, c'est une fauchée plus étroite : le satellite met plus longtemps à revenir au même endroit.",
+    "0-2": "Plus de pixels et plus de bandes, c'est trop de données à enregistrer et à descendre au sol : il faut choisir.",
+    "0-3": "Un pixel plus petit reçoit moins de lumière : le signal est plus faible face au bruit.",
+    "1-2": "Plus de bandes, c'est plus de données à descendre au sol à chaque passage : on ne peut pas acquérir aussi souvent.",
+    "1-3": "Des images plus fréquentes laissent moins de temps de pose, ou viennent d'une orbite plus haute : chaque pixel reçoit moins de lumière.",
+    "2-3": "Des bandes plus étroites reçoivent moins de lumière : chaque mesure est plus bruitée."
+  };
+  var NOMS_AXES = ["spatiale", "temporelle", "spectrale", "radiometrique", "spatial", "temporal", "spectral", "radiometric", "radiométrique"];
+  function axeDe(mot) {
+    var k = NOMS_AXES.indexOf(mot.toLowerCase());
+    if (k === 8) return 3;
+    return k < 0 ? -1 : k % 4;
+  }
+  function lireCondition(c) {
+    var conds = [];
+    (c || "").split(",").forEach(function (m) {
+      var r = m.trim().match(/^([\wéèà]+)\s*(>=|<=|=)\s*(-?\d+)$/i);
+      if (r && axeDe(r[1]) >= 0) conds.push({ a: axeDe(r[1]), op: r[2], v: parseInt(r[3], 10) });
+    });
+    return conds;
+  }
+  function verifie(conds, val) {
+    return conds.every(function (c) {
+      return c.op === ">=" ? val[c.a] >= c.v : c.op === "<=" ? val[c.a] <= c.v : val[c.a] === c.v;
+    });
+  }
+  function faisable(conds) {
+    var mini = [-3, -3, -3, -3];
+    conds.forEach(function (c) { if (c.op !== "<=") mini[c.a] = Math.max(mini[c.a], c.v); });
+    return mini.reduce(function (a, b) { return a + b; }, 0) <= 0;
+  }
+  tous(".compromis-zone").forEach(function (zone, numero) {
+    stopper(zone.parentNode);
+    var D = { objectifs: [], capteurs: [] };
+    try { D = JSON.parse(zone.querySelector(".compromis-donnees").textContent); } catch (e) { /* vide */ }
+    var objectifs = D.objectifs.map(function (o) { return { t: o.t, conds: lireCondition(o.c) }; });
+    function proche(val) {
+      var best = null, dmin = 1e9;
+      D.capteurs.forEach(function (c) {
+        var d2 = 0; for (var k = 0; k < 4; k++) d2 += Math.pow((c.v[k] || 0) - val[k], 2);
+        if (d2 < dmin) { dmin = d2; best = c; }
+      });
+      return best;
+    }
+    if (CORRIGE) {
+      var ul = el("ul", "compromis-imprime", zone);
+      objectifs.forEach(function (o) {
+        var li = el("li", "", ul); el("strong", "", li, ty(o.t) + " — ");
+        var ok = D.capteurs.filter(function (c) { return verifie(o.conds, c.v); });
+        el("span", "", li, faisable(o.conds) ? (ok.length ? ok.map(function (c) { return c.t; }).join(", ") : "—") : T.impossibleObj);
+      });
+      return;
+    }
+    var etat = lire("compromis:" + numero, { v: [0, 0, 0, 0], o: 0 });
+    var gauche = el("div", "compromis-objectifs", zone);
+    el("div", "compromis-titre", gauche, T.objectif);
+    var boutonsObj = objectifs.map(function (o, k) {
+      // changer d'objectif remet les curseurs à zéro : chaque objectif part du même capteur de référence
+      return bouton(ty(o.t), "compromis-obj", gauche, function () {
+        if (etat.o !== k) { etat.v = [0, 0, 0, 0]; raison.textContent = ""; raison.className = "compromis-raison"; }
+        etat.o = k; sauver(); dessiner();
+      });
+    });
+    var droite = el("div", "compromis-reglages", zone);
+    var lignes = T.axes.map(function (nom, a) {
+      var ligne = el("div", "compromis-ligne", droite);
+      el("span", "compromis-nom", ligne, nom);
+      var m = bouton("−", "compromis-pm", ligne, function () { bouger(a, -1); });
+      m.title = T.moins;
+      var barre = el("div", "compromis-barre", ligne);
+      for (var k = -3; k <= 3; k++) el("span", "compromis-cran" + (k === 0 ? " zero" : ""), barre);
+      var p = bouton("+", "compromis-pm", ligne, function () { bouger(a, 1); });
+      p.title = T.plus;
+      var v = el("span", "compromis-val", ligne);
+      return { barre: barre, v: v };
+    });
+    var raison = el("div", "compromis-raison", droite);
+    var bilan = el("div", "compromis-bilan", droite);
+    bouton(T.raz, "discret", droite, function () { etat.v = [0, 0, 0, 0]; raison.textContent = ""; sauver(); dessiner(); });
+    function sauver() { ecrire("compromis:" + numero, etat); }
+    function bouger(a, sens) {
+      var val = etat.v;
+      if ((sens > 0 && val[a] >= 3) || (sens < 0 && val[a] <= -3)) return;
+      // le partenaire : celui qui a le plus à céder (ou à reprendre)
+      var autres = [0, 1, 2, 3].filter(function (k) { return k !== a; });
+      autres.sort(function (x, y) { return sens > 0 ? val[y] - val[x] : val[x] - val[y]; });
+      var b = autres[0];
+      if ((sens > 0 && val[b] <= -3) || (sens < 0 && val[b] >= 3)) { raison.textContent = T.bloque; raison.className = "compromis-raison alerte"; return; }
+      val[a] += sens; val[b] -= sens;
+      var cle = Math.min(a, b) + "-" + Math.max(a, b);
+      raison.className = "compromis-raison";
+      raison.innerHTML = "";
+      el("strong", "", raison, (sens > 0 ? "↑ " : "↓ ") + T.axesCourts[a] + "  ⇒  " + (sens > 0 ? "↓ " : "↑ ") + T.axesCourts[b] + " · ");
+      el("span", "", raison, ty(RAISONS[cle]));
+      sauver(); dessiner();
+    }
+    function dessiner() {
+      boutonsObj.forEach(function (b, k) { b.classList.toggle("actif", k === etat.o); });
+      lignes.forEach(function (l, a) {
+        var x = etat.v[a];
+        tous(".compromis-cran", l.barre).forEach(function (c, k) {
+          var pos = k - 3;
+          c.classList.toggle("plein", (x > 0 && pos > 0 && pos <= x) || (x < 0 && pos < 0 && pos >= x));
+          c.classList.toggle("negatif", x < 0 && pos < 0 && pos >= x);
+        });
+        l.v.textContent = (x > 0 ? "+" : "") + x;
+      });
+      bilan.innerHTML = "";
+      var o = objectifs[etat.o];
+      if (o) {
+        var ok = verifie(o.conds, etat.v);
+        el("div", "compromis-etat " + (ok ? "ok" : ""), bilan, ok ? T.atteint : (faisable(o.conds) ? T.pasAtteint : T.impossibleObj));
+      }
+      var c = proche(etat.v);
+      if (c) {
+        var p = el("div", "compromis-proche", bilan);
+        el("span", "", p, T.ressemble + " ");
+        el("strong", "", p, c.t);
+        if (c.e) el("span", "compromis-note", p, " — " + ty(c.e));
+      }
+    }
+    dessiner();
+  });
+
+  // =====================================================================================
+  // ATELIER DES COMMANDES
+  // =====================================================================================
+  var COLS = 9, RANGS = 7;
+  function voisins(c, r) {
+    // rangées impaires décalées d'un demi-hexagone vers la droite
+    var pair = r % 2 === 0;
+    var d = pair ? [[-1, 0], [1, 0], [-1, -1], [0, -1], [-1, 1], [0, 1]] : [[-1, 0], [1, 0], [0, -1], [1, -1], [0, 1], [1, 1]];
+    return d.map(function (x) { return [c + x[0], r + x[1]]; }).filter(function (p) { return p[0] >= 0 && p[0] < COLS && p[1] >= 0 && p[1] < RANGS; });
+  }
+  // toutes les questions qu'un personnage peut entendre pour une commande
+  function questionsDe(d, perso, cmd) {
+    var liste = (perso.questions || []).map(function (q, k) { return { q: q, cle: perso.id + ":g" + k }; });
+    var spe = (cmd && cmd.dialogues && cmd.dialogues[perso.id]) || [];
+    spe.forEach(function (q, k) { liste.push({ q: q, cle: perso.id + ":" + cmd.id + ":" + k }); });
+    return liste;
+  }
+  function corriger(d, cmd, plateau) {
+    var poses = {}, res = { tuiles: {}, manques: [], ok: 0, n: 0, isoles: [], messages: [] };
+    Object.keys(plateau).forEach(function (cle) { poses[plateau[cle]] = cle; });
+    var C = cmd.correction;
+    var dansIndisp = {};
+    C.indispensables.forEach(function (e) {
+      res.n += 1;
+      var present = e.ids.filter(function (i) { return i in poses; });
+      if (present.length) { res.ok += 1; present.forEach(function (i) { dansIndisp[i] = true; }); }
+      else res.manques.push(e.si_absent);
+    });
+    Object.keys(poses).forEach(function (id) {
+      if (dansIndisp[id]) res.tuiles[id] = { etat: "indispensable", texte: (C.acceptables[id] || "") };
+      else if (id in C.pieges) res.tuiles[id] = { etat: "piege", texte: C.pieges[id] };
+      else if (id in C.acceptables) res.tuiles[id] = { etat: "acceptable", texte: C.acceptables[id] };
+      else res.tuiles[id] = { etat: "hors", texte: T.horsDefaut };
+    });
+    // la grammaire : chaque hexagone touche une étape antérieure (le verbe ouvre la chaîne)
+    Object.keys(plateau).forEach(function (cle) {
+      var id = plateau[cle], h = d.hex[id]; if (!h) return;
+      var etape = d.fam[h.famille].etape;
+      if (etape === 0) return;
+      var cr = cle.split(",").map(Number);
+      var appui = voisins(cr[0], cr[1]).some(function (p) {
+        var v = plateau[p[0] + "," + p[1]];
+        return v && d.hex[v] && d.fam[d.hex[v].famille].etape < etape;
+      });
+      if (!appui) res.isoles.push(id);
+    });
+    var familles = {};
+    Object.keys(poses).forEach(function (id) { if (d.hex[id]) familles[d.hex[id].famille] = true; });
+    if (!familles.verbe) res.messages.push(T.sansVerbe);
+    if (!familles.valider) res.messages.push(T.sansValider);
+    if (!familles.resultat) res.messages.push(T.sansResultat);
+    return res;
+  }
+
+  tous(".hx-atelier").forEach(function (zone) {
+    var d = donnees(zone.dataset.source);
+    if (!d) return;
+    var bloc = zone.closest(".atelier-commandes") || zone.parentNode;
+    stopper(bloc);
+    if (CORRIGE || EN_PDF) {
+      el("p", "hx-pdf-note", zone, T.interactif);
+      el("div", "hx-titre-pdf", zone, T.commandesPdf);
+      var g = el("div", "hx-pdf-commandes", zone);
+      d.commandes.forEach(function (c, k) {
+        var b = el("div", "hx-pdf-commande", g);
+        el("div", "hx-client", b, (k + 1) + " · " + c.client);
+        el("div", "hx-question", b, ty(c.question));
+      });
+      return;
+    }
+    var S = lire("atelier", {});
+    S.groupe = S.groupe || ""; S.noms = S.noms || ""; S.cmd = S.cmd || d.commandes[0].id;
+    S.plateaux = S.plateaux || {}; S.debloques = S.debloques || {}; S.vus = S.vus || {}; S.fiches = S.fiches || {}; S.corr = S.corr || {};
+    function sauver() { ecrire("atelier", S); }
+    var cmd = function () { return d.cmd[S.cmd] || d.commandes[0]; };
+    var plateau = function () { return (S.plateaux[S.cmd] = S.plateaux[S.cmd] || {}); };
+    var debloques = function () { return (S.debloques[S.cmd] = S.debloques[S.cmd] || []); };
+    var vus = function () { return (S.vus[S.cmd] = S.vus[S.cmd] || []); };
+
+    // --- la tête : groupe, commande, onglets --------------------------------------------
+    var tete = el("div", "hx-tete", zone);
+    var carteCmd = el("div", "hx-commande", tete);
+    var reglages = el("div", "hx-reglages", tete);
+    var lg = el("label", "hx-champ-court", reglages); el("span", "", lg, T.groupe);
+    var champGroupe = el("input", "", lg); champGroupe.type = "number"; champGroupe.min = 1; champGroupe.max = 99; champGroupe.value = S.groupe;
+    var lc = el("label", "hx-champ-court", reglages); el("span", "", lc, T.commande);
+    var choixCmd = el("select", "", lc);
+    d.commandes.forEach(function (c, k) { var o = el("option", "", choixCmd, (k + 1) + ". " + c.titre); o.value = c.id; });
+    choixCmd.value = S.cmd;
+    var onglets = el("div", "hx-onglets", tete);
+    var pages = {};
+    [["chaine", T.chaine], ["cas", T.casReel], ["envoi", T.envoyer]].forEach(function (o) {
+      pages[o[0]] = { bouton: bouton(o[1], "hx-onglet", onglets, function () { montrer(o[0]); }) };
+    });
+    champGroupe.addEventListener("input", function () {
+      S.groupe = champGroupe.value;
+      var n = parseInt(champGroupe.value, 10);
+      if (n > 0) { S.cmd = d.commandes[(n - 1) % d.commandes.length].id; choixCmd.value = S.cmd; changerCmd(); }
+      sauver();
+    });
+    choixCmd.addEventListener("change", function () { S.cmd = choixCmd.value; sauver(); changerCmd(); });
+
+    // --- page 1 : la chaîne -------------------------------------------------------------
+    var corps = el("div", "hx-corps", zone);
+    pages.chaine.div = corps;
+    var colG = el("div", "hx-gauche", corps);
+    var familles = el("div", "hx-familles", colG);
+    var liste = el("div", "hx-liste", colG);
+    var info = el("div", "hx-info", colG);
+    var correction = el("div", "hx-correction", colG); correction.hidden = true;
+    var centre = el("div", "hx-centre", corps);
+    var aide = el("div", "hx-aide", centre, ty(T.choisirHex));
+    var plateauDiv = el("div", "hx-plateau", centre);
+    var colD = el("div", "hx-droite", corps);
+    var persosDiv = el("div", "hx-persos", colD);
+    var actions = el("div", "hx-actions", colD);
+    bouton(T.valider, "principal", actions, function () { valider(); });
+    bouton(T.effacer, "discret", actions, function () { S.plateaux[S.cmd] = {}; delete S.corr[S.cmd]; sauver(); dessinerPlateau(); dessinerListe(); correction.hidden = true; liste.hidden = false; familles.hidden = false; });
+    var dialogue = el("div", "hx-dialogue", corps); dialogue.hidden = true;
+
+    var familleActive = "verbe", choisi = null, deplace = null;
+    // les cases du plateau
+    var cases = {};
+    for (var r = 0; r < RANGS; r++) for (var c = 0; c < COLS; c++) {
+      (function (c, r) {
+        var cell = el("div", "hx-case", plateauDiv);
+        cell.style.left = (c * 74 + (r % 2 ? 37 : 0)) + "px";
+        cell.style.top = (r * 64) + "px";
+        cell.dataset.cle = c + "," + r;
+        cell.addEventListener("click", function () { cliquerCase(c + "," + r); });
+        cell.addEventListener("dragover", function (e) { e.preventDefault(); });
+        cell.addEventListener("drop", function (e) {
+          e.preventDefault();
+          var id = e.dataTransfer.getData("text/plain");
+          if (id) { if (id.indexOf("@") === 0) { deplace = id.slice(1); } else { choisi = id; deplace = null; } cliquerCase(c + "," + r); }
+        });
+        cases[c + "," + r] = cell;
+      })(c, r);
+    }
+    function cleDe(id) { var p = plateau(); for (var k in p) if (p[k] === id) return k; return null; }
+    function cliquerCase(cle) {
+      var p = plateau(), occupe = p[cle];
+      if (occupe) {
+        if (deplace === cle) { delete p[cle]; deplace = null; }      // second clic : on le reprend
+        else { deplace = cle; choisi = null; montrerInfo(occupe); }
+      } else if (deplace) { p[cle] = p[deplace]; delete p[deplace]; deplace = null; }
+      else if (choisi) { var deja = cleDe(choisi); if (deja) delete p[deja]; p[cle] = choisi; choisi = null; }
+      delete S.corr[S.cmd];
+      sauver(); dessinerPlateau(); dessinerListe();
+    }
+    function dessinerPlateau() {
+      var p = plateau(), corr = S.corr[S.cmd];
+      Object.keys(cases).forEach(function (cle) {
+        var cell = cases[cle]; cell.innerHTML = ""; cell.className = "hx-case" + (deplace === cle ? " deplace" : "");
+        var id = p[cle];
+        if (!id) return;
+        cell.classList.add("occupee");
+        var hx = hexa(d, id, "", cell);
+        if (corr && corr.tuiles[id]) hx.classList.add("c-" + corr.tuiles[id].etat);
+        if (corr && corr.isoles.indexOf(id) >= 0) hx.classList.add("c-isole");
+        hx.draggable = true;
+        hx.addEventListener("dragstart", function (e) { e.dataTransfer.setData("text/plain", "@" + cle); });
+        hx.addEventListener("mouseenter", function () { montrerInfo(id); });
+      });
+    }
+    function disponibles(fam) {
+      var deb = debloques();
+      return d.hexagones.filter(function (h) { return h.famille === fam && (!h.fin || deb.indexOf(h.id) >= 0); });
+    }
+    function dessinerFamilles() {
+      familles.innerHTML = "";
+      d.familles.forEach(function (f) {
+        var b = bouton(f.nom, "hx-famille" + (f.id === familleActive ? " actif" : ""), familles, function () { familleActive = f.id; dessinerFamilles(); dessinerListe(); });
+        b.style.setProperty("--fam", f.fond);
+        var nouveaux = disponibles(f.id).filter(function (h) { return h.fin; }).length;
+        if (nouveaux) el("span", "hx-badge", b, "+" + nouveaux);
+      });
+    }
+    function dessinerListe() {
+      liste.innerHTML = "";
+      var p = plateau(), poses = {};
+      Object.keys(p).forEach(function (k) { poses[p[k]] = true; });
+      disponibles(familleActive).forEach(function (h) {
+        var ligne = el("div", "hx-ligne" + (poses[h.id] ? " pose" : "") + (choisi === h.id ? " choisi" : ""), liste);
+        hexa(d, h.id, "mini", ligne);
+        el("span", "hx-ligne-nom", ligne, ty(h.court));
+        if (h.fin) el("span", "hx-nouveau", ligne, T.nouveau);
+        ligne.draggable = true;
+        ligne.addEventListener("dragstart", function (e) { e.dataTransfer.setData("text/plain", h.id); });
+        ligne.addEventListener("click", function () { choisi = (choisi === h.id ? null : h.id); deplace = null; dessinerListe(); dessinerPlateau(); montrerInfo(h.id); });
+        ligne.addEventListener("mouseenter", function () { montrerInfo(h.id); });
+      });
+    }
+    function montrerInfo(id) {
+      var h = d.hex[id]; info.innerHTML = "";
+      if (!h) { el("p", "hx-info-vide", info, T.infoVide); return; }
+      var t = el("div", "hx-info-titre", info, ty(h.court));
+      t.style.borderColor = d.fam[h.famille].fond;
+      var p1 = el("p", "", info); el("strong", "", p1, T.aRetenir); el("span", "", p1, ty(h.quoi));
+      var p2 = el("p", "", info); el("strong", "", p2, T.permet); el("span", "", p2, ty(h.permet));
+      var corr = S.corr[S.cmd];
+      if (corr && corr.tuiles[id]) {
+        var tu = corr.tuiles[id];
+        var p3 = el("p", "hx-info-corr c-" + tu.etat, info);
+        el("strong", "", p3, ({ indispensable: T.indispensable, acceptable: T.acceptable, piege: T.piege, hors: T.hors })[tu.etat] + (tu.texte ? " · " : ""));
+        if (tu.texte) el("span", "", p3, ty(tu.texte));
+        if (corr.isoles.indexOf(id) >= 0) el("p", "hx-info-corr c-isole", info, T.isole);
+      }
+    }
+
+    // --- les personnages -----------------------------------------------------------------
+    function dessinerPersos() {
+      persosDiv.innerHTML = "";
+      d.personnages.forEach(function (pe) {
+        var b = el("button", "hx-perso", persosDiv); b.type = "button";
+        var av = el("span", "hx-avatar", b, pe.initiales); av.style.background = pe.couleur; av.style.color = pe.encre;
+        var tx = el("span", "hx-perso-texte", b);
+        el("strong", "", tx, pe.prenom);
+        el("span", "", tx, pe.role);
+        var restant = questionsDe(d, pe, cmd()).filter(function (q) { return vus().indexOf(q.cle) < 0; }).length;
+        if (restant) el("span", "hx-badge", b, String(restant));
+        b.addEventListener("click", function () { ouvrir(pe); });
+      });
+    }
+    function ouvrir(pe) {
+      dialogue.hidden = false; dialogue.innerHTML = "";
+      var haut = el("div", "hx-dial-tete", dialogue);
+      var av = el("span", "hx-avatar grand", haut, pe.initiales); av.style.background = pe.couleur; av.style.color = pe.encre;
+      var id_ = el("div", "", haut);
+      el("strong", "hx-dial-nom", id_, pe.prenom + " · " + pe.role);
+      el("p", "hx-dial-pres", id_, ty(pe.presentation));
+      bouton("× " + T.fermer, "discret hx-dial-fermer", haut, function () { dialogue.hidden = true; dessinerPersos(); });
+      var corpsD = el("div", "hx-dial-corps", dialogue);
+      questionsDe(d, pe, cmd()).forEach(function (item) {
+        var q = item.q, vu = vus().indexOf(item.cle) >= 0;
+        var b = bouton(ty(q.q), "hx-dial-q" + (vu ? " vu" : ""), corpsD, function () {
+          if (vus().indexOf(item.cle) < 0) vus().push(item.cle);
+          (q.debloque || []).forEach(function (id) { if (debloques().indexOf(id) < 0) debloques().push(id); });
+          sauver(); ouvrir(pe); dessinerFamilles(); dessinerListe();
+        });
+        if (vu) {
+          var rep = el("div", "hx-dial-r", corpsD);
+          el("p", "", rep, ty(q.r));
+          if (q.debloque && q.debloque.length) el("p", "hx-dial-deb", rep, T.debloque + q.debloque.map(function (id) { return d.hex[id] ? d.hex[id].court : id; }).join(", "));
+          if (q.pepite && d.pep[q.pepite]) { var pp = el("p", "hx-dial-pep", rep); el("strong", "", pp, "★ " + T.pepite + " · "); el("span", "", pp, ty(d.pep[q.pepite].texte)); }
+        }
+      });
+    }
+
+    // --- la correction ---------------------------------------------------------------------
+    function valider() {
+      var p = plateau();
+      if (!Object.keys(p).length) { correction.hidden = false; correction.innerHTML = ""; el("p", "", correction, T.vide); return; }
+      var res = corriger(d, cmd(), p);
+      S.corr[S.cmd] = res; sauver();
+      dessinerPlateau();
+      montrerCorrection(res);
+    }
+    function montrerCorrection(res) {
+      liste.hidden = true; familles.hidden = true; correction.hidden = false; correction.innerHTML = "";
+      el("div", "hx-corr-titre", correction, T.correction);
+      el("p", "hx-score", correction, T.score(res.ok, res.n));
+      res.messages.forEach(function (m) { el("p", "hx-corr-msg", correction, ty(m)); });
+      if (res.manques.length) {
+        el("div", "hx-corr-sous", correction, T.manque);
+        var ul = el("ul", "", correction);
+        res.manques.forEach(function (m) { el("li", "", ul, ty(m)); });
+      }
+      var pieges = Object.keys(res.tuiles).filter(function (id) { return res.tuiles[id].etat === "piege"; });
+      if (pieges.length) {
+        el("div", "hx-corr-sous", correction, T.pieges);
+        var ul2 = el("ul", "", correction);
+        pieges.forEach(function (id) { var li = el("li", "", ul2); el("strong", "", li, d.hex[id].court + " : "); el("span", "", li, ty(res.tuiles[id].texte)); });
+      }
+      if (res.isoles.length) el("p", "hx-corr-msg isole", correction, T.isole + " (" + res.isoles.map(function (id) { return d.hex[id].court; }).join(", ") + ")");
+      var pied = el("div", "hx-corr-pied", correction);
+      bouton(T.reference, "", pied, function () {
+        var ref = el("div", "hx-ref", correction);
+        cmd().chaine.forEach(function (id) { hexa(d, id, "mini", ref); });
+        this.disabled = true;
+      });
+      var a = el("a", "hx-bouton", pied, T.voirSolution); a.href = "#/sol-" + cmd().id;
+      bouton(T.retourReserve, "discret", pied, function () { correction.hidden = true; liste.hidden = false; familles.hidden = false; });
+    }
+
+    // --- page 2 : le cas réel ------------------------------------------------------------
+    var pageCas = el("div", "hx-page hx-cas", zone); pageCas.hidden = true; pages.cas.div = pageCas;
+    function dessinerCas() {
+      pageCas.innerHTML = "";
+      var F = (S.fiches[S.cmd] = S.fiches[S.cmd] || {});
+      el("p", "hx-cas-consigne", pageCas, ty(T.casTitre));
+      var grille = el("div", "hx-cas-grille", pageCas);
+      function champ(cle, libelle, parent, long) {
+        var l = el("label", "hx-cas-champ" + (long ? " long" : ""), parent);
+        el("span", "", l, libelle);
+        var i = el(long ? "textarea" : "input", "", l);
+        if (long) i.rows = 2;
+        i.value = F[cle] || "";
+        i.addEventListener("input", function () { F[cle] = i.value; sauver(); });
+        return i;
+      }
+      var g1 = el("div", "", grille), g2 = el("div", "", grille);
+      champ("titre", T.champs[0][1], g1); champ("lien", T.champs[1][1], g1); champ("signal", T.champs[2][1], g1);
+      champ("donnee", T.champs[3][1], g1);
+      var res = el("div", "hx-cas-resol", g1); el("span", "", res, T.resolutions);
+      var r4 = el("div", "hx-cas-quatre", res);
+      T.axes.forEach(function (ax, k) {
+        var i = el("input", "", r4); i.placeholder = ax; i.value = (F.resol || [])[k] || "";
+        i.addEventListener("input", function () { F.resol = F.resol || ["", "", "", ""]; F.resol[k] = i.value; sauver(); });
+      });
+      champ("traitements", T.champs[4][1], g2, true); champ("sensibilite", T.champs[5][1], g2, true);
+      function menu(cle, libelle, options, parent) {
+        var l = el("label", "hx-cas-champ", parent); el("span", "", l, libelle);
+        var s = el("select", "", l);
+        options.forEach(function (o, k) { var op = el("option", "", s, o); op.value = k ? o : ""; });
+        s.value = F[cle] || "";
+        s.addEventListener("change", function () { F[cle] = s.value; sauver(); });
+      }
+      var g3 = el("div", "hx-cas-menus", g2);
+      menu("moyens", T.moyens, T.moyensListe, g3); menu("precision", T.precision, T.precisionListe, g3);
+      champ("ecarts", T.champs[6][1], g2, true);
+    }
+
+    // --- page 3 : l'envoi ----------------------------------------------------------------
+    var pageEnvoi = el("div", "hx-page hx-envoi-page", zone); pageEnvoi.hidden = true; pages.envoi.div = pageEnvoi;
+
+    function montrer(nom) {
+      Object.keys(pages).forEach(function (k) {
+        pages[k].div.hidden = k !== nom;
+        pages[k].bouton.classList.toggle("actif", k === nom);
+      });
+      if (nom === "cas") dessinerCas();
+      if (nom === "envoi") panneauEnvoi(pageEnvoi, zone.dataset.envoi, d);
+    }
+    function changerCmd() {
+      var c = cmd();
+      carteCmd.innerHTML = "";
+      el("div", "hx-client", carteCmd, c.client + " · " + c.donnee);
+      el("div", "hx-question", carteCmd, ty(c.question));
+      deplace = null; choisi = null;
+      dessinerFamilles(); dessinerListe(); dessinerPlateau(); dessinerPersos();
+      dialogue.hidden = true; info.innerHTML = ""; el("p", "hx-info-vide", info, T.infoVide);
+      if (S.corr[S.cmd]) montrerCorrection(S.corr[S.cmd]); else { correction.hidden = true; liste.hidden = false; familles.hidden = false; }
+      if (!pages.cas.div.hidden) dessinerCas();
+    }
+    changerCmd();
+    montrer("chaine");
+  });
+
+  // --- l'envoi, partagé par l'atelier et la brique « envoi » ---------------------------------
+  function paquet(d) {
+    var S = lire("atelier", {});
+    var votes = {};
+    tous(".vote-zone").forEach(function (z, k) { votes["vote" + (k + 1)] = lire("vote:" + k, {}); });
+    var projective = "";
+    try { projective = JSON.parse(localStorage.getItem("image-intel:" + (document.title || "cours") + ":observer:projective") || '""'); } catch (e) { projective = ""; }
+    var cmdId = S.cmd, c = d && d.cmd[cmdId];
+    var corr = (S.corr || {})[cmdId];
+    var plateau = (S.plateaux || {})[cmdId] || {};
+    return {
+      cours: document.title, date: new Date().toISOString(), groupe: S.groupe || "", noms: S.noms || "",
+      commande: cmdId, commande_titre: c ? c.titre : "",
+      chaine: Object.keys(plateau).map(function (k) { return plateau[k]; }),
+      plateau: plateau,
+      score: corr ? corr.ok + "/" + corr.n : "", manques: corr ? corr.manques : [], pieges: corr ? Object.keys(corr.tuiles).filter(function (i) { return corr.tuiles[i].etat === "piege"; }) : [],
+      cas_reel: (S.fiches || {})[cmdId] || {},
+      pepites: pepitesEntendues(d, S),
+      votes: votes, projective: projective
+    };
+  }
+  function pepitesEntendues(d, S) {
+    if (!d) return [];
+    var vusTous = [];
+    Object.keys(S.vus || {}).forEach(function (k) { vusTous = vusTous.concat(S.vus[k]); });
+    var trouvees = {};
+    d.personnages.forEach(function (pe) {
+      d.commandes.forEach(function (c) {
+        questionsDe(d, pe, c).forEach(function (item) { if (item.q.pepite && vusTous.indexOf(item.cle) >= 0) trouvees[item.q.pepite] = true; });
+      });
+    });
+    return Object.keys(trouvees);
+  }
+  function enTexte(p) {
+    var l = [];
+    l.push(p.cours + " — " + p.date);
+    l.push("Groupe " + p.groupe + (p.noms ? " (" + p.noms + ")" : "") + " · commande : " + p.commande_titre);
+    l.push("Chaîne : " + p.chaine.join(", "));
+    l.push("Score : " + p.score + (p.manques.length ? " · manques : " + p.manques.join(" | ") : ""));
+    Object.keys(p.cas_reel).forEach(function (k) { l.push("Cas réel, " + k + " : " + (Array.isArray(p.cas_reel[k]) ? p.cas_reel[k].join(" / ") : p.cas_reel[k])); });
+    if (p.projective) l.push("Projet un peu fou : " + p.projective);
+    return l.join("\n");
+  }
+  function panneauEnvoi(parent, url, d) {
+    parent.innerHTML = "";
+    var S = lire("atelier", {});
+    el("div", "hx-corr-titre", parent, T.envoiTitre);
+    el("p", "", parent, ty(T.envoiAide));
+    var ln = el("label", "hx-cas-champ", parent); el("span", "", ln, T.noms);
+    var noms = el("input", "", ln); noms.value = S.noms || "";
+    noms.addEventListener("input", function () { var s = lire("atelier", {}); s.noms = noms.value; ecrire("atelier", s); });
+    var apercu = el("pre", "hx-apercu", parent, enTexte(paquet(d)));
+    var etat = el("p", "hx-envoi-etat", parent);
+    var ligne = el("div", "hx-corr-pied", parent);
+    var b = bouton(T.envoiBouton, "principal", ligne, function () {
+      var p = paquet(d);
+      if (!p.groupe) { etat.textContent = T.groupeManque; return; }
+      if (!url) { etat.textContent = T.envoiAbsent; return; }
+      b.disabled = true;
+      fetch(url, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(p) })
+        .then(function () { etat.textContent = T.envoiFait; })
+        .catch(function () { etat.textContent = T.envoiErreur; })
+        .then(function () { b.disabled = false; });
+    });
+    if (!url) { b.classList.add("inactif"); etat.textContent = T.envoiAbsent; }
+    bouton(T.telecharger, "", ligne, function () {
+      var p = paquet(d);
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(p, null, 2)], { type: "application/json" }));
+      a.download = "atelier-groupe-" + (p.groupe || "x") + "-" + p.commande + ".json";
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+    bouton(T.copier, "", ligne, function () {
+      var t = enTexte(paquet(d));
+      if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { etat.textContent = T.copie; });
+    });
+    if (window.Reveal) window.Reveal.on("slidechanged", function (e) { if (e.currentSlide.contains(parent)) apercu.textContent = enTexte(paquet(d)); });
+  }
+  tous(".hx-envoi").forEach(function (zone) {
+    stopper(zone.parentNode);
+    if (EN_PDF) { el("p", "hx-pdf-note", zone, T.interactif); return; }
+    var d = donnees(zone.dataset.source);
+    var atelier = document.querySelector(".hx-atelier");
+    panneauEnvoi(zone, atelier ? atelier.dataset.envoi : "", d);
+  });
+
+  // =====================================================================================
+  // CHAÎNE DE RÉFÉRENCE et PÉPITES
+  // =====================================================================================
+  tous(".hx-chaine").forEach(function (zone) {
+    var d = donnees(zone.dataset.source);
+    if (!d || !d.cmd[zone.dataset.commande]) return;
+    var c = d.cmd[zone.dataset.commande];
+    var rangee = el("div", "hx-chaine-rangee", zone);
+    c.chaine.forEach(function (id, k) {
+      var hx = hexa(d, id, "chaine", rangee);
+      hx.style.setProperty("--k", k);
+    });
+  });
+  tous(".hx-pepites").forEach(function (zone) {
+    var d = donnees(zone.dataset.source);
+    if (!d) return;
+    function dessiner() {
+      zone.innerHTML = "";
+      var S = lire("atelier", {}), entendues = pepitesEntendues(d, S);
+      if (!EN_PDF) el("p", "hx-pep-compte", zone, T.pepitesCompte(entendues.length, d.pepites.length));
+      var ul = el("ul", "hx-pep-liste", zone);
+      d.pepites.forEach(function (p) {
+        var vu = entendues.indexOf(p.id) >= 0;
+        var li = el("li", vu || EN_PDF ? "vue" : "", ul);
+        el("span", "hx-pep-etoile", li, vu ? "★" : "☆");
+        el("span", "", li, ty(p.texte));
+      });
+    }
+    dessiner();
+    if (window.Reveal) window.Reveal.on("slidechanged", function (e) { if (e.currentSlide.contains(zone)) dessiner(); });
+  });
+})();
+</script>

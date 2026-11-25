@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 345" role="img" aria-label="The Ebbinghaus illusion">
+<circle cx="330.0" cy="170.0" r="52" fill="#9CA6CF"/>
+<circle cx="275.0" cy="265.3" r="52" fill="#9CA6CF"/>
+<circle cx="165.0" cy="265.3" r="52" fill="#9CA6CF"/>
+<circle cx="110.0" cy="170.0" r="52" fill="#9CA6CF"/>
+<circle cx="165.0" cy="74.7" r="52" fill="#9CA6CF"/>
+<circle cx="275.0" cy="74.7" r="52" fill="#9CA6CF"/>
+<circle cx="220" cy="170" r="30" fill="#E38226"/>
+<circle cx="742.0" cy="170.0" r="13" fill="#9CA6CF"/>
+<circle cx="723.8" cy="213.8" r="13" fill="#9CA6CF"/>
+<circle cx="680.0" cy="232.0" r="13" fill="#9CA6CF"/>
+<circle cx="636.2" cy="213.8" r="13" fill="#9CA6CF"/>
+<circle cx="618.0" cy="170.0" r="13" fill="#9CA6CF"/>
+<circle cx="636.2" cy="126.2" r="13" fill="#9CA6CF"/>
+<circle cx="680.0" cy="108.0" r="13" fill="#9CA6CF"/>
+<circle cx="723.8" cy="126.2" r="13" fill="#9CA6CF"/>
+<circle cx="680" cy="170" style="r: calc(var(--x, 30) * 1px)" fill="#E38226"/>
+<g class="s-apparait">
+<circle cx="680" cy="170" r="30" fill="none" stroke="#283B89" stroke-width="2.5" stroke-dasharray="5 4"/>
+<text class="s-titre" x="450" y="335" text-anchor="middle">both circles measure 30</text>
+</g>
+</svg>
