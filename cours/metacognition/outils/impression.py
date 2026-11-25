@@ -45,7 +45,18 @@ def main():
                 "--blanc", "--sortie", str(html)]
     if args.groupe:
         commande += ["--groupe", args.groupe]
-    subprocess.run(commande, check=True, capture_output=True)
+
+    # On lit la sortie de cartes.py au lieu de l'avaler : quand il échoue, c'est
+    # lui qui sait pourquoi — un JSON mal formé, le plus souvent — et son message
+    # vaut mille fois mieux qu'un « returned non-zero exit status 1 ».
+    fait = subprocess.run(commande, capture_output=True, text=True,
+                          encoding="utf-8", errors="replace")
+    if fait.returncode != 0:
+        raise SystemExit("\nLa fabrication des cartes a échoué. Ce que cartes.py "
+                         "en dit :\n"
+                         + (fait.stderr or fait.stdout or "(aucun message)").rstrip()
+                         + "\n\nCorrigez cela, puis relancez l'impression.\n")
+    print((fait.stdout or "").rstrip())
 
     pdf = sortie / f"Cartes-{nom}.pdf"
     with sync_playwright() as p:
