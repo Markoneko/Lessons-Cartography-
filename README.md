@@ -76,17 +76,24 @@ et c'est elle qui sera lue, sans rien changer d'autre.
 travail, elle prend une seconde :
 
 ```
-python3 cours/metacognition/outils/cartes.py --sortie cours/metacognition/apercu.html
+py cours\metacognition\outils\cartes.py                     (Windows)
+python3 cours/metacognition/outils/cartes.py                 (macOS, Linux)
 ```
 
-Puis ouvrir `apercu.html` dans Chrome. Les options : `--groupe contexte|cap|outil`
-pour n'en voir qu'un, `--fiches <chemin>` pour forcer une version précise.
+Sans autre argument, il écrit `cours/metacognition/Cartes-Jeu-complet.html` et
+affiche le chemin en clair ; il suffit d'ouvrir ce fichier dans Chrome. Les
+options : `--groupe contexte|cap|outil` pour n'en voir qu'un, `--sortie <chemin>`
+pour choisir où écrire, `--fiches <chemin>` pour forcer une version précise.
+
+Sous Windows, la commande est **`py`**, jamais `python3` : ce nom n'existe pas,
+et `python` ouvre parfois le Store au lieu de lancer quoi que ce soit.
 
 **Produire le PDF d'impression** — 46 pages A6, une face par page, à tirer en
 recto-verso :
 
 ```
-python3 cours/metacognition/outils/impression.py
+py cours\metacognition\outils\impression.py                  (Windows)
+python3 cours/metacognition/outils/impression.py             (macOS, Linux)
 ```
 
 Il écrit `cours/metacognition/impression/Cartes-jeu-complet.pdf`. Avec
@@ -97,7 +104,8 @@ outil bleu) sur le bandeau de tête, les filets, le picto de famille et les éto
 **La feuille A4** se fabrique de la même façon :
 
 ```
-python3 cours/metacognition/outils/feuille.py --pdf
+py cours\metacognition\outils\feuille.py --pdf              (Windows)
+python3 cours/metacognition/outils/feuille.py --pdf          (macOS, Linux)
 ```
 
 Son contenu n'est pas dans un JSON mais directement dans `outils/feuille.py` :
