@@ -79,6 +79,10 @@ Premier cours du dépôt qui ne soit pas un cours de géomatique : deux heures d
 
 **À trancher avec Marc** — les points sont listés dans le compte rendu du 23 novembre : le budget temps (le déroulé vise 2 h 06), les étoiles de trois fiches, six références à vérifier avant diffusion, et l'epub de Steve Masson à dépouiller.
 
+## 2026-11-25 — Atelier Saumos : navigation corrigée
+
+Retour de Marc : le clavier doit rester actif, les boutons sont trop bas, « C'est parti » est en double et tourne en boucle avec l'équipe. Flèches du clavier rétablies ; boutons remontés (34 px du bord), zones du jeu raccourcies d'autant ; un seul « C'est parti », celui du bas à droite ; la boucle venait d'une posture non choisie (« C'est parti » renvoyait à l'équipe, ▶ ramenait aux experts) : à l'équipe, ▶ reste grisé (« Choisissez une posture ») tant qu'aucune posture ni le mode solo n'est choisi, et le renvoi fait clignoter les postures. Parcours vérifié au clavier et aux boutons, 0 débordement.
+
 ## 2026-11-22 (soir) — Atelier Saumos, V3.1 : termes techniques, navigation en bas à droite, retours des fiches
 
 D'après la règle ajoutée par Marc au script V3 (les PNJ font découvrir des termes techniques, en couleur, qui ouvrent un aparté et entrent au carnet), ses demandes dans les fiches d'`IMAGE-AtelierSaumos.qmd` et ses changements de dialogues faits directement dans `donnees/saumos.json`. Pas de nouvelle version de script. Désormais, on modifie le JSON par petites touches : le constructeur de la V3, qui repartait de la V2, n'est plus relancé (il effacerait les répliques de Marc).

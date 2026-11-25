@@ -175,7 +175,7 @@
 .reveal .jdr-retour-enq { font: 400 10px var(--pixel); padding: 9px 11px; }
 
 /* --- L'enquête -------------------------------------------------------------- */
-.reveal .jdr-enquete-zone, .reveal .jdr-labo-zone { position: relative; height: 618px; display: flex; flex-direction: column; }
+.reveal .jdr-enquete-zone, .reveal .jdr-labo-zone { position: relative; height: 578px; display: flex; flex-direction: column; }
 .reveal .jdr-enq-scene { display: grid; grid-template-columns: 1fr 350px; gap: 18px; flex: 1; min-height: 0; }
 .reveal .jdr-enq-gauche { display: flex; flex-direction: column; min-height: 0; }
 .reveal .jdr-enq-gauche > .jdr-sous { margin: 0 0 4px 0; }
@@ -258,13 +258,13 @@
 .reveal .jdr-compo-btns { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
 .reveal .jdr-labo-a { display: grid; grid-template-columns: 820px 1fr; gap: 18px; }
 .reveal .jdr-defileur { display: flex; flex-direction: column; }
-.reveal .jdr-defileur-img { width: 100%; height: 500px; object-fit: contain; background: #0B0F24; border: 3px solid var(--bleu-nuit); max-height: none; margin: 0; }
+.reveal .jdr-defileur-img { width: 100%; height: 460px; object-fit: contain; background: #0B0F24; border: 3px solid var(--bleu-nuit); max-height: none; margin: 0; }
 .reveal .jdr-lecteur-bas { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
 .reveal .jdr-lecteur-curseur { flex: 1; accent-color: var(--orange); }
 .reveal .jdr-lecteur-lab { font: 400 10px var(--pixel); color: var(--bleu-nuit); min-width: 200px; text-align: right; }
 .reveal .jdr-labo-b { display: grid; grid-template-columns: 640px 1fr; gap: 18px; }
 .reveal .jdr-vue-b { display: flex; flex-direction: column; gap: 6px; }
-.reveal .jdr-mesure-cv { width: 100%; max-height: 520px; object-fit: contain; border: 3px solid var(--bleu-nuit); display: block; background: #0B0F24; }
+.reveal .jdr-mesure-cv { width: 100%; max-height: 480px; object-fit: contain; border: 3px solid var(--bleu-nuit); display: block; background: #0B0F24; }
 .reveal .jdr-mesure-cv.trace { cursor: crosshair; outline: 3px solid var(--orange); }
 .reveal .jdr-vue-date { font: 400 10px var(--pixel); color: var(--bleu-nuit); }
 .reveal .jdr-mesure-out { font-size: 15px; min-height: 40px; }
@@ -367,7 +367,7 @@
 
 /* --- La navigation : deux boutons, toujours en bas à droite ---------------------------------- */
 .reveal.jdr-jeu .slide-number { display: none !important; }
-.reveal .slides > .jdr-nav { position: absolute; right: 26px; bottom: 6px; display: flex; gap: 10px; z-index: 40; pointer-events: auto; }
+.reveal .slides > .jdr-nav { position: absolute; right: 26px; bottom: 34px; display: flex; gap: 10px; z-index: 40; pointer-events: auto; }
 .reveal .jdr-nav-btn {
   font: 400 12px/1 var(--pixel); padding: 10px 14px; background: var(--ecran); color: var(--blanc);
   border: 3px solid var(--blanc); outline: 3px solid var(--bleu-nuit); box-shadow: 4px 4px 0 rgba(16, 24, 63, .35);
@@ -407,3 +407,4 @@
 .reveal .jdr-btn.jdr-onglet:hover:not(:disabled):not(.sel) { background: #FFF4E8; color: var(--bleu-nuit); }
 .reveal .jdr-btn.jdr-onglet.sel:hover:not(:disabled) { background: var(--blanc); color: var(--bleu-nuit); }
 .reveal .jdr-lieu.gauche { flex-direction: row-reverse; transform: translate(calc(-100% + 5px), -50%); }
+.reveal .jdr-posture.clignote { animation: jdr-clignote 0.6s steps(2) 4; }

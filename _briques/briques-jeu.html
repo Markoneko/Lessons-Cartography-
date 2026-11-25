@@ -206,7 +206,12 @@
   function versRapport() { var c = S().chrono; if (!c.rapport) { c.rapport = Date.now(); if (!c.debut) c.debut = c.rapport; changer(); } aller("rapport"); }
   function cestParti() {
     demarrer();
-    if (!S().posture) { aller("equipe"); return; }
+    if (!S().posture && !S().solo) {
+      // pas de posture : on renvoie une fois vers l'équipe, en montrant où choisir (pas de boucle)
+      aller("equipe");
+      setTimeout(function () { tous("#equipe .jdr-posture").forEach(function (b) { b.classList.add("clignote"); setTimeout(function () { b.classList.remove("clignote"); }, 2600); }); }, 400);
+      return;
+    }
     aller("enquete-" + monEnquete().toLowerCase());
   }
   function boutonChrono(parent) {
@@ -240,15 +245,9 @@
     }
   }, 1000);
 
-  // --- La navigation : deux boutons, toujours en bas à droite ; le clavier ne fait plus défiler ---
+  // --- La navigation : deux boutons en bas à droite, en plus du clavier (qui reste actif) ---
   (function () {
     if (EN_PDF || !window.Reveal || !racine) return;
-    function clavier() {
-      var rien = function () { /* les flèches ne font plus défiler : on navigue avec les boutons */ }, t = {};
-      [32, 33, 34, 35, 36, 37, 38, 39, 40, 72, 74, 75, 76, 78, 80].forEach(function (k) { t[k] = rien; });
-      try { Reveal.configure({ keyboard: t }); } catch (e) { /* tant pis */ }
-    }
-    if (Reveal.isReady && Reveal.isReady()) clavier(); else Reveal.on("ready", clavier);
     // dans le cadre des diapos : les boutons suivent l'échelle de la diapo, toujours en bas à droite
     var nav = el("div", "jdr-nav", racine.querySelector(".slides") || racine);
     var g = bouton("◀", "jdr-nav-btn", nav), d = bouton("▶", "jdr-nav-btn droite", nav);
@@ -261,8 +260,9 @@
       var id = sec.id || "", s = S(), h = Reveal.getIndices().h, n = Reveal.getTotalSlides(), m;
       var G = { t: "◀", f: function () { Reveal.prev(); }, vis: h > 0 };
       var R = { t: "▶", f: function () { Reveal.next(); }, vis: h < n - 1 };
+      if (id === "equipe" && !s.posture && !s.solo) { R.t = "Choisissez une posture"; R.off = true; }
       if (id === "cadrage") R.t = "Continuer ▶";
-      if (id === "experts") { R.t = "C'est parti ▶"; R.f = cestParti; }
+      if (id === "experts") { R.t = "C'est parti ▶"; R.f = cestParti; R.clin = true; }
       if ((m = id.match(/^enquete-([abc])$/))) {
         var lab = LABO_DE[m[1].toUpperCase()], ok = !!s.clefs[lab];
         G = { t: "◀ experts", f: function () { aller("experts"); }, vis: true };
@@ -276,7 +276,7 @@
       if (id === "rapport") G = { t: "◀ enquête", f: function () { aller("enquete-" + monEnquete().toLowerCase()); }, vis: true };
       g.textContent = G.t; g.hidden = !G.vis; actions.g = G.f;
       d.textContent = R.t || ""; d.hidden = !R.vis; actions.d = R.f; d.disabled = !!R.off; d.classList.toggle("clignote", !!R.clin);
-      d.title = R.off ? "Fermé : un expert vous en passera les clefs" : "";
+      d.title = !R.off ? "" : id === "equipe" ? "Choisissez d'abord votre posture (ou le mode solo)" : "Fermé : un expert vous en passera les clefs";
     }
     Reveal.on("slidechanged", maj); Reveal.on("ready", maj); abonnes.push(maj); setTimeout(maj, 0);
   })();
@@ -456,7 +456,7 @@
     var bo = el("div", "jdr-dialogue", sc);
     el("div", "jdr-plaque", bo, "Rose").style.background = EXP.rose.couleur;
     var tx = el("p", "jdr-texte", bo, EN_PDF ? ty(D.presentation_experts) : "▶");
-    bouton("C'est parti !", "principal jdr-cestparti", bas, cestParti);
+    // « C'est parti » : le bouton de navigation, en bas à droite (un seul bouton)
     if (EN_PDF) return;
     var lu = false;
     function lancer() { if (!lu) { lu = true; parler(t, tx, D.presentation_experts, null, EXP.rose.voix); } }
