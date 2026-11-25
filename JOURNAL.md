@@ -79,6 +79,16 @@ Premier cours du dépôt qui ne soit pas un cours de géomatique : deux heures d
 
 **À trancher avec Marc** — les points sont listés dans le compte rendu du 23 novembre : le budget temps (le déroulé vise 2 h 06), les étoiles de trois fiches, six références à vérifier avant diffusion, et l'epub de Steve Masson à dépouiller.
 
+## 2026-11-25 (soir) — Retour de la première séance : à faire (reprise le 26 novembre à 14 h)
+
+Les étudiants ont adoré. Timing bon. Tâches notées par Marc :
+
+1. **Harmoniser les liens de livraison** (rapport 4.14, avis 4.15, téléchargement, feuille Google) et s'assurer que tout fonctionne. Point de départ : l'envoi n'a rien donné (aucune exécution côté Apps Script) ; la page affiche « Envoyé » même en cas d'échec. À faire : retour d'erreur visible, test depuis la page en ligne (Alidade) et depuis le fichier ouvert dans Chrome, un seul test à demander à Marc.
+2. **Rapporteur** : le rôle de rapporteur finit vite ; il doit accéder au rapport rapidement, sans limite de temps, pour compiler les informations des autres groupes (le chrono ne doit pas le bloquer ni le renvoyer au débrief).
+3. **Une ou deux diapos à revoir** (lesquelles : à préciser avec Marc).
+
+Toujours en attente de la veille : relire `donnees/atelier.json` (chaîne du verdict) ; visuels réels des solutions ; sources argiles / PAC (en sommeil avec la partie 5) ; valider les prénoms des quatre personnages ; réviser la 3.3 ; version anglaise.
+
 ## 2026-11-25 (après-midi) — Feuille Google branchée
 
 Marc a déployé `outils/feuille-google.gs` sur sa feuille de cours. L'adresse `/exec` est renseignée sur le rapport (4.14) et sur l'avis (4.15) : les envois arrivent dans les onglets « Saumos — rapports » et « Saumos — avis ». Envoi d'essai impossible depuis l'environnement de Claude (réseau filtré) : à tester par Marc. Le lien de la feuille elle-même ne figure pas dans le cours.
