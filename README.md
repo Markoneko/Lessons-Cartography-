@@ -104,9 +104,12 @@ outil bleu) sur le bandeau de tête, les filets, le picto de famille et les éto
 **La feuille A4** se fabrique de la même façon :
 
 ```
-py cours\metacognition\outils\feuille.py --pdf              (Windows)
-python3 cours/metacognition/outils/feuille.py --pdf          (macOS, Linux)
+py cours\metacognition\outils\feuille.py                    (Windows)
+python3 cours/metacognition/outils/feuille.py                (macOS, Linux)
 ```
+
+Elle écrit `impression/Feuille-plan-action.pdf`, et `impression/Feuille.html`
+à côté pour vérifier d'un coup d'œil. `--sans-pdf` s'arrête à l'aperçu.
 
 Son contenu n'est pas dans un JSON mais directement dans `outils/feuille.py` :
 les consignes en haut du fichier, le dessin de la carte marine dans

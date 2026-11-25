@@ -20,7 +20,8 @@ import pathlib
 import subprocess
 import sys
 
-from playwright.sync_api import sync_playwright
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from feuille import imprimer   # noqa: E402 — même routine d'impression
 
 ICI = pathlib.Path(__file__).resolve().parent.parent
 
@@ -58,14 +59,7 @@ def main():
                          + "\n\nCorrigez cela, puis relancez l'impression.\n")
     print((fait.stdout or "").rstrip())
 
-    pdf = sortie / f"Cartes-{nom}.pdf"
-    with sync_playwright() as p:
-        nav = p.chromium.launch()
-        page = nav.new_page()
-        page.goto(html.as_uri())
-        page.wait_for_timeout(1600)      # le temps que les polices arrivent
-        page.pdf(path=str(pdf), prefer_css_page_size=True, print_background=True)
-        nav.close()
+    pdf = imprimer(html, sortie / f"Cartes-{nom}.pdf", attente=1600)
     html.unlink()
     print(f"{pdf.name} — {pdf.stat().st_size // 1024} Ko")
 

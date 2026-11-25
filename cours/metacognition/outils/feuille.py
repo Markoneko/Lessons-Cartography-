@@ -386,29 +386,61 @@ def page(papier):
 """
 
 
+def imprimer(html, pdf, attente=1400):
+    """Imprime une page en PDF, et dit quoi faire si l'outil manque.
+
+    Playwright et son navigateur s'installent en deux commandes, une fois pour
+    toutes. Tant qu'ils ne sont pas là, autant le dire franchement plutôt que
+    de laisser une trace d'appels Python en guise d'explication.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        raise SystemExit(
+            "\nPlaywright n'est pas installé : c'est lui qui imprime les PDF.\n"
+            "  Windows :        py -m pip install --user -r requirements.txt\n"
+            "                   py -m playwright install chromium\n"
+            "  macOS, Linux :   python3 -m pip install --user -r requirements.txt\n"
+            "                   python3 -m playwright install chromium\n"
+            f"\nLa page HTML, elle, est déjà écrite : {html}\n")
+    try:
+        with sync_playwright() as p:
+            nav = p.chromium.launch()
+            pg = nav.new_page()
+            pg.goto(html.as_uri())
+            pg.wait_for_timeout(attente)      # le temps que les polices arrivent
+            pg.pdf(path=str(pdf), prefer_css_page_size=True, print_background=True)
+            nav.close()
+    except Exception as e:
+        raise SystemExit(
+            "\nLe navigateur qui imprime les PDF n'a pas démarré.\n"
+            "  S'il n'est pas encore installé, une seule commande suffit :\n"
+            "  Windows :        py -m playwright install chromium\n"
+            "  macOS, Linux :   python3 -m playwright install chromium\n"
+            f"\nCe que Playwright en dit : {type(e).__name__} — "
+            f"{str(e).strip().splitlines()[0] if str(e).strip() else '(rien)'}\n"
+            f"\nLa page HTML, elle, est déjà écrite : {html}\n")
+    return pdf
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--papier", default="blanc", choices=sorted(PAPIERS))
     ap.add_argument("--sortie", default=None)
-    ap.add_argument("--pdf", action="store_true", help="écrire aussi le PDF")
+    ap.add_argument("--sans-pdf", action="store_true",
+                    help="n'écrire que la page HTML, pour un aperçu rapide")
     a = ap.parse_args()
 
     html = pathlib.Path(a.sortie) if a.sortie else ICI / "impression" / "Feuille.html"
     html.parent.mkdir(exist_ok=True)
     html.write_text(page(PAPIERS[a.papier]), encoding="utf-8")
-    print(f"{html}")
+    print(f"aperçu : {html}")
 
-    if a.pdf:
-        from playwright.sync_api import sync_playwright
-        pdf = html.parent / "Feuille-plan-action.pdf"
-        with sync_playwright() as p:
-            nav = p.chromium.launch()
-            pg = nav.new_page()
-            pg.goto(html.as_uri())
-            pg.wait_for_timeout(1400)
-            pg.pdf(path=str(pdf), prefer_css_page_size=True, print_background=True)
-            nav.close()
-        print(f"{pdf.name} — {pdf.stat().st_size // 1024} Ko")
+    if a.sans_pdf:
+        print("PDF non demandé (--sans-pdf).")
+        return
+    pdf = imprimer(html, html.parent / "Feuille-plan-action.pdf")
+    print(f"{pdf.name} — {pdf.stat().st_size // 1024} Ko")
 
 
 if __name__ == "__main__":
