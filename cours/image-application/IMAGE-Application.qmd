@@ -558,7 +558,7 @@ Expérience : remplir, faire relire, envoyer (brique jdr-rapport)
 Demande :
 :::
 
-::: {.jdr-rapport envoi=""}
+::: {.jdr-rapport envoi="https://script.google.com/macros/s/AKfycby5INSrL9F3HMYpgTXh3px2e3W0FEi05N-8PHRUNi81SXCP9UQg_bxADlobb9LX_fwL/exec"}
 :::
 
 ## Pause : le débrief, on arrête le jeu et on fait le point {.jdr}
@@ -572,7 +572,7 @@ Demande :
 ::: {.jdr-bulle qui="rose" source="debrief" liste="oui"}
 :::
 
-::: {.jdr-retour envoi=""}
+::: {.jdr-retour envoi="https://script.google.com/macros/s/AKfycby5INSrL9F3HMYpgTXh3px2e3W0FEi05N-8PHRUNi81SXCP9UQg_bxADlobb9LX_fwL/exec"}
 :::
 
 ## La phrase de la classe {.jdr}

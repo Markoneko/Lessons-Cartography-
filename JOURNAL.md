@@ -79,6 +79,10 @@ Premier cours du dépôt qui ne soit pas un cours de géomatique : deux heures d
 
 **À trancher avec Marc** — les points sont listés dans le compte rendu du 23 novembre : le budget temps (le déroulé vise 2 h 06), les étoiles de trois fiches, six références à vérifier avant diffusion, et l'epub de Steve Masson à dépouiller.
 
+## 2026-11-25 (après-midi) — Feuille Google branchée
+
+Marc a déployé `outils/feuille-google.gs` sur sa feuille de cours. L'adresse `/exec` est renseignée sur le rapport (4.14) et sur l'avis (4.15) : les envois arrivent dans les onglets « Saumos — rapports » et « Saumos — avis ». Envoi d'essai impossible depuis l'environnement de Claude (réseau filtré) : à tester par Marc. Le lien de la feuille elle-même ne figure pas dans le cours.
+
 ## 2026-11-25 (midi) — L'atelier Saumos devient la partie 4 d'Image & Application
 
 Instructions de Marc, en direct : on garde le cours jusqu'à la diapo 15 comprise (3.2, « Une chaîne, des étapes ») ; on met de côté la 16 (3.3, les manchots : sa logique ne fonctionne pas en l'état) ; la partie 4 devient l'atelier Saumos, avec ses sources, auxquelles s'ajoutent celles des parties 1 à 3 ; l'atelier clôt le cours ; les parties 5 et 6 sont abandonnées pour l'instant, gardées en commentaire.
