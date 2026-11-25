@@ -9,15 +9,15 @@ Le fichier produit s'imprime en A6, une face par page, dans l'ordre
 recto / verso : en recto-verso, chaque feuille donne une carte.
 Quatre A6 par A4, soit six feuilles par jeu.
 
-IMPRESSION EN UNE SEULE ENCRE, SUR PAPIER DE COULEUR.
-Le groupe n'est pas signalé par un aplat mais par la couleur du papier :
-contexte sur jaune, cap sur rose, outils sur vert. Tout le dessin est donc
-en une seule encre sombre, sans fond ni réserve blanche — ce qui coûte
-aussi beaucoup moins cher à tirer en soixante exemplaires.
+IMPRESSION EN COULEURS, SUR PAPIER BLANC.
+Le groupe n'est plus porté par la teinte du papier mais par celle de l'encre :
+bandeau de tête, filets, picto de famille et étoiles prennent sa couleur.
 
-    python3 outils/cartes.py --groupe contexte   → à tirer sur jaune
-    python3 outils/cartes.py --groupe cap        → à tirer sur rose
-    python3 outils/cartes.py --groupe outil      → à tirer sur vert
+    contexte → violet · cap → orange · outil → bleu
+
+Le reste — texte courant, dessins, lignes à remplir — garde le bleu nuit de la
+charte. Les petits textes utilisent une version assombrie de l'accent : l'orange
+vif ne tient pas la lecture à six points sur du blanc.
 """
 
 import argparse
@@ -31,10 +31,15 @@ ICI = pathlib.Path(__file__).resolve().parent.parent
 ENCRE = "232968"   # bleu nuit Géodata : l'encre unique
 GRIS = "6E6F7A"
 
+# Le tirage se fait désormais sur papier blanc : le groupe n'est plus porté par
+# la couleur de la feuille mais par celle de l'encre. Chaque groupe prend une
+# couleur de la charte, déclinée en deux valeurs — la vive pour les bandeaux et
+# les filets, une plus sombre pour les petits textes, qui ne tiendraient pas la
+# lecture en orange vif à six points.
 GROUPES = {
-    "contexte": ("Contexte", "jaune"),
-    "cap": ("Cap", "rose"),
-    "outil": ("Outil", "vert"),
+    "contexte": ("Contexte", "jaune", "#62538B", "#52447A"),   # violet
+    "cap": ("Cap", "rose", "#E17E0A", "#B5660A"),              # orange
+    "outil": ("Outil", "vert", "#2E3387", "#2E3387"),          # bleu
 }
 
 # Les quatre marques de famille. Elles ne sont jamais légendées : les étudiants
@@ -465,7 +470,7 @@ def zone_visuelle(v, paire=""):
 
 
 def carte(f, numero, total):
-    nom_groupe, _papier = GROUPES[f["groupe"]]
+    nom_groupe = GROUPES[f["groupe"]][0]
     rang = f'{numero:02d}<span class="sur">/{total}</span>'
 
     emotions = f.get("emotions") or ([f["emotion"]] if f.get("emotion") else [])
@@ -479,8 +484,9 @@ def carte(f, numero, total):
     paire = (f'<p class="va-avec"><b>ne marche qu\'avec :</b> {propre(va_avec)}</p>'
              if va_avec else "")
 
+    groupe = f["groupe"]
     recto = f"""
-<article class="carte recto">
+<article class="carte recto" data-groupe="{groupe}">
   <header><span class="groupe">{nom_groupe}</span><span class="rang">{rang}</span></header>
   <div class="corps">
     <h1>{propre(f['nom'])}</h1>
@@ -527,7 +533,7 @@ def carte(f, numero, total):
         else '<p class="chiffre sans">pas de chiffre reconnu</p>')
 
     verso = f"""
-<article class="carte verso">
+<article class="carte verso" data-groupe="{groupe}">
   <header><span class="groupe">{propre(f['nom'])}</span><span class="rang">{rang}</span></header>
   <div class="corps">
     {bloc_famille}
@@ -552,6 +558,11 @@ FEUILLE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root { --encre:#%(encre)s; --gris:#%(gris)s; --papier:%(papier)s; }
+  /* l'accent vaut l'encre tant qu'aucun groupe n'est déclaré */
+  .carte { --accent: var(--encre); --accent-texte: var(--encre); }
+  .carte[data-groupe="contexte"] { --accent: #62538B; --accent-texte: #52447A; }
+  .carte[data-groupe="cap"] { --accent: #E17E0A; --accent-texte: #B5660A; }
+  .carte[data-groupe="outil"] { --accent: #2E3387; --accent-texte: #2E3387; }
   * { box-sizing: border-box; }
   body {
     margin: 0; background: #DCDEE8; color: var(--encre);
@@ -562,18 +573,18 @@ FEUILLE = """<!DOCTYPE html>
   .carte {
     position: relative; width: 105mm; height: 148mm; background: var(--papier);
     display: flex; flex-direction: column; overflow: hidden;
-    padding: 6mm 7mm 5mm; border-top: 2.6mm solid var(--encre);
+    padding: 6mm 7mm 5mm; border-top: 2.6mm solid var(--accent);
   }
   .carte header {
     display: flex; justify-content: space-between; align-items: baseline;
     font-family: 'IBM Plex Mono', monospace; font-size: 6.4pt;
-    letter-spacing: .15em; text-transform: uppercase; color: var(--encre);
-    border-bottom: .3mm solid var(--encre); padding-bottom: 1.6mm;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--accent-texte);
+    border-bottom: .3mm solid var(--accent); padding-bottom: 1.6mm;
   }
   .carte header .rang { letter-spacing: .05em; }
   .carte header .rang .sur { opacity: .55; }
   .carte .corps { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; padding-top: 4.5mm; }
-  .carte footer { border-top: .3mm solid var(--encre); padding-top: 1.8mm; }
+  .carte footer { border-top: .3mm solid var(--accent); padding-top: 1.8mm; }
 
   /* ------------------------------- recto */
   .recto h1 {
@@ -648,7 +659,7 @@ FEUILLE = """<!DOCTYPE html>
 
   .va-avec {
     flex: 0 0 auto; margin: 0 0 1.5mm; font-size: 7pt; line-height: 1.4; padding: 1.6mm 2.4mm;
-    border: .3mm solid var(--encre); border-radius: 1mm;
+    border: .3mm solid var(--accent); border-radius: 1mm;
   }
   .va-avec b {
     font-family: 'IBM Plex Mono', monospace; font-size: 5.8pt; font-weight: 400;
@@ -675,13 +686,13 @@ FEUILLE = """<!DOCTYPE html>
   .recto .jauge { text-align: right; flex: 0 0 auto; }
   .recto .jauge .mention { display: block; margin: 0 0 .4mm; }
   .recto .etoiles { display: block; }
-  .recto .etoiles { font-size: 11pt; letter-spacing: .1em; }
+  .recto .etoiles { font-size: 11pt; letter-spacing: .1em; color: var(--accent); }
 
   /* ------------------------------- verso */
   .verso header .groupe { font-weight: 500; }
   .verso .famille { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 3.5mm; }
   .verso .famille svg {
-    width: 7mm; height: 7mm; flex: 0 0 auto; fill: none; stroke: var(--encre);
+    width: 7mm; height: 7mm; flex: 0 0 auto; fill: none; stroke: var(--accent);
     stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
   }
   .verso .nommer { flex: 1 1 auto; }
@@ -702,7 +713,7 @@ FEUILLE = """<!DOCTYPE html>
   .verso .ampleur { font-size: 7.8pt; line-height: 1.5; margin: 0 0 3mm; }
   .verso .schema-verso { margin: 0 0 4mm; }
   .verso .schema-verso svg { max-height: 30mm; }
-  .verso .ia { margin-bottom: 4mm; padding-left: 3mm; border-left: .6mm solid var(--encre); }
+  .verso .ia { margin-bottom: 4mm; padding-left: 3mm; border-left: .6mm solid var(--accent); }
   .verso .ia.retour { border-left-style: double; border-left-width: 1mm; }
   .verso .ia h2 {
     font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 5.8pt;
@@ -710,7 +721,7 @@ FEUILLE = """<!DOCTYPE html>
   }
   .verso .ia p { font-size: 7.8pt; line-height: 1.5; margin: 0; }
   .verso .renvoi {
-    border: .3mm solid var(--encre); border-radius: 1mm; padding: 2.4mm 3mm; margin-bottom: 4mm;
+    border: .3mm solid var(--accent); border-radius: 1mm; padding: 2.4mm 3mm; margin-bottom: 4mm;
   }
   .verso .renvoi h2 {
     font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 5.8pt;
