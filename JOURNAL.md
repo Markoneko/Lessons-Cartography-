@@ -2,6 +2,60 @@
 
 Décisions et constats, du plus récent au plus ancien.
 
+## 2026-11-25 — « Apprendre à apprendre » : le support cède la place au papier
+
+Marc a tranché : les diapos n'étaient pas le bon véhicule pour ce cours. Le cours
+est maintenant un **jeu de 23 cartes A6** imprimées sur trois papiers de couleur
+et une **feuille A4 recto-verso**. Le support projeté est réduit à ce qu'il est
+seul capable de faire.
+
+**Ce que le support garde (24 diapos au lieu de 46)**
+
+- Les diapos de suivi des activités : la vidéo, les deux listes d'introduction,
+  la démonstration des trois lettres, le débrief, la distribution des cartes,
+  l'appariement, le livrable, la capsule.
+- Le schéma des quatre mémoires.
+- Deux diapos neuves sur l'ampleur d'effet, avec les graphes que Marc demandait :
+  l'échelle (g = 0,2 · 0,5 · 0,8, traduite en rang du médian) et surtout
+  **pourquoi on divise par l'écart-type** — le même gain brut, la même flèche,
+  deux dispersions, deux ampleurs. Les deux sont produites par
+  `outils/schemas-ampleur.py`, donc refaisables.
+- Le lexique, pour que les étudiants s'y retrouvent dans le vocabulaire.
+
+Les parties « Pourquoi maintenant », « Le contexte », « Le cap » et le reste des
+« Outils » sortent du support : leur contenu est sur les cartes. Les deux briques
+`jeu-fiches` disparaissent avec eux — elles pointaient encore sur `fiches.json`,
+que Marc a supprimé au profit des versions numérotées.
+
+**La feuille A4** (`outils/feuille.py`)
+
+Recto : les deux activités d'introduction, mot pour mot, puis un tableau à trois
+colonnes — ce qu'ils notent, cinq étoiles vides, la carte qu'ils mettront en face.
+Verso : le plan d'action en carte marine. L'île du contexte, la rose des vents
+d'Alidade pour le cap, et sept îlots à pavillon vide pour les gestes de décembre.
+Le pavillon porte le nom du geste : c'est ce qui leur donne une raison de garder
+les cartes. La route s'arrête au dernier îlot et ne rejoint pas la rose — un cap
+n'est pas une destination, c'est ce par quoi on s'oriente.
+
+**Les cartes**
+
+- La courbe de l'oubli est échantillonnée sur la vraie exponentielle : chaque
+  retour double la constante de temps, la dernière décroissance est presque plate.
+- La main ouverte de « Faire plutôt qu'écouter » se lisait « halte » : un compas
+  la remplace. Rien n'apparaît si on ne le fait pas tourner soi-même.
+- « Se jauger » devient « Métacognition », avec un texte élargi (à valider par
+  Marc, c'est le seul que je rédige) et le mouvement d'horlogerie ouvert pour
+  emblème — ses propres mécaniques.
+- Les PDF sortent en A6 franc, une face par page : plus d'imposition A4.
+
+**À trancher par Marc**
+
+- Le texte du recto de la carte « Métacognition » : il est de moi, pas de lui.
+- Le nouveau découpage en quatre parties, et la numérotation des fiches qui va
+  avec.
+- La consigne de « Faire plutôt qu'écouter » dit encore « produit de vos mains »,
+  alors que le faire visé est surtout cognitif.
+
 ## 2026-11-23 — Nouveau cours « Apprendre à apprendre » : les fiches deviennent une donnée
 
 Premier cours du dépôt qui ne soit pas un cours de géomatique : deux heures de métacognition pour les Ing1, construites à partir des notes de travail de Marc (archivées telles quelles dans `cours/metacognition/source/`).
